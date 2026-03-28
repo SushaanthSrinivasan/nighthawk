@@ -24,7 +24,7 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 │  └─ Tier 3: Cloud API   ~500ms  │  (future, BYOK)
 │                                  │
 │  Spec sources:                   │
-│  ├─ withfig/autocomplete (500+)  │
+│  ├─ withfig/autocomplete (689)   │
 │  ├─ --help auto-parser           │
 │  └─ community specs              │
 └──────────────────────────────────┘
@@ -34,12 +34,13 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 
 - **`crates/nighthawk-proto/`** — IPC message types. `CompletionRequest`, `CompletionResponse`, `Suggestion`, `Shell`, `SuggestionSource`. Depends only on serde. Any crate that speaks the protocol depends on this.
 - **`crates/nighthawk-daemon/`** — Background daemon. All prediction logic, spec loading, history indexing, IPC server. This is where 90% of the logic lives.
-- **`crates/nighthawk-cli/`** — User-facing CLI (`nh start`, `nh setup zsh`, `nh complete "git ch"`). Depends on proto only.
+- **`crates/nighthawk-cli/`** — User-facing CLI (`nh start`, `nh stop`, `nh status`, `nh setup zsh`, `nh complete "git ch"`). Depends on proto + dirs.
 - **`shells/`** — Shell plugins (zsh, bash, fish, PowerShell). NOT Rust — each is ~50 lines in the shell's native language.
+- **`tools/fig-converter/`** — Node.js script that converts withfig/autocomplete TypeScript specs to nighthawk JSON format. One-time conversion tool, not part of the Rust build.
 
 ## Key daemon modules
 
-- `server.rs` — tokio IPC listener via `interprocess` crate. Accepts connections, reads newline-delimited JSON, dispatches to PredictionEngine.
+- `server.rs` — tokio IPC listener via `interprocess` crate. Accepts connections, reads newline-delimited JSON, dispatches to PredictionEngine. Handles SIGTERM/SIGINT for graceful shutdown, cleans up socket + PID file on exit.
 - `engine/mod.rs` — `PredictionEngine` orchestrates tiers in order. Returns first tier's results that produce suggestions.
 - `engine/tier.rs` — `PredictionTier` trait. The primary extension point.
 - `engine/history.rs` — Tier 0 implementation. Prefix-matches against shell history.
@@ -50,6 +51,22 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 - `history/mod.rs` — `ShellHistory` trait.
 - `history/file.rs` — Reads shell history files (zsh, bash, fish, PowerShell).
 - `config.rs` — TOML config from `~/.config/nighthawk/config.toml`.
+
+## Key CLI modules
+
+- `main.rs` — Clap-based CLI entry point. Subcommands: `start`, `stop`, `status`, `setup`, `complete`.
+- `daemon_ctl.rs` — Daemon lifecycle: spawn detached process, PID file management, socket health checks, SIGTERM/SIGKILL stop.
+- `setup.rs` — `nh setup <shell>`: copies plugin + specs to `~/.config/nighthawk/`, appends source line to shell rc file (idempotent).
+- `paths.rs` — Path helpers: `config_dir()`, `pid_file()`, `log_file()`, `specs_dir()`.
+
+## Daemon management
+
+- **PID file:** `~/.config/nighthawk/nighthawk.pid` — written by `nh start`, cleaned up on `nh stop` and daemon graceful shutdown.
+- **Log file:** `~/.config/nighthawk/daemon.log` — daemon stdout/stderr redirected here by `nh start`.
+- **Specs location:** `~/.config/nighthawk/specs/` (after `nh setup`) or `NIGHTHAWK_SPECS_DIR` env var override.
+- **Plugin location:** `~/.config/nighthawk/nighthawk.zsh` (after `nh setup`).
+- **Auto-start:** Zsh plugin checks if socket exists, tries `nh start` once if missing.
+- **Binary discovery:** `nh start` finds `nighthawk-daemon` next to the `nh` binary, falls back to PATH.
 
 ## Key traits
 
@@ -92,6 +109,10 @@ pub trait ShellHistory: Send + Sync {
 **Testing:** Unit tests in each module (`#[cfg(test)] mod tests`). Integration tests in `tests/` for IPC round-trips.
 
 **Dependencies:** Minimize. Every new dependency must justify itself. Prefer std when it's close enough.
+
+**Commits:** Follow [Conventional Commits](https://www.conventionalcommits.org/) — `feat:`, `fix:`, `chore:`, `refactor:`, `docs:`, `test:`. Use `Closes #N` / `Fixes #N` to auto-close GitHub issues.
+
+**Pre-commit hook:** `.githooks/pre-commit` auto-runs `cargo fmt`. Activate with `git config core.hooksPath .githooks`.
 
 ## Recipes
 
