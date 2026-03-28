@@ -45,8 +45,27 @@ _nh_clear_ghost() {
     _nh_replace_end=""
 }
 
+# --- Auto-start ---
+_nh_ensure_daemon() {
+    # Quick check: does the socket exist?
+    [[ -S "$NIGHTHAWK_SOCKET" ]] && return 0
+
+    # Try to start the daemon (one attempt, non-blocking)
+    if command -v nh &>/dev/null; then
+        nh start &>/dev/null
+    elif command -v nighthawk-daemon &>/dev/null; then
+        nighthawk-daemon &>/dev/null &
+        disown
+        sleep 0.2
+    fi
+
+    return 0
+}
+
 # --- Daemon communication ---
 _nh_query() {
+    _nh_ensure_daemon
+
     local buffer="$1"
     local cursor="$2"
 

@@ -6,6 +6,7 @@ use tokio::io::{AsyncBufReadExt, AsyncRead, AsyncWrite, AsyncWriteExt, BufReader
 use tracing::{debug, error, info};
 
 /// Start the IPC server listening for completion requests.
+/// Handles SIGTERM/SIGINT for graceful shutdown.
 pub async fn run(
     engine: Arc<PredictionEngine>,
     socket_path: &str,
@@ -22,20 +23,66 @@ pub async fn run(
 
     info!(%socket_path, "Daemon listening");
 
+    let shutdown = shutdown_signal();
+    tokio::pin!(shutdown);
+
     loop {
-        match listener.accept().await {
-            Ok(conn) => {
-                let engine = Arc::clone(&engine);
-                tokio::spawn(async move {
-                    if let Err(e) = handle_connection(conn, &engine).await {
-                        debug!("Connection ended: {e}");
+        tokio::select! {
+            result = listener.accept() => {
+                match result {
+                    Ok(conn) => {
+                        let engine = Arc::clone(&engine);
+                        tokio::spawn(async move {
+                            if let Err(e) = handle_connection(conn, &engine).await {
+                                debug!("Connection ended: {e}");
+                            }
+                        });
                     }
-                });
+                    Err(e) => {
+                        error!("Accept failed: {e}");
+                    }
+                }
             }
-            Err(e) => {
-                error!("Accept failed: {e}");
+            _ = &mut shutdown => {
+                info!("Shutdown signal received");
+                break;
             }
         }
+    }
+
+    // Cleanup socket
+    #[cfg(unix)]
+    {
+        let _ = std::fs::remove_file(socket_path);
+    }
+
+    // Cleanup PID file
+    let pid_path = dirs::config_dir()
+        .unwrap_or_else(|| std::path::PathBuf::from("."))
+        .join("nighthawk")
+        .join("nighthawk.pid");
+    let _ = std::fs::remove_file(&pid_path);
+
+    info!("Daemon shut down");
+    Ok(())
+}
+
+async fn shutdown_signal() {
+    #[cfg(unix)]
+    {
+        use tokio::signal::unix::{signal, SignalKind};
+        let mut sigterm = signal(SignalKind::terminate()).expect("failed to register SIGTERM");
+        let mut sigint = signal(SignalKind::interrupt()).expect("failed to register SIGINT");
+        tokio::select! {
+            _ = sigterm.recv() => {},
+            _ = sigint.recv() => {},
+        }
+    }
+    #[cfg(windows)]
+    {
+        tokio::signal::ctrl_c()
+            .await
+            .expect("failed to register Ctrl+C");
     }
 }
 
