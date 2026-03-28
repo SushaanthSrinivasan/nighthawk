@@ -1,6 +1,6 @@
 use super::{HistoryEntry, ShellHistory};
-use std::path::PathBuf;
 use nighthawk_proto::Shell;
+use std::path::PathBuf;
 
 /// Reads history from shell history files on disk.
 ///
@@ -37,22 +37,18 @@ impl FileHistory {
         match shell {
             Shell::Zsh => home.join(".zsh_history"),
             Shell::Bash => home.join(".bash_history"),
-            Shell::Fish => {
-                dirs::data_dir()
-                    .unwrap_or_else(|| home.join(".local/share"))
-                    .join("fish/fish_history")
-            }
+            Shell::Fish => dirs::data_dir()
+                .unwrap_or_else(|| home.join(".local/share"))
+                .join("fish/fish_history"),
             Shell::PowerShell => {
                 // PSReadLine history path
                 dirs::data_dir()
                     .unwrap_or_else(|| home.clone())
                     .join("Microsoft/Windows/PowerShell/PSReadLine/ConsoleHost_history.txt")
             }
-            Shell::Nushell => {
-                dirs::config_dir()
-                    .unwrap_or_else(|| home.clone())
-                    .join("nushell/history.txt")
-            }
+            Shell::Nushell => dirs::config_dir()
+                .unwrap_or_else(|| home.clone())
+                .join("nushell/history.txt"),
         }
     }
 

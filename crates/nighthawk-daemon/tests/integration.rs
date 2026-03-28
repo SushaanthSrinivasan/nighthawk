@@ -1,19 +1,16 @@
 use std::path::PathBuf;
 use std::sync::Arc;
 
-use nighthawk_daemon::engine::PredictionEngine;
-use nighthawk_daemon::engine::specs::SpecTier;
 use nighthawk_daemon::engine::history::HistoryTier;
-use nighthawk_daemon::history::ShellHistory;
+use nighthawk_daemon::engine::specs::SpecTier;
+use nighthawk_daemon::engine::PredictionEngine;
 use nighthawk_daemon::history::file::FileHistory;
-use nighthawk_daemon::specs::SpecRegistry;
+use nighthawk_daemon::history::ShellHistory;
 use nighthawk_daemon::specs::fig::FigSpecProvider;
+use nighthawk_daemon::specs::SpecRegistry;
 use nighthawk_proto::*;
 
-use interprocess::local_socket::{
-    tokio::prelude::*,
-    GenericFilePath, ToFsName,
-};
+use interprocess::local_socket::{tokio::prelude::*, GenericFilePath, ToFsName};
 use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
 
 fn test_socket_path() -> String {
@@ -70,14 +67,21 @@ async fn spec_tier_git_checkout() {
     // Give the server a moment to bind
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
 
-    let resp = query(&socket_path, &CompletionRequest {
-        input: "git ch".into(),
-        cursor: 6,
-        cwd: PathBuf::from("/tmp"),
-        shell: Shell::Zsh,
-    }).await;
+    let resp = query(
+        &socket_path,
+        &CompletionRequest {
+            input: "git ch".into(),
+            cursor: 6,
+            cwd: PathBuf::from("/tmp"),
+            shell: Shell::Zsh,
+        },
+    )
+    .await;
 
-    assert!(!resp.suggestions.is_empty(), "Should have suggestions for 'git ch'");
+    assert!(
+        !resp.suggestions.is_empty(),
+        "Should have suggestions for 'git ch'"
+    );
     let first = &resp.suggestions[0];
     assert_eq!(first.text, "checkout");
     assert_eq!(first.replace_start, 4);
@@ -103,15 +107,22 @@ async fn spec_tier_git_subcommand_with_space() {
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
 
     // "git " with trailing space — should suggest subcommands
-    let resp = query(&socket_path, &CompletionRequest {
-        input: "git ".into(),
-        cursor: 4,
-        cwd: PathBuf::from("/tmp"),
-        shell: Shell::Zsh,
-    }).await;
+    let resp = query(
+        &socket_path,
+        &CompletionRequest {
+            input: "git ".into(),
+            cursor: 4,
+            cwd: PathBuf::from("/tmp"),
+            shell: Shell::Zsh,
+        },
+    )
+    .await;
 
     // Should return subcommands (checkout, commit, etc.)
-    assert!(!resp.suggestions.is_empty(), "Should suggest subcommands after 'git '");
+    assert!(
+        !resp.suggestions.is_empty(),
+        "Should suggest subcommands after 'git '"
+    );
 }
 
 #[tokio::test]
@@ -128,12 +139,16 @@ async fn empty_input_returns_no_suggestions() {
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
 
-    let resp = query(&socket_path, &CompletionRequest {
-        input: "".into(),
-        cursor: 0,
-        cwd: PathBuf::from("/tmp"),
-        shell: Shell::Zsh,
-    }).await;
+    let resp = query(
+        &socket_path,
+        &CompletionRequest {
+            input: "".into(),
+            cursor: 0,
+            cwd: PathBuf::from("/tmp"),
+            shell: Shell::Zsh,
+        },
+    )
+    .await;
 
     assert!(resp.suggestions.is_empty());
 }
@@ -152,12 +167,16 @@ async fn unknown_command_returns_empty() {
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
 
-    let resp = query(&socket_path, &CompletionRequest {
-        input: "nonexistentcommand --fl".into(),
-        cursor: 23,
-        cwd: PathBuf::from("/tmp"),
-        shell: Shell::Zsh,
-    }).await;
+    let resp = query(
+        &socket_path,
+        &CompletionRequest {
+            input: "nonexistentcommand --fl".into(),
+            cursor: 23,
+            cwd: PathBuf::from("/tmp"),
+            shell: Shell::Zsh,
+        },
+    )
+    .await;
 
     assert!(resp.suggestions.is_empty());
 }
@@ -168,7 +187,11 @@ async fn history_tier_prefix_match() {
 
     // Create a fake bash history file
     let history_path = dir.path().join(".bash_history");
-    std::fs::write(&history_path, "git status\ngit commit -m \"test\"\nls -la\ngit status\n").unwrap();
+    std::fs::write(
+        &history_path,
+        "git status\ngit commit -m \"test\"\nls -la\ngit status\n",
+    )
+    .unwrap();
 
     let mut file_history = FileHistory::with_path(Shell::Bash, history_path);
     file_history.load().unwrap();
@@ -189,14 +212,21 @@ async fn history_tier_prefix_match() {
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
 
-    let resp = query(&socket_path, &CompletionRequest {
-        input: "git s".into(),
-        cursor: 5,
-        cwd: PathBuf::from("/tmp"),
-        shell: Shell::Bash,
-    }).await;
+    let resp = query(
+        &socket_path,
+        &CompletionRequest {
+            input: "git s".into(),
+            cursor: 5,
+            cwd: PathBuf::from("/tmp"),
+            shell: Shell::Bash,
+        },
+    )
+    .await;
 
-    assert!(!resp.suggestions.is_empty(), "Should match 'git status' from history");
+    assert!(
+        !resp.suggestions.is_empty(),
+        "Should match 'git status' from history"
+    );
     assert_eq!(resp.suggestions[0].source, SuggestionSource::History);
     // The suggestion text is the SUFFIX after what's already typed
     assert_eq!(resp.suggestions[0].text, "tatus");

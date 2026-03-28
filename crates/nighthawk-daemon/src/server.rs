@@ -1,15 +1,15 @@
 use crate::engine::PredictionEngine;
-use interprocess::local_socket::{
-    tokio::prelude::*,
-    GenericFilePath, ListenerOptions, ToFsName,
-};
-use std::sync::Arc;
+use interprocess::local_socket::{tokio::prelude::*, GenericFilePath, ListenerOptions, ToFsName};
 use nighthawk_proto::CompletionRequest;
+use std::sync::Arc;
 use tokio::io::{AsyncBufReadExt, AsyncRead, AsyncWrite, AsyncWriteExt, BufReader};
 use tracing::{debug, error, info};
 
 /// Start the IPC server listening for completion requests.
-pub async fn run(engine: Arc<PredictionEngine>, socket_path: &str) -> Result<(), Box<dyn std::error::Error>> {
+pub async fn run(
+    engine: Arc<PredictionEngine>,
+    socket_path: &str,
+) -> Result<(), Box<dyn std::error::Error>> {
     // Clean up stale socket file on Unix
     #[cfg(unix)]
     {

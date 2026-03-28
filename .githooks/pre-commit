@@ -1,0 +1,11 @@
+#!/bin/sh
+# Auto-format Rust code before committing.
+# Install: git config core.hooksPath .githooks
+
+# Format and re-stage any changed .rs files
+cargo fmt --quiet 2>/dev/null
+
+# Stage any formatting changes
+git diff --name-only --diff-filter=M | grep '\.rs$' | xargs -r git add
+
+exit 0

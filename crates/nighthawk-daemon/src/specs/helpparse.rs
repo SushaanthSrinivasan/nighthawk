@@ -104,7 +104,12 @@ impl HelpParseProvider {
         let desc = parts[1].trim().to_string();
 
         // Subcommand names are typically short, alphabetic tokens
-        if name.contains(' ') || name.len() > 30 || !name.chars().all(|c| c.is_alphanumeric() || c == '-' || c == '_') {
+        if name.contains(' ')
+            || name.len() > 30
+            || !name
+                .chars()
+                .all(|c| c.is_alphanumeric() || c == '-' || c == '_')
+        {
             return None;
         }
 
@@ -156,11 +161,20 @@ Commands:
         assert_eq!(spec.name, "myapp");
 
         // Should find options
-        assert!(spec.options.iter().any(|o| o.names.contains(&"--force".to_string())));
-        assert!(spec.options.iter().any(|o| o.names.contains(&"-v".to_string())));
+        assert!(spec
+            .options
+            .iter()
+            .any(|o| o.names.contains(&"--force".to_string())));
+        assert!(spec
+            .options
+            .iter()
+            .any(|o| o.names.contains(&"-v".to_string())));
 
         // --output should be marked as takes_arg
-        let output_opt = spec.options.iter().find(|o| o.names.contains(&"--output".to_string()));
+        let output_opt = spec
+            .options
+            .iter()
+            .find(|o| o.names.contains(&"--output".to_string()));
         assert!(output_opt.unwrap().takes_arg);
 
         // Should find subcommands

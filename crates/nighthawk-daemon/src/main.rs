@@ -1,8 +1,8 @@
-use nighthawk_daemon::{config, engine, history, server, specs};
 use nighthawk_daemon::engine::PredictionEngine;
 use nighthawk_daemon::history::ShellHistory;
-use std::sync::Arc;
+use nighthawk_daemon::{config, engine, history, server, specs};
 use nighthawk_proto::Shell;
+use std::sync::Arc;
 use tracing_subscriber::EnvFilter;
 
 #[tokio::main]
