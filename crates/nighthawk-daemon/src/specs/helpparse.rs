@@ -9,14 +9,14 @@ use std::path::PathBuf;
 ///
 /// TODO: Implement parsers for common --help formats (GNU, clap, cobra, argparse).
 pub struct HelpParseProvider {
-    cache_dir: PathBuf,
+    _cache_dir: PathBuf,
     cache: HashMap<String, CliSpec>,
 }
 
 impl HelpParseProvider {
     pub fn new(cache_dir: PathBuf) -> Self {
         Self {
-            cache_dir,
+            _cache_dir: cache_dir,
             cache: HashMap::new(),
         }
     }
@@ -68,7 +68,7 @@ impl HelpParseProvider {
 
         // Parse comma-separated flags like "-f, --force"
         for flag in flags_part.split(',') {
-            let flag = flag.trim().split_whitespace().next().unwrap_or("");
+            let flag = flag.split_whitespace().next().unwrap_or("");
             if flag.starts_with('-') {
                 names.push(flag.to_string());
             }

@@ -61,7 +61,7 @@ impl FileHistory {
             Shell::Zsh => {
                 // Extended format: ": 1234567890:0;actual command"
                 if line.starts_with(": ") {
-                    line.splitn(2, ';').nth(1).map(|s| s.to_string())
+                    line.split_once(';').map(|(_, s)| s.to_string())
                 } else {
                     Some(line.to_string())
                 }
@@ -69,11 +69,7 @@ impl FileHistory {
             Shell::Bash | Shell::PowerShell | Shell::Nushell => Some(line.to_string()),
             Shell::Fish => {
                 // Fish format: "- cmd: actual command"
-                if line.starts_with("- cmd: ") {
-                    Some(line[7..].to_string())
-                } else {
-                    None
-                }
+                line.strip_prefix("- cmd: ").map(|cmd| cmd.to_string())
             }
         }
     }
