@@ -1,0 +1,104 @@
+{
+  "name": "glow",
+  "description": "Render markdown on the CLI, with pizzazz!",
+  "subcommands": [
+    {
+      "name": "config",
+      "description": "Edit the glow config file"
+    },
+    {
+      "name": "help",
+      "description": "Help about any command",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    },
+    {
+      "name": "stash",
+      "description": "Manage your stash of markdown files",
+      "options": [
+        {
+          "names": [
+            "-m",
+            "--memo"
+          ],
+          "description": "Memo/note for stashing",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-a",
+        "--all"
+      ],
+      "description": "Show system files and directories (TUI-mode only)"
+    },
+    {
+      "names": [
+        "--config"
+      ],
+      "description": "Config file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Help for glow"
+    },
+    {
+      "names": [
+        "-l",
+        "--local"
+      ],
+      "description": "Show local files only; no network (TUI-mode only)"
+    },
+    {
+      "names": [
+        "-p",
+        "--pager"
+      ],
+      "description": "Display with pager"
+    },
+    {
+      "names": [
+        "-s",
+        "--style"
+      ],
+      "description": "Style name or JSON path (default 'auto')",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-v",
+        "--version"
+      ],
+      "description": "Version for glow"
+    },
+    {
+      "names": [
+        "-w",
+        "--width"
+      ],
+      "description": "Word-wrap at width",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "source|dir",
+      "is_variadic": true
+    }
+  ]
+}

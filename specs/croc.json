@@ -1,0 +1,228 @@
+{
+  "name": "croc",
+  "description": "Croc is a tool that allows any two computers to simply and securely transfer files and folders",
+  "subcommands": [
+    {
+      "name": "send",
+      "description": "Send file(s), or folder",
+      "options": [
+        {
+          "names": [
+            "--code",
+            "-c"
+          ],
+          "description": "Codephrase used to connect to relay",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--hash"
+          ],
+          "description": "Hash algorithm",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--text",
+            "-t"
+          ],
+          "description": "Send some text",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-local"
+          ],
+          "description": "Disable local relay when sending"
+        },
+        {
+          "names": [
+            "--no-multi"
+          ],
+          "description": "Disable multiplexing"
+        },
+        {
+          "names": [
+            "--ports"
+          ],
+          "description": "Ports of the local relay"
+        }
+      ],
+      "args": [
+        {
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "relay",
+      "description": "Start your own relay",
+      "options": [
+        {
+          "names": [
+            "--host"
+          ],
+          "description": "Host of the relay",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--ports"
+          ],
+          "description": "Ports of the local relay",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "aliases": [
+        "h"
+      ],
+      "description": "Shows a list of commands or help for one command",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help for croc"
+    },
+    {
+      "names": [
+        "--internal-dns"
+      ],
+      "description": "Use a built-in DNS stub resolver rather than the host operating system"
+    },
+    {
+      "names": [
+        "--remember"
+      ],
+      "description": "Save these settings to reuse next time"
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Toggle debug mode"
+    },
+    {
+      "names": [
+        "--yes"
+      ],
+      "description": "Automatically agree to all prompts"
+    },
+    {
+      "names": [
+        "--stdout"
+      ],
+      "description": "Redirect file to stdout"
+    },
+    {
+      "names": [
+        "--no-compress"
+      ],
+      "description": "Disable compression"
+    },
+    {
+      "names": [
+        "--ask"
+      ],
+      "description": "Make sure sender and recipient are prompted"
+    },
+    {
+      "names": [
+        "--local"
+      ],
+      "description": "Force to use only local connections"
+    },
+    {
+      "names": [
+        "--ignore-stdin"
+      ],
+      "description": "Ignore piped stdin"
+    },
+    {
+      "names": [
+        "--overwrite"
+      ],
+      "description": "Do not prompt to overwrite"
+    },
+    {
+      "names": [
+        "--curve"
+      ],
+      "description": "Choose an encryption curve",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ip"
+      ],
+      "description": "Set sender ip if known",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--relay"
+      ],
+      "description": "Address of the relay",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--relay6"
+      ],
+      "description": "Ipv6 address of the relay",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--out"
+      ],
+      "description": "Specify an output folder to receive the file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--pass"
+      ],
+      "description": "Password for the relay (default: \"pass123\")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--socks5"
+      ],
+      "description": "Add a socks5 proxy",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--throttleUpload"
+      ],
+      "description": "Throttle the upload speed e.g. 500k",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--version",
+        "-v"
+      ],
+      "description": "Print the version"
+    }
+  ],
+  "args": [
+    {
+      "name": "secret-code",
+      "description": "Receive a file using code"
+    }
+  ]
+}

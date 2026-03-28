@@ -1,0 +1,54 @@
+{
+  "name": "hx",
+  "description": "A post-modern text editor",
+  "options": [
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Show help"
+    },
+    {
+      "names": [
+        "--tutor"
+      ],
+      "description": "Open the tutorial"
+    },
+    {
+      "names": [
+        "--health"
+      ],
+      "description": "Check for errors in editor setup",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-v"
+      ],
+      "description": "Increases logging verbosity"
+    },
+    {
+      "names": [
+        "-g",
+        "--grammar"
+      ],
+      "description": "Fetch or build tree-sitter grammars",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Print version information"
+    }
+  ],
+  "args": [
+    {
+      "name": "files",
+      "is_variadic": true,
+      "template": "filepaths"
+    }
+  ]
+}

@@ -1,0 +1,1046 @@
+{
+  "name": "docker-compose",
+  "description": "Define and run multi-container applications with Docker",
+  "subcommands": [
+    {
+      "name": "build",
+      "description": "Build or rebuild services",
+      "options": [
+        {
+          "names": [
+            "--build-arg"
+          ],
+          "description": "Set build-time variables for services",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-cache"
+          ],
+          "description": "Do not use cache when building the image"
+        },
+        {
+          "names": [
+            "--progress"
+          ],
+          "description": "Set type of progress output (auto, tty, plain, quiet)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--pull"
+          ],
+          "description": "Always attempt to pull a newer version of the image"
+        },
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Don't print anything to STDOUT"
+        },
+        {
+          "names": [
+            "--ssh"
+          ],
+          "description": "Set SSH authentications used when building service images. (use 'default' for using your default SSH Agent)",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "services",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "config",
+      "aliases": [
+        "convert"
+      ],
+      "description": "Converts the compose file to platform's canonical format",
+      "options": [
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Format the output. Values: [yaml | json]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--hash"
+          ],
+          "description": "Print the service config hash, one per line",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--images"
+          ],
+          "description": "Print the image names, one per line"
+        },
+        {
+          "names": [
+            "--no-interpolate"
+          ],
+          "description": "Don't interpolate environment variables"
+        },
+        {
+          "names": [
+            "--no-normalize"
+          ],
+          "description": "Don't normalize compose model"
+        },
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Save to file (default to stdout)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--profiles"
+          ],
+          "description": "Print the profile names, one per line"
+        },
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Only validate the configuration, don't print anything"
+        },
+        {
+          "names": [
+            "--resolve-image-digests"
+          ],
+          "description": "Pin image tags to digests"
+        },
+        {
+          "names": [
+            "--services"
+          ],
+          "description": "Print the service names, one per line"
+        },
+        {
+          "names": [
+            "--volumes"
+          ],
+          "description": "Print the volume names, one per line"
+        }
+      ],
+      "args": [
+        {
+          "name": "services",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "cp",
+      "description": "Copy files/folders between a service container and the local filesystem",
+      "options": [
+        {
+          "names": [
+            "--archive",
+            "-a"
+          ],
+          "description": "Archive mode (copy all uid/gid information)"
+        },
+        {
+          "names": [
+            "--follow-link",
+            "-L"
+          ],
+          "description": "Always follow symbol link in SRC_PATH"
+        },
+        {
+          "names": [
+            "--index"
+          ],
+          "description": "Index of the container if there are multiple instances of a service",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "source path"
+        },
+        {
+          "name": "dest path"
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "description": "Creates containers for a service",
+      "options": [
+        {
+          "names": [
+            "--build"
+          ],
+          "description": "Build images before starting containers"
+        },
+        {
+          "names": [
+            "--force-recreate"
+          ],
+          "description": "Recreate containers even if their configuration and image haven't changed"
+        },
+        {
+          "names": [
+            "--no-build"
+          ],
+          "description": "Don't build an image, even if it's missing"
+        },
+        {
+          "names": [
+            "--no-recreate"
+          ],
+          "description": "If containers already exist, don't recreate them. Incompatible with --force-recreate"
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "down",
+      "description": "Stop and remove containers, networks",
+      "options": [
+        {
+          "names": [
+            "--remove-orphans"
+          ],
+          "description": "Remove containers for services not defined in the Compose file"
+        },
+        {
+          "names": [
+            "--rmi"
+          ],
+          "description": "Remove images used by services. \"local\" remove only images that don't have a custom tag (\"local\"|\"all\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Specify a shutdown timeout in seconds",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--volumes",
+            "-v"
+          ],
+          "description": "Remove named volumes declared in the `volumes` section of the Compose file and anonymous volumes attached to containers"
+        }
+      ]
+    },
+    {
+      "name": "events",
+      "description": "Receive real time events from containers",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Output events as a stream of json objects"
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "exec",
+      "description": "Execute a command in a running container",
+      "options": [
+        {
+          "names": [
+            "--detach",
+            "-d"
+          ],
+          "description": "Detached mode: Run command in the background"
+        },
+        {
+          "names": [
+            "--env",
+            "-e"
+          ],
+          "description": "Set environment variables",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--index"
+          ],
+          "description": "Index of the container if there are multiple instances of a service [default: 1]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-TTY",
+            "-T"
+          ],
+          "description": "Disable pseudo-TTY allocation. By default `docker compose exec` allocates a TTY"
+        },
+        {
+          "names": [
+            "--privileged"
+          ],
+          "description": "Give extended privileges to the process"
+        },
+        {
+          "names": [
+            "--user",
+            "-u"
+          ],
+          "description": "Run the command as this user",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--workdir",
+            "-w"
+          ],
+          "description": "Path to workdir directory for this command",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service"
+        },
+        {
+          "name": "command",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "images",
+      "description": "List images used by the created containers",
+      "options": [
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Only display IDs"
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "kill",
+      "description": "Force stop service containers",
+      "options": [
+        {
+          "names": [
+            "--signal",
+            "-s"
+          ],
+          "description": "SIGNAL to send to the container",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "logs",
+      "description": "View output from containers",
+      "options": [
+        {
+          "names": [
+            "--follow",
+            "-f"
+          ],
+          "description": "Follow log output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Produce monochrome output"
+        },
+        {
+          "names": [
+            "--no-log-prefix"
+          ],
+          "description": "Don't print prefix in logs"
+        },
+        {
+          "names": [
+            "--since"
+          ],
+          "description": "Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--tail"
+          ],
+          "description": "Number of lines to show from the end of the logs for each container",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timestamps",
+            "-t"
+          ],
+          "description": "Show timestamps"
+        },
+        {
+          "names": [
+            "--until"
+          ],
+          "description": "Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "ls",
+      "description": "List running compose projects",
+      "options": [
+        {
+          "names": [
+            "--all",
+            "-a"
+          ],
+          "description": "Show all stopped Compose projects"
+        },
+        {
+          "names": [
+            "--filter"
+          ],
+          "description": "Filter output based on conditions provided",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Format the output. Values: [pretty | json]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Only display IDs"
+        }
+      ]
+    },
+    {
+      "name": "pause",
+      "description": "Pause services",
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "port",
+      "description": "Print the public port for a port binding",
+      "options": [
+        {
+          "names": [
+            "--index"
+          ],
+          "description": "Index of the container if service has multiple replicas",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--protocol"
+          ],
+          "description": "Tcp or udp",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service"
+        },
+        {
+          "name": "private_port"
+        }
+      ]
+    },
+    {
+      "name": "ps",
+      "description": "List containers",
+      "options": [
+        {
+          "names": [
+            "--all",
+            "-a"
+          ],
+          "description": "Show all stopped containers (including those created by the run command)"
+        },
+        {
+          "names": [
+            "--filter"
+          ],
+          "description": "Filter services by a property (supported filters: status)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Format the output. Values: [pretty | json]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Only display IDs"
+        },
+        {
+          "names": [
+            "--services"
+          ],
+          "description": "Display services"
+        },
+        {
+          "names": [
+            "--status"
+          ],
+          "description": "Filter services by status. Values: [paused | restarting | removing | running | dead | created | exited]",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "pull",
+      "description": "Pull service images",
+      "options": [
+        {
+          "names": [
+            "--ignore-pull-failures"
+          ],
+          "description": "Pull what it can and ignores images with pull failures"
+        },
+        {
+          "names": [
+            "--include-deps"
+          ],
+          "description": "Also pull services declared as dependencies"
+        },
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Pull without printing progress information"
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "push",
+      "description": "Push service images",
+      "options": [
+        {
+          "names": [
+            "--ignore-push-failures"
+          ],
+          "description": "Push what it can and ignores images with push failures"
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "restart",
+      "description": "Restart containers",
+      "options": [
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Specify a shutdown timeout in seconds",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "rm",
+      "description": "Removes stopped service containers",
+      "options": [
+        {
+          "names": [
+            "--force",
+            "-f"
+          ],
+          "description": "Don't ask to confirm removal"
+        },
+        {
+          "names": [
+            "--stop",
+            "-s"
+          ],
+          "description": "Stop the containers, if required, before removing"
+        },
+        {
+          "names": [
+            "--volumes",
+            "-v"
+          ],
+          "description": "Remove any anonymous volumes attached to containers"
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "run",
+      "description": "Run a one-off command on a service",
+      "options": [
+        {
+          "names": [
+            "--detach",
+            "-d"
+          ],
+          "description": "Run container in background and print container ID"
+        },
+        {
+          "names": [
+            "--entrypoint"
+          ],
+          "description": "Override the entrypoint of the image",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--env",
+            "-e"
+          ],
+          "description": "Set environment variables",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--interactive",
+            "-i"
+          ],
+          "description": "Keep STDIN open even if not attached"
+        },
+        {
+          "names": [
+            "--label",
+            "-l"
+          ],
+          "description": "Add or override a label",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--name"
+          ],
+          "description": "Assign a name to the container",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-TTY",
+            "-T"
+          ],
+          "description": "Disable pseudo-TTY allocation (default: auto-detected)"
+        },
+        {
+          "names": [
+            "--no-deps"
+          ],
+          "description": "Don't start linked services"
+        },
+        {
+          "names": [
+            "--publish",
+            "-p"
+          ],
+          "description": "Publish a container's port(s) to the host",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--quiet-pull"
+          ],
+          "description": "Pull without printing progress information"
+        },
+        {
+          "names": [
+            "--rm"
+          ],
+          "description": "Automatically remove the container when it exits"
+        },
+        {
+          "names": [
+            "--service-ports"
+          ],
+          "description": "Run command with the service's ports enabled and mapped to the host"
+        },
+        {
+          "names": [
+            "--use-aliases"
+          ],
+          "description": "Use the service's network useAliases in the network(s) the container connects to"
+        },
+        {
+          "names": [
+            "--user",
+            "-u"
+          ],
+          "description": "Run as specified username or uid",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--volume",
+            "-v"
+          ],
+          "description": "Bind mount a volume",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--workdir",
+            "-w"
+          ],
+          "description": "Working directory inside the container",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service"
+        },
+        {
+          "name": "command"
+        }
+      ]
+    },
+    {
+      "name": "start",
+      "description": "Start services",
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "stop",
+      "description": "Stop services",
+      "options": [
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Specify a shutdown timeout in seconds",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "top",
+      "description": "Display the running processes",
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "unpause",
+      "description": "Unpause services",
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "up",
+      "description": "Create and start containers",
+      "options": [
+        {
+          "names": [
+            "--abort-on-container-exit"
+          ],
+          "description": "Stops all containers if any container was stopped. Incompatible with -d"
+        },
+        {
+          "names": [
+            "--always-recreate-deps"
+          ],
+          "description": "Recreate dependent containers. Incompatible with --no-recreate"
+        },
+        {
+          "names": [
+            "--attach"
+          ],
+          "description": "Attach to service output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--attach-dependencies"
+          ],
+          "description": "Attach to dependent containers"
+        },
+        {
+          "names": [
+            "--build"
+          ],
+          "description": "Build images before starting containers"
+        },
+        {
+          "names": [
+            "--detach",
+            "-d"
+          ],
+          "description": "Detached mode: Run containers in the background"
+        },
+        {
+          "names": [
+            "--exit-code-from"
+          ],
+          "description": "Return the exit code of the selected service container. Implies --abort-on-container-exit",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force-recreate"
+          ],
+          "description": "Recreate containers even if their configuration and image haven't changed"
+        },
+        {
+          "names": [
+            "--no-build"
+          ],
+          "description": "Don't build an image, even if it's missing"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Produce monochrome output"
+        },
+        {
+          "names": [
+            "--no-deps"
+          ],
+          "description": "Don't start linked services"
+        },
+        {
+          "names": [
+            "--no-log-prefix"
+          ],
+          "description": "Don't print prefix in logs"
+        },
+        {
+          "names": [
+            "--no-recreate"
+          ],
+          "description": "If containers already exist, don't recreate them. Incompatible with --force-recreate"
+        },
+        {
+          "names": [
+            "--no-start"
+          ],
+          "description": "Don't start the services after creating them"
+        },
+        {
+          "names": [
+            "--quiet-pull"
+          ],
+          "description": "Pull without printing progress information"
+        },
+        {
+          "names": [
+            "--remove-orphans"
+          ],
+          "description": "Remove containers for services not defined in the Compose file"
+        },
+        {
+          "names": [
+            "--renew-anon-volumes",
+            "-V"
+          ],
+          "description": "Recreate anonymous volumes instead of retrieving data from the previous containers"
+        },
+        {
+          "names": [
+            "--scale"
+          ],
+          "description": "Scale SERVICE to NUM instances. Overrides the `scale` setting in the Compose file if present",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Use this timeout in seconds for container shutdown when attached or when containers are already running",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--wait"
+          ],
+          "description": "Wait for services to be running|healthy. Implies detached mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "service",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Show the Docker Compose version information",
+      "options": [
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Format the output. Values: [pretty | json]. (Default: pretty)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--short"
+          ],
+          "description": "Shows only Compose's version number"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--ansi"
+      ],
+      "description": "Control when to print ANSI control characters (\"never\"|\"always\"|\"auto\")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--compatibility"
+      ],
+      "description": "Run compose in backward compatibility mode"
+    },
+    {
+      "names": [
+        "--env-file"
+      ],
+      "description": "Specify an alternate environment file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--file",
+        "-f"
+      ],
+      "description": "Compose configuration files",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--profile"
+      ],
+      "description": "Specify a profile to enable",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--project-directory"
+      ],
+      "description": "Specify an alternate working directory (default: the path of the, first specified, Compose file)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--project-name",
+        "-p"
+      ],
+      "description": "Project name",
+      "takes_arg": true
+    }
+  ]
+}

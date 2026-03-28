@@ -1,0 +1,263 @@
+{
+  "name": "elm-review",
+  "subcommands": [
+    {
+      "name": "init",
+      "description": "Initialize Elm Review in this directory",
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help for elm-review init"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Create the configuration files in the specified directory instead of in the review/ directory",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--template"
+          ],
+          "description": "Copy the review configuration from a GitHub repository, at the root or in a folder",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--compiler"
+          ],
+          "description": "Specify the path to the elm compiler",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "suppress",
+      "description": "Generate suppression files for rules that report many errors",
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help for elm-review suppress"
+        },
+        {
+          "names": [
+            "--check-after-tests"
+          ],
+          "description": "Checks whether there are uncommitted suppression files"
+        },
+        {
+          "names": [
+            "--unsuppress"
+          ],
+          "description": "Include suppressed errors in the error report for all rules"
+        },
+        {
+          "names": [
+            "--unsuppress-rules"
+          ],
+          "description": "Include suppressed errors in the error report for all rules",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "new-package",
+      "description": "Creates an new project aimed to contain rules and to be published later",
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help for elm-review new-package"
+        },
+        {
+          "names": [
+            "--compiler"
+          ],
+          "description": "Specify the path to the elm compiler",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "new-rule",
+      "description": "Adds a new rule to your review configuration or review package",
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help for elm-review new-package"
+        }
+      ],
+      "args": [
+        {
+          "name": "rule name",
+          "description": "Add a rule file in src/ and a corresponding test file in tests/. Should be formatted just like an Elm module name, such as NoDoingThis or No.Doing.This"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help for elm-review"
+    },
+    {
+      "names": [
+        "--unsuppress"
+      ],
+      "description": "Include suppressed errors in the error report for all rules"
+    },
+    {
+      "names": [
+        "--rules"
+      ],
+      "description": "Run with a subsection of the rules in the configuration. Specify them by their name, and separate them by commas",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--watch"
+      ],
+      "description": "Re-run elm-review automatically when your project or configuration changes"
+    },
+    {
+      "names": [
+        "--watch-code"
+      ],
+      "description": "Re-run elm-review automatically when your project changes"
+    },
+    {
+      "names": [
+        "--elmjson"
+      ],
+      "description": "Specify the path to the elm.json file of the project",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config"
+      ],
+      "description": "Use the review configuration in the specified directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--template"
+      ],
+      "description": "Use the review configuration from a GitHub repository",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--compiler"
+      ],
+      "description": "Specify the path to the elm compiler",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--version",
+        "-v"
+      ],
+      "description": "Print the version of the elm-review CLI"
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Add helpful information to debug your configuration or rules"
+    },
+    {
+      "names": [
+        "--report"
+      ],
+      "description": "Error reports will be in JSON format",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-details"
+      ],
+      "description": "Hide the details from error reports for a more compact view"
+    },
+    {
+      "names": [
+        "--ignore-dirs"
+      ],
+      "description": "Ignore the reports of all rules for the specified directories",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ignore-files"
+      ],
+      "description": "Ignore the reports of all rules for the specified files",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--fix"
+      ],
+      "description": "Elm Review will present fixes for the errors that offer an automatic fix, which you can then accept or refuse one by one"
+    },
+    {
+      "names": [
+        "--fix-all"
+      ],
+      "description": "Elm Review will present a single fix containing the application of all available automatic fixes, which you can then accept or refuse"
+    },
+    {
+      "names": [
+        "--elm-format-path"
+      ],
+      "description": "Specify the path to elm-format",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--fix-limit"
+      ],
+      "description": "Limit the number of fixes applied in a single batch to N",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--extract"
+      ],
+      "description": "Enable extracting data from the project for the rules that have a data extractor. Requires running with --report=json. Learn more by reading the section about \"Extracting information\" at https://bit.l"
+    },
+    {
+      "names": [
+        "--benchmark-info"
+      ],
+      "description": "Print out how much time it took for rules and phases of the process to run. This is meant for benchmarking purposes"
+    },
+    {
+      "names": [
+        "--no-color"
+      ],
+      "description": "Disable colors in the output"
+    }
+  ],
+  "args": [
+    {
+      "name": "files or directories to review",
+      "is_variadic": true,
+      "template": "filepaths"
+    }
+  ]
+}

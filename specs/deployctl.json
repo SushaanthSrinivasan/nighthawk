@@ -1,0 +1,83 @@
+{
+  "name": "deployctl",
+  "description": "Command line tool for Deno Deploy",
+  "subcommands": [
+    {
+      "name": "deploy",
+      "description": "Deploy a script with static files to Deno Deploy",
+      "options": [
+        {
+          "names": [
+            "--exclude"
+          ],
+          "description": "Exclude files that match this pattern",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include"
+          ],
+          "description": "Only upload files that match this pattern",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-static"
+          ],
+          "description": "Don't include the files in the CWD as static files"
+        },
+        {
+          "names": [
+            "--prod"
+          ],
+          "description": "Create a production deployment (default is preview deployment)"
+        },
+        {
+          "names": [
+            "-p",
+            "--project"
+          ],
+          "description": "The project to deploy to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--token"
+          ],
+          "description": "The API token to use",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "entrypoint"
+        }
+      ]
+    },
+    {
+      "name": "upgrade",
+      "description": "Upgrade deployctl",
+      "args": [
+        {
+          "name": "version"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Show the version"
+    }
+  ]
+}

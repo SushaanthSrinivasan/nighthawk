@@ -1,0 +1,4609 @@
+{
+  "name": "pscale",
+  "description": "Pscale is a CLI library for communicating with PlanetScale's API",
+  "subcommands": [
+    {
+      "name": "audit-log",
+      "description": "List audit logs",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List all audit logs of an organization"
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "description": "Login and logout via the PlanetScale API",
+      "subcommands": [
+        {
+          "name": "login",
+          "description": "Authenticate with the PlanetScale API",
+          "options": [
+            {
+              "names": [
+                "--client-id"
+              ],
+              "description": "The client ID for the PlanetScale CLI application"
+            },
+            {
+              "names": [
+                "--client-secret"
+              ],
+              "description": "The client ID for the PlanetScale CLI application"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "logout",
+          "description": "Log out of the PlanetScale API",
+          "options": [
+            {
+              "names": [
+                "--client-id"
+              ],
+              "description": "The client ID for the PlanetScale CLI application"
+            },
+            {
+              "names": [
+                "--client-secret"
+              ],
+              "description": "The client ID for the PlanetScale CLI application"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "backup",
+      "description": "Create, list, show, and delete branch backups",
+      "subcommands": [
+        {
+          "name": "create",
+          "aliases": [
+            "b"
+          ],
+          "description": "Backup a branch's data and schema",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "aliases": [
+            "rm"
+          ],
+          "description": "Delete a branch backup",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            },
+            {
+              "name": "backup"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List all backups of a branch",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "restore",
+          "description": "Restore a backup to a new branch",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            },
+            {
+              "name": "backup"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show a specific backup of a branch",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            },
+            {
+              "name": "backup"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "branch",
+      "description": "Create, delete, diff, and manage branches",
+      "subcommands": [
+        {
+          "name": "create",
+          "aliases": [
+            "b"
+          ],
+          "description": "Create a new branch from a database",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--from"
+              ],
+              "description": "Branch to be created from"
+            },
+            {
+              "names": [
+                "--region"
+              ],
+              "description": "Region for the database"
+            },
+            {
+              "names": [
+                "--restore"
+              ],
+              "description": "Backup to restore into the branch"
+            },
+            {
+              "names": [
+                "--web",
+                "-w"
+              ],
+              "description": "Create a branch in your web browser"
+            }
+          ],
+          "args": [
+            {
+              "name": "source-database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "aliases": [
+            "rm"
+          ],
+          "description": "Delete a branch from a database",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--force"
+              ],
+              "description": "Delete a branch without confirmation"
+            }
+          ],
+          "args": [
+            {
+              "name": "source-database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "diff",
+          "description": "Show the diff of a branch",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            }
+          ],
+          "args": [
+            {
+              "name": "source-database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List all branches of a database",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "List branches in your web browser"
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            }
+          ]
+        },
+        {
+          "name": "promote",
+          "aliases": [
+            "p"
+          ],
+          "description": "Promote a new branch from a database",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "source-database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "refresh-schema",
+          "description": "Refresh the schema for a database branch",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "source-database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "schema",
+          "description": "Show the schema of a branch",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            }
+          ],
+          "args": [
+            {
+              "name": "source-database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show a specific branch of a database",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            }
+          ],
+          "args": [
+            {
+              "name": "source-database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "switch",
+          "description": "Switches the current project to use the specified branch",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--create"
+              ],
+              "description": "If enabled, will automatically create the branch if it does not exist"
+            },
+            {
+              "names": [
+                "--database"
+              ],
+              "description": "The database this project is using",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--parent-branch"
+              ],
+              "description": "Parent branch to inherit from if a new branch is being created (default \"main\")",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "branch"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "completion",
+      "description": "Generate completion script for your shell",
+      "options": [
+        {
+          "names": [
+            "--web"
+          ],
+          "description": "Open in web browser"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "connect",
+      "description": "Create a secure connection to a database and branch for a local client",
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--execute"
+          ],
+          "description": "Run this command after successfully connecting to the database",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--execute-env-url"
+          ],
+          "description": "Environment variable name that contains the exposed Database URL. (default \"DATABASE_URL\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--execute-protocol"
+          ],
+          "description": "Protocol for the exposed URL (by default DATABASE_URL) value in execute (default \"mysql2\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--host"
+          ],
+          "description": "Local host to bind and listen for connections (default \"127.0.0.1\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "The organization for the current user",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--port"
+          ],
+          "description": "Local port to bind and listen for connections (default \"3306\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-addr"
+          ],
+          "description": "PlanetScale Database remote network address. By default the remote address is populated automatically from the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "mydatabase"
+        },
+        {
+          "name": "mybranch"
+        }
+      ]
+    },
+    {
+      "name": "database",
+      "aliases": [
+        "db"
+      ],
+      "description": "Create, read, delete, and dump/restore databases",
+      "subcommands": [
+        {
+          "name": "create",
+          "description": "Create a database instance",
+          "options": [
+            {
+              "names": [
+                "--notes"
+              ],
+              "description": "Notes for the database",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--region"
+              ],
+              "description": "Region for the database"
+            },
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "aliases": [
+            "rm"
+          ],
+          "description": "Delete a database instance",
+          "options": [
+            {
+              "names": [
+                "--force"
+              ],
+              "description": "Delete a database without confirmation"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            }
+          ]
+        },
+        {
+          "name": "dump",
+          "description": "Backup and dump your database",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--local-addr"
+              ],
+              "description": "Local address to bind and listen for connections. By default the proxy binds to 127.0.0.1 with a random port",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--output"
+              ],
+              "description": "Output director of the dump. By default the dump is stored to a folder in the current directory",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--tables"
+              ],
+              "description": "Comma separated string of tables to dump. By default all tables are dumped",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List databases",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            }
+          ]
+        },
+        {
+          "name": "restore-dump",
+          "description": "Restore your database from a local dump directory",
+          "options": [
+            {
+              "names": [
+                "--dir"
+              ],
+              "description": "Directory that contains the files to be used for restoration (required)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--local-addr"
+              ],
+              "description": "Local address to bind and listen for connections. By default the proxy binds to 127.0.0.1 with a random port",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Retrieve information about a database",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "The organization for the current user",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "deploy-request",
+      "aliases": [
+        "dr"
+      ],
+      "description": "Create, review, diff, and manage deploy requests",
+      "subcommands": [
+        {
+          "name": "close",
+          "description": "Close a deploy request",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "description": "Create a deploy request from a branch",
+          "options": [
+            {
+              "names": [
+                "--deploy-to"
+              ],
+              "description": "Branch to deploy the branch. By default it's set to 'main'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "deploy",
+          "description": "Deploy a specific deploy request",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            }
+          ]
+        },
+        {
+          "name": "diff",
+          "description": "Show the diff of a deploy request",
+          "options": [
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List all deploy requests for a database",
+          "options": [
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            }
+          ]
+        },
+        {
+          "name": "review",
+          "description": "Review a deploy request (approve, comment, etc...)",
+          "options": [
+            {
+              "names": [
+                "--approve"
+              ],
+              "description": "Approve a deploy request"
+            },
+            {
+              "names": [
+                "--comment"
+              ],
+              "description": "Comment on a deploy request",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show a specific deploy request",
+          "options": [
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "The organization for the current user",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Help about any command"
+    },
+    {
+      "name": "org",
+      "description": "List, show, and switch organizations",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List the currently active organizations",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Display the currently active organization",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "switch",
+          "description": "Switch the currently active organization",
+          "options": [
+            {
+              "names": [
+                "--save-config"
+              ],
+              "description": "Path to store the organization. By default the configuration is deducted automatically based on where pscale is executed",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "organization"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "password",
+      "description": "Create, list, and delete branch passwords",
+      "subcommands": [
+        {
+          "name": "create",
+          "aliases": [
+            "p"
+          ],
+          "description": "Create password to access a branch's data",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            },
+            {
+              "name": "name"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "aliases": [
+            "rm"
+          ],
+          "description": "Delete a branch password",
+          "options": [
+            {
+              "names": [
+                "--force"
+              ],
+              "description": "Delete a password without confirmation"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            },
+            {
+              "name": "branch"
+            },
+            {
+              "name": "password"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List all passwords of a database",
+          "options": [
+            {
+              "names": [
+                "--web"
+              ],
+              "description": "Open in web browser"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "database"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "The organization for the current user",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "region",
+      "description": "List regions",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [
+            "ls"
+          ],
+          "description": "List regions",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "service-token",
+      "description": "Create, list, and manage access for service tokens",
+      "subcommands": [
+        {
+          "name": "add-access",
+          "description": "Ddd access to a service token in the organization",
+          "options": [
+            {
+              "names": [
+                "--database"
+              ],
+              "description": "The database this project is using",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "token"
+            },
+            {
+              "name": "access"
+            },
+            {
+              "name": "access"
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "description": "Create a service token for the organization",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete an entire service token in an organization",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "name": "delete-access",
+          "description": "Delete access granted to a service token in the organization",
+          "options": [
+            {
+              "names": [
+                "--database"
+              ],
+              "description": "The database this project is using",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "token"
+            },
+            {
+              "name": "access"
+            },
+            {
+              "name": "access"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List service tokens for the organization",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "show-access",
+          "description": "Fetch a service token and it's accesses",
+          "options": [
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--api-token"
+              ],
+              "description": "The API token to use for authenticating against the PlanetScale API",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--api-url"
+              ],
+              "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Enable debug mode"
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--no-color"
+              ],
+              "description": "Disable color output"
+            },
+            {
+              "names": [
+                "--service-token"
+              ],
+              "description": "Service Token for authenticating",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--service-token-name"
+              ],
+              "description": "The Service Token name for authenticating",
+              "takes_arg": true
+            }
+          ],
+          "args": [
+            {
+              "name": "name"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "The organization for the current user",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "shell",
+      "description": "Open a MySQL shell instance to a database and branch",
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--port"
+          ],
+          "description": "Local port to bind and listen for connections (default \"3306\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-addr"
+          ],
+          "description": "PlanetScale Database remote network address. By default the remote address is populated automatically from the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--local-addr"
+          ],
+          "description": "Local address to bind and listen for connections. By default the proxy binds to 127.0.0.1 with a random port",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "mydatabase"
+        },
+        {
+          "name": "mybranch"
+        }
+      ]
+    },
+    {
+      "name": "signup",
+      "aliases": [
+        "register",
+        "sign-up"
+      ],
+      "description": "Signup for a new PlanetScale account",
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--api-token"
+          ],
+          "description": "The API token to use for authenticating against the PlanetScale API",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--api-url"
+          ],
+          "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug mode"
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Disable color output"
+        },
+        {
+          "names": [
+            "--service-token"
+          ],
+          "description": "Service Token for authenticating",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--service-token-name"
+          ],
+          "description": "The Service Token name for authenticating",
+          "takes_arg": true
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help"
+    },
+    {
+      "names": [
+        "--api-token"
+      ],
+      "description": "The API token to use for authenticating against the PlanetScale API",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--api-url"
+      ],
+      "description": "The base URL for the PlanetScale API. (default \"https://api.planetscale.com/\")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config"
+      ],
+      "description": "Config file (default is $HOME/.config/planetscale/pscale.yml)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Enable debug mode"
+    },
+    {
+      "names": [
+        "--format",
+        "-f"
+      ],
+      "description": "Show output in a specific format. Possible values: [human, json, csv] (default \"human\")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-color"
+      ],
+      "description": "Disable color output"
+    },
+    {
+      "names": [
+        "--service-token"
+      ],
+      "description": "Service Token for authenticating",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--service-token-name"
+      ],
+      "description": "The Service Token name for authenticating",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Show pscale version"
+    }
+  ]
+}

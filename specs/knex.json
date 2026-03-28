@@ -1,0 +1,164 @@
+{
+  "name": "knex",
+  "description": "SQL query builder for JavaScript",
+  "subcommands": [
+    {
+      "name": "init",
+      "description": "Create a fresh knexfile"
+    },
+    {
+      "name": "migrate:make",
+      "description": "Create a named migration file",
+      "args": [
+        {
+          "name": "migration name"
+        }
+      ]
+    },
+    {
+      "name": "migrate:latest",
+      "description": "Run all migrations that have not yet been run"
+    },
+    {
+      "name": "migrate:up",
+      "description": "Run the next or the specified migration that has not yet been run"
+    },
+    {
+      "name": "migrate:rollback",
+      "description": "Rollback the last batch of migrations performed"
+    },
+    {
+      "name": "migrate:down",
+      "description": "Undo the last or the specified migration that was already run"
+    },
+    {
+      "name": "migrate:currentVersion",
+      "description": "View the current version for the  migration"
+    },
+    {
+      "name": "migrate:list|migrate:status",
+      "description": "List all migrations files with status"
+    },
+    {
+      "name": "migrate:unlock",
+      "description": "Forcibly unlocks the migrations lock table"
+    },
+    {
+      "name": "seed:make",
+      "description": "Create a named seed file",
+      "args": [
+        {
+          "name": "seed name"
+        }
+      ]
+    },
+    {
+      "name": "seed:run",
+      "description": "Run seed files"
+    },
+    {
+      "name": "help",
+      "description": "Display help for command"
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Output the version number",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Run with debugging",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--knexfile"
+      ],
+      "description": "Specify the knexfile path",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--knexpath"
+      ],
+      "description": "Specify the path to knex instance",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--cwd"
+      ],
+      "description": "Specify the working directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--client"
+      ],
+      "description": "Set DB client without a knexfile",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--connection"
+      ],
+      "description": "Set DB connection without a knexfile",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--migrations-directory"
+      ],
+      "description": "Set migrations directory without a knexfile",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--migrations-table-name"
+      ],
+      "description": "Set migrations table name without a knexfile",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--env"
+      ],
+      "description": "Environment, default: process.env.NODE_ENV || development",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--esm"
+      ],
+      "description": "Enable ESM interop",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--specific"
+      ],
+      "description": "Specify one seed file to execute",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--timestamp-filename-prefix"
+      ],
+      "description": "Enable a timestamp prefix on name of generated seed files",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Display help for command",
+      "takes_arg": true
+    }
+  ]
+}

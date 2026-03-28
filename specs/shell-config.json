@@ -1,0 +1,170 @@
+{
+  "name": "shell-config",
+  "subcommands": [
+    {
+      "name": "install",
+      "description": "Install MacOS setup with Multi-Selection",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Display help for command"
+        }
+      ]
+    },
+    {
+      "name": "shell",
+      "description": "Setup a shell configuration with a robust set of tools and architecture",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Display help for command"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "description": "Update the CLI to the latest version",
+      "options": [
+        {
+          "names": [
+            "-t",
+            "--target"
+          ],
+          "description": "Select update version",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--mute"
+          ],
+          "description": "Daemon check for update notification. When specified is true"
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Display help for command"
+        }
+      ]
+    },
+    {
+      "name": "assets",
+      "description": "Configure your shell assets, such as `gitprofile` and `npmrc`",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Display help for command"
+        }
+      ]
+    },
+    {
+      "name": "external",
+      "description": "Install and manage your external shell",
+      "subcommands": [
+        {
+          "name": "list",
+          "description": "Show list of all exists externals shells",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Display help for command"
+            }
+          ]
+        },
+        {
+          "name": "install",
+          "description": "Install external shell",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Display help for command"
+            }
+          ],
+          "args": [
+            {
+              "name": "file_path",
+              "description": "File to set as external shell"
+            },
+            {
+              "name": "external_name",
+              "description": "Name to register under the registry"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete external shell",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Display help for command"
+            }
+          ]
+        },
+        {
+          "name": "help",
+          "description": "Display help for command",
+          "args": [
+            {
+              "name": "command"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Display help for command"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Display help for command",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Output the version number"
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command"
+    }
+  ]
+}

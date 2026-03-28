@@ -1,0 +1,303 @@
+{
+  "name": "scc",
+  "description": "Sloc, Cloc and Code. Count lines of code in a directory with complexity estimation",
+  "options": [
+    {
+      "names": [
+        "--avg-wage"
+      ],
+      "description": "Average salary value used for COCOMO calculations",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--binary"
+      ],
+      "description": "Disable binary file detection"
+    },
+    {
+      "names": [
+        "--by-file"
+      ],
+      "description": "Display output for every file"
+    },
+    {
+      "names": [
+        "--ci"
+      ],
+      "description": "Enable CI output settings where stdout is ASCII"
+    },
+    {
+      "names": [
+        "--cocomo-project-type"
+      ],
+      "description": "Change the COCOMO model type (allows custom models, eg. \"name,1,1,1,1\")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--count-as"
+      ],
+      "description": "Count a file extension as a language (comma-separated key:value list, eg. jst:js,tpl:Markdown)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Enable debug output"
+    },
+    {
+      "names": [
+        "--exclude-dir"
+      ],
+      "description": "Directories to exclude",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--file-gc-count"
+      ],
+      "description": "Number of files to parse before turning the GC on",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-f",
+        "--format"
+      ],
+      "description": "Set output format",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--format-multi"
+      ],
+      "description": "Multiple outputs with different formats (comma-separated key:value list, eg. tabular:stdout,csv:scc.csv)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--gen"
+      ],
+      "description": "Identify generated files"
+    },
+    {
+      "names": [
+        "--generated-markers"
+      ],
+      "description": "Identify generated files by the presence of a string (comma-separated list)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Help for scc"
+    },
+    {
+      "names": [
+        "-i",
+        "--include-ext"
+      ],
+      "description": "Limit to these file extensions (comma-separated list)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--include-symlinks"
+      ],
+      "description": "Count symbolic links"
+    },
+    {
+      "names": [
+        "-l",
+        "--languages"
+      ],
+      "description": "Print supported languages and extensions"
+    },
+    {
+      "names": [
+        "--large-byte-count"
+      ],
+      "description": "Number of bytes a file can contain before being omitted",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--large-line-count"
+      ],
+      "description": "Number of lines a file can contain before being omitted",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--min"
+      ],
+      "description": "Identify minified files"
+    },
+    {
+      "names": [
+        "-z",
+        "--min-gen"
+      ],
+      "description": "Identify minified or generated files"
+    },
+    {
+      "names": [
+        "--min-gen-line-length"
+      ],
+      "description": "Number of bytes per average line for file to be considered minified or generated",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-cocomo"
+      ],
+      "description": "Skip COCOMO calculation"
+    },
+    {
+      "names": [
+        "-c",
+        "--no-complexity"
+      ],
+      "description": "Skip code complexity calculation"
+    },
+    {
+      "names": [
+        "-d",
+        "--no-duplicates"
+      ],
+      "description": "Remove duplicate files from stats and output"
+    },
+    {
+      "names": [
+        "--no-gen"
+      ],
+      "description": "Ignore generated files in output (implies --gen)"
+    },
+    {
+      "names": [
+        "--no-gitignore"
+      ],
+      "description": "Disables .gitignore file logic"
+    },
+    {
+      "names": [
+        "--no-ignore"
+      ],
+      "description": "Disables .ignore file logic"
+    },
+    {
+      "names": [
+        "--no-large"
+      ],
+      "description": "Ignore files over certain byte and line size set by --max-line-count and --max-byte-count"
+    },
+    {
+      "names": [
+        "--no-min"
+      ],
+      "description": "Ignore minified files in output (implies --min)"
+    },
+    {
+      "names": [
+        "--no-min-gen"
+      ],
+      "description": "Ignore minified or generated files in output (implies --min-gen)"
+    },
+    {
+      "names": [
+        "--no-size"
+      ],
+      "description": "Remove size calculation output"
+    },
+    {
+      "names": [
+        "-M",
+        "--not-match"
+      ],
+      "description": "Ignore files and directories matching regular expression",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-o",
+        "--output"
+      ],
+      "description": "Output filename (defaults to stdout if not provided)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--remap-all"
+      ],
+      "description": "Inspect every file and set its type by checking for a string (comma-separated key:value list, eg. \"-*- C++ -*-\":\"C Header\")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--remap-unknown"
+      ],
+      "description": "Inspect files of unknown type and set its type by checking for a string (comma-separated key:value list, eg. \"-*- C++ -*-\":\"C Header\")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--size-unit"
+      ],
+      "description": "Set the unit used for file size output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-s",
+        "--sort"
+      ],
+      "description": "Column to sort by",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--sql-project"
+      ],
+      "description": "Use supplied name as the project identifier for the current run. Only valid with the '--format sql' or '--format sql-insert' option",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-t",
+        "--trace"
+      ],
+      "description": "Enable trace output (not recommended when processing multiple files)"
+    },
+    {
+      "names": [
+        "-v",
+        "--verbose"
+      ],
+      "description": "Verbose output"
+    },
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Version for scc"
+    },
+    {
+      "names": [
+        "-w",
+        "--wide"
+      ],
+      "description": "Wider output with additional statistics (implies --complexity)"
+    }
+  ],
+  "args": [
+    {
+      "name": "files or directories",
+      "is_variadic": true,
+      "template": "filepaths"
+    }
+  ]
+}

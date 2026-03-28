@@ -1,0 +1,188 @@
+{
+  "name": "quickmail",
+  "description": "Quickmail is a terminal-based solution to send mails",
+  "subcommands": [
+    {
+      "name": "init",
+      "description": "Initialise cli",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Get help regarding init command"
+        }
+      ],
+      "args": [
+        {
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "clear",
+      "description": "Clear the files stored locally",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Get help regarding clear command"
+        },
+        {
+          "names": [
+            "-j",
+            "--justdoit"
+          ],
+          "description": "Clear entire cli storage including token"
+        }
+      ]
+    },
+    {
+      "name": "send",
+      "description": "Send mail",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Get help regarding send command"
+        },
+        {
+          "names": [
+            "-r",
+            "--receiver"
+          ],
+          "description": "Receiver's email address",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-sub",
+            "--subject"
+          ],
+          "description": "Subject of mail",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--template"
+          ],
+          "description": "Templates for mail body",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-b",
+            "--body"
+          ],
+          "description": "Body of the mail",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-a",
+            "--attachment"
+          ],
+          "description": "Path to attachment file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-l",
+            "--lessgo"
+          ],
+          "description": "Skip confirmation, and send mail"
+        }
+      ]
+    },
+    {
+      "name": "template",
+      "description": "Manage templates",
+      "subcommands": [
+        {
+          "name": "add",
+          "description": "Add a new template",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Get help regarding template add subcommand"
+            },
+            {
+              "names": [
+                "-n"
+              ],
+              "description": "Set template id",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "listall",
+          "description": "List all templates stored",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Get help regarding template listall subcommand"
+            }
+          ]
+        },
+        {
+          "name": "edit",
+          "description": "Edit any particular template",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Get help regarding template edit subcommand"
+            },
+            {
+              "names": [
+                "-n"
+              ],
+              "description": "Edit template by id",
+              "takes_arg": true
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Get help regarding template command"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-v",
+        "--version"
+      ],
+      "description": "Output cli version"
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Output cli help"
+    }
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "name": "fzf",
+  "description": "A general-purpose command-line fuzzy finder",
+  "options": [
+    {
+      "names": [
+        "-x",
+        "--extended"
+      ],
+      "description": "Enables extended-search mode"
+    },
+    {
+      "names": [
+        "+x",
+        "--no-extended"
+      ],
+      "description": "Disables extended-search mode"
+    },
+    {
+      "names": [
+        "-e",
+        "--exact"
+      ],
+      "description": "Enables Exact-match"
+    },
+    {
+      "names": [
+        "--algo"
+      ],
+      "description": "Fuzzy matching algorithm",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-i"
+      ],
+      "description": "Case-insensitive match (default: smart-case match)"
+    },
+    {
+      "names": [
+        "+i"
+      ],
+      "description": "Case-sensitive match (default: smart-case match)"
+    },
+    {
+      "names": [
+        "--literal"
+      ],
+      "description": "Do not normalize latin script letters before matching"
+    },
+    {
+      "names": [
+        "-n",
+        "--nth"
+      ],
+      "description": "Comma-separated list of field index expressions for limiting search scope",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--with-nth"
+      ],
+      "description": "Transform the presentation of each line using field index expressions",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-d",
+        "--delimiter"
+      ],
+      "description": "Field delimiter regex (default: AWK-style)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "+s",
+        "--no-sort"
+      ],
+      "description": "Do not sort the result"
+    },
+    {
+      "names": [
+        "--tac"
+      ],
+      "description": "Reverse the order of the input"
+    },
+    {
+      "names": [
+        "--disabled"
+      ],
+      "description": "Do not perform search"
+    },
+    {
+      "names": [
+        "--tiebreak"
+      ],
+      "description": "Comma-separated list of sort criteria to apply when the scores are tied",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-m",
+        "--multi"
+      ],
+      "description": "Enable multi-select with tab/shift-tab",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-mouse"
+      ],
+      "description": "Disable mouse"
+    },
+    {
+      "names": [
+        "--bind"
+      ],
+      "description": "Custom key bindings. Refer to the man page",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--cycle"
+      ],
+      "description": "Enable cyclic scroll"
+    },
+    {
+      "names": [
+        "--keep-right"
+      ],
+      "description": "Keep the right end of the line visible on overflow"
+    },
+    {
+      "names": [
+        "--no-hscroll"
+      ],
+      "description": "Disable horizontal scroll"
+    },
+    {
+      "names": [
+        "--hscroll-off"
+      ],
+      "description": "Number of screen columns to keep to the right of the highlighted substring",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--filepath-word"
+      ],
+      "description": "Make word-wise movements respect path separators"
+    },
+    {
+      "names": [
+        "--jump-labels"
+      ],
+      "description": "Label characters for jump and jump-accept",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--height"
+      ],
+      "description": "Display fzf window below the cursor with the given height instead of using fullscreen",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--min-height"
+      ],
+      "description": "Minimum height when --height is given in percent",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--layout"
+      ],
+      "description": "Choose layout",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--border"
+      ],
+      "description": "Draw border around the finder",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--margin"
+      ],
+      "description": "Screen margin (TRBL | TB,RL | T,RL,B | T,R,B,L)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--padding"
+      ],
+      "description": "Padding inside border (TRBL | TB,RL | T,RL,B | T,R,B,L)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--info"
+      ],
+      "description": "Finder info style",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--prompt"
+      ],
+      "description": "Input prompt",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--pointer"
+      ],
+      "description": "Pointer to the current line",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--marker"
+      ],
+      "description": "Multi-select marker",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--header"
+      ],
+      "description": "String to print as header",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--header-lines"
+      ],
+      "description": "The first N lines of the input are treated as header",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ansi"
+      ],
+      "description": "Enable processing of ANSI color codes"
+    },
+    {
+      "names": [
+        "--tabstop"
+      ],
+      "description": "Number of spaces for a tab character",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--color"
+      ],
+      "description": "Base scheme",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-bold"
+      ],
+      "description": "Do not use bold text"
+    },
+    {
+      "names": [
+        "--history"
+      ],
+      "description": "History file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--history-size"
+      ],
+      "description": "Maximum number of history entries",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--preview"
+      ],
+      "description": "Command to preview highlighted line ({})",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--preview-window"
+      ],
+      "description": "Preview window layout",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-q",
+        "--query"
+      ],
+      "description": "Start the finder with the given query",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-1",
+        "--select-1"
+      ],
+      "description": "Automatically select the only match"
+    },
+    {
+      "names": [
+        "-0",
+        "--exit-0"
+      ],
+      "description": "Exit immediately when there's no match"
+    },
+    {
+      "names": [
+        "-f",
+        "--filter"
+      ],
+      "description": "Filter mode. Do not start interactive finder",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--print-query"
+      ],
+      "description": "Print query as the first line"
+    },
+    {
+      "names": [
+        "--expect"
+      ],
+      "description": "Comma-separated list of keys to complete fzf",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--read0"
+      ],
+      "description": "Read input delimited by ASCII NUL characters"
+    },
+    {
+      "names": [
+        "--print0"
+      ],
+      "description": "Print output delimited by ASCII NUL characters"
+    },
+    {
+      "names": [
+        "--sync"
+      ],
+      "description": "Synchronous search for multi-staged filtering"
+    },
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Display version information and exit"
+    }
+  ]
+}

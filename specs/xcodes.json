@@ -1,0 +1,362 @@
+{
+  "name": "xcodes",
+  "description": "Manage the Xcode versions installed on your Mac",
+  "subcommands": [
+    {
+      "name": "help",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    },
+    {
+      "name": "download",
+      "description": "Download a specific version of Xcode",
+      "options": [
+        {
+          "names": [
+            "--latest"
+          ],
+          "description": "Update and then install the latest non-prerelease version available"
+        },
+        {
+          "names": [
+            "--latest-prerelease"
+          ],
+          "description": "Update and then install the latest prerelease version available, including GM seeds and GMs"
+        },
+        {
+          "names": [
+            "--aria2"
+          ],
+          "description": "The path to an aria2 executable. Searches $PATH by default",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-aria2"
+          ],
+          "description": "Don't use aria2 to download Xcode, even if it's available"
+        },
+        {
+          "names": [
+            "--directory"
+          ],
+          "description": "The directory where your Xcodes are installed. Defaults to /Applications",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--data-source"
+          ],
+          "description": "The data source for available Xcode versions. (default: xcodereleases)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ],
+      "args": [
+        {
+          "name": "version",
+          "description": "The version to install"
+        }
+      ]
+    },
+    {
+      "name": "install",
+      "description": "Download and install a specific version of Xcode",
+      "options": [
+        {
+          "names": [
+            "--path"
+          ],
+          "description": "Local path to Xcode.xip",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--latest"
+          ],
+          "description": "Update and then install the latest non-prerelease version available"
+        },
+        {
+          "names": [
+            "--latest-prerelease"
+          ],
+          "description": "Update and then install the latest prerelease version available, including GM seeds and GMs"
+        },
+        {
+          "names": [
+            "--aria2"
+          ],
+          "description": "The path to an aria2 executable. Searches $PATH by default",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-aria2"
+          ],
+          "description": "Don't use aria2 to download Xcode, even if it's available"
+        },
+        {
+          "names": [
+            "--experimental-unxip"
+          ],
+          "description": "Use the experimental unxip functionality. May speed up unarchiving by up to 2-3x"
+        },
+        {
+          "names": [
+            "--directory"
+          ],
+          "description": "The directory where your Xcodes are installed. Defaults to /Applications",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--data-source"
+          ],
+          "description": "The data source for available Xcode versions. (default: xcodereleases)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ],
+      "args": [
+        {
+          "name": "version",
+          "description": "The version to install"
+        }
+      ]
+    },
+    {
+      "name": "installed",
+      "description": "List the versions of Xcode that are installed",
+      "options": [
+        {
+          "names": [
+            "--directory"
+          ],
+          "description": "The directory where your Xcodes are installed. Defaults to /Applications",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "description": "List all versions of Xcode available to install",
+      "options": [
+        {
+          "names": [
+            "--directory"
+          ],
+          "description": "The directory where your Xcodes are installed. Defaults to /Applications",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--data-source"
+          ],
+          "description": "The data source for available Xcode versions. (default: xcodereleases)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "description": "Change the selected Xcode",
+      "options": [
+        {
+          "names": [
+            "-p",
+            "--print-path"
+          ],
+          "description": "Print the path of the selected Xcode"
+        },
+        {
+          "names": [
+            "--directory"
+          ],
+          "description": "The directory where your Xcodes are installed. Defaults to /Applications",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ],
+      "args": [
+        {
+          "name": "version-or-path",
+          "description": "Version or path of Xcode to select"
+        }
+      ]
+    },
+    {
+      "name": "uninstall",
+      "description": "Uninstall a version of Xcode",
+      "options": [
+        {
+          "names": [
+            "--directory"
+          ],
+          "description": "The directory where your Xcodes are installed. Defaults to /Applications",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ],
+      "args": [
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "description": "Update the list of available versions of Xcode",
+      "options": [
+        {
+          "names": [
+            "--directory"
+          ],
+          "description": "The directory where your Xcodes are installed. Defaults to /Applications",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--data-source"
+          ],
+          "description": "The data source for available Xcode versions. (default: xcodereleases)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Print the version number of xcodes itself",
+      "options": [
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help information"
+        }
+      ]
+    },
+    {
+      "name": "signout",
+      "description": "Clears the stored username and password",
+      "options": [
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Color the output"
+        },
+        {
+          "names": [
+            "--no-color"
+          ],
+          "description": "Do not color the output"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help information"
+    }
+  ]
+}

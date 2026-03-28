@@ -1,0 +1,37 @@
+{
+  "name": "mknod",
+  "description": "Create device special file",
+  "subcommands": [
+    {
+      "name": "c",
+      "description": "Create (c)haracter device"
+    },
+    {
+      "name": "b",
+      "description": "Create (b)lock device"
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-F"
+      ],
+      "description": "Format",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "FILE",
+      "description": "File to create"
+    },
+    {
+      "name": "major",
+      "description": "The major device number is an integer number which tells the kernel which device driver entry point to use"
+    },
+    {
+      "name": "minor | unit subunit",
+      "description": "The minor device number tells the kernel which one of several similar devices the node corresponds to; the unit and subunit numbers select a subset of a device; for example, the unit may specify a par"
+    }
+  ]
+}

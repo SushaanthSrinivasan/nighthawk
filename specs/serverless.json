@@ -1,0 +1,746 @@
+{
+  "name": "serverless",
+  "description": "Zero-friction serverless development",
+  "subcommands": [
+    {
+      "name": "deploy",
+      "description": "Deploy a Serverless service",
+      "subcommands": [
+        {
+          "name": "function",
+          "options": [
+            {
+              "names": [
+                "--app"
+              ],
+              "description": "Dashboard app",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--aws-profile"
+              ],
+              "description": "AWS profile to use with the command",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--config",
+                "-c"
+              ],
+              "description": "Path to serverless config file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--function",
+                "-f"
+              ],
+              "description": "Name of the function",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--org"
+              ],
+              "description": "Dashboard org",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--region",
+                "-r"
+              ],
+              "description": "Region of the service",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--stage",
+                "-s"
+              ],
+              "description": "Stage of the service",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--use-local-credentials"
+              ],
+              "description": "Rely on locally resolved AWS credentials instead of loading them from Dashboard provider settings (applies only to services integrated with Dashboard)"
+            },
+            {
+              "names": [
+                "--version"
+              ],
+              "description": "Show version info"
+            },
+            {
+              "names": [
+                "--force"
+              ],
+              "description": "Forces a deployment to take place"
+            },
+            {
+              "names": [
+                "--update-config",
+                "-u"
+              ],
+              "description": "Updates function configuration, e.g. Timeout or Memory Size without deploying code",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "subcommands": [
+            {
+              "name": "functions",
+              "options": [
+                {
+                  "names": [
+                    "--region",
+                    "-r"
+                  ],
+                  "description": "Region of the service",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--aws-profile"
+                  ],
+                  "description": "AWS profile to use with the command",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--app"
+                  ],
+                  "description": "Dashboard app",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--org"
+                  ],
+                  "description": "Dashboard org",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--use-local-credentials"
+                  ],
+                  "description": "Rely on locally resolved AWS credentials instead of loading them from Dashboard provider settings (applies only to services integrated with Dashboard)"
+                },
+                {
+                  "names": [
+                    "--config",
+                    "-c"
+                  ],
+                  "description": "Path to serverless config file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--stage",
+                    "-s"
+                  ],
+                  "description": "Stage of the service",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Show help"
+                },
+                {
+                  "names": [
+                    "--version"
+                  ],
+                  "description": "Show version info"
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--region",
+                "-r"
+              ],
+              "description": "Region of the service",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--aws-profile"
+              ],
+              "description": "AWS profile to use with the command",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--app"
+              ],
+              "description": "Dashboard app",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--org"
+              ],
+              "description": "Dashboard org",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--use-local-credentials"
+              ],
+              "description": "Rely on locally resolved AWS credentials instead of loading them from Dashboard provider settings (applies only to services integrated with Dashboard)"
+            },
+            {
+              "names": [
+                "--config",
+                "-c"
+              ],
+              "description": "Path to serverless config file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--stage",
+                "-s"
+              ],
+              "description": "Stage of the service",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--version"
+              ],
+              "description": "Show version info"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--conceal"
+          ],
+          "description": "Hide secrets from the output (e.g. API Gateway key values)"
+        },
+        {
+          "names": [
+            "--package",
+            "-p"
+          ],
+          "description": "Path of the deployment package",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-v"
+          ],
+          "description": "Show all stack events during deployment",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force"
+          ],
+          "description": "Forces a deployment to take place"
+        },
+        {
+          "names": [
+            "--function",
+            "-f"
+          ],
+          "description": "Name of the function",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--aws-s3-accelerate"
+          ],
+          "description": "Enables S3 Transfer Acceleration making uploading artifacts much faster"
+        },
+        {
+          "names": [
+            "--region",
+            "-r"
+          ],
+          "description": "Region of the service",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--aws-profile"
+          ],
+          "description": "AWS profile to use with the command",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--app"
+          ],
+          "description": "Dashboard app",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "Dashboard org",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--use-local-credentials"
+          ],
+          "description": "Rely on locally resolved AWS credentials instead of loading them from Dashboard provider settings (applies only to services integrated with Dashboard)"
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to serverless config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--stage",
+            "-s"
+          ],
+          "description": "Stage of the service",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--version"
+          ],
+          "description": "Show version info"
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "description": "Display information about the service",
+      "options": [
+        {
+          "names": [
+            "--conceal"
+          ],
+          "description": "Hide secrets from the output (e.g. API Gateway key values)"
+        },
+        {
+          "names": [
+            "--region",
+            "-r"
+          ],
+          "description": "Region of the service",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--aws-profile"
+          ],
+          "description": "AWS profile to use with the command",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--app"
+          ],
+          "description": "Dashboard app",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "Dashboard org",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--use-local-credentials"
+          ],
+          "description": "Rely on locally resolved AWS credentials instead of loading them from Dashboard provider settings (applies only to services integrated with Dashboard)"
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to serverless config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--stage",
+            "-s"
+          ],
+          "description": "Stage of the service",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--version"
+          ],
+          "description": "Show version info"
+        }
+      ]
+    },
+    {
+      "name": "invoke",
+      "description": "Invoke a deployed function",
+      "subcommands": [
+        {
+          "name": "local",
+          "options": [
+            {
+              "names": [
+                "--function",
+                "-f"
+              ],
+              "description": "Name of the function",
+              "takes_arg": true,
+              "is_required": true
+            },
+            {
+              "names": [
+                "--path",
+                "-p"
+              ],
+              "description": "Path to JSON or YAML file holding input data",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--data",
+                "-d"
+              ],
+              "description": "Input data",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--raw"
+              ],
+              "description": "Flag to pass input data as a raw string"
+            },
+            {
+              "names": [
+                "--context"
+              ],
+              "description": "Context of the service",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--contextPath"
+              ],
+              "description": "Path to JSON or YAML file holding context data",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--env",
+                "-e"
+              ],
+              "description": "Override environment variables. e.g. --env VAR1=val1 --env VAR2=val2",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--region",
+                "-r"
+              ],
+              "description": "Region of the service",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--aws-profile"
+              ],
+              "description": "AWS profile to use with the command",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--app"
+              ],
+              "description": "Dashboard app",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--org"
+              ],
+              "description": "Dashboard org",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--use-local-credentials"
+              ],
+              "description": "Rely on locally resolved AWS credentials instead of loading them from Dashboard provider settings (applies only to services integrated with Dashboard)"
+            },
+            {
+              "names": [
+                "--config",
+                "-c"
+              ],
+              "description": "Path to serverless config file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--stage",
+                "-s"
+              ],
+              "description": "Stage of the service",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            },
+            {
+              "names": [
+                "--version"
+              ],
+              "description": "Show version info"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--function",
+            "-f"
+          ],
+          "description": "Name of the function",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "--path",
+            "-p"
+          ],
+          "description": "Path to JSON or YAML file holding input data",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--data",
+            "-d"
+          ],
+          "description": "Input data",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--raw"
+          ],
+          "description": "Flag to pass input data as a raw string"
+        },
+        {
+          "names": [
+            "--context"
+          ],
+          "description": "Context of the service",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--contextPath"
+          ],
+          "description": "Path to JSON or YAML file holding context data",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--region",
+            "-r"
+          ],
+          "description": "Region of the service",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--aws-profile"
+          ],
+          "description": "AWS profile to use with the command",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--app"
+          ],
+          "description": "Dashboard app",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--org"
+          ],
+          "description": "Dashboard org",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--use-local-credentials"
+          ],
+          "description": "Rely on locally resolved AWS credentials instead of loading them from Dashboard provider settings (applies only to services integrated with Dashboard)"
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to serverless config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--stage",
+            "-s"
+          ],
+          "description": "Stage of the service",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Show help"
+        },
+        {
+          "names": [
+            "--version"
+          ],
+          "description": "Show version info"
+        }
+      ]
+    },
+    {
+      "name": "logs",
+      "description": "Output the logs of a deployed function"
+    },
+    {
+      "name": "metrics",
+      "description": "Show metrics for a specific function"
+    },
+    {
+      "name": "remove",
+      "description": "Remove Serverless service and all resources"
+    },
+    {
+      "name": "rollback",
+      "description": "Rollback the Serverless service to a specific deployment"
+    },
+    {
+      "name": "studio",
+      "description": "Develop a Serverless application in the cloud"
+    },
+    {
+      "name": "test",
+      "description": "Run HTTP tests"
+    },
+    {
+      "name": "package",
+      "description": "Package a Serverless service"
+    },
+    {
+      "name": "plugin",
+      "description": "Handle plugins"
+    },
+    {
+      "name": "print",
+      "description": "Print your compiled and resolved config file"
+    },
+    {
+      "name": "create",
+      "description": "Create new Serverless service"
+    },
+    {
+      "name": "dashboard",
+      "description": "Open the Serverless dashboard"
+    },
+    {
+      "name": "generate-event",
+      "description": "Generate event"
+    },
+    {
+      "name": "install",
+      "description": "Install a Serverless service from GitHub or a plugin from the Serverless registry"
+    },
+    {
+      "name": "login",
+      "description": "Login or sign up for Serverless"
+    },
+    {
+      "name": "logout",
+      "description": "Logout from Serverless"
+    },
+    {
+      "name": "output",
+      "description": "Get/list value of dashboard deployment profile parameter"
+    },
+    {
+      "name": "param",
+      "description": "Get/list value of dashboard service output"
+    },
+    {
+      "name": "slstats",
+      "description": "Enable or disable stats"
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Show help"
+    }
+  ]
+}

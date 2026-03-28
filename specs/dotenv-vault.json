@@ -1,0 +1,221 @@
+{
+  "name": "dotenv-vault",
+  "description": "CLI for dotenv-vault",
+  "subcommands": [
+    {
+      "name": "new",
+      "description": "Create your project",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        }
+      ],
+      "args": [
+        {
+          "name": "DOTENV_VAULT",
+          "description": "Set .env.vault identifier. Defaults to generated value"
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "description": "Log in to dotenv-vault",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        }
+      ],
+      "args": [
+        {
+          "name": "DOTENV_ME",
+          "description": "Set .env.me credential. Defaults to generated value"
+        }
+      ]
+    },
+    {
+      "name": "logout",
+      "description": "Log out from dotenv-vault",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        }
+      ]
+    },
+    {
+      "name": "open",
+      "description": "Opens project page in a browser",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        }
+      ],
+      "args": [
+        {
+          "name": "ENVIRONMENT",
+          "description": "Set environment to open to. Defaults to development"
+        }
+      ]
+    },
+    {
+      "name": "push",
+      "description": "Push .env securely",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        },
+        {
+          "names": [
+            "-m",
+            "--dotenvMe"
+          ],
+          "description": "Pass .env.me (DOTENV_ME) credential directly (rather than reading from .env.me file)",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "ENVIRONMENT",
+          "description": "Set environment to open to. Defaults to development"
+        },
+        {
+          "name": "FILENAME",
+          "description": "Set input filename. Defaults to .env for development and .env.{environment} for other environments"
+        }
+      ]
+    },
+    {
+      "name": "pull",
+      "description": "Pull .env securely",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        },
+        {
+          "names": [
+            "-m",
+            "--dotenvMe"
+          ],
+          "description": "Pass .env.me (DOTENV_ME) credential directly (rather than reading from .env.me file)",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "ENVIRONMENT",
+          "description": "Set environment to open to. Defaults to development"
+        },
+        {
+          "name": "FILENAME",
+          "description": "Set input filename. Defaults to .env for development and .env.{environment} for other environments"
+        }
+      ]
+    },
+    {
+      "name": "versions",
+      "description": "List version history",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        },
+        {
+          "names": [
+            "-m",
+            "--dotenvMe"
+          ],
+          "description": "Pass .env.me (DOTENV_ME) credential directly (rather than reading from .env.me file)",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "ENVIRONMENT",
+          "description": "Set environment to open to. Defaults to development"
+        },
+        {
+          "name": "FILENAME",
+          "description": "Set input filename. Defaults to .env for development and .env.{environment} for other environments"
+        }
+      ]
+    },
+    {
+      "name": "whoami",
+      "description": "Display the current logged in user",
+      "options": [
+        {
+          "names": [
+            "-m",
+            "--dotenvMe"
+          ],
+          "description": "Pass .env.me (DOTENV_ME) credential directly (rather than reading from .env.me file)",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "description": "Check dotenv-operational status",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Display help for dotenv-vault"
+    },
+    {
+      "name": "update",
+      "description": "Update the dotenv-vault CLI",
+      "options": [
+        {
+          "names": [
+            "--yes",
+            "-y"
+          ],
+          "description": "Automatic yes to prompts. Assume yes to all prompts and run non-interactively"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Get documentation for the command"
+    }
+  ]
+}

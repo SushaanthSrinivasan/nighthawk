@@ -1,0 +1,65 @@
+{
+  "name": "zipcloak",
+  "description": "Encrypt entries in a zipfile",
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show a short help for zipcloak"
+    },
+    {
+      "names": [
+        "--decrypt",
+        "-d"
+      ],
+      "description": "Decrypt encrypted entries (copy if given wrong password)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--license",
+        "-L"
+      ],
+      "description": "Show software license"
+    },
+    {
+      "names": [
+        "--version",
+        "-v"
+      ],
+      "description": "Show version information"
+    },
+    {
+      "names": [
+        "--quiet",
+        "-q"
+      ],
+      "description": "Quiet operation. Suppresses some informational messages"
+    },
+    {
+      "names": [
+        "--output-file",
+        "-O"
+      ],
+      "description": "Write output to new archive zipfile, leaving original archive as is",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--temp-path",
+        "-b"
+      ],
+      "description": "Use the directory given by path for the temporary zip file",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "zipfile",
+      "description": "Zipped file to encrypt entries into",
+      "template": "filepaths"
+    }
+  ]
+}

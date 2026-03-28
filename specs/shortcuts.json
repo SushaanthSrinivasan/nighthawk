@@ -1,0 +1,123 @@
+{
+  "name": "shortcuts",
+  "description": "Command-line utility for running shortcuts",
+  "subcommands": [
+    {
+      "name": "run",
+      "description": "Run a shortcut",
+      "options": [
+        {
+          "names": [
+            "-i",
+            "--input-path"
+          ],
+          "description": "The input to provide to the shortcut",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-o",
+            "--output-path"
+          ],
+          "description": "Where to write the shortcut output, if applicable",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output-type"
+          ],
+          "description": "What type to output data in, in Universal Type Identifier format",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "shortcut-name",
+          "description": "The name of the shortcut to run"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "description": "List your shortcuts",
+      "options": [
+        {
+          "names": [
+            "--folder-name",
+            "-f"
+          ],
+          "description": "The name of the folder to list",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--folders"
+          ],
+          "description": "List folders instead of shortcuts"
+        }
+      ]
+    },
+    {
+      "name": "view",
+      "description": "View a shortcut in Shortcuts",
+      "args": [
+        {
+          "name": "shortcut-name",
+          "description": "The name of the shortcut to view"
+        }
+      ]
+    },
+    {
+      "name": "sign",
+      "description": "Sign a shortcut file",
+      "options": [
+        {
+          "names": [
+            "--input",
+            "-i"
+          ],
+          "description": "The shortcut file to sign",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Output path for the signed shortcut file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--mode",
+            "-m"
+          ],
+          "description": "The signing mode. (default: people-who-know-me)",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Show help information",
+      "subcommands": [
+        {
+          "name": "run",
+          "description": "Run a shortcut"
+        },
+        {
+          "name": "list",
+          "description": "List your shortcuts"
+        },
+        {
+          "name": "view",
+          "description": "View a shortcut in Shortcuts"
+        },
+        {
+          "name": "sign",
+          "description": "Sign a shortcut file"
+        }
+      ]
+    }
+  ]
+}

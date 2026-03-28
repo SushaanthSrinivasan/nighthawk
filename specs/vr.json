@@ -1,0 +1,65 @@
+{
+  "name": "vr",
+  "description": "The npm-style script runner for Deno",
+  "subcommands": [
+    {
+      "name": "run",
+      "description": "Run a script",
+      "args": [
+        {
+          "name": "script"
+        }
+      ]
+    },
+    {
+      "name": "export",
+      "description": "Export one or more scripts as standalone executable files",
+      "args": [
+        {
+          "name": "script",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "upgrade",
+      "description": "Upgrade Velociraptor to the latest version or to a specific one",
+      "options": [
+        {
+          "names": [
+            "-o",
+            "--out-dir"
+          ],
+          "description": "The folder where the scripts will be exported",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "version"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help for Velociraptor"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Show the version number for Velociraptor"
+    }
+  ],
+  "args": [
+    {
+      "name": "script"
+    }
+  ]
+}

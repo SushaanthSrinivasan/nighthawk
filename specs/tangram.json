@@ -1,0 +1,137 @@
+{
+  "name": "tangram",
+  "subcommands": [
+    {
+      "name": "app",
+      "description": "Run the app",
+      "options": [
+        {
+          "names": [
+            "-c",
+            "--config"
+          ],
+          "description": "The path to a config file",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "migrate",
+      "description": "Migrate your app database",
+      "options": [
+        {
+          "names": [
+            "--database-url"
+          ],
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "predict",
+      "description": "Make predictions with a model",
+      "options": [
+        {
+          "names": [
+            "-f",
+            "--file"
+          ],
+          "description": "The path to read examples from, defaults to stdin",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--model"
+          ],
+          "description": "The path to the model to make predictions with",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-o",
+            "--output"
+          ],
+          "description": "The path to write the predictions to, defaults to stdout",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--probabilities"
+          ],
+          "description": "Output probabilities instead of class labels, only relevant for classifier models",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "train",
+      "description": "Train a model",
+      "options": [
+        {
+          "names": [
+            "-c",
+            "--config"
+          ],
+          "description": "The path to a config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-f",
+            "--file"
+          ],
+          "description": "The path to your .csv file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--file-test"
+          ],
+          "description": "The path to your .csv file used for testing",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--file-train"
+          ],
+          "description": "The path to your .csv file used for training",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-o",
+            "--output"
+          ],
+          "description": "The path to write the .tangram file to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--target"
+          ],
+          "description": "The name of the column to predict",
+          "takes_arg": true
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Print help information"
+    },
+    {
+      "names": [
+        "--version",
+        "-v"
+      ],
+      "description": "Print version information"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "name": "ansible",
+  "description": "Define and run a single Ansible task 'playbook' against a set of hosts",
+  "options": [
+    {
+      "names": [
+        "--ask-vault-pass"
+      ],
+      "description": "Ask for vault password"
+    },
+    {
+      "names": [
+        "--list-hosts"
+      ],
+      "description": "Outputs a list of matching hosts; does not execute"
+    },
+    {
+      "names": [
+        "--playbook-dir"
+      ],
+      "description": "Since this tool does not use playbooks, use this as a substitute playbook directory.This sets the relative path for many features including roles/ group_vars/etc",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--syntax-check"
+      ],
+      "description": "Perform a syntax check on the playbook, but do not execute it"
+    },
+    {
+      "names": [
+        "--vault-id"
+      ],
+      "description": "Specify the vault identity to use",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--vault-password-file"
+      ],
+      "description": "Specify a vault password file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Show program's version number, config file location, configured module search path, module location and executable location"
+    },
+    {
+      "names": [
+        "--background",
+        "-B"
+      ],
+      "description": "Run asynchronously, failing after specified seconds",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--check",
+        "-C"
+      ],
+      "description": "Don't make any changes; instead, try to predict some of the changes that may occur"
+    },
+    {
+      "names": [
+        "--diff",
+        "-D"
+      ],
+      "description": "When changing (small) files and templates, show the differences in those files"
+    },
+    {
+      "names": [
+        "--module-path",
+        "-M"
+      ],
+      "description": "Prepend colon-separated path(s) to module library",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--poll",
+        "-P"
+      ],
+      "description": "Set the poll interval if using -B",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--args",
+        "-a"
+      ],
+      "description": "Specify module arguments",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--extra-vars",
+        "-e"
+      ],
+      "description": "Set additional variables as key=value or YAML/JSON, if filename prepend with @",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--forks",
+        "-f"
+      ],
+      "description": "Specify number of parallel processes to use",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help for ansible"
+    },
+    {
+      "names": [
+        "--inventory",
+        "-i"
+      ],
+      "description": "Specify inventory host path or comma separated host list",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--limit",
+        "-l"
+      ],
+      "description": "Limit selected hosts to an additional pattern",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--module-name",
+        "-m"
+      ],
+      "description": "Specify the module name to execute",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--one-line",
+        "-o"
+      ],
+      "description": "Condense output"
+    },
+    {
+      "names": [
+        "--tree",
+        "-t"
+      ],
+      "description": "Log output to specific directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--verbose",
+        "-v"
+      ],
+      "description": "Enable verbose mode"
+    },
+    {
+      "names": [
+        "-vvv"
+      ],
+      "description": "Enable very verbose mode"
+    },
+    {
+      "names": [
+        "-vvvv"
+      ],
+      "description": "Enable connection debug mode"
+    },
+    {
+      "names": [
+        "--become-method"
+      ],
+      "description": "Privilege escalation method to use",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--become-user"
+      ],
+      "description": "Privilege escalation user to use",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ask-become-pass",
+        "-K"
+      ],
+      "description": "Prompt for privilege escalation password"
+    },
+    {
+      "names": [
+        "--become",
+        "-b"
+      ],
+      "description": "Run operations with become"
+    },
+    {
+      "names": [
+        "--private-key",
+        "--key-file"
+      ],
+      "description": "Use this fole to authenticate the connection",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--scp-extra-args"
+      ],
+      "description": "Extra arguments to pass to (only) scp",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--sftp-extra-args"
+      ],
+      "description": "Extra arguments to pass to (only) sftp",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-ssh-extra-args"
+      ],
+      "description": "Extra arguments to pass to (only) ssh",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ssh-common-args"
+      ],
+      "description": "Extra arguments to pass to sftp/scp/ssh",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--timeout",
+        "-T"
+      ],
+      "description": "Override the connection timeout in seconds",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--connection",
+        "-c"
+      ],
+      "description": "Connection type to use",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ask-pass",
+        "-k"
+      ],
+      "description": "Ask for connection password"
+    },
+    {
+      "names": [
+        "--user",
+        "-u"
+      ],
+      "description": "Connect as this user",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "pattern",
+      "description": "Host pattern"
+    }
+  ]
+}

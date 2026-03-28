@@ -1,0 +1,402 @@
+{
+  "name": "goreleaser",
+  "description": "Deliver Go binaries as fast and easily as possible",
+  "subcommands": [
+    {
+      "name": "b",
+      "aliases": [
+        "build"
+      ],
+      "description": "Builds the current project",
+      "options": [
+        {
+          "names": [
+            "--clean"
+          ],
+          "description": "Remove the dist folder before building"
+        },
+        {
+          "names": [
+            "--config",
+            "-f"
+          ],
+          "description": "Load configuration from file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "Builds only the specified build ids",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Copy the binary to the path after the build. Only taken into account when using --single-target and a single id (either with --id or if configuration only has one build)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--parallelism",
+            "-p"
+          ],
+          "description": "Amount tasks to run concurrently (default: number of CPUs)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--single-target"
+          ],
+          "description": "Builds only for current GOOS and GOARCH, regardless of what's set in the configuration file"
+        },
+        {
+          "names": [
+            "--skip"
+          ],
+          "description": "Skip the given options (valid options are: before, post-hooks, pre-hooks, validate)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--snapshot"
+          ],
+          "description": "Generate an unversioned snapshot build, skipping all validations"
+        },
+        {
+          "names": [
+            "--timeout"
+          ],
+          "description": "Timeout to the entire build process",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "c",
+      "aliases": [
+        "check"
+      ],
+      "description": "Checks if configuration is valid",
+      "options": [
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Quiet mode: no output"
+        }
+      ]
+    },
+    {
+      "name": "completion",
+      "description": "Generate the autocompletion script for the specified shell",
+      "subcommands": [
+        {
+          "name": "bash",
+          "description": "Generate the autocompletion script for bash",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        },
+        {
+          "name": "fish",
+          "description": "Generate the autocompletion script for fish",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        },
+        {
+          "name": "powershell",
+          "description": "Generate the autocompletion script for powershell",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        },
+        {
+          "name": "zsh",
+          "description": "Generate the autocompletion script for zsh",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hc",
+      "aliases": [
+        "healthcheck"
+      ],
+      "description": "Checks if needed tools are installed",
+      "options": [
+        {
+          "names": [
+            "--config",
+            "-f"
+          ],
+          "description": "Configuration file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--quiet",
+            "-q"
+          ],
+          "description": "Quiet mode: no output"
+        }
+      ]
+    },
+    {
+      "name": "i",
+      "aliases": [
+        "init"
+      ],
+      "description": "Generates a .goreleaser.yaml file",
+      "options": [
+        {
+          "names": [
+            "--config",
+            "-f"
+          ],
+          "description": "Load configuration from file",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "schema",
+      "aliases": [
+        "jsonschema"
+      ],
+      "description": "Outputs goreleaser's JSON schema",
+      "options": [
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Where to save the JSONSchema file",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "r",
+      "aliases": [
+        "release"
+      ],
+      "description": "Releases the current project",
+      "options": [
+        {
+          "names": [
+            "--auto-snapshot"
+          ],
+          "description": "Automatically sets --snapshot if the repository is dirty"
+        },
+        {
+          "names": [
+            "--clean"
+          ],
+          "description": "Removes the dist folder"
+        },
+        {
+          "names": [
+            "--config",
+            "-f"
+          ],
+          "description": "Load configuration from file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--fail-fast"
+          ],
+          "description": "Whether to abort the release publishing on the first error"
+        },
+        {
+          "names": [
+            "--parallelism",
+            "-p"
+          ],
+          "description": "Amount tasks to run concurrently (default: number of CPUs)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-footer"
+          ],
+          "description": "Load custom release notes footer from a markdown file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-footer-tmpl"
+          ],
+          "description": "Load custom release notes footer from a templated markdown file (overrides --release-footer)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-header"
+          ],
+          "description": "Load custom release notes header from a markdown file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-header-tmpl"
+          ],
+          "description": "Load custom release notes header from a templated markdown file (overrides --release-header)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-notes"
+          ],
+          "description": "Load custom release notes from a markdown file (will skip GoReleaser changelog generation)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-notes-tmpl"
+          ],
+          "description": "Load custom release notes from a templated markdown file (overrides --release-notes)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--skip"
+          ],
+          "description": "Skip the given options (valid options are announce, aur, before, chocolatey, docker, homebrew, ko, nfpm, nix, publish, sbom, scoop, sign, snapcraft, validate, winget)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--snapshot"
+          ],
+          "description": "Generate an unversioned snapshot release, skipping all validations and without publishing any artifacts (implies --skip=announce,publish,validate)"
+        },
+        {
+          "names": [
+            "--timeout"
+          ],
+          "description": "Timeout to the entire release process",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Help about any command",
+      "subcommands": [
+        {
+          "name": "b",
+          "aliases": [
+            "build"
+          ],
+          "description": "Builds the current project"
+        },
+        {
+          "name": "c",
+          "aliases": [
+            "check"
+          ],
+          "description": "Checks if configuration is valid"
+        },
+        {
+          "name": "completion",
+          "description": "Generate the autocompletion script for the specified shell",
+          "subcommands": [
+            {
+              "name": "bash",
+              "description": "Generate the autocompletion script for bash"
+            },
+            {
+              "name": "fish",
+              "description": "Generate the autocompletion script for fish"
+            },
+            {
+              "name": "powershell",
+              "description": "Generate the autocompletion script for powershell"
+            },
+            {
+              "name": "zsh",
+              "description": "Generate the autocompletion script for zsh"
+            }
+          ]
+        },
+        {
+          "name": "hc",
+          "aliases": [
+            "healthcheck"
+          ],
+          "description": "Checks if needed tools are installed"
+        },
+        {
+          "name": "i",
+          "aliases": [
+            "init"
+          ],
+          "description": "Generates a .goreleaser.yaml file"
+        },
+        {
+          "name": "schema",
+          "aliases": [
+            "jsonschema"
+          ],
+          "description": "Outputs goreleaser's JSON schema"
+        },
+        {
+          "name": "r",
+          "aliases": [
+            "release"
+          ],
+          "description": "Releases the current project"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Enable verbose mode"
+    },
+    {
+      "names": [
+        "--verbose"
+      ],
+      "description": "Enable verbose mode"
+    },
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Display help"
+    }
+  ]
+}

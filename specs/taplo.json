@@ -1,0 +1,379 @@
+{
+  "name": "taplo",
+  "description": "Tool for validation, formatting, and querying TOML documents with a jq-like fashion",
+  "subcommands": [
+    {
+      "name": "config",
+      "aliases": [
+        "cfg"
+      ],
+      "description": "Operations with the Taplo config file",
+      "subcommands": [
+        {
+          "name": "default",
+          "description": "Print the default `.taplo.toml` configuration file"
+        },
+        {
+          "name": "help",
+          "description": "Print this message or the help of the given subcommand(s)"
+        },
+        {
+          "name": "schema",
+          "description": "Print the JSON schema of the `.taplo.toml` configuration file"
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Print help information for config"
+        },
+        {
+          "names": [
+            "--log-spans"
+          ],
+          "description": "Enable logging spans"
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Enable verbose logging format"
+        },
+        {
+          "names": [
+            "--colors"
+          ],
+          "description": "Set color values for the output",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "format",
+      "aliases": [
+        "fmt"
+      ],
+      "description": "Format TOML documents",
+      "options": [
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to the Taplo configuration file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cache-path"
+          ],
+          "description": "Set a cache path",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--check"
+          ],
+          "description": "Report any files that are not correctly formatted",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--colors"
+          ],
+          "description": "Set color values for the output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--diff"
+          ],
+          "description": "Print the differences in patch formatting to `stdout`"
+        },
+        {
+          "names": [
+            "f",
+            "--force"
+          ],
+          "description": "Force formatting of files",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Print help information for format"
+        },
+        {
+          "names": [
+            "--log-spans"
+          ],
+          "description": "Enable logging spans"
+        },
+        {
+          "names": [
+            "--no-auto-config"
+          ],
+          "description": "Do not search for a configuration file"
+        },
+        {
+          "names": [
+            "--option",
+            "-o"
+          ],
+          "description": "A formatter option given as a 'key=value', can be set multiple times",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--stdin-filepath"
+          ],
+          "description": "A path to the file that the taplo will treat like stdin",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Enable verbose logging format"
+        }
+      ],
+      "args": [
+        {
+          "name": "FILES ...",
+          "description": "Paths or glob patterns to TOML documents",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "get",
+      "description": "Extract a value from the given TOML document",
+      "options": [
+        {
+          "names": [
+            "--file-path",
+            "-f"
+          ],
+          "description": "Path to the TOML document",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "--colors"
+          ],
+          "description": "Set color values for the output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Print help information for get"
+        },
+        {
+          "names": [
+            "--log-spans"
+          ],
+          "description": "Enable logging spans"
+        },
+        {
+          "names": [
+            "-o",
+            "--output-format"
+          ],
+          "description": "The format specifying how the output is printed",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--strip-newline",
+            "-s"
+          ],
+          "description": "Strip the trailing newline from the output"
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Enable verbose logging format"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Print help information for taplo"
+    },
+    {
+      "name": "lint",
+      "aliases": [
+        "check",
+        "validate"
+      ],
+      "description": "Lint a TOML documents",
+      "options": [
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to the Taplo configuration file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cache-path"
+          ],
+          "description": "Set a cache path",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--colors"
+          ],
+          "description": "Set color values for the output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--default-schema-catalogs"
+          ],
+          "description": "Use the default online catalogs for schemas"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Print help information for lint"
+        },
+        {
+          "names": [
+            "--log-spans"
+          ],
+          "description": "Enable logging spans"
+        },
+        {
+          "names": [
+            "--no-schema"
+          ],
+          "description": "Disable all schema validation"
+        },
+        {
+          "names": [
+            "--schema"
+          ],
+          "description": "URL to the schema to be used for validation",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--schema-catalog"
+          ],
+          "description": "URL to the schema catalog to be used for validation",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Enable verbose logging format"
+        }
+      ],
+      "args": [
+        {
+          "name": "FILES ...",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "lsp",
+      "description": "Language server operations",
+      "subcommands": [
+        {
+          "name": "help",
+          "description": "Print help information for lsp"
+        },
+        {
+          "name": "stdio",
+          "description": "Run the language server over the standard input and output"
+        },
+        {
+          "name": "tcp",
+          "description": "Run the language server and listen on a TCP address"
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--colors"
+          ],
+          "description": "Set color values for the output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Print help information for lsp"
+        },
+        {
+          "names": [
+            "--log-spans"
+          ],
+          "description": "Enable logging spans"
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Enable verbose logging format"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Print help information for taplo"
+    },
+    {
+      "names": [
+        "--version",
+        "-V"
+      ],
+      "description": "Print version information for taplo"
+    },
+    {
+      "names": [
+        "--verbose"
+      ],
+      "description": "Enable verbose logging format"
+    },
+    {
+      "names": [
+        "--colors"
+      ],
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--log-spans"
+      ],
+      "description": "Enable logging spans"
+    }
+  ]
+}

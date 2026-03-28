@@ -1,0 +1,664 @@
+{
+  "name": "sqlmesh",
+  "description": "SQLMesh command line tool",
+  "subcommands": [
+    {
+      "name": "init",
+      "description": "Create a new SQLMesh repository",
+      "options": [
+        {
+          "names": [
+            "-t",
+            "--template"
+          ],
+          "description": "Project template. Supported values: airflow, dbt, dlt, default, empty",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dlt-pipeline"
+          ],
+          "description": "DLT pipeline for which to generate a SQLMesh project. Use alongside template: dlt",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "sql_dialect"
+        }
+      ]
+    },
+    {
+      "name": "render",
+      "description": "Render a model's query, optionally expanding referenced models",
+      "options": [
+        {
+          "names": [
+            "--dialect"
+          ],
+          "description": "The SQL dialect to render the query as",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-format"
+          ],
+          "description": "Disable fancy formatting of the query"
+        },
+        {
+          "names": [
+            "--start"
+          ],
+          "description": "Start time for the render",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--end"
+          ],
+          "description": "End time for the render",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--execution-time"
+          ],
+          "description": "Execution time for the render",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--expand"
+          ],
+          "description": "Expand referenced models",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "model"
+        }
+      ]
+    },
+    {
+      "name": "evaluate",
+      "description": "Evaluate a model and return a dataframe with a default limit of 1000",
+      "options": [
+        {
+          "names": [
+            "--start"
+          ],
+          "description": "Start time for evaluation",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--end"
+          ],
+          "description": "End time for evaluation",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--execution-time"
+          ],
+          "description": "Execution time for evaluation",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of rows which the query should be limited to",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "model"
+        }
+      ]
+    },
+    {
+      "name": "format",
+      "description": "Format all SQL models and audits",
+      "options": [
+        {
+          "names": [
+            "-t",
+            "--transpile"
+          ],
+          "description": "Transpile project models to the specified dialect",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--append-newline"
+          ],
+          "description": "Include a newline at the end of each file"
+        },
+        {
+          "names": [
+            "--no-rewrite-casts"
+          ],
+          "description": "Preserve the existing casts, without rewriting them to use the :: syntax"
+        },
+        {
+          "names": [
+            "--normalize"
+          ],
+          "description": "Whether or not to normalize identifiers to lowercase"
+        },
+        {
+          "names": [
+            "--pad"
+          ],
+          "description": "Determines the pad size in a formatted string",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--indent"
+          ],
+          "description": "Determines the indentation size in a formatted string",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--normalize-functions"
+          ],
+          "description": "Whether or not to normalize all function names",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--leading-comma"
+          ],
+          "description": "Determines whether or not the comma is leading or trailing in select expressions"
+        },
+        {
+          "names": [
+            "--max-text-width"
+          ],
+          "description": "The max number of characters in a segment before creating new lines in pretty mode",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--check"
+          ],
+          "description": "Whether or not to check formatting (but not actually format anything)"
+        }
+      ],
+      "args": [
+        {
+          "name": "paths",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "diff",
+      "description": "Show the diff between the local state and the target environment",
+      "args": [
+        {
+          "name": "environment"
+        }
+      ]
+    },
+    {
+      "name": "plan",
+      "description": "Apply local changes to the target environment",
+      "options": [
+        {
+          "names": [
+            "--create-from"
+          ],
+          "description": "The environment to create the target environment from if it doesn't exist. Default: prod",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--skip-tests"
+          ],
+          "description": "Skip tests prior to generating the plan if they are defined"
+        },
+        {
+          "names": [
+            "--restate-model"
+          ],
+          "description": "Restate data for specified models and models downstream from the one specified",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-gaps"
+          ],
+          "description": "Ensure that new snapshots have no data gaps when comparing to existing snapshots"
+        },
+        {
+          "names": [
+            "--skip-backfill"
+          ],
+          "description": "Skip the backfill step and only create a virtual update for the plan"
+        },
+        {
+          "names": [
+            "--empty-backfill"
+          ],
+          "description": "Produce empty backfill"
+        },
+        {
+          "names": [
+            "--forward-only"
+          ],
+          "description": "Create a plan for forward-only changes"
+        },
+        {
+          "names": [
+            "--allow-destructive-model"
+          ],
+          "description": "Allow destructive forward-only changes to models whose names match the expression",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--effective-from"
+          ],
+          "description": "The effective date from which to apply forward-only changes on production",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-prompts"
+          ],
+          "description": "Disable interactive prompts for the backfill time range"
+        },
+        {
+          "names": [
+            "--auto-apply"
+          ],
+          "description": "Automatically apply the new plan after creation"
+        },
+        {
+          "names": [
+            "--no-auto-categorization"
+          ],
+          "description": "Disable automatic change categorization"
+        },
+        {
+          "names": [
+            "--include-unmodified"
+          ],
+          "description": "Include unmodified models in the target environment"
+        },
+        {
+          "names": [
+            "--select-model"
+          ],
+          "description": "Select specific model changes that should be included in the plan",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--backfill-model"
+          ],
+          "description": "Backfill only the models whose names match the expression",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-diff"
+          ],
+          "description": "Hide text differences for changed models"
+        },
+        {
+          "names": [
+            "--run"
+          ],
+          "description": "Run latest intervals as part of the plan application (prod environment only)"
+        },
+        {
+          "names": [
+            "--enable-preview"
+          ],
+          "description": "Enable preview for forward-only models when targeting a development environment"
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Enable verbose output"
+        }
+      ],
+      "args": [
+        {
+          "name": "environment"
+        }
+      ]
+    },
+    {
+      "name": "run",
+      "description": "Evaluate missing intervals for the target environment",
+      "options": [
+        {
+          "names": [
+            "--start"
+          ],
+          "description": "Start time for the run",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--end"
+          ],
+          "description": "End time for the run",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--skip-janitor"
+          ],
+          "description": "Skip the janitor task"
+        },
+        {
+          "names": [
+            "--ignore-cron"
+          ],
+          "description": "Run for all missing intervals, ignoring individual cron schedules"
+        },
+        {
+          "names": [
+            "--select-model"
+          ],
+          "description": "Select specific models to run. Note: this always includes upstream dependencies",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--exit-on-env-update"
+          ],
+          "description": "Exit with specified code if the run is interrupted by an update to the target environment",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-auto-upstream"
+          ],
+          "description": "Do not automatically include upstream models. Only applicable when --select-model is used"
+        }
+      ],
+      "args": [
+        {
+          "name": "environment"
+        }
+      ]
+    },
+    {
+      "name": "invalidate",
+      "description": "Invalidate the target environment, forcing its removal during the next run of the janitor process",
+      "options": [
+        {
+          "names": [
+            "-s",
+            "--sync"
+          ],
+          "description": "Wait for the environment to be deleted before returning"
+        }
+      ],
+      "args": [
+        {
+          "name": "environment"
+        }
+      ]
+    },
+    {
+      "name": "janitor",
+      "description": "Run the janitor process on-demand",
+      "options": [
+        {
+          "names": [
+            "--ignore-ttl"
+          ],
+          "description": "Cleanup snapshots that are not referenced in any environment, regardless of when they're set to expire"
+        }
+      ]
+    },
+    {
+      "name": "dag",
+      "description": "Render the DAG as an html file",
+      "options": [
+        {
+          "names": [
+            "--select-model"
+          ],
+          "description": "Select specific models to include in the dag",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "file"
+        }
+      ]
+    },
+    {
+      "name": "create_test",
+      "description": "Generate a unit test fixture for a given model",
+      "options": [
+        {
+          "names": [
+            "-q",
+            "--query"
+          ],
+          "description": "Queries that will be used to generate data for the model's dependencies",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-o",
+            "--overwrite"
+          ],
+          "description": "When true, the fixture file will be overwritten in case it already exists"
+        },
+        {
+          "names": [
+            "-v",
+            "--var"
+          ],
+          "description": "Key-value pairs that will define variables needed by the model",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--path"
+          ],
+          "description": "The file path corresponding to the fixture, relative to the test directory",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-n",
+            "--name"
+          ],
+          "description": "The name of the test that will be created",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include-ctes"
+          ],
+          "description": "When true, CTE fixtures will also be generated"
+        }
+      ],
+      "args": [
+        {
+          "name": "model"
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "description": "Run model unit tests",
+      "options": [
+        {
+          "names": [
+            "-k",
+            "--match-pattern"
+          ],
+          "description": "Only run tests matching pattern",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Enable verbose output"
+        },
+        {
+          "names": [
+            "--preserve-fixtures"
+          ],
+          "description": "Preserve the fixture tables in the testing database, useful for debugging"
+        }
+      ],
+      "args": [
+        {
+          "name": "tests",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "audit",
+      "description": "Run audits for the target model(s)",
+      "options": [
+        {
+          "names": [
+            "--model"
+          ],
+          "description": "A model to audit",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--start"
+          ],
+          "description": "Start time for the audit",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--end"
+          ],
+          "description": "End time for the audit",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--execution-time"
+          ],
+          "description": "Execution time for the audit",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "ui",
+      "description": "Start a browser-based SQLMesh UI",
+      "options": [
+        {
+          "names": [
+            "--host"
+          ],
+          "description": "Bind socket to this host",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--port"
+          ],
+          "description": "Bind socket to this port",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--mode"
+          ],
+          "description": "Mode to start the UI in",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "migrate",
+      "description": "Migrate SQLMesh to the current running version"
+    },
+    {
+      "name": "rollback",
+      "description": "Rollback SQLMesh to the previous migration"
+    },
+    {
+      "name": "create_external_models",
+      "description": "Create a schema file containing external model schemas",
+      "options": [
+        {
+          "names": [
+            "--strict"
+          ],
+          "description": "Raise an error if the external model is missing in the database"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--paths"
+      ],
+      "description": "Paths to SQLMesh project files",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config"
+      ],
+      "description": "Path to config file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--gateway"
+      ],
+      "description": "The name of the gateway",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ignore-warnings"
+      ],
+      "description": "Ignore warnings"
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Enable debug mode"
+    },
+    {
+      "names": [
+        "--log-to-stdout"
+      ],
+      "description": "Display logs in stdout"
+    },
+    {
+      "names": [
+        "--log-file-dir"
+      ],
+      "description": "The directory to write log files to",
+      "takes_arg": true
+    }
+  ]
+}

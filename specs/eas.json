@@ -1,0 +1,1298 @@
+{
+  "name": "eas",
+  "description": "EAS CLI is the command-line app that you will use to interact with EAS services from your terminal",
+  "subcommands": [
+    {
+      "name": "account:login",
+      "aliases": [
+        "login"
+      ],
+      "description": "Log in with your Expo account"
+    },
+    {
+      "name": "account:logout",
+      "aliases": [
+        "logout"
+      ],
+      "description": "Log out"
+    },
+    {
+      "name": "account:view",
+      "aliases": [
+        "whoami"
+      ],
+      "description": "Show the username you are logged in as"
+    },
+    {
+      "name": "analytics",
+      "description": "Display or change analytics settings",
+      "args": [
+        {
+          "name": "Status",
+          "suggestions": [
+            "on",
+            "off"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "description": "Display autocomplete installation instructions",
+      "options": [
+        {
+          "names": [
+            "-r",
+            "--refresh-cache"
+          ],
+          "description": "Refresh cache (ignores displaying instructions)"
+        }
+      ],
+      "args": [
+        {
+          "name": "Shell",
+          "description": "Select the shell you'd like to display autocomplete information for",
+          "suggestions": [
+            "zsh",
+            "bash"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "branch:create",
+      "description": "Create a branch",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "Name",
+          "description": "Name of the branch to create"
+        }
+      ]
+    },
+    {
+      "name": "branch:delete",
+      "description": "Delete a branch",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "Name",
+          "description": "Name of the branch to delete"
+        }
+      ]
+    },
+    {
+      "name": "branch:list",
+      "description": "List all branches",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of items to fetch each query. Defaults to 50 and is capped at 100",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--offset"
+          ],
+          "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "branch:rename",
+      "description": "Rename a branch",
+      "options": [
+        {
+          "names": [
+            "--from"
+          ],
+          "description": "Current name of the branch",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--to"
+          ],
+          "description": "New name of the branch",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "branch:view",
+      "description": "View a branch",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of items to fetch each query. Defaults to 25 and is capped at 50",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--offset"
+          ],
+          "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "Name",
+          "description": "Name of the branch to view"
+        }
+      ]
+    },
+    {
+      "name": "build",
+      "description": "Start a build",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--message"
+          ],
+          "description": "A short message describing the build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--auto-submit"
+          ],
+          "description": "Submit on build complete using the submit profile with the same name as the build profile"
+        },
+        {
+          "names": [
+            "--auto-submit-with-profile"
+          ],
+          "description": "Submit on build complete using the submit profile with provided name",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--clear-cache"
+          ],
+          "description": "Clear cache before the build"
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--local"
+          ],
+          "description": "Run build locally [experimental]"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--output"
+          ],
+          "description": "Output path for local build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-wait"
+          ],
+          "description": "Don't wait for build(s) to complete"
+        },
+        {
+          "names": [
+            "--wait"
+          ],
+          "description": "Wait for build(s) to complete"
+        }
+      ]
+    },
+    {
+      "name": "build:cancel",
+      "description": "Cancel a build",
+      "options": [
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "Build ID"
+        }
+      ]
+    },
+    {
+      "name": "build:configure",
+      "description": "Configure the project to support EAS build",
+      "options": [
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "Platform to configure",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "build:inspect",
+      "description": "Inspect the state of the project at specific build stages, useful for troubleshooting",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-o",
+            "--output"
+          ],
+          "description": "(required) Output directory",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "(required)",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "-s",
+            "--stage"
+          ],
+          "description": "(required) Stage of the build you want to inspect.\narchive - builds the project archive that would be uploaded to EAS when building\npre-build - prepares the project to be built with Gradle/Xcode. Does",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "-v",
+            "--verbose"
+          ]
+        },
+        {
+          "names": [
+            "--force"
+          ],
+          "description": "Delete OUTPUT_DIRECTORY if it already exists"
+        }
+      ]
+    },
+    {
+      "name": "build:list",
+      "description": "List all builds for your project",
+      "options": [
+        {
+          "names": [
+            "--appBuildVersion"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--appIdentifier"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--appVersion"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--buildProfile"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--channel"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--distribution"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of items to fetch each query. Defaults to 10 and is capped at 50",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--offset"
+          ],
+          "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--platform"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--runtimeVersion"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sdkVersion"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--status"
+          ],
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "build:submit",
+      "aliases": [
+        "submit"
+      ],
+      "description": "Submit app binary to App Store and/or Play Store",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the submit profile from eas.json. Defaults to \"production\" if defined in eas.json",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "ID of the build to submit",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--latest"
+          ],
+          "description": "Submit the latest build for specified platform"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--path"
+          ],
+          "description": "Path to the .apk/.aab/.ipa file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--url"
+          ],
+          "description": "App archive url",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Always print logs from Submission Service"
+        },
+        {
+          "names": [
+            "--no-wait"
+          ],
+          "description": "Don't wait for submission to complete"
+        },
+        {
+          "names": [
+            "--wait"
+          ],
+          "description": "Wait for submission to complete"
+        }
+      ]
+    },
+    {
+      "name": "build:version:set",
+      "description": "Update version of an app",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "build:version:sync",
+      "description": "Update a version in native code with a value stored on EAS servers",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "build:view",
+      "description": "View a build for your project",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        }
+      ],
+      "args": [
+        {
+          "name": "Build ID"
+        }
+      ]
+    },
+    {
+      "name": "channel:create",
+      "description": "Create a channel",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "Name",
+          "description": "Name of the channel to create"
+        }
+      ]
+    },
+    {
+      "name": "channel:edit",
+      "description": "Point a channel at a new branch",
+      "options": [
+        {
+          "names": [
+            "--branch"
+          ],
+          "description": "Name of the branch to point to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "Name",
+          "description": "Name of the channel to edit"
+        }
+      ]
+    },
+    {
+      "name": "channel:list",
+      "description": "List all channels",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of items to fetch each query. Defaults to 10 and is capped at 25",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--offset"
+          ],
+          "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "channel:view",
+      "description": "View a channel",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of items to fetch each query. Defaults to 50 and is capped at 100",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--offset"
+          ],
+          "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "Name",
+          "description": "Name of the channel to view"
+        }
+      ]
+    },
+    {
+      "name": "config",
+      "description": "Display project configuration (app.json + eas.json)",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "credentials",
+      "description": "Manage credentials",
+      "options": [
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "device:create",
+      "description": "Register new Apple devices to use for internal distribution"
+    },
+    {
+      "name": "device:delete",
+      "description": "Remove a registered device from your account",
+      "options": [
+        {
+          "names": [
+            "--apple-team-id"
+          ],
+          "description": "The Apple team ID on which to find the device",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--udid"
+          ],
+          "description": "The Apple device ID to disable",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "device:list",
+      "description": "List all registered devices for your account",
+      "options": [
+        {
+          "names": [
+            "--apple-team-id"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of items to fetch each query. Defaults to 50 and is capped at 100",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--offset"
+          ],
+          "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "device:view",
+      "description": "View a device for your project",
+      "args": [
+        {
+          "name": "UDID"
+        }
+      ]
+    },
+    {
+      "name": "diagnostics",
+      "description": "Display environment info"
+    },
+    {
+      "name": "help",
+      "description": "Display help for eas-cli",
+      "options": [
+        {
+          "names": [
+            "-n",
+            "--nested-commands"
+          ],
+          "description": "Include all nested commands in the output"
+        }
+      ],
+      "args": [
+        {
+          "name": "Command",
+          "description": "Command to show help for"
+        }
+      ]
+    },
+    {
+      "name": "metadata:pull",
+      "description": "Generate the local store configuration from the app stores",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the submit profile from eas.json. Defaults to \"production\" if defined in eas.json",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "metadata:push",
+      "description": "Sync the local store configuration to the app stores",
+      "options": [
+        {
+          "names": [
+            "-e",
+            "--profile"
+          ],
+          "description": "Name of the submit profile from eas.json. Defaults to \"production\" if defined in eas.json"
+        }
+      ]
+    },
+    {
+      "name": "open",
+      "description": "Open the project page in a web browser"
+    },
+    {
+      "name": "project:info",
+      "description": "Information about the current project"
+    },
+    {
+      "name": "project:init",
+      "aliases": [
+        "init"
+      ],
+      "description": "Create or link an EAS project",
+      "options": [
+        {
+          "names": [
+            "--force"
+          ],
+          "description": "Whether to overwrite any existing project ID"
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "ID of the EAS project to link",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ]
+    },
+    {
+      "name": "secret:create",
+      "description": "Create an environment secret on the current project or owner account",
+      "options": [
+        {
+          "names": [
+            "--force"
+          ],
+          "description": "Delete and recreate existing secrets"
+        },
+        {
+          "names": [
+            "--name"
+          ],
+          "description": "Name of the secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--scope"
+          ],
+          "description": "[default: project] Scope for the secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--type"
+          ],
+          "description": "The type of secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--value"
+          ],
+          "description": "Text value or path to a file to store in the secret",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "secret:delete",
+      "description": "Delete an environment secret by ID",
+      "options": [
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "ID of the secret to delete",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ]
+    },
+    {
+      "name": "secret:list",
+      "description": "List environment secrets available for your current app"
+    },
+    {
+      "name": "update",
+      "description": "Publish an update group",
+      "options": [
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "[default: all]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--auto"
+          ],
+          "description": "Use the current git branch and commit message for the EAS branch and update message"
+        },
+        {
+          "names": [
+            "--branch"
+          ],
+          "description": "Branch to publish the update group on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--group"
+          ],
+          "description": "Update group to republish",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--input-dir"
+          ],
+          "description": "[default: dist] Location of the bundle",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--message"
+          ],
+          "description": "A short message describing the update",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--private-key-path"
+          ],
+          "description": "File containing the PEM-encoded private key corresponding to the certificate in\nexpo-updates' configuration. Defaults to a file named \"private-key.pem\" in the\ncertificate's directory",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--republish"
+          ],
+          "description": "Republish an update group"
+        },
+        {
+          "names": [
+            "--skip-bundler"
+          ],
+          "description": "Skip running Expo CLI to bundle the app before publishing"
+        }
+      ]
+    },
+    {
+      "name": "update:configure",
+      "description": "Configure the project to support EAS update",
+      "options": [
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "[default: all] Platform to configure",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "update:delete",
+      "description": "Delete all the updates in an update group",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "Group ID",
+          "description": "The ID of an update group to delete"
+        }
+      ]
+    },
+    {
+      "name": "update:list",
+      "description": "View the recent updates",
+      "options": [
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "List updates on all branches"
+        },
+        {
+          "names": [
+            "--branch"
+          ],
+          "description": "List updates only on this branch",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        },
+        {
+          "names": [
+            "--limit"
+          ],
+          "description": "The number of items to fetch each query. Defaults to 25 and is capped at 50",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--offset"
+          ],
+          "description": "Start queries from specified index. Use for paginating results. Defaults to 0"
+        }
+      ]
+    },
+    {
+      "name": "update:view",
+      "description": "Update group details",
+      "options": [
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Enable JSON output, non-JSON messages will be printed to stderr"
+        }
+      ],
+      "args": [
+        {
+          "name": "Group ID",
+          "description": "The ID of an update group"
+        }
+      ]
+    },
+    {
+      "name": "webhook:create",
+      "description": "Create a webhook",
+      "options": [
+        {
+          "names": [
+            "--event"
+          ],
+          "description": "Event type that triggers the webhook",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--secret"
+          ],
+          "description": "Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--url"
+          ],
+          "description": "Webhook URL",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "webhook:delete",
+      "description": "Delete a webhook",
+      "options": [
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        }
+      ],
+      "args": [
+        {
+          "name": "ID",
+          "description": "ID of the webhook to delete"
+        }
+      ]
+    },
+    {
+      "name": "webhook:list",
+      "description": "List webhooks",
+      "options": [
+        {
+          "names": [
+            "--event"
+          ],
+          "description": "Event type that triggers the webhook",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "webhook:update",
+      "description": "Update a webhook",
+      "options": [
+        {
+          "names": [
+            "--event"
+          ],
+          "description": "Event type that triggers the webhook",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "(required) Webhook ID",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Run the command in non-interactive mode"
+        },
+        {
+          "names": [
+            "--secret"
+          ],
+          "description": "Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--url"
+          ],
+          "description": "Webhook URL",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "webhook:view",
+      "description": "View a webhook",
+      "args": [
+        {
+          "name": "ID",
+          "description": "ID of the webhook to view"
+        }
+      ]
+    }
+  ]
+}

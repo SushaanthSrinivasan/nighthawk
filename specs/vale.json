@@ -1,0 +1,95 @@
+{
+  "name": "vale",
+  "description": "A syntax-aware linter for prose built with speed and extensibility in mind",
+  "subcommands": [
+    {
+      "name": "ls-config",
+      "description": "Print the current configuration to stdout"
+    },
+    {
+      "name": "ls-metrics",
+      "description": "Print the given file's internal metrics to stdout",
+      "args": [
+        {
+          "name": "file",
+          "description": "The path to a file you want to analyze"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help for vale"
+    },
+    {
+      "names": [
+        "--version",
+        "-v"
+      ],
+      "description": "Print the current version"
+    },
+    {
+      "names": [
+        "--ignore-syntax"
+      ],
+      "description": "Lint all files line-by-line"
+    },
+    {
+      "names": [
+        "--no-exit"
+      ],
+      "description": "Don't return a nonzero exit code on errors"
+    },
+    {
+      "names": [
+        "--no-wrap"
+      ],
+      "description": "Don't wrap CLI output"
+    },
+    {
+      "names": [
+        "--ext"
+      ],
+      "description": "An extension to associate with stdin",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--glob"
+      ],
+      "description": "A glob pattern",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--minAlertLevel"
+      ],
+      "description": "The minimum level to display",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--output"
+      ],
+      "description": "The alert output style to use",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config"
+      ],
+      "description": "A path to a .vale.ini file",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "is_variadic": true,
+      "template": "filepaths"
+    }
+  ]
+}

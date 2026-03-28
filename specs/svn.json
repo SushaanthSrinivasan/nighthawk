@@ -1,0 +1,185 @@
+{
+  "name": "svn",
+  "description": "The first content tracker",
+  "subcommands": [
+    {
+      "name": "help",
+      "aliases": [
+        "h"
+      ],
+      "description": "Show help for svn",
+      "args": [
+        {
+          "name": "subcommand",
+          "description": "Help about specific subcommand",
+          "suggestions": [
+            "add",
+            "auth",
+            "blame",
+            "cat",
+            "changelist",
+            "checkout",
+            "cleanup",
+            "commit",
+            "copy",
+            "delete",
+            "diff",
+            "export",
+            "help",
+            "import",
+            "info",
+            "list",
+            "lock",
+            "log",
+            "merge",
+            "mergeinfo",
+            "mkdir",
+            "move",
+            "patch",
+            "propdel",
+            "propedit",
+            "propget",
+            "proplist",
+            "propset",
+            "relocate",
+            "resolve",
+            "resolved",
+            "revert",
+            "status",
+            "switch",
+            "unlock",
+            "update",
+            "upgrade"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "aliases": [
+        "st"
+      ],
+      "description": "Show the working tree status"
+    },
+    {
+      "name": "info",
+      "description": "Show information about a local or remote item"
+    },
+    {
+      "name": "checkout",
+      "aliases": [
+        "co"
+      ],
+      "description": "Check out a working copy from a repository",
+      "args": [
+        {
+          "name": "repository",
+          "description": "The repository you want to checkout"
+        }
+      ]
+    },
+    {
+      "name": "commit",
+      "aliases": [
+        "ci"
+      ],
+      "description": "Commit to a repository",
+      "options": [
+        {
+          "names": [
+            "-m",
+            "--message"
+          ],
+          "description": "Use the given message as the commit message",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--username"
+          ],
+          "description": "Specify a username ARG",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--password"
+          ],
+          "description": "Specify a password ARG",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--password-from-stdin"
+          ],
+          "description": "Read password from stdin"
+        },
+        {
+          "names": [
+            "--no-auth-cache"
+          ],
+          "description": "Do not cache authentication tokens"
+        },
+        {
+          "names": [
+            "--non-interactive"
+          ],
+          "description": "Do no interactive prompting (default is to prompt only if standard input is a terminal device)"
+        },
+        {
+          "names": [
+            "--force-interactive"
+          ],
+          "description": "Do interactive prompting even if standard input is not a terminal device"
+        },
+        {
+          "names": [
+            "--trust-server-cert"
+          ],
+          "description": "Specify a password ARG",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--trust-server-cert-failures"
+          ],
+          "description": "Specify a password ARG",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config-dir"
+          ],
+          "description": "Read user configuration files from directory ARG",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config-option"
+          ],
+          "description": "Specify a password ARG",
+          "takes_arg": true
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Show help for svn"
+    },
+    {
+      "names": [
+        "--verbose"
+      ],
+      "description": "Show help for svn"
+    },
+    {
+      "names": [
+        "--quiet"
+      ],
+      "description": "Show help for svn"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "ln",
+  "description": "Create (default hard) symbolic links to files",
+  "options": [
+    {
+      "names": [
+        "-s"
+      ],
+      "description": "Create a symbolic link",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-v"
+      ],
+      "description": "Verbose"
+    },
+    {
+      "names": [
+        "-F"
+      ],
+      "description": "If link name already exists replace it",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-h"
+      ],
+      "description": "Don't follow symbolic links"
+    },
+    {
+      "names": [
+        "-f"
+      ],
+      "description": "If link name already exists unlink the old one before creating the new one",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-i"
+      ],
+      "description": "Prompt if proposed link already exists",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-n"
+      ],
+      "description": "Same as -h don't follow symbolic links"
+    }
+  ],
+  "args": [
+    {
+      "name": "source_file",
+      "template": "filepaths"
+    },
+    {
+      "name": "link_name or link_dirname"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "name": "pmset",
+  "description": "Power management settings",
+  "subcommands": [
+    {
+      "name": "-g",
+      "description": "GETTING",
+      "args": [
+        {
+          "suggestions": [
+            "live",
+            "custom",
+            "cap",
+            "sched",
+            "ups",
+            "ps",
+            "pslog",
+            "rawlog",
+            "profiles",
+            "thermlog",
+            "assertions",
+            "assertionslog",
+            "activity",
+            "activitylog",
+            "sysload",
+            "sysloadlog",
+            "ac",
+            "log",
+            "uuid",
+            "uuidlog",
+            "history",
+            "historydetailed",
+            "everything"
+          ]
+        },
+        {
+          "name": "UUID",
+          "description": "Used for historydetailed"
+        }
+      ]
+    },
+    {
+      "name": "schedule",
+      "description": "For setting up one-time power events",
+      "options": [
+        {
+          "names": [
+            "cancel"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "type",
+          "suggestions": [
+            "sleep",
+            "wake",
+            "poweron",
+            "shutdown",
+            "wakeorpoweron"
+          ]
+        },
+        {
+          "name": "date/time",
+          "description": "\"MM/dd/yy HH:mm:ss\" (in 24 hour format; must be in quotes)"
+        }
+      ]
+    },
+    {
+      "name": "repeat",
+      "description": "For setting up daily/weekly power on and power off events",
+      "subcommands": [
+        {
+          "name": "cancel"
+        }
+      ],
+      "args": [
+        {
+          "name": "type",
+          "suggestions": [
+            "sleep",
+            "wake",
+            "poweron",
+            "shutdown",
+            "wakeorpoweron"
+          ]
+        },
+        {
+          "name": "weekdays",
+          "description": "A subset of MTWRFSU (\"M\" and \"MTWRF\" are valid strings)"
+        },
+        {
+          "name": "date/time",
+          "description": "\"MM/dd/yy HH:mm:ss\" (in 24 hour format; must be in quotes)"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-a"
+      ],
+      "description": "Settings for all",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-b"
+      ],
+      "description": "Settings for battery",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-c"
+      ],
+      "description": "Settings for charger",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-u"
+      ],
+      "description": "Settings for UPS",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "description": "Override settings and sleep now",
+      "suggestions": [
+        "sleepnow",
+        "noidle",
+        "lock",
+        "touch"
+      ]
+    }
+  ]
+}

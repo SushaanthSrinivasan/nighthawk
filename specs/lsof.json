@@ -1,0 +1,276 @@
+{
+  "name": "lsof",
+  "description": "List open files",
+  "options": [
+    {
+      "names": [
+        "-?",
+        "-h",
+        "--help"
+      ],
+      "description": "Help"
+    },
+    {
+      "names": [
+        "-a"
+      ],
+      "description": "Apply AND to the selections (defaults to OR)"
+    },
+    {
+      "names": [
+        "-b"
+      ],
+      "description": "Avoid kernel blocks"
+    },
+    {
+      "names": [
+        "-c"
+      ],
+      "description": "Select the listing of files for processes executing a command",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "+c"
+      ],
+      "description": "COMMAND width (9)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "+d"
+      ],
+      "description": "Search for all open instances/files/directories of directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-d"
+      ],
+      "description": "Specify a list of file descriptors (FDs) to exclude from or include in the output listing",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "+D"
+      ],
+      "description": "Search tree for all open instances/files/directories of directory. *SLOW?*",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "+f"
+      ],
+      "description": "Enable path name arguments to be interpreted",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-f"
+      ],
+      "description": "Inhibit path name arguments to be interpreted",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-F"
+      ],
+      "description": "Select fields to output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-F?"
+      ],
+      "description": "Show fields for -F"
+    },
+    {
+      "names": [
+        "-g"
+      ],
+      "description": "Exclude or select by process group IDs (PGID)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-i"
+      ],
+      "description": "Selects files by [46][protocol][@hostname|hostaddr][:service|port]",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-l"
+      ],
+      "description": "Inhibit conversion of user IDs to login names"
+    },
+    {
+      "names": [
+        "+L"
+      ],
+      "description": "Enable listing of file link counts",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-L"
+      ],
+      "description": "Disable listing of file link counts",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "+M"
+      ],
+      "description": "Enable portMap registration"
+    },
+    {
+      "names": [
+        "-M"
+      ],
+      "description": "Disable portMap registration"
+    },
+    {
+      "names": [
+        "-n"
+      ],
+      "description": "No host names"
+    },
+    {
+      "names": [
+        "-N"
+      ],
+      "description": "Select NFS files"
+    },
+    {
+      "names": [
+        "-o"
+      ],
+      "description": "List file offset"
+    },
+    {
+      "names": [
+        "-O"
+      ],
+      "description": "No overhead *RISKY*"
+    },
+    {
+      "names": [
+        "-p"
+      ],
+      "description": "Exclude or select process identification numbers (PIDs)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-P"
+      ],
+      "description": "No port names"
+    },
+    {
+      "names": [
+        "+r"
+      ],
+      "description": "Repeat every t seconds (15) until no files",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-r"
+      ],
+      "description": "Repeat every t seconds (15) forever",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-R"
+      ],
+      "description": "List parent PID"
+    },
+    {
+      "names": [
+        "-s"
+      ],
+      "description": "List file size or exclude/select protocol",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-S"
+      ],
+      "description": "Stat timeout in seconds (lstat/readlink/stat)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-T"
+      ],
+      "description": "Disable TCP/TPI info",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-t"
+      ],
+      "description": "Specify terse listing"
+    },
+    {
+      "names": [
+        "-u"
+      ],
+      "description": "Exclude/select login|UID set",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-U"
+      ],
+      "description": "Select Unix socket"
+    },
+    {
+      "names": [
+        "-v"
+      ],
+      "description": "List version info"
+    },
+    {
+      "names": [
+        "-V"
+      ],
+      "description": "Verbose search"
+    },
+    {
+      "names": [
+        "+w"
+      ],
+      "description": "Enable warnings"
+    },
+    {
+      "names": [
+        "-w"
+      ],
+      "description": "Disable warnings"
+    },
+    {
+      "names": [
+        "-x"
+      ],
+      "description": "Cross over +d|+D File systems or symbolic links",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-X"
+      ],
+      "description": "File descriptor table only"
+    }
+  ],
+  "args": [
+    {
+      "name": "names",
+      "description": "Select named files or files on named file systems",
+      "is_variadic": true,
+      "template": "folders"
+    }
+  ]
+}

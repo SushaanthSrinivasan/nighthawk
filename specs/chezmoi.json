@@ -1,0 +1,1586 @@
+{
+  "name": "chezmoi",
+  "description": "Manage your dotfiles across multiple diverse machines, securely",
+  "subcommands": [
+    {
+      "name": "manage",
+      "aliases": [
+        "add"
+      ],
+      "description": "Add an existing file, directory, or symlink to the source state",
+      "options": [
+        {
+          "names": [
+            "--autotemplate",
+            "-a"
+          ],
+          "description": "Generate the template when adding files as templates"
+        },
+        {
+          "names": [
+            "--create"
+          ],
+          "description": "Add files that should exist, irrespective of their contents"
+        },
+        {
+          "names": [
+            "--encrypt"
+          ],
+          "description": "Encrypt files"
+        },
+        {
+          "names": [
+            "--exact"
+          ],
+          "description": "Add directories exactly"
+        },
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--follow",
+            "-f"
+          ],
+          "description": "Add symlink targets instead of symlinks"
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--prompt",
+            "-p"
+          ],
+          "description": "Prompt before adding each entry"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        },
+        {
+          "names": [
+            "--template",
+            "-T"
+          ],
+          "description": "Add files as templates"
+        },
+        {
+          "names": [
+            "--template-symlinks"
+          ],
+          "description": "Add symlinks with target in source or home dirs as templates"
+        }
+      ],
+      "args": [
+        {
+          "name": "file",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "apply",
+      "description": "Update the destination directory to match the target state",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "archive",
+      "description": "Generate a tar archive of the target state",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Set archive format",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--gzip",
+            "-z"
+          ],
+          "description": "Compress output with gzip"
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "cat",
+      "description": "Print the target contents of a file, script, or symlink",
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "cd",
+      "description": "Launch a shell in the source directory"
+    },
+    {
+      "name": "chattr",
+      "description": "Change the attributes of a target in the source state",
+      "args": [
+        {
+          "name": "attributes/modifiers"
+        },
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "completion",
+      "description": "Generate shell completion code",
+      "args": [
+        {
+          "name": "shell",
+          "suggestions": [
+            "bash",
+            "fish",
+            "zsh",
+            "powershell"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "data",
+      "description": "Print the template data",
+      "options": [
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Format",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "decrypt",
+      "description": "Decrypt file or standard input",
+      "args": [
+        {
+          "name": "file",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "diff",
+      "description": "Print the diff between the target state and the destination state",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--pager"
+          ],
+          "description": "Set pager",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        },
+        {
+          "names": [
+            "--reverse"
+          ],
+          "description": "Reverse the direction of the diff"
+        },
+        {
+          "names": [
+            "--use-builtin-diff"
+          ],
+          "description": "Use the builtin diff"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "doctor",
+      "description": "Check your system for potential problems"
+    },
+    {
+      "name": "dump",
+      "description": "Generate a dump of the target state",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--format",
+            "-f"
+          ],
+          "description": "Set output format",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "edit",
+      "description": "Edit the source state of a target",
+      "options": [
+        {
+          "names": [
+            "--apply",
+            "-a"
+          ],
+          "description": "Apply after editing"
+        },
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--hardlink"
+          ],
+          "description": "Invoke editor with a hardlink to the source file"
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "edit-config",
+      "description": "Edit the configuration file"
+    },
+    {
+      "name": "encrypt",
+      "description": "Encrypt file or standard input",
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "execute-template",
+      "description": "Execute the given template(s)",
+      "options": [
+        {
+          "names": [
+            "--init",
+            "-i"
+          ],
+          "description": "Simulate chezmoi init"
+        },
+        {
+          "names": [
+            "--promptBool"
+          ],
+          "description": "Simulate promptBool",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--promptInt"
+          ],
+          "description": "Simulate promptInt",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--promptString",
+            "-p"
+          ],
+          "description": "Simulate promptString",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--stdinisatty"
+          ],
+          "description": "Simulate stdinIsATTY"
+        }
+      ],
+      "args": [
+        {
+          "name": "template",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "unmanage",
+      "aliases": [
+        "forget"
+      ],
+      "description": "Remove a target from the source state",
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "generate",
+      "description": "Generate a file for use with chezmoi",
+      "args": [
+        {
+          "name": "file",
+          "suggestions": [
+            "install.sh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "git",
+      "description": "Run git in the source directory"
+    },
+    {
+      "name": "ignored",
+      "description": "Print ignored targets"
+    },
+    {
+      "name": "import",
+      "description": "Import an archive into the source state",
+      "options": [
+        {
+          "names": [
+            "--exact"
+          ],
+          "description": "Set exact_ attribute on imported directories"
+        },
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remove-destination",
+            "-r"
+          ],
+          "description": "Remove destination before import"
+        },
+        {
+          "names": [
+            "--strip-components"
+          ],
+          "description": "Strip leading path components",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "archive",
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "init",
+      "description": "Setup the source directory and update the destination directory to match the target state",
+      "options": [
+        {
+          "names": [
+            "--apply",
+            "-a"
+          ],
+          "description": "Update destination directory"
+        },
+        {
+          "names": [
+            "--branch"
+          ],
+          "description": "Set initial branch to checkout",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config-path",
+            "-C"
+          ],
+          "description": "Path to write generated config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--data"
+          ],
+          "description": "Include existing template data"
+        },
+        {
+          "names": [
+            "--depth",
+            "-d"
+          ],
+          "description": "Create a shallow clone",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--guess-repo-url",
+            "-g"
+          ],
+          "description": "Guess the repo URL"
+        },
+        {
+          "names": [
+            "--one-shot"
+          ],
+          "description": "Run in one-shot mode"
+        },
+        {
+          "names": [
+            "--prompt"
+          ],
+          "description": "Force prompt*Once template functions to prompt"
+        },
+        {
+          "names": [
+            "--purge",
+            "-p"
+          ],
+          "description": "Purge config and source directories after running"
+        },
+        {
+          "names": [
+            "--purge-binary",
+            "-P"
+          ],
+          "description": "Purge chezmoi binary after running"
+        },
+        {
+          "names": [
+            "--ssh"
+          ],
+          "description": "Use ssh instead of https when guessing dotfile repo URL"
+        }
+      ],
+      "args": [
+        {
+          "name": "source"
+        }
+      ]
+    },
+    {
+      "name": "license",
+      "description": "Print license"
+    },
+    {
+      "name": "list",
+      "aliases": [
+        "managed"
+      ],
+      "description": "List the managed entries in the destination directory",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "merge",
+      "description": "Perform a three-way merge between the destination state, the source state, and the target state",
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "merge-all",
+      "description": "Perform a three-way merge for each modified file",
+      "options": [
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ]
+    },
+    {
+      "name": "purge",
+      "description": "Purge chezmoi's configuration and data",
+      "options": [
+        {
+          "names": [
+            "--binary",
+            "-P"
+          ],
+          "description": "Purge chezmoi binary"
+        }
+      ]
+    },
+    {
+      "name": "re-add",
+      "description": "Re-add modified files",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "rm",
+      "aliases": [
+        "remove"
+      ],
+      "description": "Remove a target from the source state and the destination directory",
+      "options": [
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "secret",
+      "description": "Interact with a secret manager",
+      "subcommands": [
+        {
+          "name": "keyring",
+          "description": "Interact with keyring",
+          "subcommands": [
+            {
+              "name": "delete",
+              "description": "Delete a value from keyring",
+              "options": [
+                {
+                  "names": [
+                    "--service"
+                  ],
+                  "description": "Service",
+                  "takes_arg": true,
+                  "is_required": true
+                },
+                {
+                  "names": [
+                    "--user"
+                  ],
+                  "description": "User",
+                  "takes_arg": true,
+                  "is_required": true
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "Get a value from keyring",
+              "options": [
+                {
+                  "names": [
+                    "--service"
+                  ],
+                  "description": "Service",
+                  "takes_arg": true,
+                  "is_required": true
+                },
+                {
+                  "names": [
+                    "--user"
+                  ],
+                  "description": "User",
+                  "takes_arg": true,
+                  "is_required": true
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set a value in keyring",
+              "options": [
+                {
+                  "names": [
+                    "--service"
+                  ],
+                  "description": "Service",
+                  "takes_arg": true,
+                  "is_required": true
+                },
+                {
+                  "names": [
+                    "--user"
+                  ],
+                  "description": "User",
+                  "takes_arg": true,
+                  "is_required": true
+                },
+                {
+                  "names": [
+                    "--value"
+                  ],
+                  "description": "Value",
+                  "takes_arg": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "source-path",
+      "description": "Print the source path of a target",
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "state",
+      "description": "Manipulate the persistent state",
+      "subcommands": [
+        {
+          "name": "data",
+          "description": "Print the raw data in the persistent state",
+          "options": [
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Format",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete a value from the persistent state",
+          "options": [
+            {
+              "names": [
+                "--bucket"
+              ],
+              "description": "Bucket",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--key"
+              ],
+              "description": "Key",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "delete-bucket",
+          "description": "Delete a bucket from the persistent state",
+          "options": [
+            {
+              "names": [
+                "--bucket"
+              ],
+              "description": "Bucket",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "dump",
+          "description": "Generate a dump of the persistent state",
+          "options": [
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Format",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "get",
+          "description": "Get a value from the persistent state",
+          "options": [
+            {
+              "names": [
+                "--bucket"
+              ],
+              "description": "Bucket",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--key"
+              ],
+              "description": "Key",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "get-bucket",
+          "description": "Get a bucket from the persistent state",
+          "options": [
+            {
+              "names": [
+                "--bucket"
+              ],
+              "description": "Bucket",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--format",
+                "-f"
+              ],
+              "description": "Format",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "reset",
+          "description": "Reset the persistent state"
+        },
+        {
+          "name": "set",
+          "description": "Set a value from the persistent state",
+          "options": [
+            {
+              "names": [
+                "--bucket"
+              ],
+              "description": "Bucket",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--key"
+              ],
+              "description": "Key",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--value"
+              ],
+              "description": "Value",
+              "takes_arg": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "description": "Show the status of targets",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "target-path",
+      "description": "Print the target path of a source path",
+      "args": [
+        {
+          "name": "source",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "unmanaged",
+      "description": "List the unmanaged files in the destination directory",
+      "args": [
+        {
+          "name": "paths",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "description": "Pull and apply any changes",
+      "options": [
+        {
+          "names": [
+            "--apply",
+            "-a"
+          ],
+          "description": "Apply after pulling"
+        },
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ]
+    },
+    {
+      "name": "upgrade",
+      "description": "Upgrade chezmoi to the latest released version",
+      "options": [
+        {
+          "names": [
+            "--executable"
+          ],
+          "description": "Set executable to replace",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--method"
+          ],
+          "description": "Set upgrade method",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--owner"
+          ],
+          "description": "Set owner",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--repo"
+          ],
+          "description": "Set repo",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "verify",
+      "description": "Exit with success if the destination state matches the target state, fail otherwise",
+      "options": [
+        {
+          "names": [
+            "--exclude",
+            "-x"
+          ],
+          "description": "Exclude entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--include",
+            "-i"
+          ],
+          "description": "Include entry types",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--init"
+          ],
+          "description": "Recreate config file from template"
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "Recurse into subdirectories"
+        }
+      ],
+      "args": [
+        {
+          "name": "target",
+          "is_variadic": true,
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Help about any command",
+      "subcommands": [
+        {
+          "name": "manage",
+          "aliases": [
+            "add"
+          ],
+          "description": "Add an existing file, directory, or symlink to the source state"
+        },
+        {
+          "name": "apply",
+          "description": "Update the destination directory to match the target state"
+        },
+        {
+          "name": "archive",
+          "description": "Generate a tar archive of the target state"
+        },
+        {
+          "name": "cat",
+          "description": "Print the target contents of a file, script, or symlink"
+        },
+        {
+          "name": "cd",
+          "description": "Launch a shell in the source directory"
+        },
+        {
+          "name": "chattr",
+          "description": "Change the attributes of a target in the source state"
+        },
+        {
+          "name": "completion",
+          "description": "Generate shell completion code"
+        },
+        {
+          "name": "data",
+          "description": "Print the template data"
+        },
+        {
+          "name": "decrypt",
+          "description": "Decrypt file or standard input"
+        },
+        {
+          "name": "diff",
+          "description": "Print the diff between the target state and the destination state"
+        },
+        {
+          "name": "doctor",
+          "description": "Check your system for potential problems"
+        },
+        {
+          "name": "dump",
+          "description": "Generate a dump of the target state"
+        },
+        {
+          "name": "edit",
+          "description": "Edit the source state of a target"
+        },
+        {
+          "name": "edit-config",
+          "description": "Edit the configuration file"
+        },
+        {
+          "name": "encrypt",
+          "description": "Encrypt file or standard input"
+        },
+        {
+          "name": "execute-template",
+          "description": "Execute the given template(s)"
+        },
+        {
+          "name": "unmanage",
+          "aliases": [
+            "forget"
+          ],
+          "description": "Remove a target from the source state"
+        },
+        {
+          "name": "generate",
+          "description": "Generate a file for use with chezmoi"
+        },
+        {
+          "name": "git",
+          "description": "Run git in the source directory"
+        },
+        {
+          "name": "ignored",
+          "description": "Print ignored targets"
+        },
+        {
+          "name": "import",
+          "description": "Import an archive into the source state"
+        },
+        {
+          "name": "init",
+          "description": "Setup the source directory and update the destination directory to match the target state"
+        },
+        {
+          "name": "license",
+          "description": "Print license"
+        },
+        {
+          "name": "list",
+          "aliases": [
+            "managed"
+          ],
+          "description": "List the managed entries in the destination directory"
+        },
+        {
+          "name": "merge",
+          "description": "Perform a three-way merge between the destination state, the source state, and the target state"
+        },
+        {
+          "name": "merge-all",
+          "description": "Perform a three-way merge for each modified file"
+        },
+        {
+          "name": "purge",
+          "description": "Purge chezmoi's configuration and data"
+        },
+        {
+          "name": "re-add",
+          "description": "Re-add modified files"
+        },
+        {
+          "name": "rm",
+          "aliases": [
+            "remove"
+          ],
+          "description": "Remove a target from the source state and the destination directory"
+        },
+        {
+          "name": "secret",
+          "description": "Interact with a secret manager",
+          "subcommands": [
+            {
+              "name": "keyring",
+              "description": "Interact with keyring",
+              "subcommands": [
+                {
+                  "name": "delete",
+                  "description": "Delete a value from keyring"
+                },
+                {
+                  "name": "get",
+                  "description": "Get a value from keyring"
+                },
+                {
+                  "name": "set",
+                  "description": "Set a value in keyring"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "source-path",
+          "description": "Print the source path of a target"
+        },
+        {
+          "name": "state",
+          "description": "Manipulate the persistent state",
+          "subcommands": [
+            {
+              "name": "data",
+              "description": "Print the raw data in the persistent state"
+            },
+            {
+              "name": "delete",
+              "description": "Delete a value from the persistent state"
+            },
+            {
+              "name": "delete-bucket",
+              "description": "Delete a bucket from the persistent state"
+            },
+            {
+              "name": "dump",
+              "description": "Generate a dump of the persistent state"
+            },
+            {
+              "name": "get",
+              "description": "Get a value from the persistent state"
+            },
+            {
+              "name": "get-bucket",
+              "description": "Get a bucket from the persistent state"
+            },
+            {
+              "name": "reset",
+              "description": "Reset the persistent state"
+            },
+            {
+              "name": "set",
+              "description": "Set a value from the persistent state"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "description": "Show the status of targets"
+        },
+        {
+          "name": "target-path",
+          "description": "Print the target path of a source path"
+        },
+        {
+          "name": "unmanaged",
+          "description": "List the unmanaged files in the destination directory"
+        },
+        {
+          "name": "update",
+          "description": "Pull and apply any changes"
+        },
+        {
+          "name": "upgrade",
+          "description": "Upgrade chezmoi to the latest released version"
+        },
+        {
+          "name": "verify",
+          "description": "Exit with success if the destination state matches the target state, fail otherwise"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--cache"
+      ],
+      "description": "Set cache directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--color"
+      ],
+      "description": "Colorize output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config",
+        "-c"
+      ],
+      "description": "Set config file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config-format"
+      ],
+      "description": "Set config file format",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Include debug information in output"
+    },
+    {
+      "names": [
+        "--destination",
+        "-D"
+      ],
+      "description": "Set destination directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--dry-run",
+        "-n"
+      ],
+      "description": "Do not make any modifications to the destination directory"
+    },
+    {
+      "names": [
+        "--force"
+      ],
+      "description": "Make all changes without prompting"
+    },
+    {
+      "names": [
+        "--interactive"
+      ],
+      "description": "Prompt for all changes"
+    },
+    {
+      "names": [
+        "--keep-going",
+        "-k"
+      ],
+      "description": "Keep going as far as possible after an error"
+    },
+    {
+      "names": [
+        "--mode"
+      ],
+      "description": "Mode",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-pager"
+      ],
+      "description": "Do not use the pager"
+    },
+    {
+      "names": [
+        "--no-tty"
+      ],
+      "description": "Do not attempt to get a TTY for reading passwords"
+    },
+    {
+      "names": [
+        "--output",
+        "-o"
+      ],
+      "description": "Write output to path instead of stdout",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--persistent-state"
+      ],
+      "description": "Set persistent state file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--refresh-externals",
+        "-R"
+      ],
+      "description": "Refresh external cache"
+    },
+    {
+      "names": [
+        "--source",
+        "-S"
+      ],
+      "description": "Set source directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--source-path"
+      ],
+      "description": "Specify targets by source path"
+    },
+    {
+      "names": [
+        "--use-builtin-age"
+      ],
+      "description": "Use builtin age",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--use-builtin-git"
+      ],
+      "description": "Use builtin git",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--verbose",
+        "-v"
+      ],
+      "description": "Make output more verbose"
+    },
+    {
+      "names": [
+        "--working-tree",
+        "-W"
+      ],
+      "description": "Set working tree directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Display help"
+    }
+  ]
+}

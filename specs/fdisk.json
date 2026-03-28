@@ -1,0 +1,156 @@
+{
+  "name": "fdisk",
+  "description": "Manipulate disk partition table",
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help for fdisk"
+    },
+    {
+      "names": [
+        "--version",
+        "-V"
+      ],
+      "description": "Show version for lsblk"
+    },
+    {
+      "names": [
+        "--sector-size",
+        "-b"
+      ],
+      "description": "Specify the sector size of the disk",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--protect-boot",
+        "-B"
+      ],
+      "description": "Don't erase the beginning of the first disk sector when creating a new disk label"
+    },
+    {
+      "names": [
+        "--compatibility",
+        "-c"
+      ],
+      "description": "Specify the compatibility mode, 'dos' or 'nondos'",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--color",
+        "-L"
+      ],
+      "description": "Colorize the output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--list",
+        "-l"
+      ],
+      "description": "List the partition tables for the specified devices and then exit"
+    },
+    {
+      "names": [
+        "--list-details",
+        "-x"
+      ],
+      "description": "Like --list, but provides more details"
+    },
+    {
+      "names": [
+        "--lock"
+      ],
+      "description": "Use exclusive BSD lock for device or file it operates",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--noauto-pt",
+        "-n"
+      ],
+      "description": "Don't automatically create a default partition table on empty device"
+    },
+    {
+      "names": [
+        "--output",
+        "-o"
+      ],
+      "description": "Desc",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--getsz",
+        "-s"
+      ],
+      "description": "Print the size in 512-byte sectors of each given block device. This option is DEPRECATED in favour of blockdev(8)"
+    },
+    {
+      "names": [
+        "--type",
+        "-t"
+      ],
+      "description": "Enable support only for disklabels of the specified type, and disable support for all other types",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--units",
+        "-u"
+      ],
+      "description": "When listing partition tables, show sizes in 'sectors' or in 'cylinders'",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--cylinders",
+        "-C"
+      ],
+      "description": "Specify the number of cylinders of the disk",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--heads",
+        "-H"
+      ],
+      "description": "Specify the number of heads of the disk. (Not the physical number, of course, but the number used for partition tables.)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--sectors",
+        "-S"
+      ],
+      "description": "Specify the number of sectors per track of the disk. (Not the physical number, of course, but the number used for partition tables.)"
+    },
+    {
+      "names": [
+        "--wipe",
+        "-w"
+      ],
+      "description": "Wipe filesystem, RAID and partition-table signatures from the device, in order to avoid possible collisions",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--wipe-partitions",
+        "-W"
+      ],
+      "description": "Wipe filesystem, RAID and partition-table signatures from a newly created partitions, in order to avoid possible collisions",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "device",
+      "description": "Device to list",
+      "template": "filepaths"
+    }
+  ]
+}

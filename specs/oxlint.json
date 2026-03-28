@@ -1,0 +1,205 @@
+{
+  "name": "oxlint",
+  "description": "A high performance linter for the Oxidation Compiler",
+  "options": [
+    {
+      "names": [
+        "-c",
+        "--config"
+      ],
+      "description": "Path to Oxlint JSON configuration file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--tsconfig"
+      ],
+      "description": "Path to tsconfig.json path for reading path aliases and project references for import plugin",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ignore-path"
+      ],
+      "description": "Specify the file to use as your .eslintignore",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ignore-pattern"
+      ],
+      "description": "Specify file patterns to ignore (in addition to those in .eslintignore)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-ignore"
+      ],
+      "description": "Disable exluding of files from .eslintignore files, --ignore-path, and --ignore-pattern"
+    },
+    {
+      "names": [
+        "--symlinks"
+      ],
+      "description": "Follow symlinks when linting, which are ignored by default"
+    },
+    {
+      "names": [
+        "--jsdoc-plugin"
+      ],
+      "description": "Enable the JSDoc plugin"
+    },
+    {
+      "names": [
+        "--jest-plugin"
+      ],
+      "description": "Enable the Jest plugin"
+    },
+    {
+      "names": [
+        "--vitest-plugin"
+      ],
+      "description": "Enable the Vitest plugin"
+    },
+    {
+      "names": [
+        "--nextjs-plugin"
+      ],
+      "description": "Enable the Next.js plugin"
+    },
+    {
+      "names": [
+        "--react-perf-plugin"
+      ],
+      "description": "Enable the React Performance plugin"
+    },
+    {
+      "names": [
+        "--promise-plugin"
+      ],
+      "description": "Enable the Promise plugin"
+    },
+    {
+      "names": [
+        "--disable-react-plugin"
+      ],
+      "description": "Disable the React plugin, which is turned on by default"
+    },
+    {
+      "names": [
+        "--disable-unicorn-plugin"
+      ],
+      "description": "Disable the Unicorn plugin, which is turned on by default"
+    },
+    {
+      "names": [
+        "--disable-oxc-plugin"
+      ],
+      "description": "Disable the Oxc plugin, which is turned on by default"
+    },
+    {
+      "names": [
+        "--disable-typescript-plugin"
+      ],
+      "description": "Disable the TypeScript plugin, which is turned on by default"
+    },
+    {
+      "names": [
+        "--disable-import-plugin"
+      ],
+      "description": "Disable the Import plugin, which is turned on by default"
+    },
+    {
+      "names": [
+        "-D",
+        "--deny"
+      ],
+      "description": "Deny a lint rule or category (enable a lint as an error)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-W",
+        "--warn"
+      ],
+      "description": "Warn about a lint rule or category (enable a lint as a warning)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-A",
+        "--allow"
+      ],
+      "description": "Allow a lint rule or category (suppress a lint)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--fix"
+      ],
+      "description": "Fix as many issues as possible. Only unfixed issues are reported in the output"
+    },
+    {
+      "names": [
+        "--silent"
+      ],
+      "description": "Do not display any diagnostics"
+    },
+    {
+      "names": [
+        "--deny-warnings"
+      ],
+      "description": "Exit with a non-zero code if there are any warnings"
+    },
+    {
+      "names": [
+        "--max-warnings"
+      ],
+      "description": "Exit with a non-zero code if there are more than `max` warnings",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-f",
+        "--format"
+      ],
+      "description": "Use a specific output format",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--threads"
+      ],
+      "description": "Number of threads to use. Set to 1 to use only 1 CPU core",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--rules"
+      ],
+      "description": "List all available rules"
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Show help"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Show version"
+    }
+  ],
+  "args": [
+    {
+      "name": "file|dir|glob",
+      "description": "File(s) to lint",
+      "is_variadic": true,
+      "template": "filepaths"
+    }
+  ]
+}

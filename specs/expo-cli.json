@@ -1,0 +1,2685 @@
+{
+  "name": "expo-cli",
+  "description": "Tools for creating, running, and deploying Universal Expo and React Native apps",
+  "subcommands": [
+    {
+      "name": "login",
+      "aliases": [
+        "signin"
+      ],
+      "description": "Login to an Expo account",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-u",
+            "--username"
+          ],
+          "description": "Username",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--password"
+          ],
+          "description": "Password",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--otp"
+          ],
+          "description": "One-time password from your 2FA device",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "logout",
+      "description": "Logout of an Expo account",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        }
+      ]
+    },
+    {
+      "name": "register",
+      "description": "Sign up for a new Expo account",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        }
+      ]
+    },
+    {
+      "name": "whoami",
+      "aliases": [
+        "w"
+      ],
+      "description": "Return the currently authenticated account",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        }
+      ]
+    },
+    {
+      "name": "build:ios",
+      "aliases": [
+        "bi"
+      ],
+      "description": "Build and sign a standalone IPA for the Apple App Store",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-c",
+            "--clear-credentials"
+          ],
+          "description": "Clear all credentials stored on Expo servers",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--clear-dist-cert"
+          ],
+          "description": "Remove Distribution Certificate stored on Expo servers",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--clear-push-key"
+          ],
+          "description": "Remove Push Notifications Key stored on Expo servers",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--clear-push-cert"
+          ],
+          "description": "Remove Push Notifications Certificate stored on Expo servers. Use of Push Notifications Certificates is deprecated",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--clear-provisioning-profile"
+          ],
+          "description": "Remove Provisioning Profile stored on Expo servers",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-r",
+            "--revoke-credentials"
+          ],
+          "description": "Revoke credentials on developer.apple.com, select appropriate using --clear-* options",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--apple-id"
+          ],
+          "description": "Apple ID username (please also set the Apple ID password as EXPO_APPLE_PASSWORD environment variable)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--type"
+          ],
+          "description": "Type of build: [archive|simulator]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-channel"
+          ],
+          "description": "Pull from specified release channel",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-publish"
+          ],
+          "description": "Disable automatic publishing before building",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-wait"
+          ],
+          "description": "Exit immediately after scheduling build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--team-id"
+          ],
+          "description": "Apple Team ID",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dist-p12-path"
+          ],
+          "description": "Path to your Distribution Certificate P12 (set password as EXPO_IOS_DIST_P12_PASSWORD environment variable)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--push-id"
+          ],
+          "description": "Push Key ID (ex: 123AB4C56D)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--push-p8-path"
+          ],
+          "description": "Path to your Push Key .p8 file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--provisioning-profile-path"
+          ],
+          "description": "Path to your Provisioning Profile",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--public-url"
+          ],
+          "description": "The URL of an externally hosted manifest (for self-hosted apps)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--skip-credentials-check"
+          ],
+          "description": "Skip checking credentials",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--skip-workflow-check"
+          ],
+          "description": "Skip warning about build service bare workflow limitations",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "build:android",
+      "aliases": [
+        "ba"
+      ],
+      "description": "Build and sign a standalone APK or App Bundle for the Google Play Store",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-c",
+            "--clear-credentials"
+          ],
+          "description": "Clear stored credentials",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-channel"
+          ],
+          "description": "Pull from specified release channel",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-publish"
+          ],
+          "description": "Disable automatic publishing before building",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-wait"
+          ],
+          "description": "Exit immediately after triggering build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--keystore-path"
+          ],
+          "description": "Path to your Keystore: *.jks",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--keystore-alias"
+          ],
+          "description": "Keystore Alias",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--generate-keystore"
+          ],
+          "description": "[deprecated] Generate Keystore if one does not exist",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--public-url"
+          ],
+          "description": "The URL of an externally hosted manifest (for self-hosted apps)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--skip-workflow-check"
+          ],
+          "description": "Skip warning about build service bare workflow limitations",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--type"
+          ],
+          "description": "Type of build: [app-bundle|apk]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "build:web",
+      "description": "Build the web app for production",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-c",
+            "--clear"
+          ],
+          "description": "Clear all cached build files and assets",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-pwa"
+          ],
+          "description": "Prevent webpack from generating the manifest.json and injecting meta into the index.html head",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-d",
+            "--dev"
+          ],
+          "description": "Turns dev flag on before bundling",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "build:status",
+      "aliases": [
+        "bs"
+      ],
+      "description": "Get the status of the latest build for the project",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--public-url"
+          ],
+          "description": "The URL of an externally hosted manifest (for self-hosted apps)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "client:ios",
+      "description": "Deprecated in favor of Expo Dev Clients",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--apple-id"
+          ],
+          "description": "Apple ID username (please also set the Apple ID password as EXPO_APPLE_PASSWORD environment variable)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "client:install:ios",
+      "description": "Install Expo Go for iOS on the simulator",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--latest"
+          ],
+          "description": "Install the latest version of Expo Go, ignoring the current project version",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "client:install:android",
+      "description": "Install Expo Go for Android on a connected device or emulator",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-d",
+            "--device"
+          ],
+          "description": "Device name to install the client on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--latest"
+          ],
+          "description": "Install the latest version of Expo Go, ignore the current project version",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "credentials:manager",
+      "description": "Manage your credentials",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "Platform: [android|ios]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "customize:web",
+      "description": "Eject the default web files for customization",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-f",
+            "--force"
+          ],
+          "description": "Allows replacing existing files",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--offline"
+          ],
+          "description": "Allows this command to run while offline",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "eject",
+      "description": "Create native iOS and Android project files. Learn more: https://docs.expo.dev/workflow/customizing/",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--no-install"
+          ],
+          "description": "Skip installing npm packages and CocoaPods",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--npm"
+          ],
+          "description": "Use npm to install dependencies. (default when Yarn is not installed)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "Platforms to sync: ios, android, all. Default: all",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "prebuild",
+      "description": "Create native iOS and Android project files before building natively. Learn more: https://docs.expo.dev/workflow/customizing/",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--no-install"
+          ],
+          "description": "Skip installing npm packages and CocoaPods",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--clean"
+          ],
+          "description": "Delete the native folders and regenerate them before applying changes",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--npm"
+          ],
+          "description": "Use npm to install dependencies. (default when Yarn is not installed)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--template"
+          ],
+          "description": "Project template to clone from. File path pointing to a local tar file or a github repo",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "Platforms to sync: ios, android, all. Default: all",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--skip-dependency-update"
+          ],
+          "description": "Preserves versions of listed packages in package.json (comma separated list)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "export",
+      "description": "Export the static files of the app for hosting it on a web server",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--platform"
+          ],
+          "description": "Platforms: android, ios, all",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--public-url"
+          ],
+          "description": "The public url that will host the static files (required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-c",
+            "--clear"
+          ],
+          "description": "Clear the Metro bundler cache",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output-dir"
+          ],
+          "description": "The directory to export the static files to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-a",
+            "--asset-url"
+          ],
+          "description": "The absolute or relative url that will host the asset files",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-d",
+            "--dump-assetmap"
+          ],
+          "description": "Dump the asset map for further processing",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dev"
+          ],
+          "description": "Configure static files for developing locally using a non-https server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-s",
+            "--dump-sourcemap"
+          ],
+          "description": "Dump the source map for debugging the JS bundle",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-q",
+            "--quiet"
+          ],
+          "description": "Suppress verbose output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--target"
+          ],
+          "description": "Target environment for which this export is intended",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--merge-src-dir"
+          ],
+          "description": "A repeatable source dir to merge in",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--merge-src-url"
+          ],
+          "description": "A repeatable source tar.gz file URL to merge in",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--max-workers"
+          ],
+          "description": "Maximum number of tasks to allow Metro to spawn",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--experimental-bundle"
+          ],
+          "description": "Export bundles for use with EAS updates",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "fetch:ios:certs",
+      "description": "Download the project's iOS standalone app signing credentials",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "fetch:android:keystore",
+      "description": "Download the project's Android keystore",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "fetch:android:hashes",
+      "description": "Compute and log the project's Android key hashes",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "fetch:android:upload-cert",
+      "description": "Download the project's Android keystore",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "config",
+      "description": "Show the project config",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-t",
+            "--type"
+          ],
+          "description": "Type of config to show",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--full"
+          ],
+          "description": "Include all project config data",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "diagnostics",
+      "description": "Log environment info to the console",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "doctor",
+      "description": "Diagnose issues with the project",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "upgrade",
+      "aliases": [
+        "update"
+      ],
+      "description": "Upgrade the project packages and config for the given SDK version",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--npm"
+          ],
+          "description": "Use npm to install dependencies. (default when package-lock.json exists)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--yarn"
+          ],
+          "description": "Use Yarn to install dependencies. (default when yarn.lock exists)",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "sdk-version"
+        }
+      ]
+    },
+    {
+      "name": "init",
+      "aliases": [
+        "i"
+      ],
+      "description": "Create a new Expo project",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-t",
+            "--template"
+          ],
+          "description": "Specify which template to use. Valid options are \"blank\", \"tabs\", \"bare-minimum\" or a package on npm (e.g. \"expo-template-bare-minimum\") that includes an Expo project template",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--npm"
+          ],
+          "description": "Use npm to install dependencies. (default when Yarn is not installed)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--yarn"
+          ],
+          "description": "Use Yarn to install dependencies. (default when Yarn is installed)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-install"
+          ],
+          "description": "Skip installing npm packages or CocoaPods",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--name"
+          ],
+          "description": "The name of your app visible on the home screen",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--yes"
+          ],
+          "description": "Use default options. Same as \"expo init . --template blank",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "name"
+        }
+      ]
+    },
+    {
+      "name": "install",
+      "aliases": [
+        "add"
+      ],
+      "description": "Install a module or other package to a project",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--npm"
+          ],
+          "description": "Use npm to install dependencies. (default when package-lock.json exists)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--yarn"
+          ],
+          "description": "Use Yarn to install dependencies. (default when yarn.lock exists)",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "packages",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "publish",
+      "aliases": [
+        "p"
+      ],
+      "description": "Deploy a project to Expo hosting",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-q",
+            "--quiet"
+          ],
+          "description": "Suppress verbose output from the Metro bundler",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-s",
+            "--send-to"
+          ],
+          "description": "A phone number or email address to send a link to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-c",
+            "--clear"
+          ],
+          "description": "Clear the Metro bundler cache",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--target"
+          ],
+          "description": "Target environment for which this publish is intended. Options are `managed` or `bare`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--max-workers"
+          ],
+          "description": "Maximum number of tasks to allow Metro to spawn",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-channel"
+          ],
+          "description": "The release channel to publish to. Default is 'default'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "publish:set",
+      "aliases": [
+        "ps"
+      ],
+      "description": "Specify the channel to serve a published release",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-c",
+            "--release-channel"
+          ],
+          "description": "The channel to set the published release. (Required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--publish-id"
+          ],
+          "description": "The id of the published release to serve from the channel. (Required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "publish:rollback",
+      "aliases": [
+        "pr"
+      ],
+      "description": "Undo an update to a channel",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--channel-id"
+          ],
+          "description": "This flag is deprecated",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-c",
+            "--release-channel"
+          ],
+          "description": "The channel to rollback from. (Required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-s",
+            "--sdk-version"
+          ],
+          "description": "The sdk version to rollback. (Required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "The platform to rollback",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "publish:history",
+      "aliases": [
+        "ph"
+      ],
+      "description": "Log the project's releases",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-c",
+            "--release-channel"
+          ],
+          "description": "Filter by release channel. If this flag is not included, the most recent publications will be shown",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--count"
+          ],
+          "description": "Number of logs to view, maximum 100, default 5",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--platform"
+          ],
+          "description": "Filter by platform, android or ios. Defaults to both platforms",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-s",
+            "--sdk-version"
+          ],
+          "description": "Filter by SDK version e.g. 35.0.0",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-r",
+            "--raw"
+          ],
+          "description": "Produce some raw output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "publish:details",
+      "aliases": [
+        "pd"
+      ],
+      "description": "Log details of a published release",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--publish-id"
+          ],
+          "description": "Publication id. (Required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-r",
+            "--raw"
+          ],
+          "description": "Produce some raw output",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "push:android:upload",
+      "description": "Upload an FCM key for Android push notifications",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--api-key"
+          ],
+          "description": "Server API key for FCM",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "push:android:show",
+      "description": "Log the value currently in use for FCM notifications for this project",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "push:android:clear",
+      "description": "Delete a previously uploaded FCM credential",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "run:android",
+      "description": "Run the Android app binary locally",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--no-bundler"
+          ],
+          "description": "Skip starting the Metro bundler",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-d",
+            "--device"
+          ],
+          "description": "Device name to build the app on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Port to start the Metro bundler on. Default: 8081",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--variant"
+          ],
+          "description": "(Android) build variant",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "run:ios",
+      "description": "Run the iOS app binary locally",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--no-build-cache"
+          ],
+          "description": "Clear the native derived data before building",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-install"
+          ],
+          "description": "Skip installing dependencies",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-bundler"
+          ],
+          "description": "Skip starting the Metro bundler",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-d",
+            "--device"
+          ],
+          "description": "Device name or UDID to build the app on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Port to start the Metro bundler on. Default: 8081",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--scheme"
+          ],
+          "description": "Scheme to build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--configuration"
+          ],
+          "description": "Xcode configuration to use. Debug or Release. Default: Debug",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "send",
+      "description": "Share the project's URL to an email address",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-s",
+            "--send-to"
+          ],
+          "description": "Email address to send the URL to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dev-client"
+          ],
+          "description": "Experimental: Starts the bundler for use with the expo-development-client",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--scheme"
+          ],
+          "description": "Custom URI protocol to use with a development build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-a",
+            "--android"
+          ],
+          "description": "Opens your app in Expo Go on a connected Android device",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-i",
+            "--ios"
+          ],
+          "description": "Opens your app in Expo Go in a currently running iOS simulator on your computer",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-w",
+            "--web"
+          ],
+          "description": "Opens your app in a web browser",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--host"
+          ],
+          "description": "Lan (default), tunnel, localhost. Type of host to use. \"tunnel\" allows you to view your link on other networks",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--tunnel"
+          ],
+          "description": "Same as --host tunnel",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--lan"
+          ],
+          "description": "Same as --host lan",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--localhost"
+          ],
+          "description": "Same as --host localhost",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "start",
+      "aliases": [
+        "r"
+      ],
+      "description": "Start a local dev server for the app",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "-s",
+            "--send-to"
+          ],
+          "description": "An email address to send a link to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-c",
+            "--clear"
+          ],
+          "description": "Clear the Metro bundler cache",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--max-workers"
+          ],
+          "description": "Maximum number of tasks to allow Metro to spawn",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dev"
+          ],
+          "description": "Turn development mode on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-dev"
+          ],
+          "description": "Turn development mode off",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--minify"
+          ],
+          "description": "Minify code",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-minify"
+          ],
+          "description": "Do not minify code",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--https"
+          ],
+          "description": "To start webpack with https protocol",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force-manifest-type"
+          ],
+          "description": "Override auto detection of manifest type",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Port to start the native Metro bundler on (does not apply to web or tunnel). Default: 19000",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-https"
+          ],
+          "description": "To start webpack with http protocol",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dev-client"
+          ],
+          "description": "Experimental: Starts the bundler for use with the expo-development-client"
+        },
+        {
+          "names": [
+            "--scheme"
+          ],
+          "description": "Custom URI protocol to use with a development build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-a",
+            "--android"
+          ],
+          "description": "Opens your app in Expo Go on a connected Android device",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-i",
+            "--ios"
+          ],
+          "description": "Opens your app in Expo Go in a currently running iOS simulator on your computer",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-w",
+            "--web"
+          ],
+          "description": "Opens your app in a web browser",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--host"
+          ],
+          "description": "Lan (default), tunnel, localhost. Type of host to use. \"tunnel\" allows you to view your link on other networks",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--tunnel"
+          ],
+          "description": "Same as --host tunnel",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--lan"
+          ],
+          "description": "Same as --host lan",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--localhost"
+          ],
+          "description": "Same as --host localhost",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--offline"
+          ],
+          "description": "Allows this command to run while offline",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "start:web",
+      "aliases": [
+        "web"
+      ],
+      "description": "Start a Webpack dev server for the web app",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--dev"
+          ],
+          "description": "Turn development mode on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-dev"
+          ],
+          "description": "Turn development mode off",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--minify"
+          ],
+          "description": "Minify code",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-minify"
+          ],
+          "description": "Do not minify code",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--https"
+          ],
+          "description": "To start webpack with https protocol",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-https"
+          ],
+          "description": "To start webpack with http protocol",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force-manifest-type"
+          ],
+          "description": "Override auto detection of manifest type",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Port to start the Webpack bundler on. Default: 19006",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-s",
+            "--send-to"
+          ],
+          "description": "An email address to send a link to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dev-client"
+          ],
+          "description": "Experimental: Starts the bundler for use with the expo-development-client",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--scheme"
+          ],
+          "description": "Custom URI protocol to use with a development build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-a",
+            "--android"
+          ],
+          "description": "Opens your app in Expo Go on a connected Android device",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-i",
+            "--ios"
+          ],
+          "description": "Opens your app in Expo Go in a currently running iOS simulator on your computer",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-w",
+            "--web"
+          ],
+          "description": "Opens your app in a web browser",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--host"
+          ],
+          "description": "Lan (default), tunnel, localhost. Type of host to use. \"tunnel\" allows you to view your link on other networks",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--tunnel"
+          ],
+          "description": "Same as --host tunnel",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--lan"
+          ],
+          "description": "Same as --host lan",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--localhost"
+          ],
+          "description": "Same as --host localhost",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--offline"
+          ],
+          "description": "Allows this command to run while offline",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "upload:android",
+      "aliases": [
+        "ua"
+      ],
+      "description": "Moved to eas submit in eas-cli",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Migrate to eas submit --verbose",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--latest"
+          ],
+          "description": "Migrate to eas submit --latest",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "Migrate to eas submit --id <id>",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--path"
+          ],
+          "description": "Migrate to eas submit --path <path>",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--url"
+          ],
+          "description": "Migrate to eas submit --url <url>",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--android-package"
+          ],
+          "description": "Migrate to eas submit (android-package is auto inferred)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--type"
+          ],
+          "description": "Migrate to eas submit (type is auto inferred)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Migrate to eas.json's serviceAccountKeyPath property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--track"
+          ],
+          "description": "Migrate to eas.json's track property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--release-status"
+          ],
+          "description": "Migrate to eas.json's releaseStatus property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "upload:ios",
+      "aliases": [
+        "ui"
+      ],
+      "description": "Moved to eas submit in eas-cli",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--verbose"
+          ],
+          "description": "Migrate to eas submit --verbose",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--latest"
+          ],
+          "description": "Migrate to eas submit --latest",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "Migrate to eas submit --id <id>",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--path"
+          ],
+          "description": "Migrate to eas submit --path <path>",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--url"
+          ],
+          "description": "Migrate to eas submit --url <url>",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--apple-id"
+          ],
+          "description": "Migrate to eas.json's appleId property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--itc-team-id"
+          ],
+          "description": "Migrate to eas.json's appleTeamId property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--app-name"
+          ],
+          "description": "Migrate to eas.json's appName property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--company-name"
+          ],
+          "description": "Migrate to eas.json's companyName property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sku"
+          ],
+          "description": "Migrate to eas.json's sku property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--language"
+          ],
+          "description": "Migrate to eas.json's language property",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "url",
+      "aliases": [
+        "u"
+      ],
+      "description": "Log a URL for opening the project in Expo Go",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--dev-client"
+          ],
+          "description": "Experimental: Starts the bundler for use with the expo-development-client",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--scheme"
+          ],
+          "description": "Custom URI protocol to use with a development build",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-a",
+            "--android"
+          ],
+          "description": "Opens your app in Expo Go on a connected Android device",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-i",
+            "--ios"
+          ],
+          "description": "Opens your app in Expo Go in a currently running iOS simulator on your computer",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-w",
+            "--web"
+          ],
+          "description": "Opens your app in a web browser",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--host"
+          ],
+          "description": "Lan (default), tunnel, localhost. Type of host to use. \"tunnel\" allows you to view your link on other networks",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--tunnel"
+          ],
+          "description": "Same as --host tunnel",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--lan"
+          ],
+          "description": "Same as --host lan",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--localhost"
+          ],
+          "description": "Same as --host localhost",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--offline"
+          ],
+          "description": "Allows this command to run while offline",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "url:ipa",
+      "description": "Log the download URL for the standalone iOS binary",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--public-url"
+          ],
+          "description": "The URL of an externally hosted manifest (for self-hosted apps)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "url:apk",
+      "description": "Log the download URL for the standalone Android binary",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--public-url"
+          ],
+          "description": "The URL of an externally hosted manifest (for self-hosted apps)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "webhooks",
+      "description": "List all webhooks for a project",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "webhooks:add",
+      "description": "Add a webhook to a project",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--url"
+          ],
+          "description": "URL to request. (Required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--event"
+          ],
+          "description": "Event type that triggers the webhook. [build] (Required)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--secret"
+          ],
+          "description": "Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "webhooks:remove",
+      "description": "Delete a webhook",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "ID of the webhook to remove",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    },
+    {
+      "name": "webhooks:update",
+      "description": "Update an existing webhook",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Output usage information"
+        },
+        {
+          "names": [
+            "--id"
+          ],
+          "description": "ID of the webhook to update",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--url"
+          ],
+          "description": "URL the webhook will request",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--event"
+          ],
+          "description": "Event type that triggers the webhook. [build]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--secret"
+          ],
+          "description": "Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config"
+          ],
+          "description": "Deprecated: Use app.config.js to switch config files instead",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "path",
+          "template": "folders"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Output usage information"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Output the version number"
+    }
+  ]
+}

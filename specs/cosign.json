@@ -1,0 +1,5019 @@
+{
+  "name": "cosign",
+  "subcommands": [
+    {
+      "name": "attach",
+      "description": "Provides utilities for attaching artifacts to other artifacts in a registry",
+      "subcommands": [
+        {
+          "name": "attestation",
+          "description": "Attach attestation to the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--attestation"
+              ],
+              "description": "Path to the attestation envelope",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for attestation"
+            }
+          ]
+        },
+        {
+          "name": "sbom",
+          "description": "Attach sbom to the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--sbom"
+              ],
+              "description": "Path to the sbom, or {-} for stdin",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--type"
+              ],
+              "description": "Type of sbom (spdx|cyclonedx|syft)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for sbom"
+            }
+          ]
+        },
+        {
+          "name": "signature",
+          "description": "Attach signatures to the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--payload"
+              ],
+              "description": "Path to the payload covered by the signature (if using another format)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--signature"
+              ],
+              "description": "The signature, path to the signature, or {-} for stdin",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for signature"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for attach"
+        }
+      ]
+    },
+    {
+      "name": "attest",
+      "description": "Attest the supplied container image",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert"
+          ],
+          "description": "Path to the x509 certificate to include in the Signature",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force",
+            "-f"
+          ],
+          "description": "Skip warnings and confirmations"
+        },
+        {
+          "names": [
+            "--fulcio-url"
+          ],
+          "description": "[EXPERIMENTAL] address of sigstore PKI server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--identity-token"
+          ],
+          "description": "[EXPERIMENTAL] identity token to use for certificate from fulcio",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--insecure-skip-verify"
+          ],
+          "description": "[EXPERIMENTAL] skip verifying fulcio published to the SCT (this should only be used for testing)"
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Path to the private key file, KMS URI or Kubernetes Secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-upload"
+          ],
+          "description": "Do not upload the generated attestation"
+        },
+        {
+          "names": [
+            "--oidc-client-id"
+          ],
+          "description": "[EXPERIMENTAL] OIDC client ID for application",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-client-secret"
+          ],
+          "description": "[EXPERIMENTAL] OIDC client secret for application",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-issuer"
+          ],
+          "description": "[EXPERIMENTAL] OIDC provider to be used to issue ID token",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--predicate"
+          ],
+          "description": "Path to the predicate file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "If a multi-arch image is specified, additionally sign each discrete image"
+        },
+        {
+          "names": [
+            "--rekor-url"
+          ],
+          "description": "[EXPERIMENTAL] address of rekor STL server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--replace"
+          ]
+        },
+        {
+          "names": [
+            "--sk"
+          ],
+          "description": "Whether to use a hardware security key"
+        },
+        {
+          "names": [
+            "--slot"
+          ],
+          "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--type"
+          ],
+          "description": "Specify a predicate type (slsaprovenance|link|spdx|vuln|custom) or an URI",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for attest"
+        }
+      ]
+    },
+    {
+      "name": "clean",
+      "description": "Remove all signatures from an image",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force",
+            "-f"
+          ],
+          "description": "Do not prompt for confirmation"
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--type"
+          ],
+          "description": "A type of clean: <signature|attestation|sbom|all> (default: all)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for clean"
+        }
+      ]
+    },
+    {
+      "name": "completion",
+      "description": "Generate completion script",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for completion"
+        }
+      ]
+    },
+    {
+      "name": "copy",
+      "description": "Copy the supplied container image and signatures",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force",
+            "-f"
+          ],
+          "description": "Overwrite destination image(s), if necessary"
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--sig-only"
+          ],
+          "description": "Only copy the image signature"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for copy"
+        }
+      ]
+    },
+    {
+      "name": "dockerfile",
+      "description": "Provides utilities for discovering images in and performing operations on Dockerfiles",
+      "subcommands": [
+        {
+          "name": "verify",
+          "description": "Verify a signature on the base image specified in the Dockerfile",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--annotations",
+                "-a"
+              ],
+              "description": "Extra key=value pairs to sign",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--attachment"
+              ],
+              "description": "Related image attachment to sign (sbom), default none",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--base-image-only"
+              ],
+              "description": "Only verify the base image (the last FROM image in the Dockerfile)"
+            },
+            {
+              "names": [
+                "--cert"
+              ],
+              "description": "Path to the public certificate",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--cert-email"
+              ],
+              "description": "The email expected in a valid Fulcio certificate",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--cert-oidc-issuer"
+              ],
+              "description": "The OIDC issuer expected in a valid Fulcio certificate, e.g. https://token.actions.githubusercontent.com or https://oauth2.sigstore.dev/auth",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--check-claims"
+              ],
+              "description": "Whether to check the claims found"
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--key"
+              ],
+              "description": "Path to the public key file, KMS URI or Kubernetes Secret",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--local-image"
+              ],
+              "description": "Whether the specified image is a path to an image saved locally via 'cosign save'"
+            },
+            {
+              "names": [
+                "--output",
+                "-o"
+              ],
+              "description": "Output format for the signing image information (json|text)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--rekor-url"
+              ],
+              "description": "[EXPERIMENTAL] address of rekor STL server",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--signature"
+              ],
+              "description": "Signature content or path or remote URL",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--signature-digest-algorithm"
+              ],
+              "description": "Digest algorithm to use when processing a signature (sha224|sha256|sha384|sha512)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--sk"
+              ],
+              "description": "Whether to use a hardware security key"
+            },
+            {
+              "names": [
+                "--slot"
+              ],
+              "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for verify"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for dockerfile"
+        }
+      ]
+    },
+    {
+      "name": "download",
+      "description": "Provides utilities for downloading artifacts and attached artifacts in a registry",
+      "subcommands": [
+        {
+          "name": "attestation",
+          "description": "Download in-toto attestations from the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for attestation"
+            }
+          ]
+        },
+        {
+          "name": "sbom",
+          "description": "Download SBOMs from the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for sbom"
+            }
+          ]
+        },
+        {
+          "name": "signature",
+          "description": "Download signatures from the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for signature"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for download"
+        }
+      ]
+    },
+    {
+      "name": "generate",
+      "description": "Generates (unsigned) signature payloads from the supplied container image",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--annotations",
+            "-a"
+          ],
+          "description": "Extra key=value pairs to sign",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for generate"
+        }
+      ]
+    },
+    {
+      "name": "generate-key-pair",
+      "description": "Generates a key-pair",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--kms"
+          ],
+          "description": "Create key pair in KMS service to use for signing",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for generate-key-pair"
+        }
+      ]
+    },
+    {
+      "name": "import-key-pair",
+      "description": "Imports a PEM-encoded RSA or EC private key",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Import key pair to use for signing",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for import-key-pair"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "description": "Initializes SigStore root to retrieve trusted certificate and key targets for verification",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--mirror"
+          ],
+          "description": "GCS bucket to a SigStore TUF repository or HTTP(S) base URL",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--root"
+          ],
+          "description": "Path to trusted initial root. defaults to embedded root",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for initialize"
+        }
+      ]
+    },
+    {
+      "name": "load",
+      "description": "Load a signed image on disk to a remote registry",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--dir"
+          ],
+          "description": "Path to directory where the signed image is stored on disk",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for load"
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "description": "Log in to a registry",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--password",
+            "-p"
+          ],
+          "description": "Password",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--password-stdin"
+          ],
+          "description": "Take the password from stdin"
+        },
+        {
+          "names": [
+            "--username",
+            "-u"
+          ],
+          "description": "Username",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for login"
+        }
+      ]
+    },
+    {
+      "name": "manifest",
+      "description": "Provides utilities for discovering images in and performing operations on Kubernetes manifests",
+      "subcommands": [
+        {
+          "name": "verify",
+          "description": "Verify all signatures of images specified in the manifest",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--annotations",
+                "-a"
+              ],
+              "description": "Extra key=value pairs to sign",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--attachment"
+              ],
+              "description": "Related image attachment to sign (sbom), default none",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--cert"
+              ],
+              "description": "Path to the public certificate",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--cert-email"
+              ],
+              "description": "The email expected in a valid Fulcio certificate",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--cert-oidc-issuer"
+              ],
+              "description": "The OIDC issuer expected in a valid Fulcio certificate, e.g. https://token.actions.githubusercontent.com or https://oauth2.sigstore.dev/auth",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--check-claims"
+              ],
+              "description": "Whether to check the claims found"
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--key"
+              ],
+              "description": "Path to the public key file, KMS URI or Kubernetes Secret",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--local-image"
+              ],
+              "description": "Whether the specified image is a path to an image saved locally via 'cosign save'"
+            },
+            {
+              "names": [
+                "--output",
+                "-o"
+              ],
+              "description": "Output format for the signing image information (json|text)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--rekor-url"
+              ],
+              "description": "[EXPERIMENTAL] address of rekor STL server",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--signature"
+              ],
+              "description": "Signature content or path or remote URL",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--signature-digest-algorithm"
+              ],
+              "description": "Digest algorithm to use when processing a signature (sha224|sha256|sha384|sha512)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--sk"
+              ],
+              "description": "Whether to use a hardware security key"
+            },
+            {
+              "names": [
+                "--slot"
+              ],
+              "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for verify"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for manifest"
+        }
+      ]
+    },
+    {
+      "name": "piv-tool",
+      "description": "This cosign was not built with piv-tool support!",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for piv-tool"
+        }
+      ]
+    },
+    {
+      "name": "pkcs11-tool",
+      "description": "This cosign was not built with pkcs11-tool support!",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for pkcs11-tool"
+        }
+      ]
+    },
+    {
+      "name": "policy",
+      "description": "Subcommand to manage a keyless policy",
+      "subcommands": [
+        {
+          "name": "init",
+          "description": "Generate a new keyless policy",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--expires"
+              ],
+              "description": "Total expire duration in days",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--issuer"
+              ],
+              "description": "Trusted issuer to use for identity tokens, e.g. https://accounts.google.com",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--maintainers",
+                "-m"
+              ],
+              "description": "List of maintainers to add to the root policy",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--namespace"
+              ],
+              "description": "Registry namespace that the root policy belongs to",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--out"
+              ],
+              "description": "Output policy locally",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--threshold"
+              ],
+              "description": "Threshold for root policy signers",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for init"
+            }
+          ]
+        },
+        {
+          "name": "sign",
+          "description": "Sign a keyless policy",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--fulcio-url"
+              ],
+              "description": "[EXPERIMENTAL] address of sigstore PKI server",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--identity-token"
+              ],
+              "description": "[EXPERIMENTAL] identity token to use for certificate from fulcio",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--insecure-skip-verify"
+              ],
+              "description": "[EXPERIMENTAL] skip verifying fulcio published to the SCT (this should only be used for testing)"
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--namespace"
+              ],
+              "description": "Registry namespace that the root policy belongs to",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--oidc-client-id"
+              ],
+              "description": "[EXPERIMENTAL] OIDC client ID for application",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--oidc-client-secret"
+              ],
+              "description": "[EXPERIMENTAL] OIDC client secret for application",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--oidc-issuer"
+              ],
+              "description": "[EXPERIMENTAL] OIDC provider to be used to issue ID token",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--out"
+              ],
+              "description": "Output policy locally",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--rekor-url"
+              ],
+              "description": "[EXPERIMENTAL] address of rekor STL server",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for sign"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for policy"
+        }
+      ]
+    },
+    {
+      "name": "public-key",
+      "description": "Gets a public key from the key-pair",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Path to the private key file, KMS URI or Kubernetes Secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--outfile"
+          ],
+          "description": "Path to a payload file to use rather than generating one",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sk"
+          ],
+          "description": "Whether to use a hardware security key"
+        },
+        {
+          "names": [
+            "--slot"
+          ],
+          "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for public-key"
+        }
+      ]
+    },
+    {
+      "name": "save",
+      "description": "Save the container image and associated signatures to disk at the specified directory",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--dir"
+          ],
+          "description": "Path to dir where the signed image should be stored on disk",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for save"
+        }
+      ]
+    },
+    {
+      "name": "sign",
+      "description": "Sign the supplied container image",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--annotations",
+            "-a"
+          ],
+          "description": "Extra key=value pairs to sign",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--attachment"
+          ],
+          "description": "Related image attachment to sign (sbom), default none",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert"
+          ],
+          "description": "Path to the x509 certificate to include in the Signature",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--force",
+            "-f"
+          ],
+          "description": "Skip warnings and confirmations"
+        },
+        {
+          "names": [
+            "--fulcio-url"
+          ],
+          "description": "[EXPERIMENTAL] address of sigstore PKI server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--identity-token"
+          ],
+          "description": "[EXPERIMENTAL] identity token to use for certificate from fulcio",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--insecure-skip-verify"
+          ],
+          "description": "[EXPERIMENTAL] skip verifying fulcio published to the SCT (this should only be used for testing)"
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Path to the private key file, KMS URI or Kubernetes Secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-client-id"
+          ],
+          "description": "[EXPERIMENTAL] OIDC client ID for application",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-client-secret"
+          ],
+          "description": "[EXPERIMENTAL] OIDC client secret for application",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-issuer"
+          ],
+          "description": "[EXPERIMENTAL] OIDC provider to be used to issue ID token",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output-certificate"
+          ],
+          "description": "Write the certificate to FILE",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output-signature"
+          ],
+          "description": "Write the signature to FILE",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--payload"
+          ],
+          "description": "Path to a payload file to use rather than generating one",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--recursive",
+            "-r"
+          ],
+          "description": "If a multi-arch image is specified, additionally sign each discrete image"
+        },
+        {
+          "names": [
+            "--rekor-url"
+          ],
+          "description": "[EXPERIMENTAL] address of rekor STL server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sk"
+          ],
+          "description": "Whether to use a hardware security key"
+        },
+        {
+          "names": [
+            "--slot"
+          ],
+          "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--upload"
+          ],
+          "description": "Whether to upload the signature"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for sign"
+        }
+      ]
+    },
+    {
+      "name": "sign-blob",
+      "description": "Sign the supplied blob, outputting the base64-encoded signature to stdout",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--b64"
+          ],
+          "description": "Whether to base64 encode the output"
+        },
+        {
+          "names": [
+            "--bundle"
+          ],
+          "description": "Write everything required to verify the blob to a FILE",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--fulcio-url"
+          ],
+          "description": "[EXPERIMENTAL] address of sigstore PKI server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--identity-token"
+          ],
+          "description": "[EXPERIMENTAL] identity token to use for certificate from fulcio",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--insecure-skip-verify"
+          ],
+          "description": "[EXPERIMENTAL] skip verifying fulcio published to the SCT (this should only be used for testing)"
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Path to the private key file, KMS URI or Kubernetes Secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-client-id"
+          ],
+          "description": "[EXPERIMENTAL] OIDC client ID for application",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-client-secret"
+          ],
+          "description": "[EXPERIMENTAL] OIDC client secret for application",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oidc-issuer"
+          ],
+          "description": "[EXPERIMENTAL] OIDC provider to be used to issue ID token",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output"
+          ],
+          "description": "Write the signature to FILE",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output-certificate"
+          ],
+          "description": "Write the certificate to FILE",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--output-signature"
+          ],
+          "description": "Write the signature to FILE",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rekor-url"
+          ],
+          "description": "[EXPERIMENTAL] address of rekor STL server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sk"
+          ],
+          "description": "Whether to use a hardware security key"
+        },
+        {
+          "names": [
+            "--slot"
+          ],
+          "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for sign-blob"
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "description": "Display supply chain security related artifacts for an image such as signatures, SBOMs and attestations",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for tree"
+        }
+      ]
+    },
+    {
+      "name": "triangulate",
+      "description": "Outputs the located cosign image reference. This is the location cosign stores the specified artifact type",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--type"
+          ],
+          "description": "Related attachment to triangulate (attestation|sbom|signature), default signature",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for triangulate"
+        }
+      ]
+    },
+    {
+      "name": "upload",
+      "description": "Provides utilities for uploading artifacts to a registry",
+      "subcommands": [
+        {
+          "name": "blob",
+          "description": "Upload one or more blobs to the supplied container image address",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--ct"
+              ],
+              "description": "Content type to set",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--files",
+                "-f"
+              ],
+              "description": "<filepath>:[platform/arch]",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for blob"
+            }
+          ]
+        },
+        {
+          "name": "wasm",
+          "description": "Upload a wasm module to the supplied container image reference",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--allow-insecure-registry"
+              ],
+              "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+            },
+            {
+              "names": [
+                "--attachment-tag-prefix"
+              ],
+              "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--file",
+                "-f"
+              ],
+              "description": "Path to the wasm file to upload",
+              "takes_arg": true,
+              "is_required": true
+            },
+            {
+              "names": [
+                "--k8s-keychain"
+              ],
+              "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for wasm"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for upload"
+        }
+      ]
+    },
+    {
+      "name": "verify",
+      "description": "Verify a signature on the supplied container image",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--annotations",
+            "-a"
+          ],
+          "description": "Extra key=value pairs to sign",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--attachment"
+          ],
+          "description": "Related image attachment to sign (sbom), default none",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert"
+          ],
+          "description": "Path to the public certificate",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert-email"
+          ],
+          "description": "The email expected in a valid Fulcio certificate",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert-oidc-issuer"
+          ],
+          "description": "The OIDC issuer expected in a valid Fulcio certificate, e.g. https://token.actions.githubusercontent.com or https://oauth2.sigstore.dev/auth",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--check-claims"
+          ],
+          "description": "Whether to check the claims found"
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Path to the public key file, KMS URI or Kubernetes Secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--local-image"
+          ],
+          "description": "Whether the specified image is a path to an image saved locally via 'cosign save'"
+        },
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Output format for the signing image information (json|text)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rekor-url"
+          ],
+          "description": "[EXPERIMENTAL] address of rekor STL server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--signature"
+          ],
+          "description": "Signature content or path or remote URL",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--signature-digest-algorithm"
+          ],
+          "description": "Digest algorithm to use when processing a signature (sha224|sha256|sha384|sha512)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sk"
+          ],
+          "description": "Whether to use a hardware security key"
+        },
+        {
+          "names": [
+            "--slot"
+          ],
+          "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for verify"
+        }
+      ]
+    },
+    {
+      "name": "verify-attestation",
+      "description": "Verify an attestation on the supplied container image",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert"
+          ],
+          "description": "Path to the public certificate",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert-email"
+          ],
+          "description": "The email expected in a valid Fulcio certificate",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert-oidc-issuer"
+          ],
+          "description": "The OIDC issuer expected in a valid Fulcio certificate, e.g. https://token.actions.githubusercontent.com or https://oauth2.sigstore.dev/auth",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--check-claims"
+          ],
+          "description": "Whether to check the claims found"
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Path to the public key file, KMS URI or Kubernetes Secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--local-image"
+          ],
+          "description": "Whether the specified image is a path to an image saved locally via 'cosign save'"
+        },
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Output format for the signing image information (json|text)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--policy"
+          ],
+          "description": "Specify CUE or Rego files will be using for validation",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rekor-url"
+          ],
+          "description": "[EXPERIMENTAL] address of rekor STL server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sk"
+          ],
+          "description": "Whether to use a hardware security key"
+        },
+        {
+          "names": [
+            "--slot"
+          ],
+          "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--type"
+          ],
+          "description": "Specify a predicate type (slsaprovenance|link|spdx|vuln|custom) or an URI",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for verify-attestation"
+        }
+      ]
+    },
+    {
+      "name": "verify-blob",
+      "description": "Verify a signature on the supplied blob",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--allow-insecure-registry"
+          ],
+          "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+        },
+        {
+          "names": [
+            "--attachment-tag-prefix"
+          ],
+          "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--bundle"
+          ],
+          "description": "Path to bundle FILE",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert"
+          ],
+          "description": "Path to the public certificate",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert-email"
+          ],
+          "description": "The email expected in a valid Fulcio certificate",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cert-oidc-issuer"
+          ],
+          "description": "The OIDC issuer expected in a valid Fulcio certificate, e.g. https://token.actions.githubusercontent.com or https://oauth2.sigstore.dev/auth",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--k8s-keychain"
+          ],
+          "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+        },
+        {
+          "names": [
+            "--key"
+          ],
+          "description": "Path to the public key file, KMS URI or Kubernetes Secret",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rekor-url"
+          ],
+          "description": "[EXPERIMENTAL] address of rekor STL server",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--signature"
+          ],
+          "description": "Signature content or path or remote URL",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sk"
+          ],
+          "description": "Whether to use a hardware security key"
+        },
+        {
+          "names": [
+            "--slot"
+          ],
+          "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for verify-blob"
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Prints the version",
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--json"
+          ],
+          "description": "Print JSON instead of text"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for version"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Help about any command",
+      "subcommands": [
+        {
+          "name": "attach",
+          "description": "Provides utilities for attaching artifacts to other artifacts in a registry",
+          "subcommands": [
+            {
+              "name": "attestation",
+              "description": "Attach attestation to the supplied container image",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--attestation"
+                  ],
+                  "description": "Path to the attestation envelope",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for attestation"
+                }
+              ]
+            },
+            {
+              "name": "sbom",
+              "description": "Attach sbom to the supplied container image",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--sbom"
+                  ],
+                  "description": "Path to the sbom, or {-} for stdin",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--type"
+                  ],
+                  "description": "Type of sbom (spdx|cyclonedx|syft)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for sbom"
+                }
+              ]
+            },
+            {
+              "name": "signature",
+              "description": "Attach signatures to the supplied container image",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--payload"
+                  ],
+                  "description": "Path to the payload covered by the signature (if using another format)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--signature"
+                  ],
+                  "description": "The signature, path to the signature, or {-} for stdin",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for signature"
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "attest",
+          "description": "Attest the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "clean",
+          "description": "Remove all signatures from an image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "completion",
+          "description": "Generate completion script",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "copy",
+          "description": "Copy the supplied container image and signatures",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "dockerfile",
+          "description": "Provides utilities for discovering images in and performing operations on Dockerfiles",
+          "subcommands": [
+            {
+              "name": "verify",
+              "description": "Verify a signature on the base image specified in the Dockerfile",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--annotations",
+                    "-a"
+                  ],
+                  "description": "Extra key=value pairs to sign",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--attachment"
+                  ],
+                  "description": "Related image attachment to sign (sbom), default none",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--base-image-only"
+                  ],
+                  "description": "Only verify the base image (the last FROM image in the Dockerfile)"
+                },
+                {
+                  "names": [
+                    "--cert"
+                  ],
+                  "description": "Path to the public certificate",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--cert-email"
+                  ],
+                  "description": "The email expected in a valid Fulcio certificate",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--cert-oidc-issuer"
+                  ],
+                  "description": "The OIDC issuer expected in a valid Fulcio certificate, e.g. https://token.actions.githubusercontent.com or https://oauth2.sigstore.dev/auth",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--check-claims"
+                  ],
+                  "description": "Whether to check the claims found"
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--key"
+                  ],
+                  "description": "Path to the public key file, KMS URI or Kubernetes Secret",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--local-image"
+                  ],
+                  "description": "Whether the specified image is a path to an image saved locally via 'cosign save'"
+                },
+                {
+                  "names": [
+                    "--output",
+                    "-o"
+                  ],
+                  "description": "Output format for the signing image information (json|text)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--rekor-url"
+                  ],
+                  "description": "[EXPERIMENTAL] address of rekor STL server",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--signature"
+                  ],
+                  "description": "Signature content or path or remote URL",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--signature-digest-algorithm"
+                  ],
+                  "description": "Digest algorithm to use when processing a signature (sha224|sha256|sha384|sha512)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--sk"
+                  ],
+                  "description": "Whether to use a hardware security key"
+                },
+                {
+                  "names": [
+                    "--slot"
+                  ],
+                  "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for verify"
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "download",
+          "description": "Provides utilities for downloading artifacts and attached artifacts in a registry",
+          "subcommands": [
+            {
+              "name": "attestation",
+              "description": "Download in-toto attestations from the supplied container image",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for attestation"
+                }
+              ]
+            },
+            {
+              "name": "sbom",
+              "description": "Download SBOMs from the supplied container image",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for sbom"
+                }
+              ]
+            },
+            {
+              "name": "signature",
+              "description": "Download signatures from the supplied container image",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for signature"
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "generate",
+          "description": "Generates (unsigned) signature payloads from the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "generate-key-pair",
+          "description": "Generates a key-pair",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "import-key-pair",
+          "description": "Imports a PEM-encoded RSA or EC private key",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "initialize",
+          "description": "Initializes SigStore root to retrieve trusted certificate and key targets for verification",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "load",
+          "description": "Load a signed image on disk to a remote registry",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "login",
+          "description": "Log in to a registry",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "manifest",
+          "description": "Provides utilities for discovering images in and performing operations on Kubernetes manifests",
+          "subcommands": [
+            {
+              "name": "verify",
+              "description": "Verify all signatures of images specified in the manifest",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--annotations",
+                    "-a"
+                  ],
+                  "description": "Extra key=value pairs to sign",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--attachment"
+                  ],
+                  "description": "Related image attachment to sign (sbom), default none",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--cert"
+                  ],
+                  "description": "Path to the public certificate",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--cert-email"
+                  ],
+                  "description": "The email expected in a valid Fulcio certificate",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--cert-oidc-issuer"
+                  ],
+                  "description": "The OIDC issuer expected in a valid Fulcio certificate, e.g. https://token.actions.githubusercontent.com or https://oauth2.sigstore.dev/auth",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--check-claims"
+                  ],
+                  "description": "Whether to check the claims found"
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--key"
+                  ],
+                  "description": "Path to the public key file, KMS URI or Kubernetes Secret",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--local-image"
+                  ],
+                  "description": "Whether the specified image is a path to an image saved locally via 'cosign save'"
+                },
+                {
+                  "names": [
+                    "--output",
+                    "-o"
+                  ],
+                  "description": "Output format for the signing image information (json|text)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--rekor-url"
+                  ],
+                  "description": "[EXPERIMENTAL] address of rekor STL server",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--signature"
+                  ],
+                  "description": "Signature content or path or remote URL",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--signature-digest-algorithm"
+                  ],
+                  "description": "Digest algorithm to use when processing a signature (sha224|sha256|sha384|sha512)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--sk"
+                  ],
+                  "description": "Whether to use a hardware security key"
+                },
+                {
+                  "names": [
+                    "--slot"
+                  ],
+                  "description": "Security key slot to use for generated key (default: signature) (authentication|signature|card-authentication|key-management)",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for verify"
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "piv-tool",
+          "description": "This cosign was not built with piv-tool support!",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "pkcs11-tool",
+          "description": "This cosign was not built with pkcs11-tool support!",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "policy",
+          "description": "Subcommand to manage a keyless policy",
+          "subcommands": [
+            {
+              "name": "init",
+              "description": "Generate a new keyless policy",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--expires"
+                  ],
+                  "description": "Total expire duration in days",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--issuer"
+                  ],
+                  "description": "Trusted issuer to use for identity tokens, e.g. https://accounts.google.com",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--maintainers",
+                    "-m"
+                  ],
+                  "description": "List of maintainers to add to the root policy",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--namespace"
+                  ],
+                  "description": "Registry namespace that the root policy belongs to",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--out"
+                  ],
+                  "description": "Output policy locally",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--threshold"
+                  ],
+                  "description": "Threshold for root policy signers",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for init"
+                }
+              ]
+            },
+            {
+              "name": "sign",
+              "description": "Sign a keyless policy",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--fulcio-url"
+                  ],
+                  "description": "[EXPERIMENTAL] address of sigstore PKI server",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--identity-token"
+                  ],
+                  "description": "[EXPERIMENTAL] identity token to use for certificate from fulcio",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--insecure-skip-verify"
+                  ],
+                  "description": "[EXPERIMENTAL] skip verifying fulcio published to the SCT (this should only be used for testing)"
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--namespace"
+                  ],
+                  "description": "Registry namespace that the root policy belongs to",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--oidc-client-id"
+                  ],
+                  "description": "[EXPERIMENTAL] OIDC client ID for application",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--oidc-client-secret"
+                  ],
+                  "description": "[EXPERIMENTAL] OIDC client secret for application",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--oidc-issuer"
+                  ],
+                  "description": "[EXPERIMENTAL] OIDC provider to be used to issue ID token",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--out"
+                  ],
+                  "description": "Output policy locally",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--rekor-url"
+                  ],
+                  "description": "[EXPERIMENTAL] address of rekor STL server",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for sign"
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "public-key",
+          "description": "Gets a public key from the key-pair",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "save",
+          "description": "Save the container image and associated signatures to disk at the specified directory",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "sign",
+          "description": "Sign the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "sign-blob",
+          "description": "Sign the supplied blob, outputting the base64-encoded signature to stdout",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "tree",
+          "description": "Display supply chain security related artifacts for an image such as signatures, SBOMs and attestations",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "triangulate",
+          "description": "Outputs the located cosign image reference. This is the location cosign stores the specified artifact type",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "upload",
+          "description": "Provides utilities for uploading artifacts to a registry",
+          "subcommands": [
+            {
+              "name": "blob",
+              "description": "Upload one or more blobs to the supplied container image address",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--ct"
+                  ],
+                  "description": "Content type to set",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--files",
+                    "-f"
+                  ],
+                  "description": "<filepath>:[platform/arch]",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for blob"
+                }
+              ]
+            },
+            {
+              "name": "wasm",
+              "description": "Upload a wasm module to the supplied container image reference",
+              "options": [
+                {
+                  "names": [
+                    "--output-file"
+                  ],
+                  "description": "Log output to a file",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--timeout",
+                    "-t"
+                  ],
+                  "description": "Timeout for commands",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--verbose",
+                    "-d"
+                  ],
+                  "description": "Log debug output"
+                },
+                {
+                  "names": [
+                    "--allow-insecure-registry"
+                  ],
+                  "description": "Whether to allow insecure connections to registries. Don't use this for anything but testing"
+                },
+                {
+                  "names": [
+                    "--attachment-tag-prefix"
+                  ],
+                  "description": "Optional custom prefix to use for attached image tags. Attachment images are tagged as: `[AttachmentTagPrefix]sha256-[TargetImageDigest].[AttachmentName]`",
+                  "takes_arg": true
+                },
+                {
+                  "names": [
+                    "--file",
+                    "-f"
+                  ],
+                  "description": "Path to the wasm file to upload",
+                  "takes_arg": true,
+                  "is_required": true
+                },
+                {
+                  "names": [
+                    "--k8s-keychain"
+                  ],
+                  "description": "Whether to use the kubernetes keychain instead of the default keychain (supports workload identity)"
+                },
+                {
+                  "names": [
+                    "--help",
+                    "-h"
+                  ],
+                  "description": "Help for wasm"
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "verify",
+          "description": "Verify a signature on the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "verify-attestation",
+          "description": "Verify an attestation on the supplied container image",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "verify-blob",
+          "description": "Verify a signature on the supplied blob",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        },
+        {
+          "name": "version",
+          "description": "Prints the version",
+          "options": [
+            {
+              "names": [
+                "--output-file"
+              ],
+              "description": "Log output to a file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout",
+                "-t"
+              ],
+              "description": "Timeout for commands",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--verbose",
+                "-d"
+              ],
+              "description": "Log debug output"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Help for version"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--output-file"
+          ],
+          "description": "Log output to a file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--timeout",
+            "-t"
+          ],
+          "description": "Timeout for commands",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-d"
+          ],
+          "description": "Log debug output"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ],
+          "description": "Help for help"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--output-file"
+      ],
+      "description": "Log output to a file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--timeout",
+        "-t"
+      ],
+      "description": "Timeout for commands",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--verbose",
+        "-d"
+      ],
+      "description": "Log debug output"
+    },
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Help for cosign"
+    }
+  ]
+}

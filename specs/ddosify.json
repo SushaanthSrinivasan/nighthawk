@@ -1,0 +1,109 @@
+{
+  "name": "ddosify",
+  "description": "High-performance load testing tool, written in Golang",
+  "options": [
+    {
+      "names": [
+        "-t"
+      ],
+      "description": "Target website URL. Example: https://ddosify.com",
+      "takes_arg": true,
+      "is_required": true
+    },
+    {
+      "names": [
+        "-n"
+      ],
+      "description": "Total request count. Default: 100",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-d"
+      ],
+      "description": "Test duration in seconds. Default: 10",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-l"
+      ],
+      "description": "Type of the request. Default: linear",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-m"
+      ],
+      "description": "HTTP Methods. Default: GET",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-b"
+      ],
+      "description": "Body for the request",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-a"
+      ],
+      "description": "Basic authentication",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-h"
+      ],
+      "description": "Headers of the request. You can provide multiple headers",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-T"
+      ],
+      "description": "Timeout in seconds. Default: 5",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-P"
+      ],
+      "description": "Proxy address",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-o"
+      ],
+      "description": "Test result output format. Default: stdout",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config"
+      ],
+      "description": "Config file of the load test i.e example_ddosify_config.json",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Prints version, git commit, built date (utc)"
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Iterates the scenario once and prints curl-like verbose result"
+    },
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Prints CLI flags"
+    }
+  ]
+}

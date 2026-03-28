@@ -1,0 +1,177 @@
+{
+  "name": "asciinema",
+  "description": "Terminal session recorder",
+  "subcommands": [
+    {
+      "name": "rec",
+      "description": "Start a recording",
+      "options": [
+        {
+          "names": [
+            "--stdin"
+          ],
+          "description": "Enable stdin (keyboard) recording"
+        },
+        {
+          "names": [
+            "--append"
+          ],
+          "description": "Append to existing recording"
+        },
+        {
+          "names": [
+            "--raw"
+          ],
+          "description": "Save raw output, without timing or other metadata"
+        },
+        {
+          "names": [
+            "--overwrite"
+          ],
+          "description": "Overwrite the recording if it already exists"
+        },
+        {
+          "names": [
+            "-c",
+            "--command"
+          ],
+          "description": "Specify command to record, defaults to $SHELL",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-e",
+            "--env"
+          ],
+          "description": "List of environment variables to capture",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--title"
+          ],
+          "description": "Specify the title of the asciicast",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-i",
+            "--idle-time-limit"
+          ],
+          "description": "Limit recorded terminal inactivity to max amount of seconds",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cols"
+          ],
+          "description": "Override terminal columns for recorded process",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rows"
+          ],
+          "description": "Override terminal rows for recorded process",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-y",
+            "--yes"
+          ],
+          "description": "Answer “yes” to all prompts (e.g. upload confirmation)"
+        },
+        {
+          "names": [
+            "-q",
+            "--quiet"
+          ],
+          "description": "Be quiet, suppress all notices/warnings (implies -y)"
+        }
+      ],
+      "args": [
+        {
+          "name": "filename"
+        }
+      ]
+    },
+    {
+      "name": "play",
+      "description": "Replay recorded asciicast in a terminal",
+      "options": [
+        {
+          "names": [
+            "-i",
+            "--idle-time-linit"
+          ],
+          "description": "Limit replayed terminal inactivity",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-s",
+            "--speed"
+          ],
+          "description": "Playback speed",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "file or URL",
+          "suggestions": [
+            "-"
+          ],
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "cat",
+      "description": "Print full output of recorded asciicast to a terminal",
+      "args": [
+        {
+          "name": "file or URL",
+          "suggestions": [
+            "-"
+          ],
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "upload",
+      "description": "Upload recorded asciicast to asciinema.org site",
+      "args": [
+        {
+          "name": "file or URL",
+          "suggestions": [
+            "-"
+          ],
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "description": "Link and manage your install ID with your asciinema.org user account"
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Ouput version information and exit"
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Output help message and exit"
+    }
+  ]
+}

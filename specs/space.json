@@ -1,0 +1,349 @@
+{
+  "name": "space",
+  "description": "Deta Space CLI for mananging Deta Space projects",
+  "subcommands": [
+    {
+      "name": "completion",
+      "description": "Generate the autocompletion script for the specified shell",
+      "subcommands": [
+        {
+          "name": "bash",
+          "description": "Generate the autocompletion script for bash",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        },
+        {
+          "name": "fish",
+          "description": "Generate the autocompletion script for fish",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        },
+        {
+          "name": "powershell",
+          "description": "Generate the autocompletion script for powershell",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        },
+        {
+          "name": "zsh",
+          "description": "Generate the autocompletion script for zsh",
+          "options": [
+            {
+              "names": [
+                "--no-descriptions"
+              ],
+              "description": "Disable completion descriptions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "description": "Link code to project",
+      "options": [
+        {
+          "names": [
+            "--dir",
+            "-d"
+          ],
+          "description": "Src of project to link",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id",
+            "-i"
+          ],
+          "description": "Project id of project to link",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "description": "Login to space"
+    },
+    {
+      "name": "new",
+      "description": "Create new project",
+      "options": [
+        {
+          "names": [
+            "--blank",
+            "-b"
+          ],
+          "description": "Create blank project"
+        },
+        {
+          "names": [
+            "--dir",
+            "-d"
+          ],
+          "description": "Src of project to release",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--name",
+            "-n"
+          ],
+          "description": "Project name",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "open",
+      "description": "Open current project in browser",
+      "options": [
+        {
+          "names": [
+            "--dir",
+            "-d"
+          ],
+          "description": "Src of project to open",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id",
+            "-i"
+          ],
+          "description": "Project id of project to open",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "push",
+      "description": "Push code for project",
+      "options": [
+        {
+          "names": [
+            "--dir",
+            "-d"
+          ],
+          "description": "Src of project to push",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id",
+            "-i"
+          ],
+          "description": "Project id of project to push",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--open",
+            "-o"
+          ],
+          "description": "Open builder instance/project in browser after push"
+        },
+        {
+          "names": [
+            "--skip-logs"
+          ],
+          "description": "Skip following logs after push"
+        },
+        {
+          "names": [
+            "--tag",
+            "-t"
+          ],
+          "description": "Tag to identify this push",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "release",
+      "description": "Create release for a project",
+      "options": [
+        {
+          "names": [
+            "--confirm",
+            "-c"
+          ],
+          "description": "Release latest revision"
+        },
+        {
+          "names": [
+            "--dir",
+            "-d"
+          ],
+          "description": "Src of project to release",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--id",
+            "-i"
+          ],
+          "description": "Project id of an existing project",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--listed",
+            "-l"
+          ],
+          "description": "Listed on discovery"
+        },
+        {
+          "names": [
+            "--notes",
+            "-n"
+          ],
+          "description": "Release notes",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rid",
+            "-r"
+          ],
+          "description": "Revision id for release",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--version",
+            "-v"
+          ],
+          "description": "Version for the release",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "validate",
+      "description": "Validate spacefile in dir",
+      "options": [
+        {
+          "names": [
+            "--dir",
+            "-d"
+          ],
+          "description": "Src of project to validate",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Space CLI version",
+      "subcommands": [
+        {
+          "name": "upgrade",
+          "description": "Upgrade Space CLI version",
+          "options": [
+            {
+              "names": [
+                "--version",
+                "-v"
+              ],
+              "description": "Version number",
+              "takes_arg": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Help about any command",
+      "subcommands": [
+        {
+          "name": "completion",
+          "description": "Generate the autocompletion script for the specified shell",
+          "subcommands": [
+            {
+              "name": "bash",
+              "description": "Generate the autocompletion script for bash"
+            },
+            {
+              "name": "fish",
+              "description": "Generate the autocompletion script for fish"
+            },
+            {
+              "name": "powershell",
+              "description": "Generate the autocompletion script for powershell"
+            },
+            {
+              "name": "zsh",
+              "description": "Generate the autocompletion script for zsh"
+            }
+          ]
+        },
+        {
+          "name": "link",
+          "description": "Link code to project"
+        },
+        {
+          "name": "login",
+          "description": "Login to space"
+        },
+        {
+          "name": "new",
+          "description": "Create new project"
+        },
+        {
+          "name": "open",
+          "description": "Open current project in browser"
+        },
+        {
+          "name": "push",
+          "description": "Push code for project"
+        },
+        {
+          "name": "release",
+          "description": "Create release for a project"
+        },
+        {
+          "name": "validate",
+          "description": "Validate spacefile in dir"
+        },
+        {
+          "name": "version",
+          "description": "Space CLI version",
+          "subcommands": [
+            {
+              "name": "upgrade",
+              "description": "Upgrade Space CLI version"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Display help"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "name": "graphcdn",
+  "description": "GraphCDN CLI",
+  "subcommands": [
+    {
+      "name": "login",
+      "description": "Authenticate the CLI",
+      "options": [
+        {
+          "names": [
+            "--token"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "init",
+      "description": "Create a new GraphCDN service",
+      "options": [
+        {
+          "names": [
+            "-y",
+            "--yes"
+          ],
+          "description": "Skip all the questions and just init"
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pull",
+      "description": "Pull the latest service configuration",
+      "options": [
+        {
+          "names": [
+            "--service"
+          ],
+          "description": "Name of the service to pull from (only required without graphcdn.yml)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--env"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "push",
+      "description": "Push and deploy the latest app configuration",
+      "options": [
+        {
+          "names": [
+            "--env"
+          ],
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--help",
+            "-h"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "field",
+          "suggestions": [
+            "schema",
+            "rules"
+          ]
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ]
+    }
+  ]
+}

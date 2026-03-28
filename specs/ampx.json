@@ -1,0 +1,422 @@
+{
+  "name": "ampx",
+  "description": "CLI for Amplify Gen 2",
+  "subcommands": [
+    {
+      "name": "sandbox",
+      "description": "Deploy to your personal cloud sandbox",
+      "subcommands": [
+        {
+          "name": "delete",
+          "description": "Delete your personal cloud sandbox",
+          "options": [
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Name to distinguish between sandbox environments",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--profile"
+              ],
+              "description": "AWS profile name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-y",
+                "--yes"
+              ],
+              "description": "Do not ask for confirmation before deleting"
+            }
+          ]
+        },
+        {
+          "name": "secret",
+          "description": "Manage backend secrets for your personal cloud sandbox",
+          "subcommands": [
+            {
+              "name": "set",
+              "description": "Set a secret",
+              "options": [
+                {
+                  "names": [
+                    "--profile"
+                  ],
+                  "description": "AWS profile name",
+                  "takes_arg": true
+                }
+              ],
+              "args": [
+                {
+                  "name": "secret_name"
+                }
+              ]
+            },
+            {
+              "name": "remove",
+              "description": "Remove a secret",
+              "options": [
+                {
+                  "names": [
+                    "--profile"
+                  ],
+                  "description": "AWS profile name",
+                  "takes_arg": true
+                }
+              ],
+              "args": [
+                {
+                  "name": "secret_name"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List all available secrets",
+              "options": [
+                {
+                  "names": [
+                    "--profile"
+                  ],
+                  "description": "AWS profile name",
+                  "takes_arg": true
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "View details of a secret",
+              "options": [
+                {
+                  "names": [
+                    "--profile"
+                  ],
+                  "description": "AWS profile name",
+                  "takes_arg": true
+                }
+              ],
+              "args": [
+                {
+                  "name": "secret_name"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--dir-to-watch"
+          ],
+          "description": "Directory to watch for file changes",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--exclude"
+          ],
+          "description": "Paths or glob patterns to ignore",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--identifier"
+          ],
+          "description": "Name to distinguish between sandbox environments",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--outputs-out-dir"
+          ],
+          "description": "Directory where client config file is written",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--outputs-format"
+          ],
+          "description": "Format of the client config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--outputs-version"
+          ],
+          "description": "Version of the configuration",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--profile"
+          ],
+          "description": "AWS profile name",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--stream-function-logs"
+          ],
+          "description": "Stream function execution logs",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--logs-filter"
+          ],
+          "description": "Regex pattern to filter logs",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--logs-out-file"
+          ],
+          "description": "File to append streaming logs",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "generate",
+      "description": "Generate supplemental information or code",
+      "subcommands": [
+        {
+          "name": "outputs",
+          "description": "Generate backend outputs file",
+          "options": [
+            {
+              "names": [
+                "--profile"
+              ],
+              "description": "AWS profile name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--format"
+              ],
+              "description": "Format of the configuration",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--out-dir"
+              ],
+              "description": "Directory where config is written",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--outputs-version"
+              ],
+              "description": "Version of the configuration",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--branch"
+              ],
+              "description": "Git branch name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--app-id"
+              ],
+              "description": "Amplify App ID",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "graphql-client-code",
+          "description": "Generate GraphQL statements and types",
+          "options": [
+            {
+              "names": [
+                "--out"
+              ],
+              "description": "Directory where config is written",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--format"
+              ],
+              "description": "Format of the GraphQL client code",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--model-target"
+              ],
+              "description": "Modelgen export target",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--statement-target"
+              ],
+              "description": "Graphql codegen statement export target",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--type-target"
+              ],
+              "description": "Graphql-codegen type export target",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--all"
+              ],
+              "description": "Show hidden options"
+            },
+            {
+              "names": [
+                "--profile"
+              ],
+              "description": "AWS profile name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--debug"
+              ],
+              "description": "Print debug logs to the console"
+            },
+            {
+              "names": [
+                "--statement-max-depth"
+              ],
+              "description": "Maximum depth of the generated GraphQL statements",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "forms",
+          "description": "Generate React form components",
+          "options": [
+            {
+              "names": [
+                "--out-dir"
+              ],
+              "description": "Directory where generated forms are written",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--models"
+              ],
+              "description": "Model names to generate",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--profile"
+              ],
+              "description": "AWS profile name",
+              "takes_arg": true
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--stack"
+          ],
+          "description": "CloudFormation stack name",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--app-id"
+          ],
+          "description": "Amplify App ID",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--branch"
+          ],
+          "description": "Git branch name",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--profile"
+          ],
+          "description": "AWS profile name",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "description": "Generate system information for troubleshooting"
+    },
+    {
+      "name": "pipeline-deploy",
+      "description": "Deploy Amplify project in a CI/CD pipeline",
+      "options": [
+        {
+          "names": [
+            "--branch"
+          ],
+          "description": "Name of the git branch being deployed",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--app-id"
+          ],
+          "description": "The app id of the target Amplify app",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--outputs-out-dir"
+          ],
+          "description": "Directory where client config file is written",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--outputs-version"
+          ],
+          "description": "Version of the configuration",
+          "takes_arg": true
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Display help information"
+    },
+    {
+      "names": [
+        "--version",
+        "-v"
+      ],
+      "description": "Display version information"
+    },
+    {
+      "names": [
+        "--profile"
+      ],
+      "description": "AWS profile name",
+      "takes_arg": true
+    }
+  ]
+}

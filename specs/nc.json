@@ -1,0 +1,255 @@
+{
+  "name": "nc",
+  "description": "Arbitrary TCP and UDP connections and listens",
+  "options": [
+    {
+      "names": [
+        "-4"
+      ],
+      "description": "Forces nc to use IPv4 addresses only",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-6"
+      ],
+      "description": "Forces nc to use IPv6 addresses only",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-A"
+      ],
+      "description": "Set SO_RECV_ANYIF on socket",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-b"
+      ],
+      "description": "Specifies the interface to bind the socket to",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-c"
+      ],
+      "description": "Send CRLF as line-ending",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-D"
+      ],
+      "description": "Enable debugging on the socket",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-C"
+      ],
+      "description": "Force nc not to use cellular data context",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-d"
+      ],
+      "description": "Do not attempt to read from stdin",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-h"
+      ],
+      "description": "Prints out nc help",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-i"
+      ],
+      "description": "Specifies a delay time interval between lines of text sent and received",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-G"
+      ],
+      "description": "TCP connection timeout in seconds",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-H"
+      ],
+      "description": "Initial TCP keep alive timeout in seconds",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-I"
+      ],
+      "description": "Interval for repeating TCP keep alive timeout in seconds",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-J"
+      ],
+      "description": "Number of times to repeat TCP keep alive packets",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-k"
+      ],
+      "description": "Force nc to stay listening for another connection after its current connection is completed",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-l"
+      ],
+      "description": "Used to specify that nc should listen for an incoming connection rather than initiate a connection to a remote host",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-L"
+      ],
+      "description": "Number of prbes to send to the peer before declaring that the peer is not reachable",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-n"
+      ],
+      "description": "Do not do any DNS or service lookups on any specified addresses, hostnames or ports",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-p"
+      ],
+      "description": "Specifies the source port nc should use, subject to privilege restrictions and availability",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-r"
+      ],
+      "description": "Specifies that source and/or destination ports should be chosen randomly instead of sequentially within a range or in the order that the system assigns them",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-s"
+      ],
+      "description": "Specifies the IP of the interface which is used to send the packets",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-t"
+      ],
+      "description": "Causes nc to send RFC 854 DON'T and WON'T responses to RFC 854 DO and WILL requests",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-U"
+      ],
+      "description": "Specifies to use Unix Domain Sockets",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-u"
+      ],
+      "description": "Use UDP instead of the default option of TCP",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-v"
+      ],
+      "description": "Have nc give more verbose output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-w"
+      ],
+      "description": "If a connection and stdin are idle for more than timeout seconds, then the connection is silently closed",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-X"
+      ],
+      "description": "Requests that nc should use the specified protocol when talking to the proxy server",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-x"
+      ],
+      "description": "Requests that nc should connect to hostname using a proxy at proxy_address and port",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-z"
+      ],
+      "description": "Specifies that nc should just scan for listening daemons, without sending any data to them",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--apple-delegate-pid"
+      ],
+      "description": "Requests that nc should delegate the socket for the specified PID",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--apple-delegate-uuid"
+      ],
+      "description": "Requests that nc should delegate the socket for the specified UUID",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--apple-ext-bk-idle"
+      ],
+      "description": "Requests that nc marks its socket for extended background idle time when the process becomes suspended",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--apple-nowakefromsleep"
+      ],
+      "description": "When the parameter n is greater than 0, requests that nc marks its socket to exlude the local port from the list of opened ports that is queried by drivers when the system goes to sleep args",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ecn"
+      ],
+      "description": "Requests that nc marks to use the socket option TCP_ECN_MODE to set the ECN mode",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "hostname",
+      "description": "Hostname or IP address to listen on or connect to"
+    },
+    {
+      "name": "port",
+      "description": "Port to listen on or connect to",
+      "is_variadic": true
+    }
+  ]
+}

@@ -1,0 +1,636 @@
+{
+  "name": "pre-commit",
+  "description": "Pre-commit",
+  "subcommands": [
+    {
+      "name": "autoupdate",
+      "description": "Auto-update pre-commit config to the latest repos' versions",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--bleeding-edge"
+          ],
+          "description": "Update to the bleeding edge of `master` instead of the latest tagged version (the default behavior)"
+        },
+        {
+          "names": [
+            "--freeze"
+          ],
+          "description": "Store 'frozen' hashes in `rev` instead of tag names"
+        },
+        {
+          "names": [
+            "--repo"
+          ],
+          "description": "Only update this repository -- may be specified multiple times",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "clean",
+      "description": "Clean out pre-commit files",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "gc",
+      "description": "Clean unused cached repos",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "init-templatedir",
+      "description": "Install hook script in a directory intended for use with `git config init.templateDir`",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--hook-type"
+          ],
+          "description": "Type of hook to install",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-allow-missing-config"
+          ],
+          "description": "Assume cloned repos should have a `pre-commit` config"
+        }
+      ]
+    },
+    {
+      "name": "install",
+      "description": "Install the pre-commit script",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-f",
+            "--overwrite"
+          ],
+          "description": "Overwrite existing hooks / remove migration mode"
+        },
+        {
+          "names": [
+            "install-hooks"
+          ],
+          "description": "Whether to install hook environments for all environments in the config file"
+        },
+        {
+          "names": [
+            "-t",
+            "--hook-type"
+          ],
+          "description": "Type of hook to install",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--allow-missing-config"
+          ],
+          "description": "Whether to allow a missing `pre-commit` configuration file or exit with a failure code"
+        }
+      ]
+    },
+    {
+      "name": "migrate-config",
+      "description": "Migrate list configuration to new map configuration",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "run",
+      "description": "Run hooks",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-v"
+          ]
+        },
+        {
+          "names": [
+            "--all-files",
+            "-a"
+          ],
+          "description": "Run all files in the repo"
+        },
+        {
+          "names": [
+            "--files"
+          ],
+          "description": "Specific filenames to run hooks on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--show-diff-on-failure"
+          ],
+          "description": "When hooks fail, run `git diff` directly afterward"
+        },
+        {
+          "names": [
+            "--hook-stage"
+          ],
+          "description": "The stage during which the hook is fired",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-branch"
+          ],
+          "description": "Remote branch ref used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--local-branch"
+          ],
+          "description": "Local branch ref used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--from-ref",
+            "--source",
+            "-s"
+          ],
+          "description": "Represents the original ref in a `from_ref...to_ref` diff expression. For `pre-push` hooks, this represents the branch you are pushing to. For `post-checkout` hooks, this represents the branch that wa",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--to-ref",
+            "--origin",
+            "-o"
+          ],
+          "description": "Represents the destination ref in a `from_ref...to_ref` diff expression. For `pre-push` hooks, this represents the branch being pushed. For `post-checkout` hooks, this represents the branch that is no",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--commit-msg-filename"
+          ],
+          "description": "Filename to check when running during `commit-msg`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-name"
+          ],
+          "description": "Remote name used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-url"
+          ],
+          "description": "Remote URL used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--checkout-type"
+          ],
+          "description": "Indicates whether the checkout was a branch checkout (changing branches, flag=1) or a file checkout (retrieving a file from the index, flag=0)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--is-squash-merge"
+          ],
+          "description": "During a post-merge hook, indicates whether the merge was a squash merge",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rewrite-command"
+          ],
+          "description": "During a post-rewrite hook, specifies the command that invoked the rewrite",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "hook",
+          "description": "A single hook-id to run"
+        }
+      ]
+    },
+    {
+      "name": "sample-config",
+      "description": "Produce a sample .pre-commit-config.yaml file",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "try-repo",
+      "description": "Try the hooks in a repository, useful for developing new hooks",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--verbose",
+            "-v"
+          ]
+        },
+        {
+          "names": [
+            "--all-files",
+            "-a"
+          ],
+          "description": "Run all files in the repo"
+        },
+        {
+          "names": [
+            "--files"
+          ],
+          "description": "Specific filenames to run hooks on",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--show-diff-on-failure"
+          ],
+          "description": "When hooks fail, run `git diff` directly afterward"
+        },
+        {
+          "names": [
+            "--hook-stage"
+          ],
+          "description": "The stage during which the hook is fired",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-branch"
+          ],
+          "description": "Remote branch ref used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--local-branch"
+          ],
+          "description": "Local branch ref used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--from-ref",
+            "--source",
+            "-s"
+          ],
+          "description": "Represents the original ref in a `from_ref...to_ref` diff expression. For `pre-push` hooks, this represents the branch you are pushing to. For `post-checkout` hooks, this represents the branch that wa",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--to-ref",
+            "--origin",
+            "-o"
+          ],
+          "description": "Represents the destination ref in a `from_ref...to_ref` diff expression. For `pre-push` hooks, this represents the branch being pushed. For `post-checkout` hooks, this represents the branch that is no",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--commit-msg-filename"
+          ],
+          "description": "Filename to check when running during `commit-msg`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-name"
+          ],
+          "description": "Remote name used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--remote-url"
+          ],
+          "description": "Remote URL used by `git push`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--checkout-type"
+          ],
+          "description": "Indicates whether the checkout was a branch checkout (changing branches, flag=1) or a file checkout (retrieving a file from the index, flag=0)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--is-squash-merge"
+          ],
+          "description": "During a post-merge hook, indicates whether the merge was a squash merge",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--rewrite-command"
+          ],
+          "description": "During a post-rewrite hook, specifies the command that invoked the rewrite",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--ref",
+            "--rev"
+          ],
+          "description": "Manually select a rev to run against, otherwise the `HEAD` revision will be used",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "repo",
+          "description": "Repository to source hooks from"
+        },
+        {
+          "name": "hook",
+          "description": "A single hook-id to run"
+        }
+      ]
+    },
+    {
+      "name": "uninstall",
+      "description": "Uninstall the pre-commit script",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-t",
+            "--hook-type"
+          ],
+          "description": "Type of hook to install",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Show help for a specific command",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Show help message and exit"
+        },
+        {
+          "names": [
+            "--color"
+          ],
+          "description": "Whether to use color in output. Defaults to `auto`",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--config",
+            "-c"
+          ],
+          "description": "Path to alternate config file",
+          "takes_arg": true
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Show help message and exit"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Show program's version number and exit"
+    }
+  ]
+}

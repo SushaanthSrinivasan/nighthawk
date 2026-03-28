@@ -1,0 +1,184 @@
+{
+  "name": "pkill",
+  "description": "Send  the  specified  signal  (by default SIGTERM) to each specified process",
+  "options": [
+    {
+      "names": [
+        "--signal"
+      ],
+      "description": "Signal to send (either number or name)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-q",
+        "--queue"
+      ],
+      "description": "Integer value to be sent with the signal",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-e",
+        "--echo"
+      ],
+      "description": "Display what is killed"
+    },
+    {
+      "names": [
+        "-f",
+        "--full"
+      ],
+      "description": "Use full process name to match"
+    },
+    {
+      "names": [
+        "-g",
+        "--pgroup"
+      ],
+      "description": "Match listed process group IDs",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-G",
+        "--group"
+      ],
+      "description": "Match real group IDs",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-i",
+        "--ignore-case"
+      ],
+      "description": "Match case insensitively"
+    },
+    {
+      "names": [
+        "-n",
+        "--newest"
+      ],
+      "description": "Select most recently started"
+    },
+    {
+      "names": [
+        "-o",
+        "--oldest"
+      ],
+      "description": "Select least recently started"
+    },
+    {
+      "names": [
+        "-O",
+        "--older"
+      ],
+      "description": "Select where older than seconds",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-P",
+        "--parent"
+      ],
+      "description": "Match only child processes of the given parent",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-s",
+        "--session"
+      ],
+      "description": "Match session IDs",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-t",
+        "--terminal"
+      ],
+      "description": "Match by controlling terminal",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-u",
+        "--euid"
+      ],
+      "description": "Match by effective IDs",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-U",
+        "--uid"
+      ],
+      "description": "Match by real IDs",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-x",
+        "--exact"
+      ],
+      "description": "Match exactly with the command name"
+    },
+    {
+      "names": [
+        "-F",
+        "--pidfile"
+      ],
+      "description": "Read PIDs from file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-L",
+        "logpidfile"
+      ],
+      "description": "Fail if PID file is not locked"
+    },
+    {
+      "names": [
+        "-r",
+        "--runstates"
+      ],
+      "description": "Match runstates",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ns"
+      ],
+      "description": "Match the processes that belong to a specified PID",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--nslist"
+      ],
+      "description": "List which namespaces will be considered for the --ns option",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Output help message and exit"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Output version information and exit"
+    }
+  ],
+  "args": [
+    {
+      "name": "pattern",
+      "description": "Specifies an Extended Regular Expression for matching against the process names or command lines"
+    }
+  ]
+}

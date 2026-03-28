@@ -101,4 +101,51 @@ mod tests {
         let commands = provider.known_commands();
         assert!(commands.contains(&"git".to_string()));
     }
+
+    /// Validate all converted specs in the specs/ directory deserialize correctly.
+    /// This catches any JSON format mismatches from the fig converter.
+    #[test]
+    fn validate_converted_specs() {
+        let specs_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("..")
+            .join("..")
+            .join("specs");
+
+        if !specs_dir.exists() {
+            // Skip if specs dir doesn't exist (CI without converted specs)
+            return;
+        }
+
+        let provider = FigSpecProvider::new(specs_dir.clone());
+        let commands = provider.known_commands();
+        assert!(
+            commands.len() > 100,
+            "Expected 100+ specs, found {}",
+            commands.len()
+        );
+
+        let mut success = 0;
+        let mut failures = Vec::new();
+
+        for cmd in &commands {
+            match provider.get_spec(cmd) {
+                Some(spec) => {
+                    assert_eq!(spec.name, *cmd, "Spec name mismatch for {cmd}");
+                    success += 1;
+                }
+                None => {
+                    failures.push(cmd.clone());
+                }
+            }
+        }
+
+        assert!(
+            failures.is_empty(),
+            "Failed to deserialize {} specs: {:?}",
+            failures.len(),
+            &failures[..failures.len().min(10)]
+        );
+
+        eprintln!("Validated {success}/{} specs successfully", commands.len());
+    }
 }

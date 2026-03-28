@@ -1,0 +1,1698 @@
+{
+  "name": "arduino-cli",
+  "description": "Arduino Command Line Interface",
+  "subcommands": [
+    {
+      "name": "board",
+      "description": "Arduino board commands",
+      "subcommands": [
+        {
+          "name": "attach",
+          "description": "Sets the default values for port and FQBN. If no port or FQBN are specified, the current default port and FQBN are displayed",
+          "options": [
+            {
+              "names": [
+                "--board-options"
+              ],
+              "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--discovery-timeout"
+              ],
+              "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-b",
+                "--fqbn"
+              ],
+              "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for attach"
+            },
+            {
+              "names": [
+                "-p",
+                "--port"
+              ],
+              "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-l",
+                "--protocol"
+              ],
+              "description": "Upload port protocol, example: 'serial'",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "details",
+          "description": "Show information about a board, in particular if the board has options to be specified in the FQBN'",
+          "options": [
+            {
+              "names": [
+                "--board-options"
+              ],
+              "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-b",
+                "--fqbn"
+              ],
+              "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-f",
+                "--full"
+              ],
+              "description": "Show full board details"
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for details"
+            },
+            {
+              "names": [
+                "--list-programmers"
+              ],
+              "description": "Show list of available programmers"
+            },
+            {
+              "names": [
+                "--show-properties"
+              ],
+              "description": "Show build properties. The properties are expanded, use \"--show-properties=unexpanded\" if you want them exactly as they are defined. (default \"disabled\")",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "Detects and displays a list of boards connected to the current computer",
+          "options": [
+            {
+              "names": [
+                "--board-options"
+              ],
+              "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--discovery-timeout"
+              ],
+              "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-b",
+                "--fqbn"
+              ],
+              "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for list"
+            },
+            {
+              "names": [
+                "-w",
+                "--watch"
+              ],
+              "description": "Command keeps running and prints list of connected boards whenever there is a change",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "listall",
+          "description": "List all boards that have the support platform installed, You can search for a specific board if you specify the board name",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for listall"
+            },
+            {
+              "names": [
+                "-a",
+                "--show-hidden"
+              ],
+              "description": "Show also boards marked as 'hidden' in the platform"
+            }
+          ]
+        },
+        {
+          "name": "search",
+          "description": "Search for a board in the Boards Manager using the specified keywords",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for search"
+            },
+            {
+              "names": [
+                "-a",
+                "--show-hidden"
+              ],
+              "description": "Show also boards marked as 'hidden' in the platform"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for board"
+        }
+      ],
+      "args": [
+        {
+          "name": "attach, list..."
+        }
+      ]
+    },
+    {
+      "name": "burn-bootloader",
+      "description": "Upload the bootloader on the board using an external programmer",
+      "options": [
+        {
+          "names": [
+            "--board-options"
+          ],
+          "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--discovery-timeout"
+          ],
+          "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-b",
+            "--fqbn"
+          ],
+          "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for burn-bootloader"
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-P",
+            "--programmer"
+          ],
+          "description": "Programmer to use, example: 'atmel_ice'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-l",
+            "--protocol"
+          ],
+          "description": "Upload port protocol, example: 'serial'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-v",
+            "--verbose"
+          ],
+          "description": "Turns on verbose mode"
+        },
+        {
+          "names": [
+            "-t",
+            "--verify"
+          ],
+          "description": "Verify uploaded binary after upload"
+        }
+      ]
+    },
+    {
+      "name": "cache",
+      "description": "Arduino cache commands",
+      "subcommands": [
+        {
+          "name": "clean",
+          "description": "Delete contents of the directories.downloads folder, where archive files are staged during installation of libraries and boards platforms",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for clean"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for cache"
+        }
+      ],
+      "args": [
+        {
+          "name": "clean"
+        }
+      ]
+    },
+    {
+      "name": "compile",
+      "description": "Compiles Arduino sketches",
+      "options": [
+        {
+          "names": [
+            "--board-options"
+          ],
+          "description": "List of board options separated by commas. Or can be used multiple times for multiple option",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--build-cache-path"
+          ],
+          "description": "Builds of 'core.a' are saved into this path to be cached and reused",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--build-path"
+          ],
+          "description": "Path where to save compiled files. If omitted, a directory will be created in the default temporary path of your OS",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--build-property"
+          ],
+          "description": "Override a build property with a custom value. Can be used multiple times for multiple properties",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--clean"
+          ],
+          "description": "Optional, cleanup the build folder and do not use any cached build"
+        },
+        {
+          "names": [
+            "--discovery-timeout"
+          ],
+          "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dump-profile"
+          ],
+          "description": "Create and print a profile configuration from the build"
+        },
+        {
+          "names": [
+            "--encrypt-key"
+          ],
+          "description": "The name of the custom encryption key to use to encrypt a binary during the compile process. Used only by the platforms that support it",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "e",
+            "--export-binaries"
+          ],
+          "description": "If set built binaries will be exported to the sketch folder"
+        },
+        {
+          "names": [
+            "-b",
+            "--fqbn"
+          ],
+          "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for compile"
+        },
+        {
+          "names": [
+            "--keys-keychain"
+          ],
+          "description": "The path of the dir to search for the custom keys to sign and encrypt a binary. Used only by the platforms that support it",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--libraries"
+          ],
+          "description": "Path to a collection of libraries. Can be used multiple times or entries can be comma separated",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--library"
+          ],
+          "description": "Path to a single library’s root folder. Can be used multiple times or entries can be comma separated",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--only-compilation-database"
+          ],
+          "description": "Just produce the compilation database, without actually compiling. All build commands are skipped except pre* hooks"
+        },
+        {
+          "names": [
+            "--optimize-for-debug"
+          ],
+          "description": "Optional, optimize compile output for debugging, rather than for release"
+        },
+        {
+          "names": [
+            "--output-dir"
+          ],
+          "description": "Save build artifacts in this directory",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--preprocess"
+          ],
+          "description": "Print preprocessed code to stdout instead of compiling"
+        },
+        {
+          "names": [
+            "-m",
+            "--profile"
+          ],
+          "description": "Sketch profile to use",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-P",
+            "--programmer"
+          ],
+          "description": "Programmer to use, example: 'atmel_ice'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-l",
+            "--protocol"
+          ],
+          "description": "Upload port protocol, example: 'serial'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--quiet"
+          ],
+          "description": "Optional, suppresses almost every output"
+        },
+        {
+          "names": [
+            "--show-properties"
+          ],
+          "description": "Show build properties. The properties are expanded, use \"--show-properties=unexpanded\" if you want them exactly as they are defined. (default \"disabled\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--sign-key"
+          ],
+          "description": "The name of the custom signing key to use to sign a binary during the compile process. Used only by the platforms that support it",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-u",
+            "--upload"
+          ],
+          "description": "Upload the binary after the compilation"
+        },
+        {
+          "names": [
+            "-v",
+            "--verbose"
+          ],
+          "description": "Optional, turns on verbose mode"
+        },
+        {
+          "names": [
+            "-t",
+            "--verify"
+          ],
+          "description": "Verify uploaded binary after the upload"
+        },
+        {
+          "names": [
+            "--warnings"
+          ],
+          "description": "Optional, can be: none, default, more, all. Used to tell gcc which warning level to use (-W flag). (default \"none\")",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "completion",
+      "description": "Generates completion scripts for various shells",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for completion"
+        },
+        {
+          "names": [
+            "--no-description"
+          ],
+          "description": "Disable completion description for shells that support it"
+        }
+      ]
+    },
+    {
+      "name": "config",
+      "description": "Arduino configuration commands",
+      "subcommands": [
+        {
+          "name": "add",
+          "description": "Adds one or more values to a setting",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for add"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Deletes a settings key and all its sub keys",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for delete"
+            }
+          ]
+        },
+        {
+          "name": "dump",
+          "description": "Prints the current configuration",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for dump"
+            }
+          ]
+        },
+        {
+          "name": "init",
+          "description": "Creates or updates the configuration file in the data directory or custom directory with the current configuration settings",
+          "options": [
+            {
+              "names": [
+                "--dest-dir"
+              ],
+              "description": "Sets where to save the configuration file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--dest-file"
+              ],
+              "description": "Sets where to save the configuration file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for init"
+            },
+            {
+              "names": [
+                "--overwrite"
+              ],
+              "description": "Overwrite existing config file"
+            }
+          ]
+        },
+        {
+          "name": "remove",
+          "description": "Removes one or more values from a setting",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for remove"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Sets a setting value",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for set"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for config"
+        }
+      ],
+      "args": [
+        {
+          "name": "init, dump..."
+        }
+      ]
+    },
+    {
+      "name": "core",
+      "description": "Arduino core operations",
+      "subcommands": [
+        {
+          "name": "download",
+          "description": "Downloads one or more cores and corresponding tool dependencies",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for download"
+            }
+          ]
+        },
+        {
+          "name": "install",
+          "description": "Installs one or more cores and corresponding tool dependencies",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for install"
+            },
+            {
+              "names": [
+                "--no-overwrite"
+              ],
+              "description": "Do not overwrite already installed platforms"
+            },
+            {
+              "names": [
+                "--run-post-install"
+              ],
+              "description": "Force run of post-install scripts (if the CLI is not running interactively)"
+            },
+            {
+              "names": [
+                "--run-pre-uninstall"
+              ],
+              "description": "Force run of pre-uninstall scripts (if the CLI is not running interactively)"
+            },
+            {
+              "names": [
+                "--skip-post-install"
+              ],
+              "description": "Force skip of post-install scripts (if the CLI is running interactively)"
+            },
+            {
+              "names": [
+                "--skip-pre-uninstall"
+              ],
+              "description": "Force skip of pre-uninstall scripts (if the CLI is running interactively)"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "Show the list of installed platforms",
+          "options": [
+            {
+              "names": [
+                "all"
+              ],
+              "description": "If set return all installable and installed cores, including manually installed"
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for list"
+            },
+            {
+              "names": [
+                "--updatable"
+              ],
+              "description": "List updatable platforms"
+            }
+          ]
+        },
+        {
+          "name": "search",
+          "description": "Search for a core in Boards Manager using the specified keywords",
+          "options": [
+            {
+              "names": [
+                "all"
+              ],
+              "description": "Show all available core versions"
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for search"
+            }
+          ]
+        },
+        {
+          "name": "uninstall",
+          "description": "Uninstalls one or more cores and corresponding tool dependencies if no longer used",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for uninstall"
+            },
+            {
+              "names": [
+                "--run-post-install"
+              ],
+              "description": "Force run of post-install scripts (if the CLI is not running interactively)"
+            },
+            {
+              "names": [
+                "--run-pre-uninstall"
+              ],
+              "description": "Force run of pre-uninstall scripts (if the CLI is not running interactively)"
+            },
+            {
+              "names": [
+                "--skip-post-install"
+              ],
+              "description": "Force skip of post-install scripts (if the CLI is running interactively)"
+            },
+            {
+              "names": [
+                "--skip-pre-uninstall"
+              ],
+              "description": "Force skip of pre-uninstall scripts (if the CLI is running interactively)"
+            }
+          ]
+        },
+        {
+          "name": "update-index",
+          "description": "Updates the index of cores to the latest version",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for update-index"
+            }
+          ]
+        },
+        {
+          "name": "upgrade",
+          "description": "Upgrades one or all installed platforms to the latest version",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for upgrade"
+            },
+            {
+              "names": [
+                "--run-post-install"
+              ],
+              "description": "Force run of post-install scripts (if the CLI is not running interactively)"
+            },
+            {
+              "names": [
+                "--run-pre-uninstall"
+              ],
+              "description": "Force run of pre-uninstall scripts (if the CLI is not running interactively)"
+            },
+            {
+              "names": [
+                "--skip-post-install"
+              ],
+              "description": "Force skip of post-install scripts (if the CLI is running interactively)"
+            },
+            {
+              "names": [
+                "--skip-pre-uninstall"
+              ],
+              "description": "Force skip of pre-uninstall scripts (if the CLI is running interactively)"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for core"
+        }
+      ],
+      "args": [
+        {
+          "name": "install, list..."
+        }
+      ]
+    },
+    {
+      "name": "daemon",
+      "description": "Run as a daemon on port: 50051, the initialization of cores and libraries is done only once",
+      "options": [
+        {
+          "names": [
+            "--daemonize"
+          ],
+          "description": "Do not terminate daemon process if the parent process dies"
+        },
+        {
+          "names": [
+            "--debug"
+          ],
+          "description": "Enable debug logging of gRPC calls"
+        },
+        {
+          "names": [
+            "--debug-file"
+          ],
+          "description": "Append debug logging to the specified file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--debug-filter"
+          ],
+          "description": "Display only the provided gRPC calls",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for daemon"
+        },
+        {
+          "names": [
+            "--port"
+          ],
+          "description": "The TCP port the daemon will listen to",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "debug",
+      "description": "Debug Arduino sketches. (this command opens an interactive gdb session)",
+      "subcommands": [
+        {
+          "name": "check",
+          "description": "Check if the given board/programmer combination supports debugging",
+          "options": [
+            {
+              "names": [
+                "--board-options"
+              ],
+              "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--discovery-timeout"
+              ],
+              "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-b",
+                "--fqbn"
+              ],
+              "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for check"
+            },
+            {
+              "names": [
+                "--interpreter"
+              ],
+              "description": "Debug interpreter, example: console, mi, mi1, mi2, mi3 (default \"console\")",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-p",
+                "--port"
+              ],
+              "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-P",
+                "--programmer"
+              ],
+              "description": "Programmer to use, example: 'atmel_ice'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-l",
+                "--protocol"
+              ],
+              "description": "Upload port protocol, example: 'serial'",
+              "takes_arg": true
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--board-options"
+          ],
+          "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--discovery-timeout"
+          ],
+          "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-b",
+            "--fqbn"
+          ],
+          "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for debug"
+        },
+        {
+          "names": [
+            "-I",
+            "--info"
+          ],
+          "description": "Show metadata about the debug session instead of starting the debugger"
+        },
+        {
+          "names": [
+            "--input-dir"
+          ],
+          "description": "Directory containing binaries for debug",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--interpreter"
+          ],
+          "description": "Debug interpreter, example: console, mi, mi1, mi2, mi3 (default \"console\")",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-P",
+            "--programmer"
+          ],
+          "description": "Programmer to use, example: 'atmel_ice'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-l",
+            "--protocol"
+          ],
+          "description": "Upload port protocol, example: 'serial'",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "check"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Help provides help for any command in the application",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for help"
+        }
+      ]
+    },
+    {
+      "name": "lib",
+      "description": "Arduino commands about libraries",
+      "subcommands": [
+        {
+          "name": "deps",
+          "description": "Check dependencies status for the specified library",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for deps"
+            }
+          ]
+        },
+        {
+          "name": "download",
+          "description": "Downloads one or more libraries without installing them",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for download"
+            }
+          ]
+        },
+        {
+          "name": "examples",
+          "description": "Shows the list of the examples for libraries. A name may be given as argument to search a specific library",
+          "options": [
+            {
+              "names": [
+                "--board-options"
+              ],
+              "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-b",
+                "--fqbn"
+              ],
+              "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for examples"
+            }
+          ]
+        },
+        {
+          "name": "install",
+          "description": "Installs one or more specified libraries into the system",
+          "options": [
+            {
+              "names": [
+                "--git-url"
+              ],
+              "description": "Enter git url for libraries hosted on repositories"
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for install"
+            },
+            {
+              "names": [
+                "--install-in-builtin-dir"
+              ],
+              "description": "Install libraries in the IDE-Builtin directory"
+            },
+            {
+              "names": [
+                "--no-deps"
+              ],
+              "description": "Do not install dependencies"
+            },
+            {
+              "names": [
+                "--no-overwrite"
+              ],
+              "description": "Do not overwrite already installed libraries"
+            },
+            {
+              "names": [
+                "--zip-path"
+              ],
+              "description": "Enter a path to zip file"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "Shows a list of installed libraries. If the LIBNAME parameter is specified the listing is limited to that specific library. By default the libraries provided as built-in by platforms/core are not list",
+          "options": [
+            {
+              "names": [
+                "--all"
+              ],
+              "description": "Include built-in libraries (from platforms and IDE) in listing"
+            },
+            {
+              "names": [
+                "--board-options"
+              ],
+              "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-b",
+                "--fqbn"
+              ],
+              "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for list"
+            },
+            {
+              "names": [
+                "--updatable"
+              ],
+              "description": "List updatable libraries"
+            }
+          ]
+        },
+        {
+          "name": "search",
+          "description": "Search for one or more libraries data (case insensitive search)",
+          "options": [
+            {
+              "names": [
+                "--h",
+                "--help"
+              ],
+              "description": "Help for search"
+            },
+            {
+              "names": [
+                "--names"
+              ],
+              "description": "Show library names only"
+            },
+            {
+              "names": [
+                "--omit-releases-details"
+              ],
+              "description": "Omit library details far all versions except the latest (produce a more compact JSON output)"
+            }
+          ]
+        },
+        {
+          "name": "uninstall",
+          "description": "Uninstalls one or more libraries",
+          "options": [
+            {
+              "names": [
+                "--h",
+                "--help"
+              ],
+              "description": "Help for uninstall"
+            }
+          ]
+        },
+        {
+          "name": "update-index",
+          "description": "Updates the libraries index to the latest version",
+          "options": [
+            {
+              "names": [
+                "--h",
+                "--help"
+              ],
+              "description": "Help for update-index"
+            }
+          ]
+        },
+        {
+          "name": "upgrade",
+          "description": "Upgrades installed libraries. This command upgrades an installed library to the latest available version. Multiple libraries can be passed separated by a space. If no arguments are provided, the comma",
+          "options": [
+            {
+              "names": [
+                "--h",
+                "--help"
+              ],
+              "description": "Help for upgrade"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for lib"
+        }
+      ],
+      "args": [
+        {
+          "name": "deps, update-index..."
+        }
+      ]
+    },
+    {
+      "name": "monitor",
+      "description": "Open a communication port with a board",
+      "options": [
+        {
+          "names": [
+            "--board-options"
+          ],
+          "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-c",
+            "--config"
+          ],
+          "description": "Configure communication port settings. The format is <ID>=<value>[,<ID>=<value>]",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--describe"
+          ],
+          "description": "Show all the settings of the communication port"
+        },
+        {
+          "names": [
+            "--discovery-timeout"
+          ],
+          "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-b",
+            "--fqbn"
+          ],
+          "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for monitor"
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-l",
+            "--protocol"
+          ],
+          "description": "Upload port protocol, example: 'serial'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-q",
+            "--quiet"
+          ],
+          "description": "Run in silent mode, show only monitor input and output"
+        },
+        {
+          "names": [
+            "--raw"
+          ],
+          "description": "Set terminal in raw mode (unbuffered)"
+        },
+        {
+          "names": [
+            "--timestamp"
+          ],
+          "description": "Timestamp each incoming line"
+        }
+      ]
+    },
+    {
+      "name": "outdated",
+      "description": "This commands shows a list of installed cores and/or libraries that can be upgraded. If nothing needs to be updated the output is empty",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for outdated"
+        }
+      ]
+    },
+    {
+      "name": "sketch",
+      "description": "Arduino CLI sketch commands",
+      "subcommands": [
+        {
+          "name": "archive",
+          "description": "Creates a zip file containing all sketch files",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for archive"
+            },
+            {
+              "names": [
+                "--include-build-dir"
+              ],
+              "description": "Includes build in directory in the archive"
+            },
+            {
+              "names": [
+                "-f",
+                "--overwrite"
+              ],
+              "description": "Overwrites an already existing archive"
+            }
+          ]
+        },
+        {
+          "name": "new",
+          "description": "Create a new Sketch",
+          "options": [
+            {
+              "names": [
+                "-h",
+                "--help"
+              ],
+              "description": "Help for archive"
+            },
+            {
+              "names": [
+                "-f",
+                "--overwrite"
+              ],
+              "description": "Overwrites an already existing .ino sketch"
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for sketch"
+        }
+      ],
+      "args": [
+        {
+          "name": "archive, new"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "description": "Updates the index of cores and libraries to the latest versions",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for update"
+        },
+        {
+          "names": [
+            "--show-outdated"
+          ],
+          "description": "Show outdated cores and libraries after index update"
+        }
+      ]
+    },
+    {
+      "name": "upgrade",
+      "description": "Upgrades installed cores and libraries to latest version",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for update"
+        },
+        {
+          "names": [
+            "--run-post-install"
+          ],
+          "description": "Force run of post-install scripts (if the CLI is not running interactively)"
+        },
+        {
+          "names": [
+            "--run-pre-uninstall"
+          ],
+          "description": "Force run of pre-uninstall scripts (if the CLI is not running interactively)"
+        },
+        {
+          "names": [
+            "--skip-post-install"
+          ],
+          "description": "Force skip of post-install scripts (if the CLI is running interactively)"
+        },
+        {
+          "names": [
+            "--skip-pre-uninstall"
+          ],
+          "description": "Force skip of pre-uninstall scripts (if the CLI is running interactively)"
+        }
+      ]
+    },
+    {
+      "name": "upload",
+      "description": "Upload Arduino sketches. This does NOT compile the sketch prior to upload",
+      "options": [
+        {
+          "names": [
+            "--board-options"
+          ],
+          "description": "List of board options separated by commas. Or can be used multiple times for multiple options",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--discovery-timeout"
+          ],
+          "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-b",
+            "--fqbn"
+          ],
+          "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for upload"
+        },
+        {
+          "names": [
+            "--input-dir"
+          ],
+          "description": "Directory containing binaries to upload",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-i",
+            "--input-file"
+          ],
+          "description": "Binary file to upload",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--port"
+          ],
+          "description": "Binary file to upload, example: 'COM3 or /dev/ttyACM2'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--profile"
+          ],
+          "description": "Sketch profile to use",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-P",
+            "--programmer"
+          ],
+          "description": "Programmer to use, example: 'atmel_ice'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-l",
+            "--protocol"
+          ],
+          "description": "Upload port protocol, example: 'serial'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-F",
+            "--upload-field"
+          ],
+          "description": "Set a value for a field required to upload, 'key=value'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-v",
+            "--verbose"
+          ],
+          "description": "Optional, turns on verbose mode"
+        },
+        {
+          "names": [
+            "-t",
+            "--verify"
+          ],
+          "description": "Verify uploaded binary after the upload"
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Shows the version number of Arduino CLI which is installed on your system",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Help for version"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--additional-urls"
+      ],
+      "description": "Comma-separated list of additional URLs for the Boards Manager",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config-file"
+      ],
+      "description": "The custom config file (if not specified the default will be used)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--format"
+      ],
+      "description": "The output format for the logs, can be: text, json, jsonmini, yaml (default 'text')",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Help for arduino-cli"
+    },
+    {
+      "names": [
+        "--log"
+      ],
+      "description": "Print the logs on the standard output"
+    },
+    {
+      "names": [
+        "--log-file"
+      ],
+      "description": "Path to the file where logs will be written",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--log-format"
+      ],
+      "description": "The output format for the logs, can be: text, json",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--log-level"
+      ],
+      "description": "Messages with this level and above will be logged. Valid levels are: trace, debug, info, warn, error, fatal, panic",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--no-color"
+      ],
+      "description": "Disable colored output"
+    }
+  ]
+}

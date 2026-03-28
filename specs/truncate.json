@@ -1,0 +1,55 @@
+{
+  "name": "truncate",
+  "description": "Shrink or extend the size of a file to the specified size",
+  "options": [
+    {
+      "names": [
+        "--no-create",
+        "-c"
+      ],
+      "description": "Do not create any files"
+    },
+    {
+      "names": [
+        "--io-blocks",
+        "-o"
+      ],
+      "description": "Treat SIZE as number of IO blocks instead of bytes"
+    },
+    {
+      "names": [
+        "--reference",
+        "-r"
+      ],
+      "description": "Base size on RFILE",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--size",
+        "-s"
+      ],
+      "description": "Set or adjust the file size by SIZE bytes",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Show help for truncate"
+    },
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Output version information and exit"
+    }
+  ],
+  "args": [
+    {
+      "name": "FILE",
+      "is_variadic": true,
+      "template": "filepaths"
+    }
+  ]
+}

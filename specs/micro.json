@@ -1,0 +1,483 @@
+{
+  "name": "micro",
+  "description": "A modern and intuitive terminal-based text editor",
+  "subcommands": [
+    {
+      "name": "--plugin",
+      "description": "Manage plugins",
+      "options": [
+        {
+          "names": [
+            "remove"
+          ],
+          "description": "Remove plugin(s)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "update"
+          ],
+          "description": "Update plugin(s) (if no argument is given, updates all plugins)",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "search"
+          ],
+          "description": "Search for a plugin",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "list"
+          ],
+          "description": "List installed plugins"
+        },
+        {
+          "names": [
+            "available"
+          ],
+          "description": "List available plugins"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--clean"
+      ],
+      "description": "Cleans the configuration directory"
+    },
+    {
+      "names": [
+        "--config-dir"
+      ],
+      "description": "Specify a custom location for the configuration directory",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--options"
+      ],
+      "description": "Show all option help"
+    },
+    {
+      "names": [
+        "--debug"
+      ],
+      "description": "Enable debug mode"
+    },
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Show the version number and information"
+    },
+    {
+      "names": [
+        "--autoindent"
+      ],
+      "description": "When creating a new line, use the same indentation as the previous line",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--autosave"
+      ],
+      "description": "Automatically save the buffer every <n> seconds. If set to 0, no autosaving is performed",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--autosu"
+      ],
+      "description": "Automatically attempt to use super user privileges to save without asking",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--backup"
+      ],
+      "description": "Automatically keep backups of all open buffers",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--backupdir"
+      ],
+      "description": "The directory to place backups in",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--basename"
+      ],
+      "description": "In the infobar and tabbar, show only the basename of the file being edited rather than the full path",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--clipboard"
+      ],
+      "description": "Apecifies how the system clipboard should be accessed",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--colorcolumn"
+      ],
+      "description": "Display a color at the specified column if not set to 0",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--colorscheme"
+      ],
+      "description": "Loads the colorscheme stored in $(configDir)/colorschemes/<scheme>.micro",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--cursorline"
+      ],
+      "description": "Highlight the line that the cursor is on in a different color",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--diffgutter"
+      ],
+      "description": "Display diff indicators before lines",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--divchars"
+      ],
+      "description": "Specifies the divider characters used for the dividing line between vertical/horizontal splits (the first character is for vertical dividers, and the second is for horizontal dividers)",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--divreverse"
+      ],
+      "description": "Reverse colors specified by the colorscheme",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--encoding"
+      ],
+      "description": "The encoding to open and save files with",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--eofnewline"
+      ],
+      "description": "Automatically add a newline to the end of the file if one does not exist",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--fastdirty"
+      ],
+      "description": "Use 'fast dirty' algorithm to determine if a buffer is modified or not",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--fileformat"
+      ],
+      "description": "Type of line endings to be used for the file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--filetype"
+      ],
+      "description": "File type for the current buffer",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ignorecase"
+      ],
+      "description": "Perform case-insensitive searches",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--incsearch"
+      ],
+      "description": "Enable incremental search in \"Find\" prompt",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--indentchar"
+      ],
+      "description": "Sets the indentation character",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--infobar"
+      ],
+      "description": "Enables the line at the bottom of the editor where messages are printed",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--keepautoindent"
+      ],
+      "description": "Remove trailing whitespace from a line with no insertions when moving to the next line",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--keymenu"
+      ],
+      "description": "Display the nano-style key menu at the bottom of the screen",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--matchbrace"
+      ],
+      "description": "Underline matching braces for '()', '{}', '[]' when the cursor is on a brace character",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--mkparents"
+      ],
+      "description": "Allow parent directories to be created automatically when opening a file on a path that doesn't exist",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--mouse"
+      ],
+      "description": "Enable mouse support",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--paste"
+      ],
+      "description": "Treat characters sent from the terminal in a single chunk as a paste event rather than a series of manual key presses",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--parsecursor"
+      ],
+      "description": "Parse filenames such as file.txt:10:5 as requesting to open file.txt with the cursor at line 10 and column 5",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--permbackup"
+      ],
+      "description": "Cause backups to be permanently saved",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--pluginchannels"
+      ],
+      "description": "List of URLs pointing to plugin channels for downloading and installing plugins",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--pluginrepos"
+      ],
+      "description": "A list of links to plugin repositories",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--readonly"
+      ],
+      "description": "Disallow edits to the buffer",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--relativeruler"
+      ],
+      "description": "Make line numbers display relatively",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--rmtrailingws"
+      ],
+      "description": "Automatically trim trailing whitespaces at ends of lines",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ruler"
+      ],
+      "description": "Display line numbers",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--savecursor"
+      ],
+      "description": "Remember where the cursor was last time the file was opened and put it there when re-opened",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--savehistory"
+      ],
+      "description": "Remember command history between closing and re-opening micro",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--saveundo"
+      ],
+      "description": "Remember undo state between closing and re-opening a file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--scrollbar"
+      ],
+      "description": "Display a scroll bar",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--scrollmargin"
+      ],
+      "description": "Margin at which the view starts scrolling when the cursor approaches the edge of the view",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--scrollspeed"
+      ],
+      "description": "Number of lines to scroll for one scroll event",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--smartpaste"
+      ],
+      "description": "Add leading whitespace when pasting multiple lines",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--softwrap"
+      ],
+      "description": "Wrap lines that are too long to fit on the screen",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--splitbottom"
+      ],
+      "description": "When a horizontal split is created, create it below the current split",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--splitright"
+      ],
+      "description": "When a vertical split is created, create it to the right of the current split",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--statusformatl"
+      ],
+      "description": "Format string definition for the left-justified part of the statusline",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--statusformatr"
+      ],
+      "description": "Format string definition for the right-justified part of the statusline",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--statusline"
+      ],
+      "description": "Display the status line at the bottom of the screen",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--sucmd"
+      ],
+      "description": "The super user command",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--syntax"
+      ],
+      "description": "Enables syntax highlighting",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--tabmovement"
+      ],
+      "description": "Navigate spaces at the beginning of lines as if they are tabs",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--tabsize"
+      ],
+      "description": "The size in spaces that a tab character should be displayed with",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--tabstospaces"
+      ],
+      "description": "Use spaces instead of tabs",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--useprimary"
+      ],
+      "description": "Use the primary clipboard to copy selections in the background",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--wordwrap"
+      ],
+      "description": "Wrap long lines by words",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--xterm"
+      ],
+      "description": "Assume that the terminal conforms to xterm-256color regardless of what the $TERM variable actually contains",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "file",
+      "template": "filepaths"
+    }
+  ]
+}

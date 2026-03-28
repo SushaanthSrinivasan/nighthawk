@@ -1,0 +1,182 @@
+{
+  "name": "rojo",
+  "description": "Enables professional-grade development tools for Roblox developers",
+  "subcommands": [
+    {
+      "name": "help",
+      "description": "Print this message or the help of the given subcommand(s)",
+      "args": [
+        {
+          "name": "SUBCOMMAND"
+        }
+      ]
+    },
+    {
+      "name": "build",
+      "description": "Generates a model or place file from the Rojo project",
+      "options": [
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Where to output the result. Should end in .rbxm, .rbxl, .rbxmx, or .rbxlx",
+          "takes_arg": true,
+          "is_required": true
+        },
+        {
+          "names": [
+            "--watch"
+          ],
+          "description": "Whether to automatically rebuild when any input files change"
+        }
+      ],
+      "args": [
+        {
+          "name": "PROJECT",
+          "description": "Path to the project to serve. Defaults to the current directory [default: ]"
+        }
+      ]
+    },
+    {
+      "name": "doc",
+      "description": "Open Rojo's documentation in your browser"
+    },
+    {
+      "name": "fmt-project",
+      "description": "Reformat a Rojo project using the standard JSON formatting rules",
+      "args": [
+        {
+          "name": "PROJECT",
+          "description": "Path to the project to format. Defaults to the current directory [default: ]"
+        }
+      ]
+    },
+    {
+      "name": "init",
+      "description": "Initializes a new Rojo project",
+      "options": [
+        {
+          "names": [
+            "--kind"
+          ],
+          "description": "The kind of project to create, 'place' or 'model'. Defaults to place",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "PATH",
+          "description": "Path to the place to create the project. Defaults to the current directory [default: ]"
+        }
+      ]
+    },
+    {
+      "name": "plugin",
+      "description": "Install Rojo's plugin"
+    },
+    {
+      "name": "serve",
+      "description": "Expose a Rojo project to the Rojo Studio plugin",
+      "options": [
+        {
+          "names": [
+            "address"
+          ],
+          "description": "The IP address to listen on. Defaults to `127.0.0.1`",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "sourcemap",
+      "description": "Generates a sourcemap file from the Rojo project",
+      "options": [
+        {
+          "names": [
+            "--include-non-scripts"
+          ],
+          "description": "If non-script files should be included or not. Defaults to false"
+        },
+        {
+          "names": [
+            "--output",
+            "-o"
+          ],
+          "description": "Where to output the sourcemap. Omit this to use stdout instead of writing to a file. Should end in .json",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "PROJECT",
+          "description": "Path to the project to use for the sourcemap. Defaults to the current directory [default: ]"
+        }
+      ]
+    },
+    {
+      "name": "upload",
+      "description": "Builds the project and uploads it to Roblox",
+      "options": [
+        {
+          "names": [
+            "--api-key"
+          ],
+          "description": "API key obtained from create.roblox.com/credentials. Rojo will use the Open Cloud API when this is provided. Only supports uploading to a place",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--asset_id"
+          ],
+          "description": "Asset ID to upload to",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cookie"
+          ],
+          "description": "Authenication cookie to use. If not specified, Rojo will attempt to find one from the system automatically",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--universe_id"
+          ],
+          "description": "The Universe ID of the given place. Required when using the Open Cloud API",
+          "takes_arg": true
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Print help information"
+    },
+    {
+      "names": [
+        "--color"
+      ],
+      "description": "Set color behavior. Valid values are auto, always, and never [default: auto]",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--verbose",
+        "-v"
+      ],
+      "description": "Sets verbosity level. Can be specified multiple times"
+    },
+    {
+      "names": [
+        "--version",
+        "-V"
+      ],
+      "description": "Print version information"
+    }
+  ]
+}

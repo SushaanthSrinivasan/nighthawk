@@ -1,0 +1,158 @@
+{
+  "name": "pgcli",
+  "options": [
+    {
+      "names": [
+        "-h",
+        "--host"
+      ],
+      "description": "Host address of the postgres database",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-p",
+        "--port"
+      ],
+      "description": "Port number at which the postgres instance is listening",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-U",
+        "--username"
+      ],
+      "description": "Username to connect to the postgres database",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-u",
+        "--user"
+      ],
+      "description": "Username to connect to the postgres database",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-W",
+        "--password"
+      ],
+      "description": "Force password prompt"
+    },
+    {
+      "names": [
+        "-w",
+        "--no-password"
+      ],
+      "description": "Never prompt for password"
+    },
+    {
+      "names": [
+        "--single-connection"
+      ],
+      "description": "Do not use a separate connection for completions"
+    },
+    {
+      "names": [
+        "-v",
+        "--version"
+      ],
+      "description": "Version of pgcli"
+    },
+    {
+      "names": [
+        "-d",
+        "--dbname"
+      ],
+      "description": "Database name to connect to",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--pgclirc"
+      ],
+      "description": "Location of pgclirc file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-D",
+        "--dsn"
+      ],
+      "description": "Use DSN configured into the [alias_dsn] section of pgclirc file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--list-dsn"
+      ],
+      "description": "List of DSN configured into the [alias_dsn] section of pgclirc file"
+    },
+    {
+      "names": [
+        "--row-limit"
+      ],
+      "description": "Set threshold for row limit prompt. Use 0 to disable prompt",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--less-chatty"
+      ],
+      "description": "Skip intro on startup and goodbye on exit"
+    },
+    {
+      "names": [
+        "--prompt"
+      ],
+      "description": "Prompt format (Default: \"\\u@\\h:\\d> \")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--prompt-dsn"
+      ],
+      "description": "Prompt format for connections using DSN aliases (Default: \"\\u@\\h:\\d> \")",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-l",
+        "--list"
+      ],
+      "description": "List available databases, then exit"
+    },
+    {
+      "names": [
+        "--auto-vertical-output"
+      ],
+      "description": "Automatically switch to vertical output mode if the result is wider than the terminal width"
+    },
+    {
+      "names": [
+        "--warn"
+      ],
+      "description": "Warn before running a destructive query",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ssh-tunnel"
+      ],
+      "description": "Open an SSH tunnel to the given address and connect to the database from it",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Show this message and exit"
+    }
+  ],
+  "args": [
+    {
+      "name": "database_name or db_url"
+    }
+  ]
+}

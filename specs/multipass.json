@@ -1,0 +1,533 @@
+{
+  "name": "multipass",
+  "description": "Create, control and connect to Ubuntu instances",
+  "subcommands": [
+    {
+      "name": "alias",
+      "description": "Create an alias",
+      "args": [
+        {
+          "name": "options"
+        },
+        {
+          "name": "definition",
+          "description": "Alias definition in the form <instance>:<command>"
+        },
+        {
+          "name": "name",
+          "description": "Name given to the alias being defined, defaults to <command>"
+        }
+      ]
+    },
+    {
+      "name": "aliases",
+      "description": "List available aliases",
+      "options": [
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "delete",
+      "description": "Delete instances",
+      "options": [
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Delete all instances"
+        },
+        {
+          "names": [
+            "-p",
+            "--purge"
+          ],
+          "description": "Purge instances immediately"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Name of instances to delete",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "exec",
+      "description": "Run a command on an instance",
+      "args": [
+        {
+          "name": "name",
+          "description": "Name of the instance to run the command on"
+        },
+        {
+          "name": "command",
+          "description": "Command to execute on the instance"
+        }
+      ]
+    },
+    {
+      "name": "find",
+      "description": "Display available images to create instances from",
+      "options": [
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--show-unsupported"
+          ],
+          "description": "Show unsupported cloud images as well"
+        }
+      ],
+      "args": [
+        {
+          "name": "string",
+          "description": "An optional value to search for in [<remote:>]<string> format, where <remote> can be either 'release' or 'daily'. If <remote> is omitted, it will search 'release' first, and if no matches are found, i"
+        }
+      ]
+    },
+    {
+      "name": "get",
+      "description": "Get a configuration setting",
+      "options": [
+        {
+          "names": [
+            "--raw"
+          ],
+          "description": "Output in raw format. For now, this affects only the representation of empty values (i.e. \"\" instead of \"<empty>\")"
+        }
+      ],
+      "args": [
+        {
+          "name": "key",
+          "description": "Path to the setting whose configured value should be obtained",
+          "suggestions": [
+            "client.gui.autostart",
+            "client.gui.hotkey",
+            "client.primary-name",
+            "local.bridged-network",
+            "local.driver",
+            "local.privileged-mounts"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Display help about a command",
+      "args": [
+        {
+          "name": "command",
+          "description": "Name of command to display help for"
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "description": "Display information about instances",
+      "options": [
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Display info for all instances"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Names of instances to display information about",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "launch",
+      "description": "Create and start an Ubuntu instance",
+      "options": [
+        {
+          "names": [
+            "--timeout"
+          ],
+          "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-c",
+            "--cpus"
+          ],
+          "description": "Number of CPUs to allocate. Minimum: 1, default: 1",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-d",
+            "--disk"
+          ],
+          "description": "Disk space to allocate. Positive integers, in bytes, or with K, M, G suffix Minimum: 512M, default: 5G.",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-m",
+            "--mem"
+          ],
+          "description": "Amount of memory to allocate. Positive integers, in bytes, or with K, M, G suffix Minimum: 128M, default: 1G.",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-n",
+            "--name"
+          ],
+          "description": "Name for the instance. If it is 'primary' (the configured primary instance name), the user's home directory is mounted inside the newly launched instance, in 'Home'",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--cloud-init"
+          ],
+          "description": "Path to a user-data cloud-init configuration, or '-' forstdin",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--network"
+          ],
+          "description": "Add a network interface to the instance, where <spec> is in the \"key=value,key=value\" format",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--bridged"
+          ],
+          "description": "Adds one `--network bridged` network"
+        }
+      ],
+      "args": [
+        {
+          "name": "image",
+          "description": "Optional image to launch. If omitted, then the default Ubuntu LTS will be used"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "description": "List all available instances",
+      "options": [
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "mount",
+      "description": "Mount a local directory in the instance",
+      "options": [
+        {
+          "names": [
+            "-g",
+            "--gid-map"
+          ],
+          "description": "A mapping of group IDs for use in the mount. File and folder ownership will be mapped from <host> to <instance> inside the instance. Can be used multiple times",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-u",
+            "--uid-map"
+          ],
+          "description": "A mapping of user IDs for use in the mount. File and folder ownership will be mapped from <host> to <instance> inside the instance. Can be used multiple times",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "source",
+          "description": "Path to the local directory to mount",
+          "template": "folders"
+        },
+        {
+          "name": "target",
+          "description": "Target mount points, in <name>[:<path>] format, where <name> is an instance name, and optional <path> is the mount point. If omitted, the mount point will be the same as the source's absolute path",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "networks",
+      "description": "List all available networks interfaces",
+      "options": [
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
+          "takes_arg": true
+        }
+      ]
+    },
+    {
+      "name": "purge",
+      "description": "Purge all deleted instances permanently"
+    },
+    {
+      "name": "recover",
+      "description": "Recover deleted instances",
+      "options": [
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Recover all deleted instances"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Names of instances to recover",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "restart",
+      "description": "Restart instances",
+      "options": [
+        {
+          "names": [
+            "--timeout"
+          ],
+          "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Restart all instances"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Names of instances to restart. If omitted, and without the --all option, 'primary' will be assumed",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "set",
+      "description": "Set a configuration setting",
+      "args": [
+        {
+          "name": "key=value",
+          "description": "A key-value pair. The key specifies a path to the setting to configure. The value is its intended value",
+          "suggestions": [
+            "client.gui.autostart=",
+            "client.gui.hotkey=",
+            "client.primary-name=",
+            "local.bridged-network=",
+            "local.driver=",
+            "local.privileged-mounts="
+          ]
+        }
+      ]
+    },
+    {
+      "name": "shell",
+      "description": "Open a shell on a running instance",
+      "options": [
+        {
+          "names": [
+            "--timeout"
+          ],
+          "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Name of the instance to open a shell on. If omitted, 'primary' (the configured primary instance name) will be assumed. If the instance is not running, an attempt is made to start it (see `start` for m",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "start",
+      "description": "Start instances",
+      "options": [
+        {
+          "names": [
+            "--timeout"
+          ],
+          "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Start all instances"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Names of instances to start. If omitted, and without the --all option, 'primary' (the configured primary instance name) will be assumed. If 'primary' does not exist but is included in a successful sta",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "stop",
+      "description": "Stop running instances",
+      "options": [
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Stop all instances"
+        },
+        {
+          "names": [
+            "-t",
+            "--time"
+          ],
+          "description": "Time from now, in minutes, to delay shutdown of the instance",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-c",
+            "--cancel"
+          ],
+          "description": "Cancel a pending delayed shutdown"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Names of instances to stop. If omitted, and without the --all option, 'primary' will be assumed.",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "suspend",
+      "description": "Suspend running instances",
+      "options": [
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Suspend all instances"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "description": "Names of instances to suspend. If omitted, and without the --all option, 'primary' will be assumed.",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "transfer",
+      "description": "Transfer files between the host and instances",
+      "args": [
+        {
+          "name": "source",
+          "description": "One or more paths to transfer, prefixed with <name:> for paths inside the instance, or '-' for stdin",
+          "is_variadic": true,
+          "template": "filepaths"
+        },
+        {
+          "name": "destination",
+          "description": "The destination path, prefixed with <name:> for paths inside the instance, or '-' for stdout",
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "umount",
+      "description": "Unmount a directory from an instance",
+      "args": [
+        {
+          "name": "mount",
+          "description": "Mount points, in <name>[:<path>] format, where <name> are instance names, and optional <path> are mount points. If omitted, all mounts will be removed from the named instances.",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "unalias",
+      "description": "Remove an alias",
+      "args": [
+        {
+          "name": "name",
+          "description": "The name of the alias to remove"
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Show version details",
+      "options": [
+        {
+          "names": [
+            "--format"
+          ],
+          "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
+          "takes_arg": true
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Displays help on commandline options"
+    },
+    {
+      "names": [
+        "--help-all"
+      ],
+      "description": "Displays help including Qt specific options"
+    },
+    {
+      "names": [
+        "-v",
+        "--verbose"
+      ],
+      "description": "Increase logging verbosity. Repeat the 'v' in the short option for more detail. Maximum verbosity is obtained with 4 (or more) v's, i.e. -vvvv"
+    }
+  ]
+}

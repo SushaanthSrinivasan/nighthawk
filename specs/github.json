@@ -1,0 +1,67 @@
+{
+  "name": "github",
+  "description": "Open a git repository in GitHub Desktop",
+  "subcommands": [
+    {
+      "name": "clone",
+      "description": "Clone a repository",
+      "options": [
+        {
+          "names": [
+            "--branch",
+            "-b"
+          ],
+          "description": "The branch to checkout after cloning",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "url|slug",
+          "suggestions": [
+            "https://github.com/",
+            "https://gitlab.com/",
+            "https://bitbucket.com/"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "open",
+      "description": "Open a git repository in GitHub Desktop",
+      "args": [
+        {
+          "name": "path"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Show the help page for a command",
+      "args": [
+        {
+          "name": "command",
+          "suggestions": [
+            "clone",
+            "open",
+            "help"
+          ]
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help"
+      ],
+      "description": "Show the help page for a command",
+      "takes_arg": true
+    }
+  ],
+  "args": [
+    {
+      "name": "path"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "name": "bat",
+  "description": "A cat(1) clone with syntax highlighting and Git integration",
+  "options": [
+    {
+      "names": [
+        "-A",
+        "--show-all"
+      ],
+      "description": "Show non-printable characters"
+    },
+    {
+      "names": [
+        "-p",
+        "--plain"
+      ],
+      "description": "Show plain style, no decorations"
+    },
+    {
+      "names": [
+        "-l",
+        "--language"
+      ],
+      "description": "Explicitly set the language for syntax highlighting",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-H",
+        "--highlight-line"
+      ],
+      "description": "Highlight the specified line ranges",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--file-name"
+      ],
+      "description": "Specify the name to display for a file. Useful when piping data to bat from STDIN when bat does not otherwise know the filename",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-d",
+        "--diff"
+      ],
+      "description": "Show lines that have been added/removed/modified with respect to the Git index"
+    },
+    {
+      "names": [
+        "--diff-context"
+      ],
+      "description": "Include N lines of context around added/removed/modified lines when using '--diff'",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--tabs"
+      ],
+      "description": "Set the tab width to T spaces. Use a width of 0 to pass tabs through directly",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--wrap"
+      ],
+      "description": "Specify when to use colored output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--terminal-width"
+      ],
+      "description": "Explicitly set the width of the terminal instead of determining it automatically",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-n",
+        "--number"
+      ],
+      "description": "Show line numbers, no other decorations"
+    },
+    {
+      "names": [
+        "--color"
+      ],
+      "description": "Specify when to use colored output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--italic-text"
+      ],
+      "description": "Specify when to use ANSI sequences for italic text in the output",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--decorations"
+      ],
+      "description": "Specify when to use the decorations that have been specified via '--style'",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-f",
+        "--force-colorization"
+      ],
+      "description": "Alias for '--decorations=always --color=always'"
+    },
+    {
+      "names": [
+        "--paging"
+      ],
+      "description": "Specify when to use the pager",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--pager"
+      ],
+      "description": "Determine which pager is used",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-m",
+        "--map-syntax"
+      ],
+      "description": "Map a glob pattern to an existing syntax name",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--ignored-suffix"
+      ],
+      "description": "Ignore extension",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--theme"
+      ],
+      "description": "Set the theme for syntax highlighting",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--list-themes"
+      ],
+      "description": "Display a list of supported themes for syntax highlighting"
+    },
+    {
+      "names": [
+        "--style"
+      ],
+      "description": "Display a list of supported themes for syntax highlighting"
+    },
+    {
+      "names": [
+        "-r",
+        "--line-range"
+      ],
+      "description": "Only print the specified range of lines for each file",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "-L",
+        "--list-languages"
+      ],
+      "description": "Display a list of supported languages for syntax highlighting"
+    },
+    {
+      "names": [
+        "-u",
+        "--unbuffered"
+      ],
+      "description": "Make output unbuffered (exists for POSIX-compliance reasons and is simply ignored)"
+    },
+    {
+      "names": [
+        "--diagnostic"
+      ],
+      "description": "Show diagnostic information for bug reports"
+    },
+    {
+      "names": [
+        "--acknowledgements"
+      ],
+      "description": "Show acknowledgements"
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Print help message"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Show version information"
+    }
+  ],
+  "args": [
+    {
+      "description": "File(s)",
+      "is_variadic": true,
+      "template": "filepaths"
+    }
+  ]
+}

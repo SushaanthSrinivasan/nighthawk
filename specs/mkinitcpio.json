@@ -1,0 +1,208 @@
+{
+  "name": "mkinitcpio",
+  "description": "Create an initial ramdisk environment",
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help for mkinitcpio"
+    },
+    {
+      "names": [
+        "--version",
+        "-V"
+      ],
+      "description": "Display version information"
+    },
+    {
+      "names": [
+        "--addhooks",
+        "-A"
+      ],
+      "description": "Add additional hooks to the image",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--config",
+        "-c"
+      ],
+      "description": "Use config file to generate the ramdisk",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--generatedir",
+        "-d"
+      ],
+      "description": "Set directory as the location where the initramfs is built",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--hookdir",
+        "-D"
+      ],
+      "description": "Set directory as the location where hooks will be searched for when generating the image",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--generate",
+        "-g"
+      ],
+      "description": "Generate a CPIO image as filename",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--hookhelp",
+        "-H"
+      ],
+      "description": "Output help for hookname",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--kernel",
+        "-k"
+      ],
+      "description": "Use kernelversion, instead of the current running kernel",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--listhooks",
+        "-L"
+      ],
+      "description": "List all available hooks"
+    },
+    {
+      "names": [
+        "--automods",
+        "-M"
+      ],
+      "description": "Display modules found via autodetection"
+    },
+    {
+      "names": [
+        "--nocolor",
+        "-n"
+      ],
+      "description": "Disable color output"
+    },
+    {
+      "names": [
+        "--uefi",
+        "-U"
+      ],
+      "description": "Generate a UEFI executable as filename",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--allpresets",
+        "-P"
+      ],
+      "description": "Process all presets contained in /etc/mkinitcpio.d"
+    },
+    {
+      "names": [
+        "--preset",
+        "-p"
+      ],
+      "description": "Build initramfs image(s) according to specified preset",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--moduleroot",
+        "-r"
+      ],
+      "description": "Specifies the root directory to find modules in",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--skiphooks",
+        "-S"
+      ],
+      "description": "Skip hooks when generating the image",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--save",
+        "-s"
+      ],
+      "description": "Saves the build directory for the initial ramdisk"
+    },
+    {
+      "names": [
+        "--builddir",
+        "-t"
+      ],
+      "description": "Use tmpdir as the temporary build directory instead of /tmp",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--verbose",
+        "-v"
+      ],
+      "description": "Verbose output"
+    },
+    {
+      "names": [
+        "--compress",
+        "-z"
+      ],
+      "description": "Override the compression method with the compress program",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--cmdline"
+      ],
+      "description": "Use kernel command line with UEFI executable",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--splash"
+      ],
+      "description": "UEFI executables can show a bitmap file on boot",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--uefistub"
+      ],
+      "description": "UEFI stub image used for UEFI executable generation",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--kernelimage"
+      ],
+      "description": "Include a kernel image for the UEFI executable",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--microcode"
+      ],
+      "description": "Include microcode into the UEFI executable",
+      "takes_arg": true
+    },
+    {
+      "names": [
+        "--osrelease"
+      ],
+      "description": "Include a os-release file for the UEFI executable",
+      "takes_arg": true
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "name": "cicada",
+  "description": "Write CI/CD Pipelines in TypeScript",
+  "subcommands": [
+    {
+      "name": "run",
+      "description": "Run a cicada pipeline",
+      "options": [
+        {
+          "names": [
+            "-s",
+            "--secret"
+          ],
+          "description": "Name of the secret to use, these come from environment variables",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--dotenv"
+          ],
+          "description": "Load a custom .env file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--secrets-json"
+          ],
+          "description": "Load secrets from a json file",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--oci-backend"
+          ],
+          "description": "The OCI backend to use",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "--no-dotenv"
+          ],
+          "description": "Do not load .env file"
+        },
+        {
+          "names": [
+            "--no-cache"
+          ],
+          "description": "Disable caching"
+        },
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Print help (see more with '--help')"
+        }
+      ],
+      "args": [
+        {
+          "name": "pipeline",
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "init",
+      "description": "Initialize a cicada project, you can optionally specify a pipeline to create",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Print help"
+        }
+      ],
+      "args": [
+        {
+          "name": "pipeline"
+        }
+      ]
+    },
+    {
+      "name": "new",
+      "description": "Create a cicada pipeline",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Print help"
+        }
+      ],
+      "args": [
+        {
+          "name": "pipeline"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "description": "Update cicada",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Print help"
+        }
+      ]
+    },
+    {
+      "name": "completions",
+      "description": "List all available completions",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Print help"
+        }
+      ],
+      "args": [
+        {
+          "name": "shell",
+          "suggestions": [
+            "bash",
+            "elvish",
+            "fish",
+            "powershell",
+            "zsh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fig-completion",
+      "description": "Create fig completions",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Print help"
+        }
+      ]
+    },
+    {
+      "name": "open",
+      "description": "Open a pipeline in your editor",
+      "options": [
+        {
+          "names": [
+            "-h",
+            "--help"
+          ],
+          "description": "Print help"
+        }
+      ],
+      "args": [
+        {
+          "name": "pipeline",
+          "template": "filepaths"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Print this message or the help of the given subcommand(s)",
+      "subcommands": [
+        {
+          "name": "run",
+          "description": "Run a cicada pipeline"
+        },
+        {
+          "name": "init",
+          "description": "Initialize a cicada project, you can optionally specify a pipeline to create"
+        },
+        {
+          "name": "new",
+          "description": "Create a cicada pipeline"
+        },
+        {
+          "name": "update",
+          "description": "Update cicada"
+        },
+        {
+          "name": "completions",
+          "description": "List all available completions"
+        },
+        {
+          "name": "fig-completion",
+          "description": "Create fig completions"
+        },
+        {
+          "name": "open",
+          "description": "Open a pipeline in your editor"
+        },
+        {
+          "name": "help",
+          "description": "Print this message or the help of the given subcommand(s)"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Print help"
+    },
+    {
+      "names": [
+        "-V",
+        "--version"
+      ],
+      "description": "Print version"
+    }
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "name": "asdf",
+  "description": "Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more",
+  "subcommands": [
+    {
+      "name": "plugin",
+      "description": "Plugin management sub-commands",
+      "subcommands": [
+        {
+          "name": "add",
+          "description": "Add a plugin from the plugin repo OR, add a Git repo as a plugin by specifying the name and repo url",
+          "args": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "git-url"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List installed plugins. Optionally show git urls and git-ref",
+          "subcommands": [
+            {
+              "name": "all",
+              "description": "List plugins registered on asdf-plugins repository with URLs"
+            }
+          ],
+          "options": [
+            {
+              "names": [
+                "--urls"
+              ],
+              "description": "Show git urls"
+            },
+            {
+              "names": [
+                "--refs"
+              ],
+              "description": "Show git refs"
+            }
+          ]
+        },
+        {
+          "name": "remove",
+          "description": "Remove plugin and package versions",
+          "args": [
+            {
+              "name": "name"
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "description": "Update a plugin to latest commit on default branch or a particular git-ref",
+          "options": [
+            {
+              "names": [
+                "--all"
+              ],
+              "description": "Update all plugins to latest commit on default branch"
+            }
+          ],
+          "args": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "git-ref"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "plugin-add",
+      "description": "Add a plugin from the plugin repo OR, add a Git repo as a plugin by specifying the name and repo url",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "git-url"
+        }
+      ]
+    },
+    {
+      "name": "plugin-list",
+      "description": "List installed plugins. Optionally show git urls and git-ref",
+      "subcommands": [
+        {
+          "name": "all",
+          "description": "List plugins registered on asdf-plugins repository with URLs"
+        }
+      ],
+      "options": [
+        {
+          "names": [
+            "--urls"
+          ],
+          "description": "Show git urls"
+        },
+        {
+          "names": [
+            "--refs"
+          ],
+          "description": "Show git refs"
+        }
+      ]
+    },
+    {
+      "name": "plugin-list-all",
+      "description": "List plugins registered on asdf-plugins repository with URLs"
+    },
+    {
+      "name": "plugin-remove",
+      "description": "Remove plugin and package versions",
+      "args": [
+        {
+          "name": "name"
+        }
+      ]
+    },
+    {
+      "name": "plugin-update",
+      "description": "Update a plugin to latest commit on default branch or a particular git-ref",
+      "options": [
+        {
+          "names": [
+            "--all"
+          ],
+          "description": "Update all plugins to latest commit on default branch"
+        }
+      ],
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "git-ref"
+        }
+      ]
+    },
+    {
+      "name": "install",
+      "description": "Install plugin at stated version, or all from .tools-versions",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version",
+          "suggestions": [
+            "latest"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "uninstall",
+      "description": "Remove a specific version of a package",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "current",
+      "description": "Display current versions for named package (else all)",
+      "args": [
+        {
+          "name": "name"
+        }
+      ]
+    },
+    {
+      "name": "where",
+      "description": "Display install path for given package at optional specified version",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "which",
+      "description": "Display path to an executable",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    },
+    {
+      "name": "local",
+      "description": "Set package local version",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "global",
+      "description": "Set package global version",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "shell",
+      "description": "Set the package version to ASDF_${LANG}_VERSION` in the current shell",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "latest",
+      "description": "Display latest version available to install for a named package",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "description": "List installed versions of a package",
+      "subcommands": [
+        {
+          "name": "all",
+          "description": "List all available (remote) versions of a package",
+          "args": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "version"
+            }
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "name"
+        }
+      ]
+    },
+    {
+      "name": "list-all",
+      "description": "List all available (remote) versions of a package",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Output documentation for plugin and tool",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "exec",
+      "description": "Executes the command shim for the current version",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    },
+    {
+      "name": "env",
+      "description": "Prints or runs an executable under a command environment",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "description": "Print os, shell and asdf debug information"
+    },
+    {
+      "name": "reshim",
+      "description": "Recreate shims for version of a package",
+      "args": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "version"
+        }
+      ]
+    },
+    {
+      "name": "shim",
+      "description": "Shim management sub-commands",
+      "subcommands": [
+        {
+          "name": "versions",
+          "description": "List for given command which plugins and versions provide it",
+          "args": [
+            {
+              "name": "command"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "shim-versions",
+      "description": "List for given command which plugins and versions provide it",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "description": "Update ASDF to the latest stable release (unless --head)",
+      "options": [
+        {
+          "names": [
+            "--head"
+          ],
+          "description": "Using HEAD commit"
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Version for asdf"
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--version"
+      ],
+      "description": "Version for asdf"
+    },
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Help for asdf"
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "name": "kind",
+  "description": "Kubernetes IN Docker - local clusters for testing Kubernetes",
+  "subcommands": [
+    {
+      "name": "Build",
+      "description": "Build one of [node-image]",
+      "subcommands": [
+        {
+          "name": "node-image",
+          "description": "Builds a node image",
+          "options": [
+            {
+              "names": [
+                "--arch"
+              ],
+              "description": "Architecture to build for, defaults to the host architecture",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--base-image"
+              ],
+              "description": "Base image to use for the node image",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--image"
+              ],
+              "description": "Name:tag of the resulting image to be built",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--kube-root"
+              ],
+              "description": "Path to the Kubernetes source directory",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--type"
+              ],
+              "description": "Type of node image to build",
+              "takes_arg": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "description": "Creates a cluster",
+      "subcommands": [
+        {
+          "name": "cluster",
+          "description": "Creates a cluster",
+          "options": [
+            {
+              "names": [
+                "--config"
+              ],
+              "description": "Path to a kind config file"
+            },
+            {
+              "names": [
+                "--image"
+              ],
+              "description": "Node docker image to use for booting the cluster"
+            },
+            {
+              "names": [
+                "--kubeconfig"
+              ],
+              "description": "Sets kubeconfig path instead of $KUBECONFIG or $HOME/.kube/config"
+            },
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name"
+            },
+            {
+              "names": [
+                "--retain"
+              ],
+              "description": "Retain nodes for debugging when cluster creation fails"
+            },
+            {
+              "names": [
+                "--wait"
+              ],
+              "description": "Wait for control-plane node to be ready"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "completion",
+      "description": "Generates shell completion scripts",
+      "subcommands": [
+        {
+          "name": "bash",
+          "description": "Output shell completions for bash"
+        },
+        {
+          "name": "fish",
+          "description": "Output shell completions for fish"
+        },
+        {
+          "name": "zsh",
+          "description": "Output shell completions for zsh"
+        }
+      ]
+    },
+    {
+      "name": "delete",
+      "description": "Deletes one or more clusters",
+      "subcommands": [
+        {
+          "name": "cluster",
+          "description": "Delete Cluster",
+          "options": [
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "clusters",
+          "description": "Delete Clusters",
+          "options": [
+            {
+              "names": [
+                "-A",
+                "--all"
+              ],
+              "description": "Delete all clusters"
+            },
+            {
+              "names": [
+                "--kubeconfig"
+              ],
+              "description": "Sets kubeconfig path instead of $KUBECONFIG or $HOME/.kube/config"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "export",
+      "description": "Exports a cluster's kubeconfig",
+      "subcommands": [
+        {
+          "name": "kubeconfig",
+          "description": "Exports a cluster's kubeconfig",
+          "options": [
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name"
+            },
+            {
+              "names": [
+                "--internal"
+              ],
+              "description": "Use internal address instead of externalt"
+            },
+            {
+              "names": [
+                "--kubeconfig"
+              ],
+              "description": "Sets kubeconfig path instead of $KUBECONFIG or $HOME/.kube/config"
+            }
+          ]
+        },
+        {
+          "name": "logs",
+          "description": "Exports logs to a tempdir or [output-dir] if specified",
+          "options": [
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name",
+              "takes_arg": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "get",
+      "description": "Gets one of [clusters, nodes, kubeconfig]",
+      "subcommands": [
+        {
+          "name": "clusters",
+          "description": "Lists existing kind clusters by their name"
+        },
+        {
+          "name": "kubeconfig",
+          "description": "Prints cluster kubeconfig",
+          "options": [
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--internal"
+              ],
+              "description": "Use internal address instead of external"
+            }
+          ]
+        },
+        {
+          "name": "nodes",
+          "description": "Lists existing kind nodes by their name",
+          "options": [
+            {
+              "names": [
+                "-A",
+                "--all"
+              ],
+              "description": "List all nodes"
+            },
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name",
+              "takes_arg": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "load",
+      "description": "Loads images into node from an archive or image on host",
+      "subcommands": [
+        {
+          "name": "docker-image",
+          "description": "Loads docker images from host into all or specified nodes by name",
+          "options": [
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--nodes"
+              ],
+              "description": "Comma separated list of nodes to load images into",
+              "takes_arg": true
+            }
+          ]
+        },
+        {
+          "name": "image-archive",
+          "description": "Loads docker images from archive into all or specified nodes by name",
+          "options": [
+            {
+              "names": [
+                "--name"
+              ],
+              "description": "Cluster name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--nodes"
+              ],
+              "description": "Comma separated list of nodes to load images into",
+              "takes_arg": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "description": "Prints the kind CLI version"
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Help for kind"
+    },
+    {
+      "names": [
+        "-q",
+        "--quiet"
+      ],
+      "description": "Silence all stderr output"
+    },
+    {
+      "names": [
+        "-v",
+        "--verbosity"
+      ],
+      "description": "Info log verbosity, higher value produces more output",
+      "takes_arg": true
+    }
+  ]
+}

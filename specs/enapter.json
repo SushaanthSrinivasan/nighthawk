@@ -1,0 +1,229 @@
+{
+  "name": "enapter",
+  "description": "Cross-platform device management command-line tool for Enapter Energy Management System Toolkit",
+  "subcommands": [
+    {
+      "name": "devices",
+      "description": "Device information and management commands",
+      "subcommands": [
+        {
+          "name": "upload",
+          "description": "Upload blueprint to a device",
+          "options": [
+            {
+              "names": [
+                "--hardware-id"
+              ],
+              "description": "Hardware ID (UCM ID) of the device; can be obtained in cloud.enapter.com",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--blueprint-dir"
+              ],
+              "description": "Directory which contains blueprint file",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout"
+              ],
+              "description": "Time to wait for blueprint uploading (default: 30s)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            }
+          ]
+        },
+        {
+          "name": "logs",
+          "description": "Stream logs from a device",
+          "options": [
+            {
+              "names": [
+                "--hardware-id"
+              ],
+              "description": "Hardware ID (UCM ID) of the device; can be obtained in cloud.enapter.com",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            }
+          ]
+        },
+        {
+          "name": "upload-logs",
+          "description": "Show blueprint uploading logs",
+          "options": [
+            {
+              "names": [
+                "--hardware-id"
+              ],
+              "description": "Hardware ID (UCM ID) of the device; can be obtained in cloud.enapter.com",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            }
+          ]
+        },
+        {
+          "name": "execute",
+          "description": "Execute command on device",
+          "options": [
+            {
+              "names": [
+                "--hardware-id"
+              ],
+              "description": "Hardware ID (UCM ID) of the device; can be obtained in cloud.enapter.com",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--command"
+              ],
+              "description": "Command name",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--arguments"
+              ],
+              "description": "Command arguments as JSON object",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--show-progress"
+              ],
+              "description": "Enable in-progress responses streaming (default: false)"
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            }
+          ]
+        },
+        {
+          "name": "help",
+          "description": "Help"
+        }
+      ]
+    },
+    {
+      "name": "rules",
+      "description": "Rules information and management commands",
+      "subcommands": [
+        {
+          "name": "update",
+          "description": "Update rule",
+          "options": [
+            {
+              "names": [
+                "--rule-id"
+              ],
+              "description": "Rule ID; can be obtained in cloud.enapter.com",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--rule-path"
+              ],
+              "description": "Path to file with rule Lua code",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--execution-interval"
+              ],
+              "description": "Rule execution interval in milliseconds (default: chosen by the server)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--stdlib-version"
+              ],
+              "description": "Version of standard library used by the rule (default: chosen by the server)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--timeout"
+              ],
+              "description": "Time to wait for rule update (default: 30s)",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            }
+          ]
+        },
+        {
+          "name": "logs",
+          "description": "Stream logs from a rule",
+          "options": [
+            {
+              "names": [
+                "--rule-id"
+              ],
+              "description": "Rule ID; can be obtained in cloud.enapter.com",
+              "takes_arg": true
+            },
+            {
+              "names": [
+                "--help",
+                "-h"
+              ],
+              "description": "Show help"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Shows a list of commands or help for one command",
+      "args": [
+        {
+          "name": "command"
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "names": [
+        "--help",
+        "-h"
+      ],
+      "description": "Show help"
+    },
+    {
+      "names": [
+        "--version",
+        "-v"
+      ],
+      "description": "Show version"
+    }
+  ]
+}

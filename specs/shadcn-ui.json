@@ -1,0 +1,97 @@
+{
+  "name": "shadcn-ui",
+  "description": "Shadcn UI CLI",
+  "subcommands": [
+    {
+      "name": "add",
+      "description": "Add a component to your project",
+      "options": [
+        {
+          "names": [
+            "-y",
+            "--yes"
+          ],
+          "description": "Skip confirmation prompt"
+        },
+        {
+          "names": [
+            "-o",
+            "--overwrite"
+          ],
+          "description": "Overwrite existing files"
+        },
+        {
+          "names": [
+            "-c",
+            "--cwd"
+          ],
+          "description": "The working directory. defaults to the current directory",
+          "takes_arg": true
+        },
+        {
+          "names": [
+            "-p",
+            "--path"
+          ],
+          "description": "The path to add the component to",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "components",
+          "description": "The components to add",
+          "is_variadic": true
+        }
+      ]
+    },
+    {
+      "name": "diff",
+      "description": "Check for updates against the registry",
+      "options": [
+        {
+          "names": [
+            "-y",
+            "--yes"
+          ],
+          "description": "Skip confirmation prompt"
+        },
+        {
+          "names": [
+            "-c",
+            "--cwd"
+          ],
+          "description": "The working directory. defaults to the current directory",
+          "takes_arg": true
+        }
+      ],
+      "args": [
+        {
+          "name": "component",
+          "description": "The component name"
+        }
+      ]
+    },
+    {
+      "name": "init",
+      "description": "Initialize your project and install dependencies",
+      "options": [
+        {
+          "names": [
+            "-y",
+            "--yes"
+          ],
+          "description": "Skip confirmation prompt"
+        },
+        {
+          "names": [
+            "-c",
+            "--cwd"
+          ],
+          "description": "The working directory. defaults to the current directory",
+          "takes_arg": true
+        }
+      ]
+    }
+  ]
+}
