@@ -35,8 +35,8 @@ _nh_render_ghost() {
 }
 
 _nh_clear_ghost() {
+    unset POSTDISPLAY
     if (( _nh_has_highlight )); then
-        unset POSTDISPLAY
         region_highlight[-1]=()
         _nh_has_highlight=0
     fi
@@ -150,8 +150,15 @@ bindkey '^I' _nh_accept
 
 # --- Clean up on line accept (Enter) ---
 _nh_line_finish() {
-    _nh_clear_ghost
-    _nh_last_buffer=""
+    # Must clear POSTDISPLAY before accept-line, otherwise the ghost text
+    # gets baked into the displayed command line.
+    unset POSTDISPLAY
+    region_highlight=()
+    _nh_has_highlight=0
+    _nh_suggestion=""
+    _nh_replace_start=""
+    _nh_replace_end=""
+    _nh_last_buffer="$BUFFER"
     zle accept-line
 }
 
