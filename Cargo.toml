@@ -1,0 +1,26 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/nighthawk-proto",
+    "crates/nighthawk-daemon",
+    "crates/nighthawk-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+interprocess = { version = "2", features = ["tokio"] }
+clap = { version = "4", features = ["derive"] }
+dirs = "6"
+toml = "0.8"
+thiserror = "2"
+async-trait = "0.1"
+nighthawk-proto = { path = "crates/nighthawk-proto" }

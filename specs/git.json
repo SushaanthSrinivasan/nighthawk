@@ -1,0 +1,233 @@
+{
+  "name": "git",
+  "description": "The stupid content tracker",
+  "subcommands": [
+    {
+      "name": "checkout",
+      "aliases": ["co"],
+      "description": "Switch branches or restore working tree files",
+      "options": [
+        { "names": ["-b"], "description": "Create and checkout a new branch", "takes_arg": true },
+        { "names": ["-B"], "description": "Create/reset and checkout a branch", "takes_arg": true },
+        { "names": ["-f", "--force"], "description": "Force checkout (throw away local modifications)" },
+        { "names": ["-t", "--track"], "description": "Set up tracking mode" },
+        { "names": ["--detach"], "description": "Detach HEAD at named commit" }
+      ]
+    },
+    {
+      "name": "commit",
+      "description": "Record changes to the repository",
+      "options": [
+        { "names": ["-m", "--message"], "description": "Use the given message as the commit message", "takes_arg": true },
+        { "names": ["-a", "--all"], "description": "Automatically stage modified and deleted files" },
+        { "names": ["--amend"], "description": "Amend the previous commit" },
+        { "names": ["-s", "--signoff"], "description": "Add Signed-off-by trailer" },
+        { "names": ["--no-edit"], "description": "Use selected commit message without editing" },
+        { "names": ["--allow-empty"], "description": "Allow recording an empty commit" }
+      ]
+    },
+    {
+      "name": "push",
+      "description": "Update remote refs along with associated objects",
+      "options": [
+        { "names": ["-f", "--force"], "description": "Force update remote refs" },
+        { "names": ["--force-with-lease"], "description": "Force update if remote matches expected" },
+        { "names": ["-u", "--set-upstream"], "description": "Set upstream for git pull/status" },
+        { "names": ["--tags"], "description": "Push all tags" },
+        { "names": ["-d", "--delete"], "description": "Delete remote branch" },
+        { "names": ["--dry-run"], "description": "Do everything except actually send the updates" }
+      ]
+    },
+    {
+      "name": "pull",
+      "description": "Fetch from and integrate with another repository or branch",
+      "options": [
+        { "names": ["--rebase"], "description": "Rebase the current branch on top of the upstream branch" },
+        { "names": ["--no-rebase"], "description": "Merge the upstream branch into the current branch" },
+        { "names": ["--ff-only"], "description": "Only fast-forward" },
+        { "names": ["--no-ff"], "description": "Create a merge commit even for fast-forward" }
+      ]
+    },
+    {
+      "name": "merge",
+      "description": "Join two or more development histories together",
+      "options": [
+        { "names": ["--no-ff"], "description": "Create a merge commit even for fast-forward" },
+        { "names": ["--ff-only"], "description": "Only fast-forward, fail otherwise" },
+        { "names": ["--squash"], "description": "Squash commits into a single commit" },
+        { "names": ["--abort"], "description": "Abort the current merge" },
+        { "names": ["--continue"], "description": "Continue after resolving conflicts" }
+      ]
+    },
+    {
+      "name": "rebase",
+      "description": "Reapply commits on top of another base tip",
+      "options": [
+        { "names": ["-i", "--interactive"], "description": "Interactive rebase" },
+        { "names": ["--onto"], "description": "Rebase onto a given branch", "takes_arg": true },
+        { "names": ["--abort"], "description": "Abort the rebase" },
+        { "names": ["--continue"], "description": "Continue after resolving conflicts" },
+        { "names": ["--skip"], "description": "Skip the current patch" }
+      ]
+    },
+    {
+      "name": "stash",
+      "description": "Stash the changes in a dirty working directory",
+      "subcommands": [
+        { "name": "push", "description": "Save your local modifications to a new stash" },
+        { "name": "pop", "description": "Apply stashed changes and remove from stash" },
+        { "name": "apply", "description": "Apply stashed changes without removing from stash" },
+        { "name": "list", "description": "List stashed changes" },
+        { "name": "drop", "description": "Remove a single stash entry" },
+        { "name": "show", "description": "Show the changes recorded in a stash" },
+        { "name": "clear", "description": "Remove all stash entries" }
+      ]
+    },
+    {
+      "name": "branch",
+      "description": "List, create, or delete branches",
+      "options": [
+        { "names": ["-d", "--delete"], "description": "Delete a branch" },
+        { "names": ["-D"], "description": "Force delete a branch" },
+        { "names": ["-m", "--move"], "description": "Rename a branch" },
+        { "names": ["-a", "--all"], "description": "List both remote-tracking and local branches" },
+        { "names": ["-r", "--remotes"], "description": "List remote-tracking branches" },
+        { "names": ["-v", "--verbose"], "description": "Show sha1 and commit subject line" }
+      ]
+    },
+    {
+      "name": "log",
+      "description": "Show commit logs",
+      "options": [
+        { "names": ["--oneline"], "description": "Show each commit on a single line" },
+        { "names": ["--graph"], "description": "Draw a text-based graphical representation" },
+        { "names": ["-n", "--max-count"], "description": "Limit number of commits", "takes_arg": true },
+        { "names": ["--all"], "description": "Show all refs" },
+        { "names": ["--stat"], "description": "Show diffstat" },
+        { "names": ["-p", "--patch"], "description": "Show patch" }
+      ]
+    },
+    {
+      "name": "diff",
+      "description": "Show changes between commits, commit and working tree, etc",
+      "options": [
+        { "names": ["--staged", "--cached"], "description": "Show changes staged for commit" },
+        { "names": ["--stat"], "description": "Show diffstat instead of patch" },
+        { "names": ["--name-only"], "description": "Show only names of changed files" },
+        { "names": ["--name-status"], "description": "Show names and status of changed files" }
+      ]
+    },
+    {
+      "name": "status",
+      "description": "Show the working tree status",
+      "options": [
+        { "names": ["-s", "--short"], "description": "Give output in short format" },
+        { "names": ["-b", "--branch"], "description": "Show branch and tracking info" },
+        { "names": ["--porcelain"], "description": "Give output in machine-readable format" }
+      ]
+    },
+    {
+      "name": "add",
+      "description": "Add file contents to the index",
+      "options": [
+        { "names": ["-A", "--all"], "description": "Add all tracked and untracked files" },
+        { "names": ["-p", "--patch"], "description": "Interactively choose hunks to stage" },
+        { "names": ["-u", "--update"], "description": "Only stage modified and deleted files" },
+        { "names": ["-n", "--dry-run"], "description": "Don't actually add, just show what would be added" }
+      ]
+    },
+    {
+      "name": "clone",
+      "description": "Clone a repository into a new directory",
+      "options": [
+        { "names": ["--depth"], "description": "Create a shallow clone", "takes_arg": true },
+        { "names": ["-b", "--branch"], "description": "Checkout this branch instead of HEAD", "takes_arg": true },
+        { "names": ["--bare"], "description": "Make a bare Git repository" },
+        { "names": ["--recurse-submodules"], "description": "Initialize submodules in the clone" },
+        { "names": ["--single-branch"], "description": "Clone only the history leading to the tip of a single branch" }
+      ]
+    },
+    {
+      "name": "fetch",
+      "description": "Download objects and refs from another repository",
+      "options": [
+        { "names": ["--all"], "description": "Fetch all remotes" },
+        { "names": ["--prune"], "description": "Remove remote-tracking references that no longer exist" },
+        { "names": ["--tags"], "description": "Fetch all tags" },
+        { "names": ["--depth"], "description": "Limit fetching to specified depth", "takes_arg": true }
+      ]
+    },
+    {
+      "name": "reset",
+      "description": "Reset current HEAD to the specified state",
+      "options": [
+        { "names": ["--soft"], "description": "Keep changes staged" },
+        { "names": ["--mixed"], "description": "Unstage changes but keep in working tree (default)" },
+        { "names": ["--hard"], "description": "Discard all changes" }
+      ]
+    },
+    {
+      "name": "cherry-pick",
+      "description": "Apply the changes introduced by some existing commits",
+      "options": [
+        { "names": ["-n", "--no-commit"], "description": "Apply changes without creating a commit" },
+        { "names": ["--abort"], "description": "Cancel the cherry-pick" },
+        { "names": ["--continue"], "description": "Continue after resolving conflicts" }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Create, list, delete or verify a tag object",
+      "options": [
+        { "names": ["-a", "--annotate"], "description": "Make an annotated tag" },
+        { "names": ["-d", "--delete"], "description": "Delete a tag" },
+        { "names": ["-l", "--list"], "description": "List tags" },
+        { "names": ["-m", "--message"], "description": "Tag message", "takes_arg": true }
+      ]
+    },
+    {
+      "name": "remote",
+      "description": "Manage set of tracked repositories",
+      "subcommands": [
+        { "name": "add", "description": "Add a remote" },
+        { "name": "remove", "description": "Remove a remote" },
+        { "name": "rename", "description": "Rename a remote" },
+        { "name": "show", "description": "Show information about a remote" },
+        { "name": "set-url", "description": "Change URLs for the remote" }
+      ],
+      "options": [
+        { "names": ["-v", "--verbose"], "description": "Show remote URL after name" }
+      ]
+    },
+    {
+      "name": "init",
+      "description": "Create an empty Git repository",
+      "options": [
+        { "names": ["--bare"], "description": "Create a bare repository" },
+        { "names": ["-b", "--initial-branch"], "description": "Override the default branch name", "takes_arg": true }
+      ]
+    },
+    {
+      "name": "switch",
+      "description": "Switch branches",
+      "options": [
+        { "names": ["-c", "--create"], "description": "Create and switch to a new branch", "takes_arg": true },
+        { "names": ["-C", "--force-create"], "description": "Force create and switch", "takes_arg": true },
+        { "names": ["-d", "--detach"], "description": "Switch to a commit in detached HEAD state" }
+      ]
+    },
+    {
+      "name": "restore",
+      "description": "Restore working tree files",
+      "options": [
+        { "names": ["--staged"], "description": "Restore the index (unstage)" },
+        { "names": ["-s", "--source"], "description": "Restore from given tree", "takes_arg": true }
+      ]
+    }
+  ],
+  "options": [
+    { "names": ["--version"], "description": "Print the Git version" },
+    { "names": ["--help"], "description": "Print help" },
+    { "names": ["-C"], "description": "Run as if started in the given path", "takes_arg": true }
+  ]
+}
