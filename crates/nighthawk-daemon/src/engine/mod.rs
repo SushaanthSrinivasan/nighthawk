@@ -106,6 +106,7 @@ mod tests {
                 confidence: 0.9,
                 source: SuggestionSource::Spec,
                 description: None,
+                diff_ops: None,
             }],
         };
         let tier2 = MockTier {
@@ -116,6 +117,7 @@ mod tests {
                 confidence: 0.5,
                 source: SuggestionSource::History,
                 description: None,
+                diff_ops: None,
             }],
         };
 
@@ -138,6 +140,7 @@ mod tests {
                 confidence: 0.7,
                 source: SuggestionSource::History,
                 description: None,
+                diff_ops: None,
             }],
         };
 

@@ -95,6 +95,11 @@ pub trait SpecProvider: Send + Sync {
 pub struct SpecRegistry {
     providers: Vec<Box<dyn SpecProvider>>,
     cache: RwLock<HashMap<String, Option<CliSpec>>>,
+    /// Cached list of all known command names across providers.
+    /// Populated lazily on first `fuzzy_lookup` call to avoid repeated
+    /// filesystem scans (FigSpecProvider::known_commands does read_dir).
+    /// TODO: invalidate when HelpParseProvider discovers new commands.
+    known_commands_cache: RwLock<Option<Vec<String>>>,
 }
 
 impl SpecRegistry {
@@ -102,6 +107,7 @@ impl SpecRegistry {
         Self {
             providers,
             cache: RwLock::new(HashMap::new()),
+            known_commands_cache: RwLock::new(None),
         }
     }
 
@@ -137,6 +143,37 @@ impl SpecRegistry {
         }
 
         result
+    }
+
+    /// Try fuzzy matching the command name against all known commands.
+    ///
+    /// Returns the best match (lowest edit distance) and its spec if one
+    /// exists within the allowed distance threshold. Uses a lazily-cached
+    /// command list to avoid repeated filesystem scans.
+    ///
+    /// Deterministic tiebreaking: alphabetically first among equidistant.
+    pub fn fuzzy_lookup(&self, command: &str) -> Option<(CliSpec, usize)> {
+        let commands = {
+            let cache = self.known_commands_cache.read();
+            if let Some(ref cached) = *cache {
+                cached.clone()
+            } else {
+                drop(cache);
+                let commands: Vec<String> = self
+                    .providers
+                    .iter()
+                    .flat_map(|p| p.known_commands())
+                    .collect();
+                *self.known_commands_cache.write() = Some(commands.clone());
+                commands
+            }
+        };
+
+        let matches = crate::fuzzy::fuzzy_matches(command, commands.iter().map(|s| s.as_str()));
+
+        let best = matches.first()?;
+        let spec = self.lookup(&best.text)?;
+        Some((spec, best.distance))
     }
 }
 
@@ -346,5 +383,102 @@ mod tests {
 
         // Next lookup retries and finds the result
         assert!(registry.lookup("rg").is_some());
+    }
+
+    #[test]
+    fn fuzzy_lookup_finds_close_command() {
+        let mut specs = HashMap::new();
+        specs.insert(
+            "git".into(),
+            CliSpec {
+                name: "git".into(),
+                description: None,
+                subcommands: vec![],
+                options: vec![],
+                args: vec![],
+            },
+        );
+        specs.insert(
+            "curl".into(),
+            CliSpec {
+                name: "curl".into(),
+                description: None,
+                subcommands: vec![],
+                options: vec![],
+                args: vec![],
+            },
+        );
+
+        let registry = SpecRegistry::new(vec![Box::new(TestProvider { specs })]);
+
+        let (spec, dist) = registry.fuzzy_lookup("gti").unwrap();
+        assert_eq!(spec.name, "git");
+        assert_eq!(dist, 1);
+    }
+
+    #[test]
+    fn fuzzy_lookup_returns_none_for_distant() {
+        let mut specs = HashMap::new();
+        specs.insert(
+            "git".into(),
+            CliSpec {
+                name: "git".into(),
+                description: None,
+                subcommands: vec![],
+                options: vec![],
+                args: vec![],
+            },
+        );
+
+        let registry = SpecRegistry::new(vec![Box::new(TestProvider { specs })]);
+        assert!(registry.fuzzy_lookup("xyz").is_none());
+    }
+
+    #[test]
+    fn fuzzy_lookup_caches_command_list() {
+        use std::sync::atomic::{AtomicUsize, Ordering};
+        use std::sync::Arc;
+
+        struct Inner {
+            call_count: AtomicUsize,
+        }
+        struct CountingProvider {
+            inner: Arc<Inner>,
+        }
+
+        impl SpecProvider for CountingProvider {
+            fn get_spec(&self, command: &str) -> Option<CliSpec> {
+                if command == "git" {
+                    Some(CliSpec {
+                        name: "git".into(),
+                        description: None,
+                        subcommands: vec![],
+                        options: vec![],
+                        args: vec![],
+                    })
+                } else {
+                    None
+                }
+            }
+            fn known_commands(&self) -> Vec<String> {
+                self.inner.call_count.fetch_add(1, Ordering::SeqCst);
+                vec!["git".into()]
+            }
+        }
+
+        let inner = Arc::new(Inner {
+            call_count: AtomicUsize::new(0),
+        });
+        let registry = SpecRegistry::new(vec![Box::new(CountingProvider {
+            inner: Arc::clone(&inner),
+        })]);
+
+        // First fuzzy_lookup populates the cache
+        let _ = registry.fuzzy_lookup("gti");
+        assert_eq!(inner.call_count.load(Ordering::SeqCst), 1);
+
+        // Second call reuses cached list — known_commands NOT called again
+        let _ = registry.fuzzy_lookup("gti");
+        assert_eq!(inner.call_count.load(Ordering::SeqCst), 1);
     }
 }

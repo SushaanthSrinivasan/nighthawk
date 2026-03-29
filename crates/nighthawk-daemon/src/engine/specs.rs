@@ -109,9 +109,13 @@ impl PredictionTier for SpecTier {
             None => return vec![],
         };
 
-        let spec = match self.registry.lookup(command) {
-            Some(spec) => spec,
-            None => return vec![],
+        // Change A: try fuzzy command-name lookup when exact lookup fails
+        let (spec, command_was_fuzzy) = match self.registry.lookup(command) {
+            Some(spec) => (spec, false),
+            None => match self.registry.fuzzy_lookup(command) {
+                Some((spec, _dist)) => (spec, true),
+                None => return vec![],
+            },
         };
 
         // If we only have the command name, suggest subcommands
@@ -162,11 +166,22 @@ impl PredictionTier for SpecTier {
                                     confidence: 0.85,
                                     source: SuggestionSource::Spec,
                                     description: arg.name.clone(),
+                                    diff_ops: None,
                                 });
                             }
                         }
                         if !suggestions.is_empty() {
                             suggestions.truncate(5);
+                            // Change C: fix suggestions when command was fuzzy-resolved
+                            if command_was_fuzzy {
+                                let cmd_len = command.len();
+                                for s in &mut suggestions {
+                                    s.diff_ops = None; // no inline diff for command-level correction
+                                    let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
+                                    s.text = format!("{}{}{}", spec.name, mid, s.text);
+                                    s.replace_start = 0;
+                                }
+                            }
                             return suggestions;
                         }
                     }
@@ -191,6 +206,7 @@ impl PredictionTier for SpecTier {
                     confidence: 0.9,
                     source: SuggestionSource::Spec,
                     description: sub.description.clone(),
+                    diff_ops: None,
                 });
             }
         }
@@ -216,6 +232,79 @@ impl PredictionTier for SpecTier {
                         confidence: 0.85,
                         source: SuggestionSource::Spec,
                         description: opt.description.clone(),
+                        diff_ops: None,
+                    });
+                }
+            }
+        }
+
+        // --- Fuzzy fallback for subcommands and options ---
+        // Only when prefix matching found nothing and current_token is non-empty.
+        if suggestions.is_empty() && !current_token.is_empty() {
+            let token_start = input.len() - current_token.len();
+
+            // Fuzzy match subcommand names and aliases
+            let mut sub_candidates: Vec<&str> = Vec::new();
+            for sub in &spec.subcommands {
+                sub_candidates.push(&sub.name);
+                for alias in &sub.aliases {
+                    sub_candidates.push(alias);
+                }
+            }
+            let fuzzy_subs = crate::fuzzy::fuzzy_matches(current_token, sub_candidates.into_iter());
+
+            for fm in &fuzzy_subs {
+                let desc = spec
+                    .subcommands
+                    .iter()
+                    .find(|s| s.name == fm.text || s.aliases.iter().any(|a| a == &fm.text))
+                    .and_then(|s| s.description.clone());
+
+                let confidence = if fm.distance == 1 { 0.70 } else { 0.55 };
+                let ops = crate::fuzzy::diff_ops(current_token, &fm.text);
+                suggestions.push(Suggestion {
+                    text: fm.text.clone(),
+                    replace_start: token_start,
+                    replace_end: req.cursor,
+                    confidence,
+                    source: SuggestionSource::Spec,
+                    description: desc,
+                    diff_ops: Some(ops),
+                });
+            }
+
+            // Fuzzy match long option names only (--prefixed).
+            // Short flags (-x) are excluded to avoid interfering with flag stacking.
+            if current_token.starts_with("--") {
+                let opt_names: Vec<&str> = spec
+                    .options
+                    .iter()
+                    .flat_map(|opt| opt.names.iter())
+                    .filter(|n| n.starts_with("--"))
+                    .map(|n| n.as_str())
+                    .collect();
+                let fuzzy_opts = crate::fuzzy::fuzzy_matches(current_token, opt_names.into_iter());
+
+                for fm in &fuzzy_opts {
+                    if used_flags.contains(&fm.text) {
+                        continue;
+                    }
+                    let desc = spec
+                        .options
+                        .iter()
+                        .find(|opt| opt.names.iter().any(|n| n == &fm.text))
+                        .and_then(|opt| opt.description.clone());
+
+                    let confidence = if fm.distance == 1 { 0.65 } else { 0.50 };
+                    let ops = crate::fuzzy::diff_ops(current_token, &fm.text);
+                    suggestions.push(Suggestion {
+                        text: fm.text.clone(),
+                        replace_start: token_start,
+                        replace_end: req.cursor,
+                        confidence,
+                        source: SuggestionSource::Spec,
+                        description: desc,
+                        diff_ops: Some(ops),
                     });
                 }
             }
@@ -248,6 +337,7 @@ impl PredictionTier for SpecTier {
                             confidence: 0.8,
                             source: SuggestionSource::Spec,
                             description: opt.description.clone(),
+                            diff_ops: None,
                         });
                     }
                 }
@@ -277,6 +367,7 @@ impl PredictionTier for SpecTier {
                                         confidence: 0.8,
                                         source: SuggestionSource::Spec,
                                         description: opt.description.clone(),
+                                        diff_ops: None,
                                     });
                                 }
                             }
@@ -288,6 +379,16 @@ impl PredictionTier for SpecTier {
 
         suggestions.sort_by(|a, b| b.confidence.partial_cmp(&a.confidence).unwrap());
         suggestions.truncate(5);
+        // Change C: fix suggestions when command was fuzzy-resolved
+        if command_was_fuzzy {
+            let cmd_len = command.len();
+            for s in &mut suggestions {
+                s.diff_ops = None; // no inline diff for command-level correction
+                let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
+                s.text = format!("{}{}{}", spec.name, mid, s.text);
+                s.replace_start = 0;
+            }
+        }
         suggestions
     }
 }
@@ -724,5 +825,351 @@ mod tests {
             suggestions.iter().any(|s| s.text.starts_with("-")),
             "should fall through to flag suggestions when option has no arg suggestions"
         );
+    }
+
+    // --- Fuzzy matching test helpers ---
+
+    /// git spec with a "switch" alias on checkout (5+ chars for fuzzy matching)
+    fn git_spec_with_aliases() -> CliSpec {
+        CliSpec {
+            name: "git".into(),
+            description: Some("Version control".into()),
+            subcommands: vec![
+                SubcommandSpec {
+                    name: "checkout".into(),
+                    aliases: vec!["switch".into()],
+                    description: Some("Switch branches".into()),
+                    subcommands: vec![],
+                    options: vec![],
+                    args: vec![],
+                },
+                SubcommandSpec {
+                    name: "cherry-pick".into(),
+                    aliases: vec![],
+                    description: Some("Apply commits".into()),
+                    subcommands: vec![],
+                    options: vec![],
+                    args: vec![],
+                },
+            ],
+            options: vec![OptionSpec {
+                names: vec!["-v".into(), "--verbose".into()],
+                description: Some("Verbose".into()),
+                takes_arg: false,
+                is_required: false,
+                arg: None,
+            }],
+            args: vec![],
+        }
+    }
+
+    fn make_multi_registry(specs: Vec<CliSpec>) -> Arc<SpecRegistry> {
+        let mut map = HashMap::new();
+        for spec in specs {
+            map.insert(spec.name.clone(), spec);
+        }
+        Arc::new(SpecRegistry::new(vec![Box::new(TestProvider {
+            specs: map,
+        })]))
+    }
+
+    // --- Fuzzy matching tests ---
+
+    #[tokio::test]
+    async fn fuzzy_subcommand_distance_one() {
+        // "git chekout" → "checkout" (deletion typo, distance 1)
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git chekout")).await;
+        assert_eq!(suggestions.len(), 1);
+        assert_eq!(suggestions[0].text, "checkout");
+        assert!((suggestions[0].confidence - 0.70).abs() < 0.01);
+        assert_eq!(suggestions[0].source, SuggestionSource::Spec);
+        // replace_start should cover the mistyped token
+        assert_eq!(suggestions[0].replace_start, 4);
+        assert_eq!(suggestions[0].replace_end, 11);
+    }
+
+    #[tokio::test]
+    async fn fuzzy_subcommand_substitution() {
+        // "git chackout" → "checkout" (substitution e→a, distance 1)
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git chackout")).await;
+        assert_eq!(suggestions.len(), 1);
+        assert_eq!(suggestions[0].text, "checkout");
+        assert!((suggestions[0].confidence - 0.70).abs() < 0.01);
+    }
+
+    #[tokio::test]
+    async fn fuzzy_subcommand_distance_two() {
+        // "git chekcotu" → "checkout" (distance 2)
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git chekcotu")).await;
+        assert_eq!(suggestions.len(), 1);
+        assert_eq!(suggestions[0].text, "checkout");
+        assert!((suggestions[0].confidence - 0.55).abs() < 0.01);
+    }
+
+    #[tokio::test]
+    async fn fuzzy_option_long_flag() {
+        // "git --vrebose" → "--verbose" (transposition, distance 1)
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git --vrebose")).await;
+        assert_eq!(suggestions.len(), 1);
+        assert_eq!(suggestions[0].text, "--verbose");
+        assert!((suggestions[0].confidence - 0.65).abs() < 0.01);
+    }
+
+    #[tokio::test]
+    async fn fuzzy_does_not_override_prefix_match() {
+        // "git ch" → prefix matches "checkout" and "cherry-pick" at confidence 0.9
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git ch")).await;
+        assert!(suggestions.iter().all(|s| s.confidence > 0.8));
+        assert!(suggestions.iter().any(|s| s.text == "checkout"));
+        assert!(suggestions.iter().any(|s| s.text == "cherry-pick"));
+    }
+
+    #[tokio::test]
+    async fn fuzzy_no_interference_with_flag_stacking() {
+        // "ls -lz" → should NOT fuzzy match -lz to -la; stacking rejects unknown 'z'
+        let tier = SpecTier::new(make_registry(ls_spec()));
+        let suggestions = tier.predict(&req("ls -lz")).await;
+        assert!(
+            suggestions.is_empty(),
+            "should not fuzzy match stacked-flag tokens"
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_flag_stacking_still_works() {
+        // "ls -l" → flag stacking should still suggest "-la", "-lh", etc.
+        let tier = SpecTier::new(make_registry(ls_spec()));
+        let suggestions = tier.predict(&req("ls -l")).await;
+        assert!(!suggestions.is_empty());
+        assert!(suggestions.iter().any(|s| s.text.starts_with("-l")));
+    }
+
+    #[tokio::test]
+    async fn fuzzy_respects_used_flags() {
+        // "git --verbose --vrebose" → --verbose already used, no suggestion
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git --verbose --vrebose")).await;
+        assert!(
+            suggestions.is_empty(),
+            "should not suggest already-used flag"
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_skipped_for_short_tokens() {
+        // "git co" → "co" is 2 chars, too short for fuzzy (and no prefix match in test spec)
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git co")).await;
+        assert!(
+            suggestions.is_empty(),
+            "2-char token should not trigger fuzzy"
+        );
+    }
+
+    #[tokio::test]
+    async fn short_token_still_prefix_matches() {
+        // "git ch" → "co" is too short for fuzzy, but "ch" prefix-matches checkout/cherry-pick.
+        // Verifies prefix matching still works even when fuzzy is not eligible.
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git ch")).await;
+        assert!(!suggestions.is_empty());
+        assert!(suggestions.iter().any(|s| s.text == "checkout"));
+        assert!(
+            suggestions.iter().all(|s| s.confidence > 0.8),
+            "should be prefix confidence, not fuzzy"
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_case_sensitive_flags() {
+        // ls has -R (Recursive) but not -r. Fuzzy on "--colro" should match "--color".
+        // But short flags like -R must not match -r (both len 2, rejected by length check anyway).
+        let tier = SpecTier::new(make_registry(ls_spec()));
+        let suggestions = tier.predict(&req("ls --colro")).await;
+        assert_eq!(suggestions.len(), 1);
+        assert_eq!(suggestions[0].text, "--color");
+    }
+
+    #[tokio::test]
+    async fn fuzzy_arg_value_no_fuzzy() {
+        // "curl -X PSOT" → arg-value suggestions use prefix match, not fuzzy.
+        // "PSOT" doesn't prefix-match any of GET/POST/PUT/DELETE → empty.
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -X PSOT")).await;
+        assert!(
+            suggestions.is_empty(),
+            "arg-value path should not fuzzy match"
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_matches_alias() {
+        // "git swtich" → fuzzy matches alias "switch" (transposition, distance 1)
+        let tier = SpecTier::new(make_registry(git_spec_with_aliases()));
+        let suggestions = tier.predict(&req("git swtich")).await;
+        assert_eq!(suggestions.len(), 1);
+        assert_eq!(suggestions[0].text, "switch");
+        assert!((suggestions[0].confidence - 0.70).abs() < 0.01);
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_name_resolution() {
+        // "gti checkout " → resolves "gti" to "git" spec, suggests options
+        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti checkout ")).await;
+        // The only option on git is --verbose / -v
+        assert!(!suggestions.is_empty());
+        // Change C: suggestions should have replace_start=0 and text correcting "gti" to "git"
+        for s in &suggestions {
+            assert_eq!(
+                s.replace_start, 0,
+                "fuzzy command correction should set replace_start=0"
+            );
+            assert!(
+                s.text.starts_with("git "),
+                "suggestion text should start with corrected command: {}",
+                s.text
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_name_with_subcommand_typo() {
+        // "gti ch" → resolves "gti" to "git", then prefix matches "checkout" / "cherry-pick"
+        // Change C: text should include corrected command prefix
+        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti ch")).await;
+        assert!(!suggestions.is_empty());
+        assert!(suggestions.iter().any(|s| s.text == "git checkout"));
+        assert!(suggestions.iter().any(|s| s.text == "git cherry-pick"));
+        // Ghost text check: for "gti ch" (cursor=6), replace_start=0
+        // ghost = text[6..] → "git checkout"[6..] = "eckout"
+        for s in &suggestions {
+            assert_eq!(s.replace_start, 0);
+        }
+    }
+
+    #[tokio::test]
+    async fn fuzzy_double_fuzzy_command_and_subcommand() {
+        // "gti chekout" → fuzzy command ("gti"→"git") + fuzzy subcommand ("chekout"→"checkout")
+        // Change C clears diff_ops and prepends corrected command
+        let registry = make_multi_registry(vec![git_spec_with_aliases(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti chekout")).await;
+        assert!(!suggestions.is_empty());
+        assert_eq!(suggestions[0].replace_start, 0);
+        assert!(
+            suggestions[0].text.starts_with("git "),
+            "double-fuzzy should correct command: {}",
+            suggestions[0].text
+        );
+        assert!(
+            suggestions[0].text.contains("checkout"),
+            "double-fuzzy should resolve subcommand: {}",
+            suggestions[0].text
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_trailing_space_lists_subcommands() {
+        // "gti " → fuzzy resolves "gti" to "git", trailing space lists subcommands
+        // Change C: suggestions prefixed with "git "
+        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti ")).await;
+        assert!(!suggestions.is_empty());
+        for s in &suggestions {
+            assert_eq!(s.replace_start, 0, "should replace from start");
+            assert!(
+                s.text.starts_with("git "),
+                "should be prefixed with corrected command: {}",
+                s.text
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn fuzzy_double_fuzzy_transposition() {
+        // "gti chekcout" → fuzzy command + fuzzy subcommand (transposition)
+        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti chekcout")).await;
+        assert!(!suggestions.is_empty());
+        assert_eq!(suggestions[0].replace_start, 0);
+        assert!(
+            suggestions[0].text.contains("checkout"),
+            "should resolve transposed subcommand: {}",
+            suggestions[0].text
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_distance_exceeds_threshold() {
+        // "git xyzabc" → too many edits from any subcommand, no suggestions
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git xyzabc")).await;
+        assert!(suggestions.is_empty(), "distance > 2 should yield nothing");
+    }
+
+    #[tokio::test]
+    async fn short_gibberish_no_fuzzy() {
+        // "git zz" → 2-char token, no prefix match, no fuzzy (too short)
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git zz")).await;
+        assert!(
+            suggestions.is_empty(),
+            "2-char gibberish should yield nothing"
+        );
+    }
+
+    #[tokio::test]
+    async fn single_char_token_no_match() {
+        // "git x" → 1-char token, no prefix match, too short for fuzzy
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git x")).await;
+        assert!(suggestions.is_empty(), "1-char token should yield nothing");
+    }
+
+    #[tokio::test]
+    async fn empty_input_returns_empty() {
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("")).await;
+        assert!(suggestions.is_empty());
+    }
+
+    #[tokio::test]
+    async fn command_only_no_space() {
+        // "git" with no trailing space → no suggestions (nothing to complete yet)
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git")).await;
+        assert!(suggestions.is_empty());
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_no_space() {
+        // "gti" with no trailing space → fuzzy resolves command but nothing to complete
+        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti")).await;
+        assert!(
+            suggestions.is_empty(),
+            "fuzzy cmd with no space should yield nothing"
+        );
+    }
+
+    #[tokio::test]
+    async fn extra_whitespace_fuzzy() {
+        // "git  chekout" → extra space, fuzzy subcommand still works
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git  chekout")).await;
+        assert!(!suggestions.is_empty());
+        assert_eq!(suggestions[0].text, "checkout");
     }
 }
