@@ -69,7 +69,11 @@
             "--tempfiles"
           ],
           "description": "Remove temporary files that could not be deleted earlier due to being in-use. Argument is path(s) to prefix(es) where files should be found and removed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -117,7 +121,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -125,7 +132,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -204,14 +215,22 @@
             "--file"
           ],
           "description": "Write to the given file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Target File",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--show"
           ],
           "description": "Display configuration values as calculated and compiled. If no arguments given, show information for all configuration values",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Configuration values",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -230,7 +249,11 @@
             "--describe"
           ],
           "description": "Describe given configuration parameters. If no arguments given, show information for all configuration parameters",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Configuration values",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -243,14 +266,21 @@
             "--get"
           ],
           "description": "Get a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--append"
           ],
           "description": "Add one configuration value to the end of a list key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
@@ -258,28 +288,40 @@
             "--add"
           ],
           "description": "Add one configuration value to the beginning of a list key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
             "--set"
           ],
           "description": "Set a boolean or string key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
             "--remove"
           ],
           "description": "Remove a configuration value from a list key. This removes all instances of the value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
             "--remove-key"
           ],
           "description": "Remove a configuration key (and all its values)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
@@ -305,7 +347,10 @@
             "--file"
           ],
           "description": "Read package versions from the given file. Repeated file specifications can be passed (e.g. --file=file1 --file=file2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -319,7 +364,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -327,7 +375,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -556,7 +608,10 @@
             "--file"
           ],
           "description": "Read package versions from the given file. Repeated file specifications can be passed (e.g. --file=file1 --file=file2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -570,7 +625,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -578,7 +636,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -832,7 +894,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -840,7 +905,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -880,7 +949,11 @@
             "--which"
           ],
           "description": "Given some PATH print which conda package the file came from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Path",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -923,7 +996,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -931,7 +1007,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -951,7 +1031,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -959,7 +1042,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1091,7 +1178,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -1099,7 +1189,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1225,7 +1319,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -1233,7 +1330,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1389,7 +1490,10 @@
             "--file"
           ],
           "description": "Read package versions from the given file. Repeated file specifications can be passed (e.g. --file=file1 --file=file2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1397,7 +1501,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -1405,7 +1512,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1601,7 +1712,10 @@
             "--file"
           ],
           "description": "Read package versions from the given file. Repeated file specifications can be passed (e.g. --file=file1 --file=file2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1609,7 +1723,10 @@
             "--name"
           ],
           "description": "Name of environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment"
+          }
         },
         {
           "names": [
@@ -1617,7 +1734,11 @@
             "--prefix"
           ],
           "description": "Full path to environment location (i.e. prefix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1824,7 +1945,24 @@
             "--platform"
           ],
           "description": "Platform to convert the packages to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "osx-64",
+              "osx-arm64",
+              "linux-32",
+              "linux-64",
+              "linux-ppc64",
+              "linux-ppc64le",
+              "linux-s390x",
+              "linux-armv6l",
+              "linux-armv7l",
+              "linux-aarch64",
+              "win-32",
+              "win-64",
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -1832,7 +1970,11 @@
             "-d"
           ],
           "description": "Additional (besides python) dependencies of the converted package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Dependencies",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1853,7 +1995,10 @@
             "--output-dir"
           ],
           "description": "Directory to write the output files. The packages will be organized in platform/ subdirectories, e.g., win-32/package-1.0-py27_0.tar.bz2",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Output Directory"
+          }
         },
         {
           "names": [
@@ -1904,7 +2049,10 @@
               "names": [
                 "-n"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environment variable"
+              }
             }
           ]
         }

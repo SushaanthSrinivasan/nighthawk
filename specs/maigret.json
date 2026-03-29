@@ -20,14 +20,22 @@
         "--timeout"
       ],
       "description": "Time in seconds to wait for response to requests (default {settings.timeout}s). A longer timeout will be more likely to get results from slow sites. On the other hand, this may cause a long delay to g",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Timeout",
+        "description": "Timeout in seconds"
+      }
     },
     {
       "names": [
         "--retries"
       ],
       "description": "Attempts to restart temporarily failed requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Retries",
+        "description": "Number of attempts"
+      }
     },
     {
       "names": [
@@ -35,7 +43,11 @@
         "--max-connections"
       ],
       "description": "Allowed number of concurrent connections (default {settings.max_connections})",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Connections",
+        "description": "Number connections"
+      }
     },
     {
       "names": [
@@ -54,28 +66,58 @@
         "--id-type"
       ],
       "description": "Specify identifier(s) type (default: username)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Type",
+        "description": "Type of identifier",
+        "suggestions": [
+          "username",
+          "yandex_public_id",
+          "gaia_id",
+          "vk_id",
+          "ok_id",
+          "wikimapia_uid",
+          "steam_id",
+          "uidme_uguid",
+          "yelp_userid"
+        ]
+      }
     },
     {
       "names": [
         "--db"
       ],
       "description": "Load Maigret database from a JSON file or HTTP web resource",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DB path",
+        "description": "DB path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--cookies-jar-file"
       ],
       "description": "File with cookies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Cookie file",
+        "description": "Cookie file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ignore-ids"
       ],
       "description": "Do not make search by the specified username or other ids",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Ignored ids",
+        "description": "Ignored ids",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -83,7 +125,12 @@
         "--folderoutput"
       ],
       "description": "If using multiple usernames, the output of the results will be saved to this folder",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Reports path",
+        "description": "Reports path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -91,21 +138,33 @@
         "--proxy"
       ],
       "description": "Make requests over a proxy. e.g. socks5://127.0.0.1:1080",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Proxy URL",
+        "description": "Proxy URL"
+      }
     },
     {
       "names": [
         "--tor-proxy"
       ],
       "description": "Specify URL of your Tor gateway. Default is socks5://127.0.0.1:9050",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Tor Proxy URL",
+        "description": "Tor Proxy URL"
+      }
     },
     {
       "names": [
         "--i2p-proxy"
       ],
       "description": "Specify URL of your I2P gateway. Default is http://127.0.0.1:4444",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "I2P URL",
+        "description": "I2P URL"
+      }
     },
     {
       "names": [
@@ -118,14 +177,22 @@
         "--tags"
       ],
       "description": "Specify tags of sites (see `--stats`)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Tags",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--site"
       ],
       "description": "Limit analysis to just the specified sites (multiple option)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Site name",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -138,14 +205,20 @@
         "--parse"
       ],
       "description": "Parse page by URL and extract username and IDs to use for search",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Parse URL"
+      }
     },
     {
       "names": [
         "--submit"
       ],
       "description": "URL of existing profile in new site to submit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Site URL"
+      }
     },
     {
       "names": [
@@ -253,14 +326,28 @@
         "--json"
       ],
       "description": "Generate a JSON report of specific type: simple, ndjson (one report per username)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Type",
+        "suggestions": [
+          "simple",
+          "ndjson"
+        ]
+      }
     },
     {
       "names": [
         "--reports-sorting"
       ],
       "description": "Method of results sorting in reports (default: in order of getting the result)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Type",
+        "suggestions": [
+          "default",
+          "data"
+        ]
+      }
     }
   ],
   "args": [

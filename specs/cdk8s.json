@@ -28,7 +28,16 @@
             "-l"
           ],
           "description": "Output programming language",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "language",
+            "suggestions": [
+              "typescript",
+              "python",
+              "java",
+              "go"
+            ]
+          }
         },
         {
           "names": [
@@ -47,7 +56,10 @@
             "--exclude"
           ],
           "description": "Do not import types that match these regular expressions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "regexp"
+          }
         },
         {
           "names": [
@@ -55,7 +67,10 @@
             "-o"
           ],
           "description": "Output directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -83,7 +98,10 @@
             "-o"
           ],
           "description": "Output directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -115,7 +133,10 @@
             "--validation-reports-output-file"
           ],
           "description": "File to write a JSON representation of the validation reports to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     }

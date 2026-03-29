@@ -14,14 +14,22 @@
         "--info"
       ],
       "description": "Fine-grained informational verbosity",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BACKUP",
+        "description": "Mention files backed up"
+      }
     },
     {
       "names": [
         "--debug"
       ],
       "description": "Fine-grained debug verbosity",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BACKUP",
+        "description": "Mention files backed up"
+      }
     },
     {
       "names": [
@@ -94,14 +102,21 @@
         "--backup-dir"
       ],
       "description": "Make backups into hierarchy based in DIR",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--suffix"
       ],
       "description": "Set backup suffix (default ~ w/o --backup-dir)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SUFFIX"
+      }
     },
     {
       "names": [
@@ -134,7 +149,11 @@
         "--dirs"
       ],
       "description": "Transfer directories without recursing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -208,7 +227,10 @@
         "--chmod"
       ],
       "description": "Affect file and/or directory permissions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CHMOD"
+      }
     },
     {
       "names": [
@@ -275,7 +297,12 @@
         "--omit-dir-times"
       ],
       "description": "Omit directories from --times",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -328,7 +355,16 @@
         "--checksum-choice"
       ],
       "description": "Choose the checksum algorithms",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ALGORITHM",
+        "suggestions": [
+          "auto",
+          "md4",
+          "md5",
+          "none"
+        ]
+      }
     },
     {
       "names": [
@@ -343,7 +379,10 @@
         "--block-size"
       ],
       "description": "Force a fixed checksum block-size",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIZE"
+      }
     },
     {
       "names": [
@@ -351,14 +390,20 @@
         "--rsh"
       ],
       "description": "Specify the remote shell to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COMMAND"
+      }
     },
     {
       "names": [
         "--rsync-path"
       ],
       "description": "Specify the rsync to run on the remote machine",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH"
+      }
     },
     {
       "names": [
@@ -444,21 +489,30 @@
         "--max-delete"
       ],
       "description": "Don't delete more than NUM files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "--max-size"
       ],
       "description": "Don't transfer any file larger than SIZE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIZE"
+      }
     },
     {
       "names": [
         "--min-size"
       ],
       "description": "Don't transfer any file smaller than SIZE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIZE"
+      }
     },
     {
       "names": [
@@ -471,7 +525,11 @@
         "--partial-dir=DIR"
       ],
       "description": "Put a partially transferred file into DIR",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -497,35 +555,50 @@
         "--usermap"
       ],
       "description": "Custom username mapping",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STRING"
+      }
     },
     {
       "names": [
         "--groupmap"
       ],
       "description": "Custom groupname mapping",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STRING"
+      }
     },
     {
       "names": [
         "--chown=USER:GROUP"
       ],
       "description": "Simple username/groupname mapping",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "USER:GROUP"
+      }
     },
     {
       "names": [
         "--timeout"
       ],
       "description": "Set I/O timeout in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
         "--contimeout"
       ],
       "description": "Set daemon connection timeout in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
@@ -539,14 +612,20 @@
         "-M"
       ],
       "description": "Send OPTION to the remote side only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OPTION"
+      }
     },
     {
       "names": [
         "--remote-option"
       ],
       "description": "Send OPTION to the remote side only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OPTION"
+      }
     },
     {
       "names": [
@@ -559,28 +638,42 @@
         "-@"
       ],
       "description": "Set the accuracy for mod-time comparisons",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "--modify-window"
       ],
       "description": "Set the accuracy for mod-time comparisons",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Create temporary files in directory DIR",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--temp-dir"
       ],
       "description": "Create temporary files in directory DIR",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -594,21 +687,33 @@
         "--compare-dest"
       ],
       "description": "Also compare destination files relative to DIR",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--copy-dest"
       ],
       "description": "Also compare destination files relative to DIR and include copies of unchanged files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--link-dest"
       ],
       "description": "Hardlink to files in DIR when unchanged",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -622,14 +727,32 @@
         "--compress-level"
       ],
       "description": "Explicitly set compression level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM",
+        "suggestions": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ]
+      }
     },
     {
       "names": [
         "--skip-compress"
       ],
       "description": "Skip compressing files with a suffix in LIST",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LIST"
+      }
     },
     {
       "names": [
@@ -643,56 +766,85 @@
         "-f"
       ],
       "description": "Add a file-filtering RULE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RULE"
+      }
     },
     {
       "names": [
         "--filter"
       ],
       "description": "Add a file-filtering RULE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RULE"
+      }
     },
     {
       "names": [
         "-F"
       ],
       "description": "Same as --filter='dir-merge /.rsync-filter'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--exclude"
       ],
       "description": "Exclude files matching PATTERN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATTERN"
+      }
     },
     {
       "names": [
         "--exclude-from"
       ],
       "description": "Read exclude patterns from FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--include"
       ],
       "description": "Don't exclude files matching PATTERN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATTERN"
+      }
     },
     {
       "names": [
         "--include-from"
       ],
       "description": "Read include patterns from FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--files-from"
       ],
       "description": "Read list of source-file names from FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -713,21 +865,30 @@
         "--address"
       ],
       "description": "Bind address for outgoing socket to daemon",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ADDRESS"
+      }
     },
     {
       "names": [
         "--port"
       ],
       "description": "Specify double-colon alternate port number",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PORT"
+      }
     },
     {
       "names": [
         "--sockopts"
       ],
       "description": "Specify custom TCP options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OPTIONS"
+      }
     },
     {
       "names": [
@@ -779,28 +940,42 @@
         "--out-format"
       ],
       "description": "Output updates using the specified FORMAT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT"
+      }
     },
     {
       "names": [
         "--log-file"
       ],
       "description": "Log what we're doing to the specified FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--log-file-format"
       ],
       "description": "Log updates using the specified FMT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FMT"
+      }
     },
     {
       "names": [
         "--password-file"
       ],
       "description": "Read daemon-access password from FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -813,70 +988,108 @@
         "--bwlimit"
       ],
       "description": "Limit socket I/O bandwidth",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RATE"
+      }
     },
     {
       "names": [
         "--stop-at"
       ],
       "description": "Stop rsync at year-month-dayThour:minute",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "y-m-dTh:m"
+      }
     },
     {
       "names": [
         "--time-limit"
       ],
       "description": "Stop rsync after MINS minutes have elapsed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MINS"
+      }
     },
     {
       "names": [
         "--outbuf"
       ],
       "description": "Set output buffering to None, Line, or Block",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BUFFER",
+        "suggestions": [
+          "N",
+          "L",
+          "B"
+        ]
+      }
     },
     {
       "names": [
         "--write-batch"
       ],
       "description": "Write a batched update to FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--only-write-batch"
       ],
       "description": "Like --write-batch but w/o updating destination",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--read-batch"
       ],
       "description": "Read a batched update from FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--protocol"
       ],
       "description": "Force an older protocol version to be used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "--iconv"
       ],
       "description": "Request charset conversion of filenames",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONVERT_SPEC"
+      }
     },
     {
       "names": [
         "--checksum-seed"
       ],
       "description": "Set block/file checksum seed (advanced)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [

@@ -25,7 +25,10 @@
             "--memo"
           ],
           "description": "Memo/note for stashing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "note"
+          }
         }
       ],
       "args": [
@@ -48,7 +51,11 @@
         "--config"
       ],
       "description": "Config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -77,7 +84,17 @@
         "--style"
       ],
       "description": "Style name or JSON path (default 'auto')",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "suggestions": [
+          "auto",
+          "light",
+          "dark",
+          "notty"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -92,7 +109,10 @@
         "--width"
       ],
       "description": "Word-wrap at width",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "column"
+      }
     }
   ],
   "args": [

@@ -12,7 +12,11 @@
             "--input-path"
           ],
           "description": "The input to provide to the shortcut",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "input-path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -20,14 +24,29 @@
             "--output-path"
           ],
           "description": "Where to write the shortcut output, if applicable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output-path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--output-type"
           ],
           "description": "What type to output data in, in Universal Type Identifier format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output-type",
+            "suggestions": [
+              "public.json",
+              "public.plain-text",
+              "public.html",
+              "public.xml",
+              "com.adobe.pdf",
+              "public.vcard"
+            ]
+          }
         }
       ],
       "args": [
@@ -47,7 +66,10 @@
             "-f"
           ],
           "description": "The name of the folder to list",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "folder-name"
+          }
         },
         {
           "names": [
@@ -77,7 +99,10 @@
             "-i"
           ],
           "description": "The shortcut file to sign",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "input"
+          }
         },
         {
           "names": [
@@ -85,7 +110,11 @@
             "-o"
           ],
           "description": "Output path for the signed shortcut file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -93,7 +122,14 @@
             "-m"
           ],
           "description": "The signing mode. (default: people-who-know-me)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "people-who-know-me",
+              "anyone"
+            ]
+          }
         }
       ]
     },

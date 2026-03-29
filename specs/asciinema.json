@@ -36,7 +36,10 @@
             "--command"
           ],
           "description": "Specify command to record, defaults to $SHELL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "command"
+          }
         },
         {
           "names": [
@@ -44,7 +47,10 @@
             "--env"
           ],
           "description": "List of environment variables to capture",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "variables"
+          }
         },
         {
           "names": [
@@ -52,7 +58,10 @@
             "--title"
           ],
           "description": "Specify the title of the asciicast",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "title"
+          }
         },
         {
           "names": [
@@ -60,21 +69,30 @@
             "--idle-time-limit"
           ],
           "description": "Limit recorded terminal inactivity to max amount of seconds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "--cols"
           ],
           "description": "Override terminal columns for recorded process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cols"
+          }
         },
         {
           "names": [
             "--rows"
           ],
           "description": "Override terminal rows for recorded process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rows"
+          }
         },
         {
           "names": [
@@ -107,7 +125,11 @@
             "--idle-time-linit"
           ],
           "description": "Limit replayed terminal inactivity",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds",
+            "description": "Can be fractional"
+          }
         },
         {
           "names": [
@@ -115,7 +137,11 @@
             "--speed"
           ],
           "description": "Playback speed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "factor",
+            "description": "Can be fractional"
+          }
         }
       ],
       "args": [

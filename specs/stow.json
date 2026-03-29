@@ -15,7 +15,11 @@
         "--dir"
       ],
       "description": "Set the stow directory to 'DIR' instead of the current directory. This also has the effect of making the default target directory be the parent of 'DIR'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -23,7 +27,11 @@
         "--target"
       ],
       "description": "Set the target directory to 'DIR' instead of the parent of the stow directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -31,7 +39,18 @@
         "--verbose"
       ],
       "description": "Send verbose output to standard error describing what Stow is doing. Verbosity levels are from 0 to 5; 0 is the default. Using '-v' or '--verbose' increases the verbosity by one; using `--verbose=N' s",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
     },
     {
       "names": [
@@ -71,21 +90,30 @@
         "--ignore"
       ],
       "description": "Ignore files ending in this Perl regex",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REGEX"
+      }
     },
     {
       "names": [
         "--defer"
       ],
       "description": "Don't stow files beginning with this Perl regex if the file is already stowed to another package",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REGEX"
+      }
     },
     {
       "names": [
         "--override"
       ],
       "description": "Force stowing files beginning with this Perl regex if the file is already stowed to another package",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REGEX"
+      }
     },
     {
       "names": [

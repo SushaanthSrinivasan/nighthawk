@@ -353,7 +353,10 @@
             "--abi"
           ],
           "description": "Override platform's default ABI",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ABI"
+          }
         },
         {
           "names": [
@@ -468,7 +471,10 @@
             "--abi"
           ],
           "description": "Override platform's default ABI",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ABI"
+          }
         },
         {
           "names": [
@@ -584,7 +590,10 @@
             "--abi"
           ],
           "description": "Override platform's default ABI",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ABI"
+          }
         },
         {
           "names": [
@@ -732,7 +741,15 @@
             "-z"
           ],
           "description": "Enable compression with a specified algorithm (any, none, brotli)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ALGORITHM",
+            "suggestions": [
+              "any",
+              "none",
+              "brotli"
+            ]
+          }
         },
         {
           "names": [
@@ -773,7 +790,15 @@
             "-z"
           ],
           "description": "Enable compression with a specified algorithm (any, none, brotli)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ALGORITHM",
+            "suggestions": [
+              "any",
+              "none",
+              "brotli"
+            ]
+          }
         },
         {
           "names": [
@@ -812,7 +837,15 @@
             "-z"
           ],
           "description": "Enable compression with a specified algorithm (any, none, brotli)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ALGORITHM",
+            "suggestions": [
+              "any",
+              "none",
+              "brotli"
+            ]
+          }
         },
         {
           "names": [
@@ -847,7 +880,10 @@
             "--remove"
           ],
           "description": "Remove specific forward socket connection",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LOCAL"
+          }
         },
         {
           "names": [
@@ -904,7 +940,10 @@
             "--remove"
           ],
           "description": "Remove specific reverse socket connection",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REMOTE"
+          }
         },
         {
           "names": [
@@ -965,35 +1004,50 @@
         "-s"
       ],
       "description": "Use device with given serial (overrides $ANDROID_SERIAL)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SERIAL"
+      }
     },
     {
       "names": [
         "-t"
       ],
       "description": "Use device with given transport id",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ID"
+      }
     },
     {
       "names": [
         "-H"
       ],
       "description": "Name of adb server host [default=localhost]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host name"
+      }
     },
     {
       "names": [
         "-P"
       ],
       "description": "Port of adb server [default=5037]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Listen on given socket for adb server [default=tcp:localhost:5037]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "socket"
+      }
     }
   ]
 }

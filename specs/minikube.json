@@ -41,7 +41,13 @@
             "--auto-update-drivers"
           ],
           "description": "If set, automatically updates drivers to the latest version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -66,21 +72,45 @@
             "--cni"
           ],
           "description": "CNI plug-in to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cni-plugin",
+            "suggestions": [
+              "auto",
+              "bridge",
+              "cilium",
+              "flannel",
+              "kindnet"
+            ]
+          }
         },
         {
           "names": [
             "--container-runtime"
           ],
           "description": "The container runtime to be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "container-runtime",
+            "suggestions": [
+              "docker",
+              "cri-o",
+              "containerd"
+            ]
+          }
         },
         {
           "names": [
             "--cpus"
           ],
           "description": "Number of CPUs allocated to Kubernetes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cpu number",
+            "suggestions": [
+              "max"
+            ]
+          }
         },
         {
           "names": [
@@ -93,7 +123,13 @@
             "--delete-on-failure"
           ],
           "description": "If set, delete the current cluster if start fails and try again",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -142,7 +178,19 @@
             "--driver"
           ],
           "description": "Choose driver",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "driver",
+            "suggestions": [
+              "virtualbox",
+              "parallels",
+              "vmwarefusion",
+              "hyperkit",
+              "vmware",
+              "docker",
+              "podman"
+            ]
+          }
         },
         {
           "names": [
@@ -155,7 +203,13 @@
             "--embed-certs"
           ],
           "description": "If true, will embed the certs in kubeconfig",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -186,7 +240,13 @@
             "--force-systemd"
           ],
           "description": "If set, force the container runtime to use systemd as cgroup manager",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -205,7 +265,18 @@
             "--host-only-nic-type"
           ],
           "description": "NIC Type used for host only network",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "nic type",
+            "suggestions": [
+              "Am79C970A",
+              "Am79C973",
+              "82540EM",
+              "82543GC",
+              "82545EM",
+              "virtio"
+            ]
+          }
         },
         {
           "names": [
@@ -260,7 +331,13 @@
             "--install-addons"
           ],
           "description": "If set, install addons. Defaults to true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -309,7 +386,20 @@
             "--kvm-numa-count"
           ],
           "description": "Simulate numa node count in minikube, supported numa node count range is 1-8",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "numa count",
+            "suggestions": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8"
+            ]
+          }
         },
         {
           "names": [
@@ -408,7 +498,14 @@
             "-o"
           ],
           "description": "Format to print stdout in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "text"
+            ]
+          }
         },
         {
           "names": [
@@ -421,7 +518,13 @@
             "--preload"
           ],
           "description": "If set, download tarball of preloaded images if available to improve start time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -464,7 +567,13 @@
             "--trace"
           ],
           "description": "Send trace events",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "trace",
+            "suggestions": [
+              "gcp"
+            ]
+          }
         },
         {
           "names": [
@@ -523,7 +632,14 @@
             "-o"
           ],
           "description": "Format to print stdout in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "text"
+            ]
+          }
         },
         {
           "names": [
@@ -562,7 +678,14 @@
             "-o"
           ],
           "description": "Format to print stdout in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "text"
+            ]
+          }
         },
         {
           "names": [
@@ -614,7 +737,14 @@
             "-o"
           ],
           "description": "Format to print stdout in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "text"
+            ]
+          }
         }
       ]
     },
@@ -635,7 +765,14 @@
             "-o"
           ],
           "description": "Format to print stdout in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "text"
+            ]
+          }
         },
         {
           "names": [
@@ -1106,14 +1243,27 @@
             "-o"
           ],
           "description": "Format to print stdout in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "text"
+            ]
+          }
         },
         {
           "names": [
             "--short"
           ],
           "description": "Print just the version number",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         }
       ]
     },

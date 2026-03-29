@@ -22,7 +22,15 @@
         "--all-repeated"
       ],
       "description": "Print all duplicate lines. Delimiting is done with blank lines",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "delimit-method",
+        "suggestions": [
+          "none",
+          "prepend",
+          "separate"
+        ]
+      }
     },
     {
       "names": [
@@ -30,7 +38,10 @@
         "--skip-fields"
       ],
       "description": "Avoid comparing the first N fields",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -45,7 +56,10 @@
         "--skip-chars"
       ],
       "description": "Avoid comparing the first N characters",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -67,7 +81,10 @@
         "--check-chars"
       ],
       "description": "Compare no more than N characters in lines",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [

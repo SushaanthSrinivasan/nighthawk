@@ -33,14 +33,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -53,7 +59,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -78,49 +87,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -133,7 +177,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -146,21 +198,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -173,7 +234,10 @@
             "-o"
           ],
           "description": "Write the resulting executable or object to the named output file or directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -217,14 +281,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -237,7 +307,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -262,49 +335,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -317,7 +425,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -330,21 +446,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -446,14 +571,20 @@
             "-u"
           ],
           "description": "Unset the default setting for the named environment variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-w"
           ],
           "description": "Change the default settings of the named environment variables to the given values",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true
+          }
         }
       ]
     },
@@ -489,7 +620,14 @@
             "-mod"
           ],
           "description": "Which module download mode to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor"
+            ]
+          }
         }
       ],
       "args": [
@@ -527,14 +665,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -547,7 +691,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -572,49 +719,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -627,7 +809,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -640,21 +830,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -697,14 +896,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -717,7 +922,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -742,49 +950,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -797,7 +1040,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -810,21 +1061,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -843,7 +1103,12 @@
             "-u"
           ],
           "description": "Update to newer minor or patch releases when available",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "patch"
+            ]
+          }
         },
         {
           "names": [
@@ -891,14 +1156,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -911,7 +1182,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -936,49 +1210,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -991,7 +1300,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -1004,21 +1321,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -1061,14 +1387,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -1081,7 +1413,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -1106,49 +1441,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1161,7 +1531,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -1174,21 +1552,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -1213,7 +1600,10 @@
             "-f"
           ],
           "description": "Specify an alternate format for the list",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format"
+          }
         },
         {
           "names": [
@@ -1308,63 +1698,90 @@
                 "-go"
               ],
               "description": "Set the expected Go language version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             },
             {
               "names": [
                 "-require"
               ],
               "description": "Add a requirement on the given module",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-droprequire"
               ],
               "description": "Drop a requirement on the given module",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-exclude"
               ],
               "description": "Add an exclusion on the given module",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-dropexclude"
               ],
               "description": "Drop an exclusion on the given module",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-replace"
               ],
               "description": "Add a replacement of the given module path and version pair",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-dropreplace"
               ],
               "description": "Drops a replacement of the given module path and version pair",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-retract"
               ],
               "description": "Add a retraction for the given version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             },
             {
               "names": [
                 "-dropretract"
               ],
               "description": "Drop a retraction for the given version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             },
             {
               "names": [
@@ -1484,35 +1901,50 @@
                 "-use"
               ],
               "description": "The -use=path and -dropuse=path flags add and drop a use directive from the go.work file's set of module directories",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-dropuse"
               ],
               "description": "The -use=path and -dropuse=path flags add and drop a use directive from the go.work file's set of module directories",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "-replace"
               ],
               "description": "The -replace=old[@v]=new[@v] flag adds a replacement of the given module path and version pair. If the @v in old@v is omitted, a replacement without a version on the left side is added, which applies ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "old[@v]=new[@v]"
+              }
             },
             {
               "names": [
                 "-dropreplace"
               ],
               "description": "The -dropreplace=old[@v] flag drops a replacement of the given module path and version pair. If the @v is omitted, a replacement without a version on the left side is dropped",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "old[@v]"
+              }
             },
             {
               "names": [
                 "-go"
               ],
               "description": "Set the expected Go language version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             },
             {
               "names": [
@@ -1589,14 +2021,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -1609,7 +2047,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -1634,49 +2075,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1689,7 +2165,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -1702,21 +2186,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -1765,14 +2258,20 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -1785,7 +2284,10 @@
             "-p"
           ],
           "description": "The number of programs, such as build commands or",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "programs"
+          }
         },
         {
           "names": [
@@ -1810,49 +2312,84 @@
             "-asmflags"
           ],
           "description": "Arguments to pass on each go tool asm invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-buildmode"
           ],
           "description": "Build mode to use. See 'go help buildmode' for more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "archive",
+              "c-archive",
+              "c-shared",
+              "default",
+              "shared",
+              "exe",
+              "pie",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
             "-compiler"
           ],
           "description": "Name of compiler to use, as in runtime.Compiler (gccgo or gc)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-gccgoflags"
           ],
           "description": "Arguments to pass on each gccgo compiler/linker invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-gcflags"
           ],
           "description": "Arguments to pass on each go tool compile invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-installsuffix"
           ],
           "description": "A suffix to use in the name of the package installation directory,",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "suffix"
+          }
         },
         {
           "names": [
             "-ldflags"
           ],
           "description": "Arguments to pass on each go tool link invocation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1865,7 +2402,15 @@
             "-mod"
           ],
           "description": "Module download mode to use: readonly, vendor, or mod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "readonly",
+              "vendor",
+              "mod"
+            ]
+          }
         },
         {
           "names": [
@@ -1878,21 +2423,30 @@
             "-modfile"
           ],
           "description": "In module aware mode, read (and possibly write) an alternate go.mod file instead of the one in the module root directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-overlay"
           ],
           "description": "Read a JSON config file that provides an overlay for build operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "-pkgdir"
           ],
           "description": "Install and load all packages from dir instead of the usual locations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -1905,7 +2459,10 @@
             "-args"
           ],
           "description": "Pass the remainder of the command line to the test binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1937,7 +2494,11 @@
             "-o"
           ],
           "description": "Compile the test binary to the named file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2008,21 +2569,30 @@
             "-tags"
           ],
           "description": "A comma-separated list of build tags to consider satisfied during the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "-toolexec"
           ],
           "description": "A program to use to invoke toolchain programs like vet and asm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
             "-vettool"
           ],
           "description": "Select a different analysis tool with alternative or additional checks",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tool"
+          }
         }
       ],
       "args": [

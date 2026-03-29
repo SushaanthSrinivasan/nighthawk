@@ -52,7 +52,10 @@
             "--name"
           ],
           "description": "Sets a name for script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -60,14 +63,20 @@
             "--instances"
           ],
           "description": "Launches [number] instances (for networked app)(load balanced)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--parallel"
           ],
           "description": "Number of parallel actions (for restart/reload)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -75,7 +84,11 @@
             "--log"
           ],
           "description": "Specifies entire log file (error and out are both included)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -83,7 +96,11 @@
             "--output"
           ],
           "description": "Specifies out log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -91,7 +108,11 @@
             "--error"
           ],
           "description": "Specifies error log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -99,7 +120,11 @@
             "--pid"
           ],
           "description": "Specify pid file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pid",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -107,42 +132,60 @@
             "--kill-timeout"
           ],
           "description": "Delays before sending final SIGKILL signal to process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--listen-timeout"
           ],
           "description": "Listen timeout on application reload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--max-memory-restart"
           ],
           "description": "Specify max memory amount used to autorestart (in octet or use syntax like 100M)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory"
+          }
         },
         {
           "names": [
             "--restart-delay"
           ],
           "description": "Specify a delay between restarts (in milliseconds)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--env"
           ],
           "description": "Specify environment to get specific env variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment Name"
+          }
         },
         {
           "names": [
             "--log-type"
           ],
           "description": "Specify log output style (raw by default, json optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type"
+          }
         },
         {
           "names": [
@@ -156,7 +199,10 @@
             "--max-restarts"
           ],
           "description": "Only Restart the script COUNT times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Count"
+          }
         },
         {
           "names": [
@@ -164,35 +210,52 @@
             "--user"
           ],
           "description": "Defines user when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
             "--uid"
           ],
           "description": "Runs target script with <uid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "uid"
+          }
         },
         {
           "names": [
             "--gid"
           ],
           "description": "Runs target script with <gid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "gid"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Runs target script as <username>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--hp"
           ],
           "description": "Defines home path when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "home path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -205,7 +268,10 @@
             "--service-name"
           ],
           "description": "Defines service name when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -213,7 +279,10 @@
             "--cron"
           ],
           "description": "Restarts a running process based on a cron pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Cron Pattern"
+          }
         },
         {
           "names": [
@@ -227,21 +296,30 @@
             "--interpreter"
           ],
           "description": "The interpreter pm2 should use for executing app (bash, python…)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interpreter"
+          }
         },
         {
           "names": [
             "--interpreter-args"
           ],
           "description": "Interprets options (alias of –node-args)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Arguments"
+          }
         },
         {
           "names": [
             "--log-date-format"
           ],
           "description": "Adds custom prefix timestamp to logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Date Format"
+          }
         },
         {
           "names": [
@@ -267,7 +345,10 @@
             "–-only"
           ],
           "description": "With json declaration, allow to only act on one application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app name"
+          }
         },
         {
           "names": [
@@ -292,21 +373,35 @@
             "–-watch"
           ],
           "description": "Watches application folder for changes (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-ignore-watch"
           ],
           "description": "Folder/files to be ignored watching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Folder or Files",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-node-args"
           ],
           "description": "Space delimited arguments to pass to node in cluster mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Node Args",
+            "description": "–node-args=`–debug=7001 –trace-deprecation`"
+          }
         },
         {
           "names": [
@@ -367,7 +462,11 @@
             "–-sort"
           ],
           "description": "Sort process according to field’s name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field name",
+            "description": "Field_name:sort"
+          }
         },
         {
           "names": [
@@ -512,7 +611,10 @@
             "--name"
           ],
           "description": "Sets a name for script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -520,14 +622,20 @@
             "--instances"
           ],
           "description": "Launches [number] instances (for networked app)(load balanced)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--parallel"
           ],
           "description": "Number of parallel actions (for restart/reload)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -535,7 +643,11 @@
             "--log"
           ],
           "description": "Specifies entire log file (error and out are both included)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -543,7 +655,11 @@
             "--output"
           ],
           "description": "Specifies out log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -551,7 +667,11 @@
             "--error"
           ],
           "description": "Specifies error log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -559,7 +679,11 @@
             "--pid"
           ],
           "description": "Specify pid file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pid",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -567,42 +691,60 @@
             "--kill-timeout"
           ],
           "description": "Delays before sending final SIGKILL signal to process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--listen-timeout"
           ],
           "description": "Listen timeout on application reload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--max-memory-restart"
           ],
           "description": "Specify max memory amount used to autorestart (in octet or use syntax like 100M)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory"
+          }
         },
         {
           "names": [
             "--restart-delay"
           ],
           "description": "Specify a delay between restarts (in milliseconds)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--env"
           ],
           "description": "Specify environment to get specific env variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment Name"
+          }
         },
         {
           "names": [
             "--log-type"
           ],
           "description": "Specify log output style (raw by default, json optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type"
+          }
         },
         {
           "names": [
@@ -616,7 +758,10 @@
             "--max-restarts"
           ],
           "description": "Only Restart the script COUNT times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Count"
+          }
         },
         {
           "names": [
@@ -624,35 +769,52 @@
             "--user"
           ],
           "description": "Defines user when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
             "--uid"
           ],
           "description": "Runs target script with <uid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "uid"
+          }
         },
         {
           "names": [
             "--gid"
           ],
           "description": "Runs target script with <gid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "gid"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Runs target script as <username>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--hp"
           ],
           "description": "Defines home path when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "home path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -665,7 +827,10 @@
             "--service-name"
           ],
           "description": "Defines service name when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -673,7 +838,10 @@
             "--cron"
           ],
           "description": "Restarts a running process based on a cron pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Cron Pattern"
+          }
         },
         {
           "names": [
@@ -687,21 +855,30 @@
             "--interpreter"
           ],
           "description": "The interpreter pm2 should use for executing app (bash, python…)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interpreter"
+          }
         },
         {
           "names": [
             "--interpreter-args"
           ],
           "description": "Interprets options (alias of –node-args)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Arguments"
+          }
         },
         {
           "names": [
             "--log-date-format"
           ],
           "description": "Adds custom prefix timestamp to logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Date Format"
+          }
         },
         {
           "names": [
@@ -727,7 +904,10 @@
             "–-only"
           ],
           "description": "With json declaration, allow to only act on one application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app name"
+          }
         },
         {
           "names": [
@@ -752,21 +932,35 @@
             "–-watch"
           ],
           "description": "Watches application folder for changes (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-ignore-watch"
           ],
           "description": "Folder/files to be ignored watching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Folder or Files",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-node-args"
           ],
           "description": "Space delimited arguments to pass to node in cluster mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Node Args",
+            "description": "–node-args=`–debug=7001 –trace-deprecation`"
+          }
         },
         {
           "names": [
@@ -827,7 +1021,11 @@
             "–-sort"
           ],
           "description": "Sort process according to field’s name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field name",
+            "description": "Field_name:sort"
+          }
         },
         {
           "names": [
@@ -911,7 +1109,10 @@
             "--name"
           ],
           "description": "Sets a name for script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -919,14 +1120,20 @@
             "--instances"
           ],
           "description": "Launches [number] instances (for networked app)(load balanced)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--parallel"
           ],
           "description": "Number of parallel actions (for restart/reload)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -934,7 +1141,11 @@
             "--log"
           ],
           "description": "Specifies entire log file (error and out are both included)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -942,7 +1153,11 @@
             "--output"
           ],
           "description": "Specifies out log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -950,7 +1165,11 @@
             "--error"
           ],
           "description": "Specifies error log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -958,7 +1177,11 @@
             "--pid"
           ],
           "description": "Specify pid file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pid",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -966,42 +1189,60 @@
             "--kill-timeout"
           ],
           "description": "Delays before sending final SIGKILL signal to process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--listen-timeout"
           ],
           "description": "Listen timeout on application reload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--max-memory-restart"
           ],
           "description": "Specify max memory amount used to autorestart (in octet or use syntax like 100M)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory"
+          }
         },
         {
           "names": [
             "--restart-delay"
           ],
           "description": "Specify a delay between restarts (in milliseconds)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--env"
           ],
           "description": "Specify environment to get specific env variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment Name"
+          }
         },
         {
           "names": [
             "--log-type"
           ],
           "description": "Specify log output style (raw by default, json optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type"
+          }
         },
         {
           "names": [
@@ -1015,7 +1256,10 @@
             "--max-restarts"
           ],
           "description": "Only Restart the script COUNT times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Count"
+          }
         },
         {
           "names": [
@@ -1023,35 +1267,52 @@
             "--user"
           ],
           "description": "Defines user when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
             "--uid"
           ],
           "description": "Runs target script with <uid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "uid"
+          }
         },
         {
           "names": [
             "--gid"
           ],
           "description": "Runs target script with <gid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "gid"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Runs target script as <username>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--hp"
           ],
           "description": "Defines home path when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "home path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1064,7 +1325,10 @@
             "--service-name"
           ],
           "description": "Defines service name when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1072,7 +1336,10 @@
             "--cron"
           ],
           "description": "Restarts a running process based on a cron pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Cron Pattern"
+          }
         },
         {
           "names": [
@@ -1086,21 +1353,30 @@
             "--interpreter"
           ],
           "description": "The interpreter pm2 should use for executing app (bash, python…)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interpreter"
+          }
         },
         {
           "names": [
             "--interpreter-args"
           ],
           "description": "Interprets options (alias of –node-args)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Arguments"
+          }
         },
         {
           "names": [
             "--log-date-format"
           ],
           "description": "Adds custom prefix timestamp to logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Date Format"
+          }
         },
         {
           "names": [
@@ -1126,7 +1402,10 @@
             "–-only"
           ],
           "description": "With json declaration, allow to only act on one application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app name"
+          }
         },
         {
           "names": [
@@ -1151,21 +1430,35 @@
             "–-watch"
           ],
           "description": "Watches application folder for changes (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-ignore-watch"
           ],
           "description": "Folder/files to be ignored watching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Folder or Files",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-node-args"
           ],
           "description": "Space delimited arguments to pass to node in cluster mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Node Args",
+            "description": "–node-args=`–debug=7001 –trace-deprecation`"
+          }
         },
         {
           "names": [
@@ -1226,7 +1519,11 @@
             "–-sort"
           ],
           "description": "Sort process according to field’s name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field name",
+            "description": "Field_name:sort"
+          }
         },
         {
           "names": [
@@ -1398,7 +1695,10 @@
             "--name"
           ],
           "description": "Sets a name for script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1406,14 +1706,20 @@
             "--instances"
           ],
           "description": "Launches [number] instances (for networked app)(load balanced)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--parallel"
           ],
           "description": "Number of parallel actions (for restart/reload)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1421,7 +1727,11 @@
             "--log"
           ],
           "description": "Specifies entire log file (error and out are both included)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1429,7 +1739,11 @@
             "--output"
           ],
           "description": "Specifies out log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1437,7 +1751,11 @@
             "--error"
           ],
           "description": "Specifies error log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1445,7 +1763,11 @@
             "--pid"
           ],
           "description": "Specify pid file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pid",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1453,42 +1775,60 @@
             "--kill-timeout"
           ],
           "description": "Delays before sending final SIGKILL signal to process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--listen-timeout"
           ],
           "description": "Listen timeout on application reload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--max-memory-restart"
           ],
           "description": "Specify max memory amount used to autorestart (in octet or use syntax like 100M)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory"
+          }
         },
         {
           "names": [
             "--restart-delay"
           ],
           "description": "Specify a delay between restarts (in milliseconds)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--env"
           ],
           "description": "Specify environment to get specific env variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment Name"
+          }
         },
         {
           "names": [
             "--log-type"
           ],
           "description": "Specify log output style (raw by default, json optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type"
+          }
         },
         {
           "names": [
@@ -1502,7 +1842,10 @@
             "--max-restarts"
           ],
           "description": "Only Restart the script COUNT times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Count"
+          }
         },
         {
           "names": [
@@ -1510,35 +1853,52 @@
             "--user"
           ],
           "description": "Defines user when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
             "--uid"
           ],
           "description": "Runs target script with <uid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "uid"
+          }
         },
         {
           "names": [
             "--gid"
           ],
           "description": "Runs target script with <gid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "gid"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Runs target script as <username>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--hp"
           ],
           "description": "Defines home path when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "home path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1551,7 +1911,10 @@
             "--service-name"
           ],
           "description": "Defines service name when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1559,7 +1922,10 @@
             "--cron"
           ],
           "description": "Restarts a running process based on a cron pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Cron Pattern"
+          }
         },
         {
           "names": [
@@ -1573,21 +1939,30 @@
             "--interpreter"
           ],
           "description": "The interpreter pm2 should use for executing app (bash, python…)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interpreter"
+          }
         },
         {
           "names": [
             "--interpreter-args"
           ],
           "description": "Interprets options (alias of –node-args)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Arguments"
+          }
         },
         {
           "names": [
             "--log-date-format"
           ],
           "description": "Adds custom prefix timestamp to logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Date Format"
+          }
         },
         {
           "names": [
@@ -1613,7 +1988,10 @@
             "–-only"
           ],
           "description": "With json declaration, allow to only act on one application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app name"
+          }
         },
         {
           "names": [
@@ -1638,21 +2016,35 @@
             "–-watch"
           ],
           "description": "Watches application folder for changes (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-ignore-watch"
           ],
           "description": "Folder/files to be ignored watching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Folder or Files",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-node-args"
           ],
           "description": "Space delimited arguments to pass to node in cluster mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Node Args",
+            "description": "–node-args=`–debug=7001 –trace-deprecation`"
+          }
         },
         {
           "names": [
@@ -1713,7 +2105,11 @@
             "–-sort"
           ],
           "description": "Sort process according to field’s name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field name",
+            "description": "Field_name:sort"
+          }
         },
         {
           "names": [
@@ -1896,7 +2292,10 @@
             "--name"
           ],
           "description": "Sets a name for script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1904,14 +2303,20 @@
             "--instances"
           ],
           "description": "Launches [number] instances (for networked app)(load balanced)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--parallel"
           ],
           "description": "Number of parallel actions (for restart/reload)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1919,7 +2324,11 @@
             "--log"
           ],
           "description": "Specifies entire log file (error and out are both included)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1927,7 +2336,11 @@
             "--output"
           ],
           "description": "Specifies out log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1935,7 +2348,11 @@
             "--error"
           ],
           "description": "Specifies error log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1943,7 +2360,11 @@
             "--pid"
           ],
           "description": "Specify pid file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pid",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1951,42 +2372,60 @@
             "--kill-timeout"
           ],
           "description": "Delays before sending final SIGKILL signal to process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--listen-timeout"
           ],
           "description": "Listen timeout on application reload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--max-memory-restart"
           ],
           "description": "Specify max memory amount used to autorestart (in octet or use syntax like 100M)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory"
+          }
         },
         {
           "names": [
             "--restart-delay"
           ],
           "description": "Specify a delay between restarts (in milliseconds)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--env"
           ],
           "description": "Specify environment to get specific env variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment Name"
+          }
         },
         {
           "names": [
             "--log-type"
           ],
           "description": "Specify log output style (raw by default, json optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type"
+          }
         },
         {
           "names": [
@@ -2000,7 +2439,10 @@
             "--max-restarts"
           ],
           "description": "Only Restart the script COUNT times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Count"
+          }
         },
         {
           "names": [
@@ -2008,35 +2450,52 @@
             "--user"
           ],
           "description": "Defines user when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
             "--uid"
           ],
           "description": "Runs target script with <uid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "uid"
+          }
         },
         {
           "names": [
             "--gid"
           ],
           "description": "Runs target script with <gid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "gid"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Runs target script as <username>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--hp"
           ],
           "description": "Defines home path when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "home path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2049,7 +2508,10 @@
             "--service-name"
           ],
           "description": "Defines service name when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -2057,7 +2519,10 @@
             "--cron"
           ],
           "description": "Restarts a running process based on a cron pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Cron Pattern"
+          }
         },
         {
           "names": [
@@ -2071,21 +2536,30 @@
             "--interpreter"
           ],
           "description": "The interpreter pm2 should use for executing app (bash, python…)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interpreter"
+          }
         },
         {
           "names": [
             "--interpreter-args"
           ],
           "description": "Interprets options (alias of –node-args)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Arguments"
+          }
         },
         {
           "names": [
             "--log-date-format"
           ],
           "description": "Adds custom prefix timestamp to logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Date Format"
+          }
         },
         {
           "names": [
@@ -2111,7 +2585,10 @@
             "–-only"
           ],
           "description": "With json declaration, allow to only act on one application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app name"
+          }
         },
         {
           "names": [
@@ -2136,21 +2613,35 @@
             "–-watch"
           ],
           "description": "Watches application folder for changes (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-ignore-watch"
           ],
           "description": "Folder/files to be ignored watching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Folder or Files",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-node-args"
           ],
           "description": "Space delimited arguments to pass to node in cluster mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Node Args",
+            "description": "–node-args=`–debug=7001 –trace-deprecation`"
+          }
         },
         {
           "names": [
@@ -2211,7 +2702,11 @@
             "–-sort"
           ],
           "description": "Sort process according to field’s name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field name",
+            "description": "Field_name:sort"
+          }
         },
         {
           "names": [
@@ -2501,7 +2996,10 @@
             "--name"
           ],
           "description": "Sets a name for script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -2509,14 +3007,20 @@
             "--instances"
           ],
           "description": "Launches [number] instances (for networked app)(load balanced)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--parallel"
           ],
           "description": "Number of parallel actions (for restart/reload)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -2524,7 +3028,11 @@
             "--log"
           ],
           "description": "Specifies entire log file (error and out are both included)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2532,7 +3040,11 @@
             "--output"
           ],
           "description": "Specifies out log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2540,7 +3052,11 @@
             "--error"
           ],
           "description": "Specifies error log file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2548,7 +3064,11 @@
             "--pid"
           ],
           "description": "Specify pid file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pid",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2556,42 +3076,60 @@
             "--kill-timeout"
           ],
           "description": "Delays before sending final SIGKILL signal to process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--listen-timeout"
           ],
           "description": "Listen timeout on application reload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--max-memory-restart"
           ],
           "description": "Specify max memory amount used to autorestart (in octet or use syntax like 100M)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory"
+          }
         },
         {
           "names": [
             "--restart-delay"
           ],
           "description": "Specify a delay between restarts (in milliseconds)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "delay"
+          }
         },
         {
           "names": [
             "--env"
           ],
           "description": "Specify environment to get specific env variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Environment Name"
+          }
         },
         {
           "names": [
             "--log-type"
           ],
           "description": "Specify log output style (raw by default, json optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type"
+          }
         },
         {
           "names": [
@@ -2605,7 +3143,10 @@
             "--max-restarts"
           ],
           "description": "Only Restart the script COUNT times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Count"
+          }
         },
         {
           "names": [
@@ -2613,35 +3154,52 @@
             "--user"
           ],
           "description": "Defines user when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
             "--uid"
           ],
           "description": "Runs target script with <uid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "uid"
+          }
         },
         {
           "names": [
             "--gid"
           ],
           "description": "Runs target script with <gid> rights",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "gid"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Runs target script as <username>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--hp"
           ],
           "description": "Defines home path when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "home path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2654,7 +3212,10 @@
             "--service-name"
           ],
           "description": "Defines service name when generating startup script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -2662,7 +3223,10 @@
             "--cron"
           ],
           "description": "Restarts a running process based on a cron pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Cron Pattern"
+          }
         },
         {
           "names": [
@@ -2676,21 +3240,30 @@
             "--interpreter"
           ],
           "description": "The interpreter pm2 should use for executing app (bash, python…)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interpreter"
+          }
         },
         {
           "names": [
             "--interpreter-args"
           ],
           "description": "Interprets options (alias of –node-args)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Arguments"
+          }
         },
         {
           "names": [
             "--log-date-format"
           ],
           "description": "Adds custom prefix timestamp to logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Date Format"
+          }
         },
         {
           "names": [
@@ -2716,7 +3289,10 @@
             "–-only"
           ],
           "description": "With json declaration, allow to only act on one application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app name"
+          }
         },
         {
           "names": [
@@ -2741,21 +3317,35 @@
             "–-watch"
           ],
           "description": "Watches application folder for changes (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-ignore-watch"
           ],
           "description": "Folder/files to be ignored watching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Folder or Files",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
             "–-node-args"
           ],
           "description": "Space delimited arguments to pass to node in cluster mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Node Args",
+            "description": "–node-args=`–debug=7001 –trace-deprecation`"
+          }
         },
         {
           "names": [
@@ -2816,7 +3406,11 @@
             "–-sort"
           ],
           "description": "Sort process according to field’s name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field name",
+            "description": "Field_name:sort"
+          }
         },
         {
           "names": [
@@ -2955,7 +3549,10 @@
         "--name"
       ],
       "description": "Sets a name for script",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -2963,14 +3560,20 @@
         "--instances"
       ],
       "description": "Launches [number] instances (for networked app)(load balanced)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--parallel"
       ],
       "description": "Number of parallel actions (for restart/reload)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -2978,7 +3581,11 @@
         "--log"
       ],
       "description": "Specifies entire log file (error and out are both included)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2986,7 +3593,11 @@
         "--output"
       ],
       "description": "Specifies out log file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2994,7 +3605,11 @@
         "--error"
       ],
       "description": "Specifies error log file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3002,7 +3617,11 @@
         "--pid"
       ],
       "description": "Specify pid file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pid",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3010,42 +3629,60 @@
         "--kill-timeout"
       ],
       "description": "Delays before sending final SIGKILL signal to process",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "delay"
+      }
     },
     {
       "names": [
         "--listen-timeout"
       ],
       "description": "Listen timeout on application reload",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "delay"
+      }
     },
     {
       "names": [
         "--max-memory-restart"
       ],
       "description": "Specify max memory amount used to autorestart (in octet or use syntax like 100M)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "memory"
+      }
     },
     {
       "names": [
         "--restart-delay"
       ],
       "description": "Specify a delay between restarts (in milliseconds)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "delay"
+      }
     },
     {
       "names": [
         "--env"
       ],
       "description": "Specify environment to get specific env variables",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Environment Name"
+      }
     },
     {
       "names": [
         "--log-type"
       ],
       "description": "Specify log output style (raw by default, json optional)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type"
+      }
     },
     {
       "names": [
@@ -3059,7 +3696,10 @@
         "--max-restarts"
       ],
       "description": "Only Restart the script COUNT times",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Count"
+      }
     },
     {
       "names": [
@@ -3067,35 +3707,52 @@
         "--user"
       ],
       "description": "Defines user when generating startup script",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username"
+      }
     },
     {
       "names": [
         "--uid"
       ],
       "description": "Runs target script with <uid> rights",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "uid"
+      }
     },
     {
       "names": [
         "--gid"
       ],
       "description": "Runs target script with <gid> rights",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "gid"
+      }
     },
     {
       "names": [
         "--cwd"
       ],
       "description": "Runs target script as <username>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--hp"
       ],
       "description": "Defines home path when generating startup script",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "home path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -3108,7 +3765,10 @@
         "--service-name"
       ],
       "description": "Defines service name when generating startup script",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -3116,7 +3776,10 @@
         "--cron"
       ],
       "description": "Restarts a running process based on a cron pattern",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Cron Pattern"
+      }
     },
     {
       "names": [
@@ -3130,21 +3793,30 @@
         "--interpreter"
       ],
       "description": "The interpreter pm2 should use for executing app (bash, python…)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "interpreter"
+      }
     },
     {
       "names": [
         "--interpreter-args"
       ],
       "description": "Interprets options (alias of –node-args)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Arguments"
+      }
     },
     {
       "names": [
         "--log-date-format"
       ],
       "description": "Adds custom prefix timestamp to logs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Date Format"
+      }
     },
     {
       "names": [
@@ -3170,7 +3842,10 @@
         "–-only"
       ],
       "description": "With json declaration, allow to only act on one application",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "app name"
+      }
     },
     {
       "names": [
@@ -3195,21 +3870,35 @@
         "–-watch"
       ],
       "description": "Watches application folder for changes (default: )",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "paths",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "–-ignore-watch"
       ],
       "description": "Folder/files to be ignored watching",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Folder or Files",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "–-node-args"
       ],
       "description": "Space delimited arguments to pass to node in cluster mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Node Args",
+        "description": "–node-args=`–debug=7001 –trace-deprecation`"
+      }
     },
     {
       "names": [
@@ -3270,7 +3959,11 @@
         "–-sort"
       ],
       "description": "Sort process according to field’s name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "field name",
+        "description": "Field_name:sort"
+      }
     },
     {
       "names": [

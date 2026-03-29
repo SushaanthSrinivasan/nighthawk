@@ -19,7 +19,10 @@
             "--keyname"
           ],
           "description": "The name of the AWS EC2 key pair",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyname"
+          }
         },
         {
           "names": [
@@ -33,14 +36,20 @@
             "--platform"
           ],
           "description": "The platform version to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "plataform-version"
+          }
         },
         {
           "names": [
             "--tags"
           ],
           "description": "List of tags to apply to the application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         }
       ],
       "args": [
@@ -60,14 +69,22 @@
             "--label"
           ],
           "description": "Specify a label to use for the version that the EB CLI creates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version-label",
+            "description": "The label to use for the version"
+          }
         },
         {
           "names": [
             "--env-group-suffix"
           ],
           "description": "Group name to append to the environment name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "groupname",
+            "description": "The group name to append to the environment name"
+          }
         },
         {
           "names": [
@@ -75,14 +92,22 @@
             "--message"
           ],
           "description": "The description for the application version, enclosed in double quotation marks",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version-description",
+            "description": "Description for the application version"
+          }
         },
         {
           "names": [
             "--modules"
           ],
           "description": "List of components to update. Only for Compose Environments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "component",
+            "description": "Component to update"
+          }
         },
         {
           "names": [
@@ -96,7 +121,11 @@
             "--source"
           ],
           "description": "CodeCommit repository and branch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repository-name/repository-branch",
+            "description": "The name of the CodeCommit repository and branch"
+          }
         },
         {
           "names": [
@@ -109,14 +138,22 @@
             "--timeout"
           ],
           "description": "The number of minutes before the command times out",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "minutes",
+            "description": "Minutes before timeout"
+          }
         },
         {
           "names": [
             "--version"
           ],
           "description": "An existing application version to deploy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version-label",
+            "description": "Label of the existing version to deploy"
+          }
         }
       ],
       "args": [
@@ -139,7 +176,11 @@
             "--clone_name"
           ],
           "description": "Desired name for the cloned environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "description": "The name for the cloned environment"
+          }
         },
         {
           "names": [
@@ -147,7 +188,11 @@
             "--cname"
           ],
           "description": "Desired CNAME prefix for the cloned environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cname",
+            "description": "CNAME prefix"
+          }
         },
         {
           "names": [
@@ -166,14 +211,22 @@
             "--scale"
           ],
           "description": "The number of instances to run in the clone environment when it is launched",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number",
+            "description": "Number of instances"
+          }
         },
         {
           "names": [
             "--tags"
           ],
           "description": "Tags for the resources in your environment in a comma-separated list with the format name=value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name=value",
+            "description": "Tags for the resources in your environment"
+          }
         },
         {
           "names": [
@@ -283,7 +336,11 @@
             "--timeout"
           ],
           "description": "Set number of minutes before the command times out",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "minutes",
+            "description": "Number of minutes before timeout"
+          }
         }
       ],
       "args": [
@@ -303,14 +360,22 @@
             "--region"
           ],
           "description": "Change the region in which you create environments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region",
+            "description": "The region to use"
+          }
         },
         {
           "names": [
             "--source"
           ],
           "description": "CodeCommit repository and branch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "codecommit/repository-name/repository-branch",
+            "description": "The name of the CodeCommit repository and branch"
+          }
         }
       ],
       "args": [

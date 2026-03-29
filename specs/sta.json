@@ -12,7 +12,11 @@
             "-o"
           ],
           "description": "Output path of generated templates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -26,7 +30,14 @@
             "--http-client"
           ],
           "description": "Http client type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Http client",
+            "suggestions": [
+              "fetch",
+              "axios"
+            ]
+          }
         },
         {
           "names": [
@@ -59,7 +70,11 @@
         "-p"
       ],
       "description": "Path/url to swagger scheme",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -67,7 +82,11 @@
         "-o"
       ],
       "description": "Output path of typescript api file (default: \"./\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -75,7 +94,10 @@
         "-n"
       ],
       "description": "Name of output typescript api file (default: \"Api.ts\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Name"
+      }
     },
     {
       "names": [
@@ -83,7 +105,11 @@
         "-t"
       ],
       "description": "Path to folder containing templates",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -170,7 +196,10 @@
         "--module-name-index"
       ],
       "description": "Determines which path index should be used for routes separation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Index"
+      }
     },
     {
       "names": [
@@ -225,21 +254,30 @@
         "--default-response"
       ],
       "description": "Default type for empty response schema",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Type"
+      }
     },
     {
       "names": [
         "--type-prefix"
       ],
       "description": "Data contract name prefix",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Prefix"
+      }
     },
     {
       "names": [
         "--type-suffix"
       ],
       "description": "Data contract name suffix",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Suffix"
+      }
     },
     {
       "names": [
@@ -252,7 +290,10 @@
         "--api-class-name"
       ],
       "description": "Name of the api class",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Name"
+      }
     },
     {
       "names": [

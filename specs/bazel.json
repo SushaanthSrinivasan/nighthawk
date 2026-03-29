@@ -72,7 +72,11 @@
         "--bazelrc"
       ],
       "description": "The location of the user .bazelrc file containing default values of Bazel options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "bazelrc path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -103,7 +107,10 @@
         "--connect_timeout_secs"
       ],
       "description": "The amount of time the client waits for each attempt to connect to the server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time"
+      }
     },
     {
       "names": [
@@ -122,7 +129,11 @@
         "--failure_detail_out"
       ],
       "description": "Specifies a location to write a failure_detail protobuf message if the server experiences a failure and cannot report it via gRPC, as normal. Otherwise, the location will be ${OUTPUT_BASE}/failure_det",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -165,42 +176,72 @@
         "--io_nice_level"
       ],
       "description": "Only on Linux; set a level from 0-7 for best-effort IO scheduling using the sys_ioprio_set system call. 0 is highest priority, 7 is lowest",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "io-level",
+        "suggestions": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      }
     },
     {
       "names": [
         "--local_startup_timeout_secs"
       ],
       "description": "The maximum amount of time the client waits to connect to the server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--macos_qos_class"
       ],
       "description": "Sets the QoS service class of the bazel server when running on macOS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "QoS service class"
+      }
     },
     {
       "names": [
         "--max_idle_secs"
       ],
       "description": "The number of seconds the build server will wait idling before shutting down",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--output_base"
       ],
       "description": "Specifies the output location to which all build output will be written",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output_base_root"
       ],
       "description": "The user-specific directory beneath which all build outputs are written",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -219,7 +260,11 @@
         "--server_jvm_out"
       ],
       "description": "The location to write the server's JVM's output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

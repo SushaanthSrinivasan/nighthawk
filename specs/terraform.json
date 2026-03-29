@@ -17,28 +17,52 @@
             "-lock"
           ],
           "description": "Lock the state file when locking is supported. Defaults to true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-force"
           ],
           "description": "Delete the workspace even if its state is not empty. Defaults to false",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-lock-timeout"
           ],
           "description": "Duration to retry a state lock. Default 0s",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "-input"
           ],
           "description": "Ask for input for variables if not directly set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -57,7 +81,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -82,7 +109,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -125,21 +155,34 @@
             "-parallelism"
           ],
           "description": "Limit the number of concurrent operation as Terraform walks the graph. Defaults to 10",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "-refresh"
           ],
           "description": "Update the state prior to checking for differences",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-state"
           ],
           "description": "Path to the state file. Defaults to 'terraform.tfstate'. Ignored when remote state is used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -152,42 +195,72 @@
             "-var"
           ],
           "description": "Set a variable in the Terraform configuration. This flag can be set multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "foo=bar"
+          }
         },
         {
           "names": [
             "-var-file"
           ],
           "description": "Set variables in the Terraform configuration from a variable file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "-lock"
           ],
           "description": "Lock the state file when locking is supported. Defaults to true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-force"
           ],
           "description": "Delete the workspace even if its state is not empty. Defaults to false",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-lock-timeout"
           ],
           "description": "Duration to retry a state lock. Default 0s",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "-input"
           ],
           "description": "Ask for input for variables if not directly set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -206,7 +279,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -231,7 +307,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -256,7 +335,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -281,7 +363,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -306,7 +391,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -331,7 +419,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -362,7 +453,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -387,7 +481,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -412,7 +509,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -437,7 +537,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -462,7 +565,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -487,7 +593,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -512,7 +621,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -537,7 +649,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -562,7 +677,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -591,21 +709,34 @@
             "-lock"
           ],
           "description": "Disables Terraform's default behavior of attempting to take a read/write lock on the state for the duration of the operation if set to false. Defaults to true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-lock-timeout"
           ],
           "description": "Unless locking is disabled with -lock=false, instructs Terraform to retry acquiring a lock for a period of time before returning an error. The duration syntax is a number followed by a time unit lette",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "-ignore-remote-version"
           ],
           "description": "When using the enhanced remote backend with Terraform Cloud, continue even if remote and local Terraform versions differ. This may result in an unusable Terraform Cloud workspace, and should be used w",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
@@ -618,7 +749,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -648,7 +782,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -671,21 +808,35 @@
                 "-lock"
               ],
               "description": "Lock the state file when locking is supported. Defaults to true",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "-lock-timeout"
               ],
               "description": "Duration to retry a stae lock. Default 0s",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
                 "-state"
               ],
               "description": "Path to an existing state file to initialize the state of this environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -698,7 +849,10 @@
                 "-chdir"
               ],
               "description": "Switch to a different working directory before executing the given subcommand",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -728,7 +882,10 @@
                 "-chdir"
               ],
               "description": "Switch to a different working directory before executing the given subcommand",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -753,7 +910,10 @@
                 "-chdir"
               ],
               "description": "Switch to a different working directory before executing the given subcommand",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -772,28 +932,52 @@
                 "-lock"
               ],
               "description": "Lock the state file when locking is supported. Defaults to true",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "-force"
               ],
               "description": "Delete the workspace even if its state is not empty. Defaults to false",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "-lock-timeout"
               ],
               "description": "Duration to retry a state lock. Default 0s",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
                 "-input"
               ],
               "description": "Ask for input for variables if not directly set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
@@ -825,7 +1009,10 @@
             "-chdir"
           ],
           "description": "Switch to a different working directory before executing the given subcommand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -856,7 +1043,10 @@
         "-chdir"
       ],
       "description": "Switch to a different working directory before executing the given subcommand",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [

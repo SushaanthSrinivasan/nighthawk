@@ -8,7 +8,10 @@
         "--eval"
       ],
       "description": "Evaluates the given command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "EXPRESSION"
+      }
     },
     {
       "names": [
@@ -22,35 +25,54 @@
         "-r"
       ],
       "description": "Requires the given files/patterns",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-S"
       ],
       "description": "Finds and executes the given script in $PATH",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SCRIPT"
+      }
     },
     {
       "names": [
         "-pr"
       ],
       "description": "Requires the given files/patterns in parallel",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-pa"
       ],
       "description": "Prepends the given path to Erlang code path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-pz"
       ],
       "description": "Appends the given path to Erlang code path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -64,28 +86,40 @@
         "--app"
       ],
       "description": "Starts the given app and its dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "APP"
+      }
     },
     {
       "names": [
         "--erl"
       ],
       "description": "Switches to be passed down to Erlang",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SWITCHES"
+      }
     },
     {
       "names": [
         "--logger-otp-reports"
       ],
       "description": "Enables or disables OTP reporting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BOOL"
+      }
     },
     {
       "names": [
         "--logger-sasl-reports"
       ],
       "description": "Enables or disables SASL reporting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BOOL"
+      }
     },
     {
       "names": [
@@ -104,7 +138,10 @@
         "--cookie"
       ],
       "description": "Sets a cookie for this distributed node",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COOKIE"
+      }
     },
     {
       "names": [
@@ -117,56 +154,82 @@
         "--name"
       ],
       "description": "Makes and assigns a name to the distributed node",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
         "--rpc-eval"
       ],
       "description": "Evaluates the given command on the given remote node",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NODE"
+      }
     },
     {
       "names": [
         "--sname"
       ],
       "description": "Makes and assigns a short name to the distributed node",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
         "--boot"
       ],
       "description": "Uses the given FILE.boot to start the system",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--boot-var"
       ],
       "description": "Makes $VAR available as VALUE to FILE.boot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VAR"
+      }
     },
     {
       "names": [
         "--erl-config"
       ],
       "description": "Loads configuration in FILE.config written in Erlang",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE"
+      }
     },
     {
       "names": [
         "--pipe-to"
       ],
       "description": "Starts the Erlang VM as a named PIPEDIR and LOGDIR",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PIPEDIR"
+      }
     },
     {
       "names": [
         "--vm-args"
       ],
       "description": "Passes the contents in file as arguments to the VM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     }
   ],
   "args": [

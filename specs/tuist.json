@@ -208,7 +208,15 @@
             "-f"
           ],
           "description": "If you prefer to have the dot or json representations of the graph and render it separately. Available formats: dot, png, json (default: png)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "dot",
+              "png",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -216,7 +224,19 @@
             "-a"
           ],
           "description": "Available formats: dot, neato, twopi, circo, fdp, sfddp, patchwork (default: dot)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "dot",
+              "neato",
+              "twopi",
+              "circo",
+              "fdp",
+              "sfddp",
+              "patchwork"
+            ]
+          }
         },
         {
           "names": [
@@ -224,7 +244,11 @@
             "-p"
           ],
           "description": "The path to the directory that contains the definition of the project. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project dir",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -232,7 +256,11 @@
             "-o"
           ],
           "description": "The path to where the image will be exported. When not specified, it exports the image in the current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -247,7 +275,16 @@
             "-l"
           ],
           "description": "If set, show only the targets for the given platform. Default is all platforms. Available platforms: ios, macos, tvos, watchos",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform",
+            "suggestions": [
+              "ios",
+              "macos",
+              "tvos",
+              "watchos"
+            ]
+          }
         }
       ],
       "args": [
@@ -267,7 +304,11 @@
             "-p"
           ],
           "description": "The path to the directory that contains the definition of the project. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -295,7 +336,10 @@
             "-P"
           ],
           "description": "The name of the cache profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cache profile"
+          }
         }
       ],
       "args": [
@@ -320,6 +364,10 @@
               ],
               "description": "Required. Path to the Xcode project whose build settings will be extracted",
               "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              },
               "is_required": true
             },
             {
@@ -329,6 +377,10 @@
               ],
               "description": "Required. Path to the Xcode project whose build settings will be extracted",
               "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              },
               "is_required": true
             },
             {
@@ -337,7 +389,10 @@
                 "-t"
               ],
               "description": "Optional. The name of the target whose build settings will be extracted. When not passed, it extracts the build settings of the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target"
+              }
             }
           ]
         },
@@ -393,7 +448,10 @@
             "-p"
           ],
           "description": "The path to the folder where the template will be generated (Default: Current directory)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
@@ -406,14 +464,20 @@
             "--name"
           ],
           "description": "The name of the generate project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "The platform used by the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform"
+          }
         }
       ],
       "args": [
@@ -433,7 +497,11 @@
             "-p"
           ],
           "description": "The path to the directory that contains the project to be tested",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -448,7 +516,10 @@
             "-d"
           ],
           "description": "Test on a specific device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device"
+          }
         },
         {
           "names": [
@@ -456,7 +527,10 @@
             "-o"
           ],
           "description": "Test with a specific version of the OS",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "os"
+          }
         },
         {
           "names": [
@@ -483,7 +557,10 @@
             "--retry-count"
           ],
           "description": "Tests will retry <number> of times until success. Example: if 1 is specified, the test will be retried at most once, hence it will run up to 2 times. (default: 0)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "times"
+          }
         }
       ],
       "args": [

@@ -22,7 +22,12 @@
         "--propfile"
       ],
       "description": "The jmeter property file to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "property",
+        "description": "Your jmeter property file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -30,7 +35,13 @@
         "--addprop"
       ],
       "description": "Additional JMeter property file(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "files...",
+        "description": "Additional JMeter property file(s)",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -38,7 +49,12 @@
         "--testfile"
       ],
       "description": "The JMeter test(.jmx) file to run. \"-t LAST\" will load last used file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "testfile",
+        "description": "The JMeter test(.jmx) file to run. \"-t LAST\" will load last used file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -46,7 +62,12 @@
         "--logfile"
       ],
       "description": "The file to log samples to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "logfile",
+        "description": "The file to log samples to",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -54,7 +75,12 @@
         "--jmeterlogconf"
       ],
       "description": "JMeter logging configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "jmeterlogconf",
+        "description": "Jmeter logging configuration file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -62,7 +88,12 @@
         "--jmeterlogfile"
       ],
       "description": "JMeter run log file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "jmeterlogfile",
+        "description": "JMeter run log file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -84,7 +115,11 @@
         "--proxyScheme"
       ],
       "description": "Set a proxy scheme to use for the proxy server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "proxyScheme",
+        "description": "Set a proxy scheme to use for the proxy server"
+      }
     },
     {
       "names": [
@@ -92,7 +127,10 @@
         "--proxyHost"
       ],
       "description": "Set a proxy server for JMeter to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "server"
+      }
     },
     {
       "names": [
@@ -100,7 +138,10 @@
         "--proxyPort"
       ],
       "description": "Set proxy server port for JMeter to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
@@ -108,7 +149,11 @@
         "--nonProxyHosts"
       ],
       "description": "Set nonproxy host list (e.g. *.apache.org|localhost)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "nonProxyHosts",
+        "description": "Set nonproxy host list (e.g. *.apache.org|localhost)"
+      }
     },
     {
       "names": [
@@ -116,7 +161,11 @@
         "--username"
       ],
       "description": "Set username for proxy server that JMeter is to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username",
+        "description": "Set username for proxy server that JMeter is to use"
+      }
     },
     {
       "names": [
@@ -124,7 +173,11 @@
         "--password"
       ],
       "description": "Set password for proxy server that JMeter is to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "password",
+        "description": "Set password for proxy server that JMeter is to use"
+      }
     },
     {
       "names": [
@@ -132,7 +185,11 @@
         "--jmeterproperty"
       ],
       "description": "Define additional JMeter properties <argument>=<value>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "jmeterproperty",
+        "description": "Define additional JMeter properties <argument>=<value>"
+      }
     },
     {
       "names": [
@@ -140,7 +197,11 @@
         "--globalproperty"
       ],
       "description": "Define Global properties (sent to servers) e.g. -Gport=123 or -Gglobal.properties",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "globalproperty",
+        "description": "Define Global properties (sent to servers) e.g. -Gport=123 or -Gglobal.properties"
+      }
     },
     {
       "names": [
@@ -148,7 +209,11 @@
         "--systemproperty"
       ],
       "description": "Define additional system properties <argument>=<value>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "systemproperty",
+        "description": "Define additional system properties <argument>=<value>"
+      }
     },
     {
       "names": [
@@ -156,7 +221,12 @@
         "--systemPropertyFile"
       ],
       "description": "Additional system property file(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "systemPropertyFile",
+        "description": "Additional system property file(s)",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -171,7 +241,19 @@
         "--loglevel"
       ],
       "description": "[category=]level e.g. jorphan=INFO, jmeter.util=DEBUG or com.example.foo=WARN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "loglevel",
+        "suggestions": [
+          "OFF",
+          "FATAL",
+          "WARN",
+          "INFO",
+          "DEBUG",
+          "TRACE",
+          "ALL"
+        ]
+      }
     },
     {
       "names": [
@@ -186,7 +268,11 @@
         "--remotestart"
       ],
       "description": "Start these remote servers (overrides remote_hosts)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "servers",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -194,7 +280,10 @@
         "--homedir"
       ],
       "description": "The JMeter home directory to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "homedir"
+      }
     },
     {
       "names": [
@@ -223,7 +312,12 @@
         "--reportoutputfolder"
       ],
       "description": "Output folder for report dashboard",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "reportoutputfolder",
+        "description": "Output folder for report dashboard",
+        "template": "folders"
+      }
     }
   ]
 }

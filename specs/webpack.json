@@ -21,7 +21,15 @@
             "config-path"
           ],
           "description": "Path to the webpack configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "suggestions": [
+              "webpack.config",
+              ".webpack/webpack.config",
+              ".webpack/webpackfile"
+            ]
+          }
         }
       ]
     },
@@ -93,14 +101,22 @@
         "-c"
       ],
       "description": "Provide path to a webpack configuration file e.g. ./webpack.config.js",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--config-name"
       ],
       "description": "Name of the configuration to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -114,14 +130,21 @@
         "--env"
       ],
       "description": "Environment passed to the configuration when it is a function",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--node-env"
       ],
       "description": "Sets process.env.NODE_ENV to the specified value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -129,7 +152,10 @@
         "-h"
       ],
       "description": "Enables Hot Module Replacement",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -148,14 +174,20 @@
         "--progress"
       ],
       "description": "Print compilation progress during build",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--prefetch"
       ],
       "description": "Prefetch this request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -163,7 +195,10 @@
         "-j"
       ],
       "description": "Prints result as JSON or store it in a file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -212,14 +247,20 @@
         "--cache-max-generations"
       ],
       "description": "Number of generations unused cache entries stay in memory cache at minimum (1 = may be removed after unused for a single compilation, ..., Infinity: kept forever)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-type"
       ],
       "description": "In memory caching. Filesystem caching",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -238,21 +279,31 @@
         "--cache-cache-directory"
       ],
       "description": "Base directory for the cache (defaults to node_modules/.cache/webpack)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--cache-cache-location"
       ],
       "description": "Locations for the cache (defaults to cacheDirectory / name)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-compression"
       ],
       "description": "Compression type used for the cache files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -265,35 +316,52 @@
         "--cache-hash-algorithm"
       ],
       "description": "Algorithm used for generation the hash (see node.js crypto package)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-idle-timeout"
       ],
       "description": "Time in ms after which idle period the cache storing should happen",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-idle-timeout-after-large-changes"
       ],
       "description": "Time in ms after which idle period the cache storing should happen when larger changes has been detected (cumulative build time > 2 x avg cache store time)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-idle-timeout-for-initial-store"
       ],
       "description": "Time in ms after which idle period the initial cache storing should happen",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-immutable-paths"
       ],
       "description": "A RegExp matching an immutable directory (usually a package manager cache directory, including the tailing slash) A path to an immutable directory (usually a package manager cache directory)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -306,7 +374,12 @@
         "--cache-managed-paths"
       ],
       "description": "A RegExp matching a managed directory (usually a node_modules directory, including the tailing slash) A path to a managed directory (usually a node_modules directory)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -319,14 +392,20 @@
         "--cache-max-age"
       ],
       "description": "Time for which unused cache entries stay in the filesystem cache at minimum (in milliseconds)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-max-memory-generations"
       ],
       "description": "Number of generations unused cache entries stay in memory cache at minimum (0 = no memory cache used, 1 = may be removed after unused for a single compilation, ..., Infinity: kept forever). Cache entr",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -345,7 +424,10 @@
         "--cache-name"
       ],
       "description": "Name for the cache. Different names will lead to different coexisting caches",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -364,28 +446,42 @@
         "--cache-store"
       ],
       "description": "When to store data to the filesystem. (pack: Store data when compiler is idle in a single file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--cache-version"
       ],
       "description": "Version of the cache data. Different versions won't allow to reuse the cache and override existing content. Update the version when config changed in a way which doesn't allow to reuse cache. This wil",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--context"
       ],
       "description": "The base directory (absolute path!) for resolving the `entry` option. If `output.pathinfo` is set, the included pathinfo is shortened to this directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--dependencies"
       ],
       "description": "References to another configuration to depend on",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -399,7 +495,10 @@
         "-d"
       ],
       "description": "Determine source maps to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -412,7 +511,11 @@
         "--entry"
       ],
       "description": "The entry point(s) of your application e.g. ./src/main.js",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -449,7 +552,11 @@
         "--experiments-build-http-allowed-uris"
       ],
       "description": "Allowed URI pattern. Allowed URI (resp. the beginning of it)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -462,7 +569,10 @@
         "--experiments-build-http-cache-location"
       ],
       "description": "Location where resource content is stored for lockfile entries. It's also possible to disable storing by passing false",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -487,14 +597,20 @@
         "--experiments-build-http-lockfile-location"
       ],
       "description": "Location of the lockfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--experiments-build-http-proxy"
       ],
       "description": "Proxy configuration, which can be used to specify a proxy server to use for HTTP requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -585,35 +701,50 @@
         "--experiments-lazy-compilation-backend-client"
       ],
       "description": "A custom client",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--experiments-lazy-compilation-backend-listen"
       ],
       "description": "A port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--experiments-lazy-compilation-backend-listen-host"
       ],
       "description": "A host",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--experiments-lazy-compilation-backend-listen-port"
       ],
       "description": "A port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--experiments-lazy-compilation-backend-protocol"
       ],
       "description": "Specifies the protocol the client should use to connect to the server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -644,7 +775,10 @@
         "--experiments-lazy-compilation-test"
       ],
       "description": "Specify which entrypoints or import()ed modules should be lazily compiled. This is matched with the imported module and not the entrypoint name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -687,7 +821,11 @@
         "--externals"
       ],
       "description": "Every matched dependency becomes external. An exact matched dependency becomes external. The same string is used as external dependency",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -796,35 +934,54 @@
         "--externals-type"
       ],
       "description": "Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--ignore-warnings"
       ],
       "description": "A RegExp to select the warning message",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--ignore-warnings-file"
       ],
       "description": "A RegExp to select the origin file for the warning",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--ignore-warnings-message"
       ],
       "description": "A RegExp to select the warning message",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--ignore-warnings-module"
       ],
       "description": "A RegExp to select the origin module for the warning",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -861,7 +1018,11 @@
         "--infrastructure-logging-debug"
       ],
       "description": "Enable/Disable debug logging for all loggers. Enable debug logging for specific loggers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -880,14 +1041,20 @@
         "--infrastructure-logging-level"
       ],
       "description": "Log level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--mode"
       ],
       "description": "Defines the mode to pass to webpack",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -918,7 +1085,10 @@
         "--module-expr-context-reg-exp"
       ],
       "description": "Sets the default regular expression for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRegExp'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -931,14 +1101,20 @@
         "--module-expr-context-request"
       ],
       "description": "Set the default request for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRequest'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-generator-asset-data-url-encoding"
       ],
       "description": "Asset encoding (defaults to base64)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -951,7 +1127,10 @@
         "--module-generator-asset-data-url-mimetype"
       ],
       "description": "Asset mimetype (getting from file extension by default)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -970,28 +1149,42 @@
         "--module-generator-asset-filename"
       ],
       "description": "Specifies the filename template of output files on disk. You must **not** specify an absolute path here, but the path may contain folders separated by '/'! The specified path is joined with the value ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--module-generator-asset-output-path"
       ],
       "description": "Emit the asset in the specified folder relative to 'output.path'. This should only be needed when custom 'publicPath' is specified to match the folder structure there",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--module-generator-asset-public-path"
       ],
       "description": "The 'publicPath' specifies the public URL address of the output files when referenced in a browser",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-generator-asset-inline-data-url-encoding"
       ],
       "description": "Asset encoding (defaults to base64)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1004,7 +1197,10 @@
         "--module-generator-asset-inline-data-url-mimetype"
       ],
       "description": "Asset mimetype (getting from file extension by default)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1023,28 +1219,43 @@
         "--module-generator-asset-resource-filename"
       ],
       "description": "Specifies the filename template of output files on disk. You must **not** specify an absolute path here, but the path may contain folders separated by '/'! The specified path is joined with the value ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--module-generator-asset-resource-output-path"
       ],
       "description": "Emit the asset in the specified folder relative to 'output.path'. This should only be needed when custom 'publicPath' is specified to match the folder structure there",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--module-generator-asset-resource-public-path"
       ],
       "description": "The 'publicPath' specifies the public URL address of the output files when referenced in a browser",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-no-parse"
       ],
       "description": "A regular expression, when matched the module is not parsed. An absolute path, when the module starts with this path it is not parsed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -1057,7 +1268,10 @@
         "--module-parser-asset-data-url-condition-max-size"
       ],
       "description": "Maximum size of asset that should be inline as modules. Default: 8kb",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1106,7 +1320,10 @@
         "--module-parser-javascript-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\" and \"export ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1143,7 +1360,10 @@
         "--module-parser-javascript-expr-context-reg-exp"
       ],
       "description": "Sets the default regular expression for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1156,7 +1376,10 @@
         "--module-parser-javascript-expr-context-request"
       ],
       "description": "Set the default request for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1187,7 +1410,10 @@
         "--module-parser-javascript-import-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1230,7 +1456,10 @@
         "--module-parser-javascript-node-dirname"
       ],
       "description": "Include a polyfill for the '__dirname' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1243,7 +1472,11 @@
         "--module-parser-javascript-node-filename"
       ],
       "description": "Include a polyfill for the '__filename' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -1256,7 +1489,10 @@
         "--module-parser-javascript-node-global"
       ],
       "description": "Include a polyfill for the 'global' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1269,7 +1505,10 @@
         "--module-parser-javascript-reexport-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"export ... from ...\". This might be useful to disable during the migration from \"export ... from ...\" to \"export type ... from ...\" when reexporting ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1390,7 +1629,10 @@
         "--module-parser-javascript-unknown-context-reg-exp"
       ],
       "description": "Sets the regular expression when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1403,14 +1645,20 @@
         "--module-parser-javascript-unknown-context-request"
       ],
       "description": "Sets the request when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-parser-javascript-url"
       ],
       "description": "Enable/disable parsing of new URL() syntax",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1423,7 +1671,11 @@
         "--module-parser-javascript-worker"
       ],
       "description": "Specify a syntax that should be parsed as WebWorker reference. 'Abc' handles 'new Abc()', 'Abc from xyz' handles 'import { Abc } from \"xyz\"; new Abc()', 'abc()' handles 'abc()', and combinations are a",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -1466,7 +1718,10 @@
         "--module-parser-javascript-wrapped-context-reg-exp"
       ],
       "description": "Set the inner regular expression for partial dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1515,7 +1770,10 @@
         "--module-parser-javascript-auto-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\" and \"export ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1552,7 +1810,10 @@
         "--module-parser-javascript-auto-expr-context-reg-exp"
       ],
       "description": "Sets the default regular expression for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1565,7 +1826,10 @@
         "--module-parser-javascript-auto-expr-context-request"
       ],
       "description": "Set the default request for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1596,7 +1860,10 @@
         "--module-parser-javascript-auto-import-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1639,7 +1906,10 @@
         "--module-parser-javascript-auto-node-dirname"
       ],
       "description": "Include a polyfill for the '__dirname' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1652,7 +1922,11 @@
         "--module-parser-javascript-auto-node-filename"
       ],
       "description": "Include a polyfill for the '__filename' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -1665,7 +1939,10 @@
         "--module-parser-javascript-auto-node-global"
       ],
       "description": "Include a polyfill for the 'global' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1678,7 +1955,10 @@
         "--module-parser-javascript-auto-reexport-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"export ... from ...\". This might be useful to disable during the migration from \"export ... from ...\" to \"export type ... from ...\" when reexporting ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1799,7 +2079,10 @@
         "--module-parser-javascript-auto-unknown-context-reg-exp"
       ],
       "description": "Sets the regular expression when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1812,14 +2095,20 @@
         "--module-parser-javascript-auto-unknown-context-request"
       ],
       "description": "Sets the request when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-parser-javascript-auto-url"
       ],
       "description": "Enable/disable parsing of new URL() syntax",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1832,7 +2121,11 @@
         "--module-parser-javascript-auto-worker"
       ],
       "description": "Specify a syntax that should be parsed as WebWorker reference. 'Abc' handles 'new Abc()', 'Abc from xyz' handles 'import { Abc } from \"xyz\"; new Abc()', 'abc()' handles 'abc()', and combinations are a",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -1875,7 +2168,10 @@
         "--module-parser-javascript-auto-wrapped-context-reg-exp"
       ],
       "description": "Set the inner regular expression for partial dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1924,7 +2220,10 @@
         "--module-parser-javascript-dynamic-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\" and \"export ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1961,7 +2260,10 @@
         "--module-parser-javascript-dynamic-expr-context-reg-exp"
       ],
       "description": "Sets the default regular expression for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1974,7 +2276,10 @@
         "--module-parser-javascript-dynamic-expr-context-request"
       ],
       "description": "Set the default request for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2005,7 +2310,10 @@
         "--module-parser-javascript-dynamic-import-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2048,7 +2356,10 @@
         "--module-parser-javascript-dynamic-node-dirname"
       ],
       "description": "Include a polyfill for the '__dirname' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2061,7 +2372,11 @@
         "--module-parser-javascript-dynamic-node-filename"
       ],
       "description": "Include a polyfill for the '__filename' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2074,7 +2389,10 @@
         "--module-parser-javascript-dynamic-node-global"
       ],
       "description": "Include a polyfill for the 'global' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2087,7 +2405,10 @@
         "--module-parser-javascript-dynamic-reexport-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"export ... from ...\". This might be useful to disable during the migration from \"export ... from ...\" to \"export type ... from ...\" when reexporting ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2208,7 +2529,10 @@
         "--module-parser-javascript-dynamic-unknown-context-reg-exp"
       ],
       "description": "Sets the regular expression when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2221,14 +2545,20 @@
         "--module-parser-javascript-dynamic-unknown-context-request"
       ],
       "description": "Sets the request when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-parser-javascript-dynamic-url"
       ],
       "description": "Enable/disable parsing of new URL() syntax",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2241,7 +2571,11 @@
         "--module-parser-javascript-dynamic-worker"
       ],
       "description": "Specify a syntax that should be parsed as WebWorker reference. 'Abc' handles 'new Abc()', 'Abc from xyz' handles 'import { Abc } from \"xyz\"; new Abc()', 'abc()' handles 'abc()', and combinations are a",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -2284,7 +2618,10 @@
         "--module-parser-javascript-dynamic-wrapped-context-reg-exp"
       ],
       "description": "Set the inner regular expression for partial dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2333,7 +2670,10 @@
         "--module-parser-javascript-esm-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\" and \"export ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2370,7 +2710,10 @@
         "--module-parser-javascript-esm-expr-context-reg-exp"
       ],
       "description": "Sets the default regular expression for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2383,7 +2726,10 @@
         "--module-parser-javascript-esm-expr-context-request"
       ],
       "description": "Set the default request for full dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2414,7 +2760,10 @@
         "--module-parser-javascript-esm-import-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"import ... from ...\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2457,7 +2806,10 @@
         "--module-parser-javascript-esm-node-dirname"
       ],
       "description": "Include a polyfill for the '__dirname' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2470,7 +2822,11 @@
         "--module-parser-javascript-esm-node-filename"
       ],
       "description": "Include a polyfill for the '__filename' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2483,7 +2839,10 @@
         "--module-parser-javascript-esm-node-global"
       ],
       "description": "Include a polyfill for the 'global' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2496,7 +2855,10 @@
         "--module-parser-javascript-esm-reexport-exports-presence"
       ],
       "description": "Specifies the behavior of invalid export names in \"export ... from ...\". This might be useful to disable during the migration from \"export ... from ...\" to \"export type ... from ...\" when reexporting ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2617,7 +2979,10 @@
         "--module-parser-javascript-esm-unknown-context-reg-exp"
       ],
       "description": "Sets the regular expression when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2630,14 +2995,20 @@
         "--module-parser-javascript-esm-unknown-context-request"
       ],
       "description": "Sets the request when using the require function in a not statically analyse-able way",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-parser-javascript-esm-url"
       ],
       "description": "Enable/disable parsing of new URL() syntax",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -2650,7 +3021,11 @@
         "--module-parser-javascript-esm-worker"
       ],
       "description": "Specify a syntax that should be parsed as WebWorker reference. 'Abc' handles 'new Abc()', 'Abc from xyz' handles 'import { Abc } from \"xyz\"; new Abc()', 'abc()' handles 'abc()', and combinations are a",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -2693,196 +3068,307 @@
         "--module-parser-javascript-esm-wrapped-context-reg-exp"
       ],
       "description": "Set the inner regular expression for partial dynamic dependencies",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--module-rules-compiler"
       ],
       "description": "Match the child compiler name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-compiler-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-dependency"
       ],
       "description": "Match dependency type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-dependency-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-enforce"
       ],
       "description": "Enforce this rule as pre or post step",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-exclude"
       ],
       "description": "Shortcut for resource.exclude",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-exclude-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-include"
       ],
       "description": "Shortcut for resource.include",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-include-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-issuer"
       ],
       "description": "Match the issuer of the module (The module pointing to this module)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-issuer-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-issuer-layer"
       ],
       "description": "Match layer of the issuer of this module (The module pointing to this module)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-issuer-layer-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-layer"
       ],
       "description": "Specifies the layer in which the module should be placed in",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-loader"
       ],
       "description": "A loader request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-mimetype"
       ],
       "description": "Match module mimetype when load from Data URI",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-mimetype-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-real-resource"
       ],
       "description": "Match the real resource path of the module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-real-resource-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-resource"
       ],
       "description": "Match the resource path of the module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-resource-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-resource-fragment"
       ],
       "description": "Match the resource fragment of the module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-resource-fragment-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-resource-query"
       ],
       "description": "Match the resource query of the module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-resource-query-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-scheme"
       ],
       "description": "Match module scheme",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-scheme-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -2901,49 +3387,77 @@
         "--module-rules-test"
       ],
       "description": "Shortcut for resource.test",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-test-not"
       ],
       "description": "Logical NOT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-type"
       ],
       "description": "Module type to use for the module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-use-ident"
       ],
       "description": "Unique loader options identifier",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-use-loader"
       ],
       "description": "A loader request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-use-options"
       ],
       "description": "Options passed to a loader",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--module-rules-use"
       ],
       "description": "A loader request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -3004,7 +3518,10 @@
         "--module-unknown-context-reg-exp"
       ],
       "description": "Sets the regular expression when using the require function in a not statically analyse-able way. Deprecated: This option has moved to 'module.parser.javascript.unknownContextRegExp'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3017,7 +3534,10 @@
         "--module-unknown-context-request"
       ],
       "description": "Sets the request when using the require function in a not statically analyse-able way. Deprecated: This option has moved to 'module.parser.javascript.unknownContextRequest'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3060,14 +3580,20 @@
         "--module-wrapped-context-reg-exp"
       ],
       "description": "Set the inner regular expression for partial dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.wrappedContextRegExp'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--name"
       ],
       "description": "Name of the configuration. Used when loading multiple configurations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3080,7 +3606,10 @@
         "--node-dirname"
       ],
       "description": "Include a polyfill for the '__dirname' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3093,7 +3622,11 @@
         "--node-filename"
       ],
       "description": "Include a polyfill for the '__filename' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3106,7 +3639,10 @@
         "--node-global"
       ],
       "description": "Include a polyfill for the 'global' variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3131,7 +3667,10 @@
         "--optimization-chunk-ids"
       ],
       "description": "Define the algorithm to choose chunk ids (named: readable ids for better debugging, deterministic: numeric hash ids for better long term caching, size: numeric ids focused on minimal initial download ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3192,7 +3731,10 @@
         "--optimization-mangle-exports"
       ],
       "description": "Rename exports when possible to generate shorter code (depends on optimization.usedExports and optimization.providedExports, true/\"deterministic\": generate short deterministic names optimized for cach",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3241,7 +3783,10 @@
         "--optimization-module-ids"
       ],
       "description": "Define the algorithm to choose module ids (natural: numeric ids in order of usage, named: readable ids for better debugging, hashed: (deprecated) short hashes as ids for better long term caching, dete",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3254,7 +3799,10 @@
         "--optimization-node-env"
       ],
       "description": "Set process.env.NODE_ENV to a specific value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3327,7 +3875,10 @@
         "--optimization-runtime-chunk"
       ],
       "description": "Create an additional chunk which contains only the webpack runtime and chunk hash maps",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3340,14 +3891,20 @@
         "--optimization-runtime-chunk-name"
       ],
       "description": "The name or name factory for the runtime chunks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-side-effects"
       ],
       "description": "Skip over modules which contain no side effects when exports are not used (false: disabled, 'flag': only use manually placed side effects flag, true: also analyse source code for side effects)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3366,21 +3923,31 @@
         "--optimization-split-chunks-automatic-name-delimiter"
       ],
       "description": "Sets the name delimiter for created chunks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-chunks"
       ],
       "description": "Select chunks for determining shared modules (defaults to \"async\", \"initial\" and \"all\" requires adding these chunks to the HTML)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-default-size-types"
       ],
       "description": "Size type, like 'javascript', 'webassembly'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -3393,7 +3960,10 @@
         "--optimization-split-chunks-enforce-size-threshold"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3406,49 +3976,71 @@
         "--optimization-split-chunks-fallback-cache-group-chunks"
       ],
       "description": "Select chunks for determining shared modules (defaults to \"async\", \"initial\" and \"all\" requires adding these chunks to the HTML)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-fallback-cache-group-max-async-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-fallback-cache-group-max-initial-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-fallback-cache-group-max-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-fallback-cache-group-min-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-fallback-cache-group-min-size-reduction"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-filename"
       ],
       "description": "Sets the template for the filename for created chunks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3467,70 +4059,100 @@
         "--optimization-split-chunks-max-async-requests"
       ],
       "description": "Maximum number of requests which are accepted for on-demand loading",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-max-async-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-max-initial-requests"
       ],
       "description": "Maximum number of initial chunks which are accepted for an entry point",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-max-initial-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-max-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-min-chunks"
       ],
       "description": "Minimum number of times a module has to be duplicated until it's considered for splitting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-min-remaining-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-min-size"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-min-size-reduction"
       ],
       "description": "Size of the javascript part of the chunk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--optimization-split-chunks-name"
       ],
       "description": "Give chunks created a name (chunks with equal name are merged)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3555,7 +4177,10 @@
         "--optimization-used-exports"
       ],
       "description": "Figure out which exports are used by modules to mangle export names, omit unused exports and generate more efficient code (true: analyse used exports for each runtime, \"global\": analyse exports global",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3568,7 +4193,11 @@
         "--output-asset-module-filename"
       ],
       "description": "The filename of asset modules as relative path inside the 'output.path' directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3599,14 +4228,21 @@
         "--output-chunk-filename"
       ],
       "description": "Specifies the filename template of output files on disk. You must **not** specify an absolute path here, but the path may contain folders separated by '/'! The specified path is joined with the value ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-chunk-format"
       ],
       "description": "The format of chunks (formats included by default are 'array-push' (web/WebWorker), 'commonjs' (node.js), 'module' (ESM), but others might be added by plugins)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3619,14 +4255,20 @@
         "--output-chunk-load-timeout"
       ],
       "description": "Number of milliseconds before chunk request expires",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-chunk-loading"
       ],
       "description": "The method of loading chunks (methods included by default are 'jsonp' (web), 'import' (ESM), 'importScripts' (WebWorker), 'require' (sync node.js), 'async-node' (async node.js), but others might be ad",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3639,7 +4281,10 @@
         "--output-chunk-loading-global"
       ],
       "description": "The global variable used by webpack for loading of chunks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3670,7 +4315,10 @@
         "--output-clean-keep"
       ],
       "description": "Keep these assets",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3689,7 +4337,10 @@
         "--output-cross-origin-loading"
       ],
       "description": "This option enables cross-origin loading of chunks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -3702,42 +4353,65 @@
         "--output-css-chunk-filename"
       ],
       "description": "Specifies the filename template of output files on disk. You must **not** specify an absolute path here, but the path may contain folders separated by '/'! The specified path is joined with the value ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-css-filename"
       ],
       "description": "Specifies the filename template of output files on disk. You must **not** specify an absolute path here, but the path may contain folders separated by '/'! The specified path is joined with the value ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-devtool-fallback-module-filename-template"
       ],
       "description": "Similar to `output.devtoolModuleFilenameTemplate`, but used in the case of duplicate module identifiers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-devtool-module-filename-template"
       ],
       "description": "Filename template string of function for the sources array in a generated SourceMap",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-devtool-namespace"
       ],
       "description": "Module namespace to use when interpolating filename template string for the sources array in a generated SourceMap. Defaults to `output.library` if not set. It's useful for avoiding runtime collisions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-enabled-chunk-loading-types"
       ],
       "description": "The method of loading chunks (methods included by default are 'jsonp' (web), 'import' (ESM), 'importScripts' (WebWorker), 'require' (sync node.js), 'async-node' (async node.js), but others might be ad",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -3750,7 +4424,11 @@
         "--output-enabled-library-types"
       ],
       "description": "Type of library (types included by default are 'var', 'module', 'assign', 'assign-properties', 'this', 'window', 'self', 'global', 'commonjs', 'commonjs2', 'commonjs-module', 'commonjs-static', 'amd',",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -3763,7 +4441,11 @@
         "--output-enabled-wasm-loading-types"
       ],
       "description": "The method of loading WebAssembly Modules (methods included by default are 'fetch' (web/WebWorker), 'async-node' (node.js), but others might be added by plugins)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -3884,63 +4566,93 @@
         "--output-filename"
       ],
       "description": "Specifies the filename template of output files on disk. You must **not** specify an absolute path here, but the path may contain folders separated by '/'! The specified path is joined with the value ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-global-object"
       ],
       "description": "An expression which is used to address the global object/scope in runtime code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-hash-digest"
       ],
       "description": "Digest type used for the hash",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-hash-digest-length"
       ],
       "description": "Number of chars which are used for the hash",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-hash-function"
       ],
       "description": "Algorithm used for generation the hash (see node.js crypto package)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-hash-salt"
       ],
       "description": "Any string which is added to the hash to salt it",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-hot-update-chunk-filename"
       ],
       "description": "The filename of the Hot Update Chunks. They are inside the output.path directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-hot-update-global"
       ],
       "description": "The global variable used by webpack for loading of hot update chunks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-hot-update-main-filename"
       ],
       "description": "The filename of the Hot Update Main File. It is inside the 'output.path' directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3959,21 +4671,31 @@
         "--output-import-function-name"
       ],
       "description": "The name of the native import() function (can be exchanged for a polyfill)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-import-meta-name"
       ],
       "description": "The name of the native import.meta object (can be exchanged for a polyfill)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library"
       ],
       "description": "A part of the library name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -3986,21 +4708,31 @@
         "--output-library-amd"
       ],
       "description": "Name of the exposed AMD library in the UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-commonjs"
       ],
       "description": "Name of the exposed commonjs export in the UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-root"
       ],
       "description": "Part of the name of the property exposed globally by a UMD library",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4013,42 +4745,61 @@
         "--output-library-auxiliary-comment"
       ],
       "description": "Append the same comment above each import style",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-auxiliary-comment-amd"
       ],
       "description": "Set comment for `amd` section in UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-auxiliary-comment-commonjs"
       ],
       "description": "Set comment for `commonjs` (exports) section in UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-auxiliary-comment-commonjs2"
       ],
       "description": "Set comment for `commonjs2` (module.exports) section in UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-auxiliary-comment-root"
       ],
       "description": "Set comment for `root` (global variable) section in UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-export"
       ],
       "description": "Part of the export that should be exposed as library",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4061,7 +4812,11 @@
         "--output-library-name"
       ],
       "description": "A part of the library name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4074,21 +4829,31 @@
         "--output-library-name-amd"
       ],
       "description": "Name of the exposed AMD library in the UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-name-commonjs"
       ],
       "description": "Name of the exposed commonjs export in the UMD",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-library-name-root"
       ],
       "description": "Part of the name of the property exposed globally by a UMD library",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4101,7 +4866,10 @@
         "--output-library-type"
       ],
       "description": "Type of library (types included by default are 'var', 'module', 'assign', 'assign-properties', 'this', 'window', 'self', 'global', 'commonjs', 'commonjs2', 'commonjs-module', 'commonjs-static', 'amd',",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4133,14 +4901,20 @@
         "-o"
       ],
       "description": "Output location of the file generated by webpack e.g. ./dist/",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-pathinfo"
       ],
       "description": "Include comments with information about the modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4153,14 +4927,20 @@
         "--output-public-path"
       ],
       "description": "The 'publicPath' specifies the public URL address of the output files when referenced in a browser",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-script-type"
       ],
       "description": "This option enables loading async chunks via a custom script type, such as script type=\"module\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4173,14 +4953,21 @@
         "--output-source-map-filename"
       ],
       "description": "The filename of the SourceMaps for the JavaScript files. They are inside the 'output.path' directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-source-prefix"
       ],
       "description": "Prefixes every line of the source in the bundle with this string",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4211,28 +4998,40 @@
         "--output-trusted-types"
       ],
       "description": "Use a Trusted Types policy to create urls for chunks. 'output.uniqueName' is used a default policy name. Passing a string sets a custom policy name. The name of the Trusted Types policy created by web",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-trusted-types-policy-name"
       ],
       "description": "The name of the Trusted Types policy created by webpack to serve bundle chunks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-unique-name"
       ],
       "description": "A unique name of the webpack build to avoid multiple webpack runtimes to conflict when using globals",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--output-wasm-loading"
       ],
       "description": "The method of loading WebAssembly Modules (methods included by default are 'fetch' (web/WebWorker), 'async-node' (node.js), but others might be added by plugins)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4245,14 +5044,21 @@
         "--output-webassembly-module-filename"
       ],
       "description": "The filename of WebAssembly modules as relative path inside the 'output.path' directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-worker-chunk-loading"
       ],
       "description": "The method of loading chunks (methods included by default are 'jsonp' (web), 'import' (ESM), 'importScripts' (WebWorker), 'require' (sync node.js), 'async-node' (async node.js), but others might be ad",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4265,7 +5071,10 @@
         "--output-worker-wasm-loading"
       ],
       "description": "The method of loading WebAssembly Modules (methods included by default are 'fetch' (web/WebWorker), 'async-node' (node.js), but others might be added by plugins)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4278,7 +5087,10 @@
         "--parallelism"
       ],
       "description": "The number of parallel processed modules in the compilation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4291,7 +5103,10 @@
         "--performance-hints"
       ],
       "description": "Sets the format of the hints: warnings, errors or nothing at all",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4304,14 +5119,20 @@
         "--performance-max-asset-size"
       ],
       "description": "File size limit (in bytes) when exceeded, that webpack will provide performance hints",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--performance-max-entrypoint-size"
       ],
       "description": "Total size of an entry point (in bytes)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4330,7 +5151,10 @@
         "--records-input-path"
       ],
       "description": "Store compiler state to a json file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4343,7 +5167,10 @@
         "--records-output-path"
       ],
       "description": "Load compiler state from a json file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4356,7 +5183,10 @@
         "--records-path"
       ],
       "description": "Store/Load compiler state from/to a json file. This will result in persistent ids of modules and chunks. An absolute path is expected. `recordsPath` is used for `recordsInputPath` and `recordsOutputPa",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -4369,7 +5199,11 @@
         "--resolve-alias-alias"
       ],
       "description": "Ignore request (replace with empty module). New request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4382,7 +5216,11 @@
         "--resolve-alias-name"
       ],
       "description": "Request to be redirected",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4407,7 +5245,11 @@
         "--resolve-alias-fields"
       ],
       "description": "Field in the description file (usually package.json) which are used to redirect requests inside the module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4444,7 +5286,11 @@
         "--resolve-condition-names"
       ],
       "description": "Condition names for exports field entry point",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4457,7 +5303,12 @@
         "--resolve-description-files"
       ],
       "description": "Filename used to find a description file (like a package.json)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -4482,7 +5333,11 @@
         "--resolve-exports-fields"
       ],
       "description": "Field name from the description file (usually package.json) which is used to provide entry points of a package",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4495,7 +5350,11 @@
         "--resolve-extensions"
       ],
       "description": "Extension added to the request when trying to find the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4508,7 +5367,11 @@
         "--resolve-fallback-alias"
       ],
       "description": "Ignore request (replace with empty module). New request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4521,7 +5384,11 @@
         "--resolve-fallback-name"
       ],
       "description": "Request to be redirected",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4558,7 +5425,11 @@
         "--resolve-imports-fields"
       ],
       "description": "Field name from the description file (usually package.json) which is used to provide internal request of a package (requests starting with # are considered as internal)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4571,7 +5442,11 @@
         "--resolve-main-fields"
       ],
       "description": "Field name from the description file (package.json) which are used to find the default entry point",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4584,7 +5459,12 @@
         "--resolve-main-files"
       ],
       "description": "Filename used to find the default entry point if there is no description file or main field",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -4597,7 +5477,12 @@
         "--resolve-modules"
       ],
       "description": "Folder name or directory path where to find modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -4634,7 +5519,11 @@
         "--resolve-restrictions"
       ],
       "description": "Resolve restriction. Resolve result must fulfill this restriction",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4647,7 +5536,12 @@
         "--resolve-roots"
       ],
       "description": "Directory in which requests that are server-relative URLs (starting with '/') are resolved",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -4696,7 +5590,11 @@
         "--resolve-loader-alias-alias"
       ],
       "description": "Ignore request (replace with empty module). New request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4709,7 +5607,11 @@
         "--resolve-loader-alias-name"
       ],
       "description": "Request to be redirected",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4734,7 +5636,11 @@
         "--resolve-loader-alias-fields"
       ],
       "description": "Field in the description file (usually package.json) which are used to redirect requests inside the module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4771,7 +5677,11 @@
         "--resolve-loader-condition-names"
       ],
       "description": "Condition names for exports field entry point",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4784,7 +5694,12 @@
         "--resolve-loader-description-files"
       ],
       "description": "Filename used to find a description file (like a package.json)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -4809,7 +5724,11 @@
         "--resolve-loader-exports-fields"
       ],
       "description": "Field name from the description file (usually package.json) which is used to provide entry points of a package",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4822,7 +5741,11 @@
         "--resolve-loader-extensions"
       ],
       "description": "Extension added to the request when trying to find the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4835,7 +5758,11 @@
         "--resolve-loader-fallback-alias"
       ],
       "description": "Ignore request (replace with empty module). New request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4848,7 +5775,11 @@
         "--resolve-loader-fallback-name"
       ],
       "description": "Request to be redirected",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4885,7 +5816,11 @@
         "--resolve-loader-imports-fields"
       ],
       "description": "Field name from the description file (usually package.json) which is used to provide internal request of a package (requests starting with # are considered as internal)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4898,7 +5833,11 @@
         "--resolve-loader-main-fields"
       ],
       "description": "Field name from the description file (package.json) which are used to find the default entry point",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4911,7 +5850,12 @@
         "--resolve-loader-main-files"
       ],
       "description": "Filename used to find the default entry point if there is no description file or main field",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -4924,7 +5868,12 @@
         "--resolve-loader-modules"
       ],
       "description": "Folder name or directory path where to find modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -4961,7 +5910,11 @@
         "--resolve-loader-restrictions"
       ],
       "description": "Resolve restriction. Resolve result must fulfill this restriction",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4974,7 +5927,12 @@
         "--resolve-loader-roots"
       ],
       "description": "Directory in which requests that are server-relative URLs (starting with '/') are resolved",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5047,7 +6005,12 @@
         "--snapshot-immutable-paths"
       ],
       "description": "A RegExp matching an immutable directory (usually a package manager cache directory, including the tailing slash) A path to an immutable directory (usually a package manager cache directory)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5060,7 +6023,12 @@
         "--snapshot-managed-paths"
       ],
       "description": "A RegExp matching a managed directory (usually a node_modules directory, including the tailing slash) A path to a managed directory (usually a node_modules directory)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5145,7 +6113,10 @@
         "--stats"
       ],
       "description": "It instructs webpack on how to treat the stats e.g. verbose",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5182,14 +6153,20 @@
         "--stats-assets-sort"
       ],
       "description": "Sort the assets by that field",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-assets-space"
       ],
       "description": "Space to display assets (groups will be collapsed to fit this space)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5280,7 +6257,10 @@
         "--stats-chunk-group-max-assets"
       ],
       "description": "Limit of assets displayed in chunk groups",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5311,7 +6291,10 @@
         "--stats-chunk-modules-space"
       ],
       "description": "Space to display chunk modules (groups will be collapsed to fit this space, value is in number of modules/group)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5354,7 +6337,10 @@
         "--stats-chunks-sort"
       ],
       "description": "Sort the chunks by that field",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5373,49 +6359,71 @@
         "--stats-colors-bold"
       ],
       "description": "Custom color for bold text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-colors-cyan"
       ],
       "description": "Custom color for cyan text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-colors-green"
       ],
       "description": "Custom color for green text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-colors-magenta"
       ],
       "description": "Custom color for magenta text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-colors-red"
       ],
       "description": "Custom color for red text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-colors-yellow"
       ],
       "description": "Custom color for yellow text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-context"
       ],
       "description": "Context directory for request shortening",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5446,7 +6454,10 @@
         "--stats-entrypoints"
       ],
       "description": "Display the entry points with the corresponding bundles",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5471,7 +6482,10 @@
         "--stats-error-details"
       ],
       "description": "Add details to errors (like resolving log)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5520,7 +6534,11 @@
         "--stats-exclude-assets"
       ],
       "description": "Suppress assets that match the specified filters. Filters can be Strings, RegExps or Functions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -5533,7 +6551,11 @@
         "--stats-exclude-modules"
       ],
       "description": "Suppress modules that match the specified filters. Filters can be Strings, RegExps, Booleans or Functions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -5720,7 +6742,10 @@
         "--stats-logging"
       ],
       "description": "Specify log level of logging output. Enable/disable logging output (`true`: shows normal logging output, loglevel: log)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5733,7 +6758,11 @@
         "--stats-logging-debug"
       ],
       "description": "Enable/Disable debug logging for all loggers. Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -5800,14 +6829,20 @@
         "--stats-modules-sort"
       ],
       "description": "Sort the modules by that field",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--stats-modules-space"
       ],
       "description": "Space to display modules (groups will be collapsed to fit this space, value is in number of modules/groups)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5826,7 +6861,10 @@
         "--stats-nested-modules-space"
       ],
       "description": "Space to display modules nested within other modules (groups will be collapsed to fit this space, value is in number of modules/group)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5881,7 +6919,10 @@
         "--stats-preset"
       ],
       "description": "Preset for the default values",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -5930,7 +6971,10 @@
         "--stats-reasons-space"
       ],
       "description": "Space to display reasons (groups will be collapsed to fit this space)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -6045,7 +7089,11 @@
         "--stats-warnings-filter"
       ],
       "description": "Suppress listing warnings that match the specified filters (they will still be counted). Filters can be Strings, RegExps or Functions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -6059,7 +7107,11 @@
         "-t"
       ],
       "description": "Sets the build target e.g. node",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -6091,7 +7143,10 @@
         "--watch-options-aggregate-timeout"
       ],
       "description": "Delay the rebuilt after the first change. Value is a time in ms",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -6110,7 +7165,11 @@
         "--watch-options-ignored"
       ],
       "description": "A glob pattern for files that should be ignored from watching. Ignore some files from watching (glob pattern or regexp)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -6123,7 +7182,10 @@
         "--watch-options-poll"
       ],
       "description": "`number`: use polling with specified interval. `true`: use polling",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [

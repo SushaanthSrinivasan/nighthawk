@@ -28,7 +28,16 @@
             "--format"
           ],
           "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "table",
+              "json",
+              "csv",
+              "yaml"
+            ]
+          }
         }
       ]
     },
@@ -81,7 +90,16 @@
             "--format"
           ],
           "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "table",
+              "json",
+              "csv",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -142,7 +160,16 @@
             "--format"
           ],
           "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "table",
+              "json",
+              "csv",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -168,7 +195,10 @@
             "--timeout"
           ],
           "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -176,7 +206,10 @@
             "--cpus"
           ],
           "description": "Number of CPUs to allocate. Minimum: 1, default: 1",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cpus"
+          }
         },
         {
           "names": [
@@ -184,7 +217,10 @@
             "--disk"
           ],
           "description": "Disk space to allocate. Positive integers, in bytes, or with K, M, G suffix Minimum: 512M, default: 5G.",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "disk"
+          }
         },
         {
           "names": [
@@ -192,7 +228,10 @@
             "--mem"
           ],
           "description": "Amount of memory to allocate. Positive integers, in bytes, or with K, M, G suffix Minimum: 128M, default: 1G.",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mem"
+          }
         },
         {
           "names": [
@@ -200,21 +239,30 @@
             "--name"
           ],
           "description": "Name for the instance. If it is 'primary' (the configured primary instance name), the user's home directory is mounted inside the newly launched instance, in 'Home'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--cloud-init"
           ],
           "description": "Path to a user-data cloud-init configuration, or '-' forstdin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "--network"
           ],
           "description": "Add a network interface to the instance, where <spec> is in the \"key=value,key=value\" format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "spec"
+          }
         },
         {
           "names": [
@@ -239,7 +287,16 @@
             "--format"
           ],
           "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "table",
+              "json",
+              "csv",
+              "yaml"
+            ]
+          }
         }
       ]
     },
@@ -253,7 +310,10 @@
             "--gid-map"
           ],
           "description": "A mapping of group IDs for use in the mount. File and folder ownership will be mapped from <host> to <instance> inside the instance. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host:instance"
+          }
         },
         {
           "names": [
@@ -261,7 +321,10 @@
             "--uid-map"
           ],
           "description": "A mapping of user IDs for use in the mount. File and folder ownership will be mapped from <host> to <instance> inside the instance. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host:instance"
+          }
         }
       ],
       "args": [
@@ -286,7 +349,16 @@
             "--format"
           ],
           "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "table",
+              "json",
+              "csv",
+              "yaml"
+            ]
+          }
         }
       ]
     },
@@ -322,7 +394,10 @@
             "--timeout"
           ],
           "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -366,7 +441,10 @@
             "--timeout"
           ],
           "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ],
       "args": [
@@ -386,7 +464,10 @@
             "--timeout"
           ],
           "description": "Maximum time, in seconds, to wait for the command to complete. Note that some background operations may continue beyond that. By default, instance startup and initialization is limited to 5 minutes ea",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -419,7 +500,10 @@
             "--time"
           ],
           "description": "Time from now, in minutes, to delay shutdown of the instance",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -503,7 +587,16 @@
             "--format"
           ],
           "description": "Output list in the requested format. Valid formats are: table (default), json, csv and yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "table",
+              "json",
+              "csv",
+              "yaml"
+            ]
+          }
         }
       ]
     }

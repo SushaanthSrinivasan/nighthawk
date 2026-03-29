@@ -13,14 +13,20 @@
         "--cmd"
       ],
       "description": "Execute <cmd> before any config",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cmd"
+      }
     },
     {
       "names": [
         "-c"
       ],
       "description": "Execute <cmd> after config and first file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cmd"
+      }
     },
     {
       "names": [
@@ -60,7 +66,11 @@
         "-i"
       ],
       "description": "Use this shada file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "shada",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -85,21 +95,30 @@
         "-o"
       ],
       "description": "Open N windows (default: one per file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
         "-O"
       ],
       "description": "Open N vertical windows (default: one per file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
         "-p"
       ],
       "description": "Open N tab pages (default: one per file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
@@ -112,7 +131,11 @@
         "-r"
       ],
       "description": "Recover edit state for this file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -125,21 +148,33 @@
         "-S"
       ],
       "description": "Source <session> after loading the first file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "session",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-s"
       ],
       "description": "Read Normal mode commands from <scriptin>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "scriptin",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-u"
       ],
       "description": "Use this config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -171,7 +206,10 @@
         "--listen"
       ],
       "description": "Serve RPC API from this address",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
@@ -191,14 +229,21 @@
         "--server"
       ],
       "description": "Specify RPC server to send commands to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
         "--startuptime"
       ],
       "description": "Write startup timing messages to <file>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     }
   ],
   "args": [

@@ -13,7 +13,14 @@
         "-a"
       ],
       "description": "When saving a private key, this option specifies the number of KDF",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "rounds",
+        "description": "Number of rounds being used",
+        "suggestions": [
+          "16"
+        ]
+      }
     },
     {
       "names": [
@@ -26,14 +33,25 @@
         "-b"
       ],
       "description": "Specifies the number of bits in the key to create",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "bits",
+        "description": "Number of bits in the key",
+        "suggestions": [
+          "3072"
+        ]
+      }
     },
     {
       "names": [
         "-C"
       ],
       "description": "Provides a new comment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "comment",
+        "description": "New comment value"
+      }
     },
     {
       "names": [
@@ -46,14 +64,26 @@
         "-D"
       ],
       "description": "Download the public keys provided by the PKCS#11",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pkcs11",
+        "description": "PKCS#11 public keys"
+      }
     },
     {
       "names": [
         "-E"
       ],
       "description": "Specifies the hash algorithm used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "fingerprint_hash",
+        "description": "Hash algorithm value",
+        "suggestions": [
+          "md5",
+          "sha256"
+        ]
+      }
     },
     {
       "names": [
@@ -66,14 +96,23 @@
         "-F"
       ],
       "description": "Search for the specified hostname (with optional port number)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hostname",
+        "description": "Hostname with optional port number"
+      }
     },
     {
       "names": [
         "-f"
       ],
       "description": "Specifies the filename of the key file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "description": "Filename of the key file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -98,7 +137,12 @@
         "-I"
       ],
       "description": "Specify the key identity when signing a public key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "certificate_identity",
+        "description": "Key identity value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -135,42 +179,70 @@
         "-M"
       ],
       "description": "Use for Moduli generation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command",
+        "description": "Use generate or screen",
+        "suggestions": [
+          "generate",
+          "screen"
+        ]
+      }
     },
     {
       "names": [
         "-m"
       ],
       "description": "Specify a key format for key generation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key_format",
+        "description": "Key format for key generation"
+      }
     },
     {
       "names": [
         "-N"
       ],
       "description": "Provides the new passphrase",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "new_passphrase",
+        "description": "New passphrase value"
+      }
     },
     {
       "names": [
         "-n"
       ],
       "description": "Specify one or more principals (user or host names) to be included in a certificate when signing a key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "principals",
+        "description": "Principals to be included in a certificate when signing a key"
+      }
     },
     {
       "names": [
         "-O"
       ],
       "description": "Specify a key/value option",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "description": "Value for option"
+      }
     },
     {
       "names": [
         "-P"
       ],
       "description": "Provides the (old) passphrase",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "passphrase",
+        "description": "(Old) passphrase value"
+      }
     },
     {
       "names": [
@@ -195,28 +267,50 @@
         "-R"
       ],
       "description": "Removes all keys belonging to hostname",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hostname",
+        "description": "Hostname to remove keys from a known_hosts file"
+      }
     },
     {
       "names": [
         "-r"
       ],
       "description": "Print the SSHFP fingerprint resource record named hostname for the specified public key file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hostname",
+        "description": "Hostname for the specified public key file"
+      }
     },
     {
       "names": [
         "-s"
       ],
       "description": "Certify (sign) a public key using the specified CA\tkey",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ca_key",
+        "description": "Hostname for the specified public key file"
+      }
     },
     {
       "names": [
         "-t"
       ],
       "description": "Specifies the type of key to create",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command",
+        "suggestions": [
+          "dsa",
+          "ecdsa-sk",
+          "ed25519",
+          "ed25519-sk",
+          "rsa"
+        ]
+      }
     },
     {
       "names": [
@@ -235,7 +329,11 @@
         "-V"
       ],
       "description": "Specify a validity interval when signing a certificate",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "validity_interval",
+        "description": "Value for validity interval"
+      }
     },
     {
       "names": [
@@ -248,14 +346,28 @@
         "-w"
       ],
       "description": "Specifies a path to a library that will be used when creating FIDO authenticator-hosted keys",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "provider",
+        "description": "Path to library to be used when creating FIDO authenticator-hosted keys"
+      }
     },
     {
       "names": [
         "-Y"
       ],
       "description": "Multiple functions: find principals, match principals, check novalidate, sign, verify",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command",
+        "is_variadic": true,
+        "suggestions": [
+          "find-principals",
+          "check-novalidate",
+          "sign",
+          "verify"
+        ]
+      }
     },
     {
       "names": [
@@ -268,14 +380,22 @@
         "-Z"
       ],
       "description": "Specifies the cipher to use for encryption when writing an OpenSSH-format private key file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cipher",
+        "description": "Cipher to use for encryption"
+      }
     },
     {
       "names": [
         "-z"
       ],
       "description": "Specifies a serial number to be embedded in the certificate to distinguish this certificate from others from the same CA",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "serial_number",
+        "description": "Serial number to distinguish this certificate"
+      }
     }
   ]
 }

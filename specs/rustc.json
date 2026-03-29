@@ -14,56 +14,135 @@
         "--cfg"
       ],
       "description": "Configures compilation settings",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Spec",
+        "description": "Ex: verbose' or 'feature=\"serde\"'"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Adds a directory to the library search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kind",
+        "description": "The kind of search path",
+        "suggestions": [
+          "dependency",
+          "crate",
+          "native",
+          "framework",
+          "all"
+        ]
+      }
     },
     {
       "names": [
         "--l"
       ],
       "description": "Links the generated crate to a native library",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kind",
+        "description": "Kind of library",
+        "suggestions": [
+          "dylib",
+          "static",
+          "framework"
+        ]
+      }
     },
     {
       "names": [
         "--crate-type"
       ],
       "description": "Specify types of crates for the compiler to emit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "description": "Type of crates",
+        "suggestions": [
+          "bin",
+          "lib",
+          "rlib",
+          "dylib",
+          "cdylib",
+          "staticlib",
+          "proc-macro"
+        ]
+      }
     },
     {
       "names": [
         "--crate-name"
       ],
       "description": "Specify the name of the crate being built",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Name"
+      }
     },
     {
       "names": [
         "--edition"
       ],
       "description": "Specify the edition to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "edition",
+        "suggestions": [
+          "2015",
+          "2018",
+          "2021"
+        ]
+      }
     },
     {
       "names": [
         "--emit"
       ],
       "description": "Specify the types of output files to generate",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "asm",
+          "llvm-bc",
+          "llvm-ir",
+          "obj",
+          "metadata",
+          "link",
+          "dep-info",
+          "mir"
+        ]
+      }
     },
     {
       "names": [
         "--print"
       ],
       "description": "Prints compiler info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "crate-name",
+          "file-names",
+          "sysroot",
+          "target-libdir",
+          "cfg",
+          "target-list",
+          "target-cpus",
+          "target-features",
+          "relocation-models",
+          "code-models",
+          "tls-models",
+          "target-spec-json",
+          "native-static-libs"
+        ]
+      }
     },
     {
       "names": [
@@ -82,21 +161,30 @@
         "-o"
       ],
       "description": "Specify the filename to write output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--out-dir"
       ],
       "description": "Specify directory to write output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir"
+      }
     },
     {
       "names": [
         "--explain"
       ],
       "description": "Provides a detailed explanation of an error message",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Error Code"
+      }
     },
     {
       "names": [
@@ -109,7 +197,10 @@
         "--target"
       ],
       "description": "Selects a target triple to build",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Target"
+      }
     },
     {
       "names": [
@@ -117,7 +208,10 @@
         "--warn"
       ],
       "description": "Sets lint warnings",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OPT"
+      }
     },
     {
       "names": [
@@ -125,7 +219,10 @@
         "--allow"
       ],
       "description": "Set lint allowed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OPT"
+      }
     },
     {
       "names": [
@@ -133,7 +230,10 @@
         "--deny"
       ],
       "description": "Set lint denied",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OPT"
+      }
     },
     {
       "names": [
@@ -141,14 +241,20 @@
         "--forbid"
       ],
       "description": "Set lint forbid",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Opt"
+      }
     },
     {
       "names": [
         "--cap-lints"
       ],
       "description": "Set the most restrictive lint level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Level"
+      }
     },
     {
       "names": [
@@ -156,14 +262,21 @@
         "--codegen"
       ],
       "description": "Set a codegen option",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option"
+      }
     },
     {
       "names": [
         "-Z"
       ],
       "description": "Set unstable options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "description": "Unstable options to pass to rustc"
+      }
     },
     {
       "names": [
@@ -184,28 +297,52 @@
         "--extern"
       ],
       "description": "Specify where an external library is located",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "description": "Path where crate(s) can be found",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--sysroot"
       ],
       "description": "Overrides the system root",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory"
+      }
     },
     {
       "names": [
         "--error-format"
       ],
       "description": "Controls how errors are produced",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "human",
+          "json",
+          "short"
+        ]
+      }
     },
     {
       "names": [
         "--color"
       ],
       "description": "Configures coloring of output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "color",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     }
   ],
   "args": [

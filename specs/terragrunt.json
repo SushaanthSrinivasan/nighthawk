@@ -17,28 +17,52 @@
             "-lock"
           ],
           "description": "Lock the state file when locking is supported. Defaults to true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-force"
           ],
           "description": "Delete the workspace even if its state is not empty. Defaults to false",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-lock-timeout"
           ],
           "description": "Duration to retry a state lock. Default 0s",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "-input"
           ],
           "description": "Ask for input for variables if not directly set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -65,14 +89,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -97,21 +127,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -136,35 +175,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -201,7 +255,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -226,7 +284,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -240,14 +302,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -274,14 +342,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -306,21 +380,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -345,35 +428,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -410,7 +508,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -435,7 +537,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -449,14 +555,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -493,21 +605,34 @@
             "-parallelism"
           ],
           "description": "Limit the number of concurrent operation as Terraform walks the graph. Defaults to 10",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "-refresh"
           ],
           "description": "Update the state prior to checking for differences",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-state"
           ],
           "description": "Path to the state file. Defaults to 'terraform.tfstate'. Ignored when remote state is used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -520,42 +645,72 @@
             "-var"
           ],
           "description": "Set a variable in the Terraform configuration. This flag can be set multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "foo=bar"
+          }
         },
         {
           "names": [
             "-var-file"
           ],
           "description": "Set variables in the Terraform configuration from a variable file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "-lock"
           ],
           "description": "Lock the state file when locking is supported. Defaults to true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-force"
           ],
           "description": "Delete the workspace even if its state is not empty. Defaults to false",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-lock-timeout"
           ],
           "description": "Duration to retry a state lock. Default 0s",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "-input"
           ],
           "description": "Ask for input for variables if not directly set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -582,14 +737,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -614,21 +775,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -653,35 +823,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -718,7 +903,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -743,7 +932,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -757,14 +950,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -791,14 +990,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -823,21 +1028,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -862,35 +1076,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -927,7 +1156,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -952,7 +1185,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -966,14 +1203,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -1000,14 +1243,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1032,21 +1281,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1071,35 +1329,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1136,7 +1409,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -1161,7 +1438,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1175,14 +1456,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -1209,14 +1496,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1241,21 +1534,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1280,35 +1582,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1345,7 +1662,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -1370,7 +1691,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1384,14 +1709,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -1418,14 +1749,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1450,21 +1787,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1489,35 +1835,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1554,7 +1915,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -1579,7 +1944,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1593,14 +1962,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -1627,14 +2002,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1659,21 +2040,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1698,35 +2088,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1763,7 +2168,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -1788,7 +2197,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1802,14 +2215,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -1842,14 +2261,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1874,21 +2299,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1913,35 +2347,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1978,7 +2427,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -2003,7 +2456,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2017,14 +2474,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2051,14 +2514,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2083,21 +2552,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2122,35 +2600,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2187,7 +2680,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -2212,7 +2709,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2226,14 +2727,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2260,14 +2767,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2292,21 +2805,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2331,35 +2853,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2396,7 +2933,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -2421,7 +2962,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2435,14 +2980,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2469,14 +3020,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2501,21 +3058,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2540,35 +3106,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2605,7 +3186,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -2630,7 +3215,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2644,14 +3233,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2678,14 +3273,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2710,21 +3311,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2749,35 +3359,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2814,7 +3439,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -2839,7 +3468,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2853,14 +3486,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2887,14 +3526,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2919,21 +3564,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2958,35 +3612,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3023,7 +3692,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -3048,7 +3721,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3062,14 +3739,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -3096,14 +3779,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3128,21 +3817,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3167,35 +3865,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3232,7 +3945,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -3257,7 +3974,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3271,14 +3992,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -3305,14 +4032,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3337,21 +4070,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3376,35 +4118,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3441,7 +4198,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -3466,7 +4227,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3480,14 +4245,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -3514,14 +4285,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3546,21 +4323,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3585,35 +4371,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3650,7 +4451,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -3675,7 +4480,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3689,14 +4498,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -3719,21 +4534,34 @@
             "-lock"
           ],
           "description": "Disables Terraform's default behavior of attempting to take a read/write lock on the state for the duration of the operation if set to false. Defaults to true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true or false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "-lock-timeout"
           ],
           "description": "Unless locking is disabled with -lock=false, instructs Terraform to retry acquiring a lock for a period of time before returning an error. The duration syntax is a number followed by a time unit lette",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "-ignore-remote-version"
           ],
           "description": "When using the enhanced remote backend with Terraform Cloud, continue even if remote and local Terraform versions differ. This may result in an unusable Terraform Cloud workspace, and should be used w",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
@@ -3754,14 +4582,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3786,21 +4620,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3825,35 +4668,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3890,7 +4748,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -3915,7 +4777,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3929,14 +4795,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -3968,14 +4840,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4000,21 +4878,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4039,35 +4926,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4104,7 +5006,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -4129,7 +5035,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4143,14 +5053,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -4167,21 +5083,35 @@
                 "-lock"
               ],
               "description": "Lock the state file when locking is supported. Defaults to true",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "-lock-timeout"
               ],
               "description": "Duration to retry a stae lock. Default 0s",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
                 "-state"
               ],
               "description": "Path to an existing state file to initialize the state of this environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4202,14 +5132,20 @@
                 "--terragrunt-config"
               ],
               "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--terragrunt-tfpath"
               ],
               "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4234,21 +5170,30 @@
                 "--terragrunt-working-dir"
               ],
               "description": "The path to the Terraform templates. Default is current directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-download-dir"
               ],
               "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-source"
               ],
               "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -4273,35 +5218,50 @@
                 "--terragrunt-iam-role"
               ],
               "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "IAM role ARN"
+              }
             },
             {
               "names": [
                 "--terragrunt-iam-assume-role-duration"
               ],
               "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Duration"
+              }
             },
             {
               "names": [
                 "--terragrunt-iam-assume-role-session-name"
               ],
               "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Session name"
+              }
             },
             {
               "names": [
                 "--terragrunt-exclude-dir"
               ],
               "description": "Unix-style glob of directories to exclude when running *-all commands",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-include-dir"
               ],
               "description": "Unix-style glob of directories to include when running *-all commands",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -4338,7 +5298,11 @@
                 "--terragrunt-parallelism"
               ],
               "description": "*-all commands parallelism set to at most N modules",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "N",
+                "description": "Number of modules"
+              }
             },
             {
               "names": [
@@ -4363,7 +5327,11 @@
                 "--terragrunt-hclfmt-file"
               ],
               "description": "The path to a single hcl file that the hclfmt command should run on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hcl file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4377,14 +5345,20 @@
                 "--terragrunt-json-out"
               ],
               "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--terragrunt-modules-that-include"
               ],
               "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -4416,14 +5390,20 @@
                 "--terragrunt-config"
               ],
               "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--terragrunt-tfpath"
               ],
               "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4448,21 +5428,30 @@
                 "--terragrunt-working-dir"
               ],
               "description": "The path to the Terraform templates. Default is current directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-download-dir"
               ],
               "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-source"
               ],
               "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -4487,35 +5476,50 @@
                 "--terragrunt-iam-role"
               ],
               "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "IAM role ARN"
+              }
             },
             {
               "names": [
                 "--terragrunt-iam-assume-role-duration"
               ],
               "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Duration"
+              }
             },
             {
               "names": [
                 "--terragrunt-iam-assume-role-session-name"
               ],
               "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Session name"
+              }
             },
             {
               "names": [
                 "--terragrunt-exclude-dir"
               ],
               "description": "Unix-style glob of directories to exclude when running *-all commands",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-include-dir"
               ],
               "description": "Unix-style glob of directories to include when running *-all commands",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -4552,7 +5556,11 @@
                 "--terragrunt-parallelism"
               ],
               "description": "*-all commands parallelism set to at most N modules",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "N",
+                "description": "Number of modules"
+              }
             },
             {
               "names": [
@@ -4577,7 +5585,11 @@
                 "--terragrunt-hclfmt-file"
               ],
               "description": "The path to a single hcl file that the hclfmt command should run on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hcl file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4591,14 +5603,20 @@
                 "--terragrunt-json-out"
               ],
               "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--terragrunt-modules-that-include"
               ],
               "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -4625,14 +5643,20 @@
                 "--terragrunt-config"
               ],
               "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--terragrunt-tfpath"
               ],
               "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4657,21 +5681,30 @@
                 "--terragrunt-working-dir"
               ],
               "description": "The path to the Terraform templates. Default is current directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-download-dir"
               ],
               "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-source"
               ],
               "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -4696,35 +5729,50 @@
                 "--terragrunt-iam-role"
               ],
               "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "IAM role ARN"
+              }
             },
             {
               "names": [
                 "--terragrunt-iam-assume-role-duration"
               ],
               "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Duration"
+              }
             },
             {
               "names": [
                 "--terragrunt-iam-assume-role-session-name"
               ],
               "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Session name"
+              }
             },
             {
               "names": [
                 "--terragrunt-exclude-dir"
               ],
               "description": "Unix-style glob of directories to exclude when running *-all commands",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--terragrunt-include-dir"
               ],
               "description": "Unix-style glob of directories to include when running *-all commands",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -4761,7 +5809,11 @@
                 "--terragrunt-parallelism"
               ],
               "description": "*-all commands parallelism set to at most N modules",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "N",
+                "description": "Number of modules"
+              }
             },
             {
               "names": [
@@ -4786,7 +5838,11 @@
                 "--terragrunt-hclfmt-file"
               ],
               "description": "The path to a single hcl file that the hclfmt command should run on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hcl file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4800,14 +5856,20 @@
                 "--terragrunt-json-out"
               ],
               "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--terragrunt-modules-that-include"
               ],
               "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -4820,28 +5882,52 @@
                 "-lock"
               ],
               "description": "Lock the state file when locking is supported. Defaults to true",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "-force"
               ],
               "description": "Delete the workspace even if its state is not empty. Defaults to false",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "-lock-timeout"
               ],
               "description": "Duration to retry a state lock. Default 0s",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
                 "-input"
               ],
               "description": "Ask for input for variables if not directly set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true or false",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
@@ -4881,14 +5967,20 @@
             "--terragrunt-config"
           ],
           "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-tfpath"
           ],
           "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4913,21 +6005,30 @@
             "--terragrunt-working-dir"
           ],
           "description": "The path to the Terraform templates. Default is current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-download-dir"
           ],
           "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-source"
           ],
           "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4952,35 +6053,50 @@
             "--terragrunt-iam-role"
           ],
           "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IAM role ARN"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-duration"
           ],
           "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Duration"
+          }
         },
         {
           "names": [
             "--terragrunt-iam-assume-role-session-name"
           ],
           "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Session name"
+          }
         },
         {
           "names": [
             "--terragrunt-exclude-dir"
           ],
           "description": "Unix-style glob of directories to exclude when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--terragrunt-include-dir"
           ],
           "description": "Unix-style glob of directories to include when running *-all commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -5017,7 +6133,11 @@
             "--terragrunt-parallelism"
           ],
           "description": "*-all commands parallelism set to at most N modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "description": "Number of modules"
+          }
         },
         {
           "names": [
@@ -5042,7 +6162,11 @@
             "--terragrunt-hclfmt-file"
           ],
           "description": "The path to a single hcl file that the hclfmt command should run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hcl file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -5056,14 +6180,20 @@
             "--terragrunt-json-out"
           ],
           "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--terragrunt-modules-that-include"
           ],
           "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -5116,14 +6246,20 @@
         "--terragrunt-config"
       ],
       "description": "Path to the Terragrunt config file. Default is terragrunt.hcl",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--terragrunt-tfpath"
       ],
       "description": "Path to the Terraform binary. Default is terraform (on PATH)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -5148,21 +6284,30 @@
         "--terragrunt-working-dir"
       ],
       "description": "The path to the Terraform templates. Default is current directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--terragrunt-download-dir"
       ],
       "description": "The path where to download Terraform code. Default is .terragrunt-cache in the working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--terragrunt-source"
       ],
       "description": "Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5187,35 +6332,50 @@
         "--terragrunt-iam-role"
       ],
       "description": "Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "IAM role ARN"
+      }
     },
     {
       "names": [
         "--terragrunt-iam-assume-role-duration"
       ],
       "description": "Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Duration"
+      }
     },
     {
       "names": [
         "--terragrunt-iam-assume-role-session-name"
       ],
       "description": "Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Session name"
+      }
     },
     {
       "names": [
         "--terragrunt-exclude-dir"
       ],
       "description": "Unix-style glob of directories to exclude when running *-all commands",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--terragrunt-include-dir"
       ],
       "description": "Unix-style glob of directories to include when running *-all commands",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5252,7 +6412,11 @@
         "--terragrunt-parallelism"
       ],
       "description": "*-all commands parallelism set to at most N modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N",
+        "description": "Number of modules"
+      }
     },
     {
       "names": [
@@ -5277,7 +6441,11 @@
         "--terragrunt-hclfmt-file"
       ],
       "description": "The path to a single hcl file that the hclfmt command should run on",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hcl file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -5291,14 +6459,20 @@
         "--terragrunt-json-out"
       ],
       "description": "The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--terragrunt-modules-that-include"
       ],
       "description": "When passed in, run-all will only run the command against Terragrunt modules that include the specified file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     }
   ]
 }

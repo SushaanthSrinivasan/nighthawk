@@ -28,7 +28,10 @@
         "-b"
       ],
       "description": "Specifies the interface to bind the socket to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "boundif"
+      }
     },
     {
       "names": [
@@ -70,35 +73,50 @@
         "-i"
       ],
       "description": "Specifies a delay time interval between lines of text sent and received",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "interval"
+      }
     },
     {
       "names": [
         "-G"
       ],
       "description": "TCP connection timeout in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "conntimeout"
+      }
     },
     {
       "names": [
         "-H"
       ],
       "description": "Initial TCP keep alive timeout in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "keepidle"
+      }
     },
     {
       "names": [
         "-I"
       ],
       "description": "Interval for repeating TCP keep alive timeout in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "keepintvl"
+      }
     },
     {
       "names": [
         "-J"
       ],
       "description": "Number of times to repeat TCP keep alive packets",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "keepcnt"
+      }
     },
     {
       "names": [
@@ -112,14 +130,20 @@
         "-l"
       ],
       "description": "Used to specify that nc should listen for an incoming connection rather than initiate a connection to a remote host",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Number of prbes to send to the peer before declaring that the peer is not reachable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num_probes"
+      }
     },
     {
       "names": [
@@ -133,7 +157,10 @@
         "-p"
       ],
       "description": "Specifies the source port nc should use, subject to privilege restrictions and availability",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "source_port"
+      }
     },
     {
       "names": [
@@ -147,7 +174,10 @@
         "-s"
       ],
       "description": "Specifies the IP of the interface which is used to send the packets",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "source_ip_address"
+      }
     },
     {
       "names": [
@@ -182,21 +212,30 @@
         "-w"
       ],
       "description": "If a connection and stdin are idle for more than timeout seconds, then the connection is silently closed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "timeout"
+      }
     },
     {
       "names": [
         "-X"
       ],
       "description": "Requests that nc should use the specified protocol when talking to the proxy server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "proxy_version"
+      }
     },
     {
       "names": [
         "-x"
       ],
       "description": "Requests that nc should connect to hostname using a proxy at proxy_address and port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "proxy_address[:port]"
+      }
     },
     {
       "names": [
@@ -238,7 +277,14 @@
         "--ecn"
       ],
       "description": "Requests that nc marks to use the socket option TCP_ECN_MODE to set the ECN mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "default",
+          "enable",
+          "disable"
+        ]
+      }
     }
   ],
   "args": [

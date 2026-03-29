@@ -22,14 +22,21 @@
         "-d"
       ],
       "description": "Delay screenshot capture",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time"
+      }
     },
     {
       "names": [
         "--filename"
       ],
       "description": "Custom filename",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "template",
+        "description": "--filename='<%= date %> - <%= url %>'"
+      }
     },
     {
       "names": [
@@ -42,14 +49,20 @@
         "--selector"
       ],
       "description": "Capture DOM element",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "element"
+      }
     },
     {
       "names": [
         "--hide"
       ],
       "description": "Hide DOM element. Can be set multiple times",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "element"
+      }
     },
     {
       "names": [
@@ -62,56 +75,85 @@
         "--css"
       ],
       "description": "Apply custom CSS to the webpage. Specify some CSS or the path to a CSS file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--cookie"
       ],
       "description": "Browser cookie. Can be set multiple times",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cookie"
+      }
     },
     {
       "names": [
         "--header"
       ],
       "description": "Custom HTTP request header. Can be set multiple times",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "header"
+      }
     },
     {
       "names": [
         "--username"
       ],
       "description": "Username for HTTP auth",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username"
+      }
     },
     {
       "names": [
         "--password"
       ],
       "description": "Password for HTTP auth",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "password"
+      }
     },
     {
       "names": [
         "--scale"
       ],
       "description": "Scale webpage n of times",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--format"
       ],
       "description": "Image format. Either png (default) or jpg",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "png",
+          "jpg"
+        ]
+      }
     },
     {
       "names": [
         "--user-agent"
       ],
       "description": "Custom user agent",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [

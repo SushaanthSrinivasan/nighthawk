@@ -16,7 +16,10 @@
                 "-d"
               ],
               "description": "Full path to ssh key directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ssh-key-path"
+              }
             }
           ]
         }
@@ -100,14 +103,20 @@
                 "--internet-detection-timeout-ms"
               ],
               "description": "Increase timeout when checking internet timeout, in milliseconds",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "internet-detection-timeout-ms"
+              }
             },
             {
               "names": [
                 "--letsencrypt-email"
               ],
               "description": "Email associated with Let's Encrypt, `ddev global --letsencrypt-email=me@example.com'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "letsencrypt-email"
+              }
             },
             {
               "names": [
@@ -132,14 +141,20 @@
                 "--omit-containers"
               ],
               "description": "For example, --omit-containers=dba,ddev-ssh-agent",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "omit-containers"
+              }
             },
             {
               "names": [
                 "--required-docker-compose-version"
               ],
               "description": "Override default docker-compose version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "required-docker-compose-version"
+              }
             },
             {
               "names": [
@@ -158,7 +173,10 @@
                 "--table-style"
               ],
               "description": "Table style for list and describe, see ~/.ddev/global_config.yaml for values",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "table-style"
+              }
             },
             {
               "names": [
@@ -183,14 +201,20 @@
                 "--web-environment"
               ],
               "description": "Set the environment variables in the web container: --web-environment=\"TYPO3_CONTEXT=Development,SOMEENV=someval\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "web-environment"
+              }
             },
             {
               "names": [
                 "--web-environment-add"
               ],
               "description": "Append environment variables to the web container: --web-environment=\"TYPO3_CONTEXT=Development,SOMEENV=someval\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "web-environment-add"
+              }
             }
           ]
         }
@@ -201,14 +225,20 @@
             "--additional-fqdns"
           ],
           "description": "A comma-delimited list of FQDNs for the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "additional-fqdns"
+          }
         },
         {
           "names": [
             "--additional-hostnames"
           ],
           "description": "A comma-delimited list of hostnames for the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "additional-hostnames"
+          }
         },
         {
           "names": [
@@ -227,7 +257,10 @@
             "--composer-root"
           ],
           "description": "Overrides the default composer root directory for the web service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "composer-root"
+          }
         },
         {
           "names": [
@@ -240,7 +273,10 @@
             "--composer-version"
           ],
           "description": "Specify override for composer version in web container. This may be \"\", \"1\", \"2\", \"2.2\", \"stable\", \"preview\", \"snapshot\" or a specific version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "composer-version"
+          }
         },
         {
           "names": [
@@ -253,14 +289,20 @@
             "--database"
           ],
           "description": "Specify the database type:version to use. Defaults to mariadb:10.4",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "database"
+          }
         },
         {
           "names": [
             "--db-image"
           ],
           "description": "Sets the db container image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "db-image"
+          }
         },
         {
           "names": [
@@ -273,7 +315,10 @@
             "--db-working-dir"
           ],
           "description": "Overrides the default working directory for the db service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "db-working-dir"
+          }
         },
         {
           "names": [
@@ -286,7 +331,10 @@
             "--dba-image"
           ],
           "description": "Sets the dba container image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dba-image"
+          }
         },
         {
           "names": [
@@ -299,7 +347,10 @@
             "--dba-working-dir"
           ],
           "description": "Overrides the default working directory for the dba service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dba-working-dir"
+          }
         },
         {
           "names": [
@@ -312,14 +363,20 @@
             "--dbimage-extra-packages"
           ],
           "description": "A comma-delimited list of Debian packages that should be added to db container when the project is started",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dbimage-extra-packages"
+          }
         },
         {
           "names": [
             "--default-container-timeout"
           ],
           "description": "Default time in seconds that ddev waits for all containers to become ready on start",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "default-container-timeout"
+          }
         },
         {
           "names": [
@@ -332,7 +389,10 @@
             "--docroot"
           ],
           "description": "Provide the relative docroot of the project, like 'docroot' or 'htdocs' or 'web', defaults to empty, the current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "docroot"
+          }
         },
         {
           "names": [
@@ -345,42 +405,60 @@
             "--host-db-port"
           ],
           "description": "The db container's localhost-bound port",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host-db-port"
+          }
         },
         {
           "names": [
             "--host-dba-port"
           ],
           "description": "The dba (PHPMyAdmin) container's localhost-bound port, if exposed via bind-all-interfaces",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host-dba-port"
+          }
         },
         {
           "names": [
             "--host-https-port"
           ],
           "description": "The web container's localhost-bound https port",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host-https-port"
+          }
         },
         {
           "names": [
             "--host-webserver-port"
           ],
           "description": "The web container's localhost-bound port",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host-webserver-port"
+          }
         },
         {
           "names": [
             "--http-port"
           ],
           "description": "The router HTTP port for this project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "http-port"
+          }
         },
         {
           "names": [
             "--https-port"
           ],
           "description": "The router HTTPS port for this project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "https-port"
+          }
         },
         {
           "names": [
@@ -393,14 +471,20 @@
             "--mailhog-https-port"
           ],
           "description": "Router port to be used for mailhog access (https)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mailhog-https-port"
+          }
         },
         {
           "names": [
             "--mailhog-port"
           ],
           "description": "Router port to be used for mailhog access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mailhog-port"
+          }
         },
         {
           "names": [
@@ -419,7 +503,10 @@
             "--ngrok-args"
           ],
           "description": "Provide extra args to ngrok in ddev share",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ngrok-args"
+          }
         },
         {
           "names": [
@@ -432,56 +519,80 @@
             "--nodejs-version"
           ],
           "description": "Specify the nodejs version to use if you don't want the default NodeJS 16",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "nodejs-version"
+          }
         },
         {
           "names": [
             "--omit-containers"
           ],
           "description": "A comma-delimited list of container types that should not be started when the project is started",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "omit-containers"
+          }
         },
         {
           "names": [
             "--php-version"
           ],
           "description": "The version of PHP that will be enabled in the web container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "php-version"
+          }
         },
         {
           "names": [
             "--phpmyadmin-https-port"
           ],
           "description": "Router port to be used for PHPMyAdmin (dba) container access (https)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "phpmyadmin-https-port"
+          }
         },
         {
           "names": [
             "--phpmyadmin-port"
           ],
           "description": "Router port to be used for PHPMyAdmin (dba) container access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "phpmyadmin-port"
+          }
         },
         {
           "names": [
             "--project-name"
           ],
           "description": "Provide the project name of project to configure (normally the same as the last part of directory name)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project-name"
+          }
         },
         {
           "names": [
             "--project-tld"
           ],
           "description": "Set the top-level domain to be used for projects, defaults to ddev.site",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project-tld"
+          }
         },
         {
           "names": [
             "--project-type"
           ],
           "description": "Provide the project type (one of backdrop, drupal10, drupal6, drupal7, drupal8, drupal9, laravel, magento, magento2, php, shopware6, typo3, wordpress). This is autodetected and this flag is necessary ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project-type"
+          }
         },
         {
           "names": [
@@ -494,14 +605,20 @@
             "--timezone"
           ],
           "description": "Specify timezone for containers and php, like Europe/London or America/Denver or GMT or UTC",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timezone"
+          }
         },
         {
           "names": [
             "--upload-dir"
           ],
           "description": "Sets the project's upload directory, the destination directory of the import-files command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "upload-dir"
+          }
         },
         {
           "names": [
@@ -514,21 +631,30 @@
             "--web-environment"
           ],
           "description": "Set the environment variables in the web container: --web-environment=\"TYPO3_CONTEXT=Development,SOMEENV=someval\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "web-environment"
+          }
         },
         {
           "names": [
             "--web-environment-add"
           ],
           "description": "Append environment variables to the web container: --web-environment=\"TYPO3_CONTEXT=Development,SOMEENV=someval\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "web-environment-add"
+          }
         },
         {
           "names": [
             "--web-image"
           ],
           "description": "Sets the web container image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "web-image"
+          }
         },
         {
           "names": [
@@ -541,7 +667,10 @@
             "--web-working-dir"
           ],
           "description": "Overrides the default working directory for the web service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "web-working-dir"
+          }
         },
         {
           "names": [
@@ -554,14 +683,20 @@
             "--webimage-extra-packages"
           ],
           "description": "A comma-delimited list of Debian packages that should be added to web container when the project is started",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "webimage-extra-packages"
+          }
         },
         {
           "names": [
             "--webserver-type"
           ],
           "description": "Sets the project's desired webserver type: nginx-fpm or apache-fpm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "webserver-type"
+          }
         },
         {
           "names": [
@@ -720,7 +855,10 @@
             "-d"
           ],
           "description": "Defines the execution directory within the container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -734,7 +872,10 @@
             "-s"
           ],
           "description": "Defines the service to connect to. [e.g. web, db]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service"
+          }
         }
       ]
     },
@@ -754,7 +895,10 @@
             "-f"
           ],
           "description": "Provide the path to output the dump",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
@@ -769,7 +913,10 @@
             "-d"
           ],
           "description": "If provided, target-db is alternate database to export",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-db"
+          }
         },
         {
           "names": [
@@ -826,7 +973,10 @@
             "--extract-path"
           ],
           "description": "If provided asset is an archive, provide the path to extract within the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extract-path"
+          }
         },
         {
           "names": [
@@ -847,7 +997,10 @@
             "-f"
           ],
           "description": "Provide the path to a sql dump in .sql or tar/tar.gz/tgz/zip format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "src"
+          }
         },
         {
           "names": [
@@ -855,7 +1008,10 @@
             "-d"
           ],
           "description": "If provided, target-db is alternate database to import into",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-db"
+          }
         }
       ]
     },
@@ -868,14 +1024,20 @@
             "--extract-path"
           ],
           "description": "If provided asset is an archive, optionally provide the path to extract within the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extract-path"
+          }
         },
         {
           "names": [
             "--src"
           ],
           "description": "Provide the path to the source directory or tar/tar.gz/tgz/zip archive of files to import",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "src"
+          }
         }
       ]
     },
@@ -906,7 +1068,10 @@
             "-I"
           ],
           "description": "Time in seconds between ddev list --continuous output lists",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "continuous-sleep-interval"
+          }
         },
         {
           "names": [
@@ -934,14 +1099,20 @@
             "-s"
           ],
           "description": "Defines the service to retrieve logs from. [e.g. web, db]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service"
+          }
         },
         {
           "names": [
             "--tail"
           ],
           "description": "How many lines to show",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tail"
+          }
         },
         {
           "names": [
@@ -1062,7 +1233,10 @@
             "--subdomain"
           ],
           "description": "Ngrok --subdomain argument, as in \"ngrok --subdomain my-subdomain:, requires paid ngrok.com account\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subdomain"
+          }
         }
       ]
     },
@@ -1097,7 +1271,10 @@
             "-n"
           ],
           "description": "Provide a name for the snapshot",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1118,7 +1295,10 @@
             "-d"
           ],
           "description": "Defines the destination directory within the container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         },
         {
           "names": [
@@ -1126,7 +1306,10 @@
             "-s"
           ],
           "description": "Defines the service to connect to. [e.g. web, db]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service"
+          }
         }
       ]
     },

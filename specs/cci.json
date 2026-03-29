@@ -75,7 +75,11 @@
                 "--org"
               ],
               "description": "Specify the target org. By default, runs against the current default org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "description": "Name of the target org"
+              }
             },
             {
               "names": [
@@ -94,7 +98,11 @@
                 "-o"
               ],
               "description": "Pass task specific options for the task as '-o taskname__option value'. You can specify more than one option by using -o more than once",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "description": "Task specific options"
+              }
             },
             {
               "names": [
@@ -131,7 +139,11 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. By default, runs against the current default org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "description": "Name of the target org"
+              }
             },
             {
               "names": [
@@ -139,7 +151,12 @@
                 "--path"
               ],
               "description": "Navigate to the specified page after logging in",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "description": "Page to navigate to",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -171,14 +188,20 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. One of ORGNAME (see above) or --org is required",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
                 "--connected-app"
               ],
               "description": "Name of the connected_app service to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -191,7 +214,10 @@
                 "--login-url"
               ],
               "description": "If set, login to this hostname",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -227,7 +253,10 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. By default, runs against the current default org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -257,7 +286,10 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. One of ORGNAME (see above) or --org is required",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -284,7 +316,10 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. By default, runs against the current default org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -356,7 +391,10 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. One of ORGNAME (see above) or --org is required",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -386,7 +424,10 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. One of ORGNAME (see above) or --org is required",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -399,14 +440,20 @@
                 "--devhub"
               ],
               "description": "If provided, overrides the devhub used to create the scratch org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
                 "--days"
               ],
               "description": "If provided, overrides the scratch config default days value for how many days the scratch org should persist",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -439,7 +486,10 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. One of ORGNAME (see above) or --org is required",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -463,21 +513,30 @@
                 "--org"
               ],
               "description": "Alternate way to specify the target org. By default, runs against the current default org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
                 "--script"
               ],
               "description": "Path to a script to run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PATH"
+              }
             },
             {
               "names": [
                 "--python"
               ],
               "description": "Python code to run directly",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -596,14 +655,20 @@
                     "--login_url"
                   ],
                   "description": "Default Salesforce Login URL to be used with this Connected App",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "login_url"
+                  }
                 },
                 {
                   "names": [
                     "--callback_url"
                   ],
                   "description": "Callback URL configured on the Connected App",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "callback_url"
+                  }
                 },
                 {
                   "names": [
@@ -611,6 +676,9 @@
                   ],
                   "description": "Client ID/Consumer Key from the Connected App",
                   "takes_arg": true,
+                  "arg": {
+                    "name": "client_id"
+                  },
                   "is_required": true
                 },
                 {
@@ -619,6 +687,9 @@
                   ],
                   "description": "Client Secret/Consumer Secret from the Connected App",
                   "takes_arg": true,
+                  "arg": {
+                    "name": "client_secret"
+                  },
                   "is_required": true
                 },
                 {
@@ -649,7 +720,10 @@
                     "--username"
                   ],
                   "description": "Username or alias of the SFDX org to use as a Dev Hub",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -679,21 +753,30 @@
                     "--username"
                   ],
                   "description": "The Github username to use for tasks",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--email"
                   ],
                   "description": "The email address to used by Github tasks when an operation requires an email address",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--token"
                   ],
                   "description": "Personal Access Token for GitHub. Leave blank to log in via browser",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -723,28 +806,40 @@
                     "--username"
                   ],
                   "description": "The GitHub Enterprise username to use for tasks",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--email"
                   ],
                   "description": "The email address to used by GitHub tasks when an operation requires an email address",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--server_domain"
                   ],
                   "description": "GitHub Enterprise domain (Example: git.ent.domain.com)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--token"
                   ],
                   "description": "Personal Access Token",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -774,7 +869,10 @@
                     "--oauth2_client"
                   ],
                   "description": "The name of the oauth2_client service with which to establish a connection to Marketing Cloud",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -804,21 +902,30 @@
                     "--app_name"
                   ],
                   "description": "The Heroku app name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--url"
                   ],
                   "description": "The main url to the MetaCI site",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--token"
                   ],
                   "description": "Your API token to the MetaCI site (get from SITE_URL/api/token)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -848,14 +955,20 @@
                     "--url"
                   ],
                   "description": "The main url for your MetaDeploy instance",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--token"
                   ],
                   "description": "Your API token to the MetaDeploy site (get from SITE_URL/admin/authtoken/token)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -885,35 +998,50 @@
                     "--client_id"
                   ],
                   "description": "The client Id",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--client_secret"
                   ],
                   "description": "The client secret",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--auth_uri"
                   ],
                   "description": "The URI for where users are directed to login",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--token_uri"
                   ],
                   "description": "The URI for where we request an access token",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--callback_url"
                   ],
                   "description": "The URL that the auth server will callback to after authentication of the user",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1065,7 +1193,10 @@
                 "--attribute"
               ],
               "description": "Provide values to update the service with directly. Using `--attribute foo var` will set the 'foo' attribute to a value of 'bar' on the specified service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT TEXT"
+              }
             },
             {
               "names": [
@@ -1094,14 +1225,21 @@
             "--script"
           ],
           "description": "Path to a script to run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATH",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--python"
           ],
           "description": "Python code to run directly",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -1198,7 +1336,10 @@
                 "--resolution-strategy"
               ],
               "description": "The resolution strategy to use. Defaults to production",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [

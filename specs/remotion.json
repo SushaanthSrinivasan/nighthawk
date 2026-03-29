@@ -19,14 +19,20 @@
             "--props"
           ],
           "description": "Pass input props as filename or as JSON",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--env-file"
           ],
           "description": "Specify a location for a dotenv file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -39,7 +45,16 @@
             "--gl"
           ],
           "description": "Which OpenGL renderer to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "angle",
+              "egl",
+              "swiftshader",
+              "swangle",
+              "vulkan"
+            ]
+          }
         },
         {
           "names": [
@@ -115,14 +130,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -135,7 +161,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ]
             }
@@ -158,14 +198,25 @@
                 "--log"
               ],
               "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "verbose",
+                  "info",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Custom location for a Remotion config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -178,7 +229,21 @@
                 "--region"
               ],
               "description": "The AWS region specifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "us-east-1",
+                  "us-east-2",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "us-west-2",
+                  "ap-south-1",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1"
+                ]
+              }
             }
           ]
         },
@@ -203,27 +268,43 @@
                 "--max-retries"
               ],
               "description": "How many times a chunk can be retried before the render times out",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "numberOfRetries"
+              }
             },
             {
               "names": [
                 "--privacy"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "privacy",
+                "suggestions": [
+                  "public",
+                  "private"
+                ]
+              }
             },
             {
               "names": [
                 "--frames-per-lambda"
               ],
               "description": "How many frames should be rendered per chunk",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "framesPerLambda"
+              }
             },
             {
               "names": [
                 "--props"
               ],
               "description": "Pass input props as filename or as JSON",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -236,7 +317,16 @@
                 "--gl"
               ],
               "description": "Which OpenGL renderer to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "angle",
+                  "egl",
+                  "swiftshader",
+                  "swangle",
+                  "vulkan"
+                ]
+              }
             },
             {
               "names": [
@@ -261,7 +351,10 @@
                 "--concurrency-per-lambda"
               ],
               "description": "Concurrency with which each Lambda function should render",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "concurrencyPerLambda"
+              }
             },
             {
               "names": [
@@ -292,42 +385,105 @@
                 "--quality"
               ],
               "description": "Quality for rendered frames, JPEG only, 0-100",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "0",
+                  "10",
+                  "20",
+                  "30",
+                  "40",
+                  "50",
+                  "60",
+                  "70",
+                  "80",
+                  "90",
+                  "100"
+                ]
+              }
             },
             {
               "names": [
                 "--scale"
               ],
               "description": "Upscale or downscale or the dimensions of the video",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "0.25",
+                  "0.5",
+                  "1",
+                  "1.5",
+                  "2",
+                  "4"
+                ]
+              }
             },
             {
               "names": [
                 "--codec"
               ],
               "description": "Video or audio codec",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "h264",
+                  "h265",
+                  "gif",
+                  "vp8",
+                  "vp9",
+                  "mp3",
+                  "aac",
+                  "wav",
+                  "prores",
+                  "h264-mkv"
+                ]
+              }
             },
             {
               "names": [
                 "--audio-codec"
               ],
               "description": "Codec to be used for the audio",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "aac",
+                  "mp3",
+                  "opus",
+                  "pcm-16"
+                ]
+              }
             },
             {
               "names": [
                 "--every-nth-frame"
               ],
               "description": "Render only every nth frame (only for GIFs)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "2",
+                  "3",
+                  "4",
+                  "5"
+                ]
+              }
             },
             {
               "names": [
                 "--number-of-gif-loops"
               ],
               "description": "How many times a GIF should loop. 0 = No loop",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "0",
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
             },
             {
               "names": [
@@ -352,35 +508,79 @@
                 "--frames"
               ],
               "description": "Render a portion or a still of a video, 0-9, 50",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "frames"
+              }
             },
             {
               "names": [
                 "--prores-profile"
               ],
               "description": "ProRes profile, need --codec=prores to be set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "4444-xq",
+                  "4444",
+                  "hq",
+                  "standard",
+                  "light",
+                  "proxy"
+                ]
+              }
             },
             {
               "names": [
                 "--x264-preset"
               ],
               "description": "Presets balance encoding speed and compression quality, with slower presets achieving better compression. Needs --codec=h264 to be set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "ultrafast",
+                  "superfast",
+                  "veryfast",
+                  "faster",
+                  "fast",
+                  "medium",
+                  "slow",
+                  "slower",
+                  "veryslow",
+                  "placebo"
+                ]
+              }
             },
             {
               "names": [
                 "--image-format"
               ],
               "description": "Format to render the frames in, \"jpeg\" or \"png\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "jpeg",
+                  "png"
+                ]
+              }
             },
             {
               "names": [
                 "--pixel-format"
               ],
               "description": "Custom pixel format, see docs for available values",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "yuv420p",
+                  "yuv422p",
+                  "yuv444p",
+                  "yuv420p10le",
+                  "yuv422p10le",
+                  "yuv444p10le",
+                  "yuva420p"
+                ]
+              }
             },
             {
               "names": [
@@ -393,14 +593,20 @@
                 "--height"
               ],
               "description": "Override the composition height",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "height"
+              }
             },
             {
               "names": [
                 "--width"
               ],
               "description": "Override the composition width",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "height"
+              }
             },
             {
               "names": [
@@ -419,14 +625,25 @@
                 "--log"
               ],
               "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "verbose",
+                  "info",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Custom location for a Remotion config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -439,7 +656,21 @@
                 "--region"
               ],
               "description": "The AWS region specifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "us-east-1",
+                  "us-east-2",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "us-west-2",
+                  "ap-south-1",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1"
+                ]
+              }
             }
           ],
           "args": [
@@ -478,14 +709,25 @@
                 "--log"
               ],
               "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "verbose",
+                  "info",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Custom location for a Remotion config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -498,21 +740,41 @@
                 "--region"
               ],
               "description": "The AWS region specifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "us-east-1",
+                  "us-east-2",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "us-west-2",
+                  "ap-south-1",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1"
+                ]
+              }
             },
             {
               "names": [
                 "--props"
               ],
               "description": "Pass input props as filename or as JSON",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--env-file"
               ],
               "description": "Specify a location for a dotenv file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -525,7 +787,16 @@
                 "--gl"
               ],
               "description": "Which OpenGL renderer to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "angle",
+                  "egl",
+                  "swiftshader",
+                  "swangle",
+                  "vulkan"
+                ]
+              }
             },
             {
               "names": [
@@ -562,27 +833,43 @@
                 "--max-retries"
               ],
               "description": "How many times a chunk can be retried before the render times out",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "numberOfRetries"
+              }
             },
             {
               "names": [
                 "--privacy"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "privacy",
+                "suggestions": [
+                  "public",
+                  "private"
+                ]
+              }
             },
             {
               "names": [
                 "--frames-per-lambda"
               ],
               "description": "How many frames should be rendered per chunk",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "framesPerLambda"
+              }
             },
             {
               "names": [
                 "--props"
               ],
               "description": "Pass input props as filename or as JSON",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -595,7 +882,16 @@
                 "--gl"
               ],
               "description": "Which OpenGL renderer to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "angle",
+                  "egl",
+                  "swiftshader",
+                  "swangle",
+                  "vulkan"
+                ]
+              }
             },
             {
               "names": [
@@ -620,21 +916,30 @@
                 "--frame"
               ],
               "description": "Which frame to render (default 0)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "frame"
+              }
             },
             {
               "names": [
                 "--height"
               ],
               "description": "Override the composition height",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "height"
+              }
             },
             {
               "names": [
                 "--width"
               ],
               "description": "Override the composition width",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "height"
+              }
             },
             {
               "names": [
@@ -653,14 +958,25 @@
                 "--log"
               ],
               "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "verbose",
+                  "info",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Custom location for a Remotion config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -673,7 +989,21 @@
                 "--region"
               ],
               "description": "The AWS region specifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "us-east-1",
+                  "us-east-2",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "us-west-2",
+                  "ap-south-1",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1"
+                ]
+              }
             }
           ],
           "args": [
@@ -716,14 +1046,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -736,7 +1077,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ]
             },
@@ -749,21 +1104,34 @@
                     "--memory"
                   ],
                   "description": "Amount of memory in MB to allocate",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "sizeInMegabytes"
+                  }
                 },
                 {
                   "names": [
                     "--disk"
                   ],
                   "description": "Amount of disk space in MB to allocate",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "diskInMegabytes"
+                  }
                 },
                 {
                   "names": [
                     "--architecture"
                   ],
                   "description": "Type of CPU architecture to use for the Lambda function",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "architecture",
+                    "suggestions": [
+                      "x86_64",
+                      "arm64"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -782,14 +1150,20 @@
                     "--custom-role-arn"
                   ],
                   "description": "Set a custom role ARN to be used instead of the default",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Role ARN"
+                  }
                 },
                 {
                   "names": [
                     "--retention-period"
                   ],
                   "description": "CloudWatch log retention period in days",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "retentionPeriodInDays"
+                  }
                 },
                 {
                   "names": [
@@ -808,14 +1182,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -828,7 +1213,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ]
             },
@@ -853,14 +1252,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -873,7 +1283,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ]
             },
@@ -898,14 +1322,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -918,7 +1353,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ],
               "args": [
@@ -947,14 +1396,25 @@
                 "--log"
               ],
               "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "verbose",
+                  "info",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Custom location for a Remotion config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -967,7 +1427,21 @@
                 "--region"
               ],
               "description": "The AWS region specifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "us-east-1",
+                  "us-east-2",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "us-west-2",
+                  "ap-south-1",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1"
+                ]
+              }
             }
           ]
         },
@@ -995,14 +1469,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1015,7 +1500,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ]
             },
@@ -1040,14 +1539,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1060,7 +1570,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ]
             },
@@ -1085,14 +1609,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1105,7 +1640,21 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 }
               ],
               "args": [
@@ -1136,14 +1685,25 @@
                     "--log"
                   ],
                   "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "verbose",
+                      "info",
+                      "warn",
+                      "error"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--config"
                   ],
                   "description": "Custom location for a Remotion config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1156,13 +1716,30 @@
                     "--region"
                   ],
                   "description": "The AWS region specifier",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "us-east-1",
+                      "us-east-2",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "us-west-2",
+                      "ap-south-1",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--site-name"
                   ],
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "How the folder in S3 should be named."
+                  }
                 }
               ],
               "args": [
@@ -1191,14 +1768,25 @@
                 "--log"
               ],
               "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "verbose",
+                  "info",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Custom location for a Remotion config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1211,7 +1799,21 @@
                 "--region"
               ],
               "description": "The AWS region specifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "us-east-1",
+                  "us-east-2",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "us-west-2",
+                  "ap-south-1",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1"
+                ]
+              }
             }
           ]
         }
@@ -1234,14 +1836,25 @@
             "--log"
           ],
           "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "verbose",
+              "info",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Custom location for a Remotion config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1254,7 +1867,21 @@
             "--region"
           ],
           "description": "The AWS region specifier",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "us-east-1",
+              "us-east-2",
+              "eu-central-1",
+              "eu-west-1",
+              "eu-west-2",
+              "us-west-2",
+              "ap-south-1",
+              "ap-southeast-1",
+              "ap-southeast-2",
+              "ap-northeast-1"
+            ]
+          }
         }
       ]
     },
@@ -1279,28 +1906,45 @@
             "--log"
           ],
           "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "verbose",
+              "info",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Custom location for a Remotion config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--public-dir"
           ],
           "description": "Location of the public/ directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--out-dir"
           ],
           "description": "Define the location of the resulting bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -1325,7 +1969,16 @@
             "--gl"
           ],
           "description": "Which OpenGL renderer to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "angle",
+              "egl",
+              "swiftshader",
+              "swangle",
+              "vulkan"
+            ]
+          }
         },
         {
           "names": [
@@ -1356,42 +2009,105 @@
             "--quality"
           ],
           "description": "Quality for rendered frames, JPEG only, 0-100",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60",
+              "70",
+              "80",
+              "90",
+              "100"
+            ]
+          }
         },
         {
           "names": [
             "--scale"
           ],
           "description": "Upscale or downscale or the dimensions of the video",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "0.25",
+              "0.5",
+              "1",
+              "1.5",
+              "2",
+              "4"
+            ]
+          }
         },
         {
           "names": [
             "--codec"
           ],
           "description": "Video or audio codec",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "h264",
+              "h265",
+              "gif",
+              "vp8",
+              "vp9",
+              "mp3",
+              "aac",
+              "wav",
+              "prores",
+              "h264-mkv"
+            ]
+          }
         },
         {
           "names": [
             "--audio-codec"
           ],
           "description": "Codec to be used for the audio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "aac",
+              "mp3",
+              "opus",
+              "pcm-16"
+            ]
+          }
         },
         {
           "names": [
             "--every-nth-frame"
           ],
           "description": "Render only every nth frame (only for GIFs)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          }
         },
         {
           "names": [
             "--number-of-gif-loops"
           ],
           "description": "How many times a GIF should loop. 0 = No loop",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
@@ -1416,35 +2132,79 @@
             "--frames"
           ],
           "description": "Render a portion or a still of a video, 0-9, 50",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "frames"
+          }
         },
         {
           "names": [
             "--prores-profile"
           ],
           "description": "ProRes profile, need --codec=prores to be set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "4444-xq",
+              "4444",
+              "hq",
+              "standard",
+              "light",
+              "proxy"
+            ]
+          }
         },
         {
           "names": [
             "--x264-preset"
           ],
           "description": "Presets balance encoding speed and compression quality, with slower presets achieving better compression. Needs --codec=h264 to be set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "ultrafast",
+              "superfast",
+              "veryfast",
+              "faster",
+              "fast",
+              "medium",
+              "slow",
+              "slower",
+              "veryslow",
+              "placebo"
+            ]
+          }
         },
         {
           "names": [
             "--image-format"
           ],
           "description": "Format to render the frames in, \"jpeg\" or \"png\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "jpeg",
+              "png"
+            ]
+          }
         },
         {
           "names": [
             "--pixel-format"
           ],
           "description": "Custom pixel format, see docs for available values",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "yuv420p",
+              "yuv422p",
+              "yuv444p",
+              "yuv420p10le",
+              "yuv422p10le",
+              "yuv444p10le",
+              "yuva420p"
+            ]
+          }
         },
         {
           "names": [
@@ -1457,14 +2217,20 @@
             "--height"
           ],
           "description": "Override the composition height",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "height"
+          }
         },
         {
           "names": [
             "--width"
           ],
           "description": "Override the composition width",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "height"
+          }
         },
         {
           "names": [
@@ -1495,7 +2261,10 @@
             "--env-file"
           ],
           "description": "Specify a location for a dotenv file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1508,7 +2277,10 @@
             "--browser-executable"
           ],
           "description": "Custom path for browser executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1521,14 +2293,20 @@
             "--ffmpeg-executable"
           ],
           "description": "Custom path for FFMPEG executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--ffprobe-executable"
           ],
           "description": "Custom path for FFProbe executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1541,21 +2319,30 @@
             "--port"
           ],
           "description": "Custom port to use for the HTTP server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--public-dir"
           ],
           "description": "Location of the public/ directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--props"
           ],
           "description": "Pass input props as filename or as JSON",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1574,14 +2361,25 @@
             "--log"
           ],
           "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "verbose",
+              "info",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Custom location for a Remotion config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -1611,28 +2409,40 @@
             "--frame"
           ],
           "description": "Which frame to render (default 0)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "frame"
+          }
         },
         {
           "names": [
             "--height"
           ],
           "description": "Override the composition height",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "height"
+          }
         },
         {
           "names": [
             "--width"
           ],
           "description": "Override the composition width",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "height"
+          }
         },
         {
           "names": [
             "--env-file"
           ],
           "description": "Specify a location for a dotenv file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1645,7 +2455,10 @@
             "--browser-executable"
           ],
           "description": "Custom path for browser executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1658,14 +2471,20 @@
             "--ffmpeg-executable"
           ],
           "description": "Custom path for FFMPEG executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--ffprobe-executable"
           ],
           "description": "Custom path for FFProbe executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1678,21 +2497,30 @@
             "--port"
           ],
           "description": "Custom port to use for the HTTP server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--public-dir"
           ],
           "description": "Location of the public/ directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--props"
           ],
           "description": "Pass input props as filename or as JSON",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1705,7 +2533,16 @@
             "--gl"
           ],
           "description": "Which OpenGL renderer to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "angle",
+              "egl",
+              "swiftshader",
+              "swangle",
+              "vulkan"
+            ]
+          }
         },
         {
           "names": [
@@ -1742,14 +2579,25 @@
             "--log"
           ],
           "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "verbose",
+              "info",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Custom location for a Remotion config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -1782,7 +2630,10 @@
             "--props"
           ],
           "description": "Pass input props as filename or as JSON",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1795,14 +2646,21 @@
             "--webpack-poll"
           ],
           "description": "Enable webpack polling instead of file system watchers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "polling-interval",
+            "description": "Polling interval in milliseconds"
+          }
         },
         {
           "names": [
             "--number-of-shared-audio-tags"
           ],
           "description": "Set the number of shared audio tags to prevent autoplay issues",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "numberOfSharedAudioTags"
+          }
         },
         {
           "names": [
@@ -1827,14 +2685,25 @@
             "--package-manager"
           ],
           "description": "Force a specific package manager to be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package-manager",
+            "suggestions": [
+              "npm",
+              "yarn",
+              "pnpm"
+            ]
+          }
         },
         {
           "names": [
             "--version"
           ],
           "description": "Upgrade to a specific version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         }
       ]
     },
@@ -1853,7 +2722,16 @@
             "--gl"
           ],
           "description": "Which OpenGL renderer to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "angle",
+              "egl",
+              "swiftshader",
+              "swangle",
+              "vulkan"
+            ]
+          }
         },
         {
           "names": [
@@ -1884,42 +2762,105 @@
             "--quality"
           ],
           "description": "Quality for rendered frames, JPEG only, 0-100",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60",
+              "70",
+              "80",
+              "90",
+              "100"
+            ]
+          }
         },
         {
           "names": [
             "--scale"
           ],
           "description": "Upscale or downscale or the dimensions of the video",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "0.25",
+              "0.5",
+              "1",
+              "1.5",
+              "2",
+              "4"
+            ]
+          }
         },
         {
           "names": [
             "--codec"
           ],
           "description": "Video or audio codec",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "h264",
+              "h265",
+              "gif",
+              "vp8",
+              "vp9",
+              "mp3",
+              "aac",
+              "wav",
+              "prores",
+              "h264-mkv"
+            ]
+          }
         },
         {
           "names": [
             "--audio-codec"
           ],
           "description": "Codec to be used for the audio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "aac",
+              "mp3",
+              "opus",
+              "pcm-16"
+            ]
+          }
         },
         {
           "names": [
             "--every-nth-frame"
           ],
           "description": "Render only every nth frame (only for GIFs)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          }
         },
         {
           "names": [
             "--number-of-gif-loops"
           ],
           "description": "How many times a GIF should loop. 0 = No loop",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
@@ -1944,35 +2885,79 @@
             "--frames"
           ],
           "description": "Render a portion or a still of a video, 0-9, 50",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "frames"
+          }
         },
         {
           "names": [
             "--prores-profile"
           ],
           "description": "ProRes profile, need --codec=prores to be set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "4444-xq",
+              "4444",
+              "hq",
+              "standard",
+              "light",
+              "proxy"
+            ]
+          }
         },
         {
           "names": [
             "--x264-preset"
           ],
           "description": "Presets balance encoding speed and compression quality, with slower presets achieving better compression. Needs --codec=h264 to be set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "ultrafast",
+              "superfast",
+              "veryfast",
+              "faster",
+              "fast",
+              "medium",
+              "slow",
+              "slower",
+              "veryslow",
+              "placebo"
+            ]
+          }
         },
         {
           "names": [
             "--image-format"
           ],
           "description": "Format to render the frames in, \"jpeg\" or \"png\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "jpeg",
+              "png"
+            ]
+          }
         },
         {
           "names": [
             "--pixel-format"
           ],
           "description": "Custom pixel format, see docs for available values",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "yuv420p",
+              "yuv422p",
+              "yuv444p",
+              "yuv420p10le",
+              "yuv422p10le",
+              "yuv444p10le",
+              "yuva420p"
+            ]
+          }
         },
         {
           "names": [
@@ -1985,14 +2970,20 @@
             "--height"
           ],
           "description": "Override the composition height",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "height"
+          }
         },
         {
           "names": [
             "--width"
           ],
           "description": "Override the composition width",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "height"
+          }
         },
         {
           "names": [
@@ -2017,14 +3008,20 @@
             "--env-file"
           ],
           "description": "Specify a location for a dotenv file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--browser-executable"
           ],
           "description": "Custom path for browser executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2037,14 +3034,20 @@
             "--ffmpeg-executable"
           ],
           "description": "Custom path for FFMPEG executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--ffprobe-executable"
           ],
           "description": "Custom path for FFProbe executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2057,21 +3060,30 @@
             "--port"
           ],
           "description": "Custom port to use for the HTTP server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--public-dir"
           ],
           "description": "Location of the public/ directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--props"
           ],
           "description": "Pass input props as filename or as JSON",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2090,14 +3102,25 @@
             "--log"
           ],
           "description": "Log level, \"error\", \"warning\", \"verbose\", \"info\" (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "verbose",
+              "info",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Custom location for a Remotion config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [

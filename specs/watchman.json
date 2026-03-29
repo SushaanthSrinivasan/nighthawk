@@ -192,42 +192,71 @@
         "--named-pipe-path"
       ],
       "description": "Specify alternate named pipe path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The alternate named pipe path"
+      }
     },
     {
       "names": [
         "-u"
       ],
       "description": "Specify alternate unix domain socket path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The alternate unix domain socket path"
+      }
     },
     {
       "names": [
         "--unix-listener-path"
       ],
       "description": "Specify alternate unix domain socket path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The alernate unix domain socket path"
+      }
     },
     {
       "names": [
         "-o"
       ],
       "description": "Specify the path to logfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The path to logfile"
+      }
     },
     {
       "names": [
         "--logfile"
       ],
       "description": "Specify the path to logfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The path to logfile"
+      }
     },
     {
       "names": [
         "--log-level"
       ],
       "description": "Set the log level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "description": "The log level",
+        "suggestions": [
+          "0",
+          "1",
+          "2"
+        ]
+      }
     },
     {
       "names": [
@@ -254,7 +283,11 @@
         "--statefile"
       ],
       "description": "Specify path to file to hold watch and trigger state",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The path to file to hold watch and trigger state"
+      }
     },
     {
       "names": [
@@ -268,14 +301,30 @@
         "--output-encoding"
       ],
       "description": "CLI output encoding",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "encoding",
+        "description": "The output encoding",
+        "suggestions": [
+          "json",
+          "bser"
+        ]
+      }
     },
     {
       "names": [
         "--server-encoding"
       ],
       "description": "CLI<->server encoding",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "encoding",
+        "description": "The server encoding",
+        "suggestions": [
+          "bser",
+          "json"
+        ]
+      }
     },
     {
       "names": [

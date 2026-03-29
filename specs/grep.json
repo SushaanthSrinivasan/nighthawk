@@ -35,7 +35,10 @@
         "--regexp"
       ],
       "description": "Use PATTERN as the pattern. This can be used to specify multiple search patterns, or to protect a pattern beginning with a hyphen (-). (-e is specified by POSIX.)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -78,7 +81,15 @@
         "--color"
       ],
       "description": "Surround the matched (non-empty) strings, matching lines, context lines, file names, line numbers, byte offsets, and separators (for fields and groups of context lines) with escape sequences to displa",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WHEN",
+        "suggestions": [
+          "never",
+          "always",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
@@ -100,7 +111,10 @@
         "--max-count"
       ],
       "description": "Stop reading a file after NUM matching lines. If the input is standard input from a regular file, and NUM matching lines are output, grep ensures that the standard input is positioned to just after th",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -150,7 +164,10 @@
         "--label"
       ],
       "description": "Display input actually coming from standard input as input coming from file LABEL. This is especially useful when implementing tools like zgrep, e.g., gzip -cd foo.gz | grep --label=foo -H something",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LABEL"
+      }
     },
     {
       "names": [
@@ -185,7 +202,10 @@
         "--after-context"
       ],
       "description": "Print num lines of trailing context after each match",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -193,7 +213,10 @@
         "--before-context"
       ],
       "description": "Print num lines of leading context before each match. See also the -A and -C options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -201,7 +224,10 @@
         "--context"
       ],
       "description": "Print NUM lines of output context. Places a line containing a group separator (--) between contiguous groups of matches. With the -o or --only-matching option, this has no effect and a warning is give",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -215,7 +241,15 @@
         "--binary-files"
       ],
       "description": "Controls searching and printing of binary files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "binary",
+          "without-match",
+          "text"
+        ]
+      }
     },
     {
       "names": [
@@ -223,7 +257,14 @@
         "--devices"
       ],
       "description": "Specify the demanded action for devices, FIFOs and sockets",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "action",
+        "suggestions": [
+          "read",
+          "skip"
+        ]
+      }
     },
     {
       "names": [
@@ -231,21 +272,36 @@
         "--directories"
       ],
       "description": "Specify the demanded action for directories",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "action",
+        "suggestions": [
+          "read",
+          "skip",
+          "recurse"
+        ]
+      }
     },
     {
       "names": [
         "--exclude"
       ],
       "description": "Note that --exclude patterns take priority over --include patterns, and if no --include pattern is specified, all files are searched that are not excluded. Patterns are matched to the full path specif",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GLOB"
+      }
     },
     {
       "names": [
         "--exclude-dir"
       ],
       "description": "If -R is specified, only directories matching the given filename pattern are searched.  Note that --exclude-dir patterns take priority over --include-dir patterns",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -258,14 +314,21 @@
         "--include"
       ],
       "description": "If specified, only files matching the given filename pattern are searched. Note that --exclude patterns take priority over --include patterns. Patterns are matched to the full path specified, not only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GLOB"
+      }
     },
     {
       "names": [
         "--include-dir"
       ],
       "description": "If -R is specified, only directories matching the given filename pattern are searched. Note that --exclude-dir patterns take priority over --include-dir patterns",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -315,7 +378,11 @@
         "--file"
       ],
       "description": "Obtain patterns from FILE, one per line. The empty file contains zero patterns, and therefore matches nothing. (-f is specified by POSIX.)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     }
   ],
   "args": [

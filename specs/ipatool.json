@@ -19,7 +19,10 @@
                 "--auth-code"
               ],
               "description": "2FA code for the Apple ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "2FA code"
+              }
             },
             {
               "names": [
@@ -78,6 +81,9 @@
           ],
           "description": "Bundle identifier of the app",
           "takes_arg": true,
+          "arg": {
+            "name": "identifier"
+          },
           "is_required": true
         },
         {
@@ -86,7 +92,11 @@
             "--output"
           ],
           "description": "The destination path of the downloaded app package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -116,6 +126,9 @@
           ],
           "description": "Bundle identifier of the app",
           "takes_arg": true,
+          "arg": {
+            "name": "identifier"
+          },
           "is_required": true
         }
       ]
@@ -130,7 +143,10 @@
             "--limit"
           ],
           "description": "Limit the number of results",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "limit"
+          }
         }
       ],
       "args": [
@@ -165,7 +181,14 @@
         "--format"
       ],
       "description": "Output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "text",
+          "json"
+        ]
+      }
     },
     {
       "names": [

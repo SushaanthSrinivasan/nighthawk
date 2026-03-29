@@ -8,7 +8,10 @@
         "-w"
       ],
       "description": "Perform warmupruns (number) before the actual benchmarking starts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -16,7 +19,10 @@
         "-m"
       ],
       "description": "Perform at least NUM runs for each command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -24,7 +30,10 @@
         "-M"
       ],
       "description": "Perform at most NUM runs for each command. Default: no limit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -32,7 +41,10 @@
         "-r"
       ],
       "description": "Perform exactly NUM runs for each command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -40,7 +52,10 @@
         "-s"
       ],
       "description": "Execute cmd once before each set of timing runs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CMD"
+      }
     },
     {
       "names": [
@@ -48,7 +63,10 @@
         "-p"
       ],
       "description": "Execute cmd before each timing run. This is useful for clearing disk caches, for example",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CMD ..."
+      }
     },
     {
       "names": [
@@ -56,7 +74,10 @@
         "-c"
       ],
       "description": "Execute cmd after the completion of all benchmarking runs for each individual command to be benchmarked",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CMD"
+      }
     },
     {
       "names": [
@@ -64,7 +85,10 @@
         "-P"
       ],
       "description": "Perform benchmark runs for each value in the range min..max",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VAR"
+      }
     },
     {
       "names": [
@@ -72,7 +96,10 @@
         "-D"
       ],
       "description": "This argument requires --parameter-scan to be specified as well. Traverse the range min..max in steps of delta",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "delta"
+      }
     },
     {
       "names": [
@@ -80,14 +107,27 @@
         "-L"
       ],
       "description": "Perform benchmark runs for each value in the comma-separated list of values",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VAR"
+      }
     },
     {
       "names": [
         "--style"
       ],
       "description": "Set output style type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STYLE",
+        "suggestions": [
+          "basic",
+          "full",
+          "nocolor",
+          "color",
+          "none"
+        ]
+      }
     },
     {
       "names": [
@@ -95,7 +135,18 @@
         "-S"
       ],
       "description": "Set the shell to use for executing benchmarked commands",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SHELL",
+        "suggestions": [
+          "bash",
+          "zsh",
+          "sh",
+          "fish",
+          "pwsh",
+          "powershell"
+        ]
+      }
     },
     {
       "names": [
@@ -110,35 +161,58 @@
         "-u"
       ],
       "description": "Set the time unit to use for the benchmark results",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "UNIT",
+        "suggestions": [
+          "millisecond",
+          "second"
+        ]
+      }
     },
     {
       "names": [
         "--export-asciidoc"
       ],
       "description": "Export the timing summary statistics as an AsciiDoc table to the given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--export-csv"
       ],
       "description": "Export the timing summary statistics as CSV to the given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--export-json"
       ],
       "description": "Export the timing summary statistics and timings of individual runs as JSON to the given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--export-markdown"
       ],
       "description": "Export the timing summary statistics as a Markdown table to the given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -151,7 +225,10 @@
         "--command-name"
       ],
       "description": "Identify a command with the given name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [

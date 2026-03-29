@@ -41,21 +41,30 @@
             "--match"
           ],
           "description": "Retrieve any resource matching the pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--pipe"
           ],
           "description": "Retrieve any resource used by pipe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--datasource"
           ],
           "description": "Retrieve resources depending on this Data Source",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -158,7 +167,10 @@
             "--line-length"
           ],
           "description": "A number indicating the maximum characters per line in the node SQL, lines will be splitted based on the SQL syntax and the number of characters passed as a parameter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "integer"
+          }
         },
         {
           "names": [
@@ -202,7 +214,11 @@
             "--folder"
           ],
           "description": "Folder where files will be placed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -227,7 +243,10 @@
             "--prefix"
           ],
           "description": "Use prefix for all the resources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -239,14 +258,20 @@
           "names": [
             "--workspace_map"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--workspace"
           ],
           "description": "Add a workspace path to the list of external workspaces, usage: --workspace name path/to/folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -265,7 +290,10 @@
             "--force-populate"
           ],
           "description": "Subset or full",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -323,7 +351,11 @@
             "--folder"
           ],
           "description": "Folder where files will be placed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -336,14 +368,20 @@
             "--match"
           ],
           "description": "Retrieve any resourcing matching the pattern. eg --match _test",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--prefix"
           ],
           "description": "Download only resources with this prefix",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -368,7 +406,10 @@
             "--prefix"
           ],
           "description": "Use prefix for all the resources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -424,14 +465,20 @@
             "--subset"
           ],
           "description": "Populate with a subset percent of the data (limited to a maximum of 2M rows), this is useful to quickly test a materialized node with some data. The subset must be greater than 0 and lower than 0.1. A",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "float"
+          }
         },
         {
           "names": [
             "--sql-condition"
           ],
           "description": "Populate with a SQL condition to be applied to the trigger Data Source of the Materialized View. For instance, `--sql-condition='date == toYYYYMM(now())'` it'll populate taking all the rows from the t",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -467,14 +514,20 @@
           "names": [
             "--workspace_map"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--workspace"
           ],
           "description": "Add a workspace path to the list of external workspaces, usage: --workspace name path/to/folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -487,7 +540,10 @@
             "--timeout"
           ],
           "description": "Timeout you want to use for the job populate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "float"
+          }
         },
         {
           "names": [
@@ -495,14 +551,20 @@
             "--limit"
           ],
           "description": "Number of requests to validate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "integer range"
+          }
         },
         {
           "names": [
             "--sample-by-params"
           ],
           "description": "When set, we will aggregate the pipe_stats_rt requests by extractURLParameterNames(assumeNotNull(url)) and for each combination we will take a sample of N requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "integer range"
+          }
         },
         {
           "names": [
@@ -553,35 +615,55 @@
             "--rows_limit"
           ],
           "description": "Max number of rows retrieved",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "integer"
+          }
         },
         {
           "names": [
             "--pipeline"
           ],
           "description": "The name of the Pipe to run the SQL Query",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--pipe"
           ],
           "description": "The path to the .pipe file to run the SQL Query of a specific NODE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--node"
           ],
           "description": "The NODE name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "Output format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "choice",
+            "suggestions": [
+              "json",
+              "csv",
+              "human"
+            ]
+          }
         },
         {
           "names": [
@@ -627,98 +709,140 @@
         "--token"
       ],
       "description": "Use auth token, defaults to TB_TOKEN envvar, then to the .tinyb file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--host"
       ],
       "description": "Use custom host, defaults to TB_HOST envvar, then to https://api.tinybird.co",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--gcp-project-id"
       ],
       "description": "The Google Cloud project ID",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--gcs-bucket"
       ],
       "description": "The Google Cloud Storage bucket to write temp files when using the connectors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--google-application-credentials"
       ],
       "description": "Set GOOGLE_APPLICATION_CREDENTIALS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-account"
       ],
       "description": "The Snowflake Account (e.g. your-domain.west-europe.azure)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-warehouse"
       ],
       "description": "The Snowflake warehouse name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-database"
       ],
       "description": "The Snowflake database name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-schema"
       ],
       "description": "The Snowflake schema name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-role"
       ],
       "description": "The Snowflake role name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-user"
       ],
       "description": "The Snowflake user name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-password"
       ],
       "description": "The Snowflake password",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-storage-integration"
       ],
       "description": "The Snowflake GCS storage integration name (leave empty to auto-generate one)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--sf-stage"
       ],
       "description": "The Snowflake GCS stage name (leave empty to auto-generate one)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [

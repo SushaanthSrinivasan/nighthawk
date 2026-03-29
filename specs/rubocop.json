@@ -27,14 +27,22 @@
         "--except"
       ],
       "description": "Exclude the given cop(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COP",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--only"
       ],
       "description": "Run only the given cop(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COP",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -103,7 +111,11 @@
         "-s"
       ],
       "description": "Pipe source from STDIN, using FILE in offense reports. This is useful for editor integration",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -123,7 +135,19 @@
         "--fail-level"
       ],
       "description": "Minimum severity for exit with error code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SEVERITY",
+        "suggestions": [
+          "A",
+          "I",
+          "R",
+          "C",
+          "W",
+          "E",
+          "F"
+        ]
+      }
     },
     {
       "names": [
@@ -131,14 +155,21 @@
         "--cache"
       ],
       "description": "Use result caching (FLAG=true) or don't (FLAG=false), default determined by configuration parameter AllCops: UseCache",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FLAG"
+      }
     },
     {
       "names": [
         "--cache-root"
       ],
       "description": "Set the cache root directory. Takes precedence over the configuration parameter AllCops: CacheRootDirectory and the $RUBOCOP_CACHE_ROOT environment variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -182,7 +213,30 @@
         "--format"
       ],
       "description": "Choose an output formatter. This option can be specified multiple times to enable multiple formatters at the same time",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMATTER",
+        "suggestions": [
+          "a",
+          "c",
+          "e",
+          "fi",
+          "fu",
+          "g",
+          "h",
+          "j",
+          "ju",
+          "m",
+          "o",
+          "pa",
+          "p",
+          "q",
+          "s",
+          "t",
+          "w",
+          "[custom]"
+        ]
+      }
     },
     {
       "names": [
@@ -217,7 +271,11 @@
         "--out"
       ],
       "description": "Write output to a file instead of STDOUT.  This option applies to the previously specified --format, or the default format if no format is specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -292,7 +350,10 @@
         "--exclude-limit"
       ],
       "description": "Set the limit for how many files to explicitly exclude.  If there are more files than the limit, the cop will be disabled instead. Default is 15",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COUNT"
+      }
     },
     {
       "names": [
@@ -324,14 +385,22 @@
         "--show-cops"
       ],
       "description": "Shows the given cops, or all cops by default, and their configurations for the current directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COP",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--show-docs-url"
       ],
       "description": "Display url to documentation for the given cops, or base url by default",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COP",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -345,7 +414,11 @@
         "--config"
       ],
       "description": "Specify configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -360,7 +433,11 @@
         "--require"
       ],
       "description": "Require Ruby file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

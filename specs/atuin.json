@@ -25,7 +25,10 @@
                 "--exit",
                 "-e"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "EXIT"
+              }
             }
           ],
           "args": [
@@ -66,7 +69,11 @@
                 "--format",
                 "-f"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FORMAT",
+                "description": "Available variables: {command}, {directory}, {duration}, {user}, {host} and {time}. Example: --format \"{time} - [{duration}] - {directory}$\\t{command}\""
+              }
             }
           ]
         },
@@ -90,7 +97,11 @@
                 "--format",
                 "-f"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FORMAT",
+                "description": "Available variables: {command}, {directory}, {duration}, {user}, {host} and {time}. Example: --format \"{time} - [{duration}] - {directory}$\\t{command}\""
+              }
             }
           ]
         }
@@ -144,7 +155,10 @@
             "-c"
           ],
           "description": "How many top commands to list",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COUNT"
+          }
         }
       ],
       "args": [
@@ -165,14 +179,20 @@
             "-c"
           ],
           "description": "Filter search result by directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CWD"
+          }
         },
         {
           "names": [
             "--exclude-cwd"
           ],
           "description": "Exclude directory from results",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_CWD"
+          }
         },
         {
           "names": [
@@ -180,14 +200,20 @@
             "-e"
           ],
           "description": "Filter search result by exit code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXIT"
+          }
         },
         {
           "names": [
             "--exclude-exit"
           ],
           "description": "Exclude results with this exit code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_EXIT"
+          }
         },
         {
           "names": [
@@ -195,28 +221,40 @@
             "-b"
           ],
           "description": "Only include results added before this date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BEFORE"
+          }
         },
         {
           "names": [
             "--after"
           ],
           "description": "Only include results after this date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "AFTER"
+          }
         },
         {
           "names": [
             "--limit"
           ],
           "description": "How many entries to return at most",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LIMIT"
+          }
         },
         {
           "names": [
             "--offset"
           ],
           "description": "Offset from the start of the results",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OFFSET"
+          }
         },
         {
           "names": [
@@ -230,14 +268,33 @@
             "--filter-mode"
           ],
           "description": "Allow overriding filter mode over config",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILTER_MODE",
+            "suggestions": [
+              "global",
+              "host",
+              "session",
+              "directory",
+              "workspace"
+            ]
+          }
         },
         {
           "names": [
             "--search-mode"
           ],
           "description": "Allow overriding search mode over config",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SEARCH_MODE",
+            "suggestions": [
+              "prefix",
+              "full-text",
+              "fuzzy",
+              "skim"
+            ]
+          }
         },
         {
           "names": [
@@ -275,14 +332,21 @@
             "--format",
             "-f"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FORMAT",
+            "description": "Available variables: {command}, {directory}, {duration}, {user}, {host} and {time}. Example: --format \"{time} - [{duration}] - {directory}$\\t{command}\""
+          }
         },
         {
           "names": [
             "--inline-height"
           ],
           "description": "Set the maximum number of lines Atuin's interface should take up",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INLINE_HEIGHT"
+          }
         }
       ],
       "args": [
@@ -314,14 +378,20 @@
             "--username",
             "-u"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "USERNAME"
+          }
         },
         {
           "names": [
             "--password",
             "-p"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PASSWORD"
+          }
         },
         {
           "names": [
@@ -329,7 +399,10 @@
             "-k"
           ],
           "description": "The encryption key for your account",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEY"
+          }
         }
       ]
     },
@@ -346,21 +419,30 @@
             "--username",
             "-u"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "USERNAME"
+          }
         },
         {
           "names": [
             "--password",
             "-p"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PASSWORD"
+          }
         },
         {
           "names": [
             "--email",
             "-e"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EMAIL"
+          }
         }
       ]
     },
@@ -391,14 +473,20 @@
                 "--username",
                 "-u"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "USERNAME"
+              }
             },
             {
               "names": [
                 "--password",
                 "-p"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PASSWORD"
+              }
             },
             {
               "names": [
@@ -406,7 +494,10 @@
                 "-k"
               ],
               "description": "The encryption key for your account",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "KEY"
+              }
             }
           ]
         },
@@ -418,21 +509,30 @@
                 "--username",
                 "-u"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "USERNAME"
+              }
             },
             {
               "names": [
                 "--password",
                 "-p"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PASSWORD"
+              }
             },
             {
               "names": [
                 "--email",
                 "-e"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "EMAIL"
+              }
             }
           ]
         },
@@ -457,6 +557,9 @@
                 "-k"
               ],
               "takes_arg": true,
+              "arg": {
+                "name": "KEY"
+              },
               "is_required": true
             },
             {
@@ -464,7 +567,10 @@
                 "--namespace",
                 "-n"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAMESPACE"
+              }
             }
           ],
           "args": [
@@ -481,7 +587,10 @@
                 "--namespace",
                 "-n"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAMESPACE"
+              }
             }
           ],
           "args": [
@@ -505,7 +614,10 @@
                 "--host"
               ],
               "description": "The host address to bind",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HOST"
+              }
             },
             {
               "names": [
@@ -513,7 +625,10 @@
                 "-p"
               ],
               "description": "The port to bind",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PORT"
+              }
             }
           ]
         }
@@ -566,6 +681,16 @@
           ],
           "description": "Set the shell for generating completions",
           "takes_arg": true,
+          "arg": {
+            "name": "SHELL",
+            "suggestions": [
+              "bash",
+              "elvish",
+              "fish",
+              "powershell",
+              "zsh"
+            ]
+          },
           "is_required": true
         },
         {
@@ -574,7 +699,10 @@
             "-o"
           ],
           "description": "Set the output directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OUT_DIR"
+          }
         }
       ]
     }

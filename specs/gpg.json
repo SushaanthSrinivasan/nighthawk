@@ -361,14 +361,22 @@
         "--homedir"
       ],
       "description": "Set the name of the home directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--options"
       ],
       "description": "Read options from file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -383,7 +391,11 @@
         "--output"
       ],
       "description": "Write output to file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -391,14 +403,20 @@
         "--local-user"
       ],
       "description": "Use name as the user ID to sign",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--default-key"
       ],
       "description": "Use name as default user ID for signatures",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -406,14 +424,20 @@
         "--recipient"
       ],
       "description": "Encrypt for user id name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--default-recipient"
       ],
       "description": "Use name as default recipient",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -432,7 +456,10 @@
         "--encrypt-to"
       ],
       "description": "Same as --recipient but this one is intended for in the options file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -459,7 +486,19 @@
         "-Z"
       ],
       "description": "Set compression level to n",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n",
+        "suggestions": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      }
     },
     {
       "names": [
@@ -523,7 +562,10 @@
         "--keyserver"
       ],
       "description": "Use name to lookup keys which are not yet in your keyring",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -542,21 +584,37 @@
         "--keyring"
       ],
       "description": "Add file to the list of keyrings",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--secret-keyring"
       ],
       "description": "Same as --keyring but for the secret keyrings",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--charset"
       ],
       "description": "Set the name of the native character set",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "suggestions": [
+          "iso-8859-1",
+          "iso-8859-2",
+          "koi8-r"
+        ]
+      }
     },
     {
       "names": [
@@ -580,14 +638,21 @@
         "--load-extension"
       ],
       "description": "Load an extension module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "If name does not contain a slash it is searched in \"/usr/local/lib/gnupg\""
+      }
     },
     {
       "names": [
         "--debug"
       ],
       "description": "Set debugging flags",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "flags"
+      }
     },
     {
       "names": [
@@ -600,14 +665,20 @@
         "--status-fd"
       ],
       "description": "Write special status strings to the file descriptor n",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
         "--logger-fd"
       ],
       "description": "Write log output to file descriptor n and not to stderr",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -620,7 +691,10 @@
         "--comment"
       ],
       "description": "Use string as comment string in clear text signatures",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -646,21 +720,30 @@
         "--notation-data"
       ],
       "description": "Put the name value pair into the signature as notation data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name=value"
+      }
     },
     {
       "names": [
         "--set-policy-url"
       ],
       "description": "Use string as Policy URL for signatures (rfc2440:5.2.3.19)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--set-filename"
       ],
       "description": "Use string as the name of file which is stored in messages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -673,77 +756,119 @@
         "--completes-needed"
       ],
       "description": "Number of completely trusted users to introduce a new key signer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
         "--marginals-needed"
       ],
       "description": "Number of marginally trusted users to introduce a new key signer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
         "--max-cert-depth"
       ],
       "description": "Maximum depth of a certification chain",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
         "--cipher-algo"
       ],
       "description": "Use name as cipher algorithm",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--digest-algo"
       ],
       "description": "Use name as message digest algorithm",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--s2k-cipher-algo"
       ],
       "description": "Use name as the cipher algorithm used to protect secret keys",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--s2k-digest-algo"
       ],
       "description": "Use name as the digest algorithm used to mangle the passphrases",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--s2k-mode"
       ],
       "description": "Selects how passphrases are mangled",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n",
+        "suggestions": [
+          "0",
+          "1",
+          "3"
+        ]
+      }
     },
     {
       "names": [
         "--compress-algo"
       ],
       "description": "Use compress algorithm n",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n",
+        "suggestions": [
+          "1",
+          "2"
+        ]
+      }
     },
     {
       "names": [
         "--disable-cipher-algo"
       ],
       "description": "Never allow the use of name as cipher algorithm",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--disable-pubkey-algo"
       ],
       "description": "Never allow the use of name as public key algorithm",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -768,14 +893,20 @@
         "--passphrase-fd"
       ],
       "description": "Read the passphrase from file descriptor n",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
         "--command-fd"
       ],
       "description": "This is a replacement for the depreciated shared-memory IPC mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -938,7 +1069,10 @@
         "--override-session-key"
       ],
       "description": "Don't use the public key but the session key string",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [

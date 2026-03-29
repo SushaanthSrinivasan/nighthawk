@@ -20,7 +20,10 @@
         "--health"
       ],
       "description": "Check for errors in editor setup",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "language"
+      }
     },
     {
       "names": [
@@ -34,7 +37,14 @@
         "--grammar"
       ],
       "description": "Fetch or build tree-sitter grammars",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "action",
+        "suggestions": [
+          "fetch",
+          "build"
+        ]
+      }
     },
     {
       "names": [

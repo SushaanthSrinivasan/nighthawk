@@ -58,28 +58,46 @@
         "--as"
       ],
       "description": "Username to impersonate for the operation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The username you want to impersonate"
+      }
     },
     {
       "names": [
         "--as-group"
       ],
       "description": "Group to impersonate for the operation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "stringArray",
+        "description": "The group you want to impersonate"
+      }
     },
     {
       "names": [
         "--certificate-authority"
       ],
       "description": "Path to a cert file for the certificate authority",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The path to a cert file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--client-key"
       ],
       "description": "Path to a client key file for TLS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The path to a client key file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -87,14 +105,22 @@
         "--command"
       ],
       "description": "Overrides the default resource to load when the application launches",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The command you want to execute"
+      }
     },
     {
       "names": [
         "--context"
       ],
       "description": "The name of the kubeconfig context to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The name of the kubeconfig context"
+      }
     },
     {
       "names": [
@@ -126,14 +152,24 @@
         "--kubeconfig"
       ],
       "description": "Path to the kubeconfig file to use for CLI requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The path to the kubeconfig file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--logFile"
       ],
       "description": "Specify the log file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The path of the log file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -141,7 +177,18 @@
         "--logLevel"
       ],
       "description": "Specify a log level (info, warn, debug, trace, error) (default 'info')",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The log level",
+        "suggestions": [
+          "info",
+          "warn",
+          "debug",
+          "trace",
+          "error"
+        ]
+      }
     },
     {
       "names": [
@@ -155,7 +202,11 @@
         "--namespace"
       ],
       "description": "If present, the namespace scope for this CLI request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The namespace"
+      }
     },
     {
       "names": [
@@ -169,35 +220,55 @@
         "--refresh"
       ],
       "description": "Specify the default refresh rate as an integer (sec) (default 2)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int",
+        "description": "The refresh rate (sec)"
+      }
     },
     {
       "names": [
         "--request-timeout"
       ],
       "description": "The length of time to wait before giving up on a single server request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The length of time to wait"
+      }
     },
     {
       "names": [
         "--screen-dump-dir"
       ],
       "description": "Sets a path to a dir for a screen dumps",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The path to a dir for a screen dumps"
+      }
     },
     {
       "names": [
         "--token"
       ],
       "description": "Bearer token for authentication to the API server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The Bearer token"
+      }
     },
     {
       "names": [
         "--user"
       ],
       "description": "The name of the kubeconfig user to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "description": "The name of the kubeconfig user"
+      }
     },
     {
       "names": [

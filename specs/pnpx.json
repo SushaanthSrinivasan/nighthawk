@@ -28,14 +28,21 @@
         "-p"
       ],
       "description": "Package to be executed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "package"
+      }
     },
     {
       "names": [
         "--cache"
       ],
       "description": "Location of the npm cache",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -54,7 +61,11 @@
         "--userconfig"
       ],
       "description": "Path to user npmrc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -62,7 +73,10 @@
         "-c"
       ],
       "description": "Execute string as if inside `npm run-script`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "script"
+      }
     },
     {
       "names": [
@@ -70,14 +84,30 @@
         "-s"
       ],
       "description": "Shell to execute the command with, if any",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "shell",
+        "suggestions": [
+          "bash",
+          "fish",
+          "zsh"
+        ]
+      }
     },
     {
       "names": [
         "--shell-auto-fallback"
       ],
       "description": "Generate shell code to use pnpx as the \"command not found\" fallback",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "shell-fallback",
+        "suggestions": [
+          "bash",
+          "fish",
+          "zsh"
+        ]
+      }
     },
     {
       "names": [
@@ -97,7 +127,11 @@
         "--npm"
       ],
       "description": "Npm binary to use for internal operations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path to binary",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

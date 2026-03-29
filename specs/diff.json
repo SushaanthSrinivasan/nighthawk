@@ -55,7 +55,10 @@
         "--ignore-matching-lines"
       ],
       "description": "Ignore changes whose lines all match RE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RE"
+      }
     },
     {
       "names": [
@@ -77,7 +80,10 @@
         "--context"
       ],
       "description": "Output NUM lines of copied context",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -86,14 +92,20 @@
         "--unified"
       ],
       "description": "Output NUM lines of unified context",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "--label"
       ],
       "description": "Use LABEL instead of file name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LABEL"
+      }
     },
     {
       "names": [
@@ -108,7 +120,10 @@
         "--show-function-line"
       ],
       "description": "Show the most recent line matching RE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RE"
+      }
     },
     {
       "names": [
@@ -150,7 +165,10 @@
         "--width"
       ],
       "description": "Output at most NUM (default 130) print columns",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -170,7 +188,10 @@
         "--ifdef"
       ],
       "description": "Output merged file to show `#ifdef NAME' diffs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
@@ -226,7 +247,10 @@
         "--exclude"
       ],
       "description": "Exclude files that match PAT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PAT"
+      }
     },
     {
       "names": [
@@ -234,7 +258,11 @@
         "--exclude-from"
       ],
       "description": "Exclude files that match any pattern in FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -242,28 +270,43 @@
         "--starting-file"
       ],
       "description": "Start with FILE when comparing directories",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--from-file"
       ],
       "description": "Compare FILE1 to all operands. FILE1 can be a directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE1",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--to-file"
       ],
       "description": "Compare all operands to FILE2. FILE2 can be a directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE2",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--horizon-lines"
       ],
       "description": "Keep NUM lines of the common prefix and suffix",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -296,56 +339,87 @@
         "--old-group-format"
       ],
       "description": "Similar, but format old input groups with GFTM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GFTM",
+        "description": "%<  lines from FILE1\n%>  lines from FILE2\n%=  lines common to FILE1 and FILE2\n%[-][WIDTH][.[PREC]]{doxX}LETTER  printf-style spec for LETTER\nLETTERs are as follows for new group, lower case for old gr"
+      }
     },
     {
       "names": [
         "--new-group-format"
       ],
       "description": "Similar, but format new input groups with GFTM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GFTM",
+        "description": "%<  lines from FILE1\n%>  lines from FILE2\n%=  lines common to FILE1 and FILE2\n%[-][WIDTH][.[PREC]]{doxX}LETTER  printf-style spec for LETTER\nLETTERs are as follows for new group, lower case for old gr"
+      }
     },
     {
       "names": [
         "--unchanged-group-format"
       ],
       "description": "Similar, but format unchanged input groups with GFTM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GFTM",
+        "description": "%<  lines from FILE1\n%>  lines from FILE2\n%=  lines common to FILE1 and FILE2\n%[-][WIDTH][.[PREC]]{doxX}LETTER  printf-style spec for LETTER\nLETTERs are as follows for new group, lower case for old gr"
+      }
     },
     {
       "names": [
         "--changed-group-format"
       ],
       "description": "Similar, but format changed input groups with GFTM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GFTM",
+        "description": "%<  lines from FILE1\n%>  lines from FILE2\n%=  lines common to FILE1 and FILE2\n%[-][WIDTH][.[PREC]]{doxX}LETTER  printf-style spec for LETTER\nLETTERs are as follows for new group, lower case for old gr"
+      }
     },
     {
       "names": [
         "--line-format"
       ],
       "description": "Format all input lines with LFMT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LFTM"
+      }
     },
     {
       "names": [
         "--old-line-format"
       ],
       "description": "Format old input lines with LFTM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LFTM",
+        "description": "%L  contents of line\n%l  contents of line, excluding any trailing newline\n%[-][WIDTH][.[PREC]]{doxX}n  printf-style spec for input line number\n%%  %\n%c'C'  the single character C\n%c'OOO'  the characte"
+      }
     },
     {
       "names": [
         "--new-line-format"
       ],
       "description": "Format new input lines with LFTM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LFTM",
+        "description": "%L  contents of line\n%l  contents of line, excluding any trailing newline\n%[-][WIDTH][.[PREC]]{doxX}n  printf-style spec for input line number\n%%  %\n%c'C'  the single character C\n%c'OOO'  the characte"
+      }
     },
     {
       "names": [
         "--unchanged-line-format"
       ],
       "description": "Format unchanged input lines with LFTM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LFTM",
+        "description": "%L  contents of line\n%l  contents of line, excluding any trailing newline\n%[-][WIDTH][.[PREC]]{doxX}n  printf-style spec for input line number\n%%  %\n%c'C'  the single character C\n%c'OOO'  the characte"
+      }
     }
   ],
   "args": [

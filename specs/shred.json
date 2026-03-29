@@ -15,14 +15,30 @@
         "-n"
       ],
       "description": "Overwrite N times instead of the default (3)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N",
+        "suggestions": [
+          "3",
+          "5",
+          "7"
+        ]
+      }
     },
     {
       "names": [
         "--random-source"
       ],
       "description": "Get random bytes from FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "suggestions": [
+          "/dev/urandom",
+          "/dev/random"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -30,14 +46,31 @@
         "-s"
       ],
       "description": "Shred this many bytes (suffixes like K, M, G accepted)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N",
+        "suggestions": [
+          "1K",
+          "1M",
+          "1G"
+        ]
+      }
     },
     {
       "names": [
         "--remove"
       ],
       "description": "Like -u but give control on HOW to delete",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "HOW",
+        "description": "'unlink' => use a standard unlink call, 'wipe' => also first obfuscate bytes in the name, 'wipesync' => also sync each obfuscated byte to the device",
+        "suggestions": [
+          "unlink",
+          "wipe",
+          "wipesync"
+        ]
+      }
     },
     {
       "names": [

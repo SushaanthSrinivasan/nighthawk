@@ -13,35 +13,53 @@
         "-E"
       ],
       "description": "Use this string as a logical EOF marker",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "eof-str",
+        "description": "The string to use that marks EOF"
+      }
     },
     {
       "names": [
         "-I"
       ],
       "description": "Replace occurrences of this string with the input",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "replacement-str",
+        "description": "The string to replace"
+      }
     },
     {
       "names": [
         "-J"
       ],
       "description": "Replace an argument exactly equal to this string with the input",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "replacement-str",
+        "description": "The string to replace"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Run the program each time this many lines of input are read",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "-n"
       ],
       "description": "The maximum number of arguments that can be taken from stdin on each run",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -54,7 +72,10 @@
         "-P"
       ],
       "description": "Run up to this many commands in parallel (as many as possible if 0)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "max-procs"
+      }
     },
     {
       "names": [
@@ -73,21 +94,30 @@
         "-R"
       ],
       "description": "Specify the maximum number of occurrences that -I will replace",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "-S"
       ],
       "description": "Specify the maximum size in bytes that -I can use for replacements (default: 255)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "replacement-size"
+      }
     },
     {
       "names": [
         "-s"
       ],
       "description": "Maximum number of bytes that can be provided to the program (default: 4096)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "max-args-size"
+      }
     },
     {
       "names": [

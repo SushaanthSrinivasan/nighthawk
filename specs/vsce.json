@@ -23,14 +23,23 @@
             "--packagedDependencies"
           ],
           "description": "Select packages that should be published only (includes dependencies)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--ignoreFile"
           ],
           "description": "Indicate alternative .vscodeignore",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -50,7 +59,10 @@
             "--out"
           ],
           "description": "Output .vsix extension file to <path> location (defaults to <name>-<version>.vsix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
@@ -58,7 +70,23 @@
             "--target"
           ],
           "description": "Target architecture",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target",
+            "is_variadic": true,
+            "suggestions": [
+              "win32-x64",
+              "win32-ia32",
+              "win32-arm64",
+              "linux-x64",
+              "linux-arm64",
+              "linux-armhf",
+              "alpine-x64",
+              "alpine-arm64",
+              "darwin-x64",
+              "darwin-arm64"
+            ]
+          }
         },
         {
           "names": [
@@ -66,7 +94,10 @@
             "--message"
           ],
           "description": "Commit message used when calling `npm version`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit message"
+          }
         },
         {
           "names": [
@@ -85,14 +116,20 @@
             "--githubBranch"
           ],
           "description": "The GitHub branch used to infer relative links in README.md. Can be overridden by --baseContentUrl and --baseImagesUrl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
             "--gitlabBranch"
           ],
           "description": "The GitLab branch used to infer relative links in README.md. Can be overridden by --baseContentUrl and --baseImagesUrl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
@@ -105,14 +142,20 @@
             "--baseContentUrl"
           ],
           "description": "Prepend all relative links in README.md with this url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
             "--baseImagesUrl"
           ],
           "description": "Prepend all relative image links in README.md with this url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -131,7 +174,11 @@
             "--ignoreFile"
           ],
           "description": "Indicate alternative .vscodeignore",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -169,7 +216,10 @@
             "--pat"
           ],
           "description": "Personal Access Token (defaults to VSCE_PAT environment variable)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [
@@ -177,7 +227,23 @@
             "--target"
           ],
           "description": "Target architecture",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target",
+            "is_variadic": true,
+            "suggestions": [
+              "win32-x64",
+              "win32-ia32",
+              "win32-arm64",
+              "linux-x64",
+              "linux-arm64",
+              "linux-armhf",
+              "alpine-x64",
+              "alpine-arm64",
+              "darwin-x64",
+              "darwin-arm64"
+            ]
+          }
         },
         {
           "names": [
@@ -185,7 +251,10 @@
             "--message"
           ],
           "description": "Commit message used when calling `npm version`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit message"
+          }
         },
         {
           "names": [
@@ -205,35 +274,51 @@
             "--packagePath"
           ],
           "description": "Publish the provided VSIX packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paths",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--githubBranch"
           ],
           "description": "The GitHub branch used to infer relative links in README.md. Can be overridden by --baseContentUrl and --baseImagesUrl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
             "--gitlabBranch"
           ],
           "description": "The GitLab branch used to infer relative links in README.md. Can be overridden by --baseContentUrl and --baseImagesUrl",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
             "--baseContentUrl"
           ],
           "description": "Prepend all relative links in README.md with this url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
             "--baseImagesUrl"
           ],
           "description": "Prepend all relative image links in README.md with this url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -257,7 +342,11 @@
             "--ignoreFile"
           ],
           "description": "Indicate alternative .vscodeignore",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -283,7 +372,10 @@
             "--pat"
           ],
           "description": "Personal Access Token",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [
@@ -335,7 +427,10 @@
             "--pat"
           ],
           "description": "Personal Access Token (defaults to VSCE_PAT environment variable)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         }
       ],
       "args": [

@@ -12,7 +12,10 @@
             "---artifact-id"
           ],
           "description": "Project coordinates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Name"
+          }
         },
         {
           "names": [
@@ -20,14 +23,24 @@
             "--boot-version"
           ],
           "description": "Spring Boot version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Version"
+          }
         },
         {
           "names": [
             "--build"
           ],
           "description": "Build system to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "System",
+            "suggestions": [
+              "maven",
+              "gradle"
+            ]
+          }
         },
         {
           "names": [
@@ -35,14 +48,21 @@
             "--dependencies"
           ],
           "description": "Comma-separated list of dependency identifiers to include in the generated project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Dependencies",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--description"
           ],
           "description": "Project description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "description"
+          }
         },
         {
           "names": [
@@ -56,7 +76,14 @@
             "--format"
           ],
           "description": "Format of the generated content",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Format",
+            "suggestions": [
+              "build",
+              "project"
+            ]
+          }
         },
         {
           "names": [
@@ -64,7 +91,10 @@
             "--group-id"
           ],
           "description": "Project coordinates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Group ID"
+          }
         },
         {
           "names": [
@@ -72,7 +102,10 @@
             "--java-version"
           ],
           "description": "Language level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Version"
+          }
         },
         {
           "names": [
@@ -86,7 +119,10 @@
             "--name"
           ],
           "description": "Project name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Name"
+          }
         },
         {
           "names": [
@@ -94,14 +130,24 @@
             "--packaging"
           ],
           "description": "Project packaging",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Packaging",
+            "suggestions": [
+              "jar",
+              "war"
+            ]
+          }
         },
         {
           "names": [
             "--package-name"
           ],
           "description": "Package name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Name"
+          }
         },
         {
           "names": [
@@ -109,14 +155,27 @@
             "--type"
           ],
           "description": "Project type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Type",
+            "suggestions": [
+              "gradle-build",
+              "gradle-project",
+              "gradle-project-kotlin",
+              "maven-build",
+              "maven-project"
+            ]
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "URL of the service to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL"
+          }
         },
         {
           "names": [
@@ -124,7 +183,10 @@
             "--version"
           ],
           "description": "Project version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Version"
+          }
         },
         {
           "names": [
@@ -145,7 +207,15 @@
             "--algorithm"
           ],
           "description": "The algorithm to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Algorithm",
+            "suggestions": [
+              "default",
+              "bcrypt",
+              "pbkdf2"
+            ]
+          }
         }
       ],
       "args": [

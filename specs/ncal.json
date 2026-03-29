@@ -31,14 +31,35 @@
         "-m"
       ],
       "description": "Display the specified month.  If month is specified as a decimal number, it may be followed by the letter ‘f’ or ‘p’ to indicate the following or preceding month of that number, respectively",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "month",
+        "description": "Display the specified month.  If month is specified as a decimal number, it may be followed by the letter ‘f’ or ‘p’ to indicate the following or preceding month of that number, respectively",
+        "suggestions": [
+          "january",
+          "february",
+          "march",
+          "april",
+          "may",
+          "june",
+          "july",
+          "august",
+          "september",
+          "october",
+          "november",
+          "december"
+        ]
+      }
     },
     {
       "names": [
         "-y"
       ],
       "description": "Display a calendar for the specified year",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "year"
+      }
     },
     {
       "names": [
@@ -57,7 +78,47 @@
         "-s"
       ],
       "description": "Assume the switch from Julian to Gregorian Calendar at the date associated with the country_code.  If not specified, ncal tries to guess the switch date from the local environment or falls back to Sep",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "country_code",
+        "suggestions": [
+          "AL",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "CA",
+          "CH",
+          "CN",
+          "CZ",
+          "DE",
+          "DK",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "HU",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LN",
+          "LU",
+          "LV",
+          "NL",
+          "NO",
+          "PL",
+          "PT",
+          "RO",
+          "RU",
+          "SI",
+          "SW",
+          "TR",
+          "US",
+          "YU"
+        ]
+      }
     },
     {
       "names": [
@@ -76,14 +137,22 @@
         "-A"
       ],
       "description": "Display the number of months after the current month",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "description": "Number of months to display"
+      }
     },
     {
       "names": [
         "-B"
       ],
       "description": "Display the number of months before the current month",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "description": "Number of months to display"
+      }
     },
     {
       "names": [
@@ -102,14 +171,22 @@
         "-d"
       ],
       "description": "Use yyyy-mm as the current date (for debugging of date selection)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "yyyy-mm",
+        "description": "Date to use as the current date"
+      }
     },
     {
       "names": [
         "-H"
       ],
       "description": "Use yyyy-mm-dd as the current date (for debugging of highlighting)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "yyyy-mm-dd",
+        "description": "Date to use as the current date"
+      }
     }
   ]
 }

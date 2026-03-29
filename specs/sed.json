@@ -227,28 +227,41 @@
         "-e"
       ],
       "description": "Appends the editing commands specified by the command argument to the list of commands",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
         "-f"
       ],
       "description": "Appends the editing commands found in the file command_file to the list of commands. The editing commands should each be listed on a separate line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command_file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-I"
       ],
       "description": "Edits files in-place, saving backups with the specified extension.  If a zero-length extension is given, no backup will be saved",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension"
+      }
     },
     {
       "names": [
         "-i"
       ],
       "description": "Edits files in-place similarly to `-I`, but treats each file independently from other files.  In particular, line numbers in each file start at 1, the ``$'' address matches the last line of the curren",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension"
+      }
     },
     {
       "names": [

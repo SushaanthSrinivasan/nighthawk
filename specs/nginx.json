@@ -7,28 +7,45 @@
         "-c"
       ],
       "description": "Use an alternative configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-e"
       ],
       "description": "Use an alternative error log file.  Special value stderr indicates that the standard error output should be used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "suggestions": [
+          "stderr"
+        ]
+      }
     },
     {
       "names": [
         "-g"
       ],
       "description": "Set global configuration directives",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directives",
+        "description": "For all directives visit https://nginx.org/en/docs/dirindex.html"
+      }
     },
     {
       "names": [
         "-p"
       ],
       "description": "Set the prefix path.  The default value is %%PREFIX%%",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix"
+      }
     },
     {
       "names": [
@@ -72,7 +89,16 @@
         "-s"
       ],
       "description": "Send a signal to the master process.  The argument signal can be one of: stop, quit, reopen, reload",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "signal",
+        "suggestions": [
+          "stop",
+          "quit",
+          "reopen",
+          "reload"
+        ]
+      }
     }
   ],
   "args": [

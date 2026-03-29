@@ -17,21 +17,32 @@
             "--config"
           ],
           "description": "Create the configuration files in the specified directory instead of in the review/ directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "<path-to-review-directory>",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--template"
           ],
           "description": "Copy the review configuration from a GitHub repository, at the root or in a folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "<author>/<repo>[/path-to-the-config-folder][#branch-or-commit]"
+          }
         },
         {
           "names": [
             "--compiler"
           ],
           "description": "Specify the path to the elm compiler",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "<path-to-elm>",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -63,7 +74,11 @@
             "--unsuppress-rules"
           ],
           "description": "Include suppressed errors in the error report for all rules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "<rule1,rule2,...>",
+            "is_variadic": true
+          }
         }
       ]
     },
@@ -83,7 +98,11 @@
             "--compiler"
           ],
           "description": "Specify the path to the elm compiler",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "<path-to-elm>",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -126,7 +145,12 @@
         "--rules"
       ],
       "description": "Run with a subsection of the rules in the configuration. Specify them by their name, and separate them by commas",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<rule1,rule2,...>",
+        "description": "Run with a subsection of the rules in the configuration",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -145,28 +169,43 @@
         "--elmjson"
       ],
       "description": "Specify the path to the elm.json file of the project",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<path-to-elm.json>",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Use the review configuration in the specified directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<path-to-review-directory>",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--template"
       ],
       "description": "Use the review configuration from a GitHub repository",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<author>/<repo>[/path-to-the-config-folder][#branch-or-commit]"
+      }
     },
     {
       "names": [
         "--compiler"
       ],
       "description": "Specify the path to the elm compiler",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<path-to-elm>",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -186,7 +225,14 @@
         "--report"
       ],
       "description": "Error reports will be in JSON format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "json or ndjson",
+        "suggestions": [
+          "json",
+          "ndjson"
+        ]
+      }
     },
     {
       "names": [
@@ -199,14 +245,24 @@
         "--ignore-dirs"
       ],
       "description": "Ignore the reports of all rules for the specified directories",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<dir1,dir2,...>",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--ignore-files"
       ],
       "description": "Ignore the reports of all rules for the specified files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<file1,file2,...>",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -225,14 +281,22 @@
         "--elm-format-path"
       ],
       "description": "Specify the path to elm-format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<path-to-elm-format>",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--fix-limit"
       ],
       "description": "Limit the number of fixes applied in a single batch to N",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N",
+        "description": "The number of fixes to apply before prompting the user"
+      }
     },
     {
       "names": [

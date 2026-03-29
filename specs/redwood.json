@@ -12,7 +12,11 @@
             "--fwd"
           ],
           "description": "String of one or more Webpack Dev Server config options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "options",
+            "description": "Options to pass to Webpack Dev Server"
+          }
         }
       ],
       "args": [
@@ -39,7 +43,15 @@
                 "--side"
               ],
               "description": "Show help for command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "side",
+                "description": "Which side(s) to deploy",
+                "suggestions": [
+                  "api",
+                  "web"
+                ]
+              }
             }
           ],
           "args": [
@@ -670,7 +682,15 @@
             "-t"
           ],
           "description": "Choices are \"canary\", \"rc\", or a specific version (e.g. \"0.19.3\"). WARNING: Unstable releases in the case of \"canary\" and \"rc\", which will force upgrade packages to the most recent release of the spec",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag",
+            "description": "Tag to use for upgrade",
+            "suggestions": [
+              "canary",
+              "rc"
+            ]
+          }
         },
         {
           "names": [
@@ -689,28 +709,45 @@
             "--port"
           ],
           "description": "What port should the server run on [default: 8911]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Port to run the server on"
+          }
         },
         {
           "names": [
             "--socket"
           ],
           "description": "The socket the server should run. This takes precedence over port",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "socket",
+            "description": "Socket to run the server on"
+          }
         },
         {
           "names": [
             "--apiRootPath"
           ],
           "description": "The root path where your api functions are served",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "apiRootPath",
+            "description": "Root path for the api",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--apiHost"
           ],
           "description": "Forwards requests from the apiProxyPath (defined in redwood.toml) to the specified host",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "apiHost",
+            "description": "Host to forward requests to"
+          }
         }
       ],
       "args": [
@@ -821,7 +858,11 @@
             "--port"
           ],
           "description": "Which port to run Storybook on (defaults to 7910)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Port to run Storybook on"
+          }
         }
       ]
     },
@@ -926,7 +967,15 @@
                 "-d"
               ],
               "description": "Database deployment for Render only  [default: \"postgresql\"]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "database",
+                "suggestions": [
+                  "none",
+                  "postgresql",
+                  "sqlite"
+                ]
+              }
             },
             {
               "names": [
@@ -988,14 +1037,29 @@
                 "--datasource-provider"
               ],
               "description": "Define the datasource provider to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "description": "Choose provider",
+                "suggestions": [
+                  "PostgreSQL",
+                  "MySQL",
+                  "SQLite",
+                  "SQLServer",
+                  "MongoDB",
+                  "CockroachDB"
+                ]
+              }
             },
             {
               "names": [
                 "--url"
               ],
               "description": "Define a custom datasource url",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "full url",
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -1015,7 +1079,11 @@
                 "--schema"
               ],
               "description": "Custom path to your Prisma schema",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Schema path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1065,7 +1133,11 @@
                 "--schema"
               ],
               "description": "Custom path to your Prisma schema",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Schema path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1073,7 +1145,10 @@
                 "--port"
               ],
               "description": "Port to start Studio on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
@@ -1081,7 +1156,16 @@
                 "--browser"
               ],
               "description": "Browser to open Studio in",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Browser choice",
+                "suggestions": [
+                  "firefox",
+                  "chrome",
+                  "safari",
+                  "none"
+                ]
+              }
             },
             {
               "names": [
@@ -1089,7 +1173,10 @@
                 "--hostname"
               ],
               "description": "Hostname to bind the Express server to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             }
           ]
         },
@@ -1109,7 +1196,11 @@
                 "--schema"
               ],
               "description": "Custom path to your Prisma schema",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Schema path",
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -1133,7 +1224,11 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1159,7 +1254,10 @@
                     "--name"
                   ],
                   "description": "The name of the migration. If no name is provided, the CLI will prompt you",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "filename"
+                  }
                 }
               ]
             },
@@ -1179,7 +1277,11 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1218,7 +1320,11 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             },
@@ -1238,21 +1344,33 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--applied"
                   ],
                   "description": "Record a specific migration as applied",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "migration file path",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--rolled-back"
                   ],
                   "description": "Record a specific migration as rolled back",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "migration file path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             },
@@ -1272,7 +1390,11 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             },
@@ -1292,14 +1414,22 @@
                     "--from-url"
                   ],
                   "description": "A datasource url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "full url",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--to-url"
                   ],
                   "description": "A datasource url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "full url",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1318,56 +1448,88 @@
                     "--from-schema-datamodel"
                   ],
                   "description": "Path to a Prisma schema file, uses the 'datamodel' for the diff",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "filepath",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--to-schema-datamodel"
                   ],
                   "description": "Path to a Prisma schema file, uses the 'datamodel' for the diff",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "filepath",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--from-schema-datasource"
                   ],
                   "description": "Path to a Prisma schema file, uses the 'datasource url' for the diff",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "filepath",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--to-schema-datasource"
                   ],
                   "description": "Path to a Prisma schema file, uses the 'datasource url' for the diff",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "filepath",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--from-migrations"
                   ],
                   "description": "Path to the Prisma Migrate migrations directory",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "folder",
+                    "template": "folders"
+                  }
                 },
                 {
                   "names": [
                     "--to-migrations"
                   ],
                   "description": "Path to the Prisma Migrate migrations directory",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "folder",
+                    "template": "folders"
+                  }
                 },
                 {
                   "names": [
                     "--shadow-database-url"
                   ],
                   "description": "URL for the shadow database. Only required if using --from-migrations or --to-migrations",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "full url",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--script"
                   ],
                   "description": "Render a SQL script to stdout instead of the default human readable summary (not supported on MongoDB)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "filepath",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1398,7 +1560,11 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1417,14 +1583,21 @@
                     "--url"
                   ],
                   "description": "The datasource url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "full url",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--composite-type-depth"
                   ],
                   "description": "Specify the depth for introspecting composite types (e.g. Embedded Documents in MongoDB). Number, default is -1 for infinite depth, 0 = off",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "number"
+                  }
                 }
               ]
             },
@@ -1444,7 +1617,11 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1482,7 +1659,11 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             },
@@ -1502,21 +1683,33 @@
                     "--schema"
                   ],
                   "description": "Custom path to your Prisma schema",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "Schema path",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--url"
                   ],
                   "description": "The datasource url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "full url",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--file"
                   ],
                   "description": "Path to a file. The content will be sent as the script to be executed",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "filepath",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [

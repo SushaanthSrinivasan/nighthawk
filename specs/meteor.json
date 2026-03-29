@@ -53,21 +53,30 @@
             "-p"
           ],
           "description": "Port to listen on (instead of the default 3000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Enable server-side debugging via debugging clients like the Node.js command-line debugger, Chrome DevTools, or Visual Studio Code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Enable server-side debugging via debugging clients like the Node.js command-line debugger, Chrome DevTools, or Visual Studio Code. The server will be paused at startup, waiting for clients to attach t",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -80,7 +89,10 @@
             "--cordova-server-port"
           ],
           "description": "Local port where Cordova will serve the content. It's important when multiple Cordova apps are build from the same Meteor app source code as by default the port is generated using the id inside .meteo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -100,14 +112,20 @@
             "-s"
           ],
           "description": "Set optional data for Meteor.settings on the server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "JSON File"
+          }
         },
         {
           "names": [
             "--release"
           ],
           "description": "Specify the release of Meteor to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release"
+          }
         },
         {
           "names": [
@@ -138,14 +156,20 @@
             "--extra-packages"
           ],
           "description": "Run with additional packages (comma separated, for example: --extra-packages \"package-name1, package-name2@1.2.3\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "packages"
+          }
         },
         {
           "names": [
             "--exclude-archs"
           ],
           "description": "Don't create bundles for certain web architectures (comma separated, for example: --exclude-archs \"web.browser.legacy, web.cordova\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "architectures"
+          }
         }
       ]
     },
@@ -162,21 +186,30 @@
             "--release"
           ],
           "description": "Specify the release of Meteor to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release"
+          }
         },
         {
           "names": [
             "--package"
           ],
           "description": "Create a new meteor package instead of an app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package_name"
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Example template to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example_name"
+          }
         },
         {
           "names": [
@@ -272,7 +305,10 @@
             "--release"
           ],
           "description": "Update to a specific release of meteor",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release"
+          }
         },
         {
           "names": [
@@ -420,7 +456,17 @@
             "--architecture"
           ],
           "description": "Builds the server for a different architecture than your developer machine's architecture. Note: This option selects the architecture of the binary-dependent Atmosphere packages you would like bundled",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arch",
+            "suggestions": [
+              "os.osx.x86_64",
+              "os.linux.x86_64",
+              "os.linux.x86_32",
+              "os.windows.x86_32",
+              "os.windows.x86_64"
+            ]
+          }
         },
         {
           "names": [
@@ -433,14 +479,25 @@
             "--platforms"
           ],
           "description": "Builds only the specified platforms (when available)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platforms",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--packageType"
           ],
           "description": "Choose between apk/bundle for android builds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package-type",
+            "suggestions": [
+              "apk",
+              "bundle"
+            ]
+          }
         }
       ],
       "args": [
@@ -476,7 +533,10 @@
             "-U"
           ],
           "description": "Mongo database URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         }
       ]
     },
@@ -507,7 +567,10 @@
             "-s"
           ],
           "description": "Set optional data for Meteor.settings",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "JSON File"
+          }
         },
         {
           "names": [
@@ -520,7 +583,11 @@
             "--deploy-polling-timeout"
           ],
           "description": "The number of milliseconds to wait for build/deploy success or failure after a successful upload of your app's minified code; defaults to 15 minutes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds",
+            "description": "Milliseconds to wait"
+          }
         },
         {
           "names": [
@@ -551,14 +618,33 @@
             "--mongo"
           ],
           "description": "If this flag is true and it's not provided a mongo url in the settings ('galaxy.meteor.com'.env.MONGO_URL), when deploying, Galaxy will create a database to your app in its shared cluster and will ins",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true/false",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--container-size"
           ],
           "description": "Change your app's container size using the deploy command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "size",
+            "suggestions": [
+              "tiny",
+              "compact",
+              "standard",
+              "double",
+              "quad",
+              "octa",
+              "dozen"
+            ]
+          }
         }
       ],
       "args": [
@@ -612,7 +698,10 @@
             "--email"
           ],
           "description": "Add an authorized user or organization",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "email"
+          }
         }
       ]
     },
@@ -633,7 +722,10 @@
             "--release"
           ],
           "description": "Specify the release of Meteor to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release"
+          }
         },
         {
           "names": [
@@ -641,21 +733,30 @@
             "-p"
           ],
           "description": "Port to listen on (instead of the default 3000). Also uses port N+1 and N+2",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Enable server-side debugging via debugging clients like the Node.js command-line debugger, Chrome DevTools, or Visual Studio Code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Enable server-side debugging via debugging clients like the Node.js command-line debugger, Chrome DevTools, or Visual Studio Code. The server will be paused at startup, waiting for clients to attach t",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -668,7 +769,10 @@
             "--cordova-server-port"
           ],
           "description": "Local port where Cordova will serve the content. It's important when multiple Cordova apps are build from the same Meteor app source code as by default the port is generated using the id inside .meteo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -682,7 +786,10 @@
             "-s"
           ],
           "description": "Set optional data for Meteor.settings on the server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "JSON File"
+          }
         },
         {
           "names": [
@@ -713,7 +820,11 @@
             "--test-app-path"
           ],
           "description": "Set the directory in which to create a temporary app used for tests. Defaults to the system's temporary directory, usually /tmp",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -732,14 +843,20 @@
             "--extra-packages"
           ],
           "description": "Run with additional packages (comma separated, for example: --extra-packages \"package-name1, package-name2@1.2.3\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "packages"
+          }
         },
         {
           "names": [
             "--driver-package"
           ],
           "description": "Test driver package to use to run tests and display results. For example: --driver-package meteortesting:mocha",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "driver-package"
+          }
         },
         {
           "names": [
@@ -758,7 +875,10 @@
             "--full-app"
           ],
           "description": "Your app is loaded as usual, then hidden, so that your tests can inspect and interact with the full running application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -766,21 +886,30 @@
             "-p"
           ],
           "description": "Port to listen on (instead of the default 3000). Also uses port N+1 and N+2",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Enable server-side debugging via debugging clients like the Node.js command-line debugger, Chrome DevTools, or Visual Studio Code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Enable server-side debugging via debugging clients like the Node.js command-line debugger, Chrome DevTools, or Visual Studio Code. The server will be paused at startup, waiting for clients to attach t",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -793,7 +922,10 @@
             "--cordova-server-port"
           ],
           "description": "Local port where Cordova will serve the content. It's important when multiple Cordova apps are build from the same Meteor app source code as by default the port is generated using the id inside .meteo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -807,7 +939,10 @@
             "-s"
           ],
           "description": "Set optional data for Meteor.settings on the server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "JSON File"
+          }
         },
         {
           "names": [
@@ -838,7 +973,11 @@
             "--test-app-path"
           ],
           "description": "Set the directory in which to create a temporary app used for tests. Defaults to the system's temporary directory, usually /tmp",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -851,21 +990,30 @@
             "--extra-packages"
           ],
           "description": "Run with additional packages (comma separated, for example: --extra-packages \"package-name1, package-name2@1.2.3\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "packages"
+          }
         },
         {
           "names": [
             "--driver-package"
           ],
           "description": "Test driver package to use to run tests and display results. For example: --driver-package meteortesting:mocha",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "driver-package"
+          }
         },
         {
           "names": [
             "--exclude-archs"
           ],
           "description": "Don't create bundles for certain web architectures (comma separated, for example: --exclude-archs \"web.browser.legacy, web.cordova\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "architectures"
+          }
         }
       ]
     },
@@ -882,14 +1030,20 @@
                 "--add"
               ],
               "description": "Add an authorized maintainer to a package",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
                 "--remove"
               ],
               "description": "Remove an authorized maintainer from a package. You cannot remove yourself if you are the last maintainer on a package",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
@@ -938,14 +1092,20 @@
                 "--add"
               ],
               "description": "Add a member to the organization",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
                 "--remove"
               ],
               "description": "Remove a member to the organization",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
@@ -1036,7 +1196,10 @@
             "--maintainer"
           ],
           "description": "Filter by authorized maintainer",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "maintainer_name"
+          }
         },
         {
           "names": [

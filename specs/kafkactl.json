@@ -19,7 +19,10 @@
                 "-r"
               ],
               "description": "Set replicas for a partition",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "replicas"
+              }
             },
             {
               "names": [
@@ -40,7 +43,10 @@
                 "-c"
               ],
               "description": "Configs in format `key=value`",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
@@ -48,7 +54,10 @@
                 "-p"
               ],
               "description": "Number of partitions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "partitions"
+              }
             },
             {
               "names": [
@@ -56,7 +65,10 @@
                 "-r"
               ],
               "description": "Replication factor",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "replication-factor"
+              }
             },
             {
               "names": [
@@ -118,7 +130,10 @@
                 "-o"
               ],
               "description": "Output format. One of: compact",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             }
           ]
         },
@@ -159,35 +174,50 @@
             "-g"
           ],
           "description": "Consumer group to join",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group"
+          }
         },
         {
           "names": [
             "--key-encoding"
           ],
           "description": "Key encoding (auto-detected by default). One of: none|hex|base64",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-encoding"
+          }
         },
         {
           "names": [
             "--key-proto-type"
           ],
           "description": "Key protobuf message type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-proto-type"
+          }
         },
         {
           "names": [
             "--max-messages"
           ],
           "description": "Stop consuming after n messages have been read",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "max-messages"
+          }
         },
         {
           "names": [
             "--offset"
           ],
           "description": "Offsets in format `partition=offset (for partitions not specified, other parameters apply)`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "offset"
+          }
         },
         {
           "names": [
@@ -195,7 +225,10 @@
             "-o"
           ],
           "description": "Output format. One of: json|yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output"
+          }
         },
         {
           "names": [
@@ -203,7 +236,10 @@
             "-p"
           ],
           "description": "Partitions to consume. The default is to consume from all partitions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "partitions"
+          }
         },
         {
           "names": [
@@ -237,21 +273,33 @@
             "--proto-file"
           ],
           "description": "Additional protobuf description file for searching message description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "proto-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--proto-import-path"
           ],
           "description": "Additional path to search files listed in proto 'import' directive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "proto-import-path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--protoset-file"
           ],
           "description": "Additional compiled protobuf description file for searching message description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "protoset-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -259,28 +307,40 @@
             "-s"
           ],
           "description": "Separator to split key and value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "separator"
+          }
         },
         {
           "names": [
             "--tail"
           ],
           "description": "Show only the last n messages on the topic",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tail"
+          }
         },
         {
           "names": [
             "--value-encoding"
           ],
           "description": "Value encoding (auto-detected by default). One of: none|hex|base64",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value-encoding"
+          }
         },
         {
           "names": [
             "--value-proto-type"
           ],
           "description": "Value protobuf message type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value-proto-type"
+          }
         }
       ]
     },
@@ -322,14 +382,20 @@
                 "-g"
               ],
               "description": "Create acl for a consumer group",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "group"
+              }
             },
             {
               "names": [
                 "--host"
               ],
               "description": "Hosts to allow",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
@@ -338,6 +404,9 @@
               ],
               "description": "Operations of acl",
               "takes_arg": true,
+              "arg": {
+                "name": "operation"
+              },
               "is_required": true
             },
             {
@@ -345,7 +414,10 @@
                 "--pattern"
               ],
               "description": "Pattern type. one of (match, prefixed, literal)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pattern"
+              }
             },
             {
               "names": [
@@ -354,6 +426,9 @@
               ],
               "description": "Principal to be authenticated",
               "takes_arg": true,
+              "arg": {
+                "name": "principal"
+              },
               "is_required": true
             },
             {
@@ -362,7 +437,10 @@
                 "-t"
               ],
               "description": "Create acl for a topic",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic"
+              }
             },
             {
               "names": [
@@ -391,7 +469,10 @@
                 "--offset"
               ],
               "description": "Set offset to this value. offset with value -1 is ignored",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "offset"
+              }
             },
             {
               "names": [
@@ -405,7 +486,10 @@
                 "-p"
               ],
               "description": "Partition to create group for. -1 stands for all partitions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "partition"
+              }
             },
             {
               "names": [
@@ -413,7 +497,10 @@
                 "-t"
               ],
               "description": "One or more topics to create group for",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic"
+              }
             }
           ]
         },
@@ -427,7 +514,10 @@
                 "-c"
               ],
               "description": "Configs in format `key=value`",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
@@ -435,7 +525,10 @@
                 "-p"
               ],
               "description": "Number of partitions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "partitions"
+              }
             },
             {
               "names": [
@@ -443,7 +536,10 @@
                 "-r"
               ],
               "description": "Replication factor",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "replication-factor"
+              }
             },
             {
               "names": [
@@ -502,6 +598,9 @@
               ],
               "description": "Operation of acl",
               "takes_arg": true,
+              "arg": {
+                "name": "operation"
+              },
               "is_required": true
             },
             {
@@ -510,6 +609,9 @@
               ],
               "description": "Pattern type. one of (any, match, prefixed, literal)",
               "takes_arg": true,
+              "arg": {
+                "name": "pattern"
+              },
               "is_required": true
             },
             {
@@ -549,7 +651,10 @@
                 "-p"
               ],
               "description": "Delete offset for this partition. -1 stands for all partitions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "partition"
+              }
             },
             {
               "names": [
@@ -557,7 +662,10 @@
                 "-t"
               ],
               "description": "Delete offset for this topic",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic"
+              }
             }
           ]
         },
@@ -581,7 +689,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             }
           ]
         },
@@ -605,7 +716,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             },
             {
               "names": [
@@ -627,7 +741,10 @@
                 "-t"
               ],
               "description": "Show group details for given topic only",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic"
+              }
             }
           ]
         },
@@ -641,7 +758,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             },
             {
               "names": [
@@ -708,7 +828,10 @@
                 "--operation"
               ],
               "description": "Operation of acl",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "operation"
+              }
             },
             {
               "names": [
@@ -716,14 +839,20 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             },
             {
               "names": [
                 "--pattern"
               ],
               "description": "Pattern type. one of (any, match, prefixed, literal)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pattern"
+              }
             },
             {
               "names": [
@@ -744,7 +873,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|compact",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             }
           ]
         },
@@ -761,7 +893,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide|compact",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             },
             {
               "names": [
@@ -769,7 +904,10 @@
                 "-t"
               ],
               "description": "Show groups for given topic only",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic"
+              }
             }
           ]
         },
@@ -783,7 +921,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide|compact",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             }
           ]
         }
@@ -799,7 +940,10 @@
             "-f"
           ],
           "description": "File to read input from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
@@ -807,7 +951,10 @@
             "-H"
           ],
           "description": "Headers in format `key:value`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "header"
+          }
         },
         {
           "names": [
@@ -815,21 +962,30 @@
             "-k"
           ],
           "description": "Key to use for all messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
             "--key-encoding"
           ],
           "description": "Key encoding (none by default). One of: none|hex|base64",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-encoding"
+          }
         },
         {
           "names": [
             "--key-proto-type"
           ],
           "description": "Key protobuf message type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-proto-type"
+          }
         },
         {
           "names": [
@@ -837,7 +993,10 @@
             "-K"
           ],
           "description": "Avro schema version that should be used for key serialization (default is latest)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-schema-version"
+          }
         },
         {
           "names": [
@@ -845,14 +1004,20 @@
             "-L"
           ],
           "description": "Separator to split multiple messages from stdin or file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lineSeparator"
+          }
         },
         {
           "names": [
             "--max-message-bytes"
           ],
           "description": "The maximum permitted size of a message (defaults to 1000000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "max-message-bytes"
+          }
         },
         {
           "names": [
@@ -866,7 +1031,10 @@
             "-p"
           ],
           "description": "Partition to produce to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "partition"
+          }
         },
         {
           "names": [
@@ -874,28 +1042,43 @@
             "-P"
           ],
           "description": "The partitioning scheme to use. Can be `murmur2`, `hash`, `hash-ref` `manual`, or `random`. (default is murmur2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "partitioner"
+          }
         },
         {
           "names": [
             "--proto-file"
           ],
           "description": "Additional protobuf description file for searching message description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "proto-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--proto-import-path"
           ],
           "description": "Additional path to search files listed in proto 'import' directive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "proto-import-path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--protoset-file"
           ],
           "description": "Additional compiled protobuf description file for searching message description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "protoset-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -903,14 +1086,20 @@
             "-r"
           ],
           "description": "Amount of messages per second to produce on the topic",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rate"
+          }
         },
         {
           "names": [
             "--required-acks"
           ],
           "description": "Required acks. One of `NoResponse`, `WaitForLocal`, `WaitForAll`. (default is WaitForLocal)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "required-acks"
+          }
         },
         {
           "names": [
@@ -918,7 +1107,10 @@
             "-S"
           ],
           "description": "Separator to split key and value from stdin or file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "separator"
+          }
         },
         {
           "names": [
@@ -933,21 +1125,30 @@
             "-v"
           ],
           "description": "Value to produce",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
             "--value-encoding"
           ],
           "description": "Value encoding (none by default). One of: none|hex|base64",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value-encoding"
+          }
         },
         {
           "names": [
             "--value-proto-type"
           ],
           "description": "Value protobuf message type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value-proto-type"
+          }
         },
         {
           "names": [
@@ -955,7 +1156,10 @@
             "-i"
           ],
           "description": "Avro schema version that should be used for value serialization (default is latest)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value-schema-version"
+          }
         }
       ]
     },
@@ -995,7 +1199,10 @@
                 "--offset"
               ],
               "description": "Set offset to this value. offset with value -1 is ignored",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "offset"
+              }
             },
             {
               "names": [
@@ -1009,7 +1216,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             },
             {
               "names": [
@@ -1017,7 +1227,10 @@
                 "-p"
               ],
               "description": "Partition to apply the offset. -1 stands for all partitions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "partition"
+              }
             },
             {
               "names": [
@@ -1025,7 +1238,10 @@
                 "-t"
               ],
               "description": "One ore more topics to change offset for",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic"
+              }
             }
           ]
         }
@@ -1256,7 +1472,11 @@
         "-C"
       ],
       "description": "Config file. one of: [$HOME/.config/kafkactl $HOME/.kafkactl $SNAP_REAL_HOME/.config/kafkactl $SNAP_DATA/kafkactl /etc/kafkactl]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config-file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

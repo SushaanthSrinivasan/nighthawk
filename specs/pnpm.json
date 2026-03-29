@@ -29,7 +29,16 @@
             "--reporter"
           ],
           "description": "Allows you to choose the reporter that will log debug info to the terminal about the installation progress",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Reporter Type",
+            "suggestions": [
+              "silent",
+              "default",
+              "append-only",
+              "ndjson"
+            ]
+          }
         },
         {
           "names": [
@@ -96,7 +105,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -149,7 +163,16 @@
             "--reporter"
           ],
           "description": "Allows you to choose the reporter that will log debug info to the terminal about the installation progress",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Reporter Type",
+            "suggestions": [
+              "silent",
+              "default",
+              "append-only",
+              "ndjson"
+            ]
+          }
         },
         {
           "names": [
@@ -263,7 +286,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -321,7 +349,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -378,7 +411,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -414,7 +452,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -507,7 +550,16 @@
             "--audit-level"
           ],
           "description": "Only print advisories with severity greater than or equal to <severity>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Audit Level",
+            "suggestions": [
+              "low",
+              "moderate",
+              "high",
+              "critical"
+            ]
+          }
         },
         {
           "names": [
@@ -592,7 +644,10 @@
             "--depth"
           ],
           "description": "Max display depth of the dependency tree.\npnpm ls --depth 0 will list direct dependencies only. pnpm ls --depth -1 will list projects only. Useful inside a workspace when used with the -r option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -619,7 +674,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -734,7 +794,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -781,7 +846,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -813,7 +883,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -844,7 +919,10 @@
             "--tag"
           ],
           "description": "Publishes the package with the given tag. By default, pnpm publish updates the latest tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "<tag>"
+          }
         },
         {
           "names": [
@@ -869,7 +947,14 @@
             "--access"
           ],
           "description": "Tells the registry whether the published package should be public or restricted",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Type",
+            "suggestions": [
+              "public",
+              "private"
+            ]
+          }
         },
         {
           "names": [
@@ -888,7 +973,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -933,7 +1023,16 @@
                 "--reporter"
               ],
               "description": "Allows you to choose the reporter that will log debug info to the terminal about the installation progress",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Reporter Type",
+                "suggestions": [
+                  "silent",
+                  "default",
+                  "append-only",
+                  "ndjson"
+                ]
+              }
             },
             {
               "names": [
@@ -1000,7 +1099,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1089,7 +1193,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1147,7 +1256,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1173,7 +1287,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1205,7 +1324,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1261,7 +1385,10 @@
                 "--depth"
               ],
               "description": "Max display depth of the dependency tree.\npnpm ls --depth 0 will list direct dependencies only. pnpm ls --depth -1 will list projects only. Useful inside a workspace when used with the -r option",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number"
+              }
             },
             {
               "names": [
@@ -1288,7 +1415,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -1403,7 +1535,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1450,7 +1587,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1482,7 +1624,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1509,7 +1656,10 @@
                 "--tag"
               ],
               "description": "Publishes the package with the given tag. By default, pnpm publish updates the latest tag",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "<tag>"
+              }
             },
             {
               "names": [
@@ -1534,7 +1684,14 @@
                 "--access"
               ],
               "description": "Tells the registry whether the published package should be public or restricted",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Type",
+                "suggestions": [
+                  "public",
+                  "private"
+                ]
+              }
             },
             {
               "names": [
@@ -1553,7 +1710,12 @@
                 "--filter"
               ],
               "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Filepath / Package",
+                "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1569,14 +1731,23 @@
             "--link-workspace-packages"
           ],
           "description": "Link locally available packages in workspaces of a monorepo into node_modules instead of re-downloading them from the registry. This emulates functionality similar to yarn workspaces.\nWhen this is set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bool or `deep`",
+            "suggestions": [
+              "dee["
+            ]
+          }
         },
         {
           "names": [
             "--workspace-concurrency"
           ],
           "description": "Set the maximum number of tasks to run simultaneously. For unlimited concurrency use Infinity",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "<number>"
+          }
         },
         {
           "names": [
@@ -1613,7 +1784,12 @@
             "--filter"
           ],
           "description": "Filtering allows you to restrict commands to specific subsets of packages.\npnpm supports a rich selector syntax for picking packages by name or by relation.\nMore details: https://pnpm.io/filtering",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Filepath / Package",
+            "description": "To only select packages under the specified directory, you may specify any absolute path, typically in POSIX format",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -1636,28 +1812,46 @@
                 "--network-concurrency"
               ],
               "description": "The maximum number of network requests to process simultaneously",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number"
+              }
             },
             {
               "names": [
                 "--protocol"
               ],
               "description": "The communication protocol used by the server. When this is set to auto, IPC is used on all systems except for Windows, which uses TCP",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Type",
+                "suggestions": [
+                  "auto",
+                  "tcp",
+                  "ipc"
+                ]
+              }
             },
             {
               "names": [
                 "--port"
               ],
               "description": "The port number to use when TCP is used for communication. If a port is specified and the protocol is set to auto, regardless of system type, the protocol is automatically set to use TCP",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port number"
+              }
             },
             {
               "names": [
                 "--store-dir"
               ],
               "description": "The directory to use for the content addressable store",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1733,7 +1927,11 @@
         "--dir"
       ],
       "description": "Run as if pnpm was started in <path> instead of the current working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -1741,7 +1939,10 @@
         "--workspace-root"
       ],
       "description": "Run as if pnpm was started in the root of the <workspace> instead of the current working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "workspace"
+      }
     },
     {
       "names": [

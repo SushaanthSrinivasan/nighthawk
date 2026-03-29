@@ -8,28 +8,45 @@
         "--config"
       ],
       "description": "Path to Oxlint JSON configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
         "--tsconfig"
       ],
       "description": "Path to tsconfig.json path for reading path aliases and project references for import plugin",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
         "--ignore-path"
       ],
       "description": "Specify the file to use as your .eslintignore",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "suggestions": [
+          ".eslintignore"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ignore-pattern"
       ],
       "description": "Specify file patterns to ignore (in addition to those in .eslintignore)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "description": "Glob pattern"
+      }
     },
     {
       "names": [
@@ -115,7 +132,11 @@
         "--deny"
       ],
       "description": "Deny a lint rule or category (enable a lint as an error)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "lint",
+        "description": "Lint rule or category"
+      }
     },
     {
       "names": [
@@ -123,7 +144,11 @@
         "--warn"
       ],
       "description": "Warn about a lint rule or category (enable a lint as a warning)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "lint",
+        "description": "Lint rule or category"
+      }
     },
     {
       "names": [
@@ -131,7 +156,11 @@
         "--allow"
       ],
       "description": "Allow a lint rule or category (suppress a lint)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "lint",
+        "description": "Lint rule or category"
+      }
     },
     {
       "names": [
@@ -156,7 +185,11 @@
         "--max-warnings"
       ],
       "description": "Exit with a non-zero code if there are more than `max` warnings",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "max",
+        "description": "The maximum number of warnings"
+      }
     },
     {
       "names": [
@@ -164,14 +197,28 @@
         "--format"
       ],
       "description": "Use a specific output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "default",
+          "json",
+          "unix",
+          "checkstyle",
+          "github"
+        ]
+      }
     },
     {
       "names": [
         "--threads"
       ],
       "description": "Number of threads to use. Set to 1 to use only 1 CPU core",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int",
+        "description": "Number of threads (positive int)"
+      }
     },
     {
       "names": [

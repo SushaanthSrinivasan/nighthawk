@@ -68,14 +68,28 @@
                 "-c",
                 "--clean"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "clean",
+                "suggestions": [
+                  "false",
+                  "true"
+                ]
+              }
             },
             {
               "names": [
                 "-s",
                 "--skip-build"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "skip-build",
+                "suggestions": [
+                  "false",
+                  "true"
+                ]
+              }
             }
           ]
         },
@@ -96,14 +110,28 @@
                 "-c",
                 "--clean"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "clean",
+                "suggestions": [
+                  "false",
+                  "true"
+                ]
+              }
             },
             {
               "names": [
                 "-s",
                 "--skip-build"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "skip-build",
+                "suggestions": [
+                  "false",
+                  "true"
+                ]
+              }
             },
             {
               "names": [
@@ -111,7 +139,10 @@
                 "--link-modules"
               ],
               "description": "Provide a comma-separated path to local Node.js modules to link. Only works on Homey Cloud",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "modules"
+              }
             }
           ]
         },
@@ -125,7 +156,15 @@
                 "--level"
               ],
               "description": "Validation level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "suggestions": [
+                  "debug",
+                  "publish",
+                  "verified"
+                ]
+              }
             }
           ]
         },
@@ -156,7 +195,10 @@
             "--path"
           ],
           "description": "Path to a Homey App directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "folders"
+          }
         }
       ]
     },
@@ -186,7 +228,10 @@
             "--id"
           ],
           "description": "ID of the Homey",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
@@ -194,7 +239,10 @@
             "--name"
           ],
           "description": "Name of the Homey",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         }
       ]
     },

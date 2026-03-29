@@ -17,7 +17,10 @@
             "--version"
           ],
           "description": "Specify a version you wish to upgrade or downgrade to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         }
       ],
       "args": [
@@ -46,42 +49,63 @@
             "--metrics"
           ],
           "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
             "--address"
           ],
           "description": "Listen address for the DNS over HTTPS proxy server. (default: \"localhost\") [$TUNNEL_DNS_ADDRESS]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "Listen on given port for the DNS over HTTPS proxy server. (default: 53) [$TUNNEL_DNS_PORT]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
             "--upstream"
           ],
           "description": "Upstream endpoint URL, you can specify multiple endpoints for redundancy. (default: \"https://1.1.1.1/dns-query\", \"https://1.0.0.1/dns-query\") (accepts multiple inputs) [$TUNNEL_DNS_UPSTREAM]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bootstrap"
           ],
           "description": "Bootstrap endpoint URL, you can specify multiple endpoints for redundancy. (default: \"https://162.159.36.1/dns-query\", \"https://162.159.46.1/dns-query\", \"https://[2606:4700:4700::1111]/dns-query\", \"ht",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--max-upstream-conns"
           ],
           "description": "Maximum concurrent connections to upstream. Setting to 0 means unlimited. (default: 5) [$TUNNEL_DNS_MAX_UPSTREAM_CONNS]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "is_variadic": true
+          }
         }
       ],
       "args": [
@@ -167,6 +191,10 @@
                 "--app"
               ],
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Url of access application"
+              },
               "is_required": true
             }
           ]
@@ -183,6 +211,10 @@
               ],
               "description": "Specify the hostname of your application",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Hostname"
+              },
               "is_required": true
             },
             {
@@ -191,6 +223,10 @@
               ],
               "description": "Specify the destination address of your SSH server",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address of SSH server"
+              },
               "is_required": true
             },
             {
@@ -201,6 +237,10 @@
               ],
               "description": "Specify the host:port to forward data to Cloudflare edge",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Host:port to forward data to Cloudflare edge"
+              },
               "is_required": true
             },
             {
@@ -210,6 +250,10 @@
               ],
               "description": "Specify an Access service token ID you wish to use. [$TUNNEL_SERVICE_TOKEN_ID]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token ID"
+              },
               "is_required": true
             },
             {
@@ -219,6 +263,10 @@
               ],
               "description": "Specify an Access service token secret you wish to use. [$TUNNEL_SERVICE_TOKEN_SECRET]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token secret"
+              },
               "is_required": true
             },
             {
@@ -228,6 +276,11 @@
               ],
               "description": "Save application log to this directory for reporting issues",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "template": "folders"
+              },
               "is_required": true
             },
             {
@@ -237,6 +290,17 @@
               ],
               "description": "Application logging level {debug, info, warn, error, fatal}",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              },
               "is_required": true
             }
           ]
@@ -253,6 +317,10 @@
               ],
               "description": "Specify the hostname of your application",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Hostname"
+              },
               "is_required": true
             },
             {
@@ -261,6 +329,10 @@
               ],
               "description": "Specify the destination address of your SSH server",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address of SSH server"
+              },
               "is_required": true
             },
             {
@@ -271,6 +343,10 @@
               ],
               "description": "Specify the host:port to forward data to Cloudflare edge",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Host:port to forward data to Cloudflare edge"
+              },
               "is_required": true
             },
             {
@@ -280,6 +356,10 @@
               ],
               "description": "Specify an Access service token ID you wish to use. [$TUNNEL_SERVICE_TOKEN_ID]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token ID"
+              },
               "is_required": true
             },
             {
@@ -289,6 +369,10 @@
               ],
               "description": "Specify an Access service token secret you wish to use. [$TUNNEL_SERVICE_TOKEN_SECRET]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token secret"
+              },
               "is_required": true
             },
             {
@@ -298,6 +382,11 @@
               ],
               "description": "Save application log to this directory for reporting issues",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "template": "folders"
+              },
               "is_required": true
             },
             {
@@ -307,6 +396,17 @@
               ],
               "description": "Application logging level {debug, info, warn, error, fatal}",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              },
               "is_required": true
             }
           ]
@@ -323,6 +423,10 @@
               ],
               "description": "Specify the hostname of your application",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Hostname"
+              },
               "is_required": true
             },
             {
@@ -331,6 +435,10 @@
               ],
               "description": "Specify the destination address of your SSH server",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address of SSH server"
+              },
               "is_required": true
             },
             {
@@ -341,6 +449,10 @@
               ],
               "description": "Specify the host:port to forward data to Cloudflare edge",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Host:port to forward data to Cloudflare edge"
+              },
               "is_required": true
             },
             {
@@ -350,6 +462,10 @@
               ],
               "description": "Specify an Access service token ID you wish to use. [$TUNNEL_SERVICE_TOKEN_ID]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token ID"
+              },
               "is_required": true
             },
             {
@@ -359,6 +475,10 @@
               ],
               "description": "Specify an Access service token secret you wish to use. [$TUNNEL_SERVICE_TOKEN_SECRET]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token secret"
+              },
               "is_required": true
             },
             {
@@ -368,6 +488,11 @@
               ],
               "description": "Save application log to this directory for reporting issues",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "template": "folders"
+              },
               "is_required": true
             },
             {
@@ -377,6 +502,17 @@
               ],
               "description": "Application logging level {debug, info, warn, error, fatal}",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              },
               "is_required": true
             }
           ]
@@ -393,6 +529,10 @@
               ],
               "description": "Specify the hostname of your application",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Hostname"
+              },
               "is_required": true
             },
             {
@@ -401,6 +541,10 @@
               ],
               "description": "Specify the destination address of your SSH server",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address of SSH server"
+              },
               "is_required": true
             },
             {
@@ -411,6 +555,10 @@
               ],
               "description": "Specify the host:port to forward data to Cloudflare edge",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Host:port to forward data to Cloudflare edge"
+              },
               "is_required": true
             },
             {
@@ -420,6 +568,10 @@
               ],
               "description": "Specify an Access service token ID you wish to use. [$TUNNEL_SERVICE_TOKEN_ID]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token ID"
+              },
               "is_required": true
             },
             {
@@ -429,6 +581,10 @@
               ],
               "description": "Specify an Access service token secret you wish to use. [$TUNNEL_SERVICE_TOKEN_SECRET]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Access service token secret"
+              },
               "is_required": true
             },
             {
@@ -438,6 +594,11 @@
               ],
               "description": "Save application log to this directory for reporting issues",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "template": "folders"
+              },
               "is_required": true
             },
             {
@@ -447,6 +608,17 @@
               ],
               "description": "Application logging level {debug, info, warn, error, fatal}",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              },
               "is_required": true
             }
           ]
@@ -461,6 +633,10 @@
               ],
               "description": "Specify the hostname of your application",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Hostname"
+              },
               "is_required": true
             },
             {
@@ -490,6 +666,10 @@
               ],
               "description": "Specify the hostname of your application",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Hostname"
+              },
               "is_required": true
             }
           ],
@@ -539,6 +719,10 @@
               ],
               "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Config file"
+              },
               "is_required": true
             },
             {
@@ -547,6 +731,10 @@
               ],
               "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Certificate generated"
+              },
               "is_required": true
             },
             {
@@ -555,6 +743,10 @@
               ],
               "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Frequency"
+              },
               "is_required": true
             },
             {
@@ -569,6 +761,10 @@
               ],
               "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Adress"
+              },
               "is_required": true
             },
             {
@@ -577,6 +773,10 @@
               ],
               "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Application PID"
+              },
               "is_required": true
             },
             {
@@ -585,6 +785,17 @@
               ],
               "description": "Application logging level {debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. This can e",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              },
               "is_required": true
             },
             {
@@ -594,6 +805,17 @@
               ],
               "description": "Transport logging level(previously called protocol logging level) {debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              },
               "is_required": true
             },
             {
@@ -602,6 +824,11 @@
               ],
               "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              },
               "is_required": true
             },
             {
@@ -610,6 +837,11 @@
               ],
               "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Directory",
+                "template": "folders"
+              },
               "is_required": true
             },
             {
@@ -618,6 +850,10 @@
               ],
               "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
               "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Output file"
+              },
               "is_required": true
             },
             {
@@ -626,7 +862,15 @@
                 "-o"
               ],
               "description": "Render output using given FORMAT. Valid options are 'json' or 'yaml'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "description": "Format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -634,7 +878,12 @@
                 "--cred-file"
               ],
               "description": "Filepath at which to read/write the tunnel credentials [$TUNNEL_CRED_FILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Filepath",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -642,7 +891,11 @@
                 "-s"
               ],
               "description": "Base64 encoded secret to set for the tunnel. The decoded secret must be at least 32 bytes long. If not specified, a random 32-byte secret will be generated. [$TUNNEL_CREATE_SECRET]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Base 64 encoded secret"
+              }
             }
           ],
           "args": [
@@ -710,7 +963,11 @@
                         "--vn"
                       ],
                       "description": "The ID or name of the virtual network to which the route is associated to",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Id or name"
+                      }
                     }
                   ],
                   "args": [
@@ -735,14 +992,22 @@
                         "--filter-is-deleted"
                       ],
                       "description": "If false (default), only show non-deleted routes. If true, only show deleted routes. (default: false)",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Id or name"
+                      }
                     },
                     {
                       "names": [
                         "--filter-tunnel-id"
                       ],
                       "description": "Show only routes with the given tunnel ID",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Id"
+                      }
                     },
                     {
                       "names": [
@@ -750,7 +1015,11 @@
                         "--nsub"
                       ],
                       "description": "Show only routes whose network is a subset of the given network",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Network"
+                      }
                     },
                     {
                       "names": [
@@ -758,21 +1027,33 @@
                         "--nsup"
                       ],
                       "description": "Show only routes whose network is a superset of the given network",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Network"
+                      }
                     },
                     {
                       "names": [
                         "--filter-comment-is"
                       ],
                       "description": "Show only routes with this comment",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Comment"
+                      }
                     },
                     {
                       "names": [
                         "--filter-vnet-id"
                       ],
                       "description": "Show only routes that are attached to the given virtual network ID",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Vnet id"
+                      }
                     },
                     {
                       "names": [
@@ -780,7 +1061,15 @@
                         "-o"
                       ],
                       "description": "Render output using given FORMAT. Valid options are 'json' or 'yaml'",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "format",
+                        "description": "Format",
+                        "suggestions": [
+                          "json",
+                          "yaml"
+                        ]
+                      }
                     }
                   ],
                   "args": [
@@ -800,7 +1089,11 @@
                         "--vn"
                       ],
                       "description": "The ID or name of the virtual network to which the route is associated to",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Id or name"
+                      }
                     }
                   ],
                   "args": [
@@ -823,7 +1116,11 @@
                         "--vn"
                       ],
                       "description": "The ID or name of the virtual network to which the route is associated to",
-                      "takes_arg": true
+                      "takes_arg": true,
+                      "arg": {
+                        "name": "value",
+                        "description": "Id or name"
+                      }
                     }
                   ],
                   "args": [
@@ -875,14 +1172,22 @@
                     "--id"
                   ],
                   "description": "List virtual networks with the given ID",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "ID",
+                    "description": "Id"
+                  }
                 },
                 {
                   "names": [
                     "--name"
                   ],
                   "description": "List virtual networks with the given NAME",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "NAME",
+                    "description": "Name"
+                  }
                 },
                 {
                   "names": [
@@ -902,7 +1207,15 @@
                     "-o"
                   ],
                   "description": "Render output using given FORMAT. Valid options are 'json' or 'yaml'",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "format",
+                    "description": "Format",
+                    "suggestions": [
+                      "json",
+                      "yaml"
+                    ]
+                  }
                 }
               ]
             },
@@ -920,7 +1233,11 @@
                     "-n"
                   ],
                   "description": "The new name for the virtual network",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "value",
+                    "description": "Name"
+                  }
                 },
                 {
                   "names": [
@@ -928,7 +1245,11 @@
                     "-c"
                   ],
                   "description": "A new comment describing the purpose of the virtual network",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "value",
+                    "description": "Comment"
+                  }
                 },
                 {
                   "names": [
@@ -959,21 +1280,34 @@
                 "--config"
               ],
               "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Config file in YAML"
+              }
             },
             {
               "names": [
                 "--origincert"
               ],
               "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Path to the certificate",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--autoupdate-freq"
               ],
               "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Autoupdate frequency"
+              }
             },
             {
               "names": [
@@ -986,21 +1320,40 @@
                 "--metrics"
               ],
               "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Listen address"
+              }
             },
             {
               "names": [
                 "--pidfile"
               ],
               "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Application's PID"
+              }
             },
             {
               "names": [
                 "--loglevel"
               ],
               "description": "Application logging level {debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. This can e",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
@@ -1008,28 +1361,54 @@
                 "--proto-loglevel"
               ],
               "description": "Transport logging level(previously called protocol logging level) {debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
                 "--logfile"
               ],
               "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--log-directory"
               ],
               "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--trace-output"
               ],
               "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1044,14 +1423,23 @@
                 "--cred-file"
               ],
               "description": "Filepath at which to read/write the tunnel credentials [$TUNNEL_CRED_FILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Filepath",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--credentials-contents"
               ],
               "description": "Contents of the tunnel credentials JSON file to use. When provided along with credentials-file, this will take precedence. [$TUNNEL_CRED_CONTENTS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Contents of the tunnel credentials JSON"
+              }
             },
             {
               "names": [
@@ -1059,21 +1447,33 @@
                 "-F"
               ],
               "description": "Opt into various features that are still being developed or tested.  (accepts multiple inputs)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Features"
+              }
             },
             {
               "names": [
                 "--token"
               ],
               "description": "The Tunnel token. When provided along with credentials, this will take precedence. [$TUNNEL_TOKEN]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Tunnel token"
+              }
             },
             {
               "names": [
                 "--url"
               ],
               "description": "Connect to the local webserver at URL. (default: \"http://localhost:8080\") [$TUNNEL_URL]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "URL",
+                "description": "Url"
+              }
             },
             {
               "names": [
@@ -1152,7 +1552,12 @@
                 "--unix-socket"
               ],
               "description": "Path to unix socket to use instead of --url [$TUNNEL_UNIX_SOCKET]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Unix socket path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1183,14 +1588,22 @@
                 "--proxy-address"
               ],
               "description": "Listen address for the proxy. (default: \"127.0.0.1\") [$TUNNEL_PROXY_ADDRESS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address"
+              }
             },
             {
               "names": [
                 "--proxy-port"
               ],
               "description": "Listen port for the proxy. (default: 0) [$TUNNEL_PROXY_PORT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address"
+              }
             }
           ]
         },
@@ -1203,21 +1616,34 @@
                 "--config"
               ],
               "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Config file"
+              }
             },
             {
               "names": [
                 "--origincert"
               ],
               "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Certificate path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--autoupdate-freq"
               ],
               "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Frequency"
+              }
             },
             {
               "names": [
@@ -1230,21 +1656,40 @@
                 "--metrics"
               ],
               "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address"
+              }
             },
             {
               "names": [
                 "--pidfile"
               ],
               "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "PID"
+              }
             },
             {
               "names": [
                 "--loglevel"
               ],
               "description": "Application logging level { value: debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. Th",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
@@ -1252,28 +1697,53 @@
                 "--proto-loglevel"
               ],
               "description": "Transport logging level(previously called protocol logging level) { value: debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
                 "--logfile"
               ],
               "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--log-directory"
               ],
               "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Folder",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--trace-output"
               ],
               "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Name"
+              }
             },
             {
               "names": [
@@ -1281,7 +1751,15 @@
                 "-o"
               ],
               "description": "Render output using given FORMAT. Valid options are 'json' or 'yaml'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FORMAT",
+                "description": "Format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1296,7 +1774,11 @@
                 "-n"
               ],
               "description": "List tunnels with the given NAME",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAME",
+                "description": "Name"
+              }
             },
             {
               "names": [
@@ -1304,7 +1786,11 @@
                 "--np"
               ],
               "description": "List tunnels that start with the give NAME prefix",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAME",
+                "description": "Name prefix"
+              }
             },
             {
               "names": [
@@ -1312,7 +1798,11 @@
                 "--enp"
               ],
               "description": "List tunnels whose NAME does not start with the given prefix",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAME",
+                "description": "Prefix"
+              }
             },
             {
               "names": [
@@ -1320,7 +1810,11 @@
                 "-w"
               ],
               "description": "List tunnels that are active at the given TIME in RFC3339 format (default: current time, 2022-04-07T20:03:58+01:00)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TIME",
+                "description": "Time in RFC3339 format"
+              }
             },
             {
               "names": [
@@ -1328,7 +1822,11 @@
                 "-i"
               ],
               "description": "List tunnel by ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ID",
+                "description": "Id"
+              }
             },
             {
               "names": [
@@ -1342,7 +1840,18 @@
                 "--sort-by"
               ],
               "description": "Sorts the list of tunnels by the given field. Valid options are { value: name, id, createdAt, deletedAt, numConnections} (default: \"name\") [$TUNNEL_LIST_SORT_BY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Field",
+                "suggestions": [
+                  "name",
+                  "id",
+                  "createdAt",
+                  "deletedAt",
+                  "numConnections"
+                ]
+              }
             },
             {
               "names": [
@@ -1361,21 +1870,34 @@
                 "--config"
               ],
               "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Config file"
+              }
             },
             {
               "names": [
                 "--origincert"
               ],
               "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Certificate path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--autoupdate-freq"
               ],
               "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Frequency"
+              }
             },
             {
               "names": [
@@ -1388,21 +1910,40 @@
                 "--metrics"
               ],
               "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address"
+              }
             },
             {
               "names": [
                 "--pidfile"
               ],
               "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "PID"
+              }
             },
             {
               "names": [
                 "--loglevel"
               ],
               "description": "Application logging level { value: debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. Th",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
@@ -1410,28 +1951,53 @@
                 "--proto-loglevel"
               ],
               "description": "Transport logging level(previously called protocol logging level) { value: debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
                 "--logfile"
               ],
               "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--log-directory"
               ],
               "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Folder",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--trace-output"
               ],
               "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Name"
+              }
             },
             {
               "names": [
@@ -1439,7 +2005,15 @@
                 "-o"
               ],
               "description": "Render output using given FORMAT. Valid options are 'json' or 'yaml'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FORMAT",
+                "description": "Format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1453,7 +2027,18 @@
                 "--sort-by"
               ],
               "description": "Sorts the list of tunnels by the given field. Valid options are { value: name, id, createdAt, deletedAt, numConnections} (default: \"name\") [$TUNNEL_LIST_SORT_BY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Field",
+                "suggestions": [
+                  "name",
+                  "id",
+                  "createdAt",
+                  "deletedAt",
+                  "numConnections"
+                ]
+              }
             },
             {
               "names": [
@@ -1472,21 +2057,34 @@
                 "--config"
               ],
               "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Config file"
+              }
             },
             {
               "names": [
                 "--origincert"
               ],
               "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Certificate path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--autoupdate-freq"
               ],
               "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Frequency"
+              }
             },
             {
               "names": [
@@ -1499,21 +2097,40 @@
                 "--metrics"
               ],
               "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address"
+              }
             },
             {
               "names": [
                 "--pidfile"
               ],
               "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "PID"
+              }
             },
             {
               "names": [
                 "--loglevel"
               ],
               "description": "Application logging level { value: debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. Th",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
@@ -1521,28 +2138,53 @@
                 "--proto-loglevel"
               ],
               "description": "Transport logging level(previously called protocol logging level) { value: debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
                 "--logfile"
               ],
               "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--log-directory"
               ],
               "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Folder",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--trace-output"
               ],
               "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Name"
+              }
             },
             {
               "names": [
@@ -1550,7 +2192,12 @@
                 "--cred-file"
               ],
               "description": "Filepath at which to read/write the tunnel credentials [$TUNNEL_CRED_FILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1576,21 +2223,34 @@
                 "--config"
               ],
               "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Config file"
+              }
             },
             {
               "names": [
                 "--origincert"
               ],
               "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Certificate path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--autoupdate-freq"
               ],
               "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Frequency"
+              }
             },
             {
               "names": [
@@ -1603,21 +2263,40 @@
                 "--metrics"
               ],
               "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address"
+              }
             },
             {
               "names": [
                 "--pidfile"
               ],
               "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "PID"
+              }
             },
             {
               "names": [
                 "--loglevel"
               ],
               "description": "Application logging level { value: debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. Th",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
@@ -1625,28 +2304,53 @@
                 "--proto-loglevel"
               ],
               "description": "Transport logging level(previously called protocol logging level) { value: debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
                 "--logfile"
               ],
               "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--log-directory"
               ],
               "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Folder",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--trace-output"
               ],
               "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Name"
+              }
             },
             {
               "names": [
@@ -1654,7 +2358,12 @@
                 "--cred-file"
               ],
               "description": "Filepath at which to read/write the tunnel credentials [$TUNNEL_CRED_FILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1680,21 +2389,34 @@
                 "--config"
               ],
               "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Config file"
+              }
             },
             {
               "names": [
                 "--origincert"
               ],
               "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Certificate path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--autoupdate-freq"
               ],
               "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Frequency"
+              }
             },
             {
               "names": [
@@ -1707,21 +2429,40 @@
                 "--metrics"
               ],
               "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Address"
+              }
             },
             {
               "names": [
                 "--pidfile"
               ],
               "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "PID"
+              }
             },
             {
               "names": [
                 "--loglevel"
               ],
               "description": "Application logging level { value: debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. Th",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
@@ -1729,28 +2470,53 @@
                 "--proto-loglevel"
               ],
               "description": "Transport logging level(previously called protocol logging level) { value: debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Logging level",
+                "suggestions": [
+                  "debug",
+                  "info",
+                  "warn",
+                  "error",
+                  "fatal"
+                ]
+              }
             },
             {
               "names": [
                 "--logfile"
               ],
               "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "File",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--log-directory"
               ],
               "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Folder",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--trace-output"
               ],
               "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Name"
+              }
             },
             {
               "names": [
@@ -1758,7 +2524,12 @@
                 "--cred-file"
               ],
               "description": "Filepath at which to read/write the tunnel credentials [$TUNNEL_CRED_FILE]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "value",
+                "description": "Path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1789,21 +2560,34 @@
             "--config"
           ],
           "description": "Specifies a config file in YAML format. (default: \"/usr/local/etc/cloudflared/config.yml\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Config file"
+          }
         },
         {
           "names": [
             "--origincert"
           ],
           "description": "Path to the certificate generated for your origin when you run cloudflared login. [$TUNNEL_ORIGIN_CERT]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Certificate path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--autoupdate-freq"
           ],
           "description": "Autoupdate frequency. Default is 24h0m0s. (default: 24h0m0s)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Frequency"
+          }
         },
         {
           "names": [
@@ -1816,21 +2600,33 @@
             "--metrics"
           ],
           "description": "Listen address for metrics reporting. (default: \"localhost:\") [$TUNNEL_METRICS]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Address"
+          }
         },
         {
           "names": [
             "--pidfile"
           ],
           "description": "Write the application's PID to this file after first successful connection. [$TUNNEL_PIDFILE]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "PID"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Connect to the local webserver at URL. (default: \"http://localhost:8080\") [$TUNNEL_URL]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "Url"
+          }
         },
         {
           "names": [
@@ -1909,7 +2705,12 @@
             "--unix-socket"
           ],
           "description": "Path to unix socket to use instead of --url [$TUNNEL_UNIX_SOCKET]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Unix socket",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1940,21 +2741,40 @@
             "--proxy-address"
           ],
           "description": "Listen address for the proxy. (default: \"127.0.0.1\") [$TUNNEL_PROXY_ADDRESS]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Address"
+          }
         },
         {
           "names": [
             "--proxy-port"
           ],
           "description": "Listen port for the proxy. (default: 0) [$TUNNEL_PROXY_PORT]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Address"
+          }
         },
         {
           "names": [
             "--loglevel"
           ],
           "description": "Application logging level { value: debug, info, warn, error, fatal}. At debug level cloudflared will log request URL, method, protocol, content length, as well as, all request and response headers. Th",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Logging level",
+            "suggestions": [
+              "debug",
+              "info",
+              "warn",
+              "error",
+              "fatal"
+            ]
+          }
         },
         {
           "names": [
@@ -1962,28 +2782,53 @@
             "--proto-loglevel"
           ],
           "description": "Transport logging level(previously called protocol logging level) { value: debug, info, warn, error, fatal} (default: \"info\") [$TUNNEL_PROTO_LOGLEVEL, $TUNNEL_TRANSPORT_LOGLEVEL]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Logging level",
+            "suggestions": [
+              "debug",
+              "info",
+              "warn",
+              "error",
+              "fatal"
+            ]
+          }
         },
         {
           "names": [
             "--logfile"
           ],
           "description": "Save application log to this file for reporting issues. [$TUNNEL_LOGFILE]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "File",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--log-directory"
           ],
           "description": "Save application log to this directory for reporting issues. [$TUNNEL_LOGDIRECTORY]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Folder",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--trace-output"
           ],
           "description": "Name of trace output file, generated when cloudflared stops. [$TUNNEL_TRACE_OUTPUT]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Name"
+          }
         },
         {
           "names": [
@@ -1996,35 +2841,57 @@
             "--proxy-dns-port"
           ],
           "description": "Listen on given port for the DNS over HTTPS proxy server. (default: 53) [$TUNNEL_DNS_PORT]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Port"
+          }
         },
         {
           "names": [
             "--proxy-dns-address"
           ],
           "description": "Listen address for the DNS over HTTPS proxy server. (default: \"localhost\") [$TUNNEL_DNS_ADDRESS]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Listen address"
+          }
         },
         {
           "names": [
             "--proxy-dns-upstream"
           ],
           "description": "Upstream endpoint URL, you can specify multiple endpoints for redundancy. (default: \"https://1.1.1.1/dns-query\", \"https://1.0.0.1/dns-query\")  (accepts multiple inputs) [$TUNNEL_DNS_UPSTREAM]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Upstream endpoint",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--proxy-dns-max-upstream-conns"
           ],
           "description": "Maximum concurrent connections to upstream. Setting to 0 means unlimited. (default: 5) [$TUNNEL_DNS_MAX_UPSTREAM_CONNS]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "Max concurrent connections"
+          }
         },
         {
           "names": [
             "--proxy-dns-bootstrap"
           ],
           "description": "Bootstrap endpoint URL, you can specify multiple endpoints for redundancy. (default: \"https://162.159.36.1/dns-query\", \"https://162.159.46.1/dns-query\", \"https://[2606:4700:4700::1111]/dns-query\", \"ht",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Bootstrap endpoint",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2032,63 +2899,106 @@
             "--cred-file"
           ],
           "description": "Filepath at which to read/write the tunnel credentials [$TUNNEL_CRED_FILE]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Cloudflare Edge region to connect to. Omit or set to empty to connect to the global region. [$TUNNEL_REGION]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Region"
+          }
         },
         {
           "names": [
             "--hostname"
           ],
           "description": "Set a hostname on a Cloudflare zone to route traffic through this tunnel. [$TUNNEL_HOSTNAME]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Hostname"
+          }
         },
         {
           "names": [
             "--lb-pool"
           ],
           "description": "The name of a (new/existing) load balancing pool to add this origin to. [$TUNNEL_LB_POOL]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Pool name"
+          }
         },
         {
           "names": [
             "--metrics-update-freq"
           ],
           "description": "Frequency to update tunnel metrics (default: 5s) [$TUNNEL_METRICS_UPDATE_FREQ]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Frequency"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Custom tags used to identify this tunnel, in format KEY=VALUE. Multiple tags may be specified  (accepts multiple inputs) [$TUNNEL_TAG]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEY",
+            "description": "Tag",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--retries"
           ],
           "description": "Maximum number of retries for connection/protocol errors. (default: 5) [$TUNNEL_RETRIES]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Max retries"
+          }
         },
         {
           "names": [
             "--grace-period"
           ],
           "description": "When cloudflared receives SIGINT/SIGTERM it will stop accepting new requests, wait for in-progress requests to terminate, then shutdown. Waiting for in-progress requests will timeout after this grace ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Time (s)"
+          }
         },
         {
           "names": [
             "--compression-quality"
           ],
           "description": "(beta) Use cross-stream compression instead HTTP compression. 0-off, 1-low, 2-medium, >=3-high. (default: 0) [$TUNNEL_COMPRESSION_LEVEL]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Compression quality",
+            "suggestions": [
+              "0",
+              "1",
+              "3"
+            ]
+          }
         },
         {
           "names": [
@@ -2096,7 +3006,11 @@
             "-n"
           ],
           "description": "Stable name to identify the tunnel. Using this flag will create, route and run a tunnel. For production usage, execute each command separately [$TUNNEL_NAME]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "description": "Name"
+          }
         },
         {
           "names": [
@@ -2126,14 +3040,23 @@
         "--cred-file"
       ],
       "description": "Filepath at which to read/write the tunnel credentials [$TUNNEL_CRED_FILE]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Credentials path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--region"
       ],
       "description": "Cloudflare Edge region to connect to. Omit or set to empty to connect to the global region. [$TUNNEL_REGION]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Region"
+      }
     },
     {
       "names": [

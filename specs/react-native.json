@@ -36,70 +36,118 @@
             "--entry-file"
           ],
           "description": "Path to the root JS file, either absolute or relative to JS root",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Either \"ios\" or \"android\" (default: \"ios\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform",
+            "suggestions": [
+              "android",
+              "ios"
+            ]
+          }
         },
         {
           "names": [
             "--transformer"
           ],
           "description": "Specify a custom transformer to be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "transformer"
+          }
         },
         {
           "names": [
             "--dev"
           ],
           "description": "If false, warnings are disabled and the bundle is minified (default: true)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "boolean",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--minify"
           ],
           "description": "Allows overriding whether bundle is minified. This defaults to false if dev is true, and true if dev is false. Disabling minification can be useful for speeding up production builds for testing purpos",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "boolean",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--bundle-output"
           ],
           "description": "File name where to store the resulting bundle, ex. /tmp/groups.bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bundle file"
+          }
         },
         {
           "names": [
             "--bundle-encoding"
           ],
           "description": "Encoding the bundle should be written in (https://nodejs.org/api/buffer.html#buffer_buffer). (default: \"utf8\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "encoding",
+            "suggestions": [
+              "utf8",
+              "utf16le",
+              "latin1"
+            ]
+          }
         },
         {
           "names": [
             "--max-workers"
           ],
           "description": "Specifies the maximum number of workers the worker-pool will spawn for transforming files. This defaults to the number of the cores available on your machine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Number of workers"
+          }
         },
         {
           "names": [
             "--sourcemap-output"
           ],
           "description": "File name where to store the sourcemap file for resulting bundle, ex. /tmp/groups.map",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sourcemap-output"
+          }
         },
         {
           "names": [
             "--sourcemap-sources-root"
           ],
           "description": "Path to make sourcemap's sources entries relative to, ex. /root/dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -112,14 +160,26 @@
             "--assets-dest"
           ],
           "description": "Directory name where to store assets referenced in the bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--unstable-transform-profile"
           ],
           "description": "Experimental, transform JS for a specific JS engine. Currently supported: hermes, hermes-canary, default",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "transform-profile",
+            "suggestions": [
+              "hermes",
+              "hermes-canary",
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -138,7 +198,11 @@
             "--config"
           ],
           "description": "Path to the CLI configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -158,14 +222,20 @@
             "--version"
           ],
           "description": "Shortcut for `--template react-native@version`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--template"
           ],
           "description": "Uses a custom template. Valid arguments are the ones supported by `yarn add [package]` or `npm install [package]`, if you are using `--npm` option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template"
+          }
         },
         {
           "names": [
@@ -178,14 +248,21 @@
             "--directory"
           ],
           "description": "Uses a custom directory instead of `<projectName>`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--title"
           ],
           "description": "Uses a custom app title name for application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "title"
+          }
         },
         {
           "names": [
@@ -234,56 +311,89 @@
             "--port"
           ],
           "description": "Port on which to listen to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "free port"
+          }
         },
         {
           "names": [
             "--host"
           ],
           "description": "Change the default host",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "new host"
+          }
         },
         {
           "names": [
             "--projectRoot"
           ],
           "description": "Path to a custom project root",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--watchFolders"
           ],
           "description": "Specify any additional folders to be added to the watch list",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "folders",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--assetPlugins"
           ],
           "description": "Specify any additional asset plugins to be used by the packager by full filepath",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "plugins",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--sourceExts"
           ],
           "description": "Specify any additional source extensions to be used by the packager",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sourceExts",
+            "suggestions": [
+              "js",
+              "css",
+              "png",
+              "xml"
+            ]
+          }
         },
         {
           "names": [
             "--max-workers"
           ],
           "description": "Specifies the maximum number of workers the worker-pool will spawn for transforming files. This defaults to the number of the cores available on your machine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Number of workers"
+          }
         },
         {
           "names": [
             "--transformer"
           ],
           "description": "Specify a custom transformer to be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "transformer"
+          }
         },
         {
           "names": [
@@ -298,7 +408,10 @@
             "--customLogReporterPath"
           ],
           "description": "Path to a JavaScript file that exports a log reporter as a replacement for TerminalReporter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "logFile"
+          }
         },
         {
           "names": [
@@ -317,21 +430,32 @@
             "--key"
           ],
           "description": "Path to custom SSL key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Path to custom SSL cert",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Path to the CLI configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -357,70 +481,118 @@
             "--entry-file"
           ],
           "description": "Path to the root JS file, either absolute or relative to JS root",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Either \"ios\" or \"android\" (default: \"ios\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform",
+            "suggestions": [
+              "android",
+              "ios"
+            ]
+          }
         },
         {
           "names": [
             "--transformer"
           ],
           "description": "Specify a custom transformer to be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "transformer"
+          }
         },
         {
           "names": [
             "--dev"
           ],
           "description": "If false, warnings are disabled and the bundle is minified (default: true)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "boolean",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--minify"
           ],
           "description": "Allows overriding whether bundle is minified. This defaults to false if dev is true, and true if dev is false. Disabling minification can be useful for speeding up production builds for testing purpos",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "boolean",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--bundle-output"
           ],
           "description": "File name where to store the resulting bundle, ex. /tmp/groups.bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output file"
+          }
         },
         {
           "names": [
             "--bundle-encoding"
           ],
           "description": "Encoding the bundle should be written in (https://nodejs.org/api/buffer.html#buffer_buffer). (default: \"utf8\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "encoding",
+            "suggestions": [
+              "utf8",
+              "utf16le",
+              "latin1"
+            ]
+          }
         },
         {
           "names": [
             "--max-workers"
           ],
           "description": "Specifies the maximum number of workers the worker-pool will spawn for transforming files. This defaults to the number of the cores available on your machine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Number of workers"
+          }
         },
         {
           "names": [
             "--sourcemap-output"
           ],
           "description": "File name where to store the sourcemap file for resulting bundle, ex. /tmp/groups.map",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sourcemap-output"
+          }
         },
         {
           "names": [
             "--sourcemap-sources-root"
           ],
           "description": "Path to make sourcemap's sources entries relative to, ex. /root/dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -433,14 +605,26 @@
             "--assets-dest"
           ],
           "description": "Directory name where to store assets referenced in the bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--unstable-transform-profile"
           ],
           "description": "Experimental, transform JS for a specific JS engine. Currently supported: hermes, hermes-canary, default",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "transform-profile",
+            "suggestions": [
+              "hermes",
+              "hermes-canary",
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -459,7 +643,10 @@
             "--config"
           ],
           "description": "Path to the CLI configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -485,7 +672,10 @@
             "--platforms"
           ],
           "description": "Scope linking to specified platforms",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "list"
+          }
         },
         {
           "names": [
@@ -578,7 +768,10 @@
             "--platforms"
           ],
           "description": "Scope unlinking to specified platforms",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "list"
+          }
         },
         {
           "names": [
@@ -616,7 +809,11 @@
             "--filename"
           ],
           "description": "File name of the profile to be downloaded, eg. sampling-profiler-trace8593107139682635366.cpuprofile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -629,7 +826,11 @@
             "--sourcemap-path"
           ],
           "description": "The local path to your source map file, eg. /tmp/sourcemap.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sourcemap-path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -642,7 +843,10 @@
             "--port"
           ],
           "description": "Default: \"8081\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "free port"
+          }
         },
         {
           "names": [
@@ -681,49 +885,76 @@
             "--root"
           ],
           "description": "[DEPRECATED - root is discovered automatically] Override the root directory for the android build (which contains the android directory) (default: \"\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--variant"
           ],
           "description": "Specify your app's build variant (default: \"debug\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "variant",
+            "suggestions": [
+              "debug",
+              "release"
+            ]
+          }
         },
         {
           "names": [
             "--appFolder"
           ],
           "description": "[DEPRECATED – use \"project.android.appName\" in react-native.config.js] Specify a different application folder name for the android source. If not, we assume is \"app\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--appId"
           ],
           "description": "Specify an applicationId to launch after build. If not specified, `package` from AndroidManifest.xml will be used. (default: \"\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "appId"
+          }
         },
         {
           "names": [
             "--appIdSuffix"
           ],
           "description": "Specify an applicationIdSuffix to launch after build. (default: \"\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "appIdSuffix"
+          }
         },
         {
           "names": [
             "--main-activity"
           ],
           "description": "Name of the activity to start (default: \"MainActivity\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "main activity"
+          }
         },
         {
           "names": [
             "--deviceId"
           ],
           "description": "Builds your app and starts it on a specific device/simulator with the given device id (listed by running \"adb devices\" on the command line)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "deviceId"
+          }
         },
         {
           "names": [
@@ -736,21 +967,30 @@
             "--port"
           ],
           "description": "Default: 8081",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "free port"
+          }
         },
         {
           "names": [
             "--terminal"
           ],
           "description": "Launches the Metro Bundler in a new window using the specified terminal path. (default: \"Apple_Terminal\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "terminal path"
+          }
         },
         {
           "names": [
             "--tasks"
           ],
           "description": "Run custom Gradle tasks. By default it's \"installDebug\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "task list"
+          }
         },
         {
           "names": [
@@ -776,42 +1016,61 @@
             "--simulator"
           ],
           "description": "Explicitly set simulator to use. Optionally include iOS version between parenthesis at the end to match an exact version: \"iPhone 6 (10.0)\" (default: \"iPhone 12\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "simulator"
+          }
         },
         {
           "names": [
             "--configuration"
           ],
           "description": "Explicitly set the scheme configuration to use (default: \"Debug\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config scheme"
+          }
         },
         {
           "names": [
             "--scheme"
           ],
           "description": "Explicitly set Xcode scheme to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "scheme"
+          }
         },
         {
           "names": [
             "--project-path"
           ],
           "description": "Path relative to project root where the Xcode project (.xcodeproj) lives. (default: \"ios\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--device"
           ],
           "description": "Explicitly set device to use by name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device name"
+          }
         },
         {
           "names": [
             "--udid"
           ],
           "description": "Explicitly set device to use by udid",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "udid"
+          }
         },
         {
           "names": [
@@ -830,14 +1089,20 @@
             "--port"
           ],
           "description": "Default: 8081",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "free port"
+          }
         },
         {
           "names": [
             "--terminal"
           ],
           "description": "Launches the Metro Bundler in a new window using the specified terminal path. (default: \"Apple_Terminal\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "terminal path"
+          }
         },
         {
           "names": [

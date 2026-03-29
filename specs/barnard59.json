@@ -9,21 +9,30 @@
             "--output"
           ],
           "description": "Output file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename"
+          }
         },
         {
           "names": [
             "--pipeline"
           ],
           "description": "IRI of the pipeline description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "iri"
+          }
         },
         {
           "names": [
             "--variable"
           ],
           "description": "Variable key/value pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name=value"
+          }
         },
         {
           "names": [
@@ -72,6 +81,9 @@
               ],
               "description": "SPARQL endpoint",
               "takes_arg": true,
+              "arg": {
+                "name": "endpoint"
+              },
               "is_required": true
             },
             {
@@ -80,6 +92,9 @@
               ],
               "description": "Cube URI",
               "takes_arg": true,
+              "arg": {
+                "name": "cube"
+              },
               "is_required": true
             },
             {
@@ -87,7 +102,10 @@
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -121,6 +139,9 @@
               ],
               "description": "Cube constraint profile URL",
               "takes_arg": true,
+              "arg": {
+                "name": "profile"
+              },
               "is_required": true
             },
             {
@@ -128,14 +149,20 @@
                 "--profileFormat"
               ],
               "description": "Override the profile format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profileFormat"
+              }
             },
             {
               "names": [
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -169,6 +196,9 @@
               ],
               "description": "SPARQL endpoint",
               "takes_arg": true,
+              "arg": {
+                "name": "endpoint"
+              },
               "is_required": true
             },
             {
@@ -177,6 +207,9 @@
               ],
               "description": "Cube URI",
               "takes_arg": true,
+              "arg": {
+                "name": "cube"
+              },
               "is_required": true
             },
             {
@@ -184,7 +217,10 @@
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -218,6 +254,9 @@
               ],
               "description": "Cube constraint file",
               "takes_arg": true,
+              "arg": {
+                "name": "constraint"
+              },
               "is_required": true
             },
             {
@@ -226,6 +265,9 @@
               ],
               "description": "Batch size",
               "takes_arg": true,
+              "arg": {
+                "name": "batchSize"
+              },
               "is_required": true
             },
             {
@@ -234,6 +276,9 @@
               ],
               "description": "Max number of violations",
               "takes_arg": true,
+              "arg": {
+                "name": "maxViolations"
+              },
               "is_required": true
             },
             {
@@ -242,6 +287,9 @@
               ],
               "description": "Sort chunk size",
               "takes_arg": true,
+              "arg": {
+                "name": "sortChunkSize"
+              },
               "is_required": true
             },
             {
@@ -249,7 +297,10 @@
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -283,6 +334,9 @@
               ],
               "description": "SPARQL endpoint",
               "takes_arg": true,
+              "arg": {
+                "name": "endpoint"
+              },
               "is_required": true
             },
             {
@@ -291,6 +345,9 @@
               ],
               "description": "Cube URI",
               "takes_arg": true,
+              "arg": {
+                "name": "cube"
+              },
               "is_required": true
             },
             {
@@ -298,7 +355,10 @@
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -332,6 +392,9 @@
               ],
               "description": "SPARQL endpoint",
               "takes_arg": true,
+              "arg": {
+                "name": "endpoint"
+              },
               "is_required": true
             },
             {
@@ -340,6 +403,9 @@
               ],
               "description": "Cube URI",
               "takes_arg": true,
+              "arg": {
+                "name": "cube"
+              },
               "is_required": true
             },
             {
@@ -347,7 +413,10 @@
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -411,39 +480,57 @@
               ],
               "description": "Glob of RDF documents to upload",
               "takes_arg": true,
+              "arg": {
+                "name": "source"
+              },
               "is_required": true
             },
             {
               "names": [
                 "--graph"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "graph"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "takes_arg": true,
+              "arg": {
+                "name": "endpoint"
+              },
               "is_required": true
             },
             {
               "names": [
                 "--user"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--password"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -507,6 +594,9 @@
               ],
               "description": "URL or path of the shapes graph",
               "takes_arg": true,
+              "arg": {
+                "name": "shapes"
+              },
               "is_required": true
             },
             {
@@ -514,14 +604,20 @@
                 "--shapesMediaType"
               ],
               "description": "Override the shapes graph format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "shapesMediaType"
+              }
             },
             {
               "names": [
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -554,7 +650,10 @@
                 "--variable"
               ],
               "description": "Variable key/value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name=value"
+              }
             },
             {
               "names": [
@@ -621,7 +720,10 @@
         "--variable"
       ],
       "description": "Variable key/value pairs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name=value"
+      }
     },
     {
       "names": [
@@ -654,28 +756,57 @@
         "--otel-debug"
       ],
       "description": "Enable OpenTelemetry console diagnostic output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "NONE",
+          "ERROR",
+          "WARN",
+          "INFO",
+          "DEBUG",
+          "VERBOSE",
+          "ALL"
+        ]
+      }
     },
     {
       "names": [
         "--otel-metrics-exporter"
       ],
       "description": "OpenTelemetry Metrics exporter to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "exporter",
+        "suggestions": [
+          "otlp",
+          "none"
+        ]
+      }
     },
     {
       "names": [
         "--otel-metrics-interval"
       ],
       "description": "Export Metrics interval",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "milliseconds"
+      }
     },
     {
       "names": [
         "--otel-traces-exporter"
       ],
       "description": "OpenTelemetry Traces exporter to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "exporter",
+        "suggestions": [
+          "otlp",
+          "none"
+        ]
+      }
     },
     {
       "names": [

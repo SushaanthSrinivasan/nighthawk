@@ -112,7 +112,10 @@
             "--meta"
           ],
           "description": "Filters results based on project metadata",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true
+          }
         }
       ],
       "args": [
@@ -367,21 +370,30 @@
             "--crt"
           ],
           "description": "Include path to .crt",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--key"
           ],
           "description": "Include path to .key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--ca"
           ],
           "description": "Include path to .ca",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -632,7 +644,10 @@
         "--local-config"
       ],
       "description": "Path to the local 'vercel.json' file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -640,7 +655,10 @@
         "--global-config"
       ],
       "description": "Path to the global '.vercel' directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -668,7 +686,11 @@
         "--token"
       ],
       "description": "Execute command with an auth token",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "auth token",
+        "description": "Auth token to add to your command"
+      }
     },
     {
       "names": [
@@ -711,7 +733,11 @@
         "--scope"
       ],
       "description": "Set a custom scope",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "team name",
+        "description": "Team to execute commands from"
+      }
     },
     {
       "names": [

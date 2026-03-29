@@ -8,6 +8,9 @@
       ],
       "description": "Target website URL. Example: https://ddosify.com",
       "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      },
       "is_required": true
     },
     {
@@ -15,77 +18,138 @@
         "-n"
       ],
       "description": "Total request count. Default: 100",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RequestCount"
+      }
     },
     {
       "names": [
         "-d"
       ],
       "description": "Test duration in seconds. Default: 10",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Duration"
+      }
     },
     {
       "names": [
         "-l"
       ],
       "description": "Type of the request. Default: linear",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RequestType",
+        "suggestions": [
+          "linear",
+          "incremental",
+          "waved"
+        ]
+      }
     },
     {
       "names": [
         "-m"
       ],
       "description": "HTTP Methods. Default: GET",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "HTTPMethod",
+        "suggestions": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE",
+          "HEAD",
+          "PATCH",
+          "OPTIONS"
+        ]
+      }
     },
     {
       "names": [
         "-b"
       ],
       "description": "Body for the request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Body"
+      }
     },
     {
       "names": [
         "-a"
       ],
       "description": "Basic authentication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BasicAuth",
+        "suggestions": [
+          "username:password"
+        ]
+      }
     },
     {
       "names": [
         "-h"
       ],
       "description": "Headers of the request. You can provide multiple headers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "header",
+        "suggestions": [
+          "Content-Type: application/json",
+          "User-Agent: DdosifyLoadGenerator/0.8.1"
+        ]
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Timeout in seconds. Default: 5",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Timeout"
+      }
     },
     {
       "names": [
         "-P"
       ],
       "description": "Proxy address",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Proxy",
+        "suggestions": [
+          "http://user:pass@proxy_host.com:port"
+        ]
+      }
     },
     {
       "names": [
         "-o"
       ],
       "description": "Test result output format. Default: stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OutputFormat",
+        "suggestions": [
+          "stdout",
+          "stdout-json"
+        ]
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Config file of the load test i.e example_ddosify_config.json",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ConfigFile"
+      }
     },
     {
       "names": [

@@ -117,21 +117,33 @@
             "--address"
           ],
           "description": "Address of the API server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "address",
+            "description": "Address of the API server"
+          }
         },
         {
           "names": [
             "--batch"
           ],
           "description": "Max parallel batch reqs (default 20)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "batch",
+            "description": "Max parallel batch reqs (default 20)"
+          }
         },
         {
           "names": [
             "--batch-per-host"
           ],
           "description": "Max parallel batch reqs per host (default 6)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "batch-per-host",
+            "description": "Max parallel batch reqs per host (default 6)"
+          }
         },
         {
           "names": [
@@ -139,7 +151,11 @@
             "-u"
           ],
           "description": "Number of virtual users (default 1)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "vus",
+            "description": "Number of virtual users (default 1)"
+          }
         },
         {
           "names": [
@@ -147,7 +163,11 @@
             "-d"
           ],
           "description": "Test duration limit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration",
+            "description": "Test duration limit"
+          }
         },
         {
           "names": [
@@ -155,7 +175,11 @@
             "-i"
           ],
           "description": "Script total iteration limit (among all VUs)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "iterations",
+            "description": "Script total iteration limit (among all VUs)"
+          }
         },
         {
           "names": [
@@ -163,21 +187,33 @@
             "-s"
           ],
           "description": "Add a stage, as `[duration]:[target]`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stage",
+            "description": "Add a stage, as `[duration]:[target]`"
+          }
         },
         {
           "names": [
             "--execution-segment"
           ],
           "description": "Add a stage, as `[duration]:[target]`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "execution-segment",
+            "description": "Limit execution to the specified segment, e.g. 10%, 1/3, 0.2:2/3"
+          }
         },
         {
           "names": [
             "--execution-segment-sequence"
           ],
           "description": "The execution segment sequence",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "execution-segment-sequence",
+            "description": "The execution segment sequence"
+          }
         },
         {
           "names": [
@@ -185,168 +221,264 @@
             "-p"
           ],
           "description": "Start the test in a paused state",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "paused",
+            "description": "Start the test in a paused state"
+          }
         },
         {
           "names": [
             "--no-setup"
           ],
           "description": "Don't run setup()",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-setup",
+            "description": "Don't run setup()"
+          }
         },
         {
           "names": [
             "--no-teardown"
           ],
           "description": "Don't run teardown()",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-teardown",
+            "description": "Don't run teardown()"
+          }
         },
         {
           "names": [
             "--max-redirects"
           ],
           "description": "Follow at most n redirects (default 10)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "max-redirects",
+            "description": "Follow at most n redirects (default 10)"
+          }
         },
         {
           "names": [
             "--rps"
           ],
           "description": "Limit requests per second",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rps",
+            "description": "Limit requests per second"
+          }
         },
         {
           "names": [
             "--user-agent"
           ],
           "description": "User agent for http requests (default \"k6/0.39.0 (https://k6.io/)\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user-agent",
+            "description": "User agent for http requests (default \"k6/0.39.0 (https://k6.io/)\")"
+          }
         },
         {
           "names": [
             "--http-debug"
           ],
           "description": "Log all HTTP requests and responses. Excludes body by default. To include body use '--http-debug=full'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "http-debug",
+            "description": "Log all HTTP requests and responses. Excludes body by default. To include body use '--http-debug=full'"
+          }
         },
         {
           "names": [
             "--insecure-skip-tls-verify"
           ],
           "description": "Skip verification of TLS certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "insecure-skip-tls-verify",
+            "description": "Skip verification of TLS certificates"
+          }
         },
         {
           "names": [
             "--no-connection-reuse"
           ],
           "description": "Disable keep-alive connections",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-connection-reuse",
+            "description": "Disable keep-alive connections"
+          }
         },
         {
           "names": [
             "--no-vu-connection-reuse"
           ],
           "description": "Don't reuse connections between iterations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-vu-connection-reuse",
+            "description": "Don't reuse connections between iterations"
+          }
         },
         {
           "names": [
             "--min-iteration-duration"
           ],
           "description": "Minimum amount of time k6 will take executing a single iteration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "min-iteration-duration",
+            "description": "Minimum amount of time k6 will take executing a single iteration"
+          }
         },
         {
           "names": [
             "--throw"
           ],
           "description": "Throw warnings (like failed http requests) as errors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "throw",
+            "description": "Throw warnings (like failed http requests) as errors"
+          }
         },
         {
           "names": [
             "--blacklist-ip"
           ],
           "description": "Blacklist an ip range from being called",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "blacklist-ip",
+            "description": "Blacklist an ip range from being calledd"
+          }
         },
         {
           "names": [
             "--block-hostnames"
           ],
           "description": "Block a case-insensitive hostname pattern, with optional leading wildcard, from being called",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "block-hostnames",
+            "description": "Block a case-insensitive hostname pattern, with optional leading wildcard, from being called"
+          }
         },
         {
           "names": [
             "--summary-trend-stats"
           ],
           "description": "Define stats for trend metrics (response times), one or more as 'avg,p(95),...' (default 'avg,min,med,max,p(90),p(95)')",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "summary-trend-stats",
+            "description": "Define stats for trend metrics (response times), one or more as 'avg,p(95),...' (default 'avg,min,med,max,p(90),p(95)')"
+          }
         },
         {
           "names": [
             "--summary-time-unit"
           ],
           "description": "Define the time unit used to display the trend stats. Possible units are: 's', 'ms' and 'us'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "summary-time-unit",
+            "description": "Define the time unit used to display the trend stats. Possible units are: 's', 'ms' and 'us'"
+          }
         },
         {
           "names": [
             "--system-tags"
           ],
           "description": "Only include these system tags in metrics (default \"proto,subproto,status,method,url,name,group,check,error,error_code,tls_version,scenario,service,expected_response\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system-tags",
+            "description": "Only include these system tags in metrics (default \"proto,subproto,status,method,url,name,group,check,error,error_code,tls_version,scenario,service,expected_response\")"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Add a tag to be applied to all samples, as `[name]=[value]`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag",
+            "description": "Add a tag to be applied to all samples, as `[name]=[value]`"
+          }
         },
         {
           "names": [
             "--console-output"
           ],
           "description": "Redirects the console logging to the provided output file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "console-output",
+            "description": "Redirects the console logging to the provided output file"
+          }
         },
         {
           "names": [
             "--discard-response-bodies"
           ],
           "description": "Read but don't process or save HTTP response bodies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "discard-response-bodies",
+            "description": "Read but don't process or save HTTP response bodies"
+          }
         },
         {
           "names": [
             "--local-ips"
           ],
           "description": "Client IP Ranges and/or CIDRs from which each VU will be making requests, e.g. '192.168.220.1,192.168.0.10-192.168.0.25', 'fd:1::0/120', etc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "local-ips",
+            "description": "Client IP Ranges and/or CIDRs from which each VU will be making requests, e.g. '192.168.220.1,192.168.0.10-192.168.0.25', 'fd:1::0/120', etc"
+          }
         },
         {
           "names": [
             "--dns"
           ],
           "description": "DNS resolver configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dns",
+            "description": "DNS resolver configuration"
+          }
         },
         {
           "names": [
             "--include-system-env-vars"
           ],
           "description": "Pass the real system environment variables to the runtime (default true)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "include-system-env-vars",
+            "description": "Pass the real system environment variables to the runtime (default true)"
+          }
         },
         {
           "names": [
             "--compatibility-mode"
           ],
           "description": "JavaScript compiler compatibility mode, \"extended\" or \"base\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "compatibility-mode",
+            "description": "JavaScript compiler compatibility mode, \"extended\" or \"base\""
+          }
         },
         {
           "names": [
@@ -354,7 +486,11 @@
             "-t"
           ],
           "description": "Override test type, \"js\" or \"archive\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "description": "Override test type, \"js\" or \"archive\""
+          }
         },
         {
           "names": [
@@ -362,28 +498,44 @@
             "-e"
           ],
           "description": "Add/override environment variable with VAR=value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "env",
+            "description": "Add/override environment variable with VAR=value"
+          }
         },
         {
           "names": [
             "--no-thresholds"
           ],
           "description": "Don't run thresholds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-thresholds",
+            "description": "Don't run thresholds"
+          }
         },
         {
           "names": [
             "--no-summary"
           ],
           "description": "Don't show the summary at the end of the test",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-summary",
+            "description": "Don't show the summary at the end of the test"
+          }
         },
         {
           "names": [
             "--summary-export"
           ],
           "description": "Output the end-of-test summary report to JSON file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "summary-export",
+            "description": "Output the end-of-test summary report to JSON file"
+          }
         },
         {
           "names": [
@@ -391,7 +543,11 @@
             "-o"
           ],
           "description": "Uri for an external metrics database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "out",
+            "description": "Uri for an external metrics database"
+          }
         },
         {
           "names": [
@@ -399,14 +555,22 @@
             "-l"
           ],
           "description": "Keep the API server alive past test end",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "linger",
+            "description": "Keep the API server alive past test end"
+          }
         },
         {
           "names": [
             "--no-usage-report"
           ],
           "description": "Don't send anonymous stats to the developers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-usage-report",
+            "description": "Don't send anonymous stats to the developers"
+          }
         }
       ],
       "args": [
@@ -433,7 +597,11 @@
             "--max"
           ],
           "description": "Max available virtual users",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "max",
+            "description": "Max available virtual users"
+          }
         },
         {
           "names": [
@@ -441,7 +609,11 @@
             "--vus"
           ],
           "description": "Number of virtual users (default 1)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "vus",
+            "description": "Number of virtual users (default 1)"
+          }
         }
       ]
     },
@@ -513,7 +685,11 @@
         "--address"
       ],
       "description": "Address for the REST API server (default \"localhost:6565\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address",
+        "description": "Address for the REST API server (default \"localhost:6565\")"
+      }
     },
     {
       "names": [
@@ -521,28 +697,44 @@
         "-c"
       ],
       "description": "JSON config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config",
+        "description": "JSON config file"
+      }
     },
     {
       "names": [
         "--log-format"
       ],
       "description": "Log output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "log-format",
+        "description": "Log output format"
+      }
     },
     {
       "names": [
         "--log-output"
       ],
       "description": "Change the output for k6 logs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "log-output",
+        "description": "Change the output for k6 logs"
+      }
     },
     {
       "names": [
         "--no-color"
       ],
       "description": "Disable colored output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "no-color",
+        "description": "Disable colored output"
+      }
     }
   ]
 }

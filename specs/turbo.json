@@ -44,6 +44,9 @@
           ],
           "description": "Specify package to act as entry point for pruned monorepo",
           "takes_arg": true,
+          "arg": {
+            "name": "package"
+          },
           "is_required": true
         },
         {
@@ -67,21 +70,31 @@
             "--scope"
           ],
           "description": "Specify packages to act as entry points for task execution",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package"
+          }
         },
         {
           "names": [
             "--cache-dir"
           ],
           "description": "Specify local filesystem cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--concurrency"
           ],
           "description": "Limit the concurrency of task execution (use `1` for serial)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "limit"
+          }
         },
         {
           "names": [
@@ -106,42 +119,61 @@
             "--global-deps"
           ],
           "description": "Specify glob of global filesystem dependencies to be hashed (useful for .env and files in the root directory)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
             "--since"
           ],
           "description": "Limit/set scope to changed packages since a mergebase",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
             "--team"
           ],
           "description": "The slug of a turborepo.com team",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "slug"
+          }
         },
         {
           "names": [
             "--token"
           ],
           "description": "A turborepo.com access token",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Files to ignore when calculating changed files (supports globs)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "files"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "File to write turbo's performance profile into",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -171,7 +203,16 @@
           "names": [
             "--output-logs"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "new-only",
+              "hash-only",
+              "full",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -179,7 +220,13 @@
             "--dry-run"
           ],
           "description": "List the packages in scope and the tasks that would be run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json"
+            ]
+          }
         }
       ],
       "args": [

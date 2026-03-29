@@ -24,7 +24,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -159,70 +163,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -235,14 +278,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -273,7 +322,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -354,14 +406,28 @@
             "--groups"
           ],
           "description": "Only audit dependencies from listed groups. Default: devDependencies, dependencies, optionalDependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group_name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--level"
           ],
           "description": "Only print advisories with severity greater than or equal to one of the following: info|low|moderate|high|critical. Default: info",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "severity",
+            "suggestions": [
+              "info",
+              "low",
+              "moderate",
+              "high",
+              "critical"
+            ]
+          }
         },
         {
           "names": [
@@ -433,7 +499,10 @@
                 "--pattern"
               ],
               "description": "Filter cached packages by pattern",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pattern"
+              }
             }
           ]
         }
@@ -457,7 +526,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -592,70 +665,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -668,14 +780,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -706,7 +824,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -779,7 +900,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -914,70 +1039,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -990,14 +1154,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -1028,7 +1198,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -1065,14 +1238,20 @@
             "--use-manifest"
           ],
           "description": "Specify which manifest file to use for generating lock entry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--resolved"
           ],
           "description": "Generate from <*.tgz>#<hash>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1135,7 +1314,11 @@
                 "--use-yarnrc"
               ],
               "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1270,70 +1453,109 @@
                 "--link-folder"
               ],
               "description": "Specify a custom folder to store global links",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--global-folder"
               ],
               "description": "Specify a custom folder to store global packages",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--modules-folder"
               ],
               "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--preferred-cache-folder"
               ],
               "description": "Specify a custom folder to store the yarn cache if possible",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--cache-folder"
               ],
               "description": "Specify a custom folder that must be used to store the yarn cache",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--mutex"
               ],
               "description": "Use a mutex to ensure only one yarn instance is executing",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type[:specifier]"
+              }
             },
             {
               "names": [
                 "--emoji"
               ],
               "description": "Enables emoji in output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--cwd"
               ],
               "description": "Working directory to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cwd",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--proxy",
                 "--https-proxy"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
                 "--registry"
               ],
               "description": "Override configuration registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
@@ -1346,14 +1568,20 @@
                 "--network-concurrency"
               ],
               "description": "Maximum number of concurrent network requests",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number"
+              }
             },
             {
               "names": [
                 "--network-timeout"
               ],
               "description": "TCP timeout for network requests",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "milliseconds"
+              }
             },
             {
               "names": [
@@ -1384,7 +1612,10 @@
                 "--otp"
               ],
               "description": "One-time password for two factor authentication",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otpcode"
+              }
             },
             {
               "names": [
@@ -1430,7 +1661,11 @@
                 "--use-yarnrc"
               ],
               "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1565,70 +1800,109 @@
                 "--link-folder"
               ],
               "description": "Specify a custom folder to store global links",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--global-folder"
               ],
               "description": "Specify a custom folder to store global packages",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--modules-folder"
               ],
               "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--preferred-cache-folder"
               ],
               "description": "Specify a custom folder to store the yarn cache if possible",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--cache-folder"
               ],
               "description": "Specify a custom folder that must be used to store the yarn cache",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--mutex"
               ],
               "description": "Use a mutex to ensure only one yarn instance is executing",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type[:specifier]"
+              }
             },
             {
               "names": [
                 "--emoji"
               ],
               "description": "Enables emoji in output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--cwd"
               ],
               "description": "Working directory to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cwd",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--proxy",
                 "--https-proxy"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
                 "--registry"
               ],
               "description": "Override configuration registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
@@ -1641,14 +1915,20 @@
                 "--network-concurrency"
               ],
               "description": "Maximum number of concurrent network requests",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number"
+              }
             },
             {
               "names": [
                 "--network-timeout"
               ],
               "description": "TCP timeout for network requests",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "milliseconds"
+              }
             },
             {
               "names": [
@@ -1679,7 +1959,10 @@
                 "--otp"
               ],
               "description": "One-time password for two factor authentication",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otpcode"
+              }
             },
             {
               "names": [
@@ -1687,7 +1970,10 @@
                 "--scope"
               ],
               "description": "Upgrade packages under the specified scope",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "scope"
+              }
             },
             {
               "names": [
@@ -1709,7 +1995,10 @@
                 "--pattern"
               ],
               "description": "Upgrade packages that match pattern",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pattern"
+              }
             },
             {
               "names": [
@@ -1773,7 +2062,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1908,70 +2201,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -1984,14 +2316,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -2022,14 +2360,20 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
             "--prefix"
           ],
           "description": "Bin prefix to use to install binaries",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prefix"
+          }
         },
         {
           "names": [
@@ -2080,7 +2424,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2215,70 +2563,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -2291,14 +2678,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -2329,7 +2722,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -2351,7 +2747,10 @@
             "--install"
           ],
           "description": "Install a specific Yarn release",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -2390,7 +2789,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2525,70 +2928,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -2601,14 +3043,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -2639,7 +3087,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -2692,7 +3143,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2827,70 +3282,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -2903,14 +3397,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -2941,7 +3441,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -3008,7 +3511,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3143,70 +3650,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -3219,14 +3765,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -3257,7 +3809,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -3356,7 +3911,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3491,70 +4050,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -3567,14 +4165,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -3605,7 +4209,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -3661,14 +4268,20 @@
             "--preid"
           ],
           "description": "Add a custom identifier to the prerelease",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "preid"
+          }
         },
         {
           "names": [
             "--message"
           ],
           "description": "Message",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message"
+          }
         },
         {
           "names": [
@@ -3687,14 +4300,20 @@
             "--access"
           ],
           "description": "Access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "access"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag"
+          }
         }
       ],
       "args": [
@@ -3726,7 +4345,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3861,70 +4484,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -3937,14 +4599,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -3975,7 +4643,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -4020,7 +4691,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4155,70 +4830,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -4231,14 +4945,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -4269,7 +4989,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -4380,7 +5103,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4515,70 +5242,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -4591,14 +5357,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -4629,7 +5401,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -4637,7 +5412,10 @@
             "--scope"
           ],
           "description": "Upgrade packages under the specified scope",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "scope"
+          }
         },
         {
           "names": [
@@ -4659,7 +5437,10 @@
             "--pattern"
           ],
           "description": "Upgrade packages that match pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [
@@ -4731,7 +5512,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4866,70 +5651,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -4942,14 +5766,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -4980,7 +5810,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -4994,7 +5827,10 @@
             "--new-version"
           ],
           "description": "New version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -5043,14 +5879,20 @@
             "--preid"
           ],
           "description": "Add a custom identifier to the prerelease",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "preid"
+          }
         },
         {
           "names": [
             "--message"
           ],
           "description": "Message",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message"
+          }
         },
         {
           "names": [
@@ -5069,14 +5911,20 @@
             "--access"
           ],
           "description": "Access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "access"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag"
+          }
         }
       ]
     },
@@ -5106,7 +5954,11 @@
             "--use-yarnrc"
           ],
           "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -5241,70 +6093,109 @@
             "--link-folder"
           ],
           "description": "Specify a custom folder to store global links",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--global-folder"
           ],
           "description": "Specify a custom folder to store global packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--modules-folder"
           ],
           "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--preferred-cache-folder"
           ],
           "description": "Specify a custom folder to store the yarn cache if possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--cache-folder"
           ],
           "description": "Specify a custom folder that must be used to store the yarn cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--mutex"
           ],
           "description": "Use a mutex to ensure only one yarn instance is executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type[:specifier]"
+          }
         },
         {
           "names": [
             "--emoji"
           ],
           "description": "Enables emoji in output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Working directory to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--proxy",
             "--https-proxy"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Override configuration registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -5317,14 +6208,20 @@
             "--network-concurrency"
           ],
           "description": "Maximum number of concurrent network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--network-timeout"
           ],
           "description": "TCP timeout for network requests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
@@ -5355,7 +6252,10 @@
             "--otp"
           ],
           "description": "One-time password for two factor authentication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otpcode"
+          }
         },
         {
           "names": [
@@ -5396,7 +6296,13 @@
           "names": [
             "subcommand"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "info",
+              "run"
+            ]
+          }
         },
         {
           "names": [
@@ -5473,7 +6379,14 @@
         "--emoji"
       ],
       "description": "Enable emoji in output (default: true)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "bool",
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [
@@ -5511,7 +6424,10 @@
         "--global-folder"
       ],
       "description": "Specify a custom folder to store global packages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5523,7 +6439,13 @@
       "names": [
         "--https-proxy"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "suggestions": [
+          "https://"
+        ]
+      }
     },
     {
       "names": [
@@ -5566,35 +6488,53 @@
         "--link-folder"
       ],
       "description": "Specify a custom folder to store global links",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--modules-folder"
       ],
       "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--mutex"
       ],
       "description": "Use a mutex to ensure only one yarn instance is executing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          ":"
+        ]
+      }
     },
     {
       "names": [
         "--network-concurrency"
       ],
       "description": "Maximum number of concurrent network requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--network-timeout"
       ],
       "description": "TCP timeout for network requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "milliseconds"
+      }
     },
     {
       "names": [
@@ -5643,7 +6583,10 @@
         "--otp"
       ],
       "description": "One-time password for two factor authentication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "otpcode"
+      }
     },
     {
       "names": [
@@ -5656,7 +6599,10 @@
         "--preferred-cache-folder"
       ],
       "description": "Specify a custom folder to store the yarn cache if possible",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5669,7 +6615,10 @@
       "names": [
         "--proxy"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host"
+      }
     },
     {
       "names": [
@@ -5682,7 +6631,10 @@
         "--registry"
       ],
       "description": "Override configuration registry",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "url"
+      }
     },
     {
       "names": [
@@ -5696,7 +6648,13 @@
         "--scripts-prepend-node-path"
       ],
       "description": "Prepend the node executable dir to the PATH in scripts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [
@@ -5727,7 +6685,11 @@
         "--use-yarnrc"
       ],
       "description": "Specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc) (default: )",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -5862,70 +6824,109 @@
         "--link-folder"
       ],
       "description": "Specify a custom folder to store global links",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--global-folder"
       ],
       "description": "Specify a custom folder to store global packages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--modules-folder"
       ],
       "description": "Rather than installing modules into the node_modules folder relative to the cwd, output them here",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--preferred-cache-folder"
       ],
       "description": "Specify a custom folder to store the yarn cache if possible",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--cache-folder"
       ],
       "description": "Specify a custom folder that must be used to store the yarn cache",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--mutex"
       ],
       "description": "Use a mutex to ensure only one yarn instance is executing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type[:specifier]"
+      }
     },
     {
       "names": [
         "--emoji"
       ],
       "description": "Enables emoji in output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [
         "--cwd"
       ],
       "description": "Working directory to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cwd",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--proxy",
         "--https-proxy"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host"
+      }
     },
     {
       "names": [
         "--registry"
       ],
       "description": "Override configuration registry",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "url"
+      }
     },
     {
       "names": [
@@ -5938,14 +6939,20 @@
         "--network-concurrency"
       ],
       "description": "Maximum number of concurrent network requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--network-timeout"
       ],
       "description": "TCP timeout for network requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "milliseconds"
+      }
     },
     {
       "names": [
@@ -5976,7 +6983,10 @@
         "--otp"
       ],
       "description": "One-time password for two factor authentication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "otpcode"
+      }
     },
     {
       "names": [

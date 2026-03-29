@@ -24,7 +24,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide (default \"wide\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -42,7 +45,10 @@
                 "--chunk-size"
               ],
               "description": "Return large lists in chunks rather than all at once. Pass 0 to disable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
@@ -57,7 +63,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide (default \"wide\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -65,7 +74,10 @@
                 "-l"
               ],
               "description": "Selector (label query) to filter on not including uninitialized ones supports '=' '==' and '!='.(e.g. -l key1=value1,key2=value2)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -89,7 +101,10 @@
                 "--selector",
                 "-l"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -102,7 +117,10 @@
                 "--field-selector"
               ],
               "description": "Selector (field query) to filter on supports '=' '==' and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -129,7 +147,10 @@
                 "-o"
               ],
               "description": "Output format. One of: name|json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -137,14 +158,20 @@
                 "-p"
               ],
               "description": "Input parameter to override on the original workflow spec",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stringArray"
+              }
             },
             {
               "names": [
                 "--priority"
               ],
               "description": "Workflow priority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int32"
+              }
             },
             {
               "names": [
@@ -152,7 +179,10 @@
                 "-l"
               ],
               "description": "Selector (label query) to filter on not including uninitialized ones supports '=' '==' and '!='.(e.g. -l key1=value1,key2=value2)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -183,7 +213,10 @@
                 "--field-selector"
               ],
               "description": "Selector (field query) to filter on, supports '='",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -203,7 +236,10 @@
                 "--node-field-selector"
               ],
               "description": "Selector of nodes to reset eg: --node-field-selector inputs.paramaters.myparam.value=abc",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -211,7 +247,10 @@
                 "-o"
               ],
               "description": "Output format. One of: name|json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -219,7 +258,10 @@
                 "-p"
               ],
               "description": "Input parameter to override on the original workflow spec",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stringArray"
+              }
             },
             {
               "names": [
@@ -233,7 +275,10 @@
                 "-l"
               ],
               "description": "Selector (label query) to filter on not including uninitialized ones supports '=' '=='",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -292,7 +337,10 @@
                 "-o"
               ],
               "description": "Output format. One of: name|json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -348,7 +396,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -377,7 +428,10 @@
                 "-o"
               ],
               "description": "Linting results output format. One of: pretty|simple (default \"pretty\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -409,7 +463,10 @@
                 "-o"
               ],
               "description": "Output format. One of: wide|name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -442,7 +499,10 @@
             "--artifact-name"
           ],
           "description": "Name of output artifact in workflow",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -456,21 +516,30 @@
             "--node-id"
           ],
           "description": "Id of node in workflow",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--path"
           ],
           "description": "Use variables {workflowName} {nodeId} {templateName} {artifactName} and {namespace} to create a customized path to store the artifacts; example: {workflowName}/{templateName}/{artifactName} (default \"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--template-name"
           ],
           "description": "Name of template in workflow",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -495,14 +564,20 @@
                 "--entrypoint"
               ],
               "description": "Override entrypoint",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--generate-name"
               ],
               "description": "Override metadata.generateName",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -517,14 +592,20 @@
                 "-l"
               ],
               "description": "Comma separated labels to apply to the workflow. Will override previous values",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--name"
               ],
               "description": "Override metadata.name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -532,7 +613,10 @@
                 "-o"
               ],
               "description": "Output format. One of: name|json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -540,7 +624,10 @@
                 "-p"
               ],
               "description": "Pass an input parameter",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stringArray"
+              }
             },
             {
               "names": [
@@ -548,21 +635,30 @@
                 "-f"
               ],
               "description": "Pass a file containing all input parameters",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--schedule"
               ],
               "description": "Override cron workflow schedule",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--serviceaccount"
               ],
               "description": "Run all pods in the workflow using specified serviceaccount",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -618,7 +714,10 @@
                 "-o"
               ],
               "description": "Output format. One of: json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -644,7 +743,10 @@
                 "-o"
               ],
               "description": "Linting results output format. One of: pretty|simple (default \"pretty\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -675,7 +777,10 @@
                 "--chunk-size"
               ],
               "description": "Return large lists in chunks rather than all at once. Pass 0 to disable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
@@ -688,7 +793,10 @@
                 "--field-selector"
               ],
               "description": "Selector (field query) to filter on. Supports '=' '==' and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -708,7 +816,10 @@
                 "--older"
               ],
               "description": "List completed workflows finished before the specified duration (e.g. 10m 3h 1d)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -716,14 +827,20 @@
                 "-o"
               ],
               "description": "Output format. One of: name|wide|yaml|json",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--prefix"
               ],
               "description": "Filter workflows by prefix",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -743,21 +860,30 @@
                 "-l"
               ],
               "description": "Selector (label query) to filter on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--since"
               ],
               "description": "Show only workflows created after than a relative duration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--status"
               ],
               "description": "Filter by status (comma separated)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "strings"
+              }
             }
           ]
         },
@@ -823,7 +949,10 @@
             "--field-selector"
           ],
           "description": "Selector (field query) to filter on supports '=' '==' and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -843,14 +972,20 @@
             "--older"
           ],
           "description": "Delete completed workflows finished before the specified duration (e.g. 10m 3h 1d)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--prefix"
           ],
           "description": "Delete workflows by prefix",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -864,7 +999,10 @@
             "-l"
           ],
           "description": "Selector (label query) to filter on not including uninitialized ones supports '=''=='and '!='.(e.g. -l key1=value1,key2=value2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -916,7 +1054,10 @@
             "--node-field-selector"
           ],
           "description": "Selector of node to display, Eg: --node-field-selector phase=abc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -924,14 +1065,20 @@
             "-o"
           ],
           "description": "Output format. One of: json|yaml|short|wide",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--status"
           ],
           "description": "Filter by status (Pending, Running, Succeeded, Skipped, Failed, Error)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -960,7 +1107,10 @@
             "--kinds"
           ],
           "description": "Which kinds will be linted. Can be: workflows|workflowtemplates|cronworkflows|clusterworkflowtemplates (default [all])",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strings"
+          }
         },
         {
           "names": [
@@ -974,7 +1124,10 @@
             "-o"
           ],
           "description": "Linting results output format. One of: pretty|simple (default \"pretty\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1005,7 +1158,10 @@
             "--chunk-size"
           ],
           "description": "Return large lists in chunks rather than all at once. Pass 0 to disable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
@@ -1018,7 +1174,10 @@
             "--field-selector"
           ],
           "description": "Selector (field query) to filter on supports '=' '==' and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1038,7 +1197,10 @@
             "--older"
           ],
           "description": "List completed workflows finished before the specified duration (e.g. 10m 3h 1d)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1046,14 +1208,20 @@
             "-o"
           ],
           "description": "Output format. One of: name|wide|yaml|json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--prefix"
           ],
           "description": "Filter workflows by prefix",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1073,21 +1241,30 @@
             "-l"
           ],
           "description": "Selector (label query) to filter on not including uninitialized ones supports '=' '==' and '!='.(e.g. -l key1=value1,key2=value2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--since"
           ],
           "description": "Show only workflows created after than a relative duration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--status"
           ],
           "description": "Filter by status (comma separated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strings"
+          }
         }
       ]
     },
@@ -1101,7 +1278,10 @@
             "-c"
           ],
           "description": "Print the logs of this container (default \"main\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1115,7 +1295,10 @@
             "--grep"
           ],
           "description": "Grep for lines",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1143,28 +1326,40 @@
             "-l"
           ],
           "description": "Log selector for some pod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--since"
           ],
           "description": "Only return logs newer than a relative duration like 5s 2m or 3h. Defaults to all logs. Only one of since-time / since may be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration"
+          }
         },
         {
           "names": [
             "--since-time"
           ],
           "description": "Only return logs after a specific date (RFC3339). Defaults to all logs. Only one of since-time / since may be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--tail"
           ],
           "description": "If set the number of lines from the end of the logs to show. If not specified logs are shown from the creation of the container or sinceSeconds or sinceTime (default -1)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
@@ -1199,14 +1394,20 @@
             "-m"
           ],
           "description": "Set the message of a node eg: --message \"Hello World\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--node-field-selector"
           ],
           "description": "Selector of node to set eg: --node-field-selector inputs.paramaters.myparam.value=abc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1214,14 +1415,20 @@
             "-p"
           ],
           "description": "Set a \"supplied\" output parameter of node eg: --output-parameter parameter-name=\"Hello world!\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
             "--phase"
           ],
           "description": "Phase to set the node to eg: --phase Succeeded",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -1245,7 +1452,10 @@
             "--field-selector"
           ],
           "description": "Selector (field query) to filter on: supports '=' '==' and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1272,7 +1482,10 @@
             "-o"
           ],
           "description": "Output format. One of: name|json|yaml|wide",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1280,14 +1493,20 @@
             "-p"
           ],
           "description": "Input parameter to override on the original workflow spec",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
             "--priority"
           ],
           "description": "Workflow priority",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int32"
+          }
         },
         {
           "names": [
@@ -1295,7 +1514,10 @@
             "-l"
           ],
           "description": "Selector (label query) to filter on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1333,7 +1555,10 @@
             "--node-field-selector"
           ],
           "description": "Selector of node to resume, Eg: --node-field-selector inputs.paramaters.myparam.value=abc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -1354,7 +1579,10 @@
             "--field-selector"
           ],
           "description": "Selector (field query) to filter on, Supports '='; '=='; and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1374,7 +1602,10 @@
             "--node-field-selector"
           ],
           "description": "Selector of nodes to reset; eg: --node-field-selector inputs.paramaters.myparam.value=abc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1382,7 +1613,10 @@
             "-o"
           ],
           "description": "Output format. One of: name|json|yaml|wide",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1390,7 +1624,10 @@
             "-p"
           ],
           "description": "Input parameter to override on the original workflow spec",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
@@ -1404,7 +1641,10 @@
             "-l"
           ],
           "description": "Selector (label query) to filter on; not including uninitialized ones supports '=' '==' and '!='.(e.g. -l key1=value1,key2=value2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1435,35 +1675,50 @@
             "--access-control-allow-origin"
           ],
           "description": "Set Access-Control-Allow-Origin header in HTTP responses",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--allowed-link-protocol"
           ],
           "description": "Allowed link protocol in configMap. Used if the allowed configMap links protocol are different from http https. Defaults to the environment variable ALLOWED_LINK_PROTOCOL (default [http https])",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
             "--api-rate-limit"
           ],
           "description": "Set limit per IP for api ratelimiter (default 1000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "uint"
+          }
         },
         {
           "names": [
             "--auth-mode"
           ],
           "description": "API server authentication mode. Any 1 or more length permutation of: client server sso (default [client])",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
             "--basehref"
           ],
           "description": "Value for base href in index.html. Used if the server is running behind reverse proxy under subpath different from /. Defaults to the environment variable BASE_HREF. (default \" /\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1477,7 +1732,10 @@
             "--configmap"
           ],
           "description": "Name of K8s configmap to retrieve workflow controller configuration (default \"workflow-controller-configmap\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1490,14 +1748,20 @@
             "--event-operation-queue-size"
           ],
           "description": "How many events operations that can be queued at once (default 16)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
             "--event-worker-count"
           ],
           "description": "How many event workers to run (default 4)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
@@ -1517,14 +1781,20 @@
             "--log-format"
           ],
           "description": "The formatter to use for logs. One of: text|json (default \"text\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--managed-namespace"
           ],
           "description": "Namespace that watches default to the installation namespace",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1538,21 +1808,30 @@
             "--port"
           ],
           "description": "Port to listen on (default 2746)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--tls-certificate-secret-name"
           ],
           "description": "The name of a Kubernetes secret that contains the server certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--x-frame-options"
           ],
           "description": "Set X-Frame-Options header in HTTP responses. (default \"DENY\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ]
     },
@@ -1571,7 +1850,10 @@
             "--field-selector"
           ],
           "description": "Selector (field query) to filter on  supports '='  '=='  and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1585,14 +1867,20 @@
             "--message"
           ],
           "description": "Message to add to previously running nodes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--node-field-selector"
           ],
           "description": "Selector of node to stop eg: --node-field-selector inputs.paramaters.myparam.value=abc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1600,7 +1888,10 @@
             "--selector"
           ],
           "description": "Selector (label query) to filter on not including uninitialized ones supports '=' '==' and '!='.(e.g. -l key1=value1, key2=value2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -1627,21 +1918,30 @@
             "--entrypoint"
           ],
           "description": "Override entrypoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--from"
           ],
           "description": "Submit from an existing kind/name E.g. --from=cronwf/hello-world-cwf",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "kind/name"
+          }
         },
         {
           "names": [
             "--generate-name"
           ],
           "description": "Override metadata.generateName",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1656,7 +1956,10 @@
             "--labels"
           ],
           "description": "Comma separated labels to apply to the workflow. Will override previous values",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1669,14 +1972,20 @@
             "--name"
           ],
           "description": "Override metadata.name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--node-field-selector"
           ],
           "description": "Selector of node to display eg: --node-field-selector phase=abc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1684,7 +1993,10 @@
             "--output"
           ],
           "description": "Output format. One of: name|json|yaml|wide",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1692,7 +2004,10 @@
             "--parameter"
           ],
           "description": "Pass an input parameter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
@@ -1700,21 +2015,30 @@
             "--parameter-file"
           ],
           "description": "Pass a file containing all input parameters",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--priority"
           ],
           "description": "Workflow priority",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int32"
+          }
         },
         {
           "names": [
             "--scheduled-time"
           ],
           "description": "Override the workflow's scheduledTime parameter (useful for backfilling). The time must be RFC3339",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1727,14 +2051,20 @@
             "--serviceaccount"
           ],
           "description": "Run all pods in the workflow using specified serviceaccount",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--status"
           ],
           "description": "Filter by status (Pending Running Succeeded Skipped Failed Error). Should only be used with --watch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1804,7 +2134,10 @@
                 "-o"
               ],
               "description": "Output format. One of: name|json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1863,7 +2196,10 @@
                 "--output"
               ],
               "description": "Output format. One of: json|yaml|wide",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -1889,7 +2225,10 @@
                 "-o"
               ],
               "description": "Linting results output format. One of: pretty|simple (default \"pretty\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1931,7 +2270,10 @@
                 "-o"
               ],
               "description": "Output format. One of: wide|name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -1961,7 +2303,10 @@
             "--field-selector"
           ],
           "description": "Selector (field query) to filter on supports '=' '==' and '!='.(e.g. --field-selector key1=value1key2=value2). The server only supports a limited number of field queries per type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1976,7 +2321,10 @@
             "--selector"
           ],
           "description": "Selector (label query) to filter on not including uninitialized ones supports '=' '==' and '!='.(e.g. -l key1=value1key2=value2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -2044,14 +2392,20 @@
             "--node-field-selector"
           ],
           "description": "Selector of node to display eg: --node-field-selector phase=abc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--status"
           ],
           "description": "Filter by status (Pending, Running, Succeeded, Skipped, Failed, Error)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -2067,7 +2421,10 @@
         "--argo-base-href"
       ],
       "description": "An path to use with HTTP client (e.g. due to BASE_HREF). Defaults to the ARGO_BASE_HREF environment variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -2081,70 +2438,100 @@
         "-s"
       ],
       "description": "API server host:port. e.g. localhost:2746. Defaults to the ARGO_SERVER environment variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host:port"
+      }
     },
     {
       "names": [
         "--as"
       ],
       "description": "Username to impersonate for the operation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--as-group"
       ],
       "description": "Group to impersonate for the operation, This flag can be repeated to specify multiple groups",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "stringArray"
+      }
     },
     {
       "names": [
         "--as-uid"
       ],
       "description": "UID to impersonate for the operation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--certificate-authorityk"
       ],
       "description": "Path to a cert file for the certificate authority",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--client-certificate"
       ],
       "description": "Path to a client certificate file for TLS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--client-key"
       ],
       "description": "Path to a client key file for TLS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--cluster"
       ],
       "description": "The name of the kubeconfig cluster to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--context"
       ],
       "description": "The name of the kubeconfig context to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--gloglevel"
       ],
       "description": "Set the glog logging level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     },
     {
       "names": [
@@ -2152,7 +2539,10 @@
         "-H"
       ],
       "description": "Sets additional header to all requests made by Argo CLI. (Can be repeated multiple times to add multiple headers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     },
     {
       "names": [
@@ -2179,21 +2569,30 @@
         "--instanceid"
       ],
       "description": "Submit with a specific controller's instance id label. Default to the ARGO_INSTANCEID environment variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--kubeconfig"
       ],
       "description": "Path to a kube config. Only required if out-of-cluster",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--loglevel"
       ],
       "description": "Set the logging level. One of: debug|info|warn|error (default \"info\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -2201,28 +2600,40 @@
         "-n"
       ],
       "description": "If present the namespace scope for this CLI request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--password"
       ],
       "description": "Password for basic authentication to the API server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--proxy-url"
       ],
       "description": "This URL will be used to connect via proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--request-timeout"
       ],
       "description": "The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit (e.g. 1s, 2m)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -2236,35 +2647,50 @@
         "--server"
       ],
       "description": "The address and port of the Kubernetes API server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--tls-server-name"
       ],
       "description": "If Provided, This name will be used to validate server certificate. If this is not provided",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--token"
       ],
       "description": "Bearer token for authentication to the API server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--user"
       ],
       "description": "The name of the kubeconfig user to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--username"
       ],
       "description": "Username for basic authentication to the API server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [

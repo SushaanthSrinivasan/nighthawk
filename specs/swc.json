@@ -8,21 +8,40 @@
         "-f"
       ],
       "description": "Filename to use when reading from stdin. This will be used in source maps and errors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "description": "Path to the file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--config-file"
       ],
       "description": "Path to a .swcrc file to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG_FILE",
+        "description": "Path to a .swcrc file to use",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--env-name"
       ],
       "description": "The name of the 'env' to use when loading configs and plugins. Defaults to the value of SWC_ENV, or else NODE_ENV, or else development",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ENV_NAME",
+        "description": "The name of the 'env' to use when loading configs and plugins. Defaults to the value of SWC_ENV, or else NODE_ENV, or else development",
+        "suggestions": [
+          "production",
+          "development",
+          "test"
+        ]
+      }
     },
     {
       "names": [
@@ -35,14 +54,24 @@
         "--ignore"
       ],
       "description": "List of glob paths to not compile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "description": "A glob path to not compile",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--only"
       ],
       "description": "List of glob paths to only compile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "description": "A glob path to only compile",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -64,14 +93,29 @@
         "-s"
       ],
       "description": "Generate source maps",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SOURCE_MAP",
+        "description": "Source map type",
+        "suggestions": [
+          "true",
+          "false",
+          "inline",
+          "both"
+        ]
+      }
     },
     {
       "names": [
         "--source-map-target"
       ],
       "description": "Define the file for the source map",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "description": "The file for the source map",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -91,7 +135,12 @@
         "-o"
       ],
       "description": "Compile all input files into a single file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OUTPUT_FILE",
+        "description": "The output file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -99,7 +148,12 @@
         "-d"
       ],
       "description": "Compile an input directory of modules into an output directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OUTPUT_DIR",
+        "description": "The output directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -120,7 +174,12 @@
         "-C"
       ],
       "description": "Override a config from .swcrc file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG_FILE",
+        "description": "Path to .swcrc file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

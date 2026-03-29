@@ -18,7 +18,11 @@
             "--package"
           ],
           "description": "Packages to run this command on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC",
+            "description": "Packages to run this command on, can be a concrete package name (`foobar`) or a prefix glob (`foo*`) [default: *]"
+          }
         },
         {
           "names": [
@@ -46,35 +50,50 @@
             "--path"
           ],
           "description": "Filesystem path to local package to add",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATH"
+          }
         },
         {
           "names": [
             "--git"
           ],
           "description": "Git repository location",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URI"
+          }
         },
         {
           "names": [
             "--branch"
           ],
           "description": "Git branch to download the package from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BRANCH"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Git tag to download the package from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG"
+          }
         },
         {
           "names": [
             "--rev"
           ],
           "description": "Git reference to download the package from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REV"
+          }
         }
       ],
       "args": [
@@ -100,7 +119,11 @@
             "--package"
           ],
           "description": "Packages to run this command on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC",
+            "description": "Packages to run this command on, can be a concrete package name (`foobar`) or a prefix glob (`foo*`) [default: *]"
+          }
         },
         {
           "names": [
@@ -149,7 +172,11 @@
             "--package"
           ],
           "description": "Packages to run this command on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC",
+            "description": "Packages to run this command on, can be a concrete package name (`foobar`) or a prefix glob (`foo*`) [default: *]"
+          }
         },
         {
           "names": [
@@ -379,7 +406,11 @@
             "--package"
           ],
           "description": "Packages to run this command on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC",
+            "description": "Packages to run this command on, can be a concrete package name (`foobar`) or a prefix glob (`foo*`) [default: *]"
+          }
         },
         {
           "names": [
@@ -413,7 +444,11 @@
             "--name"
           ],
           "description": "Set the resulting package name, defaults to the directory name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME",
+            "description": "Name for the resulting package"
+          }
         },
         {
           "names": [
@@ -454,6 +489,9 @@
           ],
           "description": "Format version",
           "takes_arg": true,
+          "arg": {
+            "name": "VERSION"
+          },
           "is_required": true
         },
         {
@@ -521,7 +559,11 @@
             "--name"
           ],
           "description": "Set the resulting package name, defaults to the directory name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME",
+            "description": "Name for the resulting package"
+          }
         },
         {
           "names": [
@@ -568,7 +610,11 @@
             "--package"
           ],
           "description": "Packages to run this command on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC",
+            "description": "Packages to run this command on, can be a concrete package name (`foobar`) or a prefix glob (`foo*`) [default: *]"
+          }
         },
         {
           "names": [
@@ -628,7 +674,11 @@
             "-f"
           ],
           "description": "Runs the test with a specific filter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILTER",
+            "description": "The filter applied for names of test"
+          }
         },
         {
           "names": [
@@ -669,7 +719,11 @@
             "-p"
           ],
           "description": "Packages to run this command on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC",
+            "description": "Packages to run this command on, can be a concrete package name (`foobar`) or a prefix glob (`foo*`) [default: *]"
+          }
         }
       ]
     }

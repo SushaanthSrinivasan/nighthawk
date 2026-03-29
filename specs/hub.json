@@ -11,21 +11,35 @@
             "--format"
           ],
           "description": "Archive format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "fmt",
+            "suggestions": [
+              "tar",
+              "zip"
+            ]
+          }
         },
         {
           "names": [
             "--prefix"
           ],
           "description": "Prepend prefix to each pathname in the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prefix"
+          }
         },
         {
           "names": [
             "--add-file"
           ],
           "description": "Add untracked file to archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -33,7 +47,11 @@
             "--output"
           ],
           "description": "Write the archive to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -66,14 +84,20 @@
             "--remote"
           ],
           "description": "Retrieve the archive from remote repository <repo>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repo"
+          }
         },
         {
           "names": [
             "--exec"
           ],
           "description": "Path to the remote git-upload-archive command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "command"
+          }
         }
       ],
       "args": [
@@ -195,14 +219,21 @@
             "--ignore-rev"
           ],
           "description": "Ignore <rev> when blaming",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rev"
+          }
         },
         {
           "names": [
             "--ignore-revs-file"
           ],
           "description": "Ignore revisions from <file>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -227,14 +258,22 @@
             "-S"
           ],
           "description": "Use revisions from <file> instead of calling git-rev-list",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--contents"
           ],
           "description": "Use <file>'s contents as the final image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -253,14 +292,20 @@
             "-L"
           ],
           "description": "Process only line range <start>,<end> or function :<funcname>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "start,end"
+          }
         },
         {
           "names": [
             "--abbrev"
           ],
           "description": "Use <n> digits to display object names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         }
       ],
       "args": [
@@ -280,7 +325,10 @@
             "--message"
           ],
           "description": "Use the given message as the commit message",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message"
+          }
         },
         {
           "names": [
@@ -294,7 +342,10 @@
             "-am"
           ],
           "description": "Stage all and use given text as commit message",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message"
+          }
         },
         {
           "names": [
@@ -316,7 +367,10 @@
             "--reuse-message"
           ],
           "description": "Take an existing commit object, and reuse the log message and the authorship",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
@@ -324,21 +378,30 @@
             "--reedit-message"
           ],
           "description": "Like -C, but with -c the editor is invoked, so that the user can further edit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
             "--fixup"
           ],
           "description": "Construct a commit message for use with rebase --autosquash. The commit messa",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
             "--squash"
           ],
           "description": "Construct a commit message for use with rebase --autosquash. The commit messa",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
@@ -383,21 +446,31 @@
             "--file"
           ],
           "description": "Take the commit message from the given file. Use - to read the message from t",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--author"
           ],
           "description": "Override the commit author. Specify an explicit author using the standard A U",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "author"
+          }
         },
         {
           "names": [
             "--date"
           ],
           "description": "Override the author date used in the commit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "date"
+          }
         },
         {
           "names": [
@@ -405,7 +478,11 @@
             "--template"
           ],
           "description": "When editing the commit message, start the editor with the contents in the gi",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -444,7 +521,18 @@
             "--cleanup"
           ],
           "description": "This option determines how the supplied commit message should be cleaned up b",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "description": "Determines how the supplied commit messaged should be cleaned up before committing",
+            "suggestions": [
+              "strip",
+              "whitespace",
+              "verbatim",
+              "scissors",
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -490,7 +578,11 @@
             "--pathspec-from-file"
           ],
           "description": "Pathspec is passed in instead of commandline args. If is exactly - then stand",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -504,7 +596,15 @@
             "--untracked-files"
           ],
           "description": "Show untracked files. The mode parameter is optional (defaults to all), and i",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "no",
+              "normal",
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -537,7 +637,10 @@
             "--gpg-sign"
           ],
           "description": "GPG-sign commits. The keyid argument is optional and defaults to the committe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyid"
+          }
         },
         {
           "names": [
@@ -569,7 +672,14 @@
             "--local"
           ],
           "description": "Default: write to the repository .git/config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true,
+            "suggestions": [
+              "user.name",
+              "user.email"
+            ]
+          }
         },
         {
           "names": [
@@ -606,14 +716,20 @@
             "--get-regexp"
           ],
           "description": "Like --get-all, but interprets the name as a regular expression and writes ou",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "regexp"
+          }
         },
         {
           "names": [
             "--get-urlmatch"
           ],
           "description": "When given a two-part name section.key, the value for section..key whose part",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -633,14 +749,21 @@
             "--file"
           ],
           "description": "Use the given config file instead of the one specified by GIT_CONFIG",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--blob"
           ],
           "description": "Similar to --file but use the given blob instead of a file. E.g. you can use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "blob"
+          }
         },
         {
           "names": [
@@ -684,7 +807,18 @@
             "--type"
           ],
           "description": "Git config will ensure that any input or output is valid under the given type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "bool",
+              "int",
+              "bool-or-int",
+              "path",
+              "expiry-date",
+              "color"
+            ]
+          }
         },
         {
           "names": [
@@ -722,14 +856,20 @@
             "--get-colorbool"
           ],
           "description": "Find the color setting for name (e.g. color.diff) and output \"true\" or \"false",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--get-color"
           ],
           "description": "Find the color configured for name (e.g. color.diff.new) and output it as the",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -755,7 +895,10 @@
             "--default"
           ],
           "description": "When using --get, and the requested variable is not found, behave as if were",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         }
       ],
       "args": [
@@ -1427,7 +1570,10 @@
             "--onto"
           ],
           "description": "Starting point at which to create the new commits. If the --onto option is not specified, the starting point is <upstream>. May be any valid commit, and not just an existing branch name. As a special ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "newbase"
+          }
         },
         {
           "names": [
@@ -1464,7 +1610,14 @@
             "--empty"
           ],
           "description": "How to handle commits that are not empty to start and are not clean cherry-picks of any upstream commit, but which become empty after rebasing (because they contain a subset of already upstream change",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "drop",
+              "keep",
+              "ask"
+            ]
+          }
         },
         {
           "names": [
@@ -1527,7 +1680,18 @@
             "--strategy"
           ],
           "description": "Use the given merge strategy. If there is no -s option git merge-recursive is used instead. This implies --merge. Because git rebase replays each commit from the working branch on top of the <upstream",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strategy",
+            "is_variadic": true,
+            "suggestions": [
+              "resolve",
+              "recursive",
+              "octopus",
+              "ours",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -1535,7 +1699,29 @@
             "--strategy-option"
           ],
           "description": "Pass the <strategy-option> through to the merge strategy. This implies --merge and, if no strategy has been specified, -s recursive. Note the reversal of ours and theirs as noted above for the -m opti",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option",
+            "suggestions": [
+              "ours",
+              "theirs",
+              "patience",
+              "diff-algorithm",
+              "diff-algorithm=patience",
+              "diff-algorithm=minimal",
+              "diff-algorithm=histogram",
+              "diff-algorithm=myers",
+              "ignore-space-change",
+              "ignore-all-space",
+              "ignore-space-at-eol",
+              "ignore-cr-at-eol",
+              "renormalize",
+              "no-renormalize",
+              "no-renames",
+              "find-renames",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -1555,7 +1741,10 @@
             "--gpg-sign"
           ],
           "description": "GPG-sign commits. The keyid argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. --no-gpg-sign is useful to countermand both commi",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyid"
+          }
         },
         {
           "names": [
@@ -1607,7 +1796,10 @@
             "-C"
           ],
           "description": "Ensure at least <n> lines of surrounding context match before and after each change. When fewer lines of surrounding context exist they all must match. By default no context is ever ignored. Implies -",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         },
         {
           "names": [
@@ -1640,7 +1832,10 @@
             "--whitespace"
           ],
           "description": "This flag is passed to the git apply program (see git-apply[1]) that applies the patch. Implies --apply",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option"
+          }
         },
         {
           "names": [
@@ -1674,7 +1869,14 @@
             "--rebase-merges"
           ],
           "description": "By default, a rebase will simply drop merge commits from the todo list, and put the rebased commits into a single, linear branch. With --rebase-merges, the rebase will instead try to preserve the bran",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "rebase-cousins",
+              "no-rebase-cousins"
+            ]
+          }
         },
         {
           "names": [
@@ -1682,7 +1884,10 @@
             "--exec"
           ],
           "description": "Append 'exec <cmd>' after each line creating a commit in the final history. <cmd> will be interpreted as one or more shell commands. Any command that fails will interrupt the rebase, with exit code 1.",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
@@ -1849,14 +2054,25 @@
             "--chmod"
           ],
           "description": "Override the executable bit of the added files. The executable bit is only changed in the index, the files on disk are left unchanged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "+x",
+              "-x"
+            ]
+          }
         },
         {
           "names": [
             "--pathspec-from-file"
           ],
           "description": "Pathspec is passed in <file> instead of commandline args. If <file> is exactly - then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explain",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "File",
+            "description": "File with pathspec",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1988,14 +2204,25 @@
             "--chmod"
           ],
           "description": "Override the executable bit of the added files. The executable bit is only changed in the index, the files on disk are left unchanged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "+x",
+              "-x"
+            ]
+          }
         },
         {
           "names": [
             "--pathspec-from-file"
           ],
           "description": "Pathspec is passed in <file> instead of commandline args. If <file> is exactly - then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explain",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "File",
+            "description": "File with pathspec",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2053,7 +2280,10 @@
             "--porcelain"
           ],
           "description": "Give the output in the short-format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -2072,14 +2302,22 @@
             "--column"
           ],
           "description": "Display full ahead/behind values",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "options",
+            "description": "Defaults to always"
+          }
         },
         {
           "names": [
             "--no-column"
           ],
           "description": "Do not display untracked files in columns",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "options",
+            "description": "Defaults to never"
+          }
         },
         {
           "names": [
@@ -2100,21 +2338,44 @@
             "--untracked-files"
           ],
           "description": "Show untracked files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "all",
+              "normal",
+              "no"
+            ]
+          }
         },
         {
           "names": [
             "--ignore-submodules"
           ],
           "description": "Ignore changes to submodules when looking for changes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "when",
+            "suggestions": [
+              "all",
+              "dirty",
+              "untracked",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--ignored"
           ],
           "description": "Show ignored files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "traditional",
+              "matching",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -2133,7 +2394,10 @@
             "--find-renames"
           ],
           "description": "Turn on rename detection, optionally setting the similarity threshold",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         }
       ],
       "args": [
@@ -2187,7 +2451,10 @@
             "--exclude"
           ],
           "description": "Use the given exclude pattern in addition to the standard ignore rules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [
@@ -2281,7 +2548,14 @@
             "--signed"
           ],
           "description": "GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be logged. If false or --no-signed, no signing will be attempted. If true or --signed, the",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false",
+              "if-asked"
+            ]
+          }
         },
         {
           "names": [
@@ -2313,7 +2587,10 @@
             "--repo"
           ],
           "description": "This option is equivalent to the <repository> argument. If both are specified, the command-line argument takes precedence",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repository"
+          }
         },
         {
           "names": [
@@ -2365,7 +2642,15 @@
             "--recurse-submodules"
           ],
           "description": "May be used to make sure all submodule commits used by the revisions to be pushed are available on a remote-tracking branch. If check is used Git will verify that all submodule commits that changed in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "check",
+              "on-demand",
+              "only",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -2399,7 +2684,10 @@
             "--push-option"
           ],
           "description": "Transmit the given string to the server, which passes them to the pre-receive as well as the post-receive hook. The given string must not contain a NUL or LF character. When multiple --push-option=<op",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option"
+          }
         },
         {
           "names": [
@@ -2407,7 +2695,10 @@
             "--exec"
           ],
           "description": "Path to the git-receive-pack program on the remote end. Sometimes useful when pushing to a remote repository over ssh, and you do not have the program in a directory on the default $PATH",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "git-receive-pack"
+          }
         },
         {
           "names": [
@@ -2420,7 +2711,10 @@
             "--force-with-lease"
           ],
           "description": "Protect the named ref (alone), if it is going to be updated, by requiring its current value to be the same as the specified value <expect> (which is allowed to be different from the remote-tracking br",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "refname[:expect]"
+          }
         }
       ],
       "args": [
@@ -2442,7 +2736,17 @@
             "-r"
           ],
           "description": "Fetch the remote’s copy of current branch and rebases it into the local copy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "remote",
+            "suggestions": [
+              "false",
+              "true",
+              "merges",
+              "preserve",
+              "interactive"
+            ]
+          }
         },
         {
           "names": [
@@ -2480,7 +2784,17 @@
             "--cleanup"
           ],
           "description": "This option determines how the merge message will be cleaned up before committing. See git-commit[1] for more details. In addition, if the <mode> is given a value of scissors, scissors will be appende",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "strip",
+              "whitespace",
+              "verbatim",
+              "scissors",
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -2506,7 +2820,10 @@
             "--gpg-sign"
           ],
           "description": "GPG-sign the resulting merge commit. The keyid argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyid"
+          }
         },
         {
           "names": [
@@ -2519,7 +2836,10 @@
             "--log"
           ],
           "description": "In addition to branch names, populate the log message with one-line descriptions from at most <n> actual commits that are being merged. See also git-fmt-merge-msg[1]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         },
         {
           "names": [
@@ -2576,7 +2896,18 @@
             "--strategy"
           ],
           "description": "Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no -s option, a built-in list of strategies is used instead (git merge-recur",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strategy",
+            "is_variadic": true,
+            "suggestions": [
+              "resolve",
+              "recursive",
+              "octopus",
+              "ours",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -2584,7 +2915,29 @@
             "--strategy-option"
           ],
           "description": "Pass merge strategy specific option through to the merge strategy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option",
+            "suggestions": [
+              "ours",
+              "theirs",
+              "patience",
+              "diff-algorithm",
+              "diff-algorithm=patience",
+              "diff-algorithm=minimal",
+              "diff-algorithm=histogram",
+              "diff-algorithm=myers",
+              "ignore-space-change",
+              "ignore-all-space",
+              "ignore-space-at-eol",
+              "ignore-cr-at-eol",
+              "renormalize",
+              "no-renormalize",
+              "no-renames",
+              "find-renames",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -2666,28 +3019,40 @@
             "--depth"
           ],
           "description": "Limit fetching to the specified number of commits from the tip of each remote branch history",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
             "--deepen"
           ],
           "description": "Similar to --depth, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
             "--shallow-since"
           ],
           "description": "Deepen or shorten the history of a shallow repository to include all reachable commits after <date>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "date"
+          }
         },
         {
           "names": [
             "--shallow-exclude"
           ],
           "description": "Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "revision"
+          }
         },
         {
           "names": [
@@ -2706,7 +3071,10 @@
             "--negotiation-tip"
           ],
           "description": "By default, Git will report, to the server, commits reachable from all local refs to find common commits in an attempt to reduce the size of the to-be-received packfile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit|glob"
+          }
         },
         {
           "names": [
@@ -2753,7 +3121,10 @@
             "--refmap"
           ],
           "description": "When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of remote.*.fetch configuratio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "refspec"
+          }
         },
         {
           "names": [
@@ -2767,7 +3138,15 @@
             "--recurse-submodules"
           ],
           "description": "When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of remote.*.fetch configuratio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "yes",
+              "on-demand",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -2781,7 +3160,10 @@
             "--jobs"
           ],
           "description": "Number of parallel children to be used for all forms of fetching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         },
         {
           "names": [
@@ -2794,7 +3176,10 @@
             "--upload-pack"
           ],
           "description": "When given, and the repository to fetch from is handled by git fetch-pack, --exec=<upload-pack> is passed to the command to specify non-default path for the command run on the other end",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "upload-pack"
+          }
         },
         {
           "names": [
@@ -2808,7 +3193,10 @@
             "--server-option"
           ],
           "description": "Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option"
+          }
         },
         {
           "names": [
@@ -2891,14 +3279,22 @@
             "--stat"
           ],
           "description": "Generate a diffstat",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[=< width >[,< name-width >[,< count >]]]"
+          }
         },
         {
           "names": [
             "--"
           ],
           "description": "Separates paths from options for disambiguation purposes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[< path >...]",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -2970,7 +3366,14 @@
             "--pathspec-from-file"
           ],
           "description": "Pathspec is passed in file <file> instead of commandline args",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "suggestions": [
+              "-"
+            ],
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3005,7 +3408,11 @@
             "--follow"
           ],
           "description": "Show history of given file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3051,14 +3458,20 @@
             "--grep"
           ],
           "description": "Search for commits with a commit message that matches <pattern>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [
             "--author"
           ],
           "description": "Search for commits by a particular author",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         }
       ],
       "args": [
@@ -3093,14 +3506,20 @@
                 "-t"
               ],
               "description": "A refspec to track only <branch> is created",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch"
+              }
             },
             {
               "names": [
                 "-m"
               ],
               "description": "A symbolic-ref refs/remotes/<name>/HEAD is set up to point at remote’s <master> branch",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "master"
+              }
             },
             {
               "names": [
@@ -3125,7 +3544,13 @@
                 "--mirror"
               ],
               "description": "Create fetch or push mirror",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "fetch",
+                  "push"
+                ]
+              }
             }
           ],
           "args": [
@@ -3370,28 +3795,40 @@
             "--depth"
           ],
           "description": "Limit fetching to the specified number of commits from the tip of each remote branch history",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
             "--deepen"
           ],
           "description": "Similar to --depth, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
             "--shallow-since"
           ],
           "description": "Deepen or shorten the history of a shallow repository to include all reachable commits after <date>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "date"
+          }
         },
         {
           "names": [
             "--shallow-exclude"
           ],
           "description": "Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "revision"
+          }
         },
         {
           "names": [
@@ -3410,7 +3847,10 @@
             "--negotiation-tip"
           ],
           "description": "By default, Git will report, to the server, commits reachable from all local refs to find common commits in an attempt to reduce the size of the to-be-received packfile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit|glob"
+          }
         },
         {
           "names": [
@@ -3502,7 +3942,10 @@
             "--refmap"
           ],
           "description": "When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of remote.*.fetch configuratio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "refspec"
+          }
         },
         {
           "names": [
@@ -3516,7 +3959,15 @@
             "--recurse-submodules"
           ],
           "description": "When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of remote.*.fetch configuratio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "yes",
+              "on-demand",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -3524,7 +3975,10 @@
             "--jobs"
           ],
           "description": "Number of parallel children to be used for all forms of fetching",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         },
         {
           "names": [
@@ -3543,14 +3997,24 @@
             "--submodule-prefix"
           ],
           "description": "Prepend <path> to paths printed in informative messages such as ”Fetching submodule foo\". This option is used internally when recursing over submodules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "--recurse-submodules-default"
           ],
           "description": "This option is used internally to temporarily provide a non-negative default value for the --recurse-submodules option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "yes",
+              "on-demand"
+            ]
+          }
         },
         {
           "names": [
@@ -3564,7 +4028,10 @@
             "--upload-pack"
           ],
           "description": "When given, and the repository to fetch from is handled by git fetch-pack, --exec=<upload-pack> is passed to the command to specify non-default path for the command run on the other end",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "upload-pack"
+          }
         },
         {
           "names": [
@@ -3592,7 +4059,10 @@
             "--server-option"
           ],
           "description": "Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option"
+          }
         },
         {
           "names": [
@@ -3688,7 +4158,10 @@
                 "--message"
               ],
               "description": "Use the given <msg> as the stash message",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "message"
+              }
             },
             {
               "names": [
@@ -3863,7 +4336,10 @@
                 "--message"
               ],
               "description": "Use the given <msg> as the stash message",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "message"
+              }
             },
             {
               "names": [
@@ -3937,14 +4413,20 @@
             "--reference"
           ],
           "description": "If the reference repository is on the local machine, automatically setup",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repository"
+          }
         },
         {
           "names": [
             "--reference-if-able"
           ],
           "description": "If the reference repository is on the local machine, automatically setup. Non existing directory is skipped with a warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repository"
+          }
         },
         {
           "names": [
@@ -3977,7 +4459,10 @@
             "--server-option"
           ],
           "description": "Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. The server’s handling of server options, including unknown",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option"
+          }
         },
         {
           "names": [
@@ -4003,7 +4488,10 @@
             "--filter"
           ],
           "description": "Use the partial clone feature and request that the server sends a subset of reachable objects according to a given object filter. When using --filter, the supplied <filter-spec> is used for the partia",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter spec"
+          }
         },
         {
           "names": [
@@ -4017,7 +4505,10 @@
             "--origin"
           ],
           "description": "Instead of using the remote name origin to keep track of the upstream repository, use <name>. Overrides clone.defaultRemoteName from the config",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -4025,7 +4516,10 @@
             "--branch"
           ],
           "description": "Instead of pointing the newly created HEAD to the branch pointed to by the cloned repository’s HEAD, point to <name> branch instead. In a non-bare repository, this is the branch that will be checked o",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch name"
+          }
         },
         {
           "names": [
@@ -4033,14 +4527,20 @@
             "--upload-pack"
           ],
           "description": "When given, and the repository to clone from is accessed via ssh, this specifies a non-default path for the command run on the other end",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "upload pack"
+          }
         },
         {
           "names": [
             "--template"
           ],
           "description": "Specify the directory from which templates will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template directory"
+          }
         },
         {
           "names": [
@@ -4048,28 +4548,40 @@
             "--config"
           ],
           "description": "Set a configuration variable in the newly-created repository; this takes effect immediately after the repository is initialized, but before the remote history is fetched or any files checked out. The ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
             "--depth"
           ],
           "description": "Create a shallow clone with a history truncated to the specified number of commits. Implies --single-branch unless --no-single-branch is given to fetch the histories near the tips of all branches. If ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
             "--shallow-since"
           ],
           "description": "Create a shallow clone with a history after the specified time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "date"
+          }
         },
         {
           "names": [
             "--shallow-exclude"
           ],
           "description": "Create a shallow clone with a history, excluding commits reachable from a specified remote branch or tag. This option can be specified multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "revision"
+          }
         },
         {
           "names": [
@@ -4094,7 +4606,10 @@
             "--recurse-submodules"
           ],
           "description": "After the clone is created, initialize and clone submodules within based on the provided pathspec. If no pathspec is provided, all submodules are initialized and cloned. This option can be given multi",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pathspec"
+          }
         },
         {
           "names": [
@@ -4126,14 +4641,20 @@
             "--jobs"
           ],
           "description": "The number of submodules fetched at the same time. Defaults to the submodule.fetchJobs option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         },
         {
           "names": [
             "--separate-git-dir"
           ],
           "description": "Instead of placing the cloned repository where it is supposed to be, place the cloned repository at the specified directory, then make a filesystem-agnostic Git symbolic link to there. The result is G",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "git dir"
+          }
         }
       ],
       "args": [
@@ -4170,21 +4691,35 @@
             "--object-format"
           ],
           "description": "Specify the given object format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "sha1",
+              "sha256"
+            ]
+          }
         },
         {
           "names": [
             "--template"
           ],
           "description": "Specify the directory from which templates will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template_directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--separate-git-dir"
           ],
           "description": "Instead of initializing the repository as a directory to either $GIT_DIR or ./.git/, create a text file there containing the path to the actual repository. This file acts as filesystem-agnostic Git sy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "git dir"
+          }
         },
         {
           "names": [
@@ -4192,14 +4727,29 @@
             "--initial-branch"
           ],
           "description": "Initial branch for new repo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch-name"
+          }
         },
         {
           "names": [
             "--shared"
           ],
           "description": "Specify that the Git repository is to be shared amongst several users. This allows users belonging to the same group to push into that repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "false",
+              "true",
+              "umask",
+              "group",
+              "all",
+              "world",
+              "everybody",
+              "0xxx"
+            ]
+          }
         }
       ],
       "args": [
@@ -4312,28 +4862,44 @@
                 "--term-new"
               ],
               "description": "Specify the alias to mark commits as new during the bisect process",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "term",
+                "description": "Specifying: fixed, would require using git bisect fixed instead of git bisect new"
+              }
             },
             {
               "names": [
                 "--term-bad"
               ],
               "description": "Specify the alias to mark commits as bad during the bisect process",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "term",
+                "description": "Specifying: broken, would require using git bisect broken instead of git bisect bad"
+              }
             },
             {
               "names": [
                 "--term-good"
               ],
               "description": "Specify the alias to mark commits as good during the bisect process",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "term",
+                "description": "Specifying: fixed, would require using git bisect fixed instead of git bisect good"
+              }
             },
             {
               "names": [
                 "--term-old"
               ],
               "description": "Specify the alias to mark commits as old during the bisect process",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "term",
+                "description": "Specifying: broken, would require using git bisect broken instead of git bisect old"
+              }
             },
             {
               "names": [
@@ -4547,14 +5113,26 @@
             "--delete"
           ],
           "description": "Delete fully merged branch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true,
+            "suggestions": [
+              "-r"
+            ]
+          }
         },
         {
           "names": [
             "-D"
           ],
           "description": "Delete branch (even if not merged)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true,
+            "suggestions": [
+              "-r"
+            ]
+          }
         },
         {
           "names": [
@@ -4616,14 +5194,20 @@
             "--merged"
           ],
           "description": "Print only branches that are merged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
             "--no-merged"
           ],
           "description": "Print only branches that are not merged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
@@ -4642,14 +5226,20 @@
             "--sort"
           ],
           "description": "Field name to sort on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
             "--points-at"
           ],
           "description": "Print only branches of the object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "object"
+          }
         },
         {
           "names": [
@@ -4663,7 +5253,10 @@
             "--format"
           ],
           "description": "Format to use for the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format"
+          }
         },
         {
           "names": [
@@ -4697,7 +5290,10 @@
             "--abbrev"
           ],
           "description": "Shows the shortest prefix that is at least <n> hexdigits long that uniquely refers the object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Number"
+          }
         },
         {
           "names": [
@@ -4711,7 +5307,10 @@
             "--track"
           ],
           "description": "When creating a new branch, set up 'upstream' configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
@@ -4726,35 +5325,55 @@
             "--set-upstream-to"
           ],
           "description": "Sets branch to upstream provided",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "upstream"
+          }
         },
         {
           "names": [
             "--unset-upstream"
           ],
           "description": "Removes the upstream information",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "upstream"
+          }
         },
         {
           "names": [
             "--contains"
           ],
           "description": "Only lists branches which contain the specified commit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
             "--no-contains"
           ],
           "description": "Only lists branches which don't contain the specified commit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "commit"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Color branches to highlight current, local, and remote-tracking branches",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "when",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
@@ -4813,14 +5432,20 @@
             "-b"
           ],
           "description": "Create a new branch named <new_branch> and start it at <start_point>; see git-branch[1] for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "New Branch"
+          }
         },
         {
           "names": [
             "-B"
           ],
           "description": "Creates the branch <new_branch> and start it at <start_point>; if it already exists, then reset it to <start_point>. This is equivalent to running 'git branch' with '-f'; see git-branch[1] for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "New Branch"
+          }
         },
         {
           "names": [
@@ -4865,7 +5490,10 @@
             "--orphan"
           ],
           "description": "Create a new orphan branch, named <new_branch>, started from <start_point> and switch to it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "New Branch"
+          }
         },
         {
           "names": [
@@ -4885,7 +5513,13 @@
             "--conflict"
           ],
           "description": "The same as --merge option above, but changes the way the conflicting hunks are presented, overriding the merge.conflictStyle configuration variable. Possible values are 'merge' (default) and 'diff3' ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "merge",
+              "diff3"
+            ]
+          }
         },
         {
           "names": [
@@ -4941,7 +5575,11 @@
             "--pathspec-from-file"
           ],
           "description": "Pathspec is passed in <file> instead of commandline args",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -5007,7 +5645,18 @@
             "--cleanup"
           ],
           "description": "This option determines how the commit message will be cleaned up before being passed on to the commit machinery",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "description": "Determines how the supplied commit messaged should be cleaned up before committing",
+            "suggestions": [
+              "strip",
+              "whitespace",
+              "verbatim",
+              "scissors",
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -5021,7 +5670,10 @@
             "--mainline"
           ],
           "description": "Specifies the parent number (starting from 1) of the mainline and allows cherry-pick to replay the change relative to the specified parent",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "parent-number"
+          }
         },
         {
           "names": [
@@ -5043,7 +5695,11 @@
             "--gpg-sign"
           ],
           "description": "GPG-sign commits",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyid",
+            "description": "Must be stuck to the option without a space"
+          }
         },
         {
           "names": [
@@ -5080,7 +5736,17 @@
             "--strategy"
           ],
           "description": "Use the given merge strategy. Should only be used once",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strategy",
+            "suggestions": [
+              "resolve",
+              "recursive",
+              "octopus",
+              "ours",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -5088,7 +5754,29 @@
             "--strategy-option"
           ],
           "description": "Pass the merge strategy-specific option through to the merge strategy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option",
+            "suggestions": [
+              "ours",
+              "theirs",
+              "patience",
+              "diff-algorithm",
+              "diff-algorithm=patience",
+              "diff-algorithm=minimal",
+              "diff-algorithm=histogram",
+              "diff-algorithm=myers",
+              "ignore-space-change",
+              "ignore-all-space",
+              "ignore-space-at-eol",
+              "ignore-cr-at-eol",
+              "renormalize",
+              "no-renormalize",
+              "no-renames",
+              "find-renames",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -5124,7 +5812,10 @@
                 "-b"
               ],
               "description": "Branch of repository to add as submodule",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch"
+              }
             },
             {
               "names": [
@@ -5138,21 +5829,33 @@
                 "--name"
               ],
               "description": "It sets the submodule’s name to the given string instead of defaulting to its path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "description": "Directory name"
+              }
             },
             {
               "names": [
                 "--reference"
               ],
               "description": "Remote repository to be cloned",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repository",
+                "description": "Remote repository to be cloned"
+              }
             },
             {
               "names": [
                 "--depth"
               ],
               "description": "Create a shallow clone with a history truncated to the specified number of revisions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "depth",
+                "description": "Specified number of revisions"
+              }
             },
             {
               "names": [
@@ -5318,14 +6021,20 @@
                 "--reference"
               ],
               "description": "Remote repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repository"
+              }
             },
             {
               "names": [
                 "--depth"
               ],
               "description": "Create a shallow clone with a history truncated to the specified number of revisions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "depth"
+              }
             },
             {
               "names": [
@@ -5338,7 +6047,10 @@
                 "--jobs"
               ],
               "description": "Clone new submodules in parallel with as many jobs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "n"
+              }
             },
             {
               "names": [
@@ -5377,7 +6089,11 @@
                 "--branch"
               ],
               "description": "Branch of repository to add as submodule",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch",
+                "description": "Remote branch to be specified"
+              }
             },
             {
               "names": [
@@ -5445,14 +6161,20 @@
                 "-n"
               ],
               "description": "Limit the summary size (number of commits shown in total). Giving 0 will disable the summary; a negative number means unlimited (the default). This limit only applies to modified submodules. The size ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "n"
+              }
             },
             {
               "names": [
                 "--summary-limit"
               ],
               "description": "Limit the summary size (number of commits shown in total). Giving 0 will disable the summary; a negative number means unlimited (the default). This limit only applies to modified submodules. The size ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "n"
+              }
             },
             {
               "names": [
@@ -5569,7 +6291,17 @@
             "--cleanup"
           ],
           "description": "This option determines how the merge message will be cleaned up before committing. See git-commit[1] for more details. In addition, if the <mode> is given a value of scissors, scissors will be appende",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "strip",
+              "whitespace",
+              "verbatim",
+              "scissors",
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -5595,7 +6327,10 @@
             "--gpg-sign"
           ],
           "description": "GPG-sign the resulting merge commit. The keyid argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyid"
+          }
         },
         {
           "names": [
@@ -5608,7 +6343,10 @@
             "--log"
           ],
           "description": "In addition to branch names, populate the log message with one-line descriptions from at most <n> actual commits that are being merged. See also git-fmt-merge-msg[1]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         },
         {
           "names": [
@@ -5665,7 +6403,18 @@
             "--strategy"
           ],
           "description": "Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no -s option, a built-in list of strategies is used instead (git merge-recur",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strategy",
+            "is_variadic": true,
+            "suggestions": [
+              "resolve",
+              "recursive",
+              "octopus",
+              "ours",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -5673,7 +6422,29 @@
             "--strategy-option"
           ],
           "description": "Pass merge strategy specific option through to the merge strategy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option",
+            "suggestions": [
+              "ours",
+              "theirs",
+              "patience",
+              "diff-algorithm",
+              "diff-algorithm=patience",
+              "diff-algorithm=minimal",
+              "diff-algorithm=histogram",
+              "diff-algorithm=myers",
+              "ignore-space-change",
+              "ignore-all-space",
+              "ignore-space-at-eol",
+              "ignore-cr-at-eol",
+              "renormalize",
+              "no-renormalize",
+              "no-renames",
+              "find-renames",
+              "subtree"
+            ]
+          }
         },
         {
           "names": [
@@ -5748,7 +6519,10 @@
             "-m"
           ],
           "description": "Set the commit message to be used for the merge commit (in case one is created). If --log is specified, a shortlog of the commits being merged will be appended to the specified message. The git fmt-me",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message"
+          }
         },
         {
           "names": [
@@ -5756,7 +6530,11 @@
             "--file"
           ],
           "description": "Read the commit message to be used for the merge commit (in case one is created). If --log is specified, a shortlog of the commits being merged will be appended to the specified message",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -5831,7 +6609,15 @@
             "-n"
           ],
           "description": "Print <n> lines of each tag message",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n",
+            "suggestions": [
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
@@ -5860,14 +6646,24 @@
             "--message"
           ],
           "description": "Tag message",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message"
+          }
         },
         {
           "names": [
             "--points-at"
           ],
           "description": "List tags of the given object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "object",
+            "suggestions": [
+              "HEAD",
+              "HEAD~<N>"
+            ]
+          }
         }
       ],
       "args": [
@@ -5887,7 +6683,10 @@
             "--source"
           ],
           "description": "Restore the working tree files with the content from the given tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tree"
+          }
         },
         {
           "names": [
@@ -5955,7 +6754,14 @@
             "--conflict"
           ],
           "description": "The same as --merge option, but changes the way the conflicting hunks are presented",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "style",
+            "suggestions": [
+              "merge",
+              "diff3"
+            ]
+          }
         },
         {
           "names": [
@@ -5998,7 +6804,11 @@
             "--pathspec-from-file"
           ],
           "description": "Pathspec is passed in <file> instead of commandline args. If <file> is exactly - then standard input is used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -6030,7 +6840,10 @@
             "--create"
           ],
           "description": "Create a new branch named <new-branch> starting at <start-point> before switching to the branch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "new branch"
+          }
         },
         {
           "names": [
@@ -6038,7 +6851,10 @@
             "--force-create"
           ],
           "description": "Similar to --create except that if <new-branch> already exists it will be reset to <start-point>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "new branch"
+          }
         },
         {
           "names": [
@@ -6084,7 +6900,14 @@
             "--conflict"
           ],
           "description": "The same as --merge option above, but changes the way the conflicting hunks are presented, overriding the merge.conflictStyle configuration variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "style",
+            "suggestions": [
+              "merge",
+              "diff3"
+            ]
+          }
         },
         {
           "names": [
@@ -6111,7 +6934,10 @@
             "--track"
           ],
           "description": "When creating a new branch, set up 'upstream' configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
@@ -6125,7 +6951,10 @@
             "--orphan"
           ],
           "description": "Create a new orphan branch, named <new-branch>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "new branch"
+          }
         },
         {
           "names": [
@@ -6199,7 +7028,10 @@
                 "-B"
               ],
               "description": "With add, create a new branch named <new-branch> starting at <commit-ish>, and check out <new-branch> into the new working tree. If <commit-ish> is omitted, it defaults to HEAD. By default, -b refuses",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "new-branch"
+              }
             }
           ]
         },
@@ -6225,7 +7057,10 @@
                 "--expire"
               ],
               "description": "With list, annotate missing working trees as prunable if they are older than <time>",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             }
           ]
         },
@@ -6238,7 +7073,10 @@
                 "--reason"
               ],
               "description": "With lock or with add --lock, an explanation <reason> why the working tree is locked",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "reason"
+              }
             }
           ],
           "args": [
@@ -6294,7 +7132,10 @@
                 "--expire"
               ],
               "description": "With prune, only expire unused working trees older than <time>",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             }
           ]
         },
@@ -6348,21 +7189,30 @@
             "--exclude"
           ],
           "description": "Don't apply changes matching the given path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "--include"
           ],
           "description": "Apply changes matching the given path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "-p"
           ],
           "description": "Remove <num> leading slashes from traditional diff paths",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "num"
+          }
         },
         {
           "names": [
@@ -6437,7 +7287,10 @@
             "--build-fake-ancestor"
           ],
           "description": "Build a temporary index based on embedded index information",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         },
         {
           "names": [
@@ -6450,14 +7303,27 @@
             "-C"
           ],
           "description": "Ensure at least <n> lines of context match",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "n"
+          }
         },
         {
           "names": [
             "--whitespace"
           ],
           "description": "Detect new or modified lines that have whitespace errors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "action",
+            "suggestions": [
+              "nowarn",
+              "warn",
+              "fix",
+              "error",
+              "error-all"
+            ]
+          }
         },
         {
           "names": [
@@ -6515,7 +7381,10 @@
             "--directory"
           ],
           "description": "Prepend <root> to all filenames",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root"
+          }
         }
       ],
       "args": [
@@ -6540,7 +7409,11 @@
             "--base-path"
           ],
           "description": "Remap all the path requests as relative to the given path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -6553,7 +7426,10 @@
             "--interpolated-path"
           ],
           "description": "To support virtual hosting, an interpolated path template can be used to dynamically construct alternate paths. The template supports %H for the target hostname as supplied by the client but converted",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path-template"
+          }
         },
         {
           "names": [
@@ -6572,28 +7448,40 @@
             "--listen"
           ],
           "description": "Listen on a specific IP address or hostname. IP addresses can be either an IPv4 address or an IPv6 address if supported. If IPv6 is not supported, then --listen=hostname is also not supported and --li",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host_or_ipaddr"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "Listen on an alternative port. Incompatible with --inetd option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--init-timeout"
           ],
           "description": "Timeout (in seconds) between the moment the connection is established and the client request is received (typically a rather low value, since that should be basically immediate)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
             "--max-connections"
           ],
           "description": "Maximum number of concurrent clients, defaults to 32. Set it to zero for no limit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "maximum"
+          }
         },
         {
           "names": [
@@ -6606,14 +7494,26 @@
             "--log-destination"
           ],
           "description": "Send log messages to the specified destination. Note that this option does not imply --verbose, thus by default only error conditions will be logged. The default destination is syslog if --inetd or --",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "destination",
+            "suggestions": [
+              "stderr",
+              "syslog",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--user-path"
           ],
           "description": "Allow ~user notation to be used in requests. When specified with no parameter, requests to git://host/~alice/foo is taken as a request to access foo repository in the home directory of user alice. If ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -6632,14 +7532,21 @@
             "--pid-file"
           ],
           "description": "Save the process id in the provided file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "Change daemon’s uid and gid before entering the service loop. When only --user is given without --group, the primary group ID for the user is used. The values of the option are given to getpwnam(3) an",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
@@ -6652,28 +7559,60 @@
             "--enable"
           ],
           "description": "Enable the service site-wide per default",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service",
+            "suggestions": [
+              "upload-pack",
+              "upload-archive",
+              "receive-pack"
+            ]
+          }
         },
         {
           "names": [
             "--disable"
           ],
           "description": "Disable the service site-wide per default. Note that a service disabled site-wide can still be enabled per repository if it is marked overridable and the repository enables the service with a configur",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service",
+            "suggestions": [
+              "upload-pack",
+              "upload-archive",
+              "receive-pack"
+            ]
+          }
         },
         {
           "names": [
             "--allow-override"
           ],
           "description": "Allow overriding the site-wide default with per repository configuration. By default, all the services may be overridden",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service",
+            "suggestions": [
+              "upload-pack",
+              "upload-archive",
+              "receive-pack"
+            ]
+          }
         },
         {
           "names": [
             "--forbid-override"
           ],
           "description": "Forbid overriding the site-wide default with per repository configuration. By default, all the services may be overridden",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service",
+            "suggestions": [
+              "upload-pack",
+              "upload-archive",
+              "receive-pack"
+            ]
+          }
         },
         {
           "names": [
@@ -6692,7 +7631,11 @@
             "--access-hook"
           ],
           "description": "Every time a client connects, first run an external command specified by the <path> with service name (e.g. \"upload-pack\"), path to the repository, hostname (%H), canonical hostname (%CH), IP address ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -6722,21 +7665,32 @@
         "-C"
       ],
       "description": "Run as if git was started in <path>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-c"
       ],
       "description": "Pass a config parameter to the command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name=value"
+      }
     },
     {
       "names": [
         "--exec-path"
       ],
       "description": "Get or set GIT_EXEC_PATH for core Git programs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -6792,21 +7746,32 @@
         "--git-dir"
       ],
       "description": "Set the path to the repository dir (`.git`)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--work-tree"
       ],
       "description": "Set working tree path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--namespace"
       ],
       "description": "Set the Git namespace",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     }
   ],
   "args": [

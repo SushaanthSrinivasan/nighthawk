@@ -11,7 +11,10 @@
             "--resolver"
           ],
           "description": "Override resolver in project file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLVER"
+          }
         },
         {
           "names": [
@@ -267,21 +270,30 @@
             "--snapshot-location-base"
           ],
           "description": "The base location of LTS/Nightly snapshots",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Sets the working directory before executing the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR"
+          }
         },
         {
           "names": [
             "--setup-info-yaml"
           ],
           "description": "Alternate URL or relative / absolute path for stack dependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL"
+          }
         },
         {
           "names": [
@@ -300,7 +312,10 @@
             "--package"
           ],
           "description": "Additional package(s) that must be installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE(S)"
+          }
         },
         {
           "names": [
@@ -449,14 +464,26 @@
         "--colour"
       ],
       "description": "Specify when to use color in output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WHEN",
+        "description": "WHEN is 'always', 'never', or 'auto'. On Windows versions before Windows 10, for terminals that do not support color codes, the default is 'never'; color may work on terminals that support color codes",
+        "suggestions": [
+          "always",
+          "never",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--compiler"
       ],
       "description": "Use the specified compiler",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COMPILER"
+      }
     },
     {
       "names": [
@@ -476,28 +503,42 @@
         "--stack-colours"
       ],
       "description": "Specify stack's output styles",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STYLE",
+        "description": "It a colon-delimited sequence of key=value, where 'key' is a style name and 'value' is a semicolon-delimited list of 'ANSI' SGR (Select Graphic Rendition) control codes (in decimal). Use 'stack ls sta"
+      }
     },
     {
       "names": [
         "--terminal-width"
       ],
       "description": "Specify the width of the terminal, used for pretty-print messages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "INT"
+      }
     },
     {
       "names": [
         "--stack-yaml"
       ],
       "description": "Override project stack.yaml file (overrides any STACK_YAML environment variable)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STACK-YAML"
+      }
     },
     {
       "names": [
         "--lock-file"
       ],
       "description": "Specify how to interact with lock files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ARG",
+        "description": "Default: read/write. If resolver is overridden: read-only"
+      }
     }
   ]
 }

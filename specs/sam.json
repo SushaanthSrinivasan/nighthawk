@@ -11,14 +11,20 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
@@ -45,7 +51,14 @@
             "--architecture"
           ],
           "description": "Architectures your Lambda function will run on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "architecture",
+            "suggestions": [
+              "arm64",
+              "x86_64"
+            ]
+          }
         },
         {
           "names": [
@@ -53,7 +66,10 @@
             "--location"
           ],
           "description": "Template location (git, mercurial, http(s), zip, path)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
@@ -61,7 +77,31 @@
             "--runtime"
           ],
           "description": "Lambda Runtime for your app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "runtime",
+            "suggestions": [
+              "dotnet8",
+              "dotnet6",
+              "go1.x",
+              "java21",
+              "java17",
+              "java11",
+              "java8.al2",
+              "nodejs20.x",
+              "nodejs18.x",
+              "nodejs16.x",
+              "provided.al2023",
+              "provided.al2",
+              "provided",
+              "python3.12",
+              "python3.11",
+              "python3.10",
+              "python3.9",
+              "python3.8",
+              "ruby3.2"
+            ]
+          }
         },
         {
           "names": [
@@ -69,7 +109,14 @@
             "--package-type"
           ],
           "description": "Package type for your app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "zip",
+              "image"
+            ]
+          }
         },
         {
           "names": [
@@ -77,7 +124,30 @@
             "--base-image"
           ],
           "description": "Lambda Image of your app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "image name",
+            "suggestions": [
+              "amazon/dotnet8-base",
+              "amazon/dotnet6-base",
+              "amazon/go1.x-base",
+              "amazon/go-provided.al2-base",
+              "amazon/go-provided.al2023-base",
+              "amazon/java21-base",
+              "amazon/java17-base",
+              "amazon/java11-base",
+              "amazon/java8.al2-base",
+              "amazon/nodejs20.x-base",
+              "amazon/nodejs18.x-base",
+              "amazon/nodejs16.x-base",
+              "amazon/python3.12-base",
+              "amazon/python3.11-base",
+              "amazon/python3.10-base",
+              "amazon/python3.9-base",
+              "amazon/python3.8-base",
+              "amazon/ruby3.2-base"
+            ]
+          }
         },
         {
           "names": [
@@ -85,7 +155,19 @@
             "--dependency-manager"
           ],
           "description": "Dependency manager for your Lambda runtime",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manager",
+            "suggestions": [
+              "npm",
+              "mod",
+              "gradle",
+              "cli-package",
+              "bundler",
+              "pip",
+              "maven"
+            ]
+          }
         },
         {
           "names": [
@@ -93,7 +175,10 @@
             "--output-dir"
           ],
           "description": "Where to output the initialized app into",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
@@ -101,14 +186,21 @@
             "--name"
           ],
           "description": "Name of your project to be generated as a folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
             "--app-template"
           ],
           "description": "Identifier of the managed application template you want to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text",
+            "description": "Template name"
+          }
         },
         {
           "names": [
@@ -121,7 +213,11 @@
             "--extra-context"
           ],
           "description": "Override any custom parameters in the template's cookiecutter.json configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text",
+            "description": "E.g. {\"customParam1\": \"customValue1\", \"customParam2\":\"customValue2\"}"
+          }
         }
       ]
     },
@@ -134,14 +230,20 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
@@ -161,14 +263,21 @@
             "--profile"
           ],
           "description": "Select a specific profile from your credential file to get AWS credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name",
+            "description": "The name of the AWS profile"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Set the AWS Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         },
         {
           "names": [
@@ -177,7 +286,11 @@
             "--template"
           ],
           "description": "AWS SAM template file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -190,14 +303,20 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
@@ -210,7 +329,10 @@
             "--docker-network"
           ],
           "description": "Specifies the name or id of an existing docker network to lambda docker containers should connect to, along with the default bridge network. If not specified, the Lambda containers will only connect t",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "network name"
+          }
         },
         {
           "names": [
@@ -224,21 +346,32 @@
             "--parameter-overrides"
           ],
           "description": "A string that contains AWS CloudFormation parameter overrides encoded as key=value pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "override string",
+            "description": "For example, 'ParameterKey=KeyPairName,ParameterValue=MyKey ParameterKey=InstanceType,ParameterValue=t1.micro' or 'KeyPairName=MyKey InstanceType=t1.micro'"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Select a specific profile from your credential file to get AWS credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name",
+            "description": "The name of the AWS profile"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Set the AWS Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         },
         {
           "names": [
@@ -253,7 +386,11 @@
             "--template"
           ],
           "description": "AWS SAM template file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -268,7 +405,10 @@
             "--container-env-var"
           ],
           "description": "Input environment variables through command line to pass into build containers, you can either input function specific format (FuncName.VarName=Value) or global format (VarName=Value)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "env var"
+          }
         },
         {
           "names": [
@@ -276,7 +416,11 @@
             "--container-env-var-file"
           ],
           "description": "Path to environment variable json file (e.g., env_vars.json) to pass into build containers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -284,7 +428,11 @@
             "--build-image"
           ],
           "description": "Container image URIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "image uri",
+            "description": "Container image URIs for building functions/layers. You can specify for all functions/layers with just the image URI (--build-image public.ecr.aws/sam/build-nodejs14.x:latest). You can specify for eac"
+          }
         },
         {
           "names": [
@@ -299,7 +447,11 @@
             "--build-dir"
           ],
           "description": "Path to a folder where the built artifacts will be stored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -307,7 +459,11 @@
             "--cache-dir"
           ],
           "description": "The folder where the cached artifacts are stored with `--cached` is specified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -315,7 +471,11 @@
             "--base-dir"
           ],
           "description": "Resolve relative paths to function's source code with respect to this folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -323,7 +483,11 @@
             "--manifest"
           ],
           "description": "Path to a custom dependency manifest to use instead of the default one",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -367,49 +531,71 @@
                 "--config-env"
               ],
               "description": "The environment name specifying the default parameter values in the configuration file to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environment"
+              }
             },
             {
               "names": [
                 "--config-file"
               ],
               "description": "The path and file name of the configuration file containing default parameter values to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config file"
+              }
             },
             {
               "names": [
                 "--container-env-vars"
               ],
               "description": "JSON file containing environment variables to be set within the container environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--container-host-interface"
               ],
               "description": "IP address of the host network interface that container ports should bind to. Use 0.0.0.0 to bind to all interfaces",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--container-host"
               ],
               "description": "Host of locally emulated Lambda container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debugger-args"
               ],
               "description": "Additional arguments to be passed to the debugger",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debugger-path"
               ],
               "description": "Host path to a debugger to mount into the Lambda container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
@@ -423,14 +609,20 @@
                 "--debug-port"
               ],
               "description": "When specified, Lambda function will start in debug mode and expose this port to localhost",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port number"
+              }
             },
             {
               "names": [
                 "--docker-network"
               ],
               "description": "Specifies the name or id of an existing docker network to lambda docker containers should connect to, along with the default bridge network. If not specified, the Lambda containers will only connect t",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "network name"
+              }
             },
             {
               "names": [
@@ -438,7 +630,10 @@
                 "--docker-volume-basedir"
               ],
               "description": "Location basedir where the SAM file exists",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
@@ -446,7 +641,11 @@
                 "--env-vars"
               ],
               "description": "JSON file containing values for Lambda function environment variables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -467,14 +666,21 @@
                 "--invoke-image"
               ],
               "description": "Container image URIs for invoking functions or starting api and function",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--layer-cache-basedir"
               ],
               "description": "Location where Layers your template uses will be downloaded to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -482,28 +688,42 @@
                 "--log-file"
               ],
               "description": "Log file to send runtime logs to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--parameter-overrides"
               ],
               "description": "A string that contains AWS CloudFormation parameter overrides encoded as key=value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "override string",
+                "description": "For example, 'ParameterKey=KeyPairName,ParameterValue=MyKey ParameterKey=InstanceType,ParameterValue=t1.micro' or 'KeyPairName=MyKey InstanceType=t1.micro'"
+              }
             },
             {
               "names": [
                 "--profile"
               ],
               "description": "Select a specific profile from your credential file to get AWS credentials",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile name",
+                "description": "The name of the AWS profile"
+              }
             },
             {
               "names": [
                 "--region"
               ],
               "description": "Set the AWS Region of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region"
+              }
             },
             {
               "names": [
@@ -524,7 +744,11 @@
                 "--template"
               ],
               "description": "AWS SAM template file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -532,7 +756,11 @@
                 "--event"
               ],
               "description": "JSON file containing event data passed to the Lambda function",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -545,56 +773,81 @@
                 "--config-env"
               ],
               "description": "The environment name specifying the default parameter values in the configuration file to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environment"
+              }
             },
             {
               "names": [
                 "--config-file"
               ],
               "description": "The path and file name of the configuration file containing default parameter values to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config file"
+              }
             },
             {
               "names": [
                 "--container-env-vars"
               ],
               "description": "JSON file containing environment variables to be set within the container environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--container-host-interface"
               ],
               "description": "IP address of the host network interface that container ports should bind to. Use 0.0.0.0 to bind to all interfaces",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--container-host"
               ],
               "description": "Host of locally emulated Lambda container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debug-function"
               ],
               "description": "Specifies the Lambda Function logicalId to apply debug options to when --warm-containers is specified.  This parameter applies to --debug-port, --debugger-path, and --debug-args",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debugger-args"
               ],
               "description": "Additional arguments to be passed to the debugger",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debugger-path"
               ],
               "description": "Host path to a debugger to mount into the Lambda container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
@@ -608,14 +861,20 @@
                 "--debug-port"
               ],
               "description": "When specified, Lambda function will start in debug mode and expose this port to localhost",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port number"
+              }
             },
             {
               "names": [
                 "--docker-network"
               ],
               "description": "Specifies the name or id of an existing docker network to lambda docker containers should connect to, along with the default bridge network. If not specified, the Lambda containers will only connect t",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "network name"
+              }
             },
             {
               "names": [
@@ -623,7 +882,10 @@
                 "--docker-volume-basedir"
               ],
               "description": "Location basedir where the SAM file exists",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
@@ -631,7 +893,11 @@
                 "--env-vars"
               ],
               "description": "JSON file containing values for Lambda function environment variables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -651,7 +917,11 @@
                 "--host"
               ],
               "description": "Local hostname or IP address to bind to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text",
+                "description": "Default: '127.0.0.1'"
+              }
             },
             {
               "names": [
@@ -659,14 +929,21 @@
                 "--invoke-image"
               ],
               "description": "Container image URIs for invoking functions or starting api and function",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--layer-cache-basedir"
               ],
               "description": "Location where Layers your template uses will be downloaded to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -674,14 +951,21 @@
                 "--log-file"
               ],
               "description": "Log file to send runtime logs to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--parameter-overrides"
               ],
               "description": "A string that contains AWS CloudFormation parameter overrides encoded as key=value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "override string",
+                "description": "For example, 'ParameterKey=KeyPairName,ParameterValue=MyKey ParameterKey=InstanceType,ParameterValue=t1.micro' or 'KeyPairName=MyKey InstanceType=t1.micro'"
+              }
             },
             {
               "names": [
@@ -689,7 +973,11 @@
                 "--port"
               ],
               "description": "Local port to listen on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port number",
+                "description": "Default: 3000"
+              }
             },
             {
               "names": [
@@ -710,14 +998,25 @@
                 "--template"
               ],
               "description": "AWS SAM template file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--warm-containers"
               ],
               "description": "Specific how SAM manages the containers for each function",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "mode",
+                "suggestions": [
+                  "eager",
+                  "lazy"
+                ]
+              }
             },
             {
               "names": [
@@ -725,7 +1024,11 @@
                 "--static-dir"
               ],
               "description": "Any static assets files locates in this directory will be presented at /",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -738,56 +1041,81 @@
                 "--config-env"
               ],
               "description": "The environment name specifying the default parameter values in the configuration file to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environment"
+              }
             },
             {
               "names": [
                 "--config-file"
               ],
               "description": "The path and file name of the configuration file containing default parameter values to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config file"
+              }
             },
             {
               "names": [
                 "--container-env-vars"
               ],
               "description": "JSON file containing environment variables to be set within the container environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--container-host-interface"
               ],
               "description": "IP address of the host network interface that container ports should bind to. Use 0.0.0.0 to bind to all interfaces",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--container-host"
               ],
               "description": "Host of locally emulated Lambda container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debug-function"
               ],
               "description": "Specifies the Lambda Function logicalId to apply debug options to when --warm-containers is specified.  This parameter applies to --debug-port, --debugger-path, and --debug-args",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debugger-args"
               ],
               "description": "Additional arguments to be passed to the debugger",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--debugger-path"
               ],
               "description": "Host path to a debugger to mount into the Lambda container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
@@ -801,14 +1129,20 @@
                 "--debug-port"
               ],
               "description": "When specified, Lambda function will start in debug mode and expose this port to localhost",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port number"
+              }
             },
             {
               "names": [
                 "--docker-network"
               ],
               "description": "Specifies the name or id of an existing docker network to lambda docker containers should connect to, along with the default bridge network. If not specified, the Lambda containers will only connect t",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "network name"
+              }
             },
             {
               "names": [
@@ -816,7 +1150,10 @@
                 "--docker-volume-basedir"
               ],
               "description": "Location basedir where the SAM file exists",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
@@ -824,7 +1161,11 @@
                 "--env-vars"
               ],
               "description": "JSON file containing values for Lambda function environment variables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -844,7 +1185,11 @@
                 "--host"
               ],
               "description": "Local hostname or IP address to bind to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text",
+                "description": "Default: '127.0.0.1'"
+              }
             },
             {
               "names": [
@@ -852,14 +1197,21 @@
                 "--invoke-image"
               ],
               "description": "Container image URIs for invoking functions or starting api and function",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--layer-cache-basedir"
               ],
               "description": "Location where Layers your template uses will be downloaded to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -867,14 +1219,21 @@
                 "--log-file"
               ],
               "description": "Log file to send runtime logs to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--parameter-overrides"
               ],
               "description": "A string that contains AWS CloudFormation parameter overrides encoded as key=value pairs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "override string",
+                "description": "For example, 'ParameterKey=KeyPairName,ParameterValue=MyKey ParameterKey=InstanceType,ParameterValue=t1.micro' or 'KeyPairName=MyKey InstanceType=t1.micro'"
+              }
             },
             {
               "names": [
@@ -882,21 +1241,32 @@
                 "--port"
               ],
               "description": "Local port to listen on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port number",
+                "description": "Default: 3000"
+              }
             },
             {
               "names": [
                 "--profile"
               ],
               "description": "Select a specific profile from your credential file to get AWS credentials",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile name",
+                "description": "The name of the AWS profile"
+              }
             },
             {
               "names": [
                 "--region"
               ],
               "description": "Set the AWS Region of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region"
+              }
             },
             {
               "names": [
@@ -917,14 +1287,25 @@
                 "--template"
               ],
               "description": "AWS SAM template file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--warm-containers"
               ],
               "description": "Specific how SAM manages the containers for each function",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "mode",
+                "suggestions": [
+                  "eager",
+                  "lazy"
+                ]
+              }
             }
           ]
         }
@@ -948,14 +1329,20 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
@@ -982,28 +1369,41 @@
             ""
           ],
           "description": "Specify mapping of Function Logical ID to ECR Repo uri",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mapping",
+            "description": "Example: Function_Logical_ID=ECR_Repo_Uri"
+          }
         },
         {
           "names": [
             "--image-repository"
           ],
           "description": "ECR repo uri where this command uploads the image artifacts that are referenced in your template",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repo URI"
+          }
         },
         {
           "names": [
             "--kms-key-id"
           ],
           "description": "The ID of an AWS KMS key that the command uses to encrypt artifacts that are at rest in the S3 bucket",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "kms key id"
+          }
         },
         {
           "names": [
             "--metadata"
           ],
           "description": "A map of metadata to attach to ALL the artifacts that are referenced in your template",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "map"
+          }
         },
         {
           "names": [
@@ -1016,14 +1416,21 @@
             "--profile"
           ],
           "description": "Select a specific profile from your credential file to get AWS credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name",
+            "description": "The name of the AWS profile"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Set the AWS Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         },
         {
           "names": [
@@ -1036,21 +1443,32 @@
             "--s3-bucket"
           ],
           "description": "The name of the S3 bucket where this command uploads the artifacts that are referenced in your template",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bucket name"
+          }
         },
         {
           "names": [
             "--s3-prefix"
           ],
           "description": "A prefix name that the command adds to the artifacts name when it uploads them to the S3 bucket",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prefix",
+            "description": "The prefix name is a path name (folder name) for the S3 bucket"
+          }
         },
         {
           "names": [
             "--signing-profiles"
           ],
           "description": "A string that contains Code Sign configuration parameters",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profiles",
+            "description": "Example: FunctionOrLayerNameToSign=SigningProfileName:SigningProfileOwner"
+          }
         },
         {
           "names": [
@@ -1059,7 +1477,11 @@
             "--template"
           ],
           "description": "AWS SAM template file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1072,7 +1494,10 @@
             "--output-template-file"
           ],
           "description": "The path to the file where the command writes the output AWS CloudFormation template. If unspecified, the command writes the template to the standard output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         }
       ]
     },
@@ -1085,14 +1510,20 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
@@ -1108,28 +1539,41 @@
             "--template"
           ],
           "description": "AWS SAM template file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--stack-name"
           ],
           "description": "The name of the AWS CloudFormation stack you're deploying to. If you specify an existing stack, the command updates the stack. If you specify a new stack, the command creates it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cloudformation stack name"
+          }
         },
         {
           "names": [
             "--s3-bucket"
           ],
           "description": "The name of the S3 bucket where this command uploads the artifacts that are referenced in your template",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bucket name"
+          }
         },
         {
           "names": [
             "--image-repository"
           ],
           "description": "ECR repo uri where this command uploads the image artifacts that are referenced in your template",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repo URI"
+          }
         },
         {
           "names": [
@@ -1137,7 +1581,11 @@
             ""
           ],
           "description": "Specify mapping of Function Logical ID to ECR Repo uri",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mapping",
+            "description": "Example: Function_Logical_ID=ECR_Repo_Uri"
+          }
         },
         {
           "names": [
@@ -1150,14 +1598,21 @@
             "--s3-prefix"
           ],
           "description": "A prefix name that the command adds to the artifacts name when it uploads them to the S3 bucket",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prefix",
+            "description": "The prefix name is a path name (folder name) for the S3 bucket"
+          }
         },
         {
           "names": [
             "--kms-key-id"
           ],
           "description": "The ID of an AWS KMS key that the command uses to encrypt artifacts that are at rest in the S3 bucket",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "kms key id"
+          }
         },
         {
           "names": [
@@ -1176,21 +1631,32 @@
             "--metadata"
           ],
           "description": "A map of metadata to attach to ALL the artifacts that are referenced in your template",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "map"
+          }
         },
         {
           "names": [
             "--parameter-overrides"
           ],
           "description": "A string that contains AWS CloudFormation parameter overrides encoded as key=value pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "override string",
+            "description": "For example, 'ParameterKey=KeyPairName,ParameterValue=MyKey ParameterKey=InstanceType,ParameterValue=t1.micro' or 'KeyPairName=MyKey InstanceType=t1.micro'"
+          }
         },
         {
           "names": [
             "--signing-profiles"
           ],
           "description": "A string that contains Code Sign configuration parameters",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profiles",
+            "description": "Example: FunctionOrLayerNameToSign=SigningProfileName:SigningProfileOwner"
+          }
         },
         {
           "names": [
@@ -1203,14 +1669,21 @@
             "--profile"
           ],
           "description": "Select a specific profile from your credential file to get AWS credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name",
+            "description": "The name of the AWS profile"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Set the AWS Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         },
         {
           "names": [
@@ -1236,14 +1709,20 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
@@ -1263,21 +1742,31 @@
             "--profile"
           ],
           "description": "Select a specific profile from your credential file to get AWS credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name",
+            "description": "The name of the AWS profile"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Set the AWS Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         },
         {
           "names": [
             "--stack-name"
           ],
           "description": "The name of the AWS CloudFormation stack you're deploying to. If you specify an existing stack, the command updates the stack. If you specify a new stack, the command creates it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cloudformation stack name"
+          }
         },
         {
           "names": [
@@ -1296,21 +1785,30 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
             "--stack-name"
           ],
           "description": "The name of the AWS CloudFormation stack you're deploying to. If you specify an existing stack, the command updates the stack. If you specify a new stack, the command creates it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cloudformation stack name"
+          }
         },
         {
           "names": [
@@ -1323,14 +1821,21 @@
             "--profile"
           ],
           "description": "Select a specific profile from your credential file to get AWS credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name",
+            "description": "The name of the AWS profile"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Set the AWS Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         },
         {
           "names": [
@@ -1350,14 +1855,20 @@
             "--config-env"
           ],
           "description": "The environment name specifying the default parameter values in the configuration file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
             "--config-file"
           ],
           "description": "The path and file name of the configuration file containing default parameter values to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file"
+          }
         },
         {
           "names": [
@@ -1377,14 +1888,21 @@
             "--profile"
           ],
           "description": "Select a specific profile from your credential file to get AWS credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name",
+            "description": "The name of the AWS profile"
+          }
         },
         {
           "names": [
             "--region"
           ],
           "description": "Set the AWS Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         },
         {
           "names": [
@@ -1393,14 +1911,21 @@
             "--template"
           ],
           "description": "AWS SAM template file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--semantic-version"
           ],
           "description": "The value provided here overrides SemanticVersion in the template metadata",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         }
       ]
     },

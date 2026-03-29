@@ -21,14 +21,21 @@
             "-f"
           ],
           "description": "Load configuration from file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--id"
           ],
           "description": "Builds only the specified build ids",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
@@ -36,7 +43,11 @@
             "-o"
           ],
           "description": "Copy the binary to the path after the build. Only taken into account when using --single-target and a single id (either with --id or if configuration only has one build)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -44,7 +55,10 @@
             "-p"
           ],
           "description": "Amount tasks to run concurrently (default: number of CPUs)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "parallelism"
+          }
         },
         {
           "names": [
@@ -57,7 +71,10 @@
             "--skip"
           ],
           "description": "Skip the given options (valid options are: before, post-hooks, pre-hooks, validate)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "skip"
+          }
         },
         {
           "names": [
@@ -70,7 +87,10 @@
             "--timeout"
           ],
           "description": "Timeout to the entire build process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ]
     },
@@ -157,7 +177,11 @@
             "-f"
           ],
           "description": "Configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -181,7 +205,11 @@
             "-f"
           ],
           "description": "Load configuration from file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -198,7 +226,11 @@
             "-o"
           ],
           "description": "Where to save the JSONSchema file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -227,7 +259,11 @@
             "-f"
           ],
           "description": "Load configuration from file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -241,56 +277,86 @@
             "-p"
           ],
           "description": "Amount tasks to run concurrently (default: number of CPUs)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "parallelism"
+          }
         },
         {
           "names": [
             "--release-footer"
           ],
           "description": "Load custom release notes footer from a markdown file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release-footer",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--release-footer-tmpl"
           ],
           "description": "Load custom release notes footer from a templated markdown file (overrides --release-footer)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release-footer-tmpl",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--release-header"
           ],
           "description": "Load custom release notes header from a markdown file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release-header",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--release-header-tmpl"
           ],
           "description": "Load custom release notes header from a templated markdown file (overrides --release-header)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release-header-tmpl",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--release-notes"
           ],
           "description": "Load custom release notes from a markdown file (will skip GoReleaser changelog generation)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release-notes",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--release-notes-tmpl"
           ],
           "description": "Load custom release notes from a templated markdown file (overrides --release-notes)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "release-notes-tmpl",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--skip"
           ],
           "description": "Skip the given options (valid options are announce, aur, before, chocolatey, docker, homebrew, ko, nfpm, nix, publish, sbom, scoop, sign, snapcraft, validate, winget)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "skip"
+          }
         },
         {
           "names": [
@@ -303,7 +369,10 @@
             "--timeout"
           ],
           "description": "Timeout to the entire release process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ]
     },

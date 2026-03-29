@@ -111,7 +111,10 @@
         "-c"
       ],
       "description": "Set chart. Uses the chart set in release by default, and is available in template as {{ .Chart }}",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -137,7 +140,10 @@
         "-e"
       ],
       "description": "Specify the environment name. defaults to default",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "environment"
+      }
     },
     {
       "names": [
@@ -145,7 +151,11 @@
         "-f"
       ],
       "description": "Load config from file or directory. defaults to helmfile.yaml or `helmfile.d`(means `helmfile.d/*.yaml`) in this preference",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -153,7 +163,10 @@
         "-b"
       ],
       "description": "Path to the helm binary (default \"helm\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "binary"
+      }
     },
     {
       "names": [
@@ -167,14 +180,20 @@
         "--kube-context"
       ],
       "description": "Set kubectl context. Uses current context by default",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-context"
+      }
     },
     {
       "names": [
         "--log-level"
       ],
       "description": "Set log level, default info (default info)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "log-level"
+      }
     },
     {
       "names": [
@@ -182,7 +201,10 @@
         "-n"
       ],
       "description": "Set namespace. Uses the namespace set in the context by default, and is available in templates as {{ .Namespace }}",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "namespace"
+      }
     },
     {
       "names": [
@@ -203,21 +225,31 @@
         "-l"
       ],
       "description": "Only run using the releases that match labels. Labels can take the form of foo=bar or foo!=bar",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": " selector "
+      }
     },
     {
       "names": [
         "--state-values-file"
       ],
       "description": "Specify state values in a YAML file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "state-values-file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--state-values-set"
       ],
       "description": "Set state values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "state-values-=set"
+      }
     },
     {
       "names": [

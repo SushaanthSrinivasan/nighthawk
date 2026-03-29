@@ -15,7 +15,10 @@
         "--start"
       ],
       "description": "Start at the Nth result",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
@@ -23,7 +26,10 @@
         "--count"
       ],
       "description": "Show N results",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
@@ -45,7 +51,10 @@
         "--tld"
       ],
       "description": "Country-specific search with top-level domain .TLD, e.g., 'in' for India",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "top-level domain"
+      }
     },
     {
       "names": [
@@ -53,7 +62,10 @@
         "--lang"
       ],
       "description": "Display in language",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "language"
+      }
     },
     {
       "names": [
@@ -61,7 +73,11 @@
         "--geoloc"
       ],
       "description": "Country-specific geolocation search with country code CC, e.g. 'in' for India",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CC",
+        "description": "Country codes are the same as top-level domains"
+      }
     },
     {
       "names": [
@@ -75,7 +91,15 @@
         "--colorize"
       ],
       "description": "Whether to colorize output which enables color when stdout is a tty device",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -89,7 +113,11 @@
         "--colors"
       ],
       "description": "Set output colors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colors",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -105,21 +133,32 @@
         "--time"
       ],
       "description": "Time limit search [h5 (5 hrs), d5 (5 days), w5 (5 weeks), m5 (5 months), y5 (5 years)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time limit"
+      }
     },
     {
       "names": [
         "--from"
       ],
       "description": "Starting date/month/year of date range. Can be used in conjunction with --to and overrides -t, --time",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "date",
+        "description": "American date format with slashes, e.g., 2/24/2020, 2/2020, 2020"
+      }
     },
     {
       "names": [
         "--to"
       ],
       "description": "Ending date/month/year of date range",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "date",
+        "description": "American date format with slashes, e.g., 2/24/2020, 2/2020, 2020"
+      }
     },
     {
       "names": [
@@ -127,7 +166,10 @@
         "--site"
       ],
       "description": "Search a site using Google",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "site"
+      }
     },
     {
       "names": [
@@ -148,7 +190,11 @@
         "--proxy"
       ],
       "description": "Tunnel traffic through an HTTP proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PROXY",
+        "description": "In the form of [http://][user:password@]proxyhost[:port]"
+      }
     },
     {
       "names": [
@@ -167,7 +213,10 @@
         "--url-handler"
       ],
       "description": "Custom script or cli utility to open results",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "util"
+      }
     },
     {
       "names": [

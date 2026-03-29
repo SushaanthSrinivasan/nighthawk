@@ -13,14 +13,21 @@
         "--config-file"
       ],
       "description": "Config file to use during run",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config-file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--custom-check-dir"
       ],
       "description": "Explicitly the custom checks dir location",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "custom-check-dir"
+      }
     },
     {
       "names": [
@@ -41,7 +48,10 @@
         "--exclude"
       ],
       "description": "Provide comma-separated list of rule IDs to exclude from run",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "excludeList"
+      }
     },
     {
       "names": [
@@ -54,14 +64,21 @@
         "--exclude-path"
       ],
       "description": "Folder path to exclude, can be used multiple times and evaluated in order of specification",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "excludePath",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--filter-results"
       ],
       "description": "Filter results to return specific checks only (supports comma-delimited input)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filterResults"
+      }
     },
     {
       "names": [
@@ -75,7 +92,18 @@
         "--format"
       ],
       "description": "Select output format: default, json, csv, checkstyle, junit, sarif. To use multiple formats, separate with a comma and specify a base output filename with --out. A file will be written for each type. ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "default",
+          "json",
+          "csv",
+          "checkstyle",
+          "junit",
+          "sarif"
+        ]
+      }
     },
     {
       "names": [
@@ -114,7 +142,16 @@
         "--minimum-severity"
       ],
       "description": "The minimum severity to report. One of CRITICAL, HIGH, MEDIUM, LOW",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "minimumSeverity",
+        "suggestions": [
+          "CRITICAL",
+          "HIGH",
+          "MEDIUM",
+          "LOW"
+        ]
+      }
     },
     {
       "names": [
@@ -146,7 +183,11 @@
         "--out"
       ],
       "description": "Set output file. This filename will have a format descriptor appended if multiple formats are specified with --format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "outputFile",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -159,7 +200,10 @@
         "--rego-policy-dir"
       ],
       "description": "Directory to load rego policies from (recursively)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regoPolicyDir"
+      }
     },
     {
       "names": [
@@ -185,7 +229,11 @@
         "--tfvars-file"
       ],
       "description": "Path to .tfvars file, can be used multiple times and evaluated in order of specification",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tfvarsFilePath",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -212,7 +260,10 @@
         "--workspace"
       ],
       "description": "Specify a workspace for ignore limits (default \"default\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "workspace"
+      }
     }
   ],
   "args": [

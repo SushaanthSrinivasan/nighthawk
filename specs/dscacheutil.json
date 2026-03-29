@@ -15,7 +15,10 @@
             "-a"
           ],
           "description": "Attribute to query",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "attributeKey"
+          }
         }
       ],
       "args": [
@@ -49,7 +52,19 @@
             "-entries"
           ],
           "description": "Dump detailed information about cache entries",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "entry",
+            "suggestions": [
+              "group",
+              "host",
+              "mount",
+              "protocol",
+              "rpc",
+              "service",
+              "user"
+            ]
+          }
         }
       ]
     },

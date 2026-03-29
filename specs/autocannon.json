@@ -8,7 +8,10 @@
         "--connections"
       ],
       "description": "The number of concurrent connections to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -16,7 +19,10 @@
         "--pipelining"
       ],
       "description": "The number of pipelined requests to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -24,7 +30,10 @@
         "--duration"
       ],
       "description": "The number of seconds to run the autocannon",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SEC"
+      }
     },
     {
       "names": [
@@ -32,14 +41,20 @@
         "--amount"
       ],
       "description": "The number of requests to make before exiting the benchmark",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "The number of milliseconds to elapse between taking samples. This controls the sample interval, & therefore the total number of samples, which affects statistical analyses",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -47,7 +62,10 @@
         "--socketPath"
       ],
       "description": "A path to a Unix Domain Socket or a Windows Named Pipe. A URL is still required to send the correct Host header and path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH"
+      }
     },
     {
       "names": [
@@ -55,7 +73,10 @@
         "--workers"
       ],
       "description": "Number of worker threads to use to fire requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -63,14 +84,20 @@
         "--warmup"
       ],
       "description": "Use a warm up interval before starting sampling. This enables startup processes to finish and traffic to normalize before sampling begins",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "-c"
+      }
     },
     {
       "names": [
         "--on-port"
       ],
       "description": "Start the command listed after -- on the command line. When it starts listening on a port, start sending requests to that port. A URL is still required to send requests to the correct path. The hostna",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PORT"
+      }
     },
     {
       "names": [
@@ -78,7 +105,20 @@
         "--method"
       ],
       "description": "The HTTP method to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "METHOD",
+        "suggestions": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE",
+          "PATCH",
+          "HEAD",
+          "OPTIONS",
+          "TRACE"
+        ]
+      }
     },
     {
       "names": [
@@ -86,7 +126,10 @@
         "--timeout"
       ],
       "description": "The number of seconds before timing out and resetting a connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -94,7 +137,10 @@
         "--title"
       ],
       "description": "The title to place in the results for identification",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TITLE"
+      }
     },
     {
       "names": [
@@ -102,14 +148,20 @@
         "--body"
       ],
       "description": "The body of the request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BODY"
+      }
     },
     {
       "names": [
         "-F",
         "--form"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORM"
+      }
     },
     {
       "names": [
@@ -117,7 +169,10 @@
         "--input"
       ],
       "description": "The body of the request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE"
+      }
     },
     {
       "names": [
@@ -125,14 +180,21 @@
         "--headers"
       ],
       "description": "The request headers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "K=V"
+      }
     },
     {
       "names": [
         "--har"
       ],
       "description": "When provided, Autocannon will use requests from the HAR file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -140,7 +202,10 @@
         "--bailout"
       ],
       "description": "The number of failures before initiating a bailout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -148,7 +213,10 @@
         "--maxConnectionRequests"
       ],
       "description": "The max number of requests to make per connection to the server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -156,7 +224,10 @@
         "--maxOverallRequests"
       ],
       "description": "The max number of requests to make overall to the server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -164,7 +235,10 @@
         "--connectionRate"
       ],
       "description": "The max number of requests to make per second from an individual connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -172,7 +246,10 @@
         "--overallRate"
       ],
       "description": "The max number of requests to make per second from all connections",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -187,7 +264,10 @@
         "--reconnectRate"
       ],
       "description": "The number of requests to make before resetting a connections connection to the server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -244,7 +324,10 @@
         "--expectBody"
       ],
       "description": "Ensure the body matches this value. If enabled, mismatches count towards bailout. Enabling this option will slow down the load testing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "EXPECTED"
+      }
     },
     {
       "names": [
@@ -257,21 +340,34 @@
         "--cert"
       ],
       "description": "Path to cert chain in pem format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--key"
       ],
       "description": "Path to private key for specified cert in pem format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ca"
       ],
       "description": "Path to trusted ca certificates for the test. This argument accepts both a single file as well as a list of files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [

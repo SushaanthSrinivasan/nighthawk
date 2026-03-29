@@ -12,7 +12,10 @@
             "--env"
           ],
           "description": "Specify environment name for application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -27,7 +30,10 @@
             "--namespace"
           ],
           "description": "Specify the Kubernetes namespace to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -58,7 +64,10 @@
                 "--namespace"
               ],
               "description": "Specify K8s namespace for env",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -103,7 +112,10 @@
             "-e"
           ],
           "description": "Specify environment name for application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -111,7 +123,10 @@
             "-n"
           ],
           "description": "Specify the Kubernetes namespace to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -131,7 +146,10 @@
             "-e"
           ],
           "description": "The environment name for the CLI request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -139,7 +157,11 @@
             "-f"
           ],
           "description": "The file path for appfile or application. It could be a remote url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -147,7 +169,10 @@
             "-n"
           ],
           "description": "If present, the namespace scope for this CLI request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -155,7 +180,10 @@
             "-v"
           ],
           "description": "The publish version for deploying application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -163,7 +191,10 @@
             "-r"
           ],
           "description": "The revision to use for deploying the application, if empty, the current application configuration will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -190,7 +221,11 @@
                 "-p"
               ],
               "description": "Specify the kubeconfig path of managed cluster. If you use ocm to manage your cluster, you must set the kubeconfig-path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -203,7 +238,10 @@
                 "--create-namespace"
               ],
               "description": "Specifies the namespace need to create in managedCluster (default \"vela-system\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -211,7 +249,10 @@
                 "-n"
               ],
               "description": "Specify the cluster name. If empty, it will use the cluster name in config file. Default to be empty",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -260,7 +301,10 @@
                 "-e"
               ],
               "description": "Specify environment name for application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -268,7 +312,10 @@
                 "-n"
               ],
               "description": "Specify the Kubernetes namespace to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -282,7 +329,10 @@
                 "-e"
               ],
               "description": "Specify environment name for application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -290,7 +340,10 @@
                 "-n"
               ],
               "description": "Specify the Kubernetes namespace to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -304,7 +357,10 @@
                 "-e"
               ],
               "description": "Specify environment name for application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -312,7 +368,10 @@
                 "-n"
               ],
               "description": "Specify the Kubernetes namespace to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -326,7 +385,10 @@
                 "-e"
               ],
               "description": "Specify environment name for application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -334,7 +396,10 @@
                 "-n"
               ],
               "description": "Specify the Kubernetes namespace to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -348,7 +413,10 @@
                 "-e"
               ],
               "description": "Specify environment name for application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -356,7 +424,10 @@
                 "-n"
               ],
               "description": "Specify the Kubernetes namespace to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -389,7 +460,10 @@
                 "-c"
               ],
               "description": "Specify the runtime-clusters to enable",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -410,35 +484,50 @@
                     "--bucket"
                   ],
                   "description": "Specify the OSS bucket name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--endpoint"
                   ],
                   "description": "Specify the addon registry endpoint",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--gitToken"
                   ],
                   "description": "Specify the github repo token",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--path"
                   ],
                   "description": "Specify the addon registry OSS path",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--type"
                   ],
                   "description": "Specify the addon registry type",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 }
               ]
             },
@@ -463,35 +552,50 @@
                     "--bucket"
                   ],
                   "description": "Specify the OSS bucket name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--endpoint"
                   ],
                   "description": "Specify the addon registry endpoint",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--gitToken"
                   ],
                   "description": "Specify the github repo token",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--path"
                   ],
                   "description": "Specify the addon registry OSS path",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--type"
                   ],
                   "description": "Specify the addon registry type",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 }
               ]
             }
@@ -540,7 +644,10 @@
                 "-n"
               ],
               "description": "Specify which namespace to apply. (default \"vela-system\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -560,7 +667,10 @@
                 "-n"
               ],
               "description": "Specify which namespace to apply. (default \"vela-system\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -568,7 +678,10 @@
                 "-t"
               ],
               "description": "Specify the definition type of target. Valid types: workflow-step, component, trait, policy, workload, scope",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -588,7 +701,10 @@
                 "-t"
               ],
               "description": "Specify the definition type of target. Valid types: workflow-step, component, trait, policy, workload, scope",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -602,7 +718,10 @@
                 "-n"
               ],
               "description": "Specify which namespace to apply. (default \"vela-system\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -610,7 +729,10 @@
                 "-t"
               ],
               "description": "Specify the definition type of target. Valid types: workflow-step, component, trait, policy, workload, scope",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -624,7 +746,10 @@
                 "-n"
               ],
               "description": "Specify which namespace to apply. (default \"vela-system\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -632,7 +757,10 @@
                 "-t"
               ],
               "description": "Specify the definition type of target. Valid types: workflow-step, component, trait, policy, workload, scope",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -646,7 +774,10 @@
                 "-d"
               ],
               "description": "Specify the description of the new definition",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -660,14 +791,20 @@
                 "--git"
               ],
               "description": "Specify which git repository the configuration(HCL) is stored in. Valid when --provider/-p is set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--local"
               ],
               "description": "Specify the local path of the configuration(HCL) file. Valid when --provider/-p is set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -675,14 +812,20 @@
                 "-o"
               ],
               "description": "Specify the output path of the generated definition. If empty, the definition will be printed in the console",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--path"
               ],
               "description": "Specify which path the configuration(HCL) is stored in the Git repository. Valid when --git is set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -690,7 +833,10 @@
                 "-p"
               ],
               "description": "Specify which provider the cloud resource definition belongs to. Only alibaba, `aws`, `azure` are supported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -698,7 +844,11 @@
                 "-f"
               ],
               "description": "Specify the template yaml file that definition will use to build the schema. If empty, a default template for the given definition type will be used",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -706,7 +856,10 @@
                 "-t"
               ],
               "description": "Specify the type of the new definition. Valid types: scope, workflow-step, component, trait, policy, workload",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -720,7 +873,10 @@
                 "-n"
               ],
               "description": "Specify which namespace to apply. (default \"vela-system\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -728,7 +884,10 @@
                 "-t"
               ],
               "description": "Specify the definition type of target. Valid types: workflow-step, component, trait, policy, workload, scope",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -741,7 +900,10 @@
                 "--message"
               ],
               "description": "Specify the header message of the generated YAML file. For example, declaring author information",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -749,7 +911,11 @@
                 "-o"
               ],
               "description": "Specify the output path of the rendered definition YAML. If empty, the definition will be printed in the console. If input is a directory, the output path is expected to be a directory as well",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ]
         },
@@ -779,7 +945,10 @@
                 "-t"
               ],
               "description": "Github Repo token",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -813,21 +982,30 @@
                 "--registry"
               ],
               "description": "Specify the registry name (default \"default\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--token"
               ],
               "description": "Specify token when using --url to specify registry url",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--url"
               ],
               "description": "Specify the registry url",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -838,35 +1016,50 @@
             "--discover"
           ],
           "description": "Discover more registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--label"
           ],
           "description": "A label to filter components, the format is --label type=terraform",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Specify the registry name (default \"default\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--token"
           ],
           "description": "Specify token when using --url to specify registry url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Specify the registry url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ]
     },
@@ -886,21 +1079,30 @@
                 "--registry"
               ],
               "description": "Specify the registry name (default \"default\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--token"
               ],
               "description": "Specify token when using --url to specify registry url",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--url"
               ],
               "description": "Specify the registry url",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -917,21 +1119,30 @@
             "--registry"
           ],
           "description": "Specify the registry name (default \"default\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--token"
           ],
           "description": "Specify token when using --url to specify registry url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Specify the registry url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ]
     },
@@ -959,7 +1170,10 @@
             "-n"
           ],
           "description": "Namespace scope for installing KubeVela Core. (default \"vela-system\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ]
     },
@@ -973,7 +1187,11 @@
             "-f"
           ],
           "description": "Custom the chart path of KubeVela control plane",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -988,7 +1206,10 @@
             "-n"
           ],
           "description": "Namespace scope for installing KubeVela Core",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -996,7 +1217,10 @@
             "-r"
           ],
           "description": "Will re-use the user's last supplied values. (default true)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bool"
+          }
         },
         {
           "names": [
@@ -1004,7 +1228,10 @@
             "-v"
           ],
           "description": "Specify the version of KubeVela to install",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ]
     },
@@ -1032,7 +1259,11 @@
             "-f"
           ],
           "description": "Specify the appfile path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1040,7 +1271,10 @@
             "-e"
           ],
           "description": "Specify environment name for application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1048,7 +1282,10 @@
             "-n"
           ],
           "description": "Specify the Kubernetes namespace to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ]
     },

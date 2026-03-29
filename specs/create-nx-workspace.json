@@ -7,42 +7,92 @@
         "--name"
       ],
       "description": "Workspace name (e.g., org name)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "workspace",
+        "description": "The name of the workspace"
+      }
     },
     {
       "names": [
         "--preset"
       ],
       "description": "What to create in a new workspace (options: \"empty\", \"npm\", \"web-components\", \"angular\", \"angular-nest\", \"react\", \"react-express\", \"react-native\", \"next\", \"gatsby\", \"nest\", \"express\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "preset",
+        "suggestions": [
+          "empty",
+          "npm",
+          "web-components",
+          "angular",
+          "angular-nest",
+          "react",
+          "react-express",
+          "react-native",
+          "next",
+          "gatsby",
+          "nest",
+          "express"
+        ]
+      }
     },
     {
       "names": [
         "--appName"
       ],
       "description": "The name of the application created by some presets",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "appName"
+      }
     },
     {
       "names": [
         "--cli"
       ],
       "description": "CLI to power the Nx workspace (options: \"nx\", \"angular\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cli",
+        "suggestions": [
+          "nx",
+          "angular"
+        ]
+      }
     },
     {
       "names": [
         "--style"
       ],
       "description": "Default style option to be used when a non-empty preset is selected options: (\"css\", \"scss\", \"less\") plus (\"styl\") for all non-Angular and (\"styled-components\", \"@emotion/styled\", \"styled-jsx\") for Re",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "style",
+        "suggestions": [
+          "css",
+          "scss",
+          "less",
+          "styl",
+          "styled-components",
+          "@emotion/styled",
+          "styled-jsx"
+        ]
+      }
     },
     {
       "names": [
         "--interactive"
       ],
       "description": "Enable interactive mode when using presets (boolean)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "interactive",
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [
@@ -50,14 +100,29 @@
         "--pm"
       ],
       "description": "Package manager to use (npm, yarn, pnpm)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "packageManager",
+        "suggestions": [
+          "npm",
+          "yarn",
+          "pnpm"
+        ]
+      }
     },
     {
       "names": [
         "--nx-cloud"
       ],
       "description": "Use Nx Cloud (boolean)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "nx-cloud",
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [

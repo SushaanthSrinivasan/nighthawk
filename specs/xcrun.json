@@ -11,21 +11,37 @@
             "--convert"
           ],
           "description": "File to convert",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "Format to convert to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "scn",
+              "dae",
+              "c3d"
+            ]
+          }
         },
         {
           "names": [
             "--output"
           ],
           "description": "Path to the output file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -86,14 +102,20 @@
         "--sdk"
       ],
       "description": "Find the tool for the given SDK name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "sdk name"
+      }
     },
     {
       "names": [
         "--toolchain"
       ],
       "description": "Find the tool for the given toolchain",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [

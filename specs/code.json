@@ -14,7 +14,11 @@
         "--diff"
       ],
       "description": "Compare two files with each other",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -22,7 +26,11 @@
         "--merge"
       ],
       "description": "Perform a three-way merge by providing paths for two modified versions of a file, the common origin of both modified versions and the output file to save merge results",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path1",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -30,7 +38,12 @@
         "--add"
       ],
       "description": "Add folder(s) to the last active window",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "folder",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -38,7 +51,11 @@
         "--goto"
       ],
       "description": "Open a file at the path on the specified line and character position",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file:line[:character]",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -66,21 +83,47 @@
         "--locale"
       ],
       "description": "The locale to use (e.g. en-US or zh-TW)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "locale",
+        "suggestions": [
+          "en",
+          "zh-CN",
+          "zh-TW",
+          "fr",
+          "de",
+          "it",
+          "es",
+          "ja",
+          "ko",
+          "ru",
+          "bg",
+          "hu",
+          "pt-br",
+          "tr"
+        ]
+      }
     },
     {
       "names": [
         "--user-data-dir"
       ],
       "description": "Specifies the directory that user data is kept in. Can be used to open multiple distinct instances of Code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--profile"
       ],
       "description": "Opens the provided folder or workspace with the given profile and associates the profile with the workspace. If the profile does not exist, a new empty one is created. A folder or workspace must be pr",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "settingsProfileName"
+      }
     },
     {
       "names": [
@@ -94,7 +137,11 @@
         "--extensions-dir"
       ],
       "description": "Set the root path for extensions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -113,14 +160,40 @@
         "--category"
       ],
       "description": "Filters installed extensions by provided category, when using --list-extensions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "category",
+        "suggestions": [
+          "azure",
+          "data science",
+          "debuggers",
+          "extension packs",
+          "education",
+          "formatters",
+          "keymaps",
+          "language packs",
+          "linters",
+          "machine learning",
+          "notebooks",
+          "programming languages",
+          "scm providers",
+          "snippets",
+          "testing",
+          "themes",
+          "visualization",
+          "other"
+        ]
+      }
     },
     {
       "names": [
         "--install-extension"
       ],
       "description": "Installs or updates an extension. The argument is either an extension id or a path to a VSIX. The identifier of an extension is '${publisher}.${name}'. Use '--force' argument to update to latest versi",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension-id[@version] | path-to-vsix"
+      }
     },
     {
       "names": [
@@ -133,7 +206,10 @@
         "--uninstall-extension"
       ],
       "description": "Uninstalls an extension",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension-id"
+      }
     },
     {
       "names": [
@@ -159,7 +235,19 @@
         "--log"
       ],
       "description": "Log level to use. Default is 'info' when unspecified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "critical",
+          "error",
+          "warn",
+          "info",
+          "debug",
+          "trace",
+          "off"
+        ]
+      }
     },
     {
       "names": [
@@ -185,28 +273,45 @@
         "--disable-extension"
       ],
       "description": "Disable an extension",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension-id"
+      }
     },
     {
       "names": [
         "--sync"
       ],
       "description": "Turn sync on or off",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "sync",
+        "description": "Whether to enable sync",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--inspect-extensions"
       ],
       "description": "Allow debugging and profiling of extensions. Check the developer tools for the connection URI",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
         "--inspect-brk-extensions"
       ],
       "description": "Allow debugging and profiling of extensions with the extension host being paused after start. Check the developer tools for the connection URI",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
@@ -219,7 +324,11 @@
         "--max-memory"
       ],
       "description": "Max memory size for a window (in Mbytes)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "memory",
+        "description": "Memory in megabytes"
+      }
     },
     {
       "names": [

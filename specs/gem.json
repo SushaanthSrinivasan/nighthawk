@@ -23,7 +23,11 @@
             "--platform"
           ],
           "description": "Specify the platform of gem to install",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "description": "The platform of gem"
+          }
         }
       ],
       "args": [
@@ -42,7 +46,12 @@
             "--add"
           ],
           "description": "Add a trusted certificate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CERT",
+            "description": "The trusted certificate",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -50,7 +59,11 @@
             "--list"
           ],
           "description": "List trusted certificates where the subject contains FILTER",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILTER",
+            "description": "The filter"
+          }
         },
         {
           "names": [
@@ -58,7 +71,11 @@
             "--remove"
           ],
           "description": "Remove trusted certificates where the subject contains FILTER",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILTER",
+            "description": "The filter"
+          }
         },
         {
           "names": [
@@ -66,7 +83,11 @@
             "--build"
           ],
           "description": "Build private key and self-signed certificate for EMAIL_ADDR",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EMAIL_ADDR",
+            "description": "The email address"
+          }
         },
         {
           "names": [
@@ -74,7 +95,12 @@
             "--certificate"
           ],
           "description": "Signing certificate for --sign",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CERT",
+            "description": "The certificate",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -82,7 +108,12 @@
             "--private-key"
           ],
           "description": "Key for --sign or --build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEY",
+            "description": "The key",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -90,7 +121,11 @@
             "--key-algorithm"
           ],
           "description": "Select which key algorithm to use for --build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ALGORITHM",
+            "description": "The algorithm"
+          }
         },
         {
           "names": [
@@ -98,7 +133,12 @@
             "--sign"
           ],
           "description": "Signs CERT with the key from -K and the certificate from -C",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CERT",
+            "description": "The certificate",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -106,7 +146,11 @@
             "--days"
           ],
           "description": "Days before the certificate expires",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUMBER_OF_DAYS",
+            "description": "The number of days"
+          }
         },
         {
           "names": [
@@ -176,7 +220,11 @@
             "--version"
           ],
           "description": "Specify version of gem to check",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of the gem"
+          }
         }
       ],
       "args": [
@@ -240,7 +288,11 @@
             "--version"
           ],
           "description": "Specify version of gem to contents",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of the gem"
+          }
         },
         {
           "names": [
@@ -254,7 +306,11 @@
             "--spec-dir"
           ],
           "description": "Search for gems under specific paths",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -311,14 +367,22 @@
             "--version"
           ],
           "description": "Specify version of gem to dependency",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of gem"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Specify the platform of gem to dependency",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "description": "The platform of gem"
+          }
         },
         {
           "names": [
@@ -378,7 +442,11 @@
             "--bulk-threshold"
           ],
           "description": "Threshold for switching to bulk synchronization (default 1000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COUNT",
+            "description": "The threshold"
+          }
         },
         {
           "names": [
@@ -392,7 +460,11 @@
             "--source"
           ],
           "description": "Append URL to list of remote gem sources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -400,7 +472,11 @@
             "--http-proxy"
           ],
           "description": "Use HTTP proxy for remote operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -442,14 +518,22 @@
             "--version"
           ],
           "description": "Specify version of gem to fetch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of the gem"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Specify the platform of gem to fetch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "description": "The platform of gem"
+          }
         },
         {
           "names": [
@@ -481,7 +565,11 @@
             "--bulk-threshold"
           ],
           "description": "Threshold for switching to bulk synchronization (default 1000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COUNT",
+            "description": "The threshold"
+          }
         },
         {
           "names": [
@@ -489,7 +577,11 @@
             "--source"
           ],
           "description": "Append URL to list of remote gem sources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -503,7 +595,11 @@
             "--http-proxy"
           ],
           "description": "Use HTTP proxy for remote operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -529,7 +625,11 @@
             "--directory"
           ],
           "description": "Repository base dir containing gems subdir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIRNAME",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -607,7 +707,11 @@
             "--version"
           ],
           "description": "Specify version of gem to list for use with --installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of gem"
+          }
         },
         {
           "names": [
@@ -668,7 +772,11 @@
             "--editor"
           ],
           "description": "Prepends COMMAND to gem path. Could be used to specify editor",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND",
+            "description": "The prepends command to gem path"
+          }
         },
         {
           "names": [
@@ -676,7 +784,11 @@
             "--version"
           ],
           "description": "Opens specific gem version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The specify version of gem"
+          }
         }
       ],
       "args": [
@@ -701,7 +813,11 @@
             "--skip"
           ],
           "description": "Restore all installed gems to pristine condition",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GEMNAME",
+            "description": "Name of the gem to print information about"
+          }
         },
         {
           "names": [
@@ -746,7 +862,11 @@
             "--install-dir"
           ],
           "description": "Gem repository to get binstubs and plugins installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -754,7 +874,11 @@
             "--bindir"
           ],
           "description": "Directory where executables are located",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -762,7 +886,11 @@
             "--version"
           ],
           "description": "Specify version of gem to restore to pristine condition",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The specify version of gem"
+          }
         }
       ],
       "args": [
@@ -782,7 +910,11 @@
             "--name-matches"
           ],
           "description": "Name of gem(s) to query on matches the provided REGEXP",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REGEXP",
+            "description": "The rule of the regexp"
+          }
         },
         {
           "names": [
@@ -849,7 +981,11 @@
             "--version"
           ],
           "description": "Specify version of gem to list for use with --installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of gem"
+          }
         },
         {
           "names": [
@@ -890,7 +1026,11 @@
             "--bulk-threshold"
           ],
           "description": "Threshold for switching to bulk synchronization (default 1000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COUNT",
+            "description": "The threshold"
+          }
         },
         {
           "names": [
@@ -904,7 +1044,11 @@
             "--source"
           ],
           "description": "Append URL to list of remote gem sources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -912,7 +1056,11 @@
             "--http-proxy"
           ],
           "description": "Use HTTP proxy for remote operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -974,7 +1122,11 @@
             "--version"
           ],
           "description": "Specify version of gem to rdoc",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The specify version of gem"
+          }
         }
       ],
       "args": [
@@ -1053,7 +1205,11 @@
             "--version"
           ],
           "description": "Specify version of gem to list for use with --installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of gem"
+          }
         },
         {
           "names": [
@@ -1094,7 +1250,11 @@
             "--bulk-threshold"
           ],
           "description": "Threshold for switching to bulk synchronization (default 1000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COUNT",
+            "description": "The threshold"
+          }
         },
         {
           "names": [
@@ -1108,7 +1268,11 @@
             "--source"
           ],
           "description": "Append URL to list of remote gem sources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -1116,7 +1280,11 @@
             "--http-proxy"
           ],
           "description": "Use HTTP proxy for remote operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -1141,14 +1309,22 @@
             "--host"
           ],
           "description": "Use another gemcutter-compatible host (e.g. https://rubygems.org)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HOST",
+            "description": "The host"
+          }
         },
         {
           "names": [
             "--otp"
           ],
           "description": "Digit code for multifactor authentication You can also use the environment variable GEM_HOST_OTP_CODE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CODE",
+            "description": "The GEM host otp code"
+          }
         }
       ]
     },
@@ -1166,7 +1342,11 @@
             "--add"
           ],
           "description": "Add source",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SOURCE_URI",
+            "description": "The source URI"
+          }
         },
         {
           "names": [
@@ -1181,7 +1361,11 @@
             "--remove"
           ],
           "description": "Remove source",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SOURCE_URI",
+            "description": "The source URI"
+          }
         },
         {
           "names": [
@@ -1216,7 +1400,11 @@
             "--http-proxy"
           ],
           "description": "Use HTTP proxy for remote operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -1236,14 +1424,22 @@
             "--version"
           ],
           "description": "Specify version of gem to examine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of gem"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Specify the platform of gem to specification",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "description": "The platform of gem"
+          }
         },
         {
           "names": [
@@ -1306,7 +1502,11 @@
             "--target"
           ],
           "description": "Target directory for unpacking",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1320,7 +1520,11 @@
             "--version"
           ],
           "description": "Specify version of gem to unpack",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The specify version of gem"
+          }
         }
       ],
       "args": [
@@ -1340,21 +1544,33 @@
             "--version"
           ],
           "description": "Specify version of gem to dependency",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of gem"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Specify the platform of gem to dependency",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "description": "The platform of gem"
+          }
         },
         {
           "names": [
             "--host"
           ],
           "description": "Use another gemcutter-compatible host (e.g. https://rubygems.org)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HOST",
+            "description": "The host"
+          }
         },
         {
           "names": [
@@ -1362,14 +1578,22 @@
             "--key"
           ],
           "description": "Use the given API key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYNAME",
+            "description": "The API key"
+          }
         },
         {
           "names": [
             "--otp"
           ],
           "description": "Digit code for multifactor authentication You can also use the environment variable GEM_HOST_OTP_CODE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CODE",
+            "description": "The GEM host otp code"
+          }
         }
       ],
       "args": [
@@ -1417,7 +1641,11 @@
             "--install-dir"
           ],
           "description": "Directory to uninstall gem from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1425,7 +1653,11 @@
             "--bindir"
           ],
           "description": "Directory to remove executables from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1457,14 +1689,22 @@
             "--version"
           ],
           "description": "Specify version of gem to uninstall",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The specify version of gem"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Specify the platform of gem to uninstall",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "description": "The platform of gem"
+          }
         },
         {
           "names": [
@@ -1555,7 +1795,11 @@
             "--version"
           ],
           "description": "Specify version of gem to list for use with --installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION",
+            "description": "The version of gem"
+          }
         },
         {
           "names": [
@@ -1596,7 +1840,11 @@
             "--bulk-threshold"
           ],
           "description": "Threshold for switching to bulk synchronization (default 1000)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COUNT",
+            "description": "The threshold"
+          }
         },
         {
           "names": [
@@ -1610,7 +1858,11 @@
             "--source"
           ],
           "description": "Append URL to list of remote gem sources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -1618,7 +1870,11 @@
             "--http-proxy"
           ],
           "description": "Use HTTP proxy for remote operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -1643,7 +1899,11 @@
             "--platform"
           ],
           "description": "Specify the platform of gem to build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "description": "The platform of gem"
+          }
         },
         {
           "names": [
@@ -1663,14 +1923,23 @@
             "--output"
           ],
           "description": "Output gem with the given filename",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "description": "The filename"
+          }
         },
         {
           "names": [
             "-C"
           ],
           "description": "Run as if gem build was started in <PATH> instead of the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATH",
+            "description": "The filename",
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -1689,7 +1958,11 @@
             "--host"
           ],
           "description": "Use another gemcutter-compatible host (e.g. https://rubygems.org)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HOST",
+            "description": "The host"
+          }
         },
         {
           "names": [
@@ -1697,14 +1970,22 @@
             "--key"
           ],
           "description": "Use the given API key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYNAME",
+            "description": "The API key"
+          }
         },
         {
           "names": [
             "--otp"
           ],
           "description": "Digit code for multifactor authentication You can also use the environment variable GEM_HOST_OTP_CODE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CODE",
+            "description": "The GEM host otp code"
+          }
         },
         {
           "names": [
@@ -1712,7 +1993,11 @@
             "--http-proxy"
           ],
           "description": "Use HTTP proxy for remote operations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "The URL"
+          }
         },
         {
           "names": [
@@ -1742,7 +2027,11 @@
             "--add"
           ],
           "description": "Add an owner by user identifier",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NEW_OWNER",
+            "description": "The new owner"
+          }
         },
         {
           "names": [
@@ -1750,14 +2039,22 @@
             "--remove"
           ],
           "description": "Remove an owner by user identifier",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OLD_OWNER",
+            "description": "The old owner"
+          }
         },
         {
           "names": [
             "--host"
           ],
           "description": "Use another gemcutter-compatible host (e.g. https://rubygems.org)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HOST",
+            "description": "The host"
+          }
         },
         {
           "names": [
@@ -1765,14 +2062,22 @@
             "--key"
           ],
           "description": "Use the given API key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYNAME",
+            "description": "The API key"
+          }
         },
         {
           "names": [
             "--otp"
           ],
           "description": "Digit code for multifactor authentication You can also use the environment variable GEM_HOST_OTP_CODE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CODE",
+            "description": "The GEM host otp code"
+          }
         }
       ],
       "args": [
@@ -1816,7 +2121,11 @@
             "--platform"
           ],
           "description": "Specify the platform of gem to outdated",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM",
+            "is_variadic": true
+          }
         }
       ]
     },
@@ -1829,14 +2138,20 @@
             "--system"
           ],
           "description": "Update the RubyGems system software",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VERSION"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Update the RubyGems system software",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLATFORM"
+          }
         },
         {
           "names": [
@@ -1850,7 +2165,11 @@
             "-i"
           ],
           "description": "Gem repository directory to get installed gems",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1858,21 +2177,36 @@
             "-n"
           ],
           "description": "Directory where executables will be placed when the gem is installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--document"
           ],
           "description": "Generate documentation for installed gems",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TYPES",
+            "suggestions": [
+              "rdoc",
+              "ri"
+            ]
+          }
         },
         {
           "names": [
             "--build-root"
           ],
           "description": "Temporary installation root. Useful for building packages. Do not use this when installing remote gems",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1914,7 +2248,10 @@
             "-P"
           ],
           "description": "Specify gem trust policy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "POLICY"
+          }
         },
         {
           "names": [
@@ -1970,14 +2307,21 @@
             "-g"
           ],
           "description": "Read from a gem dependencies API file and install the listed gems",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--without"
           ],
           "description": "Omit the named groups (comma separated) when installing from a gem dependencies file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GROUPS"
+          }
         },
         {
           "names": [
@@ -2052,7 +2396,12 @@
         "-config-file"
       ],
       "description": "Use this config file instead of default",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "description": "The config file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

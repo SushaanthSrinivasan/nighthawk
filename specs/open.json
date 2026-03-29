@@ -7,14 +7,20 @@
         "-a"
       ],
       "description": "Specify the application to use for opening the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Application"
+      }
     },
     {
       "names": [
         "-b"
       ],
       "description": "Specify the bundle identifier of the app to use to open the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Bundle Identifier"
+      }
     },
     {
       "names": [
@@ -94,7 +100,10 @@
         "-s"
       ],
       "description": "For -h, the SDK to use; if supplied, only SDKs whose names contain the argument value are searched",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "partial SDK name"
+      }
     },
     {
       "names": [
@@ -102,7 +111,10 @@
         "--url"
       ],
       "description": "Open this URL, even if it matches exactly a filepath",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
@@ -110,7 +122,11 @@
         "--stdin"
       ],
       "description": "Launches the application with stdin connected to PATH; defaults to /dev/null",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -118,28 +134,43 @@
         "--stdout"
       ],
       "description": "Launches the application with /dev/stdout connected to PATH",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--stderr"
       ],
       "description": "Launches the application with /dev/stderr connected to PATH",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--env"
       ],
       "description": "Add an enviroment variable to the launched process, where VAR is formatted AAA=foo",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VAR"
+      }
     },
     {
       "names": [
         "--args"
       ],
       "description": "All remaining arguments are passed to the opened application in the argv parameter to main().  These arguments are not opened or interpreted by the open tool",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Arguments",
+        "is_variadic": true
+      }
     }
   ],
   "args": [

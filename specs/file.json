@@ -59,7 +59,23 @@
         "-e"
       ],
       "description": "Exclude the test named in testname from the list of tests made to\ndetermine the file type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "testname",
+        "suggestions": [
+          "apptype",
+          "ascii",
+          "encoding",
+          "token",
+          "cdf",
+          "compress",
+          "csv",
+          "elf",
+          "json",
+          "soft",
+          "tar"
+        ]
+      }
     },
     {
       "names": [
@@ -79,7 +95,13 @@
         "-F"
       ],
       "description": "Use the specified string as the separator between the filename\nand the file result returned",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "separator",
+        "suggestions": [
+          "."
+        ]
+      }
     },
     {
       "names": [
@@ -87,7 +109,10 @@
         "-f"
       ],
       "description": "Read the names of the files to be examined from namefile (one per\nline) before the argument list.  Either namefile or at least one\nfilename argument must be present; to test the standard input,\nuse ‘-",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "namefile"
+      }
     },
     {
       "names": [
@@ -143,14 +168,22 @@
         "-m"
       ],
       "description": "Specify an alternate list of files and directories containing\nmagic.  This can be a single item, or a colon-separated list.  If\na compiled magic file is found alongside a file or directory, it\nwill be",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-M"
       ],
       "description": "Like -m, except that the default rules are not applied unless -d\nis specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -172,7 +205,10 @@
         "-P"
       ],
       "description": "Set various parameter limits",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name=value"
+      }
     },
     {
       "names": [

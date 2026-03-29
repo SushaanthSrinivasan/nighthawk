@@ -71,7 +71,15 @@
         "--classify"
       ],
       "description": "Display type indicator by file names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -79,7 +87,15 @@
         "--colour"
       ],
       "description": "When to use terminal colours",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -87,7 +103,15 @@
         "--colour-scale"
       ],
       "description": "Highlight levels of 'field' distinctly",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "field",
+        "suggestions": [
+          "all",
+          "age",
+          "size"
+        ]
+      }
     },
     {
       "names": [
@@ -95,14 +119,29 @@
         "--colour-scale-mode"
       ],
       "description": "Use gradient or fixed colors in --color-scale",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "fixed",
+          "gradient"
+        ]
+      }
     },
     {
       "names": [
         "--icons"
       ],
       "description": "When to display icons",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -121,7 +160,15 @@
         "--absolute"
       ],
       "description": "Display entries with their absolute path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "off",
+          "on",
+          "follow"
+        ]
+      }
     },
     {
       "names": [
@@ -135,7 +182,10 @@
         "--width"
       ],
       "description": "Set screen width in columns",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "columns"
+      }
     },
     {
       "names": [
@@ -190,7 +240,10 @@
         "--level"
       ],
       "description": "Limit the depth of recursion",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "depth"
+      }
     },
     {
       "names": [
@@ -205,7 +258,26 @@
         "--sort"
       ],
       "description": "Which field to sort by",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "field",
+        "suggestions": [
+          "name",
+          "Name",
+          "extension",
+          "Extension",
+          "size",
+          "modified",
+          "changed",
+          "accessed",
+          "created",
+          "inode",
+          "type",
+          "none",
+          "date",
+          "age"
+        ]
+      }
     },
     {
       "names": [
@@ -225,7 +297,10 @@
         "--ignore-glob"
       ],
       "description": "Glob patterns (pipe-separated) of files to ignore",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "globs"
+      }
     },
     {
       "names": [
@@ -315,7 +390,16 @@
         "--time"
       ],
       "description": "Which timestamp field to list",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "field",
+        "suggestions": [
+          "modified",
+          "changed",
+          "accessed",
+          "created"
+        ]
+      }
     },
     {
       "names": [
@@ -349,7 +433,17 @@
         "--time-style"
       ],
       "description": "How to format timestamps",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "default",
+          "iso",
+          "long-iso",
+          "relative",
+          "+%Y-%m-%d %H:%M"
+        ]
+      }
     },
     {
       "names": [

@@ -14,14 +14,20 @@
         "--architecture"
       ],
       "description": "When verifying or displaying signatures, explicitly select the Mach-O architecture given",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "architecture"
+      }
     },
     {
       "names": [
         "--bundle-version"
       ],
       "description": "When handling versioned bundles such as frameworks, explicitly specify the version to operate on",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version-string"
+      }
     },
     {
       "names": [
@@ -36,7 +42,11 @@
         "--detached"
       ],
       "description": "When signing, designates that a detached signature should be written to the specified file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -70,7 +80,10 @@
         "--identifier"
       ],
       "description": "During signing, explicitly specify the unique identifier string that is embedded in code signatures",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "identifier"
+      }
     },
     {
       "names": [
@@ -78,7 +91,10 @@
         "--options"
       ],
       "description": "During signing, specifies a set of option flags to be embedded in the code signature",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version-string"
+      }
     },
     {
       "names": [
@@ -86,7 +102,10 @@
         "--pagesize"
       ],
       "description": "Indicates the granularity of code signing. Pagesize must be a power of two",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size"
+      }
     },
     {
       "names": [
@@ -94,7 +113,10 @@
         "--requirements"
       ],
       "description": "During signing, indicates that internal requirements should be embedded in the code path(s) as specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "requirements"
+      }
     },
     {
       "names": [
@@ -102,7 +124,10 @@
         "--test-requirement"
       ],
       "description": "During verification, indicates that the path(s) given should be verified against the code requirement specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "requirement"
+      }
     },
     {
       "names": [
@@ -110,7 +135,10 @@
         "--sign"
       ],
       "description": "Sign the code at the path(s) given using this identity",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "identity"
+      }
     },
     {
       "names": [
@@ -136,21 +164,32 @@
         "--entitlements"
       ],
       "description": "When signing, take the file at the given path and embed its contents in the signature as entitlement data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path"
+      }
     },
     {
       "names": [
         "--extract-certificates"
       ],
       "description": "When displaying a signature, extract the certificates in the embedded certificate chain and write them to individual files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix"
+      }
     },
     {
       "names": [
         "--file-list"
       ],
       "description": "When signing or displaying a signature, codesign writes to the given path a list of files that may have been modified as part of the signing process",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -163,14 +202,20 @@
         "--keychain"
       ],
       "description": "During signing, only search for the signing identity in the keychain file specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--prefix"
       ],
       "description": "If no explicit unique identifier is specified (using the -i option), and if the implicitly generated identifier does not contain any dot (.) characters, then the given string is prefixed to the identi",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix"
+      }
     },
     {
       "names": [
@@ -183,14 +228,20 @@
         "--resource-rules"
       ],
       "description": "During signing, this option overrides the default rules for identifying and collecting bundle resources and nested code to be sealed into the signature",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
         "--timestamp"
       ],
       "description": "During signing, requests that a timestamp authority server be contacted to authenticate the time of signing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     }
   ]
 }

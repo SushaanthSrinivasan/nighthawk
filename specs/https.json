@@ -40,14 +40,65 @@
         "--pretty"
       ],
       "description": "Controls output processing. The value can be \"none\" to not prettify\nthe output (default for redirected output), \"all\" to apply both colors\nand formatting (default for terminal output), \"colors\", or \"f",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "all",
+          "colors",
+          "format",
+          "none"
+        ]
+      }
     },
     {
       "names": [
         "--style",
         "-s"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STYLE",
+        "suggestions": [
+          "abap",
+          "algol",
+          "algol_nu",
+          "arduino",
+          "auto",
+          "autumn",
+          "borland",
+          "bw",
+          "colorful",
+          "default",
+          "emacs",
+          "friendly",
+          "fruity",
+          "igor",
+          "inkpot",
+          "lovelace",
+          "manni",
+          "monokai",
+          "murphy",
+          "native",
+          "paraiso-dark",
+          "paraiso-light",
+          "pastie",
+          "perldoc",
+          "rainbow_dash",
+          "rrt",
+          "sas",
+          "solarized",
+          "solarized-dark",
+          "solarized-light",
+          "stata",
+          "stata-dark",
+          "stata-light",
+          "tango",
+          "trac",
+          "vim",
+          "vs",
+          "xcode"
+        ]
+      }
     },
     {
       "names": [
@@ -66,7 +117,16 @@
         "--format-options"
       ],
       "description": "Controls output formatting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT_OPTIONS",
+        "suggestions": [
+          "headers.sort:true",
+          "json.format:true",
+          "json.indent:4",
+          "json.sort_keys:true"
+        ]
+      }
     },
     {
       "names": [
@@ -74,7 +134,16 @@
         "-p"
       ],
       "description": "String specifying what the output should contain",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WHAT",
+        "suggestions": [
+          "H",
+          "B",
+          "h",
+          "b"
+        ]
+      }
     },
     {
       "names": [
@@ -109,7 +178,16 @@
         "-P"
       ],
       "description": "The same as --print, -p but applies only to intermediary requests/responses\n(such as redirects) when their inclusion is enabled with --all. If this\noptions is not specified, then they are formatted th",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WHAT",
+        "suggestions": [
+          "H",
+          "B",
+          "h",
+          "b"
+        ]
+      }
     },
     {
       "names": [
@@ -124,7 +202,11 @@
         "-o"
       ],
       "description": "Save output to FILE instead of stdout. If --download is also set, then only\nthe response body is saved to FILE. Other parts of the HTTP exchange are\nprinted to stderr",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -152,14 +234,22 @@
         "--session"
       ],
       "description": "Create, or reuse and update a session. Within a session, custom headers,\nauth credential, as well as any cookies sent by the server persist between\nrequests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SESSION_NAME_OR_PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--session-read-only"
       ],
       "description": "Create or read a session without updating it form the request/response exchange",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SESSION_NAME_OR_PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -167,7 +257,10 @@
         "-a"
       ],
       "description": "If only the username is provided (-a username), HTTPie will prompt for the password",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "USER[:PASS]"
+      }
     },
     {
       "names": [
@@ -175,7 +268,13 @@
         "-A"
       ],
       "description": "The authentication mechanism to be used. Defaults to \"basic\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "basic",
+          "digest"
+        ]
+      }
     },
     {
       "names": [
@@ -194,7 +293,10 @@
         "--proxy"
       ],
       "description": "String mapping protocol to the URL of the proxy\n(e.g. http:http://foo.bar:3128). You can specify multiple proxies with\ndifferent protocols. The environment variables $ALL_PROXY, $HTTP_PROXY,\nand $HTTP",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PROTOCOL:PROXY_URL"
+      }
     },
     {
       "names": [
@@ -208,21 +310,30 @@
         "--max-redirects"
       ],
       "description": "By default, requests have a limit of 30 redirects (works with --follow)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MAX_REDIRECTS"
+      }
     },
     {
       "names": [
         "--max-headers"
       ],
       "description": "The maximum number of response headers to be read before giving up (default 0, i.e., no limit)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MAX_HEADERS"
+      }
     },
     {
       "names": [
         "--timeout"
       ],
       "description": "The connection timeout of the request in seconds.\nThe default value is 0, i.e., there is no timeout limit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
@@ -247,14 +358,30 @@
         "--verify"
       ],
       "description": "Set to \"no\" (or \"false\") to skip checking the host's SSL certificate.\nDefaults to \"yes\" (\"true\"). You can also pass the path to a CA_BUNDLE file\nfor private certs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VERIFY",
+        "suggestions": [
+          "no",
+          "yes"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ssl"
       ],
       "description": "The desired protocol version to use. This will default to\nSSL v2.3 which will negotiate the highest protocol that both\nthe server and your installation of OpenSSL support",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "ssl2.3",
+          "tls1",
+          "tls1.1",
+          "tls1.2"
+        ]
+      }
     },
     {
       "names": [
@@ -268,14 +395,20 @@
         "--cert"
       ],
       "description": "You can specify a local cert to use as client side SSL certificate.\nThis file may either contain both private key and certificate or you may\nspecify --cert-key separately",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--cert-key"
       ],
       "description": "The private key to use with SSL. Only needed if --cert is given and the certificate file does not contain the private key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -307,7 +440,10 @@
         "--default-scheme"
       ],
       "description": "The default scheme to use if not specified in the URL",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DEFAULT_SCHEME"
+      }
     },
     {
       "names": [

@@ -8,7 +8,10 @@
         "-c"
       ],
       "description": "Format the code passed in as a string",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -16,7 +19,10 @@
         "-l"
       ],
       "description": "How many characters per line to allow",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "line length"
+      }
     },
     {
       "names": [
@@ -24,7 +30,20 @@
         "-t"
       ],
       "description": "Python versions that should be supported",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "python version",
+        "suggestions": [
+          "py33",
+          "py34",
+          "py35",
+          "py36",
+          "py37",
+          "py38",
+          "py39",
+          "py310"
+        ]
+      }
     },
     {
       "names": [
@@ -43,7 +62,19 @@
         "--python-cell-magics"
       ],
       "description": "Add the given magic to the list of known python-magics",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "python-magic",
+        "suggestions": [
+          "python",
+          "python3",
+          "timeit",
+          "prun",
+          "time",
+          "pypy",
+          "capture"
+        ]
+      }
     },
     {
       "names": [
@@ -106,42 +137,61 @@
         "--required-version"
       ],
       "description": "Require a specific version of Black",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version"
+      }
     },
     {
       "names": [
         "--include"
       ],
       "description": "Regex that matches files and directories that should be included on recursive searches",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Regex"
+      }
     },
     {
       "names": [
         "--exclude"
       ],
       "description": "Regex that matches files and directories that should be excluded on recursive searches",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Regex"
+      }
     },
     {
       "names": [
         "--extend-exclude"
       ],
       "description": "Additional exlusions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Regex"
+      }
     },
     {
       "names": [
         "--force-exclude"
       ],
       "description": "Exlude matching files and folders even when passed explicitly",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Regex"
+      }
     },
     {
       "names": [
         "--stdin-filename"
       ],
       "description": "The name of the file when passing it through stdin",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -149,7 +199,10 @@
         "-W"
       ],
       "description": "Number of parallel workers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "integer"
+      }
     },
     {
       "names": [
@@ -176,7 +229,11 @@
         "--config"
       ],
       "description": "Read configuration from filepath",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

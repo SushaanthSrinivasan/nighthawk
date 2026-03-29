@@ -251,35 +251,63 @@
             "--data-dir"
           ],
           "description": "Directory to store SQLite db, SSH keys and file data",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATA_DIR",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--health-port"
           ],
           "description": "Health port to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HEALTH_PORT",
+            "suggestions": [
+              "35356"
+            ]
+          }
         },
         {
           "names": [
             "--http-port"
           ],
           "description": "HTTP port to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HTTP_PORT",
+            "suggestions": [
+              "35354"
+            ]
+          }
         },
         {
           "names": [
             "--ssh-port"
           ],
           "description": "SSH port to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SSH_PORT",
+            "suggestions": [
+              "35353"
+            ]
+          }
         },
         {
           "names": [
             "--stats-port"
           ],
           "description": "Stats port to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "STATS_PORT",
+            "suggestions": [
+              "35355"
+            ]
+          }
         }
       ]
     }

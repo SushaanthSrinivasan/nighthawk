@@ -22,7 +22,10 @@
         "-t"
       ],
       "description": "Set static text to display instead of the latest stdin data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
@@ -30,7 +33,15 @@
         "-s"
       ],
       "description": "Set style of the activity indicator",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "style",
+        "suggestions": [
+          "dots",
+          "kitt",
+          "snake"
+        ]
+      }
     },
     {
       "names": [
@@ -38,7 +49,11 @@
         "-l"
       ],
       "description": "Save the original log to a file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -46,7 +61,10 @@
         "-m"
       ],
       "description": "Log above progress line lines matching the given regular expressions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex"
+      }
     }
   ]
 }

@@ -33,7 +33,10 @@
                 "-v"
               ],
               "description": "Upgrade CLI to specific version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Version number"
+              }
             }
           ]
         }
@@ -86,21 +89,39 @@
             "--name"
           ],
           "description": "Set the name of the new micro",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Name of the new micro"
+          }
         },
         {
           "names": [
             "--project"
           ],
           "description": "Set the project under which the micro is created",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project",
+            "description": "Name of the existing project"
+          }
         },
         {
           "names": [
             "--runtime"
           ],
           "description": "Create a micro with a specified runtime",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "runtime",
+            "description": "The selected runtime",
+            "suggestions": [
+              "node12",
+              "node14",
+              "python3.7",
+              "python3.9"
+            ]
+          }
         }
       ],
       "args": [
@@ -210,7 +231,11 @@
                 "-d"
               ],
               "description": "Set the api-key description",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "description",
+                "description": "The api-key description"
+              }
             },
             {
               "names": [
@@ -218,6 +243,10 @@
               ],
               "description": "Set the api-key name",
               "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "description": "The api-key name"
+              },
               "is_required": true
             },
             {
@@ -225,7 +254,12 @@
                 "-o"
               ],
               "description": "Set the api-key output file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "outfile",
+                "description": "The api-key output file",
+                "template": "filepaths"
+              }
             }
           ]
         },
@@ -245,6 +279,10 @@
               ],
               "description": "Set the api-key name",
               "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "description": "The api-key name"
+              },
               "is_required": true
             }
           ]
@@ -293,6 +331,10 @@
           ],
           "description": "The name of the micro to be cloned",
           "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Name of the micro"
+          },
           "is_required": true
         },
         {
@@ -300,7 +342,11 @@
             "-p"
           ],
           "description": "The name of the project with the micro to be cloned",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project",
+            "description": "Name of the project"
+          }
         }
       ],
       "args": [
@@ -325,21 +371,40 @@
             "-n"
           ],
           "description": "The new name of the micro",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "New name for the micro"
+          }
         },
         {
           "names": [
             "-r"
           ],
           "description": "The new runtime of the micro",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "runtime",
+            "description": "New runtime for the micro",
+            "suggestions": [
+              "node12",
+              "node14",
+              "python3.7",
+              "python3.9"
+            ]
+          }
         },
         {
           "names": [
             "-e"
           ],
           "description": "The new env file of the micro",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "env",
+            "description": "Path to env file",
+            "template": "filepaths"
+          }
         }
       ]
     },

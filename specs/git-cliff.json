@@ -68,7 +68,11 @@
         "-c"
       ],
       "description": "Sets the configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -76,7 +80,11 @@
         "-w"
       ],
       "description": "Sets the working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -84,28 +92,44 @@
         "-r"
       ],
       "description": "Sets the git repository",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--include-path"
       ],
       "description": "Sets the path to include related commits",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--exclude-path"
       ],
       "description": "Sets the path to exclude related commits",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--with-commit"
       ],
       "description": "Sets custom commit messages to include in the changelog",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "msg",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -113,7 +137,11 @@
         "-p"
       ],
       "description": "Prepends entries to the given changelog file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -121,7 +149,11 @@
         "-o"
       ],
       "description": "Writes output to the given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -129,7 +161,10 @@
         "-t"
       ],
       "description": "Sets the tag for the latest version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -137,7 +172,10 @@
         "-b"
       ],
       "description": "Sets the template for the changelog body",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "template"
+      }
     },
     {
       "names": [
@@ -145,14 +183,29 @@
         "-s"
       ],
       "description": "Strips the given parts from the changelog",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "part",
+        "suggestions": [
+          "header",
+          "footer",
+          "all"
+        ]
+      }
     },
     {
       "names": [
         "--sort"
       ],
       "description": "Sets sorting of the commits inside sections",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "sort",
+        "suggestions": [
+          "oldest",
+          "newest"
+        ]
+      }
     }
   ],
   "args": [

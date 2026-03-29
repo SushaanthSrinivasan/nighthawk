@@ -18,14 +18,20 @@
             "--app"
           ],
           "description": "Name the OTP application for the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app"
+          }
         },
         {
           "names": [
             "--modules"
           ],
           "description": "Name the modules in the generated code skeleton",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "module"
+          }
         },
         {
           "names": [
@@ -55,7 +61,11 @@
             "--config"
           ],
           "description": "Loads the given configuration files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -63,7 +73,11 @@
             "--eval"
           ],
           "description": "Evaluates the given code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "code",
+            "description": "String containing code to execute"
+          }
         },
         {
           "names": [
@@ -71,7 +85,11 @@
             "--require"
           ],
           "description": "Executes the given pattern/file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file|pattern",
+            "description": "The file|pattern to execute"
+          }
         },
         {
           "names": [
@@ -79,7 +97,10 @@
             "--parallel"
           ],
           "description": "Executes the given pattern/file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file|pattern"
+          }
         },
         {
           "names": [
@@ -145,7 +166,10 @@
             "--search"
           ],
           "description": "Prints all tasks and aliases that contain 'pattern' in the name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [

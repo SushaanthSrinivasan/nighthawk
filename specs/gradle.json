@@ -82,7 +82,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -101,7 +104,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -150,14 +160,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -192,28 +215,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -250,7 +309,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -264,7 +327,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -272,7 +339,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -280,7 +351,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -288,14 +363,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -303,7 +386,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -318,21 +404,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -416,7 +512,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -435,7 +534,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -484,14 +590,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -526,28 +645,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -584,7 +739,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -598,7 +757,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -606,7 +769,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -614,7 +781,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -622,14 +793,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -637,7 +816,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -652,21 +834,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -750,7 +942,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -769,7 +964,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -818,14 +1020,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -860,28 +1075,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -918,7 +1169,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -932,7 +1187,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -940,7 +1199,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -948,7 +1211,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -956,14 +1223,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -971,7 +1246,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -986,21 +1264,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -1084,7 +1372,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1103,7 +1394,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -1152,14 +1450,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -1194,28 +1505,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -1252,7 +1599,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1266,7 +1617,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1274,7 +1629,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1282,7 +1641,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1290,14 +1653,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1305,7 +1676,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -1320,21 +1694,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -1418,7 +1802,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1437,7 +1824,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -1486,14 +1880,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -1528,28 +1935,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -1586,7 +2029,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1600,7 +2047,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1608,7 +2059,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1616,7 +2071,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1624,14 +2083,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1639,7 +2106,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -1654,21 +2124,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -1687,7 +2167,10 @@
             "--group"
           ],
           "description": "If you need to be more precise, you can display only the tasks from a specific group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group"
+          }
         },
         {
           "names": [
@@ -1765,7 +2248,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1784,7 +2270,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -1833,14 +2326,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -1875,28 +2381,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -1933,7 +2475,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1947,7 +2493,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1955,7 +2505,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1963,7 +2517,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1971,14 +2529,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1986,7 +2552,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -2001,21 +2570,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -2028,6 +2607,9 @@
             "--task"
           ],
           "takes_arg": true,
+          "arg": {
+            "name": "task"
+          },
           "is_required": true
         },
         {
@@ -2106,7 +2688,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -2125,7 +2710,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -2174,14 +2766,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -2216,28 +2821,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -2274,7 +2915,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2288,7 +2933,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2296,7 +2945,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2304,7 +2957,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2312,14 +2969,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2327,7 +2992,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -2342,21 +3010,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -2440,7 +3118,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -2459,7 +3140,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -2508,14 +3196,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -2550,28 +3251,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -2608,7 +3345,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2622,7 +3363,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2630,7 +3375,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2638,7 +3387,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2646,14 +3399,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2661,7 +3422,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -2676,21 +3440,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -2774,7 +3548,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -2793,7 +3570,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -2842,14 +3626,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -2884,28 +3681,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -2942,7 +3775,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2956,7 +3793,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2964,7 +3805,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2972,7 +3817,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2980,14 +3829,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2995,7 +3852,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -3010,21 +3870,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -3108,7 +3978,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -3127,7 +4000,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -3176,14 +4056,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -3218,28 +4111,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -3276,7 +4205,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -3290,7 +4223,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3298,7 +4235,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3306,7 +4247,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3314,14 +4259,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3329,7 +4282,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -3344,21 +4300,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -3442,7 +4408,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -3461,7 +4430,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -3510,14 +4486,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -3552,28 +4541,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -3610,7 +4635,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -3624,7 +4653,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3632,7 +4665,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3640,7 +4677,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3648,14 +4689,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3663,7 +4712,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -3678,21 +4730,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -3713,7 +4775,15 @@
             "--type"
           ],
           "description": "Specify project type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "basic",
+              "java-library",
+              "java-application"
+            ]
+          }
         },
         {
           "names": [
@@ -3791,7 +4861,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -3810,7 +4883,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -3859,14 +4939,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -3901,28 +4994,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -3959,7 +5088,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -3973,7 +5106,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3981,7 +5118,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3989,7 +5130,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -3997,14 +5142,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4012,7 +5165,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -4027,21 +5183,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -4054,28 +5220,44 @@
             "--gradle-version"
           ],
           "description": "The Gradle version used for downloading and executing the Wrapper",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--distribution-type"
           ],
           "description": "The Gradle distribution type used for the Wrapper",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "bin",
+              "all"
+            ]
+          }
         },
         {
           "names": [
             "--gradle-distribution-url"
           ],
           "description": "The full URL pointing to Gradle distribution ZIP file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
             "--gradle-distribution-sha256-sum"
           ],
           "description": "The SHA256 hash sum used for verifying the downloaded Gradle distribution",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SHA256 hash sum"
+          }
         },
         {
           "names": [
@@ -4153,7 +5335,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -4172,7 +5357,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -4221,14 +5413,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -4263,28 +5468,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -4321,7 +5562,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -4335,7 +5580,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4343,7 +5592,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4351,7 +5604,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4359,14 +5616,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4374,7 +5639,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -4389,21 +5657,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -4505,7 +5783,10 @@
             "--max-workers"
           ],
           "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -4524,7 +5805,14 @@
             "--priority"
           ],
           "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "priority",
+            "suggestions": [
+              "normal",
+              "low"
+            ]
+          }
         },
         {
           "names": [
@@ -4573,14 +5861,27 @@
             "-Dorg.gradle.daemon.idletimeout"
           ],
           "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "milliseconds"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.logging.level"
           ],
           "description": "Set logging level via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "quiet",
+              "warn",
+              "lifecycle",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -4615,28 +5916,64 @@
             "-Dorg.gradle.console"
           ],
           "description": "Specify console mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "--console"
           ],
           "description": "Specifies which type of console output to generate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "auto",
+              "plain",
+              "rich",
+              "verbose"
+            ]
+          }
         },
         {
           "names": [
             "-Dorg.gradle.warning.mode"
           ],
           "description": "Specify warning mode via Gradle properties",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--warning-mode"
           ],
           "description": "Specifies how to log warning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "all",
+              "fail",
+              "summary",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -4673,7 +6010,11 @@
             "--update-locks"
           ],
           "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "group:name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -4687,7 +6028,11 @@
             "--build-file"
           ],
           "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4695,7 +6040,11 @@
             "--settings-file"
           ],
           "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4703,7 +6052,11 @@
             "--gradle-user-home"
           ],
           "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4711,14 +6064,22 @@
             "--project-dir"
           ],
           "description": "Specifies the start directory for Gradle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--project-cache-dir"
           ],
           "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4726,7 +6087,10 @@
             "--system-prop"
           ],
           "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
@@ -4741,21 +6105,31 @@
             "--project-prop"
           ],
           "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "system property"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.jvmargs"
           ],
           "description": "Set JVM arguments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arguments"
+          }
         },
         {
           "names": [
             "-Dorg.gradle.java.home"
           ],
           "description": "Set JDK home dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         }
       ]
     }
@@ -4837,7 +6211,10 @@
         "--max-workers"
       ],
       "description": "Sets maximum number of workers that Gradle may use. Default is number of processors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -4856,7 +6233,14 @@
         "--priority"
       ],
       "description": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "priority",
+        "suggestions": [
+          "normal",
+          "low"
+        ]
+      }
     },
     {
       "names": [
@@ -4905,14 +6289,27 @@
         "-Dorg.gradle.daemon.idletimeout"
       ],
       "description": "Gradle Daemon will stop itself after this number of milliseconds of idle time",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "milliseconds"
+      }
     },
     {
       "names": [
         "-Dorg.gradle.logging.level"
       ],
       "description": "Set logging level via Gradle properties",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "quiet",
+          "warn",
+          "lifecycle",
+          "info",
+          "debug"
+        ]
+      }
     },
     {
       "names": [
@@ -4947,28 +6344,64 @@
         "-Dorg.gradle.console"
       ],
       "description": "Specify console mode via Gradle properties",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "auto",
+          "plain",
+          "rich",
+          "verbose"
+        ]
+      }
     },
     {
       "names": [
         "--console"
       ],
       "description": "Specifies which type of console output to generate",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "auto",
+          "plain",
+          "rich",
+          "verbose"
+        ]
+      }
     },
     {
       "names": [
         "-Dorg.gradle.warning.mode"
       ],
       "description": "Specify warning mode via Gradle properties",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "all",
+          "fail",
+          "summary",
+          "none"
+        ]
+      }
     },
     {
       "names": [
         "--warning-mode"
       ],
       "description": "Specifies how to log warning",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "all",
+          "fail",
+          "summary",
+          "none"
+        ]
+      }
     },
     {
       "names": [
@@ -5005,7 +6438,11 @@
         "--update-locks"
       ],
       "description": "Indicates that versions for the specified modules have to be updated in the lock file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "group:name",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -5019,7 +6456,11 @@
         "--build-file"
       ],
       "description": "Specifies the build file. For example: gradle --build-file=foo.gradle",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -5027,7 +6468,11 @@
         "--settings-file"
       ],
       "description": "Specifies the settings file. For example: gradle --settings-file=somewhere/else/settings.gradle",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -5035,7 +6480,11 @@
         "--gradle-user-home"
       ],
       "description": "Specifies the Gradle user home directory. The default is the .gradle directory in the user’s home directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5043,14 +6492,22 @@
         "--project-dir"
       ],
       "description": "Specifies the start directory for Gradle",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--project-cache-dir"
       ],
       "description": "Specifies the project-specific cache directory. Default value is .gradle in the root project directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -5058,7 +6515,10 @@
         "--system-prop"
       ],
       "description": "Sets a system property of the JVM, for example -Dmyprop=myvalue",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "system property"
+      }
     },
     {
       "names": [
@@ -5073,21 +6533,31 @@
         "--project-prop"
       ],
       "description": "Sets a project property of the root project, for example -Pmyprop=myvalue",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "system property"
+      }
     },
     {
       "names": [
         "-Dorg.gradle.jvmargs"
       ],
       "description": "Set JVM arguments",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arguments"
+      }
     },
     {
       "names": [
         "-Dorg.gradle.java.home"
       ],
       "description": "Set JDK home dir",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     }
   ],
   "args": [

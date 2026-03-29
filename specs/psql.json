@@ -29,7 +29,11 @@
         "--command"
       ],
       "description": "Specifies that psql is to execute the given command string, command. This option can be repeated and combined in any order with the -f option. When either -c or -f is specified, psql does not read com",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command",
+        "description": "A command string that is completely parsable by the server (i.e., it contains no psql-specific features), or a single backslash command. Thus you cannot mix SQL and psql meta-commands within a -c opti"
+      }
     },
     {
       "names": [
@@ -43,7 +47,10 @@
         "--dbname"
       ],
       "description": "Specifies the name of the database to connect to. This is equivalent to specifying dbname as the first non-option argument on the command line. The dbname can be a connection string. If so, connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dbname"
+      }
     },
     {
       "names": [
@@ -65,7 +72,11 @@
         "--file"
       ],
       "description": "Read commands from the file filename, rather than standard input. This option can be repeated and combined in any order with the -c option. When either -c or -f is specified, psql does not read comman",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -73,7 +84,10 @@
         "--field-separator"
       ],
       "description": "Use separator as the field separator for unaligned output. This is equivalent to \\pset fieldsep or \\f",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "separator"
+      }
     },
     {
       "names": [
@@ -81,7 +95,10 @@
         "--host"
       ],
       "description": "Specifies the host name of the machine on which the server is running. If the value begins with a slash, it is used as the directory for the Unix-domain socket",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hostname"
+      }
     },
     {
       "names": [
@@ -103,7 +120,11 @@
         "--log-file"
       ],
       "description": "Write all query output into file filename, in addition to the normal output destination",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -118,7 +139,11 @@
         "--output"
       ],
       "description": "Put all query output into file filename. This is equivalent to the command \\o",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -126,7 +151,10 @@
         "--port"
       ],
       "description": "Specifies the TCP port or the local Unix-domain socket file extension on which the server is listening for connections. Defaults to the value of the PGPORT environment variable or, if not set, to the ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
@@ -134,7 +162,10 @@
         "--pset"
       ],
       "description": "Specifies printing options, in the style of \\pset. Note that here you have to separate name and value with an equal sign instead of a space. For example, to set the output format to LaTeX, you could w",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "assignment"
+      }
     },
     {
       "names": [
@@ -149,7 +180,10 @@
         "--record-separator"
       ],
       "description": "Use separator as the record separator for unaligned output. This is equivalent to \\pset recordsep",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "separator"
+      }
     },
     {
       "names": [
@@ -178,7 +212,10 @@
         "--table-attr"
       ],
       "description": "Specifies options to be placed within the HTML table tag. See \\pset tableattr for details",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "table_options"
+      }
     },
     {
       "names": [
@@ -186,7 +223,10 @@
         "--username"
       ],
       "description": "Turn off printing of column names and result row count footers, etc. This is equivalent to \t or pset tuples_only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username"
+      }
     },
     {
       "names": [
@@ -195,7 +235,10 @@
         "--variable"
       ],
       "description": "Perform a variable assignment, like the set meta-command. Note that you must separate name and value, if any, by an equal sign on the command line. To unset a variable, leave off the equal sign. To se",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username"
+      }
     },
     {
       "names": [

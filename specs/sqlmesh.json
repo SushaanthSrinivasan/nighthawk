@@ -12,14 +12,27 @@
             "--template"
           ],
           "description": "Project template. Supported values: airflow, dbt, dlt, default, empty",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template",
+            "suggestions": [
+              "airflow",
+              "dbt",
+              "dlt",
+              "default",
+              "empty"
+            ]
+          }
         },
         {
           "names": [
             "--dlt-pipeline"
           ],
           "description": "DLT pipeline for which to generate a SQLMesh project. Use alongside template: dlt",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pipeline"
+          }
         }
       ],
       "args": [
@@ -37,7 +50,10 @@
             "--dialect"
           ],
           "description": "The SQL dialect to render the query as",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dialect"
+          }
         },
         {
           "names": [
@@ -50,28 +66,41 @@
             "--start"
           ],
           "description": "Start time for the render",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "start"
+          }
         },
         {
           "names": [
             "--end"
           ],
           "description": "End time for the render",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "end"
+          }
         },
         {
           "names": [
             "--execution-time"
           ],
           "description": "Execution time for the render",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
             "--expand"
           ],
           "description": "Expand referenced models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "models",
+            "is_variadic": true
+          }
         }
       ],
       "args": [
@@ -89,28 +118,40 @@
             "--start"
           ],
           "description": "Start time for evaluation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "start"
+          }
         },
         {
           "names": [
             "--end"
           ],
           "description": "End time for evaluation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "end"
+          }
         },
         {
           "names": [
             "--execution-time"
           ],
           "description": "Execution time for evaluation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
             "--limit"
           ],
           "description": "The number of rows which the query should be limited to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "limit"
+          }
         }
       ],
       "args": [
@@ -129,7 +170,10 @@
             "--transpile"
           ],
           "description": "Transpile project models to the specified dialect",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dialect"
+          }
         },
         {
           "names": [
@@ -154,21 +198,34 @@
             "--pad"
           ],
           "description": "Determines the pad size in a formatted string",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "size"
+          }
         },
         {
           "names": [
             "--indent"
           ],
           "description": "Determines the indentation size in a formatted string",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "size"
+          }
         },
         {
           "names": [
             "--normalize-functions"
           ],
           "description": "Whether or not to normalize all function names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "upper",
+              "lower"
+            ]
+          }
         },
         {
           "names": [
@@ -181,7 +238,10 @@
             "--max-text-width"
           ],
           "description": "The max number of characters in a segment before creating new lines in pretty mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "width"
+          }
         },
         {
           "names": [
@@ -216,7 +276,10 @@
             "--create-from"
           ],
           "description": "The environment to create the target environment from if it doesn't exist. Default: prod",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment"
+          }
         },
         {
           "names": [
@@ -229,7 +292,10 @@
             "--restate-model"
           ],
           "description": "Restate data for specified models and models downstream from the one specified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "model"
+          }
         },
         {
           "names": [
@@ -260,14 +326,20 @@
             "--allow-destructive-model"
           ],
           "description": "Allow destructive forward-only changes to models whose names match the expression",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "model"
+          }
         },
         {
           "names": [
             "--effective-from"
           ],
           "description": "The effective date from which to apply forward-only changes on production",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "date"
+          }
         },
         {
           "names": [
@@ -298,14 +370,20 @@
             "--select-model"
           ],
           "description": "Select specific model changes that should be included in the plan",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "model"
+          }
         },
         {
           "names": [
             "--backfill-model"
           ],
           "description": "Backfill only the models whose names match the expression",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "model"
+          }
         },
         {
           "names": [
@@ -347,14 +425,20 @@
             "--start"
           ],
           "description": "Start time for the run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "start"
+          }
         },
         {
           "names": [
             "--end"
           ],
           "description": "End time for the run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "end"
+          }
         },
         {
           "names": [
@@ -373,14 +457,20 @@
             "--select-model"
           ],
           "description": "Select specific models to run. Note: this always includes upstream dependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "model"
+          }
         },
         {
           "names": [
             "--exit-on-env-update"
           ],
           "description": "Exit with specified code if the run is interrupted by an update to the target environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "code"
+          }
         },
         {
           "names": [
@@ -434,7 +524,10 @@
             "--select-model"
           ],
           "description": "Select specific models to include in the dag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "model"
+          }
         }
       ],
       "args": [
@@ -453,7 +546,10 @@
             "--query"
           ],
           "description": "Queries that will be used to generate data for the model's dependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -468,7 +564,10 @@
             "--var"
           ],
           "description": "Key-value pairs that will define variables needed by the model",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
@@ -476,7 +575,10 @@
             "--path"
           ],
           "description": "The file path corresponding to the fixture, relative to the test directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
@@ -484,7 +586,10 @@
             "--name"
           ],
           "description": "The name of the test that will be created",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -509,7 +614,10 @@
             "--match-pattern"
           ],
           "description": "Only run tests matching pattern",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [
@@ -540,28 +648,40 @@
             "--model"
           ],
           "description": "A model to audit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "model"
+          }
         },
         {
           "names": [
             "--start"
           ],
           "description": "Start time for the audit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "start"
+          }
         },
         {
           "names": [
             "--end"
           ],
           "description": "End time for the audit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "end"
+          }
         },
         {
           "names": [
             "--execution-time"
           ],
           "description": "Execution time for the audit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         }
       ]
     },
@@ -574,21 +694,36 @@
             "--host"
           ],
           "description": "Bind socket to this host",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "Bind socket to this port",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--mode"
           ],
           "description": "Mode to start the UI in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "ide",
+              "catalog",
+              "docs",
+              "plan"
+            ]
+          }
         }
       ]
     },
@@ -619,21 +754,33 @@
         "--paths"
       ],
       "description": "Paths to SQLMesh project files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "paths",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Path to config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--gateway"
       ],
       "description": "The name of the gateway",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "gateway"
+      }
     },
     {
       "names": [
@@ -658,7 +805,11 @@
         "--log-file-dir"
       ],
       "description": "The directory to write log files to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     }
   ]
 }

@@ -71,7 +71,15 @@
         "--color"
       ],
       "description": "When to use terminal colours (always, auto, never)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "always",
+          "auto",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -100,7 +108,10 @@
         "--level"
       ],
       "description": "Limit the depth of recursion",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DEPTH"
+      }
     },
     {
       "names": [
@@ -115,7 +126,27 @@
         "--sort"
       ],
       "description": "Which field to sort by",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "sort field",
+        "suggestions": [
+          "name",
+          "Name",
+          "extension",
+          "Extension",
+          "size",
+          "type",
+          "modified",
+          "accessed",
+          "created",
+          "inode",
+          "none",
+          "date",
+          "time",
+          "old",
+          "new"
+        ]
+      }
     },
     {
       "names": [
@@ -136,7 +167,10 @@
         "--ignore-glob"
       ],
       "description": "Glob patterns (pipe-separated) of files to ignore",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GLOB"
+      }
     },
     {
       "names": [
@@ -206,7 +240,15 @@
         "--time"
       ],
       "description": "Which timestamp field to list (modified, accessed, created)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FIELD",
+        "suggestions": [
+          "modified",
+          "accessed",
+          "created"
+        ]
+      }
     },
     {
       "names": [
@@ -227,7 +269,16 @@
         "--time-style"
       ],
       "description": "How to format timestamps (default, iso, long-iso, full-iso)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "style",
+        "suggestions": [
+          "default",
+          "iso",
+          "long-iso",
+          "full-iso"
+        ]
+      }
     },
     {
       "names": [

@@ -90,7 +90,18 @@
                 "--output"
               ],
               "description": "Define output format (simple, yaml, json, xml, JUnit)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output",
+                "description": "Output format",
+                "suggestions": [
+                  "simple",
+                  "yaml",
+                  "json",
+                  "xml",
+                  "junit"
+                ]
+              }
             },
             {
               "names": [
@@ -98,21 +109,32 @@
                 "--policy"
               ],
               "description": "Policy name to run against",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "policy",
+                "description": "String"
+              }
             },
             {
               "names": [
                 "--policy-config"
               ],
               "description": "Path for local policies configuration file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--schema-location"
               ],
               "description": "Override schemas location search path (can be specified multiple times)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stringArray",
+                "description": "String array"
+              }
             },
             {
               "names": [
@@ -194,7 +216,18 @@
             "--output"
           ],
           "description": "Define output format (simple, yaml, json, xml, JUnit)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "description": "Output format",
+            "suggestions": [
+              "simple",
+              "yaml",
+              "json",
+              "xml",
+              "junit"
+            ]
+          }
         },
         {
           "names": [
@@ -202,21 +235,32 @@
             "--policy"
           ],
           "description": "Policy name to run against",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "policy",
+            "description": "String"
+          }
         },
         {
           "names": [
             "--policy-config"
           ],
           "description": "Path for local policies configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--schema-location"
           ],
           "description": "Override schemas location search path (can be specified multiple times)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray",
+            "description": "String array"
+          }
         },
         {
           "names": [

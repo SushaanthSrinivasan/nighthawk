@@ -50,14 +50,21 @@
                 "--env"
               ],
               "description": "Environment (name or UUID) where application will be deployed to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "env"
+              }
             },
             {
               "names": [
                 "--path"
               ],
               "description": "Path to the app directory (default is local directory)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -76,7 +83,11 @@
                 "--path"
               ],
               "description": "Path to the app directory (default is local directory)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ]
         },
@@ -91,6 +102,14 @@
               ],
               "description": "Language to use (js|go|py) (required)",
               "takes_arg": true,
+              "arg": {
+                "name": "lang",
+                "suggestions": [
+                  "js",
+                  "go",
+                  "py"
+                ]
+              },
               "is_required": true
             },
             {
@@ -104,7 +123,11 @@
                 "--path"
               ],
               "description": "Path where application will be initialized (current directory as default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -141,7 +164,11 @@
                 "--path"
               ],
               "description": "Path to the app directory (default is local directory)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ]
         },
@@ -154,7 +181,11 @@
                 "--path"
               ],
               "description": "Path to the app directory (default is local directory)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ]
         },
@@ -178,7 +209,11 @@
                 "--path"
               ],
               "description": "Path to the app directory (default is local directory)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ]
         },
@@ -191,7 +226,11 @@
                 "--path"
               ],
               "description": "Path of application to run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ]
         },
@@ -204,7 +243,11 @@
                 "--path"
               ],
               "description": "Path where application exists (current directory as default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ]
         }
@@ -291,28 +334,40 @@
                 "-c"
               ],
               "description": "Environment configuration based on type and provider (e.g.: --config aws_access_key_id=my_access_key --config aws_secret_access_key=my_access_secret)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
                 "--provider"
               ],
               "description": "Environment cloud provider to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "provider"
+              }
             },
             {
               "names": [
                 "--region"
               ],
               "description": "Environment region",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region"
+              }
             },
             {
               "names": [
                 "--type"
               ],
               "description": "Environment type, when not specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type"
+              }
             },
             {
               "names": [
@@ -373,14 +428,20 @@
                 "-c"
               ],
               "description": "Updated environment configuration based on type and provider (e.g.: --config aws_access_key_id=my_access_key --config aws_secret_access_key=my_access_secret)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
                 "--name"
               ],
               "description": "Updated environment name, when specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -430,28 +491,40 @@
                 "--ca-cert"
               ],
               "description": "Trusted certificates for verifying resource",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-cert"
+              }
             },
             {
               "names": [
                 "--client-cert"
               ],
               "description": "Client certificate for authenticating to the resource",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "client-cert"
+              }
             },
             {
               "names": [
                 "--client-key"
               ],
               "description": "Client private key for authenticating to the resource",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "client-key"
+              }
             },
             {
               "names": [
                 "--env"
               ],
               "description": "Environment (name or UUID) where resource will be created",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "env"
+              }
             },
             {
               "names": [
@@ -459,35 +532,50 @@
                 "-m"
               ],
               "description": "Resource metadata",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "metadata"
+              }
             },
             {
               "names": [
                 "--password"
               ],
               "description": "Password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--private-key-file"
               ],
               "description": "Path to private key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "private-key-file"
+              }
             },
             {
               "names": [
                 "--ssh-private-key"
               ],
               "description": "SSH tunneling private key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ssh-private-key"
+              }
             },
             {
               "names": [
                 "--ssh-url"
               ],
               "description": "SSH tunneling address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ssh-url"
+              }
             },
             {
               "names": [
@@ -500,7 +588,10 @@
                 "--token"
               ],
               "description": "API Token",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "token"
+              }
             },
             {
               "names": [
@@ -508,6 +599,9 @@
               ],
               "description": "Resource type (required)",
               "takes_arg": true,
+              "arg": {
+                "name": "type"
+              },
               "is_required": true
             },
             {
@@ -516,14 +610,20 @@
                 "-u"
               ],
               "description": "Resource url",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Username",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             }
           ]
         },
@@ -591,21 +691,30 @@
                 "--ca-cert"
               ],
               "description": "Trusted certificates for verifying resource",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-cert"
+              }
             },
             {
               "names": [
                 "--client-cert"
               ],
               "description": "Client certificate for authenticating to the resource",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "client-cert"
+              }
             },
             {
               "names": [
                 "--client-key"
               ],
               "description": "Client private key for authenticating to the resource",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "client-key"
+              }
             },
             {
               "names": [
@@ -613,28 +722,40 @@
                 "-m"
               ],
               "description": "New resource metadata",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "metadata"
+              }
             },
             {
               "names": [
                 "--name"
               ],
               "description": "New resource name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--password"
               ],
               "description": "Password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--ssh-url"
               ],
               "description": "SSH tunneling address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ssh-url"
+              }
             },
             {
               "names": [
@@ -648,14 +769,20 @@
                 "-u"
               ],
               "description": "New resource url",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Username",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             }
           ]
         },
@@ -982,7 +1109,11 @@
         "--cli-config-file"
       ],
       "description": "Meroxa configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cli-config-file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -1001,7 +1132,10 @@
         "--timeout"
       ],
       "description": "Set the duration of the client timeout in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "timeout"
+      }
     },
     {
       "names": [

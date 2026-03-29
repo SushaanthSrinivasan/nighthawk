@@ -38,7 +38,14 @@
             "--from"
           ],
           "description": "Application to import from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "from",
+            "suggestions": [
+              "autojump",
+              "z"
+            ]
+          }
         },
         {
           "names": [
@@ -77,14 +84,25 @@
             "--cmd"
           ],
           "description": "Changes the prefix of the `z` and `zi` commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cmd"
+          }
         },
         {
           "names": [
             "--hook"
           ],
           "description": "Changes how often zoxide increments a directory's score",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hook",
+            "suggestions": [
+              "none",
+              "prompt",
+              "pwd"
+            ]
+          }
         },
         {
           "names": [
@@ -132,7 +150,11 @@
             "--exclude"
           ],
           "description": "Exclude a path from results",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude",
+            "template": "folders"
+          }
         },
         {
           "names": [

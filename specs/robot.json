@@ -22,7 +22,15 @@
         "--extension"
       ],
       "description": "Parse only files with this extension when executing a directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension",
+        "description": "File extensions divided by colon",
+        "suggestions": [
+          "txt",
+          "robot:txt"
+        ]
+      }
     },
     {
       "names": [
@@ -30,7 +38,10 @@
         "--name"
       ],
       "description": "Set a name of the top level suite",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -45,7 +56,10 @@
         "--metadata"
       ],
       "description": "Set metadata of the top level suite",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name:value"
+      }
     },
     {
       "names": [
@@ -53,7 +67,10 @@
         "--settag"
       ],
       "description": "Sets given tag to all executed tests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -61,14 +78,20 @@
         "--test"
       ],
       "description": "Select tests by name or by long name containing also parent suite name like `Parent.Test`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--task"
       ],
       "description": "Alias to --test. Especially applicable with --rpa",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -76,7 +99,10 @@
         "--suite"
       ],
       "description": "Select suites by name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -84,7 +110,10 @@
         "--include"
       ],
       "description": "Select test cases by tag",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -92,7 +121,10 @@
         "--exclude"
       ],
       "description": "Select test cases not to run by tag",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -100,7 +132,10 @@
         "--rerunfailed"
       ],
       "description": "Select failed tests from an earlier output file to be re-executed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "output file"
+      }
     },
     {
       "names": [
@@ -108,7 +143,10 @@
         "--rerunfailedsuites"
       ],
       "description": "Select failed suites from an earlier output file to be re-executed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "output file"
+      }
     },
     {
       "names": [
@@ -121,14 +159,20 @@
         "--skip"
       ],
       "description": "Tests having given tag will be skipped",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
         "--skiponfailure"
       ],
       "description": "Tests having given tag will be skipped if they fail",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -136,7 +180,10 @@
         "--variable"
       ],
       "description": "Set variables in the test data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "variable"
+      }
     },
     {
       "names": [
@@ -144,7 +191,10 @@
         "--variablefile"
       ],
       "description": "Python or YAML file file to read variables from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
@@ -152,7 +202,11 @@
         "--outputdir"
       ],
       "description": "Where to create output files. The default is the directory where tests are run from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -160,7 +214,13 @@
         "--output"
       ],
       "description": "XML output file relative to --outputdir unless given as an absolute path. Default: output.xml",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "suggestions": [
+          "output.xml"
+        ]
+      }
     },
     {
       "names": [
@@ -168,7 +228,14 @@
         "--log"
       ],
       "description": "HTML log file. Can be disabled by giving a special value `NONE`. Default: log.html",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "suggestions": [
+          "log.html",
+          "NONE"
+        ]
+      }
     },
     {
       "names": [
@@ -176,7 +243,14 @@
         "--report"
       ],
       "description": "HTML report file. Can be disabled with `NONE` similarly as --log. Default: report.html",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "suggestions": [
+          "report.html",
+          "NONE"
+        ]
+      }
     },
     {
       "names": [
@@ -184,7 +258,13 @@
         "--xunit"
       ],
       "description": "XUnit compatible result file. Not created unless this option is specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "suggestions": [
+          "xunit.xml"
+        ]
+      }
     },
     {
       "names": [
@@ -192,7 +272,10 @@
         "--debugfile"
       ],
       "description": "Debug file written during execution. Not created unless this option is specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
@@ -212,35 +295,59 @@
         "--logtitle"
       ],
       "description": "Title for the generated log file. The default title is `<SuiteName> Log.`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "title"
+      }
     },
     {
       "names": [
         "--reporttitle"
       ],
       "description": "Title for the generated report file. The default title is `<SuiteName> Report`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "title"
+      }
     },
     {
       "names": [
         "--reportbackground"
       ],
       "description": "Background colors to use in the report file. Given in format `passed:failed:skipped` where the `:skipped` part can be omitted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colors"
+      }
     },
     {
       "names": [
         "--maxerrorlines"
       ],
       "description": "Maximum number of error message lines to show in report when tests fail. Default is 40, minimum is 10 and `NONE` can be used to show the full message",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "lines",
+        "suggestions": [
+          "40",
+          "10",
+          "NONE"
+        ]
+      }
     },
     {
       "names": [
         "--maxassignlength"
       ],
       "description": "Maximum number of characters to show in log when variables are assigned. Zero or negative values can be used to avoid showing assigned values at all. Default is 200",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "characters",
+        "suggestions": [
+          "200",
+          "0"
+        ]
+      }
     },
     {
       "names": [
@@ -248,77 +355,137 @@
         "--loglevel"
       ],
       "description": "Threshold level for logging",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "TRACE",
+          "DEBUG",
+          "INFO",
+          "WARN",
+          "NONE"
+        ]
+      }
     },
     {
       "names": [
         "--suitestatlevel"
       ],
       "description": "How many levels to show in `Statistics by Suite` in log and report",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level"
+      }
     },
     {
       "names": [
         "--tagstatinclude"
       ],
       "description": "Include only matching tags in `Statistics by Tag` in log and report",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
         "--tagstatexclude"
       ],
       "description": "Exclude matching tags from `Statistics by Tag`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
         "--tagstatcombine"
       ],
       "description": "Create combined statistics based on tags. These statistics are added into `Statistics by Tag`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tags:name"
+      }
     },
     {
       "names": [
         "--tagdoc"
       ],
       "description": "Add documentation to tags matching the given pattern",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern:doc"
+      }
     },
     {
       "names": [
         "--tagstatlink"
       ],
       "description": "Add external links into `Statistics by Tag`. Pattern can use `*`, `?` and `[]` as wildcards",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern:link:title"
+      }
     },
     {
       "names": [
         "--expandkeywords"
       ],
       "description": "Matching keywords will be automatically expanded in the log file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "suggestions": [
+          "name:<pattern>",
+          "tag:<pattern>"
+        ]
+      }
     },
     {
       "names": [
         "--removekeywords"
       ],
       "description": "Remove keyword data from the generated log file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "suggestions": [
+          "all",
+          "passed",
+          "for",
+          "while",
+          "wuks",
+          "name:<pattern>",
+          "tag:<pattern>"
+        ]
+      }
     },
     {
       "names": [
         "--flattenkeywords"
       ],
       "description": "Flattens matching keywords in the generated log file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "suggestions": [
+          "for",
+          "while",
+          "iteration",
+          "name:<pattern>",
+          "tag:<pattern>"
+        ]
+      }
     },
     {
       "names": [
         "--listener"
       ],
       "description": "A class for monitoring test execution. Gets notifications e.g. when tests start and end",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "class"
+      }
     },
     {
       "names": [
@@ -356,28 +523,52 @@
         "--randomize"
       ],
       "description": "Randomizes the test execution order",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "all",
+          "suites",
+          "tests",
+          "none"
+        ]
+      }
     },
     {
       "names": [
         "--prerunmodifier"
       ],
       "description": "Class to programmatically modify the suite structure before execution",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "class"
+      }
     },
     {
       "names": [
         "--prerebotmodifier"
       ],
       "description": "Class to programmatically modify the result model before creating reports and logs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "class"
+      }
     },
     {
       "names": [
         "--console"
       ],
       "description": "How to report execution on the console",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "verbose",
+          "dotted",
+          "quiet",
+          "none"
+        ]
+      }
     },
     {
       "names": [
@@ -398,7 +589,13 @@
         "--consolewidth"
       ],
       "description": "Width of the console output. Default is 78",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "chars",
+        "suggestions": [
+          "78"
+        ]
+      }
     },
     {
       "names": [
@@ -406,7 +603,16 @@
         "--consolecolors"
       ],
       "description": "Use colors on console output or not",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "suggestions": [
+          "auto",
+          "on",
+          "ansi",
+          "off"
+        ]
+      }
     },
     {
       "names": [
@@ -414,7 +620,15 @@
         "--consolemarkers"
       ],
       "description": "Show markers on the console when top level keywords in a test case end",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "suggestions": [
+          "auto",
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
@@ -422,7 +636,10 @@
         "--pythonpath"
       ],
       "description": "Additional locations (directories, ZIPs) where to search libraries and other extensions when they are imported",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path"
+      }
     },
     {
       "names": [
@@ -430,7 +647,11 @@
         "--argumentfile"
       ],
       "description": "Text file to read more arguments from. Use special path `STDIN` to read contents from the standard input stream",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

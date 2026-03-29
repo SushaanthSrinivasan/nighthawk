@@ -7,7 +7,10 @@
         "-e"
       ],
       "description": "Enter one line of a script",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "statement"
+      }
     },
     {
       "names": [
@@ -20,14 +23,27 @@
         "-l"
       ],
       "description": "Override the language for any plain text files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "language"
+      }
     },
     {
       "names": [
         "-s"
       ],
       "description": "Modify the output style",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "flags",
+        "is_variadic": true,
+        "suggestions": [
+          "h",
+          "s",
+          "e",
+          "o"
+        ]
+      }
     }
   ],
   "args": [

@@ -52,14 +52,20 @@
             "--port"
           ],
           "description": "Specify a port to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--host"
           ],
           "description": "Listen on all addresses, including LAN and public addresses",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "custom address"
+          }
         },
         {
           "names": [
@@ -114,28 +120,43 @@
         "--config"
       ],
       "description": "Specify your config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--root"
       ],
       "description": "Specify your project root folder",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--site"
       ],
       "description": "Specify your project site",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "url"
+      }
     },
     {
       "names": [
         "--base"
       ],
       "description": "Specify your project base",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pathname",
+        "template": "folders"
+      }
     },
     {
       "names": [

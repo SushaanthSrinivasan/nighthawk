@@ -15,7 +15,11 @@
             "--map"
           ],
           "description": "Install package from deno.land",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package name",
+            "description": "Deno.land package name"
+          }
         },
         {
           "names": [
@@ -23,7 +27,11 @@
             "--nest"
           ],
           "description": "Install package from nest.land",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package name",
+            "description": "Nest.land package name"
+          }
         },
         {
           "names": [
@@ -31,7 +39,11 @@
             "--pkg"
           ],
           "description": "Install package from some repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repository",
+            "description": "[user]/[repo or repo@tag/branch]/[path/to/file]"
+          }
         }
       ]
     },
@@ -149,7 +161,11 @@
         "--custom"
       ],
       "description": "Install custom package",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "custom package",
+        "description": "Install a package from a custom URL source, eg: React=https://dev.jspm.io/react/index.js"
+      }
     }
   ]
 }

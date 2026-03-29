@@ -27,7 +27,14 @@
         "--project"
       ],
       "description": "Set given directory as the home project/environment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "project folder",
+        "description": "Julia project/environment",
+        "suggestions": [
+          "@."
+        ]
+      }
     },
     {
       "names": [
@@ -35,7 +42,10 @@
         "--sysimage"
       ],
       "description": "Start up with the given system image file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "system image"
+      }
     },
     {
       "names": [
@@ -43,35 +53,62 @@
         "--home"
       ],
       "description": "Set location of `julia` executable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--startup-file"
       ],
       "description": "Load `~/.julia/config/startup.jl`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
         "--handle-signals"
       ],
       "description": "Enable or disable Julia's default signal handlers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
         "--sysimage-native-code"
       ],
       "description": "Use native code from system image if available",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
         "--compiled-modules"
       ],
       "description": "Enable or disable incremental precompilation of modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
@@ -79,7 +116,10 @@
         "--eval"
       ],
       "description": "Evaluate given expr",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "expr"
+      }
     },
     {
       "names": [
@@ -87,7 +127,10 @@
         "--print"
       ],
       "description": "Evaluate given expr and display the result",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "expr"
+      }
     },
     {
       "names": [
@@ -95,7 +138,10 @@
         "--load"
       ],
       "description": "Load given file immediately on all processors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "julia script"
+      }
     },
     {
       "names": [
@@ -103,7 +149,13 @@
         "--threads"
       ],
       "description": "Enable N threads; \"auto\" sets N to the number of local CPU threads",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "description": "Number of threads",
+        "suggestions": [
+          "auto"
+        ]
+      }
     },
     {
       "names": [
@@ -111,14 +163,23 @@
         "--procs"
       ],
       "description": "Integer value N launches N additional local worker processes \"auto\" launches as many workers as the number of local CPU threads",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "description": "Number of additional local worker processes",
+        "suggestions": [
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--machine-file"
       ],
       "description": "Run processes on hosts listed in given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -138,42 +199,81 @@
         "--banner"
       ],
       "description": "Enable or disable startup banner",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--color"
       ],
       "description": "Enable or disable color text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--history-file"
       ],
       "description": "Load or save history",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
         "--depwarn"
       ],
       "description": "Enable or disable syntax and method deprecation warnings (\"error\" turns warnings into errors)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no",
+          "error"
+        ]
+      }
     },
     {
       "names": [
         "--warn-overwrite"
       ],
       "description": "Enable or disable method overwrite warnings",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
         "--warn-scope"
       ],
       "description": "Enable or disable warning for ambiguous top-level scope",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
@@ -189,119 +289,207 @@
         "--optimize"
       ],
       "description": "Set the optimization level (default level is 2 if unspecified or 3 if used without a level)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "description": "Level of optimization"
+      }
     },
     {
       "names": [
         "-g"
       ],
       "description": "Enable / Set the level of debug info generation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "description": "Level of debug info generation"
+      }
     },
     {
       "names": [
         "--inline"
       ],
       "description": "Control whether inlining is permitted, including overriding @inline declarations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
         "--check-bounds"
       ],
       "description": "Emit bounds checks always, never, or respect @inbounds declarations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--polly"
       ],
       "description": "Enable or disable the polyhedral optimizer Polly (overrides @polly declaration)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [
         "--math-mode"
       ],
       "description": "Disallow or enable unsafe floating point optimizations (overrides @fastmath declaration)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "ieee",
+          "fast"
+        ]
+      }
     },
     {
       "names": [
         "--code-coverage"
       ],
       "description": "Count executions of source lines (omitting setting is equivalent to \"user\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "none",
+          "user",
+          "all"
+        ]
+      }
     },
     {
       "names": [
         "--track-allocation"
       ],
       "description": "Count bytes allocated by each source line (omitting setting is equivalent to \"user\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "none",
+          "user",
+          "all"
+        ]
+      }
     },
     {
       "names": [
         "--bug-report"
       ],
       "description": "Launch a bug report session. It can be used to start a REPL, run a script, or evaluate  expressions. It first tries to use BugReporting.jl installed in current environment and fallbacks to the latest ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "KIND"
+      }
     },
     {
       "names": [
         "--compile"
       ],
       "description": "Enable or disable JIT compiler, or request exhaustive or minimal compilation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no",
+          "all",
+          "min"
+        ]
+      }
     },
     {
       "names": [
         "--output-o"
       ],
       "description": "Generate an object file (including system image data)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-ji"
       ],
       "description": "Generate a system image data file (.ji)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-unopt-bc"
       ],
       "description": "Generate unoptimized LLVM bitcode (.bc)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-jit-bc"
       ],
       "description": "Dump all IR generated by the frontend (not including system image)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-bc"
       ],
       "description": "Generate LLVM bitcode (.bc)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-asm"
       ],
       "description": "Generate an assembly file (.s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output-incremental"
       ],
       "description": "Generate an incremental output file (rather than complete)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no"
+        ]
+      }
     },
     {
       "names": [

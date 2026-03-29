@@ -22,14 +22,26 @@
         "--locustfile"
       ],
       "description": "Show program's version number and exit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "files...",
+        "description": "Python module to import, e.g. '../other_test.py'. Either a .py file, multiple comma-separated .py files or a package directory. Defaults to 'locustfile'",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Config file path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "files...",
+        "description": "Config file path",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -108,14 +120,24 @@
         "--tls-cert"
       ],
       "description": "Optional path to TLS certificate to use to serve over HTTPS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tls-cert",
+        "description": "Optional path to TLS certificate",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--tls-key"
       ],
       "description": "Optional path to TLS private key to use to serve over HTTPS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tls-key",
+        "description": "Optional path to TLS private key",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -218,14 +240,29 @@
         "--loglevel"
       ],
       "description": "Choose between DEBUG/INFO/WARNING/ERROR/CRITICAL. Default is INFO",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "loglevel",
+        "suggestions": [
+          "INFO",
+          "WARNING",
+          "DEBUG",
+          "ERROR",
+          "CRITICAL"
+        ]
+      }
     },
     {
       "names": [
         "--logfile"
       ],
       "description": "Path to log file. If not set, log will go to stderr",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "logfile",
+        "description": "Path to log file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

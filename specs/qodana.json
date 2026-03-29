@@ -12,7 +12,11 @@
             "--project-dir"
           ],
           "description": "Root directory of the project to configure (default \".\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -26,7 +30,10 @@
             "--analysis-id"
           ],
           "description": "Unique report identifier (GUID) to be used by Qodana Cloud",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -34,7 +41,10 @@
             "--baseline"
           ],
           "description": "Provide the path to an existing SARIF report to be used in the baseline state calculation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -47,7 +57,10 @@
             "--cache-dir"
           ],
           "description": "Override cache directory (default <userCacheDir>/JetBrains/<linter>/cache)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -74,14 +87,20 @@
             "--env"
           ],
           "description": "Define additional environment variables for the Qodana container (you can use the flag multiple times). CLI is not reading full host environment variables and does not pass it to the Qodana container ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
             "--fail-threshold"
           ],
           "description": "Set the number of problems that will serve as a quality gate. If this number is reached, the inspection run is terminated with a non-zero exit code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -89,14 +108,20 @@
             "--linter"
           ],
           "description": "Override linter to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "Port to serve the report on (default 8080)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
@@ -110,7 +135,10 @@
             "--profile-name"
           ],
           "description": "Profile name defined in the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -118,7 +146,11 @@
             "--profile-path"
           ],
           "description": "Path to the profile file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -126,14 +158,21 @@
             "--project-dir"
           ],
           "description": "Root directory of the inspected project (default \".\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--property"
           ],
           "description": "Set a JVM property to be used while running Qodana using the --property property.name=value1,value2,...,valueN notation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stringArray"
+          }
         },
         {
           "names": [
@@ -141,14 +180,24 @@
             "--results-dir"
           ],
           "description": "Override directory to save Qodana inspection results to (default <userCacheDir>/JetBrains/<linter>/results)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--run-promo"
           ],
           "description": "Set to 'true' to have the application run the inspections configured by the promo profile; set to 'false' otherwise (default: 'true' only if Qodana is executed with the default profile)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -162,7 +211,10 @@
             "--script"
           ],
           "description": "Override the run scenario (default \"default\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -189,14 +241,20 @@
             "--source-directory"
           ],
           "description": "Directory inside the project-dir directory must be inspected. If not specified, the whole project is inspected",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--stub-profile"
           ],
           "description": "Absolute path to the fallback profile file. This option is applied in case the profile was not specified using any available options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -204,7 +262,10 @@
             "--user"
           ],
           "description": "User to run Qodana container as. Please specify user id – '$UID' or user id and group id $(id -u):$(id -g). Use 'root' to run as the root user (default: the current user)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -212,7 +273,10 @@
             "--volume"
           ],
           "description": "Define additional volumes for the Qodana container (you can use the flag multiple times)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ]
     },
@@ -233,7 +297,10 @@
             "--port"
           ],
           "description": "Specify port to serve report at (default 8080)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
@@ -241,7 +308,11 @@
             "--project-dir"
           ],
           "description": "Root directory of the inspected project (default \".\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -249,7 +320,11 @@
             "--report-dir"
           ],
           "description": "Specify HTML report path (the one with index.html inside) (default <userCacheDir>/JetBrains/<linter>/results/report)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -263,7 +338,11 @@
             "--sarif-file"
           ],
           "description": "Path to the SARIF file (default \"./qodana.sarif.json\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         }
       ]
     }

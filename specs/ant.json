@@ -87,7 +87,11 @@
         "-lib"
       ],
       "description": "Specifies a path to search for jars and classes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -95,21 +99,31 @@
         "-l"
       ],
       "description": "Use given file for log",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-logger"
       ],
       "description": "The class which is to perform logging",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "classname"
+      }
     },
     {
       "names": [
         "-listener"
       ],
       "description": "Add an instance of class as a project listener",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "classname"
+      }
     },
     {
       "names": [
@@ -124,7 +138,11 @@
         "-f"
       ],
       "description": "Use given buildfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -138,14 +156,21 @@
         "-propertyfile"
       ],
       "description": "Load all properties from file with -D properties taking precedence",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-inputhandler"
       ],
       "description": "The class which will handle input requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "class"
+      }
     },
     {
       "names": [
@@ -153,14 +178,20 @@
         "-s"
       ],
       "description": "Search for buildfile towards the root of the filesystem and use it",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
         "-nice"
       ],
       "description": "A niceness value for the main thread",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -185,7 +216,10 @@
         "-main"
       ],
       "description": "Override Ant's normal entry point",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "class"
+      }
     }
   ],
   "args": [

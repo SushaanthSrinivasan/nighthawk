@@ -11,14 +11,20 @@
             "--unused"
           ],
           "description": "Given a code path, show potentially unused dependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "code path"
+          }
         },
         {
           "names": [
             "--db"
           ],
           "description": "Path to a local PyUp Safety vulnerabilities database. Default: ENV PIPENV_SAFETY_DB or None",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Database"
+          }
         },
         {
           "names": [
@@ -26,7 +32,10 @@
             "--ignore"
           ],
           "description": "Ignore specified vulnerability during PyUp Safety checks",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Vulnerability ID"
+          }
         },
         {
           "names": [
@@ -39,7 +48,10 @@
             "--key"
           ],
           "description": "Safety API key from PyUp.io for scanning dependencies against a live vulnerabilities database. Leave blank for scanning against a database that only updates once a month",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "API key"
+          }
         },
         {
           "names": [
@@ -52,7 +64,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -84,7 +99,10 @@
             "--pypi-mirror"
           ],
           "description": "Specify a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror"
+          }
         },
         {
           "names": [
@@ -115,7 +133,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -215,7 +236,10 @@
             "--editable"
           ],
           "description": "An editable Python package URL or path, often to a VCS repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Package URL | path"
+          }
         },
         {
           "names": [
@@ -228,7 +252,11 @@
             "--selective-upgrade"
           ],
           "description": "Update specified packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -236,14 +264,20 @@
             "--requirements"
           ],
           "description": "Import a requirements.txt file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "URLs to the extra PyPI compatible indexes to query for package look-ups",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL"
+          }
         },
         {
           "names": [
@@ -251,7 +285,10 @@
             "--index"
           ],
           "description": "Target PyPI-compatible package index url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL"
+          }
         },
         {
           "names": [
@@ -283,7 +320,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -315,7 +355,10 @@
             "--pypi-mirror"
           ],
           "description": "If you would like to override the default PyPI index URLs with the URL for a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror url"
+          }
         }
       ],
       "args": [
@@ -4486,7 +4529,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -4518,7 +4564,10 @@
             "--pypi-mirror"
           ],
           "description": "If you would like to override the default PyPI index URLs with the URL for a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror url"
+          }
         }
       ]
     },
@@ -4531,7 +4580,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -4563,7 +4615,10 @@
             "--pypi-mirror"
           ],
           "description": "If you would like to override the default PyPI index URLs with the URL for a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror url"
+          }
         }
       ]
     },
@@ -4582,7 +4637,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -4607,7 +4665,10 @@
             "--pypi-mirror"
           ],
           "description": "If you would like to override the default PyPI index URLs with the URL for a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror url"
+          }
         }
       ]
     },
@@ -4657,7 +4718,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -4689,7 +4753,10 @@
             "--pypi-mirror"
           ],
           "description": "If you would like to override the default PyPI index URLs with the URL for a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror url"
+          }
         }
       ]
     },
@@ -4715,7 +4782,11 @@
             "--editable"
           ],
           "description": "An editable Python package URL or path, often to a VCS repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4747,7 +4818,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -4779,7 +4853,10 @@
             "--pypi-mirror"
           ],
           "description": "If you would like to override the default PyPI index URLs with the URL for a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror url"
+          }
         }
       ],
       "args": [
@@ -8823,7 +8900,11 @@
             "--editable"
           ],
           "description": "An editable Python package URL or path, often to a VCS repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -8836,7 +8917,11 @@
             "--selective-upgrade"
           ],
           "description": "Update specified packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "packages",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -8850,7 +8935,11 @@
             "--extra-index-url"
           ],
           "description": "URLs to the extra PyPI compatible indexes to query for package look-ups",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -8858,7 +8947,10 @@
             "--index"
           ],
           "description": "Target PyPI-compatible package index url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
@@ -8890,7 +8982,10 @@
             "--python"
           ],
           "description": "Specify which version of Python virtualenv should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "py_version"
+          }
         },
         {
           "names": [
@@ -8922,7 +9017,10 @@
             "--pypi-mirror"
           ],
           "description": "If you would like to override the default PyPI index URLs with the URL for a PyPI mirror",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mirror url"
+          }
         }
       ]
     }
@@ -8999,7 +9097,11 @@
         "--python"
       ],
       "description": "Specify which version of Python virtualenv should use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version",
+        "description": "Specific a python version e.g --python 3.6 or --python 2.7.14"
+      }
     },
     {
       "names": [
@@ -9031,7 +9133,10 @@
         "--pypi-mirror"
       ],
       "description": "Specify a PyPi mirror",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mirror"
+      }
     },
     {
       "names": [

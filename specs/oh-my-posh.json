@@ -11,7 +11,12 @@
             "-c"
           ],
           "description": "The config file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG",
+            "description": "The configuration to use",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -59,7 +64,12 @@
             "-c"
           ],
           "description": "The config file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG",
+            "description": "The configuration to use",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -88,7 +98,16 @@
                 "-f"
               ],
               "description": "The file format to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FORMAT",
+                "description": "The export format",
+                "suggestions": [
+                  "json",
+                  "yaml",
+                  "toml"
+                ]
+              }
             }
           ]
         },
@@ -102,7 +121,12 @@
                 "-o"
               ],
               "description": "The file to output the migrated config to, example usage: 'oh-my-posh config export --output ~/.config.omp.json'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "OUTPUT",
+                "description": "The file to write to",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -110,7 +134,16 @@
                 "-f"
               ],
               "description": "The file format to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FORMAT",
+                "description": "The export format",
+                "suggestions": [
+                  "json",
+                  "yaml",
+                  "toml"
+                ]
+              }
             }
           ]
         }
@@ -122,7 +155,12 @@
             "-c"
           ],
           "description": "The config file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG",
+            "description": "The configuration to use",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -136,7 +174,12 @@
             "-c"
           ],
           "description": "The config file to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG",
+            "description": "The configuration to use",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -144,14 +187,22 @@
             "-w"
           ],
           "description": "The terminal width, example usage: 'oh-my-posh print primary --terminal-width 200'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WIDTH",
+            "description": "The terminal width"
+          }
         },
         {
           "names": [
             "--command"
           ],
           "description": "The current command for tooltips, example usage: 'oh-my-posh print tooltip --command az'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND",
+            "description": "The tooltip command"
+          }
         },
         {
           "names": [
@@ -159,7 +210,11 @@
             "-e"
           ],
           "description": "The last exit code, example usage: 'oh-my-posh print primary --error 127'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ERROR CODE",
+            "description": "The last error code"
+          }
         },
         {
           "names": [
@@ -172,7 +227,11 @@
             "--execution-time"
           ],
           "description": "Use last command execution time in millis, example usage: 'oh-my-posh print primary --execution-time 200'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXECUTION TIME",
+            "description": "The last command's execution time"
+          }
         },
         {
           "names": [
@@ -186,28 +245,55 @@
             "--pswd"
           ],
           "description": "The current working directory according to PowerShell, example usage: 'oh-my-posh print primary --pswd C:\\Users\\user\\Documents'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "POWERSHELL WORKING DIRECTORY",
+            "description": "The working directory according to PowerShell",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--pwd"
           ],
           "description": "The current working directory, example usage: 'oh-my-posh print primary --pwd /home/user/Documents'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WORKING DIRECTORY",
+            "description": "The working directory",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--shell"
           ],
           "description": "The current shell, example usage: 'oh-my-posh print primary --shell fish'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SHELL",
+            "description": "The shell used",
+            "suggestions": [
+              "zsh",
+              "fish",
+              "pwsh",
+              "powershell",
+              "cmd",
+              "bash",
+              "shell"
+            ]
+          }
         },
         {
           "names": [
             "--stack-count"
           ],
           "description": "The directory stack count, example usage: 'oh-my-posh print primary --stack-count 1'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUM",
+            "description": "The number of stacks"
+          }
         }
       ],
       "args": [

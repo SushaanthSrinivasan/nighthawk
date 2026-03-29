@@ -14,7 +14,10 @@
         "--config"
       ],
       "description": "Use this configuration, overriding .eslintrc.* config options if present",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -28,14 +31,20 @@
         "--ext"
       ],
       "description": "Specify JavaScript file extensions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Extension"
+      }
     },
     {
       "names": [
         "--global"
       ],
       "description": "Define global variables",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Variables"
+      }
     },
     {
       "names": [
@@ -56,21 +65,30 @@
         "--resolve-plugins-relative-to"
       ],
       "description": "A folder where plugins should be resolved from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--rulesdir"
       ],
       "description": "Use additional rules from this directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--plugin"
       ],
       "description": "Specify plugins",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Plugin"
+      }
     },
     {
       "names": [
@@ -96,14 +114,24 @@
         "--fix-type"
       ],
       "description": "Specify the types of fixes to apply",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "problem",
+          "suggestion",
+          "layout"
+        ]
+      }
     },
     {
       "names": [
         "--ignore-path"
       ],
       "description": "Specify path of ignore file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -129,7 +157,10 @@
         "--stdin-filename"
       ],
       "description": "Specify filename to process STDIN as",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -150,7 +181,10 @@
         "--output-file"
       ],
       "description": "Specify file to write report to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -158,7 +192,23 @@
         "--format"
       ],
       "description": "Use a specific output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "checkstyle",
+          "codeframe",
+          "compact",
+          "html",
+          "jslint-xml",
+          "json",
+          "junit",
+          "stylish",
+          "table",
+          "tap",
+          "unix",
+          "visualstudio"
+        ]
+      }
     },
     {
       "names": [
@@ -195,14 +245,23 @@
         "--cache-location"
       ],
       "description": "Path to the cache file or directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--cache-strategy"
       ],
       "description": "Strategy to use for detecting changed files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "metadata",
+          "content"
+        ]
+      }
     },
     {
       "names": [
@@ -247,7 +306,10 @@
         "--print-config"
       ],
       "description": "Print the configuration for the give file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     }
   ],
   "args": [

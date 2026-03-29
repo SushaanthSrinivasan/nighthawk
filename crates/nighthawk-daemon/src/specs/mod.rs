@@ -45,6 +45,8 @@ pub struct OptionSpec {
     pub takes_arg: bool,
     #[serde(default)]
     pub is_required: bool,
+    #[serde(default)]
+    pub arg: Option<ArgSpec>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

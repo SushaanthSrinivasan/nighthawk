@@ -179,14 +179,22 @@
         "-c"
       ],
       "description": "Read configuration file instead of '.screenrc'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-e"
       ],
       "description": "Change command characters",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "xy",
+        "description": "Specifies the command character to be x and the character generating a literal command character to y"
+      }
     },
     {
       "names": [
@@ -211,7 +219,11 @@
         "-h"
       ],
       "description": "Set the size of the scrollback history buffer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "h",
+        "description": "Lines"
+      }
     },
     {
       "names": [
@@ -249,7 +261,10 @@
         "-p"
       ],
       "description": "Preselect the named window if it exists",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "window"
+      }
     },
     {
       "names": [
@@ -262,28 +277,40 @@
         "-s"
       ],
       "description": "Shell to execute rather than $SHELL",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "shell"
+      }
     },
     {
       "names": [
         "-S"
       ],
       "description": "Name this session <pid>.sockname instead of <pid>.<tty>.<host>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "sockname"
+      }
     },
     {
       "names": [
         "-t"
       ],
       "description": "Set title. (window's name)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "title"
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Use term as $TERM for windows, rather than 'screen'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "term"
+      }
     },
     {
       "names": [
@@ -302,7 +329,14 @@
         "-wipe"
       ],
       "description": "Do nothing, just clean up SockDir",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "match",
+        "description": "Screen session to match",
+        "suggestions": [
+          "sessionowner/[pid.tty.host]"
+        ]
+      }
     },
     {
       "names": [

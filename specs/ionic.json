@@ -11,14 +11,28 @@
             "--engine"
           ],
           "description": "Target engine (e.g. browser, cordova)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "engine",
+            "suggestions": [
+              "browser",
+              "cordova"
+            ]
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Target platform on chosen engine (e.g. ios, android)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform",
+            "suggestions": [
+              "ios",
+              "android"
+            ]
+          }
         },
         {
           "names": [
@@ -32,7 +46,11 @@
             "-c"
           ],
           "description": "Specify the configuration to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "conf",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -62,7 +80,15 @@
             "-w"
           ],
           "description": "Specifies the browser to use (safari, firefox, google chrome)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "browser",
+            "suggestions": [
+              "safari",
+              "firefox",
+              "google chrome"
+            ]
+          }
         }
       ]
     },
@@ -87,7 +113,16 @@
             "--type"
           ],
           "description": "Type of project (e.g. angular, react, vue, custom)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "angular",
+              "react",
+              "vue",
+              "custom"
+            ]
+          }
         },
         {
           "names": [
@@ -107,7 +142,10 @@
             "--project-id"
           ],
           "description": "Specify a slug for your app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "slug"
+          }
         },
         {
           "names": [
@@ -178,7 +216,10 @@
             "--host"
           ],
           "description": "Use specific host for the dev server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
@@ -186,14 +227,20 @@
             "-p"
           ],
           "description": "Use specific port for the dev server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--public-host"
           ],
           "description": "The host used for the browser or web view",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
@@ -206,14 +253,20 @@
             "--lab-host"
           ],
           "description": "Use specific host for Ionic Lab server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         },
         {
           "names": [
             "--lab-port"
           ],
           "description": "Use specific port for Ionic Lab server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -227,7 +280,15 @@
             "-w"
           ],
           "description": "Specifies the browser to use (safari, firefox, google chrome)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "browser",
+            "suggestions": [
+              "safari",
+              "firefox",
+              "google chrome"
+            ]
+          }
         },
         {
           "names": [
@@ -235,7 +296,10 @@
             "-o"
           ],
           "description": "Specifies a path to open to (/#/tab/dash)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
@@ -267,7 +331,10 @@
             "--consolelogs-port"
           ],
           "description": "Use specific port for console logs server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -275,7 +342,11 @@
             "-c"
           ],
           "description": "Specify the configuration to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "conf",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -305,7 +376,17 @@
             "--type"
           ],
           "description": "Type of project to start (e.g. vue, angular, react, ionic-angular, ionic1)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "vue",
+              "angular",
+              "react",
+              "ionic-angular",
+              "ionic1"
+            ]
+          }
         },
         {
           "names": [
@@ -342,21 +423,30 @@
             "--id"
           ],
           "description": "Specify an Ionic App ID to link",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
             "--project-id"
           ],
           "description": "Specify a slug for your app (used for the directory name and package name)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "slug"
+          }
         },
         {
           "names": [
             "--package-id"
           ],
           "description": "Specify the bundle ID/application ID for your app (reverse-DNS notation)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         }
       ],
       "args": [
@@ -616,7 +706,10 @@
                 "--target"
               ],
               "description": "Deploy to a specific device by its ID (use --list to see all)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target"
+              }
             },
             {
               "names": [
@@ -641,7 +734,10 @@
                 "--host"
               ],
               "description": "Use specific host for the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
@@ -649,14 +745,20 @@
                 "-p"
               ],
               "description": "Use specific port for the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
                 "--public-host"
               ],
               "description": "The host used for the browser or web view",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
@@ -670,7 +772,10 @@
                 "--livereload-url"
               ],
               "description": "Provide a custom URL to the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
@@ -684,7 +789,11 @@
                 "-c"
               ],
               "description": "Specify the configuration to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "conf",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -732,7 +841,11 @@
                 "-c"
               ],
               "description": "Specify the configuration to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "conf",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -787,35 +900,50 @@
                 "--app-id"
               ],
               "description": "Your Appflow app ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
                 "--channel-name"
               ],
               "description": "The channel to check for updates from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--update-method"
               ],
               "description": "The update method that dictates the behavior of the plugin",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--max-store"
               ],
               "description": "The maximum number of downloaded versions to store on the device",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "quantity"
+              }
             },
             {
               "names": [
                 "--min-background-duration"
               ],
               "description": "The minimum duration after which the app checks for an update in the background",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             }
           ]
         },
@@ -828,21 +956,30 @@
                 "--environment"
               ],
               "description": "The group of environment variables exposed to your build",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--channel"
               ],
               "description": "The channel you want to auto deploy the build to. This can be repeated multiple times if multiple channels need to be specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--commit"
               ],
               "description": "Commit (defaults to HEAD)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "sha1"
+              }
             },
             {
               "names": [
@@ -861,35 +998,50 @@
                 "--app-id"
               ],
               "description": "Your Appflow app ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
                 "--channel-name"
               ],
               "description": "The channel to check for updates from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--update-method"
               ],
               "description": "The update method that dictates the behavior of the plugin",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--max-store"
               ],
               "description": "The maximum number of downloaded versions to store on the device",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "quantity"
+              }
             },
             {
               "names": [
                 "--min-background-duration"
               ],
               "description": "The minimum duration after which the app checks for an update in the background",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             }
           ],
           "args": [
@@ -928,84 +1080,131 @@
                 "--signing-certificate"
               ],
               "description": "Signing certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--environment"
               ],
               "description": "The group of environment variables exposed to your build",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--native-config"
               ],
               "description": "The group of native config variables exposed to your build",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--destination"
               ],
               "description": "The configuration to deploy the build artifact to the app store",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--commit"
               ],
               "description": "Commit (defaults to HEAD)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "sha1"
+              }
             },
             {
               "names": [
                 "--build-stack"
               ],
               "description": "Target platform (\"Android\", \"iOS - Xcode 11 (Preferred)\", \"iOS - Xcode 10\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "suggestions": [
+                  "Android",
+                  "iOS - Xcode 11 (Preferred)",
+                  "iOS - Xcode 10"
+                ]
+              }
             },
             {
               "names": [
                 "--build-file-name"
               ],
               "description": "The name for the downloaded build file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--ipa-name"
               ],
               "description": "The name for the downloaded ipa file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--dsym-name"
               ],
               "description": "The name for the downloaded dsym file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--apk-name"
               ],
               "description": "The name for the downloaded apk file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--aab-name"
               ],
               "description": "The name for the downloaded aab file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--artifact-type"
               ],
               "description": "The artifact type (aab, apk, ipa, dsym)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "suggestions": [
+                  "aab",
+                  "apl",
+                  "ipa",
+                  "dysm"
+                ]
+              }
             },
             {
               "names": [
@@ -1066,49 +1265,70 @@
                 "--key-path"
               ],
               "description": "Destination of private key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "--cert-path"
               ],
               "description": "Destination of certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "--country-name"
               ],
               "description": "The country name (C) of the SSL certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "C"
+              }
             },
             {
               "names": [
                 "--state-or-province-name"
               ],
               "description": "The state or province name (ST) of the SSL certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ST"
+              }
             },
             {
               "names": [
                 "--locality-name"
               ],
               "description": "The locality name (L) of the SSL certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "L"
+              }
             },
             {
               "names": [
                 "--organization-name"
               ],
               "description": "The organization name (O) of the SSL certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "O"
+              }
             },
             {
               "names": [
                 "--common-name"
               ],
               "description": "The common name (CN) of the SSL certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "CN"
+              }
             },
             {
               "names": [
@@ -1116,7 +1336,10 @@
                 "-b"
               ],
               "description": "Number of bits in the key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "bits"
+              }
             }
           ]
         }
@@ -1164,7 +1387,15 @@
                 "-t"
               ],
               "description": "The type of key to generate: ecdsa, ed25519, rsa",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type",
+                "suggestions": [
+                  "ecdsa",
+                  "ed25519",
+                  "rsa"
+                ]
+              }
             },
             {
               "names": [
@@ -1172,7 +1403,10 @@
                 "-b"
               ],
               "description": "Number of bits in the key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "bits"
+              }
             },
             {
               "names": [
@@ -1180,7 +1414,10 @@
                 "-C"
               ],
               "description": "Annotation (comment) in public key. Your Ionic email address will be used",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "annotation"
+              }
             }
           ],
           "args": [
@@ -1282,7 +1519,10 @@
                 "--root"
               ],
               "description": "Specify an alternative destination to download into when adding",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
@@ -1322,14 +1562,20 @@
                 "--app-id"
               ],
               "description": "The Ionic App ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
                 "--key"
               ],
               "description": "The Product Key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key"
+              }
             }
           ]
         }
@@ -1378,7 +1624,11 @@
                 "--buildConfig"
               ],
               "description": "Use the specified build configuration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1392,7 +1642,11 @@
                 "-c"
               ],
               "description": "Specify the configuration to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "conf",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1445,7 +1699,11 @@
                 "--buildConfig"
               ],
               "description": "Use the specified build configuration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1486,7 +1744,10 @@
                 "--host"
               ],
               "description": "Use specific host for the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
@@ -1494,14 +1755,20 @@
                 "-p"
               ],
               "description": "Use specific port for the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
                 "--public-host"
               ],
               "description": "The host used for the browser or web view",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
@@ -1515,7 +1782,10 @@
                 "--livereload-url"
               ],
               "description": "Provide a custom URL to the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
@@ -1546,14 +1816,21 @@
                 "--buildConfig"
               ],
               "description": "Use the specified build configuration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--target"
               ],
               "description": "Deploy build to a device (use --list to see all)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target"
+              }
             },
             {
               "names": [
@@ -1596,7 +1873,10 @@
                 "--consolelogs-port"
               ],
               "description": "Use specific port for console logs server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
@@ -1604,7 +1884,11 @@
                 "-c"
               ],
               "description": "Specify the configuration to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "conf",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1617,7 +1901,11 @@
                 "--buildconfig"
               ],
               "description": "Use the specified build configuration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -1680,7 +1968,10 @@
                 "--variable"
               ],
               "description": "Specify plugin variables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "KEY=VALUE"
+              }
             }
           ],
           "args": [
@@ -1722,7 +2013,11 @@
                 "-c"
               ],
               "description": "Specify the configuration to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "conf",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1819,7 +2114,10 @@
                 "--host"
               ],
               "description": "Use specific host for the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
@@ -1827,14 +2125,20 @@
                 "-p"
               ],
               "description": "Use specific port for the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
                 "--public-host"
               ],
               "description": "The host used for the browser or web view",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             },
             {
               "names": [
@@ -1848,7 +2152,10 @@
                 "--livereload-url"
               ],
               "description": "Provide a custom URL to the dev server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
@@ -1879,14 +2186,21 @@
                 "--buildConfig"
               ],
               "description": "Use the specified build configuration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--target"
               ],
               "description": "Deploy build to a device (use --list to see all)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target"
+              }
             },
             {
               "names": [
@@ -1929,7 +2243,10 @@
                 "--consolelogs-port"
               ],
               "description": "Use specific port for console logs server",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
@@ -1937,7 +2254,11 @@
                 "-c"
               ],
               "description": "Specify the configuration to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "conf",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [

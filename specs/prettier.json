@@ -8,7 +8,12 @@
         "--check"
       ],
       "description": "Check if your files are formatted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file, dir, or glob",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -29,7 +34,14 @@
         "--arrow-parens"
       ],
       "description": "Include parentheses around a sole arrow function parameter",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "always",
+          "avoid"
+        ]
+      }
     },
     {
       "names": [
@@ -42,21 +54,45 @@
         "--embedded-language-formatting"
       ],
       "description": "Control how Prettier formats quoted code embedded in the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "auto",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--end-of-line"
       ],
       "description": "Which end of line characters to apply",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "choice",
+        "suggestions": [
+          "lf",
+          "crlf",
+          "cr",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--html-whitespace-sensitivity"
       ],
       "description": "How to handle whitespaces in HTML",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "choice",
+        "suggestions": [
+          "css",
+          "strict",
+          "ignore"
+        ]
+      }
     },
     {
       "names": [
@@ -75,28 +111,72 @@
         "--parser"
       ],
       "description": "Which parser to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "parser",
+        "suggestions": [
+          "flow",
+          "babel",
+          "babel-flow",
+          "babel-ts",
+          "typescript",
+          "espree",
+          "meriyah",
+          "css",
+          "less",
+          "scss",
+          "json",
+          "json5",
+          "json-stringify",
+          "graphql",
+          "markdown",
+          "mdx",
+          "vue",
+          "yaml",
+          "html",
+          "angular",
+          "lwc"
+        ]
+      }
     },
     {
       "names": [
         "--print-width"
       ],
       "description": "The line length where Prettier will try wrap",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     },
     {
       "names": [
         "--prose-wrap"
       ],
       "description": "How to wrap prose",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "always",
+          "never",
+          "preserve"
+        ]
+      }
     },
     {
       "names": [
         "--quote-props"
       ],
       "description": "Change when properties in objects are quoted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "as-needed",
+          "consistent",
+          "preserve"
+        ]
+      }
     },
     {
       "names": [
@@ -115,14 +195,25 @@
         "--tab-width"
       ],
       "description": "Number of spaces per indentation level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     },
     {
       "names": [
         "--trailing-comma"
       ],
       "description": "Print trailing commas wherever possible when multi-line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "es5",
+          "none",
+          "all"
+        ]
+      }
     },
     {
       "names": [
@@ -141,7 +232,11 @@
         "--config"
       ],
       "description": "Path to a Prettier configuration file (.prettierrc, package.json, prettier.config.js)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -154,7 +249,15 @@
         "--config-precedence"
       ],
       "description": "Define in which order config files and CLI options should be evaluated",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "precedence",
+        "suggestions": [
+          "cli-override",
+          "file-override",
+          "prefer-file"
+        ]
+      }
     },
     {
       "names": [
@@ -167,28 +270,45 @@
         "--find-config-path"
       ],
       "description": "Finds a path to the configuration file for the given input file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ignore-path"
       ],
       "description": "Path to a file with patterns describing files to ignore",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--plugin"
       ],
       "description": "Add a plugin",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--plugin-search-dir"
       ],
       "description": "Custom directory that contains prettier plugins in node_modules subdirectory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -201,21 +321,30 @@
         "--cursor-offset"
       ],
       "description": "Print (to stderr) where a cursor at the given position would move to after formatting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     },
     {
       "names": [
         "--range-end"
       ],
       "description": "Format code ending at a given character offset (exclusive)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     },
     {
       "names": [
         "--range-start"
       ],
       "description": "Format code starting at a given character offset",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     },
     {
       "names": [
@@ -228,7 +357,11 @@
         "--file-info"
       ],
       "description": "Extract the following info (as JSON) for a given file path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -236,7 +369,10 @@
         "--help"
       ],
       "description": "Show CLI usage, or details about the given flag",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "flag"
+      }
     },
     {
       "names": [
@@ -256,7 +392,17 @@
         "--loglevel"
       ],
       "description": "What level of logs to report",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "silent",
+          "error",
+          "warn",
+          "log",
+          "debug"
+        ]
+      }
     },
     {
       "names": [
@@ -269,7 +415,11 @@
         "--stdin-filepath"
       ],
       "description": "Path to the file to pretend that stdin comes from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

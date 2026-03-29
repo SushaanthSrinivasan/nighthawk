@@ -43,7 +43,11 @@
         "--fstab"
       ],
       "description": "Alternative file to /etc/fstab",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "fstab",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -78,14 +82,21 @@
         "--options-mode"
       ],
       "description": "What to do with options loaded from fstab",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode"
+      }
     },
     {
       "names": [
         "--options-source"
       ],
       "description": "Mount options source",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "source",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -99,7 +110,10 @@
         "--options"
       ],
       "description": "Comma-separated list of mount options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
@@ -107,7 +121,10 @@
         "--test-opts"
       ],
       "description": "Limit the set of filesystems (use with -a)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
@@ -122,28 +139,47 @@
         "--types"
       ],
       "description": "Limit the set of filesystem types",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
         "--source"
       ],
       "description": "Explicitly specifies source",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "source",
+        "suggestions": [
+          "path",
+          "label",
+          "uuid"
+        ]
+      }
     },
     {
       "names": [
         "--target"
       ],
       "description": "Explicitly specifies mountpoint",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mountpoint",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--target-prefix"
       ],
       "description": "Specifies path used for all mountpoints",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [

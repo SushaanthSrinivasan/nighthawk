@@ -10,7 +10,10 @@
         "--read"
       ],
       "description": "Specify input format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format"
+      }
     },
     {
       "names": [
@@ -20,7 +23,10 @@
         "--write"
       ],
       "description": "Specify output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format"
+      }
     },
     {
       "names": [
@@ -28,14 +34,22 @@
         "--output"
       ],
       "description": "Write output to FILE instead of stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--data-dir"
       ],
       "description": "Specify the user data directory to search for pandoc data files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -43,7 +57,10 @@
         "--defaults"
       ],
       "description": "Specify a set of default option settings",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
@@ -74,7 +91,11 @@
         "--log"
       ],
       "description": "Write log messages in machine-readable JSON format to FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -93,7 +114,10 @@
         "--list-extensions"
       ],
       "description": "List supported extensions for FORMAT, one per line, preceded by a + or -  indicating whether it is enabled by default in FORMAT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format"
+      }
     },
     {
       "names": [
@@ -126,21 +150,30 @@
         "--shift-heading-level-by"
       ],
       "description": "Shift heading levels by a positive or negative integer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--indented-code-classes"
       ],
       "description": "Specify classes to use for indented code blocks–for example, perl,numberLines or haskell. Multiple classes may be separated by spaces or commas",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "classes"
+      }
     },
     {
       "names": [
         "--default-image-extension"
       ],
       "description": "Specify a default extension to use when image paths/URLs have no extension. This allows you to use the same source for formats that require different kinds of images. Currently this option only affect",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension"
+      }
     },
     {
       "names": [
@@ -154,7 +187,11 @@
         "--filter"
       ],
       "description": "Specify an executable to be used as a filter transforming the pandoc AST after the input is parsed and before the output is written",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "executable",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -162,7 +199,11 @@
         "--lua-filter"
       ],
       "description": "Transform the document in a similar fashion as JSON filters, but use pandoc’s built-in Lua filtering system",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "script",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -170,14 +211,20 @@
         "--metadata"
       ],
       "description": "Set the metadata field KEY to the value VAL",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key"
+      }
     },
     {
       "names": [
         "--metadata-file"
       ],
       "description": "Read metadata from the supplied YAML (or JSON) file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
@@ -191,28 +238,47 @@
         "--tab-stop"
       ],
       "description": "Specify the number of spaces per tab",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--track-changes"
       ],
       "description": "Specifies what to do with insertions, deletions, and comments produced by the MS Word `Track Changes` feature",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "accept",
+          "reject",
+          "all"
+        ]
+      }
     },
     {
       "names": [
         "--extract-media"
       ],
       "description": "Extract images and other media contained in or linked from the source document to the path DIR, creating it if necessary, and adjust the images references in the document so they point to the extracte",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--abbreviations"
       ],
       "description": "Specifies a custom abbreviations file, with abbreviations one to a line. If this option is not specified, pandoc will read the data file abbreviations from the user data directory or fall back on a sy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -226,7 +292,11 @@
         "--template"
       ],
       "description": "Use the specified file as a custom template for the generated document",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file or URL",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -234,7 +304,10 @@
         "--variable"
       ],
       "description": "Set the template variable KEY to the value VAL when rendering the document in standalone mode. If no VAL is specified, the key will be given the value true",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key"
+      }
     },
     {
       "names": [
@@ -242,42 +315,71 @@
         "--print-default-template"
       ],
       "description": "Print the system default template for an output FORMAT. Templates in the user data directory are ignored",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format"
+      }
     },
     {
       "names": [
         "--print-default-data-file"
       ],
       "description": "Print a system default data file. Files in the user data directory are ignored",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--eol"
       ],
       "description": "Manually specify line endings: crlf (Windows), lf (macOS/Linux/UNIX), or native (line endings appropriate to the OS on which pandoc is being run). The default is native",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "crlf",
+          "lf",
+          "native"
+        ]
+      }
     },
     {
       "names": [
         "--dpi"
       ],
       "description": "Specify the default dpi (dots per inch) value for conversion from pixels to inch/centimeters and vice versa",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--wrap"
       ],
       "description": "Determine how text is wrapped in the output (the source code, not the rendered version)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "auto",
+          "none",
+          "preserve"
+        ]
+      }
     },
     {
       "names": [
         "--columns"
       ],
       "description": "Specify length of lines in characters. This affects text wrapping in the generated source code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -291,7 +393,10 @@
         "--toc-depth"
       ],
       "description": "Specify the number of section levels to include in the table of contents",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -310,21 +415,53 @@
         "--highlight-style"
       ],
       "description": "Specifies the coloring style to be used in highlighted source code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STYLE|FILE",
+        "suggestions": [
+          "pygments",
+          "kate",
+          "monochrome",
+          "breezeDark",
+          "espresso",
+          "zenburn",
+          "haddock",
+          "tango"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--print-highlight-style"
       ],
       "description": "Prints a JSON version of a highlighting style, which can be modified, saved with a .theme extension, and used with --highlight-style",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STYLE|FILE",
+        "suggestions": [
+          "pygments",
+          "kate",
+          "monochrome",
+          "breezeDark",
+          "espresso",
+          "zenburn",
+          "haddock",
+          "tango"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--syntax-definition"
       ],
       "description": "Instructs pandoc to load a KDE XML syntax definition file, which will be used for syntax highlighting of appropriately marked code blocks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -332,7 +469,11 @@
         "--include-in-header"
       ],
       "description": "Include contents of FILE, verbatim, at the end of the header",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE|URL",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -340,7 +481,11 @@
         "--include-before-body"
       ],
       "description": "Include contents of FILE, verbatim, at the beginning of the document body",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE|URL",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -348,21 +493,33 @@
         "--include-after-body"
       ],
       "description": "Include contents of FILE, verbatim, at the end of the document body",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE|URL",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--resource-path"
       ],
       "description": "List of paths to search for images and other resources. If --resource-path is not specified, the default resource path is the working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "search path",
+        "description": "The paths should be separated by : on Linux, UNIX, and macOS systems, and by ; on Windows",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--request-header"
       ],
       "description": "Set the request header NAME to the value VAL when making HTTP requests. If you’re behind a proxy, you also need to set the environment variable http_proxy to http://",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME:VAL"
+      }
     },
     {
       "names": [
@@ -399,14 +556,29 @@
         "--reference-location"
       ],
       "description": "Specify whether footnotes (and references, if reference-links is set) are placed at the end of the current (top-level) block, the current section, or the document. Currently only affects the markdown ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "block",
+          "section",
+          "document"
+        ]
+      }
     },
     {
       "names": [
         "--markdown-headings"
       ],
       "description": "Specify whether to use ATX-style (#-prefixed) or Setext-style (underlined) headings for level 1 and 2 headings in Markdown output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "setext",
+          "atx"
+        ]
+      }
     },
     {
       "names": [
@@ -419,7 +591,16 @@
         "--top-level-division"
       ],
       "description": "Treat top-level headings as the given division type in LaTeX, ConTeXt, DocBook, and TEI output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "default",
+          "section",
+          "chapter",
+          "part"
+        ]
+      }
     },
     {
       "names": [
@@ -433,7 +614,12 @@
         "--number-offset"
       ],
       "description": "Offset for section headings in HTML output (ignored in other output formats)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "description": "The first number is added to the section number for top-level headings, the second for second-level headings, and so on",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -453,7 +639,11 @@
         "--slide-level"
       ],
       "description": "Specifies that headings with the specified level create slides (for beamer, s5, slidy, slideous, dzslides). Headings above this level in the hierarchy are used to divide the slide show into sections; ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "description": "Number"
+      }
     },
     {
       "names": [
@@ -466,14 +656,25 @@
         "--email-obfuscation"
       ],
       "description": "Specify a method for obfuscating mailto: links in HTML documents references . The default is none",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "none",
+          "javascript",
+          "references"
+        ]
+      }
     },
     {
       "names": [
         "--id-prefix"
       ],
       "description": "Specify a prefix to be added to all identifiers and internal links in HTML and DocBook output, and to footnote numbers in Markdown and Haddock output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -481,7 +682,10 @@
         "--title-prefix"
       ],
       "description": "Specify STRING as a prefix at the beginning of the title that appears in the HTML header (but not in the title as it appears at the beginning of the HTML body)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -489,49 +693,86 @@
         "--css"
       ],
       "description": "Link to a CSS style sheet. This option can be used repeatedly to include multiple files. They will be included in the order specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
         "--reference-doc"
       ],
       "description": "Use the specified file as a style reference in producing a docx or ODT file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--epub-cover-image"
       ],
       "description": "Use the specified image as the EPUB cover. It is recommended that the image be less than 1000px in width and height. Note that in a Markdown source document you can also specify cover-image in a YAML ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--epub-metadata"
       ],
       "description": "Look in the specified XML file for metadata for the EPUB. The file should contain a series of Dublin Core elements",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--epub-embed-font"
       ],
       "description": "Embed the specified font in the EPUB. This option can be repeated to embed multiple fonts. Wildcards can also be used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--pdf-engine"
       ],
       "description": "Use the specified engine when producing PDF output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "program",
+        "suggestions": [
+          "pdflatex",
+          "lualatex",
+          "xelatex",
+          "latexmk",
+          "tectonic",
+          "wkhtmltopdf",
+          "weasyprint",
+          "prince",
+          "context",
+          "pdfroff"
+        ]
+      }
     },
     {
       "names": [
         "--pdf-engine-opt"
       ],
       "description": "Use the given string as a command-line argument to the pdf-engine",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -545,21 +786,33 @@
         "--bibliography"
       ],
       "description": "Set the bibliography field in the document’s metadata to FILE, overriding any value set in the metadata. If you supply this argument multiple times, each FILE will be added to bibliography. If FILE is",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--csl"
       ],
       "description": "Set the csl field in the document’s metadata to FILE, overriding any value set in the metadata. (This is equivalent to --metadata csl=FILE.) If FILE is a URL, it will be fetched via HTTP. If FILE is n",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--citation-abbreviations"
       ],
       "description": "Set the citation-abbreviations field in the document’s metadata to FILE, overriding any value set in the metadata. If FILE is a URL, it will be fetched via HTTP. If FILE is not found relative to the w",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -578,7 +831,10 @@
         "--mathjax"
       ],
       "description": "Use MathJax to display embedded TeX math in HTML output. TeX math will be put between (...) (for inline math) or [...] (for display math) and wrapped in <span> tags with class math. Then the MathJax J",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
@@ -591,14 +847,20 @@
         "--webtex"
       ],
       "description": "Convert TeX formulas to <img> tags that link to an external script that converts formulas to images. The formula will be URL-encoded and concatenated with the URL provided. For SVG images you can for ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
         "--katex"
       ],
       "description": "Use KaTeX to display embedded TeX math in HTML output. The URL is the base URL for the KaTeX library. That directory should contain a katex.min.js and a katex.min.css file. If a URL is not provided, a",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [

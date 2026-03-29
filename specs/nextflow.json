@@ -11,21 +11,30 @@
             "-after"
           ],
           "description": "Clean up runs executed after the specified one",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run name"
+          }
         },
         {
           "names": [
             "-before"
           ],
           "description": "Clean up runs executed before the specified one",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run name"
+          }
         },
         {
           "names": [
             "-but"
           ],
           "description": "Clean up all runs except the specified one",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run name"
+          }
         },
         {
           "names": [
@@ -85,21 +94,30 @@
             "-hub"
           ],
           "description": "Service hub where the project is hosted (Default: GitHub)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "gitlab|github|bitbucket"
+          }
         },
         {
           "names": [
             "-r"
           ],
           "description": "Revision to clone - It can be a git branch, tag or revision number",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "revision"
+          }
         },
         {
           "names": [
             "-user"
           ],
           "description": "Private repository user name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         }
       ],
       "args": [
@@ -265,7 +283,10 @@
             "-bucket-dir"
           ],
           "description": "Remote bucket where intermediate result files are stored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "remote bucket"
+          }
         },
         {
           "names": [
@@ -308,14 +329,20 @@
             "-e"
           ],
           "description": "Add the specified variable to execution environment. Syntax: -e.key=value (Default: {})",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
             "-entry"
           ],
           "description": "Entry workflow name to be executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "entry workflow name"
+          }
         },
         {
           "names": [
@@ -341,7 +368,10 @@
             "-hub"
           ],
           "description": "Service hub where the project is hosted (Default: github)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service hub"
+          }
         },
         {
           "names": [
@@ -354,21 +384,30 @@
             "-lib"
           ],
           "description": "Library extension path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "library extension path"
+          }
         },
         {
           "names": [
             "-main-script"
           ],
           "description": "The script file to be executed when launching a project directory or repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script file"
+          }
         },
         {
           "names": [
             "-name"
           ],
           "description": "Assign a mnemonic name to the a pipeline run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -388,14 +427,21 @@
             "-params-file"
           ],
           "description": "Load script parameters from a JSON/YAML file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "JSON/YAML file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "-plugins"
           ],
           "description": "Specify the plugins to be applied for this run e.g. nf-amazon,nf-tower",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "plugins ids separated by comma"
+          }
         },
         {
           "names": [
@@ -408,14 +454,20 @@
             "-process"
           ],
           "description": "Set process options. Syntax: -process.key=value (Default: {}",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
             "-profile"
           ],
           "description": "Choose a configuration profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
@@ -423,7 +475,10 @@
             "-queue-size"
           ],
           "description": "Max number of processes that can be executed in parallel by each executor",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -443,7 +498,10 @@
             "-revision"
           ],
           "description": "Revision of the project to run (either a git branch, tag or commit SHA number)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project revision (tag/branch/hash"
+          }
         },
         {
           "names": [
@@ -457,14 +515,20 @@
             "-test"
           ],
           "description": "Test a script function with the name specified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-user"
           ],
           "description": "Private repository user name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
@@ -484,21 +548,30 @@
             "-with-conda"
           ],
           "description": "Use the specified Conda environment package or file (must end with .yml|.yaml suffix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "conda .yml/.yaml file"
+          }
         },
         {
           "names": [
             "-with-dag"
           ],
           "description": "Create pipeline DAG file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename, e.g. dag.dot"
+          }
         },
         {
           "names": [
             "-with-docker"
           ],
           "description": "Enable process execution in a Docker container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "a docker container image"
+          }
         },
         {
           "names": [
@@ -506,7 +579,10 @@
             "-with-notification"
           ],
           "description": "Send a notification email on workflow completion to the specified recipients",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "email"
+          }
         },
         {
           "names": [
@@ -519,7 +595,10 @@
             "-with-report"
           ],
           "description": "Create processes execution html report",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "report filename e.g. report.html"
+          }
         },
         {
           "names": [
@@ -532,7 +611,10 @@
             "-with-timeline"
           ],
           "description": "Create processes execution timeline file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeline filename e.g. timeline.html"
+          }
         },
         {
           "names": [
@@ -545,14 +627,20 @@
             "-with-trace"
           ],
           "description": "Create processes execution tracing file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "trace text filename e.g. trace.txt"
+          }
         },
         {
           "names": [
             "-with-weblog"
           ],
           "description": "Send workflow status messages via HTTP to target URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target web URL"
+          }
         },
         {
           "names": [
@@ -572,7 +660,10 @@
             "-work-dir"
           ],
           "description": "Directory where intermediate result files are stored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "work dir"
+          }
         }
       ],
       "args": [
@@ -603,21 +694,30 @@
             "-after"
           ],
           "description": "Show log entries for runs executed after the specified one",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run name"
+          }
         },
         {
           "names": [
             "-before"
           ],
           "description": "Show log entries for runs executed before the specified one",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run name"
+          }
         },
         {
           "names": [
             "-but"
           ],
           "description": "Show log entries of all runs except the specified one",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run name"
+          }
         },
         {
           "names": [
@@ -625,7 +725,10 @@
             "-fields"
           ],
           "description": "Comma separated list of fields to include in the printed log -- Use the `-l` option to show the list of available fields",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field1,field2,..."
+          }
         },
         {
           "names": [
@@ -633,7 +736,10 @@
             "filter"
           ],
           "description": "Filter log entries by a custom expression e.g. process =~ /foo.*/ && status == 'COMPLETED'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "expression"
+          }
         },
         {
           "names": [
@@ -661,7 +767,10 @@
             "-s"
           ],
           "description": "Character used to separate column values (Default: )",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "character"
+          }
         },
         {
           "names": [
@@ -669,7 +778,10 @@
             "-template"
           ],
           "description": "Text template used to each record in the log",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template"
+          }
         }
       ],
       "args": [
@@ -742,7 +854,10 @@
             "-bucket-dir"
           ],
           "description": "Remote bucket where intermediate result files are stored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "remote bucket"
+          }
         },
         {
           "names": [
@@ -785,14 +900,20 @@
             "-e."
           ],
           "description": "Add the specified variable to execution environment. Syntax: -e.key=value (Default: {})",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
             "-entry"
           ],
           "description": "Entry workflow name to be executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "entry workflow name"
+          }
         },
         {
           "names": [
@@ -806,7 +927,10 @@
             "-hub"
           ],
           "description": "Service hub where the project is hosted (Default: github)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "service hub"
+          }
         },
         {
           "names": [
@@ -819,21 +943,30 @@
             "-lib"
           ],
           "description": "Library extension path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "library extension path"
+          }
         },
         {
           "names": [
             "-main-script"
           ],
           "description": "The script file to be executed when launching a project directory or repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script file"
+          }
         },
         {
           "names": [
             "-name"
           ],
           "description": "Assign a mnemonic name to the a pipeline run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -846,28 +979,41 @@
             "-params-file"
           ],
           "description": "Load script parameters from a JSON/YAML file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "JSON/YAML file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "-plugins"
           ],
           "description": "Specify the plugins to be applied for this run e.g. nf-amazon,nf-tower",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "plugins ids separated by comma"
+          }
         },
         {
           "names": [
             "-process."
           ],
           "description": "Set process options. Syntax: -process.key=value (Default: {}",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
             "-profile"
           ],
           "description": "Choose a configuration profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
@@ -875,14 +1021,20 @@
             "-queue-size"
           ],
           "description": "Max number of processes that can be executed in parallel by each executor",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "-resume"
           ],
           "description": "Execute the script using the cached results, useful to continue executions that was stopped by an error",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "session ID"
+          }
         },
         {
           "names": [
@@ -890,7 +1042,10 @@
             "-revision"
           ],
           "description": "Revision of the project to run (either a git branch, tag or commit SHA number)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project revision (tag/branch/hash"
+          }
         },
         {
           "names": [
@@ -904,14 +1059,20 @@
             "-test"
           ],
           "description": "Test a script function with the name specified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "-user"
           ],
           "description": "Private repository user name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
@@ -924,21 +1085,30 @@
             "-with-conda"
           ],
           "description": "Use the specified Conda environment package or file (must end with .yml|.yaml suffix)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "conda .yml/.yaml file"
+          }
         },
         {
           "names": [
             "-with-dag"
           ],
           "description": "Create pipeline DAG file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename, e.g. dag.dot"
+          }
         },
         {
           "names": [
             "-with-docker"
           ],
           "description": "Enable process execution in a Docker container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "a docker container image"
+          }
         },
         {
           "names": [
@@ -946,7 +1116,10 @@
             "-with-notification"
           ],
           "description": "Send a notification email on workflow completion to the specified recipients",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "email"
+          }
         },
         {
           "names": [
@@ -959,7 +1132,10 @@
             "-with-report"
           ],
           "description": "Create processes execution html report",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "report filename e.g. report.html"
+          }
         },
         {
           "names": [
@@ -972,7 +1148,10 @@
             "-with-timeline"
           ],
           "description": "Create processes execution timeline file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeline filename e.g. timeline.html"
+          }
         },
         {
           "names": [
@@ -985,14 +1164,20 @@
             "-with-trace"
           ],
           "description": "Create processes execution tracing file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "trace text filename e.g. trace.txt"
+          }
         },
         {
           "names": [
             "-with-weblog"
           ],
           "description": "Send workflow status messages via HTTP to target URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target web URL"
+          }
         },
         {
           "names": [
@@ -1012,7 +1197,10 @@
             "-work-dir"
           ],
           "description": "Directory where intermediate result files are stored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "work dir"
+          }
         }
       ],
       "args": [
@@ -1036,21 +1224,30 @@
             "get"
           ],
           "description": "Allows retrieving a secret value e.g. nextflow secrets get FOO",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "secret name"
+          }
         },
         {
           "names": [
             "set"
           ],
           "description": "Allows creating creating a new secret or overriding an existing one e.g. nextflow secrets set FOO \"Hello world\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "secret name and value"
+          }
         },
         {
           "names": [
             "delete"
           ],
           "description": "Allows deleting an existing secret e.g. nextflow secrets delete FOO",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "secret name"
+          }
         }
       ]
     },
@@ -1104,14 +1301,21 @@
         "-C"
       ],
       "description": "Use the specified configuration file(s) overriding any defaults",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "configuration file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-D"
       ],
       "description": "Set JVM properties",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "custom Java system property"
+      }
     },
     {
       "names": [
@@ -1125,7 +1329,11 @@
         "-config"
       ],
       "description": "Add the specified file to configuration set",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "configuration file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

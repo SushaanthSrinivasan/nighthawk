@@ -14,343 +14,696 @@
         "--disable"
       ],
       "description": "Disable information line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Information lines",
+        "suggestions": [
+          "os",
+          "host",
+          "kernel",
+          "uptime",
+          "packages",
+          "shell",
+          "term",
+          "cpu",
+          "gpu",
+          "memory",
+          "disk",
+          "battery",
+          "resolution",
+          "wm",
+          "de",
+          "theme",
+          "wm_theme",
+          "icons"
+        ]
+      }
     },
     {
       "names": [
         "--title_fqdn"
       ],
       "description": "Hide/Show Fully Qualified Domain Name in title",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--package_managers"
       ],
       "description": "Hide/Show Package Manager names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off",
+          "tiny"
+        ]
+      }
     },
     {
       "names": [
         "--os_arch"
       ],
       "description": "Hide/Show OS architecture",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--speed_type"
       ],
       "description": "Change the type of cpu speed to display",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "current",
+          "min",
+          "bios",
+          "scaling_current",
+          "scaling_min",
+          "scaling_max"
+        ]
+      }
     },
     {
       "names": [
         "--speed_shorthand"
       ],
       "description": "Whether or not to show decimals in CPU speed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--cpu_brand"
       ],
       "description": "Enable/Disable CPU brand in output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--cpu_cores"
       ],
       "description": "Whether or not to display the number of CPU cores",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "logical",
+          "physical",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--cpu_speed"
       ],
       "description": "Hide/Show cpu speed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--cpu_temp"
       ],
       "description": "Hide/Show cpu temperature",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "unit/off",
+        "suggestions": [
+          "C",
+          "F",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--distro_shorthand"
       ],
       "description": "Shorten the output of distro",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off",
+          "tiny"
+        ]
+      }
     },
     {
       "names": [
         "--kernel_shorthand"
       ],
       "description": "Shorten the output of kernel",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--uptime_shorthand"
       ],
       "description": "Shorten the output of uptime",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off",
+          "tiny"
+        ]
+      }
     },
     {
       "names": [
         "--refresh_rate"
       ],
       "description": "Whether to display the refresh rate of each monitor",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--gpu_brand"
       ],
       "description": "Enable/Disable GPU brand in output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--gpu_type"
       ],
       "description": "Which GPU to display",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "all",
+          "dedicated",
+          "integrated"
+        ]
+      }
     },
     {
       "names": [
         "--de_version"
       ],
       "description": "Show/Hide Desktop Environment version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--gtk_shorthand"
       ],
       "description": "Shorten output of gtk theme/icons",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--gtk2"
       ],
       "description": "Enable/Disable gtk2 theme/font/icons output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--gtk3"
       ],
       "description": "Enable/Disable gtk3 theme/font/icons output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--shell_path"
       ],
       "description": "Enable/Disable showing $SHELL path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--shell_version"
       ],
       "description": "Enable/Disable showing $SHELL version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--disk_show"
       ],
       "description": "Which disks to display",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "disk",
+        "suggestions": [
+          "/dev/sd",
+          "/dev/nvme",
+          "/dev/mmcblk",
+          "/dev/mapper",
+          "/mnt",
+          "/run/media"
+        ]
+      }
     },
     {
       "names": [
         "--disk_subtitle"
       ],
       "description": "What information to append to the Disk subtitle",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "name",
+          "mount",
+          "dir",
+          "none"
+        ]
+      }
     },
     {
       "names": [
         "--disk_percent"
       ],
       "description": "Hide/Show disk percent",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--ip_host"
       ],
       "description": "URL to query for public IP",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "https://..."
+      }
     },
     {
       "names": [
         "--ip_timeout"
       ],
       "description": "Public IP timeout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "X seconds"
+      }
     },
     {
       "names": [
         "--memory_percent"
       ],
       "description": "Display memory percentage",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--memory_unit"
       ],
       "description": "Memory output unit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "unit",
+        "suggestions": [
+          "kib",
+          "mib",
+          "gib"
+        ]
+      }
     },
     {
       "names": [
         "--colors"
       ],
       "description": "Changes the text colors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Title"
+      }
     },
     {
       "names": [
         "--underline"
       ],
       "description": "Enable/Disable the underline",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--underline_char"
       ],
       "description": "Character to use when underlining title",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "char"
+      }
     },
     {
       "names": [
         "--bold"
       ],
       "description": "Enable/Disable bold text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--separator"
       ],
       "description": "Changes the default ':' separator to the specified string",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--color_blocks"
       ],
       "description": "Enable/Disable the color blocks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--col_offset"
       ],
       "description": "Left-padding of color blocks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "suggestions": [
+          "auto",
+          "[0-9]+"
+        ]
+      }
     },
     {
       "names": [
         "--block_width"
       ],
       "description": "Width of color blocks in spaces",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[0-9]+"
+      }
     },
     {
       "names": [
         "--block_height"
       ],
       "description": "Height of color blocks in lines",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[0-9]+"
+      }
     },
     {
       "names": [
         "--block_range"
       ],
       "description": "Range of colors to print as blocks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[0-9]+"
+      }
     },
     {
       "names": [
         "--bar_char"
       ],
       "description": "Characters to use when drawing bars",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Elapsed char"
+      }
     },
     {
       "names": [
         "--bar_border"
       ],
       "description": "Whether or not to surround the bar with '[]'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--bar_length"
       ],
       "description": "Length in spaces to make the bars",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[0-9]+"
+      }
     },
     {
       "names": [
         "--bar_colors"
       ],
       "description": "Colors to make the bar",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Elapsed"
+      }
     },
     {
       "names": [
         "--cpu_display"
       ],
       "description": "CPU bar mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "bar",
+          "infobar",
+          "barinfo",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--memory_display"
       ],
       "description": "Memory display mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "bar",
+          "infobar",
+          "barinfo",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--battery_display"
       ],
       "description": "Battery display mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "bar",
+          "infobar",
+          "barinfo",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--disk_display"
       ],
       "description": "Disk display mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "bar",
+          "infobar",
+          "barinfo",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--backend"
       ],
       "description": "Which image backend to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "backend",
+        "suggestions": [
+          "ascii",
+          "caca",
+          "chafa",
+          "jp2a",
+          "iterm2",
+          "off",
+          "pixterm",
+          "pot",
+          "sixel",
+          "termpix",
+          "tycat",
+          "w3m",
+          "kitty"
+        ]
+      }
     },
     {
       "names": [
         "--source"
       ],
       "description": "Which image or ascii file to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "source",
+        "suggestions": [
+          "auto",
+          "ascii",
+          "wallpaper"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -435,21 +788,34 @@
         "--ascii_colors"
       ],
       "description": "Colors to print the ascii art",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Color 1"
+      }
     },
     {
       "names": [
         "--ascii_distro"
       ],
       "description": "Which Distro's ascii art to print",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OS"
+      }
     },
     {
       "names": [
         "--ascii_bold"
       ],
       "description": "Whether or not to bold the ascii logo",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "on/off",
+        "suggestions": [
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
@@ -469,42 +835,75 @@
         "--size"
       ],
       "description": "How to size the image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "suggestions": [
+          "auto",
+          "[0-9]+px",
+          "[0-9]+%"
+        ]
+      }
     },
     {
       "names": [
         "--crop_mode"
       ],
       "description": "Which crop mode to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "normal",
+          "fit",
+          "fill"
+        ]
+      }
     },
     {
       "names": [
         "--crop_offset"
       ],
       "description": "Change the crop offset for normal mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "offset",
+        "suggestions": [
+          "northwest",
+          "north",
+          "northeast"
+        ]
+      }
     },
     {
       "names": [
         "--xoffset"
       ],
       "description": "How close the image will be to the left edge of the window. This only works with w3m",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[0-9]+"
+      }
     },
     {
       "names": [
         "--yoffset"
       ],
       "description": "How close the image will be to the top edge of the window. This only works with w3m",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[0-9]+"
+      }
     },
     {
       "names": [
         "--gap"
       ],
       "description": "Gap between image and text",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[0-9]+"
+      }
     },
     {
       "names": [
@@ -517,7 +916,14 @@
         "--config"
       ],
       "description": "Specify a path to a custom config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file/none",
+        "suggestions": [
+          "none"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [

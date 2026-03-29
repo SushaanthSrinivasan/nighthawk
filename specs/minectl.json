@@ -66,7 +66,11 @@
             "-f"
           ],
           "description": "Location of the manifest file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -87,14 +91,21 @@
             "-f"
           ],
           "description": "Location of the manifest file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--id"
           ],
           "description": "Contains the server id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
@@ -115,7 +126,28 @@
             "-p"
           ],
           "description": "The cloud provider - civo|scaleway|do|hetzner|akamai|ovh|equinix|gce|vultr|azure|oci|ionos|aws|vexxhost|multipass|exoscale",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "provider",
+            "suggestions": [
+              "civo",
+              "scaleway",
+              "do",
+              "hetzner",
+              "linode",
+              "ovh",
+              "equinix",
+              "gce",
+              "vultr",
+              "azure",
+              "oci",
+              "ionos",
+              "aws",
+              "vexxhost",
+              "multipass",
+              "exoscale"
+            ]
+          }
         },
         {
           "names": [
@@ -123,7 +155,10 @@
             "-r"
           ],
           "description": "The region (gce: zone) for your cloud provider - civo|gce",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region"
+          }
         }
       ]
     },
@@ -137,7 +172,11 @@
             "-d"
           ],
           "description": "Plugin destination folder",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "destination",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -145,14 +184,21 @@
             "-f"
           ],
           "description": "Location of the manifest file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--id"
           ],
           "description": "Contains the server id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
@@ -160,7 +206,11 @@
             "-p"
           ],
           "description": "Location of the plugin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "plugin",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -168,7 +218,10 @@
             "-k"
           ],
           "description": "Specify a specific path for the SSH key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ssh-key"
+          }
         }
       ]
     },
@@ -182,14 +235,21 @@
             "-f"
           ],
           "description": "Location of the manifest file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--id"
           ],
           "description": "Contains the server id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         }
       ]
     },
@@ -203,14 +263,21 @@
             "-f"
           ],
           "description": "Location of the manifest file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--id"
           ],
           "description": "Contains the server id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
@@ -218,7 +285,10 @@
             "-k"
           ],
           "description": "Specify a specific path for the SSH key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ssh-key"
+          }
         }
       ]
     },
@@ -236,7 +306,11 @@
             "-o"
           ],
           "description": "Output folder for the configuration file for minectl 🗺 (default: ~/.minectl)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "folders"
+          }
         }
       ]
     },
@@ -313,14 +387,33 @@
         "--log-encoding"
       ],
       "description": "Set the log encoding: console|json (default: console)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "log-encoding",
+        "suggestions": [
+          "console",
+          "json"
+        ]
+      }
     },
     {
       "names": [
         "--verbose"
       ],
       "description": "Enable verbose logging: debug|info|warn|error|dpanic|panic|fatal",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "verbose",
+        "suggestions": [
+          "debug",
+          "info",
+          "warn",
+          "error",
+          "dpanic",
+          "panic",
+          "fatal"
+        ]
+      }
     },
     {
       "names": [

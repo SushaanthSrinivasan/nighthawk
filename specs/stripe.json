@@ -18,28 +18,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -53,7 +71,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -92,42 +119,68 @@
             "--set"
           ],
           "description": "Set a value for the specified configuration option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option",
+            "description": "Config option"
+          }
         },
         {
           "names": [
             "--unset"
           ],
           "description": "Remove a key-value pair from the config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option",
+            "description": "Config option"
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -141,7 +194,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -161,35 +223,61 @@
             "--shell"
           ],
           "description": "Opens the configuration file in your default editor",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform",
+            "description": "The shell to generate completion commands for",
+            "suggestions": [
+              "zsh",
+              "bash"
+            ]
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -203,7 +291,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -223,91 +320,170 @@
             "--filter-account"
           ],
           "description": "Filters request logs by the source and destination account",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true,
+            "suggestions": [
+              "connect_in",
+              "connect_out",
+              "self"
+            ]
+          }
         },
         {
           "names": [
             "--filter-http-method"
           ],
           "description": "Filters request logs by HTTP method",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true,
+            "suggestions": [
+              "GET",
+              "POST",
+              "DELETE"
+            ]
+          }
         },
         {
           "names": [
             "--filter-ip-address"
           ],
           "description": "Filters request logs by IP address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--filter-request-path"
           ],
           "description": "Filters request logs that directly match any Stripe path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--filter-request-status"
           ],
           "description": "Filters request logs by the response status",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true,
+            "suggestions": [
+              "SUCCEEDED",
+              "FAILED"
+            ]
+          }
         },
         {
           "names": [
             "--filter-source"
           ],
           "description": "Filters request logs by the source of each request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true,
+            "suggestions": [
+              "API",
+              "DASHBOARD"
+            ]
+          }
         },
         {
           "names": [
             "--filter-status-code"
           ],
           "description": "Filters request logs by HTTP status code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--filter-status-code-type"
           ],
           "description": "Filters request logs by the type of HTTP status code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "is_variadic": true,
+            "suggestions": [
+              "2XX",
+              "4XX",
+              "5XX"
+            ]
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "Specify the output format for request logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "JSON"
+            ]
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -321,7 +497,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -341,7 +526,14 @@
             "--format"
           ],
           "description": "Formats used to display status",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "default",
+              "JSON"
+            ]
+          }
         },
         {
           "names": [
@@ -360,7 +552,11 @@
             "--poll-rate"
           ],
           "description": "The number of seconds (min 5) to wait between status updates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds",
+            "description": "Min: 5, default: 60"
+          }
         },
         {
           "names": [
@@ -373,28 +569,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -408,7 +622,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -440,28 +663,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -475,7 +716,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -539,7 +789,12 @@
             "--connect-headers"
           ],
           "description": "A comma-separated list of custom HTTP headers to any connected accounts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "description": "Key1:Value1, Key2:Value2",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -547,7 +802,185 @@
             "--events"
           ],
           "description": "A comma-separated list of which events to listen for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "events types",
+            "is_variadic": true,
+            "suggestions": [
+              "account.updated",
+              "account.application.authorized",
+              "account.application.deauthorized",
+              "account.external_account.created",
+              "account.external_account.deleted",
+              "account.external_account.updated",
+              "application_fee.created",
+              "application_fee.refunded",
+              "application_fee.refund.updated",
+              "billing_portal.configuration.created",
+              "billing_portal.configuration.updated",
+              "capability.updated",
+              "charge.expired",
+              "charge.pending",
+              "charge.updated",
+              "charge.dispute.closed",
+              "charge.dispute.funds_reinstated",
+              "charge.dispute.funds_withdrawn",
+              "charge.dispute.updated",
+              "charge.refund.updated",
+              "checkout.session.async_payment_failed",
+              "checkout.session.async_payment_succeeded",
+              "coupon.created",
+              "coupon.deleted",
+              "coupon.updated",
+              "credit_note.created",
+              "credit_note.updated",
+              "credit_note.voided",
+              "customer.discount.created",
+              "customer.discount.deleted",
+              "customer.discount.updated",
+              "customer.source.deleted",
+              "customer.source.expiring",
+              "customer.subscription.pending_update_applied",
+              "customer.subscription.pending_update_expired",
+              "customer.subscription.trial_will_end",
+              "customer.tax_id.created",
+              "customer.tax_id.deleted",
+              "customer.tax_id.updated",
+              "file.created",
+              "identity.verification_session.canceled",
+              "identity.verification_session.created",
+              "identity.verification_session.processing",
+              "identity.verification_session.redacted",
+              "identity.verification_session.requires_input",
+              "identity.verification_session.verified",
+              "invoice.deleted",
+              "invoice.finalization_failed",
+              "invoice.marked_uncollectible",
+              "invoice.paid",
+              "invoice.payment_action_required",
+              "invoice.sent",
+              "invoice.upcoming",
+              "invoice.voided",
+              "invoiceitem.created",
+              "invoiceitem.deleted",
+              "invoiceitem.updated",
+              "issuing_authorization.created",
+              "issuing_authorization.updated",
+              "issuing_card.updated",
+              "issuing_cardholder.updated",
+              "issuing_dispute.closed",
+              "issuing_dispute.created",
+              "issuing_dispute.funds_reinstated",
+              "issuing_dispute.submitted",
+              "issuing_dispute.updated",
+              "issuing_transaction.created",
+              "issuing_transaction.updated",
+              "mandate.updated",
+              "order.created",
+              "order.payment_failed",
+              "order.payment_succeeded",
+              "order.updated",
+              "order_return.created",
+              "payment_intent.processing",
+              "payment_intent.requires_action",
+              "payment_method.automatically_updated",
+              "payment_method.detached",
+              "payment_method.updated",
+              "payout.canceled",
+              "payout.created",
+              "payout.failed",
+              "payout.paid",
+              "payout.updated",
+              "person.created",
+              "person.deleted",
+              "person.updated",
+              "plan.created",
+              "plan.deleted",
+              "plan.updated",
+              "price.created",
+              "price.deleted",
+              "price.updated",
+              "product.created",
+              "product.deleted",
+              "product.updated",
+              "promotion_code.created",
+              "promotion_code.updated",
+              "radar.early_fraud_warning.created",
+              "radar.early_fraud_warning.updated",
+              "recipient.created",
+              "recipient.deleted",
+              "recipient.updated",
+              "reporting.report_run.failed",
+              "reporting.report_run.succeeded",
+              "reporting.report_type.updated",
+              "review.closed",
+              "review.opened",
+              "setup_intent.requires_action",
+              "sigma.scheduled_query_run.created",
+              "sku.created",
+              "sku.deleted",
+              "sku.updated",
+              "source.canceled",
+              "source.chargeable",
+              "source.failed",
+              "source.mandate_notification",
+              "source.refund_attributes_required",
+              "source.transaction.created",
+              "source.transaction.updated",
+              "subscription_schedule.aborted",
+              "subscription_schedule.canceled",
+              "subscription_schedule.completed",
+              "subscription_schedule.created",
+              "subscription_schedule.expiring",
+              "subscription_schedule.released",
+              "subscription_schedule.updated",
+              "tax_rate.created",
+              "tax_rate.updated",
+              "topup.canceled",
+              "topup.created",
+              "topup.failed",
+              "topup.reversed",
+              "topup.succeeded",
+              "transfer.created",
+              "transfer.failed",
+              "transfer.paid",
+              "transfer.reversed",
+              "transfer.updated",
+              "balance.available",
+              "charge.captured",
+              "charge.dispute.created",
+              "charge.failed",
+              "charge.refunded",
+              "charge.succeeded",
+              "checkout.session.completed",
+              "customer.created",
+              "customer.deleted",
+              "customer.source.created",
+              "customer.source.updated",
+              "customer.subscription.created",
+              "customer.subscription.deleted",
+              "customer.subscription.updated",
+              "customer.updated",
+              "invoice.created",
+              "invoice.finalized",
+              "invoice.payment_failed",
+              "invoice.payment_succeeded",
+              "invoice.updated",
+              "issuing_authorization.request",
+              "issuing_card.created",
+              "issuing_cardholder.created",
+              "payment_intent.amount_capturable_updated",
+              "payment_intent.canceled",
+              "payment_intent.created",
+              "payment_intent.payment_failed",
+              "payment_intent.succeeded",
+              "payment_method.attached",
+              "setup_intent.canceled",
+              "setup_intent.created",
+              "setup_intent.setup_failed",
+              "setup_intent.succeeded"
+            ]
+          }
         },
         {
           "names": [
@@ -555,7 +988,10 @@
             "--forward-connect-to"
           ],
           "description": "The URL that Connect webhook events will be forwarded to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -563,7 +999,10 @@
             "--forward-to"
           ],
           "description": "The URL that webhook events will be forwarded to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -571,7 +1010,12 @@
             "--headers"
           ],
           "description": "A comma-separated list of custom HTTP headers to forward",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "description": "Key1:Value1, Key2:Value2",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -611,28 +1055,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -646,7 +1108,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -672,28 +1143,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -707,7 +1196,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -768,21 +1266,30 @@
             "--account"
           ],
           "description": "Resend the event to the given Stripe account",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "account id"
+          }
         },
         {
           "names": [
             "--param"
           ],
           "description": "Key-value data to send along with the API request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
             "-webhook-endpoint"
           ],
           "description": "Resends the event to the given webhook endpoint ID",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "endpoint id"
+          }
         },
         {
           "names": [
@@ -810,7 +1317,10 @@
             "--data"
           ],
           "description": "Additional data to send with an API request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -818,7 +1328,10 @@
             "--expand"
           ],
           "description": "Response attributes to expand inline",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -826,7 +1339,10 @@
             "--idempotency"
           ],
           "description": "Sets an idempotency key for the request, preventing the same request from replaying within 24 hours",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
@@ -839,7 +1355,10 @@
             "--stripe-account"
           ],
           "description": "Specify the Stripe account to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "account id"
+          }
         },
         {
           "names": [
@@ -847,35 +1366,56 @@
             "--stripe-version"
           ],
           "description": "Specify the Stripe API version to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -889,7 +1429,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -916,7 +1465,10 @@
             "--ending-before"
           ],
           "description": "Retrieves the previous page in the list",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "object id"
+          }
         },
         {
           "names": [
@@ -924,7 +1476,11 @@
             "--limit"
           ],
           "description": "Number of objects to return",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number",
+            "description": "Number between 1 - 100 (default)"
+          }
         },
         {
           "names": [
@@ -932,7 +1488,10 @@
             "--starting-after"
           ],
           "description": "Retrieves the next page in the list",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "object id"
+          }
         },
         {
           "names": [
@@ -960,7 +1519,10 @@
             "--data"
           ],
           "description": "Additional data to send with an API request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -968,7 +1530,10 @@
             "--expand"
           ],
           "description": "Response attributes to expand inline",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -976,7 +1541,10 @@
             "--idempotency"
           ],
           "description": "Sets an idempotency key for the request, preventing the same request from replaying within 24 hours",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
@@ -989,7 +1557,10 @@
             "--stripe-account"
           ],
           "description": "Specify the Stripe account to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "account id"
+          }
         },
         {
           "names": [
@@ -997,35 +1568,56 @@
             "--stripe-version"
           ],
           "description": "Specify the Stripe API version to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1039,7 +1631,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -1086,7 +1687,10 @@
             "--data"
           ],
           "description": "Additional data to send with an API request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -1094,7 +1698,10 @@
             "--expand"
           ],
           "description": "Response attributes to expand inline",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -1102,7 +1709,10 @@
             "--idempotency"
           ],
           "description": "Sets an idempotency key for the request, preventing the same request from replaying within 24 hours",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
@@ -1115,7 +1725,10 @@
             "--stripe-account"
           ],
           "description": "Specify the Stripe account to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "account id"
+          }
         },
         {
           "names": [
@@ -1123,35 +1736,56 @@
             "--stripe-version"
           ],
           "description": "Specify the Stripe API version to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1165,7 +1799,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -1212,7 +1855,10 @@
             "--data"
           ],
           "description": "Additional data to send with an API request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -1220,7 +1866,10 @@
             "--expand"
           ],
           "description": "Response attributes to expand inline",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
@@ -1228,7 +1877,10 @@
             "--idempotency"
           ],
           "description": "Sets an idempotency key for the request, preventing the same request from replaying within 24 hours",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
@@ -1241,7 +1893,10 @@
             "--stripe-account"
           ],
           "description": "Specify the Stripe account to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "account id"
+          }
         },
         {
           "names": [
@@ -1249,35 +1904,56 @@
             "--stripe-version"
           ],
           "description": "Specify the Stripe API version to use for this request",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1291,7 +1967,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -1326,28 +2011,46 @@
                 "--api-key"
               ],
               "description": "Sets your API key to use for the command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stripe api key"
+              }
             },
             {
               "names": [
                 "--color"
               ],
               "description": "Enables or disables color output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "setting",
+                "suggestions": [
+                  "on",
+                  "off",
+                  "auto"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Sets your config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config filepath",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--device-name"
               ],
               "description": "Runs command on behlaf of another device",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1361,7 +2064,16 @@
                 "--log-level"
               ],
               "description": "Set the level of detail for log messages",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "level",
+                "suggestions": [
+                  "info",
+                  "debug",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
@@ -1397,28 +2109,46 @@
                 "--api-key"
               ],
               "description": "Sets your API key to use for the command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stripe api key"
+              }
             },
             {
               "names": [
                 "--color"
               ],
               "description": "Enables or disables color output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "setting",
+                "suggestions": [
+                  "on",
+                  "off",
+                  "auto"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Sets your config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config filepath",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--device-name"
               ],
               "description": "Runs command on behlaf of another device",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1432,7 +2162,16 @@
                 "--log-level"
               ],
               "description": "Set the level of detail for log messages",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "level",
+                "suggestions": [
+                  "info",
+                  "debug",
+                  "warn",
+                  "error"
+                ]
+              }
             },
             {
               "names": [
@@ -1450,28 +2189,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1485,7 +2242,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -1505,35 +2271,56 @@
             "--port"
           ],
           "description": "Port the HTTP server should use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port number"
+          }
         },
         {
           "names": [
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1547,7 +2334,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -1572,7 +2368,10 @@
           "names": [
             "--api-key"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "api key"
+          }
         }
       ]
     },
@@ -1592,28 +2391,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1627,7 +2444,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -1647,28 +2473,46 @@
             "--api-key"
           ],
           "description": "Sets your API key to use for the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stripe api key"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Enables or disables color output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "setting",
+            "suggestions": [
+              "on",
+              "off",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Sets your config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--device-name"
           ],
           "description": "Runs command on behlaf of another device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -1682,7 +2526,16 @@
             "--log-level"
           ],
           "description": "Set the level of detail for log messages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "info",
+              "debug",
+              "warn",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -1718,28 +2571,46 @@
         "--api-key"
       ],
       "description": "Sets your API key to use for the command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "stripe api key"
+      }
     },
     {
       "names": [
         "--color"
       ],
       "description": "Enables or disables color output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "setting",
+        "suggestions": [
+          "on",
+          "off",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Sets your config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config filepath",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--device-name"
       ],
       "description": "Runs command on behlaf of another device",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -1753,7 +2624,16 @@
         "--log-level"
       ],
       "description": "Set the level of detail for log messages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "info",
+          "debug",
+          "warn",
+          "error"
+        ]
+      }
     },
     {
       "names": [

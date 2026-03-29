@@ -26,7 +26,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -57,7 +61,11 @@
             "--write"
           ],
           "description": "Also output the results to a file. This is useful with --watch if you want a file to always contain the latest results",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -145,7 +153,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -245,7 +257,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -271,7 +287,11 @@
             "--target"
           ],
           "description": "The main entry-point file of the application, as run on the device. If the --target option is omitted, but a file name is provided on the command line, then that is used instead. (defaults to \"lib/mai",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".dart file path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -296,14 +316,20 @@
             "--dart-define"
           ],
           "description": "Additional key-value pairs that will be available as constants from the String.fromEnvironment, bool.fromEnvironment, int.fromEnvironment, and double.fromEnvironment constructors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "foo=bar"
+          }
         },
         {
           "names": [
             "--device-user"
           ],
           "description": "Identifier number for a user or work profile on Android only. Run \"adb shell pm list users\" for available identifiers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
@@ -364,7 +390,10 @@
             "--device-timeout"
           ],
           "description": "Time in seconds to wait for devices to attach. Longer timeouts may be necessary for networked devices",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         }
       ]
     },
@@ -392,7 +421,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -437,7 +470,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -451,7 +488,10 @@
             "--target"
           ],
           "description": "The main entry-point file of the application, as run on the device.\n If the --target option is omitted, but a file name is provided on the command line, then that is used instead.\n(defaults to \"lib/ma",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         }
       ],
       "args": [
@@ -504,7 +544,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -538,7 +582,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -581,7 +629,11 @@
             "--build-dir"
           ],
           "description": "The relative path to override a projects build directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -723,7 +775,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -800,7 +856,13 @@
             "--ios-language"
           ],
           "description": "[objc, swift (default)]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "objc",
+              "swift (default)"
+            ]
+          }
         },
         {
           "names": [
@@ -808,14 +870,30 @@
             "--android-language"
           ],
           "description": "[java, kotlin (default)]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "java",
+              "kotlin (default)"
+            ]
+          }
         },
         {
           "names": [
             "--platforms"
           ],
           "description": "The platforms supported by this project. This argument only works when the --template is set to app or plugin. Platform folders (e.g. android/) will be generated in the target project. When adding pla",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "web",
+              "macos",
+              "linux",
+              "windows",
+              "android",
+              "ios"
+            ]
+          }
         },
         {
           "names": [
@@ -823,7 +901,16 @@
             "--template"
           ],
           "description": "Specify the type of project to create. [app] (default) Generate a Flutter application. [module] Generate a project to add a Flutter module to an existing Android or iOS application. [package]         ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "app (default)",
+              "module",
+              "package",
+              "plugin"
+            ]
+          }
         },
         {
           "names": [
@@ -831,14 +918,21 @@
             "--sample"
           ],
           "description": "Specifies the Flutter code sample to use as the main.dart for an application. Implies --template=app. The value should be the sample ID of the desired sample from the API documentation website (http:/",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
             "--list-samples"
           ],
           "description": "Specifies a JSON output file for a listing of Flutter code samples that can be created with --sample",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -866,7 +960,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -892,7 +990,10 @@
             "--device-timeout"
           ],
           "description": "Time in seconds to wait for devices to attach. Longer timeouts may be necessary for networked devices",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         }
       ]
     },
@@ -920,7 +1021,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -960,7 +1065,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -994,7 +1103,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1025,7 +1138,10 @@
             "--dart-define"
           ],
           "description": "Additional key-value pairs that will be available as constants from the String.fromEnvironment, bool.fromEnvironment, int.fromEnvironment, and double.fromEnvironment constructors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "foo=bar"
+          }
         },
         {
           "names": [
@@ -1080,14 +1196,22 @@
             "--vmservice-out-file"
           ],
           "description": "A file to write the attached vmservice uri to after an application is started. e.g. project/example/out.txt",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".txt output file path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--use-application-binary"
           ],
           "description": "Specify a pre-built application binary to use when running. For android applications, this must be the path to an APK. For iOS applications, the path to an IPA. Other device types do not yet support p",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path to .apk",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1120,7 +1244,11 @@
             "--target"
           ],
           "description": "The main entry-point file of the application, as run on the device. If the --target option is omitted, but a file name is provided on the command line, then that is used instead. (defaults to \"lib/mai",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".dart file path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1181,14 +1309,20 @@
             "--device-user"
           ],
           "description": "Identifier number for a user or work profile on Android only. Run \"adb shell pm list users\" for available identifiers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "--device-timeout"
           ],
           "description": "Time in seconds to wait for devices to attach. Longer timeouts may be necessary for networked devices",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
@@ -1218,14 +1352,20 @@
             "--use-existing-app"
           ],
           "description": "Connect to an already running instance via the given observatory URL. If this option is given, the application will not be automatically started, and it will only be stopped if --no-keep-app-running i",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL"
+          }
         },
         {
           "names": [
             "--driver"
           ],
           "description": "The test file to run on the host (as opposed to the target file to run on the device). By default, this file has the same base name as the target file, but in the \"test_driver/\" directory instead, and",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "driver"
+          }
         },
         {
           "names": [
@@ -1243,7 +1383,10 @@
             "--driver-port"
           ],
           "description": "The port where Webdriver server is launched at. Defaults to 4444",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port number"
+          }
         },
         {
           "names": [
@@ -1323,7 +1466,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1336,7 +1483,10 @@
             "--launch"
           ],
           "description": "The full or partial ID of the emulator to launch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "emulator id"
+          }
         },
         {
           "names": [
@@ -1376,7 +1526,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1437,7 +1591,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1486,7 +1644,10 @@
             "--preferred-supported-locales"
           ],
           "description": "The list of preferred supported locales for the application. By default, the tool will generate the supported locales list in alphabetical order. Use this flag if you would like to default to a differ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "locale"
+          }
         },
         {
           "names": [
@@ -1517,7 +1678,11 @@
             "--gen-inputs-and-outputs-list"
           ],
           "description": "When specified, the tool generates a JSON file containing the tool's inputs and outputs named gen_l10n_inputs_and_outputs.json. \n\nThis can be useful for keeping track of which files of the Flutter pro",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path to output directory",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1535,7 +1700,11 @@
             "--project-dir"
           ],
           "description": "When specified, the tool uses the path passed into this option as the directory of the root Flutter project. \n\nWhen null, the relative path to the present working directory will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "absolute path to flutter project",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1574,7 +1743,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1587,14 +1760,20 @@
             "--device-user"
           ],
           "description": "Identifier number for a user or work profile on Android only. Run \"adb shell pm list users\" for available identifiers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "--device-timeout"
           ],
           "description": "Time in seconds to wait for devices to attach. Longer timeouts may be necessary for networked devices",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         }
       ]
     },
@@ -1622,7 +1801,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1642,7 +1825,10 @@
             "--device-timeout"
           ],
           "description": "Time in seconds to wait for devices to attach. Longer timeouts may be necessary for networked devices",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         }
       ]
     },
@@ -1670,7 +1856,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1806,7 +1996,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -1837,7 +2031,10 @@
             "--dart-define"
           ],
           "description": "Additional key-value pairs that will be available as constants from the String.fromEnvironment, bool.fromEnvironment, int.fromEnvironment, and double.fromEnvironment constructors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "foo=bar"
+          }
         },
         {
           "names": [
@@ -1892,14 +2089,22 @@
             "--vmservice-out-file"
           ],
           "description": "A file to write the attached vmservice uri to after an application is started. e.g. project/example/out.txt",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".txt output file path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--use-application-binary"
           ],
           "description": "Specify a pre-built application binary to use when running. For android applications, this must be the path to an APK. For iOS applications, the path to an IPA. Other device types do not yet support p",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path to .apk",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1932,7 +2137,11 @@
             "--target"
           ],
           "description": "The main entry-point file of the application, as run on the device. If the --target option is omitted, but a file name is provided on the command line, then that is used instead. (defaults to \"lib/mai",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".dart file path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1993,14 +2202,20 @@
             "--device-user"
           ],
           "description": "Identifier number for a user or work profile on Android only. Run \"adb shell pm list users\" for available identifiers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
             "--device-timeout"
           ],
           "description": "Time in seconds to wait for devices to attach. Longer timeouts may be necessary for networked devices",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
@@ -2102,7 +2317,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -2116,28 +2335,46 @@
             "--out"
           ],
           "description": "Location to write the screenshot",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path to file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--observatory-uri"
           ],
           "description": "The observatory URI to connect to. This is required when --type is \"skia\" or \"rasterizer\". To find the observatory URI, use \"flutter run\" and look for \"An Observatory ... is available at\" in the outpu",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URI"
+          }
         },
         {
           "names": [
             "--type"
           ],
           "description": "The type of screenshot to retrieve. [device] (default)    Delegate to the device's native screenshot capabilities. This screenshots the entire screen currently being displayed (including content not r",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "device (default)",
+              "rasterizer",
+              "skia"
+            ]
+          }
         },
         {
           "names": [
             "--device-timeout"
           ],
           "description": "Time in seconds to wait for devices to attach. Longer timeouts may be necessary for networked devices",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         }
       ]
     },
@@ -2165,7 +2402,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -2179,7 +2420,11 @@
             "--debug-info"
           ],
           "description": "A path to the symbols file generated with \"--split-debug-info\". e.g. /out/android/app.arm64.symbols",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path of .symbols",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2187,14 +2432,23 @@
             "--input"
           ],
           "description": "A file path containing a Dart stack trace. e.g. /crashes/stack_trace.err",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "-o",
             "--output"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path",
+            "description": "A file path for a symbolized stack trace to be written to",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2222,7 +2476,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -2271,7 +2529,10 @@
             "--dart-define"
           ],
           "description": "Additional key-value pairs that will be available as constants from the String.fromEnvironment, bool.fromEnvironment, int.fromEnvironment, and double.fromEnvironment constructors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "foo=bar"
+          }
         },
         {
           "names": [
@@ -2284,14 +2545,20 @@
             "--name"
           ],
           "description": "A regular expression matching substrings of the names of tests to run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "regexp"
+          }
         },
         {
           "names": [
             "--plain-name"
           ],
           "description": "A plain-text substring of the names of tests to run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "substring"
+          }
         },
         {
           "names": [
@@ -2343,7 +2610,10 @@
             "--concurrency"
           ],
           "description": "The number of concurrent test processes to run. (defaults to \"6\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
@@ -2369,7 +2639,15 @@
             "--reporter"
           ],
           "description": "Set how to print test results.\n[compact] (default) A single line, updated continuously.\n[expanded] A separate line for each update.\n[json] A machine-readable format (see https://dart.dev/go/test-docs/",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reporter",
+            "suggestions": [
+              "compact (default)",
+              "expanded",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -2409,7 +2687,11 @@
             "--device-id"
           ],
           "description": "Target device id or name (prefixes allowed)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id",
+            "description": "Target device id or name (prefixes allowed)"
+          }
         },
         {
           "names": [
@@ -2454,7 +2736,11 @@
         "--device-id"
       ],
       "description": "Target device id or name (prefixes allowed)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "device id",
+        "description": "Target device id or name (prefixes allowed)"
+      }
     },
     {
       "names": [

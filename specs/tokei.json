@@ -73,7 +73,10 @@
         "--columns"
       ],
       "description": "Sets a strict column width of the output, only available for terminal output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "columns"
+      }
     },
     {
       "names": [
@@ -81,7 +84,11 @@
         "--exclude"
       ],
       "description": "Ignore all files & directories matching the pattern",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "exclude",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -89,7 +96,14 @@
         "--input"
       ],
       "description": "Gives statistics from a previous tokei run. Can be given a file path, or \"stdin\" to read from stdin",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "input",
+        "suggestions": [
+          "stdin"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -97,7 +111,15 @@
         "--output"
       ],
       "description": "Outputs Tokei in a specific format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "output",
+        "suggestions": [
+          "cbor",
+          "json",
+          "yaml"
+        ]
+      }
     },
     {
       "names": [
@@ -105,7 +127,17 @@
         "--sort"
       ],
       "description": "Sort languages based on column",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "sort",
+        "suggestions": [
+          "files",
+          "lines",
+          "blanks",
+          "code",
+          "comments"
+        ]
+      }
     },
     {
       "names": [
@@ -113,7 +145,10 @@
         "--type"
       ],
       "description": "Filters output by language type, seperated by a comma. i.e. -t=Rust,Markdown",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type"
+      }
     }
   ]
 }

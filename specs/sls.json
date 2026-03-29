@@ -14,14 +14,20 @@
                 "--app"
               ],
               "description": "Dashboard app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "app"
+              }
             },
             {
               "names": [
                 "--aws-profile"
               ],
               "description": "AWS profile to use with the command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile name"
+              }
             },
             {
               "names": [
@@ -29,7 +35,11 @@
                 "-c"
               ],
               "description": "Path to serverless config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": ".yml file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -37,7 +47,10 @@
                 "-f"
               ],
               "description": "Name of the function",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "function"
+              }
             },
             {
               "names": [
@@ -51,7 +64,10 @@
                 "--org"
               ],
               "description": "Dashboard org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "org"
+              }
             },
             {
               "names": [
@@ -59,7 +75,37 @@
                 "-r"
               ],
               "description": "Region of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region",
+                "suggestions": [
+                  "us-east-2",
+                  "us-east-1",
+                  "us-west-1",
+                  "us-west-2",
+                  "af-south-1",
+                  "ap-east-1",
+                  "ap-south-1",
+                  "ap-northeast-3",
+                  "ap-northeast-2",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1",
+                  "ca-central-1",
+                  "cn-north-1",
+                  "cn-northwest-1",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "eu-south-1",
+                  "eu-west-3",
+                  "eu-north-1",
+                  "me-south-1",
+                  "sa-east-1",
+                  "us-gov-east-1",
+                  "us-gov-west-1"
+                ]
+              }
             },
             {
               "names": [
@@ -67,7 +113,10 @@
                 "-s"
               ],
               "description": "Stage of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stage"
+              }
             },
             {
               "names": [
@@ -93,7 +142,10 @@
                 "-u"
               ],
               "description": "Updates function configuration, e.g. Timeout or Memory Size without deploying code",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             }
           ]
         },
@@ -109,28 +161,67 @@
                     "-r"
                   ],
                   "description": "Region of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "region",
+                    "suggestions": [
+                      "us-east-2",
+                      "us-east-1",
+                      "us-west-1",
+                      "us-west-2",
+                      "af-south-1",
+                      "ap-east-1",
+                      "ap-south-1",
+                      "ap-northeast-3",
+                      "ap-northeast-2",
+                      "ap-southeast-1",
+                      "ap-southeast-2",
+                      "ap-northeast-1",
+                      "ca-central-1",
+                      "cn-north-1",
+                      "cn-northwest-1",
+                      "eu-central-1",
+                      "eu-west-1",
+                      "eu-west-2",
+                      "eu-south-1",
+                      "eu-west-3",
+                      "eu-north-1",
+                      "me-south-1",
+                      "sa-east-1",
+                      "us-gov-east-1",
+                      "us-gov-west-1"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--aws-profile"
                   ],
                   "description": "AWS profile to use with the command",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "profile name"
+                  }
                 },
                 {
                   "names": [
                     "--app"
                   ],
                   "description": "Dashboard app",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "app"
+                  }
                 },
                 {
                   "names": [
                     "--org"
                   ],
                   "description": "Dashboard org",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "org"
+                  }
                 },
                 {
                   "names": [
@@ -144,7 +235,11 @@
                     "-c"
                   ],
                   "description": "Path to serverless config file",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": ".yml file",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -152,7 +247,10 @@
                     "-s"
                   ],
                   "description": "Stage of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "stage"
+                  }
                 },
                 {
                   "names": [
@@ -177,28 +275,67 @@
                 "-r"
               ],
               "description": "Region of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region",
+                "suggestions": [
+                  "us-east-2",
+                  "us-east-1",
+                  "us-west-1",
+                  "us-west-2",
+                  "af-south-1",
+                  "ap-east-1",
+                  "ap-south-1",
+                  "ap-northeast-3",
+                  "ap-northeast-2",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1",
+                  "ca-central-1",
+                  "cn-north-1",
+                  "cn-northwest-1",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "eu-south-1",
+                  "eu-west-3",
+                  "eu-north-1",
+                  "me-south-1",
+                  "sa-east-1",
+                  "us-gov-east-1",
+                  "us-gov-west-1"
+                ]
+              }
             },
             {
               "names": [
                 "--aws-profile"
               ],
               "description": "AWS profile to use with the command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile name"
+              }
             },
             {
               "names": [
                 "--app"
               ],
               "description": "Dashboard app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "app"
+              }
             },
             {
               "names": [
                 "--org"
               ],
               "description": "Dashboard org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "org"
+              }
             },
             {
               "names": [
@@ -212,7 +349,11 @@
                 "-c"
               ],
               "description": "Path to serverless config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": ".yml file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -220,7 +361,10 @@
                 "-s"
               ],
               "description": "Stage of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stage"
+              }
             },
             {
               "names": [
@@ -251,7 +395,11 @@
             "-p"
           ],
           "description": "Path of the deployment package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -259,7 +407,10 @@
             "-v"
           ],
           "description": "Show all stack events during deployment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "production"
+          }
         },
         {
           "names": [
@@ -273,7 +424,10 @@
             "-f"
           ],
           "description": "Name of the function",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "function"
+          }
         },
         {
           "names": [
@@ -287,28 +441,67 @@
             "-r"
           ],
           "description": "Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region",
+            "suggestions": [
+              "us-east-2",
+              "us-east-1",
+              "us-west-1",
+              "us-west-2",
+              "af-south-1",
+              "ap-east-1",
+              "ap-south-1",
+              "ap-northeast-3",
+              "ap-northeast-2",
+              "ap-southeast-1",
+              "ap-southeast-2",
+              "ap-northeast-1",
+              "ca-central-1",
+              "cn-north-1",
+              "cn-northwest-1",
+              "eu-central-1",
+              "eu-west-1",
+              "eu-west-2",
+              "eu-south-1",
+              "eu-west-3",
+              "eu-north-1",
+              "me-south-1",
+              "sa-east-1",
+              "us-gov-east-1",
+              "us-gov-west-1"
+            ]
+          }
         },
         {
           "names": [
             "--aws-profile"
           ],
           "description": "AWS profile to use with the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name"
+          }
         },
         {
           "names": [
             "--app"
           ],
           "description": "Dashboard app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app"
+          }
         },
         {
           "names": [
             "--org"
           ],
           "description": "Dashboard org",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "org"
+          }
         },
         {
           "names": [
@@ -322,7 +515,11 @@
             "-c"
           ],
           "description": "Path to serverless config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".yml file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -330,7 +527,10 @@
             "-s"
           ],
           "description": "Stage of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stage"
+          }
         },
         {
           "names": [
@@ -363,28 +563,67 @@
             "-r"
           ],
           "description": "Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region",
+            "suggestions": [
+              "us-east-2",
+              "us-east-1",
+              "us-west-1",
+              "us-west-2",
+              "af-south-1",
+              "ap-east-1",
+              "ap-south-1",
+              "ap-northeast-3",
+              "ap-northeast-2",
+              "ap-southeast-1",
+              "ap-southeast-2",
+              "ap-northeast-1",
+              "ca-central-1",
+              "cn-north-1",
+              "cn-northwest-1",
+              "eu-central-1",
+              "eu-west-1",
+              "eu-west-2",
+              "eu-south-1",
+              "eu-west-3",
+              "eu-north-1",
+              "me-south-1",
+              "sa-east-1",
+              "us-gov-east-1",
+              "us-gov-west-1"
+            ]
+          }
         },
         {
           "names": [
             "--aws-profile"
           ],
           "description": "AWS profile to use with the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name"
+          }
         },
         {
           "names": [
             "--app"
           ],
           "description": "Dashboard app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app"
+          }
         },
         {
           "names": [
             "--org"
           ],
           "description": "Dashboard org",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "org"
+          }
         },
         {
           "names": [
@@ -398,7 +637,11 @@
             "-c"
           ],
           "description": "Path to serverless config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".yml file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -406,7 +649,10 @@
             "-s"
           ],
           "description": "Stage of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stage"
+          }
         },
         {
           "names": [
@@ -437,6 +683,9 @@
               ],
               "description": "Name of the function",
               "takes_arg": true,
+              "arg": {
+                "name": "function"
+              },
               "is_required": true
             },
             {
@@ -445,7 +694,11 @@
                 "-p"
               ],
               "description": "Path to JSON or YAML file holding input data",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -453,7 +706,10 @@
                 "-d"
               ],
               "description": "Input data",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "input"
+              }
             },
             {
               "names": [
@@ -466,14 +722,21 @@
                 "--context"
               ],
               "description": "Context of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "package"
+              }
             },
             {
               "names": [
                 "--contextPath"
               ],
               "description": "Path to JSON or YAML file holding context data",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -481,7 +744,10 @@
                 "-e"
               ],
               "description": "Override environment variables. e.g. --env VAR1=val1 --env VAR2=val2",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "--env VAR1=val1 --env VAR2=val2"
+              }
             },
             {
               "names": [
@@ -489,28 +755,67 @@
                 "-r"
               ],
               "description": "Region of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region",
+                "suggestions": [
+                  "us-east-2",
+                  "us-east-1",
+                  "us-west-1",
+                  "us-west-2",
+                  "af-south-1",
+                  "ap-east-1",
+                  "ap-south-1",
+                  "ap-northeast-3",
+                  "ap-northeast-2",
+                  "ap-southeast-1",
+                  "ap-southeast-2",
+                  "ap-northeast-1",
+                  "ca-central-1",
+                  "cn-north-1",
+                  "cn-northwest-1",
+                  "eu-central-1",
+                  "eu-west-1",
+                  "eu-west-2",
+                  "eu-south-1",
+                  "eu-west-3",
+                  "eu-north-1",
+                  "me-south-1",
+                  "sa-east-1",
+                  "us-gov-east-1",
+                  "us-gov-west-1"
+                ]
+              }
             },
             {
               "names": [
                 "--aws-profile"
               ],
               "description": "AWS profile to use with the command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile name"
+              }
             },
             {
               "names": [
                 "--app"
               ],
               "description": "Dashboard app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "app"
+              }
             },
             {
               "names": [
                 "--org"
               ],
               "description": "Dashboard org",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "org"
+              }
             },
             {
               "names": [
@@ -524,7 +829,11 @@
                 "-c"
               ],
               "description": "Path to serverless config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": ".yml file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -532,7 +841,10 @@
                 "-s"
               ],
               "description": "Stage of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stage"
+              }
             },
             {
               "names": [
@@ -558,6 +870,9 @@
           ],
           "description": "Name of the function",
           "takes_arg": true,
+          "arg": {
+            "name": "function"
+          },
           "is_required": true
         },
         {
@@ -566,7 +881,11 @@
             "-p"
           ],
           "description": "Path to JSON or YAML file holding input data",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -574,7 +893,10 @@
             "-d"
           ],
           "description": "Input data",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "input"
+          }
         },
         {
           "names": [
@@ -587,14 +909,21 @@
             "--context"
           ],
           "description": "Context of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package"
+          }
         },
         {
           "names": [
             "--contextPath"
           ],
           "description": "Path to JSON or YAML file holding context data",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -602,28 +931,67 @@
             "-r"
           ],
           "description": "Region of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "region",
+            "suggestions": [
+              "us-east-2",
+              "us-east-1",
+              "us-west-1",
+              "us-west-2",
+              "af-south-1",
+              "ap-east-1",
+              "ap-south-1",
+              "ap-northeast-3",
+              "ap-northeast-2",
+              "ap-southeast-1",
+              "ap-southeast-2",
+              "ap-northeast-1",
+              "ca-central-1",
+              "cn-north-1",
+              "cn-northwest-1",
+              "eu-central-1",
+              "eu-west-1",
+              "eu-west-2",
+              "eu-south-1",
+              "eu-west-3",
+              "eu-north-1",
+              "me-south-1",
+              "sa-east-1",
+              "us-gov-east-1",
+              "us-gov-west-1"
+            ]
+          }
         },
         {
           "names": [
             "--aws-profile"
           ],
           "description": "AWS profile to use with the command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile name"
+          }
         },
         {
           "names": [
             "--app"
           ],
           "description": "Dashboard app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app"
+          }
         },
         {
           "names": [
             "--org"
           ],
           "description": "Dashboard org",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "org"
+          }
         },
         {
           "names": [
@@ -637,7 +1005,11 @@
             "-c"
           ],
           "description": "Path to serverless config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": ".yml file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -645,7 +1017,10 @@
             "-s"
           ],
           "description": "Stage of the service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stage"
+          }
         },
         {
           "names": [

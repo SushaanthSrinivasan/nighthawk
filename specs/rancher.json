@@ -33,7 +33,10 @@
                 "-a"
               ],
               "description": "Path to an answers file, the format of the file is a map with key:value. This supports JSON and YAML",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "answers-file-path"
+              }
             },
             {
               "names": [
@@ -41,7 +44,11 @@
                 "-v"
               ],
               "description": "Path to a helm values file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "values-file-path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -49,28 +56,40 @@
                 "-n"
               ],
               "description": "Namespace to install the app into",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "namespace"
+              }
             },
             {
               "names": [
                 "--set"
               ],
               "description": "Set answers for the template, can be used multiple times. Example: --set foo=bar",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key=value"
+              }
             },
             {
               "names": [
                 "--set-string"
               ],
               "description": "Set string answers for the template (Skips Helm's type conversion), can be used multiple times. Example: --set-string foo=bar",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key=value"
+              }
             },
             {
               "names": [
                 "--version"
               ],
               "description": "Version of the template to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             },
             {
               "names": [
@@ -83,7 +102,10 @@
                 "--helm-timeout"
               ],
               "description": "Amount of time for helm to wait for k8s commands (default is 300 secs). Example: --helm-timeout 600 (default: 300)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
@@ -154,7 +176,14 @@
             "-o"
           ],
           "description": "Output format: 'json', 'yaml' or custom format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -186,7 +215,14 @@
                 "-o"
               ],
               "description": "Output format: 'json', 'yaml' or custom format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -219,14 +255,20 @@
                 "--branch"
               ],
               "description": "Branch from the url to use (default: 'master')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch name"
+              }
             },
             {
               "names": [
                 "--helm-version"
               ],
               "description": "Version of helm the app(s) in your catalog will use for deployment. Use 'v2' for helm 2 or 'v3' for helm 3 (default: 'v2')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ],
           "args": [
@@ -277,7 +319,11 @@
             "--token"
           ],
           "description": "API Bearer Token to authenticate Rancher CLI to your Rancher server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BEARER_TOKEN",
+            "description": "The bearer token you want to use"
+          }
         }
       ],
       "args": [
@@ -391,7 +437,14 @@
                 "-o"
               ],
               "description": "Output format: 'json', 'yaml' or custom format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -464,7 +517,12 @@
         "-c"
       ],
       "description": "Path to rancher config (default: `$home/.rancher`) [$RANCHER_CONFIG_DIR]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RANCHER_CONFIG_PATH",
+        "description": "The path to the rancher config",
+        "template": "folders"
+      }
     },
     {
       "names": [

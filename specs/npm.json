@@ -93,21 +93,35 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--verbose"
           ],
           "description": "Show extra information",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "verbose"
+          }
         },
         {
           "names": [
             "--omit"
           ],
           "description": "Dependency types to omit from the installation tree on disk",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Package type",
+            "suggestions": [
+              "dev",
+              "optional",
+              "peer"
+            ]
+          }
         },
         {
           "names": [
@@ -145,7 +159,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -175,7 +193,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -206,13 +228,20 @@
             "--script-shell"
           ],
           "description": "The shell to use for scripts run with the npm exec, npm run and npm init <pkg> commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script-shell"
+          }
         },
         {
           "names": [
             "--"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "is_variadic": true
+          }
         }
       ],
       "args": [
@@ -238,7 +267,10 @@
             "-w"
           ],
           "description": "Create the folders and boilerplate expected while also adding a reference to your project workspaces property",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir"
+          }
         }
       ]
     },
@@ -258,14 +290,21 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--scope"
           ],
           "description": "Associate an operation with a scope for a scoped registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "scope",
+            "description": "Scope name"
+          }
         }
       ]
     },
@@ -296,7 +335,11 @@
                 "--workspace"
               ],
               "description": "Enable running a command in the context of the configured workspaces of the current project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "workspace",
+                "is_variadic": true
+              }
             },
             {
               "names": [
@@ -315,7 +358,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -329,7 +376,18 @@
             "--audit-level"
           ],
           "description": "The minimum level of vulnerability for npm audit to exit with a non-zero exit code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "audit",
+            "suggestions": [
+              "info",
+              "low",
+              "moderate",
+              "high",
+              "critical",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -348,7 +406,15 @@
             "--omit"
           ],
           "description": "Dependency types to omit from the installation tree on disk",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Package type",
+            "suggestions": [
+              "dev",
+              "optional",
+              "peer"
+            ]
+          }
         }
       ]
     },
@@ -383,14 +449,20 @@
             "--browser"
           ],
           "description": "The browser that is called by the npm bugs command to open websites",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "browser"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         }
       ],
       "args": [
@@ -423,7 +495,10 @@
             "--cache"
           ],
           "description": "The location of npm's cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cache"
+          }
         }
       ]
     },
@@ -440,7 +515,14 @@
             "--audit"
           ],
           "description": "When \"true\" submit audit reports alongside the current npm command to the default registry and all registries configured for scopes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "audit",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -459,21 +541,30 @@
             "--script-shell"
           ],
           "description": "The shell to use for scripts run with the npm exec, npm run and npm init <pkg> commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script-shell"
+          }
         },
         {
           "names": [
             "--verbose"
           ],
           "description": "Show extra information",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "verbose"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         }
       ]
     },
@@ -593,7 +684,10 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         }
       ]
     },
@@ -614,7 +708,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -628,7 +726,10 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
@@ -641,7 +742,10 @@
             "--browser"
           ],
           "description": "The browser that is called by the npm docs command to open websites",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "browser"
+          }
         }
       ],
       "args": [
@@ -660,7 +764,10 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         }
       ]
     },
@@ -702,7 +809,10 @@
             "--viewer"
           ],
           "description": "The program to use to view help content",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "viewer"
+          }
         }
       ],
       "args": [
@@ -771,14 +881,21 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--scope"
           ],
           "description": "Associate an operation with a scope for a scoped registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "scope",
+            "description": "Scope name"
+          }
         }
       ]
     },
@@ -821,7 +938,10 @@
             "--depth"
           ],
           "description": "The depth to go when recursing packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
@@ -853,7 +973,15 @@
             "--omit"
           ],
           "description": "Dependency types to omit from the installation tree on disk",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Package type",
+            "suggestions": [
+              "dev",
+              "optional",
+              "peer"
+            ]
+          }
         },
         {
           "names": [
@@ -861,7 +989,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -891,14 +1023,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -929,14 +1067,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -959,14 +1103,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             },
             {
               "names": [
@@ -1038,7 +1188,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1071,7 +1225,10 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             }
           ],
           "args": [
@@ -1089,14 +1246,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -1117,14 +1280,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -1160,7 +1329,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1174,7 +1347,11 @@
             "--pack-destination"
           ],
           "description": "Directory in which npm pack will save tarballs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pack-destination",
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -1192,7 +1369,10 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         }
       ]
     },
@@ -1216,7 +1396,11 @@
                 "--workspace"
               ],
               "description": "Enable running a command in the context of the configured workspaces of the current project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "workspace",
+                "is_variadic": true
+              }
             },
             {
               "names": [
@@ -1250,7 +1434,11 @@
                 "--workspace"
               ],
               "description": "Enable running a command in the context of the configured workspaces of the current project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "workspace",
+                "is_variadic": true
+              }
             },
             {
               "names": [
@@ -1285,7 +1473,11 @@
                 "--workspace"
               ],
               "description": "Enable running a command in the context of the configured workspaces of the current project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "workspace",
+                "is_variadic": true
+              }
             },
             {
               "names": [
@@ -1338,7 +1530,10 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
@@ -1358,7 +1553,10 @@
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -1383,7 +1581,10 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
@@ -1403,7 +1604,10 @@
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -1434,14 +1638,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -1464,14 +1674,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ]
         }
@@ -1486,7 +1702,15 @@
             "--omit"
           ],
           "description": "Dependency types to omit from the installation tree on disk",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Package type",
+            "suggestions": [
+              "dev",
+              "optional",
+              "peer"
+            ]
+          }
         },
         {
           "names": [
@@ -1512,7 +1736,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1537,7 +1765,10 @@
             "--tag"
           ],
           "description": "Registers the published package with the given tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag"
+          }
         },
         {
           "names": [
@@ -1545,7 +1776,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1559,7 +1794,13 @@
             "--access"
           ],
           "description": "Sets scoped package to be publicly viewable if set to 'public'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "restricted",
+              "public"
+            ]
+          }
         },
         {
           "names": [
@@ -1572,7 +1813,10 @@
             "--otp"
           ],
           "description": "One-time password from a two-factor authenticator",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otp"
+          }
         }
       ],
       "args": [
@@ -1603,7 +1847,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1641,7 +1889,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1661,7 +1913,10 @@
             "--browser"
           ],
           "description": "The browser that is called by the npm repo command to open websites",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "browser"
+          }
         }
       ],
       "args": [
@@ -1686,13 +1941,20 @@
             "--script-shell"
           ],
           "description": "The shell to use for scripts run with the npm exec, npm run and npm init <pkg> commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script-shell"
+          }
         },
         {
           "names": [
             "--"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arg",
+            "description": "Arguments to be passed to the restart script"
+          }
         }
       ]
     },
@@ -1736,7 +1998,14 @@
             "--color"
           ],
           "description": "Show colors",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "always",
+            "description": "Always show colors",
+            "suggestions": [
+              "always"
+            ]
+          }
         },
         {
           "names": [
@@ -1762,21 +2031,30 @@
             "--searchopts"
           ],
           "description": "Space-separated options that are always passed to search",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "searchopts"
+          }
         },
         {
           "names": [
             "--searchexclude"
           ],
           "description": "Space-separated options that limit the results from search",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "searchexclude"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
@@ -1818,7 +2096,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1852,7 +2134,10 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
@@ -1877,7 +2162,10 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         }
       ],
       "args": [
@@ -1902,13 +2190,20 @@
             "--script-shell"
           ],
           "description": "The shell to use for scripts run with the npm exec, npm run and npm init <pkg> commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script-shell"
+          }
         },
         {
           "names": [
             "--"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arg",
+            "description": "Arguments to be passed to the start script"
+          }
         }
       ]
     },
@@ -1927,13 +2222,20 @@
             "--script-shell"
           ],
           "description": "The shell to use for scripts run with the npm exec, npm run and npm init <pkg> commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script-shell"
+          }
         },
         {
           "names": [
             "--"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arg",
+            "description": "Arguments to be passed to the stop script"
+          }
         }
       ]
     },
@@ -1949,14 +2251,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -1973,14 +2281,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -1997,14 +2311,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -2024,14 +2344,20 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
                 "--otp"
               ],
               "description": "One-time password from a two-factor authenticator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "otp"
+              }
             }
           ],
           "args": [
@@ -2051,7 +2377,10 @@
                 "--registry"
               ],
               "description": "The base URL of the npm registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "registry"
+              }
             },
             {
               "names": [
@@ -2094,7 +2423,10 @@
             "--script-shell"
           ],
           "description": "The shell to use for scripts run with the npm exec, npm run and npm init <pkg> commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script-shell"
+          }
         }
       ]
     },
@@ -2136,7 +2468,10 @@
                 "--cidr"
               ],
               "description": "This is a list of CIDR address to be used when configuring limited access tokens with the npm token create command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cidr"
+              }
             }
           ]
         },
@@ -2156,14 +2491,20 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--otp"
           ],
           "description": "One-time password from a two-factor authenticator",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otp"
+          }
         }
       ]
     },
@@ -2210,7 +2551,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2273,7 +2618,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2333,7 +2682,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2393,7 +2746,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2453,7 +2810,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2493,7 +2854,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2518,14 +2883,20 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--otp"
           ],
           "description": "One-time password from a two-factor authenticator",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "otp"
+          }
         },
         {
           "names": [
@@ -2584,7 +2955,15 @@
             "--omit"
           ],
           "description": "Dependency types to omit from the installation tree on disk",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Package type",
+            "suggestions": [
+              "dev",
+              "optional",
+              "peer"
+            ]
+          }
         },
         {
           "names": [
@@ -2628,7 +3007,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2649,7 +3032,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2687,7 +3074,10 @@
             "--preid"
           ],
           "description": "The \"prerelease identifier\" to use as a prefix for the \"prerelease\" part of a semver. Like the rc in 1.2.0-rc.8",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prerelease-id"
+          }
         },
         {
           "names": [
@@ -2712,7 +3102,11 @@
             "--workspace"
           ],
           "description": "Enable running a command in the context of the configured workspaces of the current project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2738,7 +3132,10 @@
             "--registry"
           ],
           "description": "The base URL of the npm registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         }
       ]
     }

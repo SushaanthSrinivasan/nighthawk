@@ -122,7 +122,63 @@
             "--limit"
           ],
           "description": "The number of items to fetch each query. Defaults to 50 and is capped at 100",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Limit",
+            "suggestions": [
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56",
+              "57",
+              "58",
+              "59",
+              "60",
+              "61",
+              "62",
+              "63",
+              "64",
+              "65",
+              "66",
+              "67",
+              "68",
+              "69",
+              "70",
+              "71",
+              "72",
+              "73",
+              "74",
+              "75",
+              "76",
+              "77",
+              "78",
+              "79",
+              "80",
+              "81",
+              "82",
+              "83",
+              "84",
+              "85",
+              "86",
+              "87",
+              "88",
+              "89",
+              "90",
+              "91",
+              "92",
+              "93",
+              "94",
+              "95",
+              "96",
+              "97",
+              "98",
+              "99",
+              "100"
+            ]
+          }
         },
         {
           "names": [
@@ -135,7 +191,10 @@
             "--offset"
           ],
           "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Offset"
+          }
         }
       ]
     },
@@ -148,7 +207,10 @@
             "--from"
           ],
           "description": "Current name of the branch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -167,7 +229,10 @@
             "--to"
           ],
           "description": "New name of the branch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ]
     },
@@ -186,7 +251,38 @@
             "--limit"
           ],
           "description": "The number of items to fetch each query. Defaults to 25 and is capped at 50",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Limit",
+            "suggestions": [
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "32",
+              "33",
+              "34",
+              "35",
+              "36",
+              "37",
+              "38",
+              "39",
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50"
+            ]
+          }
         },
         {
           "names": [
@@ -199,7 +295,10 @@
             "--offset"
           ],
           "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Offset"
+          }
         }
       ],
       "args": [
@@ -219,7 +318,10 @@
             "--profile"
           ],
           "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile Name"
+          }
         },
         {
           "names": [
@@ -227,14 +329,25 @@
             "--message"
           ],
           "description": "A short message describing the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "-p",
             "--platform"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios",
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -247,7 +360,10 @@
             "--auto-submit-with-profile"
           ],
           "description": "Submit on build complete using the submit profile with provided name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile Name"
+          }
         },
         {
           "names": [
@@ -278,7 +394,10 @@
             "--output"
           ],
           "description": "Output path for local build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -321,7 +440,15 @@
             "--platform"
           ],
           "description": "Platform to configure",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios",
+              "all"
+            ]
+          }
         }
       ]
     },
@@ -335,7 +462,10 @@
             "--profile"
           ],
           "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile Name"
+          }
         },
         {
           "names": [
@@ -344,6 +474,9 @@
           ],
           "description": "(required) Output directory",
           "takes_arg": true,
+          "arg": {
+            "name": "Output directory"
+          },
           "is_required": true
         },
         {
@@ -353,6 +486,13 @@
           ],
           "description": "(required)",
           "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios"
+            ]
+          },
           "is_required": true
         },
         {
@@ -362,6 +502,14 @@
           ],
           "description": "(required) Stage of the build you want to inspect.\narchive - builds the project archive that would be uploaded to EAS when building\npre-build - prepares the project to be built with Gradle/Xcode. Does",
           "takes_arg": true,
+          "arg": {
+            "name": "Build Stage",
+            "suggestions": [
+              "archive",
+              "pre-build",
+              "post-build"
+            ]
+          },
           "is_required": true
         },
         {
@@ -386,37 +534,60 @@
           "names": [
             "--appBuildVersion"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--appIdentifier"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--appVersion"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--buildProfile"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--channel"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--distribution"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Distribution",
+            "suggestions": [
+              "store",
+              "internal",
+              "simulator"
+            ]
+          }
         },
         {
           "names": [
@@ -429,7 +600,53 @@
             "--limit"
           ],
           "description": "The number of items to fetch each query. Defaults to 10 and is capped at 50",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Limit",
+            "suggestions": [
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "32",
+              "33",
+              "34",
+              "35",
+              "36",
+              "37",
+              "38",
+              "39",
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50"
+            ]
+          }
         },
         {
           "names": [
@@ -442,31 +659,59 @@
             "--offset"
           ],
           "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Offset"
+          }
         },
         {
           "names": [
             "--platform"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "all",
+              "android",
+              "ios"
+            ]
+          }
         },
         {
           "names": [
             "--runtimeVersion"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--sdkVersion"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--status"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Status",
+            "suggestions": [
+              "new",
+              "in-queue",
+              "in-progress",
+              "errored",
+              "finished",
+              "canceled"
+            ]
+          }
         }
       ]
     },
@@ -483,21 +728,35 @@
             "--profile"
           ],
           "description": "Name of the submit profile from eas.json. Defaults to \"production\" if defined in eas.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "-p",
             "--platform"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios",
+              "all"
+            ]
+          }
         },
         {
           "names": [
             "--id"
           ],
           "description": "ID of the build to submit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -516,14 +775,20 @@
             "--path"
           ],
           "description": "Path to the .apk/.aab/.ipa file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "App archive url",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -555,14 +820,24 @@
             "--profile"
           ],
           "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile Name"
+          }
         },
         {
           "names": [
             "-p",
             "--platform"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios"
+            ]
+          }
         }
       ]
     },
@@ -576,14 +851,25 @@
             "--profile"
           ],
           "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile Name"
+          }
         },
         {
           "names": [
             "-p",
             "--platform"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios",
+              "all"
+            ]
+          }
         }
       ]
     },
@@ -637,7 +923,10 @@
             "--branch"
           ],
           "description": "Name of the branch to point to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -674,7 +963,28 @@
             "--limit"
           ],
           "description": "The number of items to fetch each query. Defaults to 10 and is capped at 25",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Limit",
+            "suggestions": [
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25"
+            ]
+          }
         },
         {
           "names": [
@@ -687,7 +997,10 @@
             "--offset"
           ],
           "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ]
     },
@@ -706,7 +1019,63 @@
             "--limit"
           ],
           "description": "The number of items to fetch each query. Defaults to 50 and is capped at 100",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Limit",
+            "suggestions": [
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56",
+              "57",
+              "58",
+              "59",
+              "60",
+              "61",
+              "62",
+              "63",
+              "64",
+              "65",
+              "66",
+              "67",
+              "68",
+              "69",
+              "70",
+              "71",
+              "72",
+              "73",
+              "74",
+              "75",
+              "76",
+              "77",
+              "78",
+              "79",
+              "80",
+              "81",
+              "82",
+              "83",
+              "84",
+              "85",
+              "86",
+              "87",
+              "88",
+              "89",
+              "90",
+              "91",
+              "92",
+              "93",
+              "94",
+              "95",
+              "96",
+              "97",
+              "98",
+              "99",
+              "100"
+            ]
+          }
         },
         {
           "names": [
@@ -719,7 +1088,10 @@
             "--offset"
           ],
           "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ],
       "args": [
@@ -739,14 +1111,24 @@
             "--profile"
           ],
           "description": "Name of the build profile from eas.json. Defaults to \"production\" if defined in eas.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile Name"
+          }
         },
         {
           "names": [
             "-p",
             "--platform"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios"
+            ]
+          }
         }
       ]
     },
@@ -759,7 +1141,14 @@
             "-p",
             "--platform"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios"
+            ]
+          }
         }
       ]
     },
@@ -776,7 +1165,10 @@
             "--apple-team-id"
           ],
           "description": "The Apple team ID on which to find the device",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -795,7 +1187,10 @@
             "--udid"
           ],
           "description": "The Apple device ID to disable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ]
     },
@@ -807,7 +1202,10 @@
           "names": [
             "--apple-team-id"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -820,7 +1218,63 @@
             "--limit"
           ],
           "description": "The number of items to fetch each query. Defaults to 50 and is capped at 100",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Limit",
+            "suggestions": [
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56",
+              "57",
+              "58",
+              "59",
+              "60",
+              "61",
+              "62",
+              "63",
+              "64",
+              "65",
+              "66",
+              "67",
+              "68",
+              "69",
+              "70",
+              "71",
+              "72",
+              "73",
+              "74",
+              "75",
+              "76",
+              "77",
+              "78",
+              "79",
+              "80",
+              "81",
+              "82",
+              "83",
+              "84",
+              "85",
+              "86",
+              "87",
+              "88",
+              "89",
+              "90",
+              "91",
+              "92",
+              "93",
+              "94",
+              "95",
+              "96",
+              "97",
+              "98",
+              "99",
+              "100"
+            ]
+          }
         },
         {
           "names": [
@@ -833,7 +1287,10 @@
             "--offset"
           ],
           "description": "Start queries from specified index. Use for paginating results. Defaults to 0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Offset"
+          }
         }
       ]
     },
@@ -879,7 +1336,10 @@
             "--profile"
           ],
           "description": "Name of the submit profile from eas.json. Defaults to \"production\" if defined in eas.json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ]
     },
@@ -922,7 +1382,10 @@
             "--id"
           ],
           "description": "ID of the EAS project to link",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -947,7 +1410,10 @@
             "--name"
           ],
           "description": "Name of the secret",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -960,21 +1426,38 @@
             "--scope"
           ],
           "description": "[default: project] Scope for the secret",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Scope",
+            "suggestions": [
+              "account",
+              "project"
+            ]
+          }
         },
         {
           "names": [
             "--type"
           ],
           "description": "The type of secret",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Type",
+            "suggestions": [
+              "string",
+              "file"
+            ]
+          }
         },
         {
           "names": [
             "--value"
           ],
           "description": "Text value or path to a file to store in the secret",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ]
     },
@@ -987,7 +1470,10 @@
             "--id"
           ],
           "description": "ID of the secret to delete",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -1011,7 +1497,15 @@
             "--platform"
           ],
           "description": "[default: all]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios",
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -1024,21 +1518,30 @@
             "--branch"
           ],
           "description": "Branch to publish the update group on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--group"
           ],
           "description": "Update group to republish",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--input-dir"
           ],
           "description": "[default: dist] Location of the bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -1051,7 +1554,10 @@
             "--message"
           ],
           "description": "A short message describing the update",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -1064,7 +1570,10 @@
             "--private-key-path"
           ],
           "description": "File containing the PEM-encoded private key corresponding to the certificate in\nexpo-updates' configuration. Defaults to a file named \"private-key.pem\" in the\ncertificate's directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -1090,7 +1599,15 @@
             "--platform"
           ],
           "description": "[default: all] Platform to configure",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Platform",
+            "suggestions": [
+              "android",
+              "ios",
+              "all"
+            ]
+          }
         }
       ]
     },
@@ -1133,7 +1650,10 @@
             "--branch"
           ],
           "description": "List updates only on this branch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -1146,7 +1666,38 @@
             "--limit"
           ],
           "description": "The number of items to fetch each query. Defaults to 25 and is capped at 50",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Limit",
+            "suggestions": [
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "32",
+              "33",
+              "34",
+              "35",
+              "36",
+              "37",
+              "38",
+              "39",
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50"
+            ]
+          }
         },
         {
           "names": [
@@ -1189,7 +1740,14 @@
             "--event"
           ],
           "description": "Event type that triggers the webhook",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value",
+            "suggestions": [
+              "BUILD",
+              "SUBMIT"
+            ]
+          }
         },
         {
           "names": [
@@ -1202,14 +1760,20 @@
             "--secret"
           ],
           "description": "Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Webhook URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ]
     },
@@ -1240,7 +1804,14 @@
             "--event"
           ],
           "description": "Event type that triggers the webhook",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value",
+            "suggestions": [
+              "BUILD",
+              "SUBMIT"
+            ]
+          }
         }
       ]
     },
@@ -1253,14 +1824,24 @@
             "--event"
           ],
           "description": "Event type that triggers the webhook",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value",
+            "suggestions": [
+              "BUILD",
+              "SUBMIT"
+            ]
+          }
         },
         {
           "names": [
             "--id"
           ],
           "description": "(required) Webhook ID",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
@@ -1273,14 +1854,20 @@
             "--secret"
           ],
           "description": "Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Webhook URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Value"
+          }
         }
       ]
     },

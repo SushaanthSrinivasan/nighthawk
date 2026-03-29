@@ -11,7 +11,14 @@
             "--create-application"
           ],
           "description": "Create a default application?",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         }
       ],
       "args": [
@@ -32,7 +39,17 @@
               "names": [
                 "--style"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "extension",
+                "suggestions": [
+                  "css",
+                  "scss",
+                  "sass",
+                  "less",
+                  "styl"
+                ]
+              }
             }
           ],
           "args": [
@@ -59,7 +76,14 @@
                 "-c"
               ],
               "description": "The change detection strategy to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "strategy",
+                "suggestions": [
+                  "Default",
+                  "OnPush"
+                ]
+              }
             },
             {
               "names": [
@@ -67,14 +91,28 @@
                 "-b"
               ],
               "description": "Add :host block to styles",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "boolean",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--flat"
               ],
               "description": "Create at the top level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "boolean",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             }
           ],
           "args": [

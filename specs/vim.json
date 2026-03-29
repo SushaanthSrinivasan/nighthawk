@@ -25,7 +25,11 @@
         "-s"
       ],
       "description": "Enable silent mode (when in ex mode), or Read Normal mode commands from file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "scriptin",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -92,7 +96,10 @@
         "-V"
       ],
       "description": "Be verbose [level N] [log messages to fname]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
@@ -111,21 +118,32 @@
         "-r"
       ],
       "description": "Recover crashed session if filename is specified, otherwise list swap files and exit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Same as -r",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Set terminal type to <terminal>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "terminal"
+      }
     },
     {
       "names": [
@@ -144,7 +162,11 @@
         "-u"
       ],
       "description": "Use <vimrc> instead of any .vimrc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "vimrc",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -157,63 +179,93 @@
         "-p"
       ],
       "description": "Open N tab pages (default: one for each file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
         "-o"
       ],
       "description": "Open N windows (default: one for each file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
         "-O"
       ],
       "description": "Like -o but split vertically",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
         "+"
       ],
       "description": "Start at end of file, if line number is specified, start at that line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "lnum"
+      }
     },
     {
       "names": [
         "--cmd"
       ],
       "description": "Execute <command> before loading any vimrc file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
         "-c"
       ],
       "description": "Execute <command> after loading the first file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
         "-S"
       ],
       "description": "Source file <session> after loading the first file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "session",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-w"
       ],
       "description": "Append all typed commands to file <scriptout>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "scriptout",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-W"
       ],
       "description": "Write all typed commands to file <scriptout>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "scriptout",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -226,14 +278,22 @@
         "--startuptime"
       ],
       "description": "Write startup timing messages to <file>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-i"
       ],
       "description": "Use <viminfo> instead of .viminfo",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "viminfo",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

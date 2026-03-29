@@ -116,7 +116,11 @@
                 "-o"
               ],
               "description": "Name for the built library",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "LIB",
+                "description": "Full name for the built library"
+              }
             },
             {
               "names": [
@@ -197,7 +201,11 @@
                 "-l"
               ],
               "description": "Install packages to library tree LIB",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "LIB",
+                "description": "Path to the R library tree to install to"
+              }
             },
             {
               "names": [
@@ -330,7 +338,17 @@
                 "--data-compress"
               ],
               "description": "Compression to be used for lazy-loading of data",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "compression",
+                "description": "Compression method",
+                "suggestions": [
+                  "gzip",
+                  "none",
+                  "bzip2",
+                  "xz"
+                ]
+              }
             },
             {
               "names": [
@@ -433,14 +451,22 @@
                 "--configure-args"
               ],
               "description": "Set arguments for the configure scripts",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ARGS",
+                "description": "Arguments for the configure script"
+              }
             },
             {
               "names": [
                 "--configure-vars"
               ],
               "description": "Set variables for the configure scripts",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ARGS",
+                "description": "Variables for the configure scripts"
+              }
             },
             {
               "names": [
@@ -465,7 +491,11 @@
                 "--built-timestamp"
               ],
               "description": "Set timestamp for 'Built' entry in DESCRIPTION (Unix only)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "STAMP",
+                "description": "A timestamp for the build (Unix only)"
+              }
             },
             {
               "names": [
@@ -511,7 +541,11 @@
                 "-l"
               ],
               "description": "The library tree to remove from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "LIB",
+                "description": "Library tree"
+              }
             }
           ],
           "args": [
@@ -569,7 +603,15 @@
                 "--resave-data"
               ],
               "description": "Re-save data files as compactly as possible",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Compression method",
+                "suggestions": [
+                  "best",
+                  "gzip",
+                  "no"
+                ]
+              }
             },
             {
               "names": [
@@ -582,14 +624,33 @@
                 "--compact-vignettes"
               ],
               "description": "Try to compact PDF files under 'inst/doc'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Compression method",
+                "suggestions": [
+                  "no",
+                  "qpdf",
+                  "gs",
+                  "gs+qpdf",
+                  "both"
+                ]
+              }
             },
             {
               "names": [
                 "--compression"
               ],
               "description": "Type of compression to be used on tarball",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Compression method",
+                "suggestions": [
+                  "gzip",
+                  "none",
+                  "bzip2",
+                  "xz"
+                ]
+              }
             },
             {
               "names": [
@@ -636,7 +697,11 @@
                 "-lib"
               ],
               "description": "Library used for test installation of packages",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "LIB",
+                "description": "Library tree"
+              }
             },
             {
               "names": [
@@ -644,7 +709,11 @@
                 "-o"
               ],
               "description": "Directory for output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "description": "Directory for output"
+              }
             },
             {
               "names": [
@@ -735,14 +804,22 @@
                 "--install-args"
               ],
               "description": "Command-line args to be passed to INSTALL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "args",
+                "description": "Command-line args to be passed to INSTALL"
+              }
             },
             {
               "names": [
                 "--test-dir"
               ],
               "description": "Look in this subdirectory for test scripts",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "description": "Directory with the tests directory"
+              }
             },
             {
               "names": [
@@ -755,7 +832,16 @@
                 "--check-subdirs"
               ],
               "description": "Run checks on the package subdirectories",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "yes-or-no",
+                "description": "Run checks on subdirectories?",
+                "suggestions": [
+                  "default",
+                  "yes",
+                  "no"
+                ]
+              }
             },
             {
               "names": [
@@ -869,14 +955,32 @@
                 "--min%total"
               ],
               "description": "Minimum % to print for 'by total'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "min % total",
+                "description": "Minimum % to print for 'by total'",
+                "suggestions": [
+                  "1",
+                  "10",
+                  "50"
+                ]
+              }
             },
             {
               "names": [
                 "--min%self"
               ],
               "description": "Minimum % to print for 'by self'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "min % self",
+                "description": "Minimum % to print for 'by self'",
+                "suggestions": [
+                  "1",
+                  "10",
+                  "50"
+                ]
+              }
             }
           ],
           "args": [
@@ -911,6 +1015,16 @@
               ],
               "description": "Output format type",
               "takes_arg": true,
+              "arg": {
+                "name": "type",
+                "description": "Output format type",
+                "suggestions": [
+                  "txt",
+                  "html",
+                  "latex",
+                  "example"
+                ]
+              },
               "is_required": true
             },
             {
@@ -918,14 +1032,22 @@
                 "--encoding"
               ],
               "description": "Encoding of the output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "enc",
+                "description": "Output encoding"
+              }
             },
             {
               "names": [
                 "--package"
               ],
               "description": "Package name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "package",
+                "description": "Package name"
+              }
             },
             {
               "names": [
@@ -933,7 +1055,15 @@
                 "-o"
               ],
               "description": "The output file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output file",
+                "description": "Name of the output file, '\"\"' to use the input file without '.Rd'",
+                "suggestions": [
+                  "\"\"",
+                  "-"
+                ]
+              }
             },
             {
               "names": [
@@ -941,14 +1071,26 @@
                 "--OS"
               ],
               "description": "Set name of OS ('unix' or 'windows')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "OS",
+                "description": "Name of the OS",
+                "suggestions": [
+                  "unix",
+                  "windows"
+                ]
+              }
             },
             {
               "names": [
                 "--RdMacros"
               ],
               "description": "Packages from which to get Rd macros",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "package list",
+                "description": "List of packages"
+              }
             }
           ],
           "args": [
@@ -999,14 +1141,22 @@
                 "--encoding"
               ],
               "description": "Set the default input encoding",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "enc",
+                "description": "Output encoding"
+              }
             },
             {
               "names": [
                 "--outputEncoding"
               ],
               "description": "Set the default output encoding",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "enc",
+                "description": "Output encoding"
+              }
             },
             {
               "names": [
@@ -1014,7 +1164,15 @@
                 "--OS"
               ],
               "description": "Set name of OS ('unix' or 'windows')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "OS",
+                "description": "Name of the OS",
+                "suggestions": [
+                  "unix",
+                  "windows"
+                ]
+              }
             },
             {
               "names": [
@@ -1022,7 +1180,11 @@
                 "-o"
               ],
               "description": "Write output to a file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "description": "Name of output file"
+              }
             },
             {
               "names": [
@@ -1035,7 +1197,11 @@
                 "--title"
               ],
               "description": "Set the title of the document",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "title",
+                "description": "Title of the document"
+              }
             },
             {
               "names": [
@@ -1060,14 +1226,22 @@
                 "--build_dir"
               ],
               "description": "Set the working directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "working dir",
+                "description": "Working directory for the build"
+              }
             },
             {
               "names": [
                 "--RdMacros"
               ],
               "description": "Packages from which to get Rd macros",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "package list",
+                "description": "List of packages"
+              }
             }
           ],
           "args": [
@@ -1102,6 +1276,16 @@
               ],
               "description": "Output format type",
               "takes_arg": true,
+              "arg": {
+                "name": "type",
+                "description": "Output format type",
+                "suggestions": [
+                  "txt",
+                  "html",
+                  "latex",
+                  "example"
+                ]
+              },
               "is_required": true
             },
             {
@@ -1109,14 +1293,22 @@
                 "--encoding"
               ],
               "description": "Encoding of the output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "enc",
+                "description": "Output encoding"
+              }
             },
             {
               "names": [
                 "--package"
               ],
               "description": "Package name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "package",
+                "description": "Package name"
+              }
             },
             {
               "names": [
@@ -1124,7 +1316,15 @@
                 "-o"
               ],
               "description": "The output file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output file",
+                "description": "Name of the output file, '\"\"' to use the input file without '.Rd'",
+                "suggestions": [
+                  "\"\"",
+                  "-"
+                ]
+              }
             },
             {
               "names": [
@@ -1132,14 +1332,26 @@
                 "--OS"
               ],
               "description": "Set name of OS ('unix' or 'windows')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "OS",
+                "description": "Name of the OS",
+                "suggestions": [
+                  "unix",
+                  "windows"
+                ]
+              }
             },
             {
               "names": [
                 "--RdMacros"
               ],
               "description": "Packages from which to get Rd macros",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "package list",
+                "description": "List of packages"
+              }
             }
           ],
           "args": [
@@ -1172,21 +1384,38 @@
                 "--engine"
               ],
               "description": "Use named vignette engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pkg::engine",
+                "description": "Vignette engine",
+                "suggestions": [
+                  "Stangle",
+                  "knitr::knit",
+                  "utils::Sweave"
+                ]
+              }
             },
             {
               "names": [
                 "--encoding"
               ],
               "description": "Set the encoding for file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "enc",
+                "description": "File encoding"
+              }
             },
             {
               "names": [
                 "--options"
               ],
               "description": "Comma-separated list of Stangle options",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "options",
+                "description": "Options for Stangle"
+              }
             }
           ],
           "args": [
@@ -1219,35 +1448,59 @@
                 "--driver"
               ],
               "description": "Use named Sweave driver",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "driver",
+                "description": "Sweave driver"
+              }
             },
             {
               "names": [
                 "--engine"
               ],
               "description": "Use named vignette engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pkg::engine",
+                "description": "Vignette engine"
+              }
             },
             {
               "names": [
                 "--encoding=enc"
               ],
               "description": "Default encoding 'enc' for file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "enc",
+                "description": "File encoding"
+              }
             },
             {
               "names": [
                 "--clean"
               ],
               "description": "Remove some of the created files",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "method",
+                "description": "How to clean the results",
+                "suggestions": [
+                  "default",
+                  "keepOuts"
+                ]
+              }
             },
             {
               "names": [
                 "--options"
               ],
               "description": "Comma-separated list of Sweave/engine options",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "options",
+                "description": "Options for Sweave/engine"
+              }
             },
             {
               "names": [
@@ -1260,7 +1513,18 @@
                 "--compact"
               ],
               "description": "Try to compact PDF document",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Compacting method",
+                "description": "How to compact the PDF doc",
+                "suggestions": [
+                  "no",
+                  "qpdf",
+                  "gs",
+                  "gs+qpdf",
+                  "both"
+                ]
+              }
             }
           ],
           "args": [
@@ -1448,7 +1712,11 @@
                 "-e"
               ],
               "description": "Same as -n but exports all detected variables and runs '<prog>'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "program",
+                "description": "Program to run or '' to use shell"
+              }
             }
           ],
           "args": [
@@ -1487,7 +1755,11 @@
                 "-o"
               ],
               "description": "Write output to a file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "description": "Output file name"
+              }
             },
             {
               "names": [
@@ -1558,7 +1830,13 @@
         "--encoding"
       ],
       "description": "Specify encoding to be used for stdin",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "encoding",
+        "suggestions": [
+          "UTF-8"
+        ]
+      }
     },
     {
       "names": [
@@ -1631,21 +1909,33 @@
         "--max-ppsize"
       ],
       "description": "Set max size of protect stack",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "max size",
+        "description": "Max size of protect stack"
+      }
     },
     {
       "names": [
         "--min-nsize"
       ],
       "description": "Set min number of fixed size obj's ('cons cells')",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "min size",
+        "description": "Minimum number of fixed size objects"
+      }
     },
     {
       "names": [
         "--min-vsize"
       ],
       "description": "Set vector heap minimum (in bytes or '4M' = 4 MegaB)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "min vsize",
+        "description": "Minimum vector heap size"
+      }
     },
     {
       "names": [
@@ -1680,14 +1970,22 @@
         "-d"
       ],
       "description": "Run R through a debugger",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "debugger",
+        "description": "Debugger to use"
+      }
     },
     {
       "names": [
         "--debugger-args"
       ],
       "description": "Pass arguments to the debugger",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "args",
+        "description": "Arguments for the debugger"
+      }
     },
     {
       "names": [
@@ -1695,14 +1993,26 @@
         "-g"
       ],
       "description": "Type of GUI to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "gui",
+        "description": "Type of GUI",
+        "suggestions": [
+          "X11",
+          "Tk"
+        ]
+      }
     },
     {
       "names": [
         "--arch"
       ],
       "description": "Specify a sub-architecture",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arch",
+        "description": "Sub-architecture"
+      }
     },
     {
       "names": [
@@ -1716,14 +2026,22 @@
         "-f"
       ],
       "description": "Take input from a file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File to run"
+      }
     },
     {
       "names": [
         "-e"
       ],
       "description": "Execute and R expression and exit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "expr",
+        "description": "Expression to evaluate"
+      }
     }
   ]
 }

@@ -342,7 +342,10 @@
             "--cwd"
           ],
           "description": "Change the working directory of the editor",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CWD"
+          }
         },
         {
           "names": [
@@ -350,7 +353,10 @@
             "--direction"
           ],
           "description": "Direction to open the new pane in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIRECTION"
+          }
         },
         {
           "names": [
@@ -364,7 +370,10 @@
             "--height"
           ],
           "description": "The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HEIGHT"
+          }
         },
         {
           "names": [
@@ -379,14 +388,20 @@
             "--line-number"
           ],
           "description": "Open the file in the specified line number",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINE_NUMBER"
+          }
         },
         {
           "names": [
             "--width"
           ],
           "description": "The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WIDTH"
+          }
         },
         {
           "names": [
@@ -394,7 +409,10 @@
             "--x"
           ],
           "description": "The x coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "X"
+          }
         },
         {
           "names": [
@@ -402,7 +420,10 @@
             "--y"
           ],
           "description": "The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Y"
+          }
         }
       ],
       "args": [
@@ -490,63 +511,106 @@
             "--attach-to-session"
           ],
           "description": "Whether to attach to a session specified in 'session-name' if it exists",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ATTACH_TO_SESSION",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--auto-layout"
           ],
           "description": "Whether to lay out panes in a predefined set of layouts whenever possible",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "AUTO_LAYOUT",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--copy-clipboard"
           ],
           "description": "OSC52 destination clipboard",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COPY_CLIPBOARD",
+            "suggestions": [
+              "system",
+              "primary"
+            ]
+          }
         },
         {
           "names": [
             "--copy-command"
           ],
           "description": "Switch to using a user supplied command for clipboard instead of OSC52",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COPY_COMMAND"
+          }
         },
         {
           "names": [
             "--copy-on-select"
           ],
           "description": "Automatically copy when selecting text (true or false)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COPY_ON_SELECT",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--default-cwd"
           ],
           "description": "Set the default cwd",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_CWD"
+          }
         },
         {
           "names": [
             "--default-layout"
           ],
           "description": "Set the default layout",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_LAYOUT"
+          }
         },
         {
           "names": [
             "--default-mode"
           ],
           "description": "Set the default mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_MODE"
+          }
         },
         {
           "names": [
             "--default-shell"
           ],
           "description": "Set the default shell",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_SHELL"
+          }
         },
         {
           "names": [
@@ -559,28 +623,52 @@
             "--disable-session-metadata"
           ],
           "description": "If true, will disable writing session metadata to disk",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DISABLE_SESSION_METADATA",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--layout-dir"
           ],
           "description": "Set the layout_dir, defaults to subdirectory of config dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LAYOUT_DIR"
+          }
         },
         {
           "names": [
             "--mirror-session"
           ],
           "description": "Mirror session when multiple users are connected",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "MIRROR_SESSION",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--mouse-mode"
           ],
           "description": "Set the handling of mouse events (true or false) Can be temporarily bypassed by the [SHIFT] key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "MOUSE_MODE",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
@@ -593,97 +681,163 @@
             "--on-force-close"
           ],
           "description": "Set behaviour on force close (quit or detach)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ON_FORCE_CLOSE"
+          }
         },
         {
           "names": [
             "--pane-frames"
           ],
           "description": "Set display of the pane frames (true or false)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PANE_FRAMES",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--scroll-buffer-size"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SCROLL_BUFFER_SIZE"
+          }
         },
         {
           "names": [
             "--scrollback-editor"
           ],
           "description": "Explicit full path to open the scrollback editor (default is $EDITOR or $VISUAL)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SCROLLBACK_EDITOR"
+          }
         },
         {
           "names": [
             "--scrollback-lines-to-serialize"
           ],
           "description": "Scrollback lines to serialize along with the pane viewport when serializing sessions, 0 defaults to the scrollback size. If this number is higher than the scrollback size, it will also default to the ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SCROLLBACK_LINES_TO_SERIALIZE"
+          }
         },
         {
           "names": [
             "--serialization-interval"
           ],
           "description": "The interval at which to serialize sessions for resurrection (in seconds)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SERIALIZATION_INTERVAL"
+          }
         },
         {
           "names": [
             "--serialize-pane-viewport"
           ],
           "description": "Whether pane viewports are serialized along with the session, default is false",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SERIALIZE_PANE_VIEWPORT",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--session-name"
           ],
           "description": "The name of the session to create when starting Zellij",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SESSION_NAME"
+          }
         },
         {
           "names": [
             "--session-serialization"
           ],
           "description": "Whether sessions should be serialized to the HD",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SESSION_SERIALIZATION",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--simplified-ui"
           ],
           "description": "Allow plugins to use a more simplified layout that is compatible with more fonts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SIMPLIFIED_UI",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--styled-underlines"
           ],
           "description": "Whether to use ANSI styled underlines",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "STYLED_UNDERLINES",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--support-kitty-keyboard-protocol"
           ],
           "description": "Whether to enable support for the Kitty keyboard protocol",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SUPPORT_KITTY_KEYBOARD_PROTOCOL",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--theme"
           ],
           "description": "Set the default theme",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "THEME"
+          }
         },
         {
           "names": [
             "--theme-dir"
           ],
           "description": "Set the theme_dir, defaults to subdirectory of config dir",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "THEME_DIR"
+          }
         }
       ]
     },
@@ -697,7 +851,10 @@
             "--name"
           ],
           "description": "The name of the pipe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME"
+          }
         },
         {
           "names": [
@@ -705,7 +862,10 @@
             "--args"
           ],
           "description": "The args of the pipe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ARGS"
+          }
         },
         {
           "names": [
@@ -713,7 +873,10 @@
             "--plugin"
           ],
           "description": "The plugin url (eg. file:/tmp/my-plugin.wasm) to direct this pipe to, if not specified, will be sent to all plugins, if specified and is not running, the plugin will be launched",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLUGIN"
+          }
         },
         {
           "names": [
@@ -721,7 +884,10 @@
             "--plugin-configuration"
           ],
           "description": "The plugin configuration (note: the same plugin with different configuration is considered a different plugin for the purposes of determining the pipe destination)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLUGIN_CONFIGURATION"
+          }
         }
       ],
       "args": [
@@ -744,7 +910,10 @@
             "--configuration"
           ],
           "description": "Plugin configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIGURATION"
+          }
         },
         {
           "names": [
@@ -758,7 +927,10 @@
             "--height"
           ],
           "description": "The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HEIGHT"
+          }
         },
         {
           "names": [
@@ -772,7 +944,10 @@
             "--width"
           ],
           "description": "The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WIDTH"
+          }
         },
         {
           "names": [
@@ -780,7 +955,10 @@
             "--x"
           ],
           "description": "The x coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "X"
+          }
         },
         {
           "names": [
@@ -788,7 +966,10 @@
             "--y"
           ],
           "description": "The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Y"
+          }
         }
       ],
       "args": [
@@ -817,7 +998,10 @@
             "--cwd"
           ],
           "description": "Change the working directory of the new pane",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CWD"
+          }
         },
         {
           "names": [
@@ -825,7 +1009,10 @@
             "--direction"
           ],
           "description": "Direction to open the new pane in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIRECTION"
+          }
         },
         {
           "names": [
@@ -839,7 +1026,10 @@
             "--height"
           ],
           "description": "The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HEIGHT"
+          }
         },
         {
           "names": [
@@ -854,7 +1044,10 @@
             "--name"
           ],
           "description": "Name of the new pane",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME"
+          }
         },
         {
           "names": [
@@ -868,7 +1061,10 @@
             "--width"
           ],
           "description": "The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WIDTH"
+          }
         },
         {
           "names": [
@@ -876,7 +1072,10 @@
             "--x"
           ],
           "description": "The x coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "X"
+          }
         },
         {
           "names": [
@@ -884,7 +1083,10 @@
             "--y"
           ],
           "description": "The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Y"
+          }
         }
       ],
       "args": [
@@ -921,35 +1123,55 @@
             "--dump-layout"
           ],
           "description": "Dump specified layout to stdout",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DUMP_LAYOUT"
+          }
         },
         {
           "names": [
             "--dump-plugins"
           ],
           "description": "Dump the builtin plugins to DIR or 'DATA DIR' if unspecified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR"
+          }
         },
         {
           "names": [
             "--dump-swap-layout"
           ],
           "description": "Dump the specified swap layout file to stdout",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DUMP_SWAP_LAYOUT"
+          }
         },
         {
           "names": [
             "--generate-auto-start"
           ],
           "description": "Generates auto-start script for the specified shell",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SHELL"
+          }
         },
         {
           "names": [
             "--generate-completion"
           ],
           "description": "Generates completion for the specified shell",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SHELL",
+            "suggestions": [
+              "bash",
+              "fish",
+              "zsh"
+            ]
+          }
         }
       ]
     }
@@ -961,14 +1183,20 @@
         "--config"
       ],
       "description": "Change where zellij looks for the configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG"
+      }
     },
     {
       "names": [
         "--config-dir"
       ],
       "description": "Change where zellij looks for the configuration directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG_DIR"
+      }
     },
     {
       "names": [
@@ -982,7 +1210,10 @@
         "--data-dir"
       ],
       "description": "Change where zellij looks for plugins",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DATA_DIR"
+      }
     },
     {
       "names": [
@@ -997,14 +1228,20 @@
         "--layout"
       ],
       "description": "Name of a predefined layout inside the layout directory or the path to a layout file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LAYOUT"
+      }
     },
     {
       "names": [
         "--max-panes"
       ],
       "description": "Maximum panes on screen, caution: opening more panes will close old ones",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MAX_PANES"
+      }
     },
     {
       "names": [
@@ -1012,7 +1249,10 @@
         "--new-session-with-layout"
       ],
       "description": "Name of a predefined layout inside the layout directory or the path to a layout file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NEW_SESSION_WITH_LAYOUT"
+      }
     },
     {
       "names": [
@@ -1020,7 +1260,10 @@
         "--session"
       ],
       "description": "Specify name of a new session",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SESSION"
+      }
     },
     {
       "names": [

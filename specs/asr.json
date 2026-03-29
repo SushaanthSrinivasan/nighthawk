@@ -19,21 +19,36 @@
             "--source"
           ],
           "description": "Can be a disk image, /dev entry, or volume mountpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "source",
+            "description": "Disk image, /dev entry, or volume mountpoint",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Can be a /dev entry, or volume mountpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target",
+            "description": "/dev entry, or volume mountpoint",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--file"
           ],
           "description": "When performing a multicast restore, --file can be specified instead of --target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "source",
+            "description": "Disk image, /dev entry, or volume mountpoint",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -46,7 +61,11 @@
             "--format"
           ],
           "description": "Specifies the destination filesystem format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HFS+ | HFSX",
+            "description": "Specify the destination filesystem format"
+          }
         },
         {
           "names": [
@@ -59,7 +78,14 @@
             "--timeout"
           ],
           "description": "Specifies num seconds that a multicast client should wait when no payload data has been received over a multicast stream before exiting",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "num",
+            "description": "Number of seconds that a multicast client should wait",
+            "suggestions": [
+              "0"
+            ]
+          }
         },
         {
           "names": [
@@ -132,21 +158,36 @@
             "--source"
           ],
           "description": "Can be a disk image, /dev entry, or volume mountpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "source",
+            "description": "Disk image, /dev entry, or volume mountpoint",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Can be a /dev entry, or volume mountpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target",
+            "description": "/dev entry, or volume mountpoint",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--file"
           ],
           "description": "When performing a multicast restore, --file can be specified instead of --target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "source",
+            "description": "Disk image, /dev entry, or volume mountpoint",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -159,7 +200,11 @@
             "--format"
           ],
           "description": "Specifies the destination filesystem format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HFS+ | HFSX",
+            "description": "Specify the destination filesystem format"
+          }
         },
         {
           "names": [
@@ -172,7 +217,14 @@
             "--timeout"
           ],
           "description": "Specifies num seconds that a multicast client should wait when no payload data has been received over a multicast stream before exiting",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "num",
+            "description": "Number of seconds that a multicast client should wait",
+            "suggestions": [
+              "0"
+            ]
+          }
         },
         {
           "names": [
@@ -245,21 +297,34 @@
             "--source"
           ],
           "description": "Source has to be a UDIF disk image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "source",
+            "description": "UDIF disk image local/remote path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--interface"
           ],
           "description": "The network interface to be used for multicasting",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interface",
+            "description": "The network interface to be used for multicasting"
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Server requires a configuration file to be passed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "configuration",
+            "description": "Configuration file in standard property list format"
+          }
         }
       ]
     },
@@ -286,28 +351,44 @@
         "--buffers"
       ],
       "description": "One of the options that control how asr uses memory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num",
+        "description": "Specifies the num buffers should be used"
+      }
     },
     {
       "names": [
         "--buffersize"
       ],
       "description": "One of the options that control how asr uses memory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "Specifies the size of each buffer"
+      }
     },
     {
       "names": [
         "--csumbuffers"
       ],
       "description": "One of the options that control how asr uses memory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num",
+        "description": "Specifies that num buffers should be used for checksumming operations"
+      }
     },
     {
       "names": [
         "--csumbuffersize"
       ],
       "description": "One of the options that control how asr uses memory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "Specifies the size of each buffer used for checksumming"
+      }
     },
     {
       "names": [

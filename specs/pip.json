@@ -12,7 +12,11 @@
             "--requirement"
           ],
           "description": "Install from the given requirements file. This option can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "requirements file",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -4070,7 +4074,13 @@
             "--only-binary"
           ],
           "description": "Do not use source packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              ":all:",
+              ":none:"
+            ]
+          }
         },
         {
           "names": [
@@ -4083,7 +4093,11 @@
             "--src"
           ],
           "description": "Directory to check out editable projects into",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "source folder",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -4102,7 +4116,16 @@
             "--progress-bar"
           ],
           "description": "Specify type of progress to be displayed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "off",
+              "on",
+              "ascii",
+              "pretty",
+              "emoji"
+            ]
+          }
         },
         {
           "names": [
@@ -4128,14 +4151,21 @@
             "--dest"
           ],
           "description": "Require a hash to check each requirement against, for repeatable installs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--platform"
           ],
           "description": "Only use wheels compatible with platform",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform"
+          }
         },
         {
           "names": [
@@ -4148,14 +4178,20 @@
             "--implementation"
           ],
           "description": "Only use wheels compatible with Python implementation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "implementation"
+          }
         },
         {
           "names": [
             "--abi"
           ],
           "description": "Only use wheels compatible with Python abi <abi>, e.g. ‘pypy_41’",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "abi"
+          }
         },
         {
           "names": [
@@ -4169,7 +4205,10 @@
             "--index-url"
           ],
           "description": "Base URL of the Python Package Index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -4189,7 +4228,11 @@
             "--find-links"
           ],
           "description": "Look for archives in the directory listing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -4250,7 +4293,10 @@
             "--exclude"
           ],
           "description": "Exclude specified package from the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package"
+          }
         }
       ]
     },
@@ -4297,7 +4343,11 @@
             "--path"
           ],
           "description": "Restrict to the specified installation path for listing packages (can be used multiple times)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4334,7 +4384,10 @@
             "--exclude"
           ],
           "description": "Exclude specified package from the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package"
+          }
         },
         {
           "names": [
@@ -4362,7 +4415,10 @@
             "--find-links"
           ],
           "description": "If a URL or path to an html file, then parse for links to archives such as sdist (.tar.gz) or wheel (.whl) files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         }
       ]
     },
@@ -4442,7 +4498,14 @@
             "--algorithm"
           ],
           "description": "The hash algorithm to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "sha256",
+              "sha384",
+              "sha512"
+            ]
+          }
         }
       ]
     },
@@ -4459,21 +4522,30 @@
             "--platform"
           ],
           "description": "Only use wheels compatible with platform",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "platform"
+          }
         },
         {
           "names": [
             "--python-version"
           ],
           "description": "The Python interpreter version to use for wheel and “Requires-Python” compatibility checks",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "python version"
+          }
         },
         {
           "names": [
             "--implementation"
           ],
           "description": "Only use wheels compatible with Python implementation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "implementation"
+          }
         }
       ]
     },

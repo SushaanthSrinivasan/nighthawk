@@ -53,7 +53,11 @@
         "-d"
       ],
       "description": "IaC root directory (can not be used together with --file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -61,21 +65,74 @@
         "-o"
       ],
       "description": "Report output format. Add multiple outputs by using the flag multiple times (-o sarif -o cli)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT",
+        "suggestions": [
+          "cli",
+          "cyclonedx",
+          "json",
+          "junitxml",
+          "github_failed_only",
+          "sarif"
+        ]
+      }
     },
     {
       "names": [
         "--framework"
       ],
       "description": "IaC frameworks to include checks for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FRAMEWORKS",
+        "is_variadic": true,
+        "suggestions": [
+          "arm",
+          "cloudformation",
+          "dockerfile",
+          "github_configuration",
+          "gitlab_configuration",
+          "helm",
+          "json",
+          "kubernetes",
+          "kustomize",
+          "sca_package",
+          "secrets",
+          "serverless",
+          "terraform",
+          "terraform_plan",
+          "all"
+        ]
+      }
     },
     {
       "names": [
         "--skip-framework"
       ],
       "description": "IaC frameworks to exclude checks for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FRAMEWORKS",
+        "is_variadic": true,
+        "suggestions": [
+          "arm",
+          "cloudformation",
+          "dockerfile",
+          "github_configuration",
+          "gitlab_configuration",
+          "helm",
+          "json",
+          "kubernetes",
+          "kustomize",
+          "sca_package",
+          "secrets",
+          "serverless",
+          "terraform",
+          "terraform_plan",
+          "all"
+        ]
+      }
     },
     {
       "names": [
@@ -89,14 +146,22 @@
         "-f"
       ],
       "description": "IaC file(can not be used together with --directory)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--skip-path"
       ],
       "description": "Path (file or directory) to skip, using regular expression logic, relative to current working directory. Word boundaries are not implicit; i.e., specifying 'dir1' will skip any directory or subdirecto",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SKIP_PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -104,14 +169,20 @@
         "-c"
       ],
       "description": "Filter scan to run only on a specific check identifier (allowlist). You can specify multiple checks separated by comma delimiter. You may also use the environment variable: CKV_CHECK",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CHECKS"
+      }
     },
     {
       "names": [
         "--skip-check"
       ],
       "description": "Filter scan to run all check except a specific check identifier (denylist). You can specify multiple checks separated by comma delimiter. You may also use the environment variable: CKV_SKIP_CHECK",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CHECKS"
+      }
     },
     {
       "names": [
@@ -124,35 +195,50 @@
         "--external-checks-dir"
       ],
       "description": "Directory for custom checks to be loaded. Can be repeated",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "EXTERNAL_CHECKS_DIR"
+      }
     },
     {
       "names": [
         "--bc-api-key"
       ],
       "description": "Bridgecrew API key. You may also use the environment variable: BC_API_KEY",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BC_API_KEY"
+      }
     },
     {
       "names": [
         "--docker-image"
       ],
       "description": "Scan docker images by name or ID. Only works with --bc-api-key flag",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DOCKER_IMAGE"
+      }
     },
     {
       "names": [
         "--dockerfile-path"
       ],
       "description": "Path to the Dockerfile of the scanned docker image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DOCKERFILE_PATH"
+      }
     },
     {
       "names": [
         "--repo-id"
       ],
       "description": "Identity string of the repository, with form <repo_owner>/<repo_name>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REPO_ID"
+      }
     },
     {
       "names": [
@@ -160,7 +246,10 @@
         "-b"
       ],
       "description": "Selected branch of the persisted repository. Only has effect when using the --bc-api-key flag",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BRANCH"
+      }
     },
     {
       "names": [
@@ -185,28 +274,40 @@
         "--download-external-modules"
       ],
       "description": "Download external terraform modules from public git repositories and terraform registry. You may also use the environment variable: DOWNLOAD_EXTERNAL_MODULES]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DOWNLOAD_EXTERNAL_MODULES"
+      }
     },
     {
       "names": [
         "--var-file"
       ],
       "description": "Variable files to load in addition to the default files (see https://www.terraform.io/docs/language/values/variables.html#variable-definitions-tfvars-files). Currently only supported for source Terraf",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VAR_FILE"
+      }
     },
     {
       "names": [
         "--external-modules-download-path"
       ],
       "description": "Set the path for the download external terraform modules. You may also use the environment variable: EXTERNAL_MODULES_DIR",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "EXTERNAL_MODULES_DIR"
+      }
     },
     {
       "names": [
         "--evaluate-variables"
       ],
       "description": "Evaluate the values of variables and locals",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "EVALUATE_VARIABLES"
+      }
     },
     {
       "names": [
@@ -214,28 +315,41 @@
         "-ca"
       ],
       "description": "Custom CA (bundle) fila. You may also use the environment variablee: CA_CERTIFICATE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CA_CERTIFICATE"
+      }
     },
     {
       "names": [
         "--repo-root-for-plan-enrichment"
       ],
       "description": "Directory containing the hcl code used to generate a given plan file. Use with -f FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REPO_ROOT_FOR_PLAN_ENRICHMENT"
+      }
     },
     {
       "names": [
         "--config-file"
       ],
       "description": "Path to the Checkov configuration YAML file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG_FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--create-config"
       ],
       "description": "Takes the current command line args and writes them out to a config file at the given path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG_FILE"
+      }
     },
     {
       "names": [
@@ -254,7 +368,10 @@
         "--baseline"
       ],
       "description": "Use a '.checkov.baseline' file to compare current results with a known baseline. Report will include only failed checks that are newwith respect to the provided baseline. See --create-baseline",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BASELINE"
+      }
     },
     {
       "names": [
@@ -268,161 +385,241 @@
         "--soft-fail-on"
       ],
       "description": "Exits with a 0 exit code for specified checks. You can specify multiple checks separated by comma delimiter",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CHECKS"
+      }
     },
     {
       "names": [
         "--hard-fail-on"
       ],
       "description": "Exits with a non-zero exit code for specified checks. You can specify multiple checks separated by comma delimiter",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CHECKS"
+      }
     },
     {
       "names": [
         "--min-cve-severity"
       ],
       "description": "Set minimum severity to return a non-zero exit code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MIN_SEVERITY",
+        "suggestions": [
+          "critical",
+          "high",
+          "medium",
+          "low",
+          "none"
+        ]
+      }
     },
     {
       "names": [
         "--skip-cve-package"
       ],
       "description": "Ignore specific open source package when SCA scanning for CVEs in package dependencies. Can be used multiple times to skip multiple packages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SKIP_CVE_PACKAGE"
+      }
     },
     {
       "names": [
         "--use-enforcement-rules"
       ],
       "description": "Use the Enforcement rules configured in the platform for hard / soft fail logic",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "USE_ENFORCEMENT_RULES"
+      }
     },
     {
       "names": [
         "--support"
       ],
       "description": "Enable debug logs and upload the logs to the server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SUPPORT"
+      }
     },
     {
       "names": [
         "--summary-position"
       ],
       "description": "Chose whether the summary will be appended on top or on bottom",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SUMMARY_POSITION",
+        "suggestions": [
+          "top",
+          "bottom"
+        ]
+      }
     },
     {
       "names": [
         "--skip-resources-without-violations"
       ],
       "description": "Exclude extra resources (resources without violations)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SKIP_RESOURCES_WITHOUT_VIOLATIONS"
+      }
     },
     {
       "names": [
         "--skip-download"
       ],
       "description": "Do not download any data from Prisma Cloud",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SKIP_DOWNLOAD"
+      }
     },
     {
       "names": [
         "--secrets-history-timeout"
       ],
       "description": "Maximum time to run the history scan",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECRETS_HISTORY_TIMEOUT"
+      }
     },
     {
       "names": [
         "--scan-secrets-history"
       ],
       "description": "Will scan the history of commits for secrets",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SCAN_SECRETS_HISTORY"
+      }
     },
     {
       "names": [
         "--prisma-api-url"
       ],
       "description": "The Prisma Cloud API URL",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PRISMA_API_URL"
+      }
     },
     {
       "names": [
         "--policy-metadata-filter"
       ],
       "description": "Comma separated key:value string to filter policies based on Prisma Cloud policy metadata",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "POLICY_METADATA_FILTER"
+      }
     },
     {
       "names": [
         "--output-file-path"
       ],
       "description": "Name of the output folder to save the chosen output formats",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OUTPUT_FILE_PATH"
+      }
     },
     {
       "names": [
         "--output-baseline-as-skipped"
       ],
       "description": "Output checks that are skipped due to baseline file presence",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OUTPUT_BASELINE_AS_SKIPPED"
+      }
     },
     {
       "names": [
         "--openai-api-key"
       ],
       "description": "Add an OpenAI API key to enhance finding guidelines. This will send Code to OpenAI",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "OPENAI_API_KEY"
+      }
     },
     {
       "names": [
         "--no-fail-on-crash"
       ],
       "description": "Return exit code 0 instead of 2",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NO_FAIL_ON_CRASH"
+      }
     },
     {
       "names": [
         "--mask"
       ],
       "description": "Each entry in the list will be used for masking the desired attribute",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MASK"
+      }
     },
     {
       "names": [
         "--include-all-checkov-policies"
       ],
       "description": "When running with an API key, Checkov will omit any policies that do not exist in the Bridgecrew or Prisma Cloud platform",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "INCLUDE_ALL_CHECKOV_POLICIES"
+      }
     },
     {
       "names": [
         "--external-checks-git"
       ],
       "description": "GitHub URL of external checks to be added",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "EXTERNAL_CHECKS_GIT"
+      }
     },
     {
       "names": [
         "--enable-secret-scan-all-files"
       ],
       "description": "Enable secret scan for all files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ENABLE_SECRET_SCAN_ALL_FILES"
+      }
     },
     {
       "names": [
         "--deep-analysis"
       ],
       "description": "Enable combine TF graph and TF Plan graph",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DEEP_ANALYSIS"
+      }
     },
     {
       "names": [
         "--block-list-secret-scan"
       ],
       "description": "List of files to filter out from the secret scanner",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BLOCK_LIST_SECRET_SCAN"
+      }
     }
   ]
 }

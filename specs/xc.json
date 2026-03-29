@@ -22,7 +22,11 @@
         "-file"
       ],
       "description": "Specify a markdown file that contains tasks (default: \"README.md\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -30,7 +34,15 @@
         "-heading"
       ],
       "description": "Specify the heading for xc tasks (default: \"Tasks\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "heading",
+        "suggestions": [
+          "Tasks",
+          "Usage",
+          "Examples"
+        ]
+      }
     },
     {
       "names": [

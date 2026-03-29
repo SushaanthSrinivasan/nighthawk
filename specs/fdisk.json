@@ -22,7 +22,17 @@
         "-b"
       ],
       "description": "Specify the sector size of the disk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "description": "Valid values are 512, 1024, 2048, and 4096",
+        "suggestions": [
+          "512",
+          "1024",
+          "2048",
+          "4096"
+        ]
+      }
     },
     {
       "names": [
@@ -37,7 +47,14 @@
         "-c"
       ],
       "description": "Specify the compatibility mode, 'dos' or 'nondos'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "dos",
+          "nondos"
+        ]
+      }
     },
     {
       "names": [
@@ -45,7 +62,15 @@
         "-L"
       ],
       "description": "Colorize the output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "always",
+          "never",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
@@ -66,7 +91,16 @@
         "--lock"
       ],
       "description": "Use exclusive BSD lock for device or file it operates",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "description": "Optional argument mode can be yes, no (or 1 and 0) or nonblock",
+        "suggestions": [
+          "yes",
+          "no",
+          "nonblock"
+        ]
+      }
     },
     {
       "names": [
@@ -81,7 +115,10 @@
         "-o"
       ],
       "description": "Desc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
@@ -96,7 +133,10 @@
         "-t"
       ],
       "description": "Enable support only for disklabels of the specified type, and disable support for all other types",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type"
+      }
     },
     {
       "names": [
@@ -104,7 +144,14 @@
         "-u"
       ],
       "description": "When listing partition tables, show sizes in 'sectors' or in 'cylinders'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "unit",
+        "suggestions": [
+          "sectors",
+          "cylinders"
+        ]
+      }
     },
     {
       "names": [
@@ -112,7 +159,10 @@
         "-C"
       ],
       "description": "Specify the number of cylinders of the disk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -120,7 +170,10 @@
         "-H"
       ],
       "description": "Specify the number of heads of the disk. (Not the physical number, of course, but the number used for partition tables.)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -135,7 +188,16 @@
         "-w"
       ],
       "description": "Wipe filesystem, RAID and partition-table signatures from the device, in order to avoid possible collisions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "description": "The argument when can be auto, never or always",
+        "suggestions": [
+          "auto",
+          "never",
+          "always"
+        ]
+      }
     },
     {
       "names": [
@@ -143,7 +205,11 @@
         "-W"
       ],
       "description": "Wipe filesystem, RAID and partition-table signatures from a newly created partitions, in order to avoid possible collisions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "description": "The argument when can be auto, never or always"
+      }
     }
   ],
   "args": [

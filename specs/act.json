@@ -104,21 +104,30 @@
         "--container-cap-add"
       ],
       "description": "Kernel capabilities to add to the workflow containers (e.g. --container-cap-add SYS_PTRACE)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "container-cap-add"
+      }
     },
     {
       "names": [
         "--container-cap-drop"
       ],
       "description": "Kernel capabilities to remove from the workflow containers (e.g. --container-cap-drop SYS_PTRACE)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "container-cap-drop"
+      }
     },
     {
       "names": [
         "--defaultbranch"
       ],
       "description": "The name of the main branch",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "defaultbranch"
+      }
     },
     {
       "names": [
@@ -131,7 +140,10 @@
         "--env"
       ],
       "description": "Env to make available to actions with optional value (e.g. --env myenv=foo or --env myenv)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "env"
+      }
     },
     {
       "names": [
@@ -139,7 +151,10 @@
         "-e"
       ],
       "description": "Path to event JSON file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "eventpath"
+      }
     },
     {
       "names": [
@@ -154,7 +169,10 @@
         "-j"
       ],
       "description": "Run job",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "job"
+      }
     },
     {
       "names": [
@@ -169,7 +187,10 @@
         "-P"
       ],
       "description": "Custom image to use per platform (e.g. -P ubuntu-18.04=nektos/act-environments-ubuntu:18.04)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "platform"
+      }
     },
     {
       "names": [
@@ -195,7 +216,10 @@
         "--remote-name"
       ],
       "description": "Git remote name that will be used to retrieve url of git repo",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "remote-name"
+      }
     },
     {
       "names": [
@@ -216,7 +240,10 @@
         "-s"
       ],
       "description": "Secret to make available to actions with optional value (e.g. -s mysecret=foo or -s mysecret)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "secret"
+      }
     },
     {
       "names": [
@@ -229,7 +256,10 @@
         "--userns"
       ],
       "description": "User namespace to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "userns"
+      }
     },
     {
       "names": [
@@ -244,35 +274,50 @@
         "-a"
       ],
       "description": "User that triggered the event",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "actor"
+      }
     },
     {
       "names": [
         "--artifact-server-path"
       ],
       "description": "Defines the path where the artifact server stores uploads and retrieves downloads from. If not specified the artifact server will not start",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "artifact-server-path"
+      }
     },
     {
       "names": [
         "--artifact-server-port"
       ],
       "description": "Defines the port where the artifact server listens (will only bind to localhost)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "artifact-server-port"
+      }
     },
     {
       "names": [
         "--container-architecture"
       ],
       "description": "Architecture which should be used to run containers, e.g.: linux/amd64. If not specified, will use host default architecture. Requires Docker server API Version 1.41+. Ignored on earlier Docker server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "container-architecture"
+      }
     },
     {
       "names": [
         "--container-daemon-socket"
       ],
       "description": "Path to Docker daemon socket which will be mounted to containers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "container-daemon-socket"
+      }
     },
     {
       "names": [
@@ -280,7 +325,11 @@
         "-C"
       ],
       "description": "Working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -294,14 +343,20 @@
         "--env-file"
       ],
       "description": "Environment file to read and use as env in the containers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "env-file"
+      }
     },
     {
       "names": [
         "--github-instance"
       ],
       "description": "GitHub instance to use. Don't use this if you are not using GitHub Enterprise Server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "github-instance"
+      }
     },
     {
       "names": [
@@ -339,7 +394,10 @@
         "--secret-file"
       ],
       "description": "File with list of secrets to read from (e.g. --secret-file .secrets)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "secret-file"
+      }
     },
     {
       "names": [
@@ -354,7 +412,11 @@
         "-W"
       ],
       "description": "Path to workflow file(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "workflows",
+        "template": "folders"
+      }
     },
     {
       "names": [
