@@ -51,7 +51,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         let fig_provider = specs::fig::FigSpecProvider::new(specs_dir.clone());
         let help_cache_dir = specs_dir.join("help_cache");
-        let help_provider = specs::helpparse::HelpParseProvider::new(help_cache_dir);
+        if let Err(e) = std::fs::create_dir_all(&help_cache_dir) {
+            tracing::warn!("Failed to create help cache dir: {e}");
+        }
+        let help_provider = specs::helpparse::HelpParseProvider::new(
+            help_cache_dir,
+            tokio::runtime::Handle::current(),
+        );
 
         let registry = Arc::new(specs::SpecRegistry::new(vec![
             Box::new(fig_provider),
