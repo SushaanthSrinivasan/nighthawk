@@ -49,6 +49,7 @@ impl PredictionTier for HistoryTier {
                     confidence: 0.8,
                     source: SuggestionSource::History,
                     description: None,
+                    diff_ops: None,
                 }
             })
             .collect()

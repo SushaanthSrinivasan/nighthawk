@@ -4,6 +4,7 @@
 //! All functions are case-sensitive — critical for flag matching where
 //! `-R` and `-r` are distinct.
 
+use nighthawk_proto::DiffOp;
 use std::collections::HashMap;
 
 /// Compute the Damerau-Levenshtein distance between two strings.
@@ -159,6 +160,167 @@ pub fn fuzzy_matches<'a>(
 
     results.sort_by(|a, b| a.distance.cmp(&b.distance).then(a.text.cmp(&b.text)));
     results
+}
+
+/// Compute character-level diff operations between `typed` and `corrected`.
+///
+/// Uses the full Damerau-Levenshtein matrix (no early termination) and
+/// backtraces to produce a sequence of Keep/Delete/Insert ops.
+/// Substitution decomposes into Delete(old) + Insert(new).
+/// Transposition decomposes into Delete+Delete+Insert+Insert.
+///
+/// The resulting ops, when applied to `typed`, produce `corrected`.
+pub fn diff_ops(typed: &str, corrected: &str) -> Vec<DiffOp> {
+    let a: Vec<char> = typed.chars().collect();
+    let b: Vec<char> = corrected.chars().collect();
+    let len_a = a.len();
+    let len_b = b.len();
+
+    if len_a == 0 {
+        return b.iter().map(|&ch| DiffOp::Insert(ch)).collect();
+    }
+    if len_b == 0 {
+        return a.iter().map(|&ch| DiffOp::Delete(ch)).collect();
+    }
+
+    // Build the full DL matrix (same structure as damerau_levenshtein but
+    // without early termination — we need the complete matrix for backtrace).
+    let max_val = len_a + len_b;
+    let rows = len_a + 2;
+    let cols = len_b + 2;
+    let mut d = vec![0usize; rows * cols];
+
+    macro_rules! at {
+        ($r:expr, $c:expr) => {
+            d[($r) * cols + ($c)]
+        };
+    }
+
+    at!(0, 0) = max_val;
+    for i in 0..=len_a {
+        at!(i + 1, 0) = max_val;
+        at!(i + 1, 1) = i;
+    }
+    for j in 0..=len_b {
+        at!(0, j + 1) = max_val;
+        at!(1, j + 1) = j;
+    }
+
+    let mut last_row: HashMap<char, usize> = HashMap::with_capacity(16);
+
+    // We also need to record the transposition source (i1, j1) for each cell
+    // so the backtrace can detect transposition moves.
+    let mut trans_source = vec![(0usize, 0usize); rows * cols];
+
+    for i in 1..=len_a {
+        let ch_a = a[i - 1];
+        let mut last_match_col: usize = 0;
+
+        for j in 1..=len_b {
+            let ch_b = b[j - 1];
+            let i1 = *last_row.get(&ch_b).unwrap_or(&0);
+            let j1 = last_match_col;
+
+            let cost = if ch_a == ch_b {
+                last_match_col = j;
+                0
+            } else {
+                1
+            };
+
+            let sub = at!(i, j) + cost;
+            let del = at!(i + 1, j) + 1;
+            let ins = at!(i, j + 1) + 1;
+            let trans = at!(i1, j1) + (i - i1 - 1) + 1 + (j - j1 - 1);
+
+            let val = sub.min(del).min(ins).min(trans);
+            at!(i + 1, j + 1) = val;
+            trans_source[(i + 1) * cols + (j + 1)] = (i1, j1);
+        }
+
+        last_row.insert(ch_a, i);
+    }
+
+    // Backtrace from d[len_a+1][len_b+1] to d[1][1]
+    let mut ops = Vec::new();
+    let mut i = len_a;
+    let mut j = len_b;
+
+    while i > 0 || j > 0 {
+        if i > 0 && j > 0 {
+            let (i1, j1) = trans_source[(i + 1) * cols + (j + 1)];
+            let trans_cost = at!(i1, j1) + (i - i1 - 1) + 1 + (j - j1 - 1);
+
+            if at!(i + 1, j + 1) == trans_cost && i1 > 0 && j1 > 0 {
+                // Transposition path: characters between i1..i and j1..j
+                // were involved in a transposition. Delete typed chars, insert corrected.
+                // The chars from i1+1..=i in `a` get deleted (reverse order for backtrace)
+                // The chars from j1+1..=j in `b` get inserted (reverse order for backtrace)
+                let mut del_chars: Vec<char> = (i1..i).map(|idx| a[idx]).collect();
+                let mut ins_chars: Vec<char> = (j1..j).map(|idx| b[idx]).collect();
+                del_chars.reverse();
+                ins_chars.reverse();
+                for ch in ins_chars {
+                    ops.push(DiffOp::Insert(ch));
+                }
+                for ch in del_chars {
+                    ops.push(DiffOp::Delete(ch));
+                }
+                i = i1;
+                j = j1;
+                continue;
+            }
+        }
+
+        if i > 0 && j > 0 && a[i - 1] == b[j - 1] && at!(i + 1, j + 1) == at!(i, j) {
+            // Keep: diagonal move, same character
+            ops.push(DiffOp::Keep(a[i - 1]));
+            i -= 1;
+            j -= 1;
+        } else if i > 0 && j > 0 && at!(i + 1, j + 1) == at!(i, j) + 1 {
+            // Substitution: diagonal move with cost 1 → Delete old + Insert new
+            ops.push(DiffOp::Insert(b[j - 1]));
+            ops.push(DiffOp::Delete(a[i - 1]));
+            i -= 1;
+            j -= 1;
+        } else if i > 0 && at!(i + 1, j + 1) == at!(i, j + 1) + 1 {
+            // Deletion: move up
+            ops.push(DiffOp::Delete(a[i - 1]));
+            i -= 1;
+        } else if j > 0 && at!(i + 1, j + 1) == at!(i + 1, j) + 1 {
+            // Insertion: move left
+            ops.push(DiffOp::Insert(b[j - 1]));
+            j -= 1;
+        } else {
+            // Shouldn't happen with a correct matrix, but guard against infinite loop
+            break;
+        }
+    }
+
+    ops.reverse();
+    ops
+}
+
+/// Apply diff ops to verify correctness: applying ops to `typed` should yield `corrected`.
+#[cfg(test)]
+fn apply_ops(ops: &[DiffOp]) -> (String, String) {
+    let mut source = String::new();
+    let mut target = String::new();
+    for op in ops {
+        match op {
+            DiffOp::Keep(ch) => {
+                source.push(*ch);
+                target.push(*ch);
+            }
+            DiffOp::Delete(ch) => {
+                source.push(*ch);
+            }
+            DiffOp::Insert(ch) => {
+                target.push(*ch);
+            }
+        }
+    }
+    (source, target)
 }
 
 #[cfg(test)]
@@ -334,5 +496,88 @@ mod tests {
         assert_eq!(results.len(), 1);
         assert_eq!(results[0].text, "--verbose");
         assert_eq!(results[0].distance, 1); // transposition of 'r' and 'e'
+    }
+
+    // --- diff_ops tests ---
+
+    #[test]
+    fn diff_ops_missing_char() {
+        // "chekout" → "checkout" (missing 'c' after "che")
+        let ops = diff_ops("chekout", "checkout");
+        let (src, tgt) = apply_ops(&ops);
+        assert_eq!(src, "chekout");
+        assert_eq!(tgt, "checkout");
+    }
+
+    #[test]
+    fn diff_ops_substitution() {
+        // "chackout" → "checkout" (a→e substitution)
+        let ops = diff_ops("chackout", "checkout");
+        let (src, tgt) = apply_ops(&ops);
+        assert_eq!(src, "chackout");
+        assert_eq!(tgt, "checkout");
+        // Should contain Delete('a') and Insert('e')
+        assert!(ops.contains(&DiffOp::Delete('a')));
+        assert!(ops.contains(&DiffOp::Insert('e')));
+    }
+
+    #[test]
+    fn diff_ops_extra_char() {
+        // "checckout" → "checkout" (extra 'c')
+        let ops = diff_ops("checckout", "checkout");
+        let (src, tgt) = apply_ops(&ops);
+        assert_eq!(src, "checckout");
+        assert_eq!(tgt, "checkout");
+    }
+
+    #[test]
+    fn diff_ops_transposition() {
+        // "chekcout" → "checkout" (k and c swapped)
+        let ops = diff_ops("chekcout", "checkout");
+        let (src, tgt) = apply_ops(&ops);
+        assert_eq!(src, "chekcout");
+        assert_eq!(tgt, "checkout");
+    }
+
+    #[test]
+    fn diff_ops_long_option_transposition() {
+        // "--vrebose" → "--verbose" (r and e swapped)
+        let ops = diff_ops("--vrebose", "--verbose");
+        let (src, tgt) = apply_ops(&ops);
+        assert_eq!(src, "--vrebose");
+        assert_eq!(tgt, "--verbose");
+    }
+
+    #[test]
+    fn diff_ops_identical() {
+        let ops = diff_ops("checkout", "checkout");
+        assert!(ops.iter().all(|op| matches!(op, DiffOp::Keep(_))));
+        assert_eq!(ops.len(), 8);
+    }
+
+    #[test]
+    fn diff_ops_empty_typed() {
+        let ops = diff_ops("", "abc");
+        assert_eq!(
+            ops,
+            vec![
+                DiffOp::Insert('a'),
+                DiffOp::Insert('b'),
+                DiffOp::Insert('c')
+            ]
+        );
+    }
+
+    #[test]
+    fn diff_ops_empty_corrected() {
+        let ops = diff_ops("abc", "");
+        assert_eq!(
+            ops,
+            vec![
+                DiffOp::Delete('a'),
+                DiffOp::Delete('b'),
+                DiffOp::Delete('c')
+            ]
+        );
     }
 }

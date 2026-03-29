@@ -166,6 +166,7 @@ impl PredictionTier for SpecTier {
                                     confidence: 0.85,
                                     source: SuggestionSource::Spec,
                                     description: arg.name.clone(),
+                                    diff_ops: None,
                                 });
                             }
                         }
@@ -175,6 +176,7 @@ impl PredictionTier for SpecTier {
                             if command_was_fuzzy {
                                 let cmd_len = command.len();
                                 for s in &mut suggestions {
+                                    s.diff_ops = None; // no inline diff for command-level correction
                                     let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
                                     s.text = format!("{}{}{}", spec.name, mid, s.text);
                                     s.replace_start = 0;
@@ -204,6 +206,7 @@ impl PredictionTier for SpecTier {
                     confidence: 0.9,
                     source: SuggestionSource::Spec,
                     description: sub.description.clone(),
+                    diff_ops: None,
                 });
             }
         }
@@ -229,6 +232,7 @@ impl PredictionTier for SpecTier {
                         confidence: 0.85,
                         source: SuggestionSource::Spec,
                         description: opt.description.clone(),
+                        diff_ops: None,
                     });
                 }
             }
@@ -257,6 +261,7 @@ impl PredictionTier for SpecTier {
                     .and_then(|s| s.description.clone());
 
                 let confidence = if fm.distance == 1 { 0.70 } else { 0.55 };
+                let ops = crate::fuzzy::diff_ops(current_token, &fm.text);
                 suggestions.push(Suggestion {
                     text: fm.text.clone(),
                     replace_start: token_start,
@@ -264,6 +269,7 @@ impl PredictionTier for SpecTier {
                     confidence,
                     source: SuggestionSource::Spec,
                     description: desc,
+                    diff_ops: Some(ops),
                 });
             }
 
@@ -290,6 +296,7 @@ impl PredictionTier for SpecTier {
                         .and_then(|opt| opt.description.clone());
 
                     let confidence = if fm.distance == 1 { 0.65 } else { 0.50 };
+                    let ops = crate::fuzzy::diff_ops(current_token, &fm.text);
                     suggestions.push(Suggestion {
                         text: fm.text.clone(),
                         replace_start: token_start,
@@ -297,6 +304,7 @@ impl PredictionTier for SpecTier {
                         confidence,
                         source: SuggestionSource::Spec,
                         description: desc,
+                        diff_ops: Some(ops),
                     });
                 }
             }
@@ -329,6 +337,7 @@ impl PredictionTier for SpecTier {
                             confidence: 0.8,
                             source: SuggestionSource::Spec,
                             description: opt.description.clone(),
+                            diff_ops: None,
                         });
                     }
                 }
@@ -358,6 +367,7 @@ impl PredictionTier for SpecTier {
                                         confidence: 0.8,
                                         source: SuggestionSource::Spec,
                                         description: opt.description.clone(),
+                                        diff_ops: None,
                                     });
                                 }
                             }
@@ -373,6 +383,7 @@ impl PredictionTier for SpecTier {
         if command_was_fuzzy {
             let cmd_len = command.len();
             for s in &mut suggestions {
+                s.diff_ops = None; // no inline diff for command-level correction
                 let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
                 s.text = format!("{}{}{}", spec.name, mid, s.text);
                 s.replace_start = 0;

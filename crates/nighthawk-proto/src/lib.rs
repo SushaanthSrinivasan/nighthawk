@@ -80,6 +80,28 @@ pub struct Suggestion {
 
     /// Optional description (e.g. "Switch branches" for `git checkout`).
     pub description: Option<String>,
+
+    /// Character-level diff ops for inline diff rendering of fuzzy matches.
+    /// None for prefix matches (use normal ghost text). Some for fuzzy matches.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub diff_ops: Option<Vec<DiffOp>>,
+}
+
+/// A single character-level diff operation for inline rendering.
+///
+/// Fuzzy matches produce a sequence of these ops describing how the
+/// typed text differs from the corrected text. The shell plugin uses
+/// them to render strikethrough (Delete), gray ghost (Insert), and
+/// normal (Keep) characters inline.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case", tag = "op", content = "ch")]
+pub enum DiffOp {
+    /// Character matches — render in normal color.
+    Keep(char),
+    /// Character should be removed — render as strikethrough red.
+    Delete(char),
+    /// Character should be inserted — render as gray ghost text.
+    Insert(char),
 }
 
 /// Which prediction tier produced a suggestion.
@@ -140,6 +162,7 @@ mod tests {
                 confidence: 0.95,
                 source: SuggestionSource::Spec,
                 description: Some("Switch branches or restore files".into()),
+                diff_ops: None,
             }],
         };
         let json = serde_json::to_string(&resp).unwrap();
@@ -156,5 +179,63 @@ mod tests {
         assert_eq!(json, "\"powershell\"");
         let parsed: Shell = serde_json::from_str("\"pwsh\"").unwrap();
         assert_eq!(parsed, Shell::PowerShell);
+    }
+
+    #[test]
+    fn diff_op_roundtrip() {
+        let ops = vec![
+            DiffOp::Keep('c'),
+            DiffOp::Delete('a'),
+            DiffOp::Insert('e'),
+            DiffOp::Keep('k'),
+        ];
+        let json = serde_json::to_string(&ops).unwrap();
+        let parsed: Vec<DiffOp> = serde_json::from_str(&json).unwrap();
+        assert_eq!(parsed, ops);
+    }
+
+    #[test]
+    fn suggestion_with_diff_ops() {
+        let suggestion = Suggestion {
+            text: "checkout".into(),
+            replace_start: 4,
+            replace_end: 12,
+            confidence: 0.7,
+            source: SuggestionSource::Spec,
+            description: None,
+            diff_ops: Some(vec![DiffOp::Keep('c'), DiffOp::Insert('h')]),
+        };
+        let json = serde_json::to_string(&suggestion).unwrap();
+        assert!(json.contains("diff_ops"));
+        let parsed: Suggestion = serde_json::from_str(&json).unwrap();
+        assert_eq!(parsed.diff_ops.unwrap().len(), 2);
+    }
+
+    #[test]
+    fn suggestion_without_diff_ops_backward_compat() {
+        // Old JSON without diff_ops field should deserialize with None
+        let json = r#"{"text":"checkout","replace_start":4,"replace_end":6,"confidence":0.9,"source":"spec","description":null}"#;
+        let parsed: Suggestion = serde_json::from_str(json).unwrap();
+        assert!(parsed.diff_ops.is_none());
+    }
+
+    #[test]
+    fn suggestion_none_diff_ops_omitted_in_json() {
+        // diff_ops: None should not appear in serialized JSON (skip_serializing_if)
+        let suggestion = Suggestion {
+            text: "checkout".into(),
+            replace_start: 4,
+            replace_end: 6,
+            confidence: 0.9,
+            source: SuggestionSource::Spec,
+            description: None,
+            diff_ops: None,
+        };
+        let json = serde_json::to_string(&suggestion).unwrap();
+        assert!(
+            !json.contains("diff_ops"),
+            "None diff_ops should be omitted: {}",
+            json
+        );
     }
 }
