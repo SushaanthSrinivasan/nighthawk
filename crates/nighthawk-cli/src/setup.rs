@@ -61,11 +61,15 @@ fn find_specs_dir() -> Option<PathBuf> {
 }
 
 /// Copy a file, creating parent dirs as needed.
+/// Normalizes line endings to LF so shell plugins work on Linux/macOS
+/// even when copied from a Windows checkout.
 fn copy_file(src: &Path, dst: &Path) -> Result<(), Box<dyn std::error::Error>> {
     if let Some(parent) = dst.parent() {
         std::fs::create_dir_all(parent)?;
     }
-    std::fs::copy(src, dst)?;
+    let content = std::fs::read_to_string(src)?;
+    let normalized = content.replace("\r\n", "\n");
+    std::fs::write(dst, normalized)?;
     Ok(())
 }
 

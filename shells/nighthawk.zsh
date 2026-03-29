@@ -6,6 +6,7 @@
 
 # --- Configuration ---
 NIGHTHAWK_SOCKET="${NIGHTHAWK_SOCKET:-/tmp/nighthawk-$(id -u).sock}"
+NIGHTHAWK_FUZZY_DISPLAY="${NIGHTHAWK_FUZZY_DISPLAY:-hint}"
 
 # --- State ---
 typeset -g _nh_suggestion=""
@@ -91,6 +92,18 @@ _nh_render_diff() {
         region_highlight+=("$hl")
     done
     _nh_has_highlight=${#diff_highlights[@]}
+}
+
+# --- Hint rendering for fuzzy matches ---
+# Shows " -> suggestion" as gray POSTDISPLAY text.
+# Does NOT modify BUFFER, so no save/restore dance needed.
+_nh_render_hint() {
+    local suggestion="$1"
+    if [[ -n "$suggestion" ]]; then
+        POSTDISPLAY=" → $suggestion"
+        region_highlight+=("${#BUFFER} $((${#BUFFER} + ${#POSTDISPLAY})) fg=8")
+        _nh_has_highlight=1
+    fi
 }
 
 # --- Restore original buffer before user edits ---
@@ -209,9 +222,13 @@ _nh_query() {
         _nh_replace_end="$replace_end"
 
         if [[ -n "$diff_ops_str" ]]; then
-            # Fuzzy match: render inline diff
-            _nh_diff_ops="$diff_ops_str"
-            _nh_render_diff "$diff_ops_str" "$replace_start" "$replace_end"
+            # Fuzzy match: render based on display mode
+            if [[ "$NIGHTHAWK_FUZZY_DISPLAY" == "hint" ]]; then
+                _nh_render_hint "$text"
+            else
+                _nh_diff_ops="$diff_ops_str"
+                _nh_render_diff "$diff_ops_str" "$replace_start" "$replace_end"
+            fi
         else
             # Prefix match: render ghost text suffix
             local already_typed_len=$(( cursor - replace_start ))
