@@ -1,14 +1,14 @@
 pub mod fig;
 pub mod helpparse;
 
-use serde::Deserialize;
+use parking_lot::RwLock;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use std::sync::RwLock;
 
 // --- Spec data structures ---
 
 /// A parsed CLI completion spec.
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CliSpec {
     pub name: String,
     #[serde(default)]
@@ -21,7 +21,7 @@ pub struct CliSpec {
     pub args: Vec<ArgSpec>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SubcommandSpec {
     pub name: String,
     #[serde(default)]
@@ -36,7 +36,7 @@ pub struct SubcommandSpec {
     pub args: Vec<ArgSpec>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OptionSpec {
     pub names: Vec<String>,
     #[serde(default)]
@@ -47,7 +47,7 @@ pub struct OptionSpec {
     pub is_required: bool,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ArgSpec {
     #[serde(default)]
     pub name: Option<String>,
@@ -61,7 +61,7 @@ pub struct ArgSpec {
     pub template: Option<ArgTemplate>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum ArgTemplate {
     Filepaths,
@@ -77,12 +77,19 @@ pub trait SpecProvider: Send + Sync {
 
     /// List all known command names.
     fn known_commands(&self) -> Vec<String>;
+
+    /// If true, SpecRegistry will NOT cache None results from this provider.
+    /// Used by providers that populate asynchronously (e.g., --help parser).
+    fn is_fallback(&self) -> bool {
+        false
+    }
 }
 
 // --- SpecRegistry ---
 
 /// Chains multiple SpecProviders with an in-memory cache.
 /// Providers are queried in order; first match wins and gets cached.
+/// Fallback providers (is_fallback() == true) should be registered last.
 pub struct SpecRegistry {
     providers: Vec<Box<dyn SpecProvider>>,
     cache: RwLock<HashMap<String, Option<CliSpec>>>,
@@ -97,26 +104,34 @@ impl SpecRegistry {
     }
 
     /// Look up a spec by command name. Cached after first lookup.
+    ///
+    /// When all providers return None and the last queried provider is a
+    /// fallback (may populate asynchronously), the None is NOT cached so
+    /// the next request can retry.
     pub fn lookup(&self, command: &str) -> Option<CliSpec> {
         // Check cache first
-        if let Ok(cache) = self.cache.read() {
-            if let Some(cached) = cache.get(command) {
-                return cached.clone();
-            }
+        if let Some(cached) = self.cache.read().get(command) {
+            return cached.clone();
         }
 
         // Query providers in order
         let mut result = None;
+        let mut last_was_fallback = false;
         for provider in &self.providers {
             if let Some(spec) = provider.get_spec(command) {
                 result = Some(spec);
+                last_was_fallback = false;
                 break;
             }
+            last_was_fallback = provider.is_fallback();
         }
 
-        // Cache the result (even None, to avoid repeated lookups)
-        if let Ok(mut cache) = self.cache.write() {
-            cache.insert(command.to_string(), result.clone());
+        // Cache the result — but NOT if it's None and the last queried
+        // provider is a fallback (it may populate asynchronously)
+        if result.is_some() || !last_was_fallback {
+            self.cache
+                .write()
+                .insert(command.to_string(), result.clone());
         }
 
         result
@@ -173,5 +188,161 @@ mod tests {
 
         // Unknown command returns None
         assert!(registry.lookup("unknown").is_none());
+    }
+
+    #[test]
+    fn registry_retries_when_fallback_returns_none() {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        use std::sync::Arc;
+
+        struct Inner {
+            ready: AtomicBool,
+        }
+        struct DelayedFallback {
+            inner: Arc<Inner>,
+        }
+
+        impl SpecProvider for DelayedFallback {
+            fn get_spec(&self, command: &str) -> Option<CliSpec> {
+                if self.inner.ready.load(Ordering::SeqCst) {
+                    Some(CliSpec {
+                        name: command.into(),
+                        description: None,
+                        subcommands: vec![],
+                        options: vec![],
+                        args: vec![],
+                    })
+                } else {
+                    None
+                }
+            }
+            fn known_commands(&self) -> Vec<String> {
+                vec![]
+            }
+            fn is_fallback(&self) -> bool {
+                true
+            }
+        }
+
+        let inner = Arc::new(Inner {
+            ready: AtomicBool::new(false),
+        });
+        let provider = DelayedFallback {
+            inner: Arc::clone(&inner),
+        };
+        let registry = SpecRegistry::new(vec![Box::new(provider)]);
+
+        // First lookup: fallback returns None, NOT cached
+        assert!(registry.lookup("mycmd").is_none());
+
+        // Simulate background task completing
+        inner.ready.store(true, Ordering::SeqCst);
+
+        // Second lookup: provider queried again (not cached), returns Some
+        assert!(registry.lookup("mycmd").is_some());
+    }
+
+    #[test]
+    fn registry_caches_none_from_non_fallback() {
+        use std::sync::atomic::{AtomicUsize, Ordering};
+        use std::sync::Arc;
+
+        struct Inner {
+            call_count: AtomicUsize,
+        }
+        struct CountingProvider {
+            inner: Arc<Inner>,
+        }
+
+        impl SpecProvider for CountingProvider {
+            fn get_spec(&self, _command: &str) -> Option<CliSpec> {
+                self.inner.call_count.fetch_add(1, Ordering::SeqCst);
+                None
+            }
+            fn known_commands(&self) -> Vec<String> {
+                vec![]
+            }
+            // is_fallback() defaults to false
+        }
+
+        let inner = Arc::new(Inner {
+            call_count: AtomicUsize::new(0),
+        });
+        let provider = CountingProvider {
+            inner: Arc::clone(&inner),
+        };
+        let registry = SpecRegistry::new(vec![Box::new(provider)]);
+
+        // First lookup queries the provider
+        assert!(registry.lookup("unknown").is_none());
+        assert_eq!(inner.call_count.load(Ordering::SeqCst), 1);
+
+        // Second lookup hits cache, does NOT query provider again
+        assert!(registry.lookup("unknown").is_none());
+        assert_eq!(inner.call_count.load(Ordering::SeqCst), 1);
+    }
+
+    #[test]
+    fn two_providers_normal_miss_fallback_miss_not_cached() {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        use std::sync::Arc;
+
+        // Simulates real provider chain: FigSpecProvider (normal) + HelpParseProvider (fallback)
+        struct NormalProvider;
+        impl SpecProvider for NormalProvider {
+            fn get_spec(&self, _command: &str) -> Option<CliSpec> {
+                None
+            }
+            fn known_commands(&self) -> Vec<String> {
+                vec![]
+            }
+        }
+
+        struct Inner {
+            ready: AtomicBool,
+        }
+        struct DelayedFallback {
+            inner: Arc<Inner>,
+        }
+        impl SpecProvider for DelayedFallback {
+            fn get_spec(&self, command: &str) -> Option<CliSpec> {
+                if self.inner.ready.load(Ordering::SeqCst) {
+                    Some(CliSpec {
+                        name: command.into(),
+                        description: None,
+                        subcommands: vec![],
+                        options: vec![],
+                        args: vec![],
+                    })
+                } else {
+                    None
+                }
+            }
+            fn known_commands(&self) -> Vec<String> {
+                vec![]
+            }
+            fn is_fallback(&self) -> bool {
+                true
+            }
+        }
+
+        let inner = Arc::new(Inner {
+            ready: AtomicBool::new(false),
+        });
+        let registry = SpecRegistry::new(vec![
+            Box::new(NormalProvider),
+            Box::new(DelayedFallback {
+                inner: Arc::clone(&inner),
+            }),
+        ]);
+
+        // Both miss → None NOT cached (fallback is last queried)
+        assert!(registry.lookup("rg").is_none());
+
+        // Fallback populates asynchronously
+        inner.ready.store(true, Ordering::SeqCst);
+
+        // Next lookup retries and finds the result
+        assert!(registry.lookup("rg").is_some());
     }
 }
