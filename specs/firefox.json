@@ -7,7 +7,11 @@
         "--display"
       ],
       "description": "Specify an X display to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "display",
+        "description": "X display to use"
+      }
     },
     {
       "names": [
@@ -46,14 +50,23 @@
         "-P"
       ],
       "description": "Specify profile to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile",
+        "description": "Profile to use"
+      }
     },
     {
       "names": [
         "--profile"
       ],
       "description": "Specify profile to use by folder",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile",
+        "description": "Profile folder to use",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -96,14 +109,21 @@
         "--MOZ_LOG"
       ],
       "description": "Treated as MOZ_LOG=<modules> environment variable, overrides it",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "modules"
+      }
     },
     {
       "names": [
         "--MOZ_LOG_FILE"
       ],
       "description": "Treated as MOZ_LOG_FILE=<file> environment variable, overrides it. If MOZ_LOG_FILE is not specified as an argument or as an environment variable, logging will be written to stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -116,7 +136,11 @@
         "--jsdebugger"
       ],
       "description": "Open the Browser Toolbox. Defaults to the local build but can be overridden by a firefox path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "folder",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -129,7 +153,11 @@
         "--start-debugger-server"
       ],
       "description": "Start the devtools server on a TCP port or Unix domain socket path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port or path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -142,21 +170,33 @@
         "--new-window"
       ],
       "description": "Open a URL in a new window",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL",
+        "description": "URL to open"
+      }
     },
     {
       "names": [
         "--new-tab"
       ],
       "description": "Open a URL in a new tab",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL",
+        "description": "URL to open"
+      }
     },
     {
       "names": [
         "--private-window"
       ],
       "description": "Open a URL in a new private window",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL",
+        "description": "URL to open"
+      }
     },
     {
       "names": [
@@ -169,21 +209,34 @@
         "--screenshot"
       ],
       "description": "Take a screenshot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "folder",
+        "description": "Folder to save screenshot to",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--window-size"
       ],
       "description": "Size of your screenshot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "width",
+        "description": "Width of your screenshot"
+      }
     },
     {
       "names": [
         "--search"
       ],
       "description": "Search for a term in your default search engine",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "term",
+        "description": "Term to search for"
+      }
     },
     {
       "names": [
@@ -232,21 +285,31 @@
         "--remote-debugging-port"
       ],
       "description": "Start the Firefox Remote Agent, which is a low-level remote debugging interface used for WebDriver",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port",
+        "description": "Defaults to port 9222"
+      }
     },
     {
       "names": [
         "--allow-remote-hosts"
       ],
       "description": "Values of the Host header to allow for incoming requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hosts"
+      }
     },
     {
       "names": [
         "--allow-remote-origins"
       ],
       "description": "Values of the Origin header to allow for incoming requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "origins"
+      }
     }
   ],
   "args": [

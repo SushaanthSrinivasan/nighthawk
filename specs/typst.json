@@ -14,21 +14,36 @@
             "--root"
           ],
           "description": "Configures the project root (for absolute paths)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--font-path"
           ],
           "description": "Adds additional directories to search for fonts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "font_paths",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--diagnostic-format"
           ],
           "description": "The format to emit diagnostics in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "diagnostic_format",
+            "suggestions": [
+              "human",
+              "short"
+            ]
+          }
         },
         {
           "names": [
@@ -36,28 +51,48 @@
             "--format"
           ],
           "description": "The format of the output file, inferred from the extension by default",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "pdf",
+              "png",
+              "svg"
+            ]
+          }
         },
         {
           "names": [
             "--open"
           ],
           "description": "Opens the output file using the default viewer after compilation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "open",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--ppi"
           ],
           "description": "The PPI (pixels per inch) to use for PNG export",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ppi"
+          }
         },
         {
           "names": [
             "--flamegraph"
           ],
           "description": "Produces a flamegraph of the compilation process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flamegraph",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -91,21 +126,36 @@
             "--root"
           ],
           "description": "Configures the project root (for absolute paths)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--font-path"
           ],
           "description": "Adds additional directories to search for fonts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "font_paths",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--diagnostic-format"
           ],
           "description": "The format to emit diagnostics in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "diagnostic_format",
+            "suggestions": [
+              "human",
+              "short"
+            ]
+          }
         },
         {
           "names": [
@@ -113,28 +163,48 @@
             "--format"
           ],
           "description": "The format of the output file, inferred from the extension by default",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "pdf",
+              "png",
+              "svg"
+            ]
+          }
         },
         {
           "names": [
             "--open"
           ],
           "description": "Opens the output file using the default viewer after compilation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "open",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--ppi"
           ],
           "description": "The PPI (pixels per inch) to use for PNG export",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ppi"
+          }
         },
         {
           "names": [
             "--flamegraph"
           ],
           "description": "Produces a flamegraph of the compilation process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flamegraph",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -165,35 +235,60 @@
             "--root"
           ],
           "description": "Configures the project root (for absolute paths)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--font-path"
           ],
           "description": "Adds additional directories to search for fonts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "font_paths",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--diagnostic-format"
           ],
           "description": "The format to emit diagnostics in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "diagnostic_format",
+            "suggestions": [
+              "human",
+              "short"
+            ]
+          }
         },
         {
           "names": [
             "--field"
           ],
           "description": "Extracts just one field from all retrieved elements",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "field"
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "The format to serialize in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -229,7 +324,11 @@
             "--font-path"
           ],
           "description": "Adds additional directories to search for fonts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "font_paths",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -314,7 +413,11 @@
         "--cert"
       ],
       "description": "Path to a custom CA certificate to use when making network requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cert",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

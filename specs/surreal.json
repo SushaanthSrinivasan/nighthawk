@@ -27,7 +27,11 @@
             "--addr"
           ],
           "description": "The allowed networks for master authentication [env: ADDR=] [default: 127.0.0.1/32]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "addr",
+            "description": "The allowed networks for master authentication [env: ADDR=] [default: 127.0.0.1/32]"
+          }
         },
         {
           "names": [
@@ -35,7 +39,11 @@
             "-b"
           ],
           "description": "The hostname or ip address to listen for connections on [env: BIND=] [default: 0.0.0.0:8000]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bind",
+            "description": "The hostname or ip address to listen for connections on [env: BIND=] [default: 0.0.0.0:8000]"
+          }
         },
         {
           "names": [
@@ -43,28 +51,44 @@
             "-k"
           ],
           "description": "Encryption key to use for on-disk encryption [env: KEY=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key",
+            "description": "Encryption key to use for on-disk encryption [env: KEY=]"
+          }
         },
         {
           "names": [
             "--kvs-ca"
           ],
           "description": "Path to the CA file used when connecting to the remote KV store [env: KVS_CA=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "kvs-ca",
+            "description": "Path to the CA file used when connecting to the remote KV store [env: KVS_CA=]"
+          }
         },
         {
           "names": [
             "--kvs-crt"
           ],
           "description": "Path to the certificate file used when connecting to the remote KV store [env: KVS_CRT=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "kvs-crt",
+            "description": "Path to the certificate file used when connecting to the remote KV store [env: KVS_CRT=]"
+          }
         },
         {
           "names": [
             "--kvs-key"
           ],
           "description": "Path to the private key file used when connecting to the remote KV store [env: KVS_KEY=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "kvs-key",
+            "description": "Path to the private key file used when connecting to the remote KV store [env: KVS_KEY=]"
+          }
         },
         {
           "names": [
@@ -72,7 +96,18 @@
             "-l"
           ],
           "description": "The logging level for the database server [env: LOG=] [default: info] [possible values: warn, info, debug, trace, full]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "log",
+            "description": "The logging level for the database server [env: LOG=] [default: info] [possible values: warn, info, debug, trace, full]",
+            "suggestions": [
+              "warn",
+              "info",
+              "debug",
+              "trace",
+              "full"
+            ]
+          }
         },
         {
           "names": [
@@ -80,7 +115,11 @@
             "-p"
           ],
           "description": "The master password for the database [env: PASS=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pass",
+            "description": "The master password for the database [env: PASS=]"
+          }
         },
         {
           "names": [
@@ -88,7 +127,11 @@
             "-s"
           ],
           "description": "Whether strict mode is enabled on this database instance [env: STRICT=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strict",
+            "description": "Whether strict mode is enabled on this database instance [env: STRICT=]"
+          }
         },
         {
           "names": [
@@ -96,21 +139,33 @@
             "-u"
           ],
           "description": "The master username for the database [env: USER=] [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user",
+            "description": "The master username for the database [env: USER=] [default: root]"
+          }
         },
         {
           "names": [
             "--web-crt"
           ],
           "description": "Path to the certificate file for encrypted client connections [env: WEB_CRT=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "web-crt",
+            "description": "Path to the certificate file for encrypted client connections [env: WEB_CRT=]"
+          }
         },
         {
           "names": [
             "--web-key"
           ],
           "description": "Path to the private key file for encrypted client connections [env: WEB_KEY=]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "web-key",
+            "description": "Path to the private key file for encrypted client connections [env: WEB_KEY=]"
+          }
         }
       ],
       "args": [
@@ -130,7 +185,11 @@
             "-p"
           ],
           "description": "Database authentication password to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pass",
+            "description": "Database authentication password to use when connecting [default: root]"
+          }
         },
         {
           "names": [
@@ -138,7 +197,11 @@
             "-u"
           ],
           "description": "Database authentication username to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user",
+            "description": "Database authentication username to use when connecting [default: root]"
+          }
         }
       ],
       "args": [
@@ -162,7 +225,11 @@
             "-p"
           ],
           "description": "Database authentication password to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pass",
+            "description": "Database authentication password to use when connecting [default: root]"
+          }
         },
         {
           "names": [
@@ -170,7 +237,11 @@
             "-u"
           ],
           "description": "Database authentication username to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user",
+            "description": "Database authentication username to use when connecting [default: root]"
+          }
         },
         {
           "names": [
@@ -178,7 +249,11 @@
             "-c"
           ],
           "description": "Remote database server url to connect to [default: https://cloud.surrealdb.com]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "conn",
+            "description": "Remote database server url to connect to [default: https://cloud.surrealdb.com]"
+          }
         },
         {
           "names": [
@@ -186,6 +261,10 @@
           ],
           "description": "The namespace to import the data into",
           "takes_arg": true,
+          "arg": {
+            "name": "ns",
+            "description": "The namespace to import the data into"
+          },
           "is_required": true
         },
         {
@@ -194,6 +273,10 @@
           ],
           "description": "The database to import the data into",
           "takes_arg": true,
+          "arg": {
+            "name": "db",
+            "description": "The database to import the data into"
+          },
           "is_required": true
         }
       ],
@@ -214,7 +297,11 @@
             "-p"
           ],
           "description": "Database authentication password to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pass",
+            "description": "Database authentication password to use when connecting [default: root]"
+          }
         },
         {
           "names": [
@@ -222,7 +309,11 @@
             "-u"
           ],
           "description": "Database authentication username to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user",
+            "description": "Database authentication username to use when connecting [default: root]"
+          }
         },
         {
           "names": [
@@ -230,7 +321,11 @@
             "-c"
           ],
           "description": "Remote database server url to connect to [default: https://cloud.surrealdb.com]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "conn",
+            "description": "Remote database server url to connect to [default: https://cloud.surrealdb.com]"
+          }
         },
         {
           "names": [
@@ -238,6 +333,10 @@
           ],
           "description": "The namespace to export the data from",
           "takes_arg": true,
+          "arg": {
+            "name": "ns",
+            "description": "The namespace to export the data from"
+          },
           "is_required": true
         },
         {
@@ -246,6 +345,10 @@
           ],
           "description": "The database to export the data from",
           "takes_arg": true,
+          "arg": {
+            "name": "db",
+            "description": "The database to export the data from"
+          },
           "is_required": true
         }
       ],
@@ -270,7 +373,11 @@
             "-p"
           ],
           "description": "Database authentication password to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pass",
+            "description": "Database authentication password to use when connecting [default: root]"
+          }
         },
         {
           "names": [
@@ -278,7 +385,11 @@
             "-u"
           ],
           "description": "Database authentication username to use when connecting [default: root]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user",
+            "description": "Database authentication username to use when connecting [default: root]"
+          }
         },
         {
           "names": [
@@ -286,7 +397,11 @@
             "-c"
           ],
           "description": "Remote database server url to connect to [default: https://cloud.surrealdb.com]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "conn",
+            "description": "Remote database server url to connect to [default: https://cloud.surrealdb.com]"
+          }
         },
         {
           "names": [
@@ -294,6 +409,10 @@
           ],
           "description": "The namespace to export the data from",
           "takes_arg": true,
+          "arg": {
+            "name": "ns",
+            "description": "The namespace to export the data from"
+          },
           "is_required": true
         },
         {
@@ -302,6 +421,10 @@
           ],
           "description": "The database to export the data from",
           "takes_arg": true,
+          "arg": {
+            "name": "db",
+            "description": "The database to export the data from"
+          },
           "is_required": true
         },
         {

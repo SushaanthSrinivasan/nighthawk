@@ -16,7 +16,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -24,7 +28,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -58,7 +66,12 @@
                 "-p"
               ],
               "description": "The directory to download the collections to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "download_path",
+                "description": "The directory to download the collections to",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -66,7 +79,12 @@
                 "-r"
               ],
               "description": "A file containing a list of collections to be downloaded",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "requirements",
+                "description": "A file containing a list of collections to be downloaded",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -197,7 +215,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -205,7 +227,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -226,14 +252,24 @@
                 "--init-path"
               ],
               "description": "The path in which the skeleton collection will be created",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "init_path",
+                "description": "The path in which the skeleton collection will be created",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--collection-skeleton"
               ],
               "description": "The path to a collection skeleton that the new collection should be based upon",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "collection_skeleton",
+                "description": "The path to a collection skeleton that the new collection should be based upon",
+                "template": "folders"
+              }
             }
           ],
           "args": [
@@ -253,7 +289,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -261,7 +301,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -282,7 +326,12 @@
                 "--output-path"
               ],
               "description": "The path in which the collection is built to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output_path",
+                "description": "The path in which the collection is built to",
+                "template": "folders"
+              }
             }
           ],
           "args": [
@@ -303,7 +352,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -311,7 +364,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -331,7 +388,17 @@
                 "--import-timeout"
               ],
               "description": "The time to wait for the collection import process to finish",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "import_timeout",
+                "description": "The time to wait for the collection import process to finish",
+                "suggestions": [
+                  "60",
+                  "300",
+                  "600",
+                  "900"
+                ]
+              }
             }
           ],
           "args": [
@@ -352,7 +419,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -360,7 +431,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -375,14 +450,31 @@
                 "-p"
               ],
               "description": "One or more directories to search for collections in addition to the default COLLECTIONS_PATHS; separate multiple paths with ':'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "collections_path",
+                "description": "One or more directories to search for collections in addition to the default COLLECTIONS_PATHS; separate multiple paths with ':'",
+                "suggestions": [
+                  "~/.ansible/collections:/usr/share/ansible/collections"
+                ],
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Format to display the list of collections in",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "description": "Format to display the list of collections in",
+                "suggestions": [
+                  "human",
+                  "yaml",
+                  "json"
+                ]
+              }
             }
           ],
           "args": [
@@ -402,7 +494,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -410,7 +506,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -425,7 +525,15 @@
                 "-p"
               ],
               "description": "One or more directories to search for collections in addition to the default COLLECTIONS_PATHS; separate multiple paths with ':'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "collections_path",
+                "description": "One or more directories to search for collections in addition to the default COLLECTIONS_PATHS; separate multiple paths with ':'",
+                "suggestions": [
+                  "~/.ansible/collections:/usr/share/ansible/collections"
+                ],
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -440,7 +548,12 @@
                 "-r"
               ],
               "description": "A file containing a list of collections to be downloaded",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "requirements",
+                "description": "A file containing a list of collections to be downloaded",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -466,7 +579,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -474,7 +591,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -501,21 +622,40 @@
                 "--init-path"
               ],
               "description": "The path in which the skeleton collection will be created",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "init_path",
+                "description": "The path in which the skeleton collection will be created",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--role-skeleton"
               ],
               "description": "The path in which the skeleton role will be created",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "role_skeleton",
+                "description": "The path in which the skeleton role will be created",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--type"
               ],
               "description": "Initialize using an alternate role type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "role_type",
+                "description": "Initialize using an alternate role type",
+                "suggestions": [
+                  "container",
+                  "apb",
+                  "network"
+                ]
+              }
             }
           ],
           "args": [
@@ -535,7 +675,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -543,7 +687,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -558,7 +706,14 @@
                 "--role-path"
               ],
               "description": "The path to the directory containing your roles",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "roles_path",
+                "description": "The path to the directory containing your roles",
+                "suggestions": [
+                  "~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles"
+                ]
+              }
             }
           ],
           "args": [
@@ -578,7 +733,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -586,7 +745,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -601,7 +764,14 @@
                 "--role-path"
               ],
               "description": "The path to the directory containing your roles",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "roles_path",
+                "description": "The path to the directory containing your roles",
+                "suggestions": [
+                  "~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles"
+                ]
+              }
             }
           ],
           "args": [
@@ -621,7 +791,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -629,7 +803,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -643,21 +821,33 @@
                 "--platforms"
               ],
               "description": "List of OS platforms to filter by",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "platforms",
+                "description": "List of OS platforms to filter by"
+              }
             },
             {
               "names": [
                 "--galaxy-tags"
               ],
               "description": "List of Galaxy tags to filter by",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "galaxy_tags",
+                "description": "List of Galaxy tags to filter by"
+              }
             },
             {
               "names": [
                 "--author"
               ],
               "description": "GitHub username",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "author",
+                "description": "GitHub username"
+              }
             }
           ],
           "args": [
@@ -677,7 +867,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -685,7 +879,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -699,14 +897,27 @@
                 "--branch"
               ],
               "description": "The name of a branch to import. Defaults to the repository's default branch (usually master)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "reference",
+                "description": "The name of a branch to import. Defaults to the repository's default branch (usually master)",
+                "suggestions": [
+                  "master",
+                  "main",
+                  "develop"
+                ]
+              }
             },
             {
               "names": [
                 "--role-name"
               ],
               "description": "The name the role should have, if different than the repo name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "role_name",
+                "description": "The name the role should have, if different than the repo name"
+              }
             },
             {
               "names": [
@@ -736,7 +947,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -744,7 +959,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -759,14 +978,25 @@
                 "--role-path"
               ],
               "description": "The path to the directory containing your roles",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "roles_path",
+                "description": "The path to the directory containing your roles",
+                "suggestions": [
+                  "~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles"
+                ]
+              }
             },
             {
               "names": [
                 "--remove"
               ],
               "description": "Remove the integration matching the provided ID value. Use --list to see ID values",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "remove_id",
+                "description": "Remove the integration matching the provided ID value. Use --list to see ID values"
+              }
             },
             {
               "names": [
@@ -786,7 +1016,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -794,7 +1028,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -809,7 +1047,14 @@
                 "--role-path"
               ],
               "description": "The path to the directory containing your roles",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "roles_path",
+                "description": "The path to the directory containing your roles",
+                "suggestions": [
+                  "~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles"
+                ]
+              }
             },
             {
               "names": [
@@ -829,7 +1074,11 @@
                 "-s"
               ],
               "description": "The Galaxy API server URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_server",
+                "description": "The Galaxy API server URL"
+              }
             },
             {
               "names": [
@@ -837,7 +1086,11 @@
                 "--api-key"
               ],
               "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api_key",
+                "description": "The Ansible Galaxy API key which can be found at https://galaxy.ansible.com/me/preferences"
+              }
             },
             {
               "names": [
@@ -852,7 +1105,14 @@
                 "--role-path"
               ],
               "description": "The path to the directory containing your roles",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "roles_path",
+                "description": "The path to the directory containing your roles",
+                "suggestions": [
+                  "~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles"
+                ]
+              }
             },
             {
               "names": [
@@ -873,7 +1133,12 @@
                 "-r"
               ],
               "description": "A file containing a list of collections to be downloaded",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "requirements",
+                "description": "A file containing a list of collections to be downloaded",
+                "template": "filepaths"
+              }
             },
             {
               "names": [

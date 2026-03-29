@@ -38,7 +38,15 @@
                 "--type",
                 "-t"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "typedefs",
+                  "transform",
+                  "keys",
+                  "seed"
+                ]
+              }
             }
           ]
         },
@@ -58,7 +66,15 @@
                 "--type",
                 "-t"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "typedefs",
+                  "transform",
+                  "keys",
+                  "seed"
+                ]
+              }
             }
           ]
         },
@@ -71,7 +87,15 @@
                 "--type",
                 "-t"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "typedefs",
+                  "transform",
+                  "keys",
+                  "seed"
+                ]
+              }
             }
           ]
         },
@@ -123,7 +147,11 @@
                 "--tags"
               ],
               "description": "Filter snapshots by tags",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tags-list",
+                "description": "Tag1,tag2,tag3"
+              }
             },
             {
               "names": [
@@ -156,7 +184,11 @@
                 "--tags"
               ],
               "description": "Filter snapshots by tags",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tags-list",
+                "description": "Tag1,tag2,tag3"
+              }
             },
             {
               "names": [
@@ -260,7 +292,37 @@
                 "--region"
               ],
               "description": "Fly.io region where the preview database server should be created",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "ams",
+                  "cdg",
+                  "den",
+                  "dfw",
+                  "ewr",
+                  "fra",
+                  "gru",
+                  "hkg",
+                  "iad",
+                  "jnb",
+                  "lax",
+                  "lhr",
+                  "maa",
+                  "mad",
+                  "mia",
+                  "nrt",
+                  "ord",
+                  "otp",
+                  "scl",
+                  "sea",
+                  "sin",
+                  "sjc",
+                  "syd",
+                  "waw",
+                  "yul",
+                  "yyz"
+                ]
+              }
             }
           ]
         },
@@ -300,7 +362,10 @@
                 "--team",
                 "-t"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "team-name"
+              }
             }
           ],
           "args": [
@@ -351,7 +416,10 @@
             "-n",
             "--entriesPerTable"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         }
       ]
     },
@@ -375,7 +443,14 @@
                 "--environment"
               ],
               "description": "Environment to use when capturing the snapshot",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environment-name",
+                "suggestions": [
+                  "cloud",
+                  "local"
+                ]
+              }
             },
             {
               "names": [
@@ -383,7 +458,10 @@
                 "--message"
               ],
               "description": "Attach a message to the snapshot",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "message"
+              }
             },
             {
               "names": [
@@ -391,14 +469,22 @@
                 "--subset"
               ],
               "description": "Path to a subset config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--tags"
               ],
               "description": "Attach tags to the snapshot",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tags-list",
+                "description": "Tag1,tag2,tag3"
+              }
             },
             {
               "names": [
@@ -406,7 +492,15 @@
                 "--transform-mode"
               ],
               "description": "Transformation mode to apply to the snapshot",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "transformation-mode",
+                "suggestions": [
+                  "strict",
+                  "unsafe",
+                  "auto"
+                ]
+              }
             }
           ],
           "args": [
@@ -439,7 +533,11 @@
                 "--tags"
               ],
               "description": "Filter snapshots by tags",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tags-list",
+                "description": "Tag1,tag2,tag3"
+              }
             }
           ]
         },
@@ -476,7 +574,11 @@
                 "--tags"
               ],
               "description": "Filter snapshots by tags",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tags-list",
+                "description": "Tag1,tag2,tag3"
+              }
             },
             {
               "names": [
@@ -528,7 +630,11 @@
                 "--tags"
               ],
               "description": "Filter snapshots by tags",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tags-list",
+                "description": "Tag1,tag2,tag3"
+              }
             },
             {
               "names": [
@@ -556,7 +662,14 @@
                 "--environment"
               ],
               "description": "Environment to use when slicing the snapshot",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environment-name",
+                "suggestions": [
+                  "cloud",
+                  "local"
+                ]
+              }
             },
             {
               "names": [
@@ -564,7 +677,10 @@
                 "--subset-path"
               ],
               "description": "Path to a sample config file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "template": "filepaths"
+              }
             },
             {
               "names": [

@@ -7,14 +7,21 @@
         "-d"
       ],
       "description": "Set the kernel's value for daylight saving time",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dst"
+      }
     },
     {
       "names": [
         "-f"
       ],
       "description": "Use specified format for input instead of the default [[[mm]dd]HH]MM[[cc]yy][.ss] format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "input_fmt",
+        "description": "The format with which to parse the new date value"
+      }
     },
     {
       "names": [
@@ -39,14 +46,21 @@
         "-r"
       ],
       "description": "Print the date and time represented by the specified number of seconds since the Epoch",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds",
+        "description": "Number of seconds since the Epoch (00:00:00 UTC, January 1, 1970)"
+      }
     },
     {
       "names": [
         "-t"
       ],
       "description": "Set the system's value for minutes west of GMT",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "minutes_west"
+      }
     },
     {
       "names": [
@@ -59,7 +73,11 @@
         "-v"
       ],
       "description": "Adjust and print (but don't set) the second, minute, hour, month day, week day, month, or year according to val",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "val",
+        "description": "[+|-]val[ymwdHMS]"
+      }
     }
   ],
   "args": [

@@ -12,7 +12,15 @@
             "--mode"
           ],
           "description": "Choose how much information to share. Anonymous mode drops the OS type and Zapier user id, but keeps command info. Identifying information is used only for debugging purposes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "enabled",
+              "anonymous",
+              "disabled"
+            ]
+          }
         },
         {
           "names": [
@@ -52,7 +60,10 @@
             "--version"
           ],
           "description": "Convert a specific version. Required when converting a Visual Builder integration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -142,7 +153,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -163,7 +184,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         }
       ],
       "args": [
@@ -231,7 +262,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -252,7 +293,24 @@
             "--template"
           ],
           "description": "The template to start your integration with",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template",
+            "suggestions": [
+              "basic-auth",
+              "callback",
+              "custom-auth",
+              "digest-auth",
+              "dynamic-dropdown",
+              "files",
+              "minimal",
+              "oauth1-trello",
+              "oauth2",
+              "search-or-create",
+              "session-auth",
+              "typescript"
+            ]
+          }
         },
         {
           "names": [
@@ -283,7 +341,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -350,7 +418,10 @@
             "--version"
           ],
           "description": "Filter logs to the specified version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -358,7 +429,15 @@
             "--status"
           ],
           "description": "Filter logs to only see errors or successes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "status",
+            "suggestions": [
+              "any",
+              "success",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -366,7 +445,15 @@
             "--type"
           ],
           "description": "See logs of the specified type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "console",
+              "bundle",
+              "http"
+            ]
+          }
         },
         {
           "names": [
@@ -380,14 +467,20 @@
             "--user"
           ],
           "description": "Only show logs for this user. Defaults to your account",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--limit"
           ],
           "description": "Cap the number of logs returned. Max is 50 (also the default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "limit"
+          }
         },
         {
           "names": [
@@ -395,7 +488,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -415,7 +518,10 @@
             "--user"
           ],
           "description": "Migrate only this user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
@@ -507,14 +613,22 @@
             "--dest"
           ],
           "description": "Specify the new file's directory. Use this flag when you want to create a different folder structure such as `src/triggers` instead of the default `triggers`. Defaults to `[triggers|searches|creates]/",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dest",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--test-dest"
           ],
           "description": "Specify the new test file's directory. Use this flag when you want to create a different folder structure such as `src/triggers` instead of the default `triggers`. Defaults to `test/[triggers|searches",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test-dest",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -522,7 +636,11 @@
             "--entry"
           ],
           "description": "Supply the path to your integration's root (`index.js`). Only needed if your `index.js` is in a subfolder, like `src`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "entry",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -607,7 +725,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -718,7 +846,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -739,7 +877,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -795,7 +943,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [
@@ -816,7 +974,17 @@
             "--format"
           ],
           "description": "Change the way structured data is presented. If \"json\" or \"raw\", you can pipe the output of the command into other tools, such as jq",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "plain",
+              "json",
+              "raw",
+              "row",
+              "table"
+            ]
+          }
         },
         {
           "names": [

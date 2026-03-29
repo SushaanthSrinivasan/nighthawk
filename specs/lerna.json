@@ -17,14 +17,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -63,7 +78,15 @@
             "--npm-client"
           ],
           "description": "The exececutable to run the script with",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "client",
+            "suggestions": [
+              "npm",
+              "yarn",
+              "pnpm"
+            ]
+          }
         },
         {
           "names": [
@@ -89,14 +112,20 @@
             "--scope"
           ],
           "description": "Include only packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Exclude packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
@@ -109,7 +138,10 @@
             "--since"
           ],
           "description": "Only include packages that have been changed since the specified ref. If no ref is passed, it defaults to the most-recent tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ref"
+          }
         },
         {
           "names": [
@@ -140,21 +172,35 @@
             "--npm-client"
           ],
           "description": "The exececutable to run the script with",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "client",
+            "suggestions": [
+              "npm",
+              "yarn",
+              "pnpm"
+            ]
+          }
         },
         {
           "names": [
             "--hoist"
           ],
           "description": "Install external dependencies matching glob at the repo root so they're available to all packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
             "--nohoist"
           ],
           "description": "Do not install external dependencies matching glob at the repo root. This can be used to opt out of hoisting for certain dependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
@@ -179,7 +225,10 @@
             "--registry"
           ],
           "description": "Forwarded npm commands will use the specified registry for your package(s)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
@@ -216,14 +265,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -298,14 +362,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -344,7 +423,10 @@
             "--npm-tag"
           ],
           "description": "Publish to npm with the given npm dist-tag (Defaults to latest)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tagname"
+          }
         },
         {
           "names": [
@@ -364,7 +446,13 @@
             "--force-publish"
           ],
           "description": "Force publish for the specified packages (comma-separated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "packages",
+            "suggestions": [
+              "*"
+            ]
+          }
         }
       ]
     },
@@ -587,14 +675,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -650,14 +753,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -696,14 +814,20 @@
             "--scope"
           ],
           "description": "Include only packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Exclude packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
@@ -716,7 +840,10 @@
             "--since"
           ],
           "description": "Only include packages that have been changed since the specified ref. If no ref is passed, it defaults to the most-recent tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ref"
+          }
         },
         {
           "names": [
@@ -777,7 +904,11 @@
             "--profile-location"
           ],
           "description": "You can provide a custom location for the performance profile output. The path provided will be resolved relative to the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location",
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -802,14 +933,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -864,7 +1010,10 @@
             "--allow-branch"
           ],
           "description": "An allowlist of globs that match git branches where lerna version is enabled",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
@@ -901,7 +1050,14 @@
             "--create-release"
           ],
           "description": "Create an official release based on the changes packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "github",
+              "gitlab"
+            ]
+          }
         },
         {
           "names": [
@@ -920,14 +1076,21 @@
             "--git-remote"
           ],
           "description": "Push the git changes to the specified remote instead of origin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "remote"
+          }
         },
         {
           "names": [
             "--ignore-changes"
           ],
           "description": "Ignore changes in files matched by glob(s) when detecting changed packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -947,7 +1110,10 @@
             "--message"
           ],
           "description": "Use the provided message when committing the version updates for publication",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "msg"
+          }
         },
         {
           "names": [
@@ -983,7 +1149,10 @@
             "--preid"
           ],
           "description": "Bump semver using the specified prerelease identifier",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "identifier"
+          }
         },
         {
           "names": [
@@ -1005,7 +1174,10 @@
             "--tag-version-prefix"
           ],
           "description": "Change the custom version prefix",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prefix"
+          }
         },
         {
           "names": [
@@ -1053,14 +1225,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -1099,14 +1286,20 @@
             "--scope"
           ],
           "description": "Include only packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Exclude packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
@@ -1119,7 +1312,10 @@
             "--since"
           ],
           "description": "Only include packages that have been changed since the specified ref. If no ref is passed, it defaults to the most-recent tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ref"
+          }
         },
         {
           "names": [
@@ -1180,7 +1376,11 @@
             "--profile-location"
           ],
           "description": "You can provide a custom location for the performance profile output. The path provided will be resolved relative to the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location",
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -1204,14 +1404,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -1250,14 +1465,20 @@
             "--scope"
           ],
           "description": "Include only packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Exclude packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
@@ -1270,7 +1491,10 @@
             "--since"
           ],
           "description": "Only include packages that have been changed since the specified ref. If no ref is passed, it defaults to the most-recent tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ref"
+          }
         },
         {
           "names": [
@@ -1319,7 +1543,10 @@
             "--registry"
           ],
           "description": "Use a custom registry to install the targeted package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
@@ -1344,14 +1571,29 @@
             "--loglevel"
           ],
           "description": "What level of logs to report. On failure, all logs are written to lerna-debug.log in the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "loglevel",
+            "suggestions": [
+              "silent",
+              "error",
+              "warn",
+              "success",
+              "info",
+              "verbose",
+              "silly"
+            ]
+          }
         },
         {
           "names": [
             "--max-buffer"
           ],
           "description": "Set a max buffer length for each underlying process call",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bytes"
+          }
         },
         {
           "names": [
@@ -1390,14 +1632,20 @@
             "--scope"
           ],
           "description": "Include only packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Exclude packages with names matching the given glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "glob"
+          }
         },
         {
           "names": [
@@ -1410,7 +1658,10 @@
             "--since"
           ],
           "description": "Only include packages that have been changed since the specified ref. If no ref is passed, it defaults to the most-recent tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ref"
+          }
         },
         {
           "names": [
@@ -1453,14 +1704,24 @@
             "--access"
           ],
           "description": "Set the scope of the package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "scope",
+            "suggestions": [
+              "public",
+              "restricted"
+            ]
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Package has an executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "executableName"
+          }
         },
         {
           "names": [
@@ -1473,7 +1734,11 @@
             "--dependencies"
           ],
           "description": "A list of package dependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dependencies",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1492,7 +1757,11 @@
             "--keywords"
           ],
           "description": "A list of package keywords",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keywords",
+            "is_variadic": true
+          }
         },
         {
           "names": [

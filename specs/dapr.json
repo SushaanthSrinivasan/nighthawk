@@ -11,7 +11,10 @@
             "--api-token-secret"
           ],
           "description": "The secret to use for the API token",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "api-token-secret"
+          }
         },
         {
           "names": [
@@ -19,14 +22,20 @@
             "-a"
           ],
           "description": "The app id to annotate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-id"
+          }
         },
         {
           "names": [
             "--app-max-concurrency"
           ],
           "description": "The maximum number of concurrent requests to allow",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-max-concurrency"
+          }
         },
         {
           "names": [
@@ -34,21 +43,37 @@
             "-p"
           ],
           "description": "The port to expose the app on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-port"
+          }
         },
         {
           "names": [
             "--app-protocol"
           ],
           "description": "The protocol to use for the app. Allowed values http, https, h2c, grpc, grpcs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-protocol",
+            "suggestions": [
+              "http",
+              "https",
+              "h2c",
+              "grpc",
+              "grpcs"
+            ]
+          }
         },
         {
           "names": [
             "--app-token-secret"
           ],
           "description": "The secret to use for the app token",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-token-secret"
+          }
         },
         {
           "names": [
@@ -56,28 +81,40 @@
             "-c"
           ],
           "description": "The config file to annotate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "--cpu-limit"
           ],
           "description": "The CPU limit to set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cpu-limit"
+          }
         },
         {
           "names": [
             "--cpu-request"
           ],
           "description": "The CPU request to set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cpu-request"
+          }
         },
         {
           "names": [
             "--dapr-image"
           ],
           "description": "The image to use for the dapr sidecar container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dapr-image"
+          }
         },
         {
           "names": [
@@ -114,21 +151,30 @@
             "--env"
           ],
           "description": "Environment variables to set (key value pairs, comma separated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "env"
+          }
         },
         {
           "names": [
             "--graceful-shutdown-seconds"
           ],
           "description": "The number of seconds to wait for the app to shutdown",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "graceful-shutdown-seconds"
+          }
         },
         {
           "names": [
             "--http-read-buffer-size"
           ],
           "description": "The maximum size of HTTP header read buffer in kilobytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "http-read-buffer-size"
+          }
         },
         {
           "names": [
@@ -149,35 +195,50 @@
             "--listen-addresses"
           ],
           "description": "The addresses to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "listen-addresses"
+          }
         },
         {
           "names": [
             "--liveness-probe-delay"
           ],
           "description": "The delay to use for the liveness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "liveness-probe-delay"
+          }
         },
         {
           "names": [
             "--liveness-probe-period"
           ],
           "description": "The period to use for the liveness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "liveness-probe-period"
+          }
         },
         {
           "names": [
             "--liveness-probe-threshold"
           ],
           "description": "The threshold to use for the liveness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "liveness-probe-threshold"
+          }
         },
         {
           "names": [
             "--liveness-probe-timeout"
           ],
           "description": "The timeout to use for the liveness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "liveness-probe-timeout"
+          }
         },
         {
           "names": [
@@ -190,35 +251,50 @@
             "--log-level"
           ],
           "description": "The log level to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "log-level"
+          }
         },
         {
           "names": [
             "--max-request-body-size"
           ],
           "description": "The maximum request body size to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "max-request-body-size"
+          }
         },
         {
           "names": [
             "--memory-limit"
           ],
           "description": "The memory limit to set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory-limit"
+          }
         },
         {
           "names": [
             "--memory-request"
           ],
           "description": "The memory request to set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "memory-request"
+          }
         },
         {
           "names": [
             "--metrics-port"
           ],
           "description": "The port to expose the metrics on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "metrics-port"
+          }
         },
         {
           "names": [
@@ -226,42 +302,60 @@
             "-n"
           ],
           "description": "The namespace the resource target is in (can only be set if --resource is also set)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
             "--placement-host-address"
           ],
           "description": "Comma separated list of addresses for Dapr actor placement servers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "placement-host-address"
+          }
         },
         {
           "names": [
             "--readiness-probe-delay"
           ],
           "description": "The delay to use for the readiness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "readiness-probe-delay"
+          }
         },
         {
           "names": [
             "--readiness-probe-period"
           ],
           "description": "The period to use for the readiness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "readiness-probe-period"
+          }
         },
         {
           "names": [
             "--readiness-probe-threshold"
           ],
           "description": "The threshold to use for the readiness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "readiness-probe-threshold"
+          }
         },
         {
           "names": [
             "--readiness-probe-timeout"
           ],
           "description": "The timeout to use for the readiness probe",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "readiness-probe-timeout"
+          }
         },
         {
           "names": [
@@ -269,28 +363,40 @@
             "-r"
           ],
           "description": "The resource to target to annotate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "resource"
+          }
         },
         {
           "names": [
             "--unix-domain-socket-path"
           ],
           "description": "Linux domain socket path to use for communicating with the Dapr sidecar",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unix-domain-socket-path"
+          }
         },
         {
           "names": [
             "--volume-mounts"
           ],
           "description": "List of pod volumes to be mounted to the sidecar container in read-only mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "volume-mounts"
+          }
         },
         {
           "names": [
             "--volume-mounts-rw"
           ],
           "description": "List of pod volumes to be mounted to the sidecar container in read-write mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "volume-mounts-rw"
+          }
         }
       ],
       "args": [
@@ -411,14 +517,20 @@
             "-n"
           ],
           "description": "The components name to be printed (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--namespace"
           ],
           "description": "List all namespace components in a Kubernetes cluster",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
@@ -426,7 +538,15 @@
             "-o"
           ],
           "description": "Output format (options: json or yaml or list)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "suggestions": [
+              "json",
+              "yaml",
+              "list"
+            ]
+          }
         }
       ]
     },
@@ -462,14 +582,20 @@
             "-n"
           ],
           "description": "The configuration name to be printed (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--namespace"
           ],
           "description": "List Define namespace configurations in a Kubernetes cluster",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
@@ -477,7 +603,15 @@
             "-o"
           ],
           "description": "Output format (options: json or yaml or list)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "suggestions": [
+              "json",
+              "yaml",
+              "list"
+            ]
+          }
         }
       ]
     },
@@ -491,7 +625,10 @@
             "-a"
           ],
           "description": "Address to listen on. Only accepts IP address or localhost as a value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "address"
+          }
         },
         {
           "names": [
@@ -513,7 +650,10 @@
             "-n"
           ],
           "description": "The namespace where Dapr dashboard is running",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
@@ -521,7 +661,10 @@
             "-p"
           ],
           "description": "The local port on which to serve Dapr dashboard",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -541,21 +684,34 @@
             "--ca-root-certificate"
           ],
           "description": "The root certificate file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ca-root-certificate"
+          }
         },
         {
           "names": [
             "--container-runtime"
           ],
           "description": "The container runtime to use. Supported values are docker (default) and podman",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "container-runtime",
+            "suggestions": [
+              "docker",
+              "podman"
+            ]
+          }
         },
         {
           "names": [
             "--dashboard-version"
           ],
           "description": "The version of the Dapr dashboard to install, for example: 0.13.0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dashboard-version"
+          }
         },
         {
           "names": [
@@ -580,7 +736,10 @@
             "--from-dir"
           ],
           "description": "Use Dapr artifacts from local directory for self-hosted installation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "from-dir"
+          }
         },
         {
           "names": [
@@ -594,28 +753,40 @@
             "--image-registry"
           ],
           "description": "Custom/private docker image repository URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "image-registry"
+          }
         },
         {
           "names": [
             "--image-variant"
           ],
           "description": "The image variant to use for the Dapr runtime, for example: mariner",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "image-variant"
+          }
         },
         {
           "names": [
             "--issuer-private-key"
           ],
           "description": "The issuer certificate private key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "issuer-private-key"
+          }
         },
         {
           "names": [
             "--issuer-public-certificate"
           ],
           "description": "The issuer certificate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "issuer-public-certificate"
+          }
         },
         {
           "names": [
@@ -630,28 +801,40 @@
             "-n"
           ],
           "description": "The Kubernetes namespace to install Dapr in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
             "--network"
           ],
           "description": "The Docker network on which to deploy the Dapr runtime",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "network"
+          }
         },
         {
           "names": [
             "--runtime-version"
           ],
           "description": "The version of the Dapr runtime to install, for example: 1.0.0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "runtime-version"
+          }
         },
         {
           "names": [
             "--set"
           ],
           "description": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set"
+          }
         },
         {
           "names": [
@@ -665,7 +848,10 @@
             "--timeout"
           ],
           "description": "The wait timeout for the Kubernetes installation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -686,6 +872,9 @@
           ],
           "description": "The application id to invoke",
           "takes_arg": true,
+          "arg": {
+            "name": "app-id"
+          },
           "is_required": true
         },
         {
@@ -694,7 +883,10 @@
             "-d"
           ],
           "description": "The JSON serialized data string (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "data"
+          }
         },
         {
           "names": [
@@ -702,7 +894,11 @@
             "-f"
           ],
           "description": "A file containing the JSON serialized data (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "data-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -718,6 +914,9 @@
           ],
           "description": "The method to invoke",
           "takes_arg": true,
+          "arg": {
+            "name": "method"
+          },
           "is_required": true
         },
         {
@@ -726,7 +925,10 @@
             "-u"
           ],
           "description": "Path to a unix domain socket dir. If specified, Dapr API servers will use Unix Domain Sockets",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unix-domain-socket"
+          }
         },
         {
           "names": [
@@ -734,7 +936,10 @@
             "-v"
           ],
           "description": "The HTTP verb to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "verb"
+          }
         }
       ]
     },
@@ -768,7 +973,10 @@
             "--namespace"
           ],
           "description": "List define namespace pod in a Kubernetes cluster",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
@@ -776,7 +984,15 @@
             "-o"
           ],
           "description": "The output format of the list. Valid values are: json, yaml, or table (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "suggestions": [
+              "json",
+              "yaml",
+              "table"
+            ]
+          }
         }
       ]
     },
@@ -791,6 +1007,9 @@
           ],
           "description": "The application id for which logs are needed",
           "takes_arg": true,
+          "arg": {
+            "name": "app-id"
+          },
           "is_required": true
         },
         {
@@ -814,7 +1033,10 @@
             "-n"
           ],
           "description": "The Kubernetes namespace in which your application is deployed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
@@ -822,7 +1044,10 @@
             "-p"
           ],
           "description": "The name of the pod in Kubernetes, in case your application has multiple pods (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pod-name"
+          }
         }
       ]
     },
@@ -851,7 +1076,10 @@
                 "-o"
               ],
               "description": "The output directory path to save the certs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "out"
+              }
             }
           ]
         },
@@ -868,28 +1096,40 @@
                 "--ca-root-certificate"
               ],
               "description": "The root certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-root-certificate"
+              }
             },
             {
               "names": [
                 "--image-variant"
               ],
               "description": "The image variant to use for the Dapr runtime, for example: mariner",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "image-variant"
+              }
             },
             {
               "names": [
                 "--issuer-private-key"
               ],
               "description": "The issuer certificate private key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "issuer-private-key"
+              }
             },
             {
               "names": [
                 "--issuer-public-certificate"
               ],
               "description": "The issuer certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "issuer-public-certificate"
+              }
             },
             {
               "names": [
@@ -904,7 +1144,10 @@
                 "--private-key"
               ],
               "description": "The root.key file which is used to generate root certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "private-key"
+              }
             },
             {
               "names": [
@@ -917,14 +1160,20 @@
                 "--timeout"
               ],
               "description": "The timeout for the certificate renewal",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "timeout"
+              }
             },
             {
               "names": [
                 "--valid-until"
               ],
               "description": "Max days before certificate expires",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "valid-until"
+              }
             }
           ]
         }
@@ -957,7 +1206,10 @@
             "-d"
           ],
           "description": "The JSON serialized data string (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "data"
+          }
         },
         {
           "names": [
@@ -965,7 +1217,10 @@
             "-f"
           ],
           "description": "A file containing the JSON serialized data (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "data-file"
+          }
         },
         {
           "names": [
@@ -980,7 +1235,10 @@
             "-m"
           ],
           "description": "The JSON serialized publish metadata (optional)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "metadata"
+          }
         },
         {
           "names": [
@@ -989,6 +1247,9 @@
           ],
           "description": "The ID of the publishing app",
           "takes_arg": true,
+          "arg": {
+            "name": "publish-app-id"
+          },
           "is_required": true
         },
         {
@@ -998,6 +1259,9 @@
           ],
           "description": "The name of the pub/sub component",
           "takes_arg": true,
+          "arg": {
+            "name": "pubsub"
+          },
           "is_required": true
         },
         {
@@ -1007,6 +1271,9 @@
           ],
           "description": "The topic to be published to",
           "takes_arg": true,
+          "arg": {
+            "name": "topic"
+          },
           "is_required": true
         },
         {
@@ -1015,7 +1282,10 @@
             "-u"
           ],
           "description": "Path to a unix domain socket dir. If specified, Dapr API servers will use Unix Domain Sockets",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unix-domain-socket"
+          }
         }
       ]
     },
@@ -1028,35 +1298,50 @@
             "--app-channel-address"
           ],
           "description": "The network address the application listens on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-channel-address"
+          }
         },
         {
           "names": [
             "--app-health-check-path"
           ],
           "description": "Path used for health checks; HTTP only",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-health-check-path"
+          }
         },
         {
           "names": [
             "--app-health-probe-interval"
           ],
           "description": "Interval to probe for the health of the app in seconds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-health-probe-interval"
+          }
         },
         {
           "names": [
             "--app-health-probe-timeout"
           ],
           "description": "Timeout for app health probes in milliseconds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-health-probe-timeout"
+          }
         },
         {
           "names": [
             "--app-health-threshold"
           ],
           "description": "Number of consecutive failures for the app to be considered unhealthy",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-health-threshold"
+          }
         },
         {
           "names": [
@@ -1064,14 +1349,20 @@
             "-a"
           ],
           "description": "The id for your application, used for service discovery",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-id"
+          }
         },
         {
           "names": [
             "--app-max-concurrency"
           ],
           "description": "The concurrency level of the application, otherwise is unlimited",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-max-concurrency"
+          }
         },
         {
           "names": [
@@ -1079,7 +1370,10 @@
             "-p"
           ],
           "description": "The port your application is listening on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-port"
+          }
         },
         {
           "names": [
@@ -1087,7 +1381,17 @@
             "-P"
           ],
           "description": "The protocol (grpc, grpcs, http, https, h2c) Dapr uses to talk to the application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-protocol",
+            "suggestions": [
+              "http",
+              "https",
+              "h2c",
+              "grpc",
+              "grpcs"
+            ]
+          }
         },
         {
           "names": [
@@ -1101,7 +1405,11 @@
             "-d"
           ],
           "description": "The path for components directory. Default is $HOME/.dapr/components or %USERPROFILE%.daprcomponents",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "components-path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1109,7 +1417,10 @@
             "-c"
           ],
           "description": "Dapr configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
@@ -1117,14 +1428,20 @@
             "-G"
           ],
           "description": "The gRPC port for Dapr to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dapr-grpc-port"
+          }
         },
         {
           "names": [
             "--dapr-http-max-request-size"
           ],
           "description": "Max size of request body in MB",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dapr-http-max-request-size"
+          }
         },
         {
           "names": [
@@ -1132,14 +1449,20 @@
             "-H"
           ],
           "description": "The HTTP port for Dapr to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dapr-http-port"
+          }
         },
         {
           "names": [
             "--dapr-http-read-buffer-size"
           ],
           "description": "HTTP header read buffer in KB",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dapr-http-read-buffer-size"
+          }
         },
         {
           "names": [
@@ -1147,14 +1470,20 @@
             "-I"
           ],
           "description": "The gRPC port for the Dapr internal API to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dapr-internal-grpc-port"
+          }
         },
         {
           "names": [
             "--dapr-listen-addresses"
           ],
           "description": "Comma separated list of IP addresses that sidecar will listen to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dapr-listen-addresses"
+          }
         },
         {
           "names": [
@@ -1193,7 +1522,10 @@
             "--log-level"
           ],
           "description": "The log verbosity. Valid values are: debug, info, warn, error, fatal, or panic",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "log-level"
+          }
         },
         {
           "names": [
@@ -1201,28 +1533,41 @@
             "-M"
           ],
           "description": "The port of metrics on dapr",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "metrics-port"
+          }
         },
         {
           "names": [
             "--placement-host-address"
           ],
           "description": "The address of the placement service. Format is either <hostname> for default port or <hostname>:<port> for custom port",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "placement-host-address"
+          }
         },
         {
           "names": [
             "--profile-port"
           ],
           "description": "The port for the profile server to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile-port"
+          }
         },
         {
           "names": [
             "--resources-path"
           ],
           "description": "The path for resources directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "resources-path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1230,7 +1575,10 @@
             "-f"
           ],
           "description": "Path to the run template file for the list of apps to run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run-file"
+          }
         },
         {
           "names": [
@@ -1238,7 +1586,10 @@
             "-u"
           ],
           "description": "Path to a unix domain socket dir. If specified, Dapr API servers will use Unix Domain Sockets",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unix-domain-socket"
+          }
         }
       ]
     },
@@ -1273,7 +1624,11 @@
             "-a"
           ],
           "description": "The application id to be stopped",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-id",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1295,7 +1650,10 @@
             "-f"
           ],
           "description": "Path to the run template file for the list of apps to stop",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "run-file"
+          }
         }
       ]
     },
@@ -1314,7 +1672,10 @@
             "--container-runtime"
           ],
           "description": "The container runtime to use. Supported values are docker (default) and podman",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "container-runtime"
+          }
         },
         {
           "names": [
@@ -1342,21 +1703,30 @@
             "-n"
           ],
           "description": "The Kubernetes namespace to uninstall Dapr from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "namespace"
+          }
         },
         {
           "names": [
             "--network"
           ],
           "description": "The Docker network from which to remove the Dapr runtime",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "network"
+          }
         },
         {
           "names": [
             "--timeout"
           ],
           "description": "The timeout for the Kubernetes uninstall",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ]
     },
@@ -1369,7 +1739,10 @@
             "--dashboard-version"
           ],
           "description": "The version of the Dapr dashboard to upgrade or downgrade to, for example: 0.13.0",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dashboard-version"
+          }
         },
         {
           "names": [
@@ -1383,14 +1756,20 @@
             "--image-registry"
           ],
           "description": "Custom/Private docker image repository URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "image-registry"
+          }
         },
         {
           "names": [
             "--image-variant"
           ],
           "description": "The image variant to use for the Dapr runtime, for example: mariner",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "image-variant"
+          }
         },
         {
           "names": [
@@ -1406,6 +1785,9 @@
           ],
           "description": "The version of the Dapr runtime to upgrade or downgrade to, for example: 1.0.0",
           "takes_arg": true,
+          "arg": {
+            "name": "runtime-version"
+          },
           "is_required": true
         },
         {
@@ -1413,14 +1795,20 @@
             "--set"
           ],
           "description": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set"
+          }
         },
         {
           "names": [
             "--timeout"
           ],
           "description": "The timeout for the Kubernetes upgrade",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ]
     },
@@ -1441,7 +1829,13 @@
             "-o"
           ],
           "description": "The output format of the version command. Valid values are: json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "suggestions": [
+              "json"
+            ]
+          }
         }
       ]
     },
@@ -1579,7 +1973,11 @@
         "--runtime-path"
       ],
       "description": "The path to the dapr runtime installation directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "runtime-path",
+        "template": "folders"
+      }
     },
     {
       "names": [

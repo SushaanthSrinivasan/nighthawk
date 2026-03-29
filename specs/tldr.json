@@ -15,7 +15,10 @@
         "--search"
       ],
       "description": "Search all pages for the query",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "query"
+      }
     },
     {
       "names": [
@@ -65,7 +68,17 @@
         "-p"
       ],
       "description": "Select platform",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "platform",
+        "suggestions": [
+          "linux",
+          "osx",
+          "sunos",
+          "windows",
+          "common"
+        ]
+      }
     }
   ]
 }

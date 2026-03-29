@@ -11,28 +11,44 @@
             "--bin"
           ],
           "description": "Benchmark only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Benchmark only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--test"
           ],
           "description": "Benchmark only the specified test target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bench"
           ],
           "description": "Benchmark only the specified bench target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bench",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -40,14 +56,21 @@
             "--package"
           ],
           "description": "Package to run benchmarks for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude packages from the benchmark",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
@@ -55,70 +78,106 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -267,14 +326,21 @@
             "--package"
           ],
           "description": "Package to build (see `cargo help pkgid`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude packages from the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
@@ -282,105 +348,160 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Build only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Build only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--test"
           ],
           "description": "Build only the specified test target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bench"
           ],
           "description": "Build only the specified bench target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bench",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--out-dir"
           ],
           "description": "Copy final artifacts to this directory (unstable)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "out-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -527,14 +648,21 @@
             "--package"
           ],
           "description": "Package(s) to check",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude packages from the check",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
@@ -542,98 +670,150 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Check only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Check only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--test"
           ],
           "description": "Check only the specified test target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bench"
           ],
           "description": "Check only the specified bench target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bench",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Check artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Check for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -771,56 +951,86 @@
             "--package"
           ],
           "description": "Package to clean artifacts for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Target triple to clean output for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Clean artifacts of the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -888,35 +1098,64 @@
                 "--format"
               ],
               "description": "Display format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "toml",
+                  "json",
+                  "json-value"
+                ]
+              }
             },
             {
               "names": [
                 "--merged"
               ],
               "description": "Whether or not to merge config values",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "merged",
+                "suggestions": [
+                  "yes",
+                  "no"
+                ]
+              }
             },
             {
               "names": [
                 "--color"
               ],
               "description": "Coloring: auto, always, never",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "color",
+                "suggestions": [
+                  "auto",
+                  "always",
+                  "never"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Override a configuration value",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
                 "-Z"
               ],
               "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "unstable-features"
+              }
             },
             {
               "names": [
@@ -973,21 +1212,35 @@
                 "--color"
               ],
               "description": "Coloring: auto, always, never",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "color",
+                "suggestions": [
+                  "auto",
+                  "always",
+                  "never"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Override a configuration value",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
                 "-Z"
               ],
               "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "unstable-features"
+              }
             },
             {
               "names": [
@@ -1041,21 +1294,35 @@
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -1104,14 +1371,21 @@
             "--package"
           ],
           "description": "Package to document",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude packages from the build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
@@ -1119,84 +1393,123 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Document only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Document only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color"
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -1327,35 +1640,55 @@
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Fetch dependencies for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -1408,14 +1741,21 @@
             "--package"
           ],
           "description": "Package(s) to fix",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude packages from the fixes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
@@ -1423,98 +1763,150 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Fix only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Fix only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--test"
           ],
           "description": "Fix only the specified test target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bench"
           ],
           "description": "Fix only the specified bench target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bench",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Fix for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -1675,28 +2067,45 @@
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -1748,49 +2157,87 @@
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--vcs"
           ],
           "description": "Initialize a new repository for the given version control system (git, hg, pijul, or fossil) or do not initialize any version control at all (none), overriding a global configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "vcs",
+            "suggestions": [
+              "git",
+              "hg",
+              "pijul",
+              "fossil",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--edition"
           ],
           "description": "Edition to set for the crate generated",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "edition",
+            "suggestions": [
+              "2015",
+              "2018",
+              "2021"
+            ]
+          }
         },
         {
           "names": [
             "--name"
           ],
           "description": "Set the resulting package name, defaults to the directory name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -1859,42 +2306,61 @@
             "--version"
           ],
           "description": "Specify a version to install",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--git"
           ],
           "description": "Git URL to install the specified crate from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "git"
+          }
         },
         {
           "names": [
             "--branch"
           ],
           "description": "Branch to use when installing from git",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Tag to use when installing from git",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag"
+          }
         },
         {
           "names": [
             "--rev"
           ],
           "description": "Specific commit to use when installing from git",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rev"
+          }
         },
         {
           "names": [
             "--path"
           ],
           "description": "Filesystem path to local crate to install",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1902,98 +2368,148 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Install artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Install only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Install only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--root"
           ],
           "description": "Directory to install packages into",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "Registry index to install from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2106,35 +2622,55 @@
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Output representation [possible values: json, plain]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2192,28 +2728,45 @@
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2270,28 +2823,45 @@
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2343,49 +2913,79 @@
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--filter-platform"
           ],
           "description": "Only include resolve dependencies matching the given target-triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter-platform"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--format-version"
           ],
           "description": "Format version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format-version",
+            "suggestions": [
+              "1"
+            ]
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2455,49 +3055,87 @@
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--vcs"
           ],
           "description": "Initialize a new repository for the given version control system (git, hg, pijul, or fossil) or do not initialize any version control at all (none), overriding a global configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "vcs",
+            "suggestions": [
+              "git",
+              "hg",
+              "pijul",
+              "fossil",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--edition"
           ],
           "description": "Edition to set for the crate generated",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "edition",
+            "suggestions": [
+              "2015",
+              "2018",
+              "2021"
+            ]
+          }
         },
         {
           "names": [
             "--name"
           ],
           "description": "Set the resulting package name, defaults to the directory name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2568,7 +3206,10 @@
             "--add"
           ],
           "description": "Name of a user or team to invite as an owner",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "add"
+          }
         },
         {
           "names": [
@@ -2576,49 +3217,75 @@
             "--remove"
           ],
           "description": "Name of a user or team to remove as an owner",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "remove"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "Registry index to modify owners for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
             "--token"
           ],
           "description": "API token to use when authenticating",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2682,21 +3349,31 @@
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2704,21 +3381,31 @@
             "--package"
           ],
           "description": "Package(s) to assemble",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Don't assemble specified packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
@@ -2726,28 +3413,45 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2843,35 +3547,56 @@
             "--package"
           ],
           "description": "Argument to get the package ID specifier for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -2928,28 +3653,40 @@
             "--index"
           ],
           "description": "Registry index URL to upload the package to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
             "--token"
           ],
           "description": "Token to use when uploading",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
@@ -2957,21 +3694,32 @@
             "--package"
           ],
           "description": "Package to publish",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -2979,35 +3727,55 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Registry to publish to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -3093,7 +3861,10 @@
                 "--id"
               ],
               "description": "Identifier of the report generated by a Cargo command invocation",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
@@ -3101,28 +3872,46 @@
                 "--package"
               ],
               "description": "Package to display a report for",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "package",
+                "is_variadic": true
+              }
             },
             {
               "names": [
                 "--color"
               ],
               "description": "Coloring: auto, always, never",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "color",
+                "suggestions": [
+                  "always",
+                  "never",
+                  "auto"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Override a configuration value",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
                 "-Z"
               ],
               "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "unstable-features"
+              }
             },
             {
               "names": [
@@ -3173,21 +3962,35 @@
                 "--color"
               ],
               "description": "Coloring: auto, always, never",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "color",
+                "suggestions": [
+                  "always",
+                  "never",
+                  "auto"
+                ]
+              }
             },
             {
               "names": [
                 "--config"
               ],
               "description": "Override a configuration value",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "config"
+              }
             },
             {
               "names": [
                 "-Z"
               ],
               "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "unstable-features"
+              }
             },
             {
               "names": [
@@ -3241,21 +4044,35 @@
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -3303,14 +4120,22 @@
             "--bin"
           ],
           "description": "Name of the bin target to run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Name of the example target to run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -3318,7 +4143,11 @@
             "--package"
           ],
           "description": "Package with the target to run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -3326,70 +4155,106 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -3485,7 +4350,11 @@
             "--package"
           ],
           "description": "Package to build",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -3493,112 +4362,170 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Build only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Build only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--test"
           ],
           "description": "Build only the specified test target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bench"
           ],
           "description": "Build only the specified bench target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bench",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Target triple which compiles will be for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--print"
           ],
           "description": "Output compiler information without compiling",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "print"
+          }
         },
         {
           "names": [
             "--crate-type"
           ],
           "description": "Comma separated list of types of crates for the compiler to emit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "crate-type"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -3736,7 +4663,11 @@
             "--package"
           ],
           "description": "Package to document",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -3744,98 +4675,150 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Build only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Build only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--test"
           ],
           "description": "Build only the specified test target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bench"
           ],
           "description": "Build only the specified bench target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bench",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -3972,42 +4955,60 @@
             "--index"
           ],
           "description": "Registry index URL to upload the package to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
             "--limit"
           ],
           "description": "Limit the number of results (default: 10, max: 100)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "limit"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color"
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -4068,28 +5069,44 @@
             "--bin"
           ],
           "description": "Test only the specified binary",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--example"
           ],
           "description": "Test only the specified example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "example",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--test"
           ],
           "description": "Test only the specified test target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "test",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bench"
           ],
           "description": "Test only the specified bench target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bench",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -4097,14 +5114,21 @@
             "--package"
           ],
           "description": "Package to run tests for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude packages from the test",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
@@ -4112,70 +5136,106 @@
             "--jobs"
           ],
           "description": "Number of parallel jobs, defaults to # of CPUs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Build artifacts with the specified profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Build for the target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--target-dir"
           ],
           "description": "Directory for all generated artifacts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target-dir"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--message-format"
           ],
           "description": "Error format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "message-format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -4339,7 +5399,10 @@
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
@@ -4347,28 +5410,45 @@
             "--package"
           ],
           "description": "Package to be used as the root of the tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude specific workspace members",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
             "--features"
           ],
           "description": "Space or comma separated list of features to activate",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "features",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Filter dependencies matching the given target-triple (default host platform). Pass `all` to include all targets",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target",
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -4376,7 +5456,21 @@
             "--edges"
           ],
           "description": "The kinds of dependencies to display (features, normal, build, dev, all, no-normal, no-build, no-dev, no-proc-macro)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "edges",
+            "suggestions": [
+              "features",
+              "normal",
+              "build",
+              "dev",
+              "all",
+              "no-normal",
+              "no-build",
+              "no-dev",
+              "no-proc-macro"
+            ]
+          }
         },
         {
           "names": [
@@ -4384,35 +5478,60 @@
             "--invert"
           ],
           "description": "Invert the tree direction and focus on the given package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "invert",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--prune"
           ],
           "description": "Prune the given package from the display of the dependency tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prune"
+          }
         },
         {
           "names": [
             "--depth"
           ],
           "description": "Maximum display depth of the dependency tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
             "--prefix"
           ],
           "description": "Change the prefix (indentation) of how each entry is displayed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "prefix",
+            "suggestions": [
+              "depth",
+              "indent",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--charset"
           ],
           "description": "Character set to use in output: utf8, ascii",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "charset",
+            "suggestions": [
+              "utf8",
+              "ascii"
+            ]
+          }
         },
         {
           "names": [
@@ -4420,28 +5539,45 @@
             "--format"
           ],
           "description": "Format string used for printing dependencies",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -4557,42 +5693,66 @@
             "--package"
           ],
           "description": "Package to uninstall",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--bin"
           ],
           "description": "Only uninstall the binary NAME",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bin"
+          }
         },
         {
           "names": [
             "--root"
           ],
           "description": "Directory to uninstall packages from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -4651,42 +5811,66 @@
             "--package"
           ],
           "description": "Package to update",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "package",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--precise"
           ],
           "description": "Update a single dependency to exactly PRECISE when used with -p",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "precise"
+          }
         },
         {
           "names": [
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -4757,7 +5941,10 @@
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
@@ -4765,28 +5952,46 @@
             "--sync"
           ],
           "description": "Additional `Cargo.toml` to sync and vendor",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tomls",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -4881,28 +6086,45 @@
             "--manifest-path"
           ],
           "description": "Path to Cargo.toml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "manifest-path"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -4954,21 +6176,35 @@
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -5020,49 +6256,75 @@
             "--vers"
           ],
           "description": "The version to yank or un-yank",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "vers"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "Registry index to yank from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
             "--token"
           ],
           "description": "API token to use when authenticating",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Registry to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "registry"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -5125,21 +6387,35 @@
             "--color"
           ],
           "description": "Coloring: auto, always, never",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "always",
+              "never",
+              "auto"
+            ]
+          }
         },
         {
           "names": [
             "--config"
           ],
           "description": "Override a configuration value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
             "-Z"
           ],
           "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unstable-features"
+          }
         },
         {
           "names": [
@@ -5219,14 +6495,25 @@
           "names": [
             "--color"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WHEN",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--rename"
           ],
           "description": "Rename the dependency",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME"
+          }
         },
         {
           "names": [
@@ -5252,7 +6539,10 @@
             "--package"
           ],
           "description": "Package to modify",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC"
+          }
         },
         {
           "names": [
@@ -5285,42 +6575,61 @@
             "--path"
           ],
           "description": "Filesystem path to local crate to add",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--git"
           ],
           "description": "Git repository location",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URI"
+          }
         },
         {
           "names": [
             "--branch"
           ],
           "description": "Git branch to download the crate from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BRANCH"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Git tag to download the crate from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG"
+          }
         },
         {
           "names": [
             "--rev"
           ],
           "description": "Git reference to download the crate from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REV"
+          }
         },
         {
           "names": [
             "--registry"
           ],
           "description": "Package registry for this dependency",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME"
+          }
         },
         {
           "names": [
@@ -5339,7 +6648,10 @@
             "--target"
           ],
           "description": "Add as dependency to the given target platform",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TARGET"
+          }
         }
       ],
       "args": [
@@ -5373,7 +6685,10 @@
             "--target"
           ],
           "description": "Remove as dependency to the given target platform",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TARGET"
+          }
         },
         {
           "names": [
@@ -5381,7 +6696,10 @@
             "--package"
           ],
           "description": "Package to remove from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC"
+          }
         },
         {
           "names": [
@@ -5413,7 +6731,15 @@
           "names": [
             "--color"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WHEN",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
@@ -5455,28 +6781,45 @@
         "--explain"
       ],
       "description": "Run `rustc --explain CODE`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "explain"
+      }
     },
     {
       "names": [
         "--color"
       ],
       "description": "Coloring: auto, always, never",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "color",
+        "suggestions": [
+          "always",
+          "never",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Override a configuration value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config"
+      }
     },
     {
       "names": [
         "-Z"
       ],
       "description": "Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "unstable-features"
+      }
     },
     {
       "names": [

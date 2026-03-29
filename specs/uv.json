@@ -11,7 +11,10 @@
             "--extra"
           ],
           "description": "Include optional dependencies from the specified extra name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA"
+          }
         },
         {
           "names": [
@@ -24,7 +27,10 @@
             "--no-extra"
           ],
           "description": "Exclude the specified optional dependencies, if `--all-extras` is supplied",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_EXTRA"
+          }
         },
         {
           "names": [
@@ -37,21 +43,30 @@
             "--group"
           ],
           "description": "Include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GROUP"
+          }
         },
         {
           "names": [
             "--no-group"
           ],
           "description": "Exclude dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_GROUP"
+          }
         },
         {
           "names": [
             "--only-group"
           ],
           "description": "Only include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ONLY_GROUP"
+          }
         },
         {
           "names": [
@@ -83,7 +98,10 @@
             "--env-file"
           ],
           "description": "Load environment variables from a `.env` file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ENV_FILE"
+          }
         },
         {
           "names": [
@@ -96,21 +114,30 @@
             "--with"
           ],
           "description": "Run with the given packages installed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WITH"
+          }
         },
         {
           "names": [
             "--with-editable"
           ],
           "description": "Run with the given packages installed as editables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WITH_EDITABLE"
+          }
         },
         {
           "names": [
             "--with-requirements"
           ],
           "description": "Run with all packages listed in the given `requirements.txt` files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "WITH_REQUIREMENTS"
+          }
         },
         {
           "names": [
@@ -154,7 +181,10 @@
             "--package"
           ],
           "description": "Run the command in a specific package in the workspace",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE"
+          }
         },
         {
           "names": [
@@ -178,7 +208,10 @@
             "--name"
           ],
           "description": "The name of the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME"
+          }
         },
         {
           "names": [
@@ -215,14 +248,32 @@
             "--vcs"
           ],
           "description": "Initialize a version control system for the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VCS",
+            "suggestions": [
+              "git",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--build-backend"
           ],
           "description": "Initialize a build-backend of choice for the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BUILD_BACKEND",
+            "suggestions": [
+              "hatch",
+              "flit",
+              "pdm",
+              "setuptools",
+              "maturin",
+              "scikit"
+            ]
+          }
         },
         {
           "names": [
@@ -235,7 +286,15 @@
             "--author-from"
           ],
           "description": "Fill in the `authors` field in the `pyproject.toml`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "AUTHOR_FROM",
+            "suggestions": [
+              "auto",
+              "git",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -260,7 +319,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         }
       ],
       "args": [
@@ -281,7 +343,10 @@
             "--requirements"
           ],
           "description": "Add all packages listed in the given `requirements.txt` files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REQUIREMENTS"
+          }
         },
         {
           "names": [
@@ -294,14 +359,20 @@
             "--optional"
           ],
           "description": "Add the requirements to the package's optional dependencies for the specified extra",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OPTIONAL"
+          }
         },
         {
           "names": [
             "--group"
           ],
           "description": "Add the requirements to the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GROUP"
+          }
         },
         {
           "names": [
@@ -320,98 +391,140 @@
             "--rev"
           ],
           "description": "Commit to use when adding a dependency from Git",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REV"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Tag to use when adding a dependency from Git",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG"
+          }
         },
         {
           "names": [
             "--branch"
           ],
           "description": "Branch to use when adding a dependency from Git",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BRANCH"
+          }
         },
         {
           "names": [
             "--extra"
           ],
           "description": "Extras to enable for the dependency",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA"
+          }
         },
         {
           "names": [
             "--no-sync"
           ],
           "description": "Avoid syncing the virtual environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_SYNC"
+          }
         },
         {
           "names": [
             "--locked"
           ],
           "description": "Assert that the `uv.lock` will remain unchanged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_LOCKED"
+          }
         },
         {
           "names": [
             "--frozen"
           ],
           "description": "Add dependencies without re-locking the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_FROZEN"
+          }
         },
         {
           "names": [
             "--package"
           ],
           "description": "Add the dependency to a specific package in the workspace",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE"
+          }
         },
         {
           "names": [
             "--script"
           ],
           "description": "Add the dependency to the specified Python script, rather than to a project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SCRIPT"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -424,14 +537,29 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
@@ -444,28 +572,52 @@
             "--upgrade-package"
           ],
           "description": "Allow upgrades for a specific package, ignoring pinned versions in any existing output file. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UPGRADE_PACKAGE"
+          }
         },
         {
           "names": [
             "--resolution"
           ],
           "description": "The strategy to use when selecting between the different compatible versions for a given package requirement",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLUTION",
+            "suggestions": [
+              "highest",
+              "lowest",
+              "lowest-direct"
+            ]
+          }
         },
         {
           "names": [
             "--prerelease"
           ],
           "description": "The strategy to use when considering pre-release versions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRERELEASE",
+            "suggestions": [
+              "disallow",
+              "allow",
+              "if-necessary",
+              "explicit",
+              "if-necessary-or-explicit"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
@@ -484,14 +636,26 @@
             "--reinstall-package"
           ],
           "description": "Reinstall a specific package, regardless of whether it's already installed. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REINSTALL_PACKAGE"
+          }
         },
         {
           "names": [
             "--link-mode"
           ],
           "description": "The method to use when installing packages from the global cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINK_MODE",
+            "suggestions": [
+              "clone",
+              "copy",
+              "hardlink",
+              "symlink"
+            ]
+          }
         },
         {
           "names": [
@@ -504,21 +668,30 @@
             "-C"
           ],
           "description": "Settings to pass to the PEP 517 build backend, specified as `KEY=VALUE` pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG_SETTING"
+          }
         },
         {
           "names": [
             "--no-build-isolation"
           ],
           "description": "Disable isolation when building source distributions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_BUILD_ISOLATION"
+          }
         },
         {
           "names": [
             "--no-build-isolation-package"
           ],
           "description": "Disable isolation when building source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_ISOLATION_PACKAGE"
+          }
         },
         {
           "names": [
@@ -531,7 +704,10 @@
             "--no-build-package"
           ],
           "description": "Don't build source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_PACKAGE"
+          }
         },
         {
           "names": [
@@ -544,7 +720,10 @@
             "--no-binary-package"
           ],
           "description": "Don't install pre-built wheels for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BINARY_PACKAGE"
+          }
         },
         {
           "names": [
@@ -557,7 +736,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
@@ -570,7 +752,10 @@
             "--refresh-package"
           ],
           "description": "Refresh cached data for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REFRESH_PACKAGE"
+          }
         }
       ],
       "args": [
@@ -596,84 +781,120 @@
             "--optional"
           ],
           "description": "Remove the packages from the project's optional dependencies for the specified extra",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OPTIONAL"
+          }
         },
         {
           "names": [
             "--group"
           ],
           "description": "Remove the packages from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GROUP"
+          }
         },
         {
           "names": [
             "--no-sync"
           ],
           "description": "Avoid syncing the virtual environment after re-locking the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_SYNC"
+          }
         },
         {
           "names": [
             "--locked"
           ],
           "description": "Assert that the `uv.lock` will remain unchanged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_LOCKED"
+          }
         },
         {
           "names": [
             "--frozen"
           ],
           "description": "Remove dependencies without re-locking the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_FROZEN"
+          }
         },
         {
           "names": [
             "--package"
           ],
           "description": "Remove the dependencies from a specific package in the workspace",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE"
+          }
         },
         {
           "names": [
             "--script"
           ],
           "description": "Remove the dependency from the specified Python script, rather than from a project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SCRIPT"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -686,14 +907,29 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
@@ -706,28 +942,52 @@
             "--upgrade-package"
           ],
           "description": "Allow upgrades for a specific package, ignoring pinned versions in any existing output file. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UPGRADE_PACKAGE"
+          }
         },
         {
           "names": [
             "--resolution"
           ],
           "description": "The strategy to use when selecting between the different compatible versions for a given package requirement",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLUTION",
+            "suggestions": [
+              "highest",
+              "lowest",
+              "lowest-direct"
+            ]
+          }
         },
         {
           "names": [
             "--prerelease"
           ],
           "description": "The strategy to use when considering pre-release versions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRERELEASE",
+            "suggestions": [
+              "disallow",
+              "allow",
+              "if-necessary",
+              "explicit",
+              "if-necessary-or-explicit"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
@@ -746,14 +1006,26 @@
             "--reinstall-package"
           ],
           "description": "Reinstall a specific package, regardless of whether it's already installed. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REINSTALL_PACKAGE"
+          }
         },
         {
           "names": [
             "--link-mode"
           ],
           "description": "The method to use when installing packages from the global cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINK_MODE",
+            "suggestions": [
+              "clone",
+              "copy",
+              "hardlink",
+              "symlink"
+            ]
+          }
         },
         {
           "names": [
@@ -766,21 +1038,30 @@
             "-C"
           ],
           "description": "Settings to pass to the PEP 517 build backend, specified as `KEY=VALUE` pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG_SETTING"
+          }
         },
         {
           "names": [
             "--no-build-isolation"
           ],
           "description": "Disable isolation when building source distributions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_BUILD_ISOLATION"
+          }
         },
         {
           "names": [
             "--no-build-isolation-package"
           ],
           "description": "Disable isolation when building source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_ISOLATION_PACKAGE"
+          }
         },
         {
           "names": [
@@ -793,7 +1074,10 @@
             "--no-build-package"
           ],
           "description": "Don't build source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_PACKAGE"
+          }
         },
         {
           "names": [
@@ -806,7 +1090,10 @@
             "--no-binary-package"
           ],
           "description": "Don't install pre-built wheels for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BINARY_PACKAGE"
+          }
         },
         {
           "names": [
@@ -819,7 +1106,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
@@ -832,7 +1122,10 @@
             "--refresh-package"
           ],
           "description": "Refresh cached data for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REFRESH_PACKAGE"
+          }
         }
       ],
       "args": [
@@ -852,7 +1145,10 @@
             "--extra"
           ],
           "description": "Include optional dependencies from the specified extra name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA"
+          }
         },
         {
           "names": [
@@ -865,7 +1161,10 @@
             "--no-extra"
           ],
           "description": "Exclude the specified optional dependencies, if `--all-extras` is supplied",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_EXTRA"
+          }
         },
         {
           "names": [
@@ -884,21 +1183,30 @@
             "--group"
           ],
           "description": "Include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GROUP"
+          }
         },
         {
           "names": [
             "--no-group"
           ],
           "description": "Exclude dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_GROUP"
+          }
         },
         {
           "names": [
             "--only-group"
           ],
           "description": "Only include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ONLY_GROUP"
+          }
         },
         {
           "names": [
@@ -935,21 +1243,30 @@
             "--no-install-package"
           ],
           "description": "Do not install the given package(s)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_INSTALL_PACKAGE"
+          }
         },
         {
           "names": [
             "--locked"
           ],
           "description": "Assert that the `uv.lock` will remain unchanged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_LOCKED"
+          }
         },
         {
           "names": [
             "--frozen"
           ],
           "description": "Sync without updating the `uv.lock` file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_FROZEN"
+          }
         },
         {
           "names": [
@@ -962,42 +1279,60 @@
             "--package"
           ],
           "description": "Sync for a specific package in the workspace",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -1010,14 +1345,29 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
@@ -1030,28 +1380,52 @@
             "--upgrade-package"
           ],
           "description": "Allow upgrades for a specific package, ignoring pinned versions in any existing output file. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UPGRADE_PACKAGE"
+          }
         },
         {
           "names": [
             "--resolution"
           ],
           "description": "The strategy to use when selecting between the different compatible versions for a given package requirement",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLUTION",
+            "suggestions": [
+              "highest",
+              "lowest",
+              "lowest-direct"
+            ]
+          }
         },
         {
           "names": [
             "--prerelease"
           ],
           "description": "The strategy to use when considering pre-release versions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRERELEASE",
+            "suggestions": [
+              "disallow",
+              "allow",
+              "if-necessary",
+              "explicit",
+              "if-necessary-or-explicit"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
@@ -1070,14 +1444,26 @@
             "--reinstall-package"
           ],
           "description": "Reinstall a specific package, regardless of whether it's already installed. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REINSTALL_PACKAGE"
+          }
         },
         {
           "names": [
             "--link-mode"
           ],
           "description": "The method to use when installing packages from the global cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINK_MODE",
+            "suggestions": [
+              "clone",
+              "copy",
+              "hardlink",
+              "symlink"
+            ]
+          }
         },
         {
           "names": [
@@ -1090,21 +1476,30 @@
             "-C"
           ],
           "description": "Settings to pass to the PEP 517 build backend, specified as `KEY=VALUE` pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG_SETTING"
+          }
         },
         {
           "names": [
             "--no-build-isolation"
           ],
           "description": "Disable isolation when building source distributions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_BUILD_ISOLATION"
+          }
         },
         {
           "names": [
             "--no-build-isolation-package"
           ],
           "description": "Disable isolation when building source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_ISOLATION_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1117,7 +1512,10 @@
             "--no-build-package"
           ],
           "description": "Don't build source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1130,7 +1528,10 @@
             "--no-binary-package"
           ],
           "description": "Don't install pre-built wheels for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BINARY_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1143,7 +1544,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
@@ -1156,7 +1560,10 @@
             "--refresh-package"
           ],
           "description": "Refresh cached data for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REFRESH_PACKAGE"
+          }
         }
       ]
     },
@@ -1187,35 +1594,50 @@
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -1228,14 +1650,29 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
@@ -1248,28 +1685,52 @@
             "--upgrade-package"
           ],
           "description": "Allow upgrades for a specific package, ignoring pinned versions in any existing output file. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UPGRADE_PACKAGE"
+          }
         },
         {
           "names": [
             "--resolution"
           ],
           "description": "The strategy to use when selecting between the different compatible versions for a given package requirement",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLUTION",
+            "suggestions": [
+              "highest",
+              "lowest",
+              "lowest-direct"
+            ]
+          }
         },
         {
           "names": [
             "--prerelease"
           ],
           "description": "The strategy to use when considering pre-release versions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRERELEASE",
+            "suggestions": [
+              "disallow",
+              "allow",
+              "if-necessary",
+              "explicit",
+              "if-necessary-or-explicit"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
@@ -1282,21 +1743,30 @@
             "-C"
           ],
           "description": "Settings to pass to the PEP 517 build backend, specified as `KEY=VALUE` pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG_SETTING"
+          }
         },
         {
           "names": [
             "--no-build-isolation"
           ],
           "description": "Disable isolation when building source distributions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_BUILD_ISOLATION"
+          }
         },
         {
           "names": [
             "--no-build-isolation-package"
           ],
           "description": "Disable isolation when building source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_ISOLATION_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1309,7 +1779,10 @@
             "--no-build-package"
           ],
           "description": "Don't build source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1322,14 +1795,26 @@
             "--no-binary-package"
           ],
           "description": "Don't install pre-built wheels for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BINARY_PACKAGE"
+          }
         },
         {
           "names": [
             "--link-mode"
           ],
           "description": "The method to use when installing packages from the global cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINK_MODE",
+            "suggestions": [
+              "clone",
+              "copy",
+              "hardlink",
+              "symlink"
+            ]
+          }
         },
         {
           "names": [
@@ -1342,7 +1827,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
@@ -1355,7 +1843,10 @@
             "--refresh-package"
           ],
           "description": "Refresh cached data for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REFRESH_PACKAGE"
+          }
         }
       ]
     },
@@ -1368,7 +1859,10 @@
             "--format"
           ],
           "description": "The format to which `uv.lock` should be exported",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FORMAT"
+          }
         },
         {
           "names": [
@@ -1381,21 +1875,30 @@
             "--package"
           ],
           "description": "Export the dependencies for a specific package in the workspace",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE"
+          }
         },
         {
           "names": [
             "--prune"
           ],
           "description": "Prune the given package from the dependency tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRUNE"
+          }
         },
         {
           "names": [
             "--extra"
           ],
           "description": "Include optional dependencies from the specified extra name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA"
+          }
         },
         {
           "names": [
@@ -1408,7 +1911,10 @@
             "--no-extra"
           ],
           "description": "Exclude the specified optional dependencies, if `--all-extras` is supplied",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_EXTRA"
+          }
         },
         {
           "names": [
@@ -1427,21 +1933,30 @@
             "--group"
           ],
           "description": "Include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GROUP"
+          }
         },
         {
           "names": [
             "--no-group"
           ],
           "description": "Exclude dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_GROUP"
+          }
         },
         {
           "names": [
             "--only-group"
           ],
           "description": "Only include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ONLY_GROUP"
+          }
         },
         {
           "names": [
@@ -1472,7 +1987,10 @@
             "-o"
           ],
           "description": "Write the exported requirements to the given file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OUTPUT_FILE"
+          }
         },
         {
           "names": [
@@ -1491,56 +2009,80 @@
             "--no-emit-package"
           ],
           "description": "Do not emit the given package(s)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_EMIT_PACKAGE"
+          }
         },
         {
           "names": [
             "--locked"
           ],
           "description": "Assert that the `uv.lock` will remain unchanged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_LOCKED"
+          }
         },
         {
           "names": [
             "--frozen"
           ],
           "description": "Do not update the `uv.lock` before exporting",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_FROZEN"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -1553,14 +2095,29 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
@@ -1573,28 +2130,52 @@
             "--upgrade-package"
           ],
           "description": "Allow upgrades for a specific package, ignoring pinned versions in any existing output file. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UPGRADE_PACKAGE"
+          }
         },
         {
           "names": [
             "--resolution"
           ],
           "description": "The strategy to use when selecting between the different compatible versions for a given package requirement",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLUTION",
+            "suggestions": [
+              "highest",
+              "lowest",
+              "lowest-direct"
+            ]
+          }
         },
         {
           "names": [
             "--prerelease"
           ],
           "description": "The strategy to use when considering pre-release versions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRERELEASE",
+            "suggestions": [
+              "disallow",
+              "allow",
+              "if-necessary",
+              "explicit",
+              "if-necessary-or-explicit"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
@@ -1607,21 +2188,30 @@
             "-C"
           ],
           "description": "Settings to pass to the PEP 517 build backend, specified as `KEY=VALUE` pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG_SETTING"
+          }
         },
         {
           "names": [
             "--no-build-isolation"
           ],
           "description": "Disable isolation when building source distributions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_BUILD_ISOLATION"
+          }
         },
         {
           "names": [
             "--no-build-isolation-package"
           ],
           "description": "Disable isolation when building source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_ISOLATION_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1634,7 +2224,10 @@
             "--no-build-package"
           ],
           "description": "Don't build source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1647,7 +2240,10 @@
             "--no-binary-package"
           ],
           "description": "Don't install pre-built wheels for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BINARY_PACKAGE"
+          }
         }
       ]
     },
@@ -1666,21 +2262,30 @@
             "-d"
           ],
           "description": "Maximum display depth of the dependency tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEPTH"
+          }
         },
         {
           "names": [
             "--prune"
           ],
           "description": "Prune the given package from the display of the dependency tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRUNE"
+          }
         },
         {
           "names": [
             "--package"
           ],
           "description": "Display only the specified packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE"
+          }
         },
         {
           "names": [
@@ -1717,21 +2322,30 @@
             "--group"
           ],
           "description": "Include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "GROUP"
+          }
         },
         {
           "names": [
             "--no-group"
           ],
           "description": "Exclude dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_GROUP"
+          }
         },
         {
           "names": [
             "--only-group"
           ],
           "description": "Only include dependencies from the specified dependency group",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ONLY_GROUP"
+          }
         },
         {
           "names": [
@@ -1744,63 +2358,127 @@
             "--locked"
           ],
           "description": "Assert that the `uv.lock` will remain unchanged",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_LOCKED"
+          }
         },
         {
           "names": [
             "--frozen"
           ],
           "description": "Display the requirements without locking the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_FROZEN"
+          }
         },
         {
           "names": [
             "--python-version"
           ],
           "description": "The Python version to use when filtering the tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_VERSION"
+          }
         },
         {
           "names": [
             "--python-platform"
           ],
           "description": "The platform to use when filtering the tree",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PLATFORM",
+            "suggestions": [
+              "windows",
+              "linux",
+              "macos",
+              "x86_64-pc-windows-msvc",
+              "i686-pc-windows-msvc",
+              "x86_64-unknown-linux-gnu",
+              "aarch64-apple-darwin",
+              "x86_64-apple-darwin",
+              "aarch64-unknown-linux-gnu",
+              "aarch64-unknown-linux-musl",
+              "x86_64-unknown-linux-musl",
+              "x86_64-manylinux_2_17",
+              "x86_64-manylinux_2_28",
+              "x86_64-manylinux_2_31",
+              "x86_64-manylinux_2_32",
+              "x86_64-manylinux_2_33",
+              "x86_64-manylinux_2_34",
+              "x86_64-manylinux_2_35",
+              "x86_64-manylinux_2_36",
+              "x86_64-manylinux_2_37",
+              "x86_64-manylinux_2_38",
+              "x86_64-manylinux_2_39",
+              "x86_64-manylinux_2_40",
+              "aarch64-manylinux_2_17",
+              "aarch64-manylinux_2_28",
+              "aarch64-manylinux_2_31",
+              "aarch64-manylinux_2_32",
+              "aarch64-manylinux_2_33",
+              "aarch64-manylinux_2_34",
+              "aarch64-manylinux_2_35",
+              "aarch64-manylinux_2_36",
+              "aarch64-manylinux_2_37",
+              "aarch64-manylinux_2_38",
+              "aarch64-manylinux_2_39",
+              "aarch64-manylinux_2_40"
+            ]
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -1813,14 +2491,29 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
@@ -1833,28 +2526,52 @@
             "--upgrade-package"
           ],
           "description": "Allow upgrades for a specific package, ignoring pinned versions in any existing output file. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UPGRADE_PACKAGE"
+          }
         },
         {
           "names": [
             "--resolution"
           ],
           "description": "The strategy to use when selecting between the different compatible versions for a given package requirement",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLUTION",
+            "suggestions": [
+              "highest",
+              "lowest",
+              "lowest-direct"
+            ]
+          }
         },
         {
           "names": [
             "--prerelease"
           ],
           "description": "The strategy to use when considering pre-release versions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRERELEASE",
+            "suggestions": [
+              "disallow",
+              "allow",
+              "if-necessary",
+              "explicit",
+              "if-necessary-or-explicit"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
@@ -1867,7 +2584,16 @@
             "--link-mode"
           ],
           "description": "The method to use when installing packages from the global cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINK_MODE",
+            "suggestions": [
+              "clone",
+              "copy",
+              "hardlink",
+              "symlink"
+            ]
+          }
         },
         {
           "names": [
@@ -1875,14 +2601,26 @@
             "--python"
           ],
           "description": "The Python interpreter to use to determine the minimum supported Python version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -1901,7 +2639,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
@@ -1914,7 +2655,10 @@
             "--refresh-package"
           ],
           "description": "Refresh cached data for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REFRESH_PACKAGE"
+          }
         },
         {
           "names": [
@@ -1927,7 +2671,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         }
       ]
     },
@@ -1944,28 +2691,40 @@
                 "--from"
               ],
               "description": "Use the given package to provide the command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FROM"
+              }
             },
             {
               "names": [
                 "--with"
               ],
               "description": "Run with the given packages installed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "WITH"
+              }
             },
             {
               "names": [
                 "--with-editable"
               ],
               "description": "Run with the given packages installed as editables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "WITH_EDITABLE"
+              }
             },
             {
               "names": [
                 "--with-requirements"
               ],
               "description": "Run with all packages listed in the given `requirements.txt` files",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "WITH_REQUIREMENTS"
+              }
             },
             {
               "names": [
@@ -1990,21 +2749,30 @@
                 "--with"
               ],
               "description": "Include the following extra requirements",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "WITH"
+              }
             },
             {
               "names": [
                 "--with-editable"
               ],
               "description": "Include the given packages as editables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "WITH_EDITABLE"
+              }
             },
             {
               "names": [
                 "--with-requirements"
               ],
               "description": "Run all requirements listed in the given `requirements.txt` files",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "WITH_REQUIREMENTS"
+              }
             },
             {
               "names": [
@@ -2079,7 +2847,16 @@
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2098,7 +2875,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         }
       ]
     },
@@ -2139,14 +2919,20 @@
                 "--mirror"
               ],
               "description": "Set the URL to use as the source for downloading Python installations",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MIRROR"
+              }
             },
             {
               "names": [
                 "--pypy-mirror"
               ],
               "description": "Set the URL to use as the source for downloading PyPy installations",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PYPY_MIRROR"
+              }
             },
             {
               "names": [
@@ -2265,14 +3051,26 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2362,14 +3160,26 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2389,14 +3199,26 @@
             "--python"
           ],
           "description": "The Python interpreter to use to determine the minimum supported Python version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2427,7 +3249,10 @@
             "--prompt"
           ],
           "description": "Provide an alternative prompt prefix for the virtual environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PROMPT"
+          }
         },
         {
           "names": [
@@ -2446,63 +3271,105 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
             "--link-mode"
           ],
           "description": "The method to use when installing packages from the global cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINK_MODE",
+            "suggestions": [
+              "clone",
+              "copy",
+              "hardlink",
+              "symlink"
+            ]
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -2521,7 +3388,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         }
       ]
     },
@@ -2534,7 +3404,10 @@
             "--package"
           ],
           "description": "Build a specific package in the workspace",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PACKAGE"
+          }
         },
         {
           "names": [
@@ -2547,7 +3420,10 @@
             "-o"
           ],
           "description": "The output directory to which distributions should be written",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OUT_DIR"
+          }
         },
         {
           "names": [
@@ -2578,7 +3454,10 @@
             "-b"
           ],
           "description": "Constrain build dependencies using the given requirements files when building distributions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BUILD_CONSTRAINTS"
+          }
         },
         {
           "names": [
@@ -2598,14 +3477,26 @@
             "--python"
           ],
           "description": "The Python interpreter to use to determine the minimum supported Python version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2618,35 +3509,50 @@
             "--index"
           ],
           "description": "The URLs to use when resolving dependencies, in addition to the default index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX"
+          }
         },
         {
           "names": [
             "--default-index"
           ],
           "description": "The URL of the default package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DEFAULT_INDEX"
+          }
         },
         {
           "names": [
             "--index-url"
           ],
           "description": "The URL of the Python package index (by default: <https://pypi.org/simple>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
             "--extra-index-url"
           ],
           "description": "Extra URLs of package indexes to use, in addition to `--index-url`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTRA_INDEX_URL"
+          }
         },
         {
           "names": [
             "--find-links"
           ],
           "description": "Locations to search for candidate distributions, in addition to those found in the registry indexes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIND_LINKS"
+          }
         },
         {
           "names": [
@@ -2659,14 +3565,29 @@
             "--index-strategy"
           ],
           "description": "The strategy to use when resolving against multiple index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_STRATEGY",
+            "suggestions": [
+              "first-index",
+              "unsafe-first-match",
+              "unsafe-best-match"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for index URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
@@ -2679,28 +3600,52 @@
             "--upgrade-package"
           ],
           "description": "Allow upgrades for a specific package, ignoring pinned versions in any existing output file. Implies `--refresh-package`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UPGRADE_PACKAGE"
+          }
         },
         {
           "names": [
             "--resolution"
           ],
           "description": "The strategy to use when selecting between the different compatible versions for a given package requirement",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "RESOLUTION",
+            "suggestions": [
+              "highest",
+              "lowest",
+              "lowest-direct"
+            ]
+          }
         },
         {
           "names": [
             "--prerelease"
           ],
           "description": "The strategy to use when considering pre-release versions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRERELEASE",
+            "suggestions": [
+              "disallow",
+              "allow",
+              "if-necessary",
+              "explicit",
+              "if-necessary-or-explicit"
+            ]
+          }
         },
         {
           "names": [
             "--exclude-newer"
           ],
           "description": "Limit candidate packages to those that were uploaded prior to the given date",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_NEWER"
+          }
         },
         {
           "names": [
@@ -2713,21 +3658,30 @@
             "-C"
           ],
           "description": "Settings to pass to the PEP 517 build backend, specified as `KEY=VALUE` pairs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG_SETTING"
+          }
         },
         {
           "names": [
             "--no-build-isolation"
           ],
           "description": "Disable isolation when building source distributions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UV_NO_BUILD_ISOLATION"
+          }
         },
         {
           "names": [
             "--no-build-isolation-package"
           ],
           "description": "Disable isolation when building source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_ISOLATION_PACKAGE"
+          }
         },
         {
           "names": [
@@ -2740,7 +3694,10 @@
             "--no-build-package"
           ],
           "description": "Don't build source distributions for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BUILD_PACKAGE"
+          }
         },
         {
           "names": [
@@ -2753,14 +3710,26 @@
             "--no-binary-package"
           ],
           "description": "Don't install pre-built wheels for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NO_BINARY_PACKAGE"
+          }
         },
         {
           "names": [
             "--link-mode"
           ],
           "description": "The method to use when installing packages from the global cache",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LINK_MODE",
+            "suggestions": [
+              "clone",
+              "copy",
+              "hardlink",
+              "symlink"
+            ]
+          }
         },
         {
           "names": [
@@ -2773,7 +3742,10 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
@@ -2786,7 +3758,10 @@
             "--refresh-package"
           ],
           "description": "Refresh cached data for a specific package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "REFRESH_PACKAGE"
+          }
         }
       ],
       "args": [
@@ -2805,49 +3780,79 @@
             "--publish-url"
           ],
           "description": "The URL of the upload endpoint (not the index URL)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PUBLISH_URL"
+          }
         },
         {
           "names": [
             "-u"
           ],
           "description": "The username for the upload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "USERNAME"
+          }
         },
         {
           "names": [
             "-p"
           ],
           "description": "The password for the upload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PASSWORD"
+          }
         },
         {
           "names": [
             "-t"
           ],
           "description": "The token for the upload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TOKEN"
+          }
         },
         {
           "names": [
             "--trusted-publishing"
           ],
           "description": "Configure using trusted publishing through GitHub Actions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TRUSTED_PUBLISHING",
+            "suggestions": [
+              "automatic",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
             "--keyring-provider"
           ],
           "description": "Attempt to use `keyring` for authentication for remote requirements files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYRING_PROVIDER",
+            "suggestions": [
+              "disabled",
+              "subprocess"
+            ]
+          }
         },
         {
           "names": [
             "--check-url"
           ],
           "description": "Check an index URL for existing files to skip duplicate uploads",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CHECK_URL"
+          }
         },
         {
           "names": [
@@ -2860,14 +3865,26 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2920,14 +3937,26 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2972,14 +4001,26 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -2998,7 +4039,14 @@
             "--output-format"
           ],
           "description": "The output format to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OUTPUT_FORMAT",
+            "suggestions": [
+              "text",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -3011,14 +4059,26 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_DIR"
+          }
         },
         {
           "names": [
             "--python-preference"
           ],
           "description": "Whether to prefer uv-managed or system Python installations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON_PREFERENCE",
+            "suggestions": [
+              "only-managed",
+              "managed",
+              "system",
+              "only-system"
+            ]
+          }
         },
         {
           "names": [
@@ -3061,14 +4121,25 @@
         "--color"
       ],
       "description": "Control colors in output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COLOR_CHOICE",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [
         "--native-tls"
       ],
       "description": "Whether to load TLS certificates from the platform's native certificate store",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BOOL"
+      }
     },
     {
       "names": [
@@ -3081,7 +4152,10 @@
         "--allow-insecure-host"
       ],
       "description": "Allow insecure connections to a host",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ALLOW_INSECURE_HOST"
+      }
     },
     {
       "names": [
@@ -3094,21 +4168,30 @@
         "--directory"
       ],
       "description": "Change to the given directory prior to running the command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIRECTORY"
+      }
     },
     {
       "names": [
         "--project"
       ],
       "description": "Run the command within the given project directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PROJECT"
+      }
     },
     {
       "names": [
         "--config-file"
       ],
       "description": "The path to a `uv.toml` file to use for configuration",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG_FILE"
+      }
     },
     {
       "names": [

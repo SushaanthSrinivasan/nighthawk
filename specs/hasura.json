@@ -15,28 +15,41 @@
                 "--derive-from"
               ],
               "description": "Derive action from a hasura operation",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -49,7 +62,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -63,7 +80,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -76,7 +103,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -101,21 +132,34 @@
                 "--derive-from"
               ],
               "description": "Derive action from a Hasura operation",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--kind"
               ],
               "description": "Kind to use in action",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "synchronous",
+                  "asynchronous"
+                ]
+              }
             },
             {
               "names": [
                 "--webhook"
               ],
               "description": "Webhook to use in action",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "webhook"
+              }
             },
             {
               "names": [
@@ -128,21 +172,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -155,7 +209,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -169,7 +227,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -182,7 +250,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -206,14 +278,21 @@
                 "--framework"
               ],
               "description": "Framework to be used by codegen",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--output-dir"
               ],
               "description": "Directory to create the codegen files",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -226,21 +305,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -253,7 +342,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -267,7 +360,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -280,7 +383,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -297,21 +404,31 @@
             "--admin-secret"
           ],
           "description": "Admin secret for Hasura GraphQL engine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--certificate-authority"
           ],
           "description": "Path to a cert file for the certificate authority",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--endpoint"
           ],
           "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -324,7 +441,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -338,7 +459,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -351,7 +482,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -370,14 +505,22 @@
             "--file"
           ],
           "description": "File to which output has to be written",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -391,7 +534,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -404,7 +557,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -432,28 +589,40 @@
             "--address"
           ],
           "description": "Address to serve console and migration API from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--api-port"
           ],
           "description": "Port for serving migrate api",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--browser"
           ],
           "description": "Open console in a specific browser",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--console-port"
           ],
           "description": "Port for serving console",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -472,7 +641,11 @@
             "--static-dir"
           ],
           "description": "Directory where static assets mentioned in the console html template can be served from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -485,21 +658,31 @@
             "--admin-secret"
           ],
           "description": "Admin secret for Hasura GraphQL engine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--certificate-authority"
           ],
           "description": "Path to a cert file for the certificate authority",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--endpoint"
           ],
           "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -512,7 +695,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -526,7 +713,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -539,7 +736,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -558,28 +759,40 @@
             "--admin-secret"
           ],
           "description": "Admin secret for Hasura GraphQL engine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--endpoint"
           ],
           "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--install-manifest"
           ],
           "description": "Install manifest to be cloned",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--version"
           ],
           "description": "Config version to be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         }
       ],
       "args": [
@@ -610,28 +823,45 @@
                 "--output"
               ],
               "description": "Specify an output format to show applied metadata",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -644,7 +874,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -658,7 +892,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -671,7 +915,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -690,21 +938,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -717,7 +975,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -731,7 +993,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -744,7 +1016,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -763,21 +1039,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -790,7 +1076,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -804,7 +1094,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -817,7 +1117,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -847,7 +1151,10 @@
                 "--output"
               ],
               "description": "Specify an output format for exported metadata",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -868,21 +1175,31 @@
                     "--admin-secret"
                   ],
                   "description": "Admin secret for Hasura GraphQL engine",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--certificate-authority"
                   ],
                   "description": "Path to a cert file for the certificate authority",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--endpoint"
                   ],
                   "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
@@ -895,7 +1212,11 @@
                     "--envfile"
                   ],
                   "description": ".env filename to load ENV vars from",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -909,7 +1230,17 @@
                     "--log-level"
                   ],
                   "description": "Log level",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "suggestions": [
+                      "DEBUG",
+                      "INFO",
+                      "WARN",
+                      "ERROR",
+                      "FATAL"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -922,7 +1253,11 @@
                     "--project"
                   ],
                   "description": "Directory where commands are executed",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "folders"
+                  }
                 },
                 {
                   "names": [
@@ -944,21 +1279,31 @@
                     "--admin-secret"
                   ],
                   "description": "Admin secret for Hasura GraphQL engine",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--certificate-authority"
                   ],
                   "description": "Path to a cert file for the certificate authority",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--endpoint"
                   ],
                   "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
@@ -971,7 +1316,11 @@
                     "--envfile"
                   ],
                   "description": ".env filename to load ENV vars from",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -985,7 +1334,17 @@
                     "--log-level"
                   ],
                   "description": "Log level",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "suggestions": [
+                      "DEBUG",
+                      "INFO",
+                      "WARN",
+                      "ERROR",
+                      "FATAL"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -998,7 +1357,11 @@
                     "--project"
                   ],
                   "description": "Directory where commands are executed",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "folders"
+                  }
                 },
                 {
                   "names": [
@@ -1017,21 +1380,31 @@
                     "--admin-secret"
                   ],
                   "description": "Admin secret for Hasura GraphQL engine",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
                     "--certificate-authority"
                   ],
                   "description": "Path to a cert file for the certificate authority",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
                     "--endpoint"
                   ],
                   "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 },
                 {
                   "names": [
@@ -1044,7 +1417,11 @@
                     "--envfile"
                   ],
                   "description": ".env filename to load ENV vars from",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "filepaths"
+                  }
                 },
                 {
                   "names": [
@@ -1058,7 +1435,17 @@
                     "--log-level"
                   ],
                   "description": "Log level",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "suggestions": [
+                      "DEBUG",
+                      "INFO",
+                      "WARN",
+                      "ERROR",
+                      "FATAL"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -1071,7 +1458,11 @@
                     "--project"
                   ],
                   "description": "Directory where commands are executed",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string",
+                    "template": "folders"
+                  }
                 },
                 {
                   "names": [
@@ -1088,21 +1479,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1115,7 +1516,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1129,7 +1534,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1142,7 +1557,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1161,21 +1580,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1188,7 +1617,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1202,7 +1635,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1215,7 +1658,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1232,21 +1679,31 @@
             "--admin-secret"
           ],
           "description": "Admin secret for Hasura GraphQL engine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--certificate-authority"
           ],
           "description": "Path to a cert file for the certificate authority",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--endpoint"
           ],
           "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1259,7 +1716,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1273,7 +1734,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -1286,7 +1757,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1309,28 +1784,40 @@
                 "--up"
               ],
               "description": "Apply all or N up migration steps",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--down"
               ],
               "description": "Apply all or N up migration steps",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "goto"
               ],
               "description": "Apply migration chain up to to the version specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--version"
               ],
               "description": "Only apply this particular migration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1343,7 +1830,14 @@
                 "--type"
               ],
               "description": "Type of migration to be used with version flag",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "up",
+                  "down"
+                ]
+              }
             },
             {
               "names": [
@@ -1362,21 +1856,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1389,7 +1893,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1403,7 +1911,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1416,7 +1934,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1435,7 +1957,10 @@
                 "--down-sql"
               ],
               "description": "Sql string/query that is to be used to create a down migration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1448,7 +1973,11 @@
                 "--metadata-from-file"
               ],
               "description": "Path to a hasura metadata file to be used for up actions",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1461,14 +1990,22 @@
                 "--schema"
               ],
               "description": "Name of Postgres schema to export as a migration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "strings",
+                "is_variadic": true
+              }
             },
             {
               "names": [
                 "--sql-from-file"
               ],
               "description": "Path to an SQL file which contains the SQL statements",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1481,28 +2018,41 @@
                 "--up-sql"
               ],
               "description": "Sql string/query that is to be used to create an up migration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1515,7 +2065,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1529,7 +2083,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1542,7 +2106,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1578,28 +2146,41 @@
                 "--version"
               ],
               "description": "Deletes the specified version in migrations",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "uint"
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1612,7 +2193,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1626,7 +2211,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1639,7 +2234,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1664,35 +2263,51 @@
                 "--from"
               ],
               "description": "Start squashing from this version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "uint"
+              }
             },
             {
               "names": [
                 "--name"
               ],
               "description": "Name for the new squashed migration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1705,7 +2320,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1719,7 +2338,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1732,7 +2361,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1753,21 +2386,31 @@
             "--admin-secret"
           ],
           "description": "Admin secret for Hasura GraphQL engine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--certificate-authority"
           ],
           "description": "Path to a cert file for the certificate authority",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--endpoint"
           ],
           "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -1780,7 +2423,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1794,7 +2441,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -1807,7 +2464,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1833,14 +2494,21 @@
                 "--version"
               ],
               "description": "Version to be installed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1854,7 +2522,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1867,7 +2545,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1897,7 +2579,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1911,7 +2597,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1924,7 +2620,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1943,7 +2643,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1957,7 +2661,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -1970,7 +2684,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1994,14 +2712,21 @@
                 "--version"
               ],
               "description": "Version to be upgraded",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -2015,7 +2740,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -2028,7 +2763,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -2050,7 +2789,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2064,7 +2807,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -2077,7 +2830,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2100,28 +2857,42 @@
                 "--metadata-dir"
               ],
               "description": "Metadata directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2134,7 +2905,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -2148,7 +2923,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -2161,7 +2946,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -2180,7 +2969,10 @@
                 "--database-name"
               ],
               "description": "Database name for which the current migrations / seeds belong to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2199,21 +2991,31 @@
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2226,7 +3028,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -2240,7 +3046,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -2253,7 +3069,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -2270,7 +3090,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2284,7 +3108,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -2297,7 +3131,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2325,28 +3163,42 @@
                 "--file"
               ],
               "description": "Seed file to apply",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string array",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2359,7 +3211,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -2373,7 +3229,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -2386,7 +3252,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -2405,28 +3275,41 @@
                 "--from-table"
               ],
               "description": "Name of table from which seed file has to be initialized",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string array"
+              }
             },
             {
               "names": [
                 "--admin-secret"
               ],
               "description": "Admin secret for Hasura GraphQL engine",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--certificate-authority"
               ],
               "description": "Path to a cert file for the certificate authority",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--endpoint"
               ],
               "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2439,7 +3322,11 @@
                 "--envfile"
               ],
               "description": ".env filename to load ENV vars from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -2453,7 +3340,17 @@
                 "--log-level"
               ],
               "description": "Log level",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR",
+                  "FATAL"
+                ]
+              }
             },
             {
               "names": [
@@ -2466,7 +3363,11 @@
                 "--project"
               ],
               "description": "Directory where commands are executed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -2488,28 +3389,41 @@
             "--database-name"
           ],
           "description": "Database name for which the current migrations / seeds belong to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--admin-secret"
           ],
           "description": "Admin secret for Hasura GraphQL engine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--certificate-authority"
           ],
           "description": "Path to a cert file for the certificate authority",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--endpoint"
           ],
           "description": "Http(s) endpoint for Hasura GraphQL engine (env `HASURA_GRAPHQL_ENDPOINT`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -2522,7 +3436,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2536,7 +3454,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -2549,7 +3477,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2568,14 +3500,21 @@
             "--version"
           ],
           "description": "A specific version to install",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2589,7 +3528,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -2602,7 +3551,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2621,7 +3574,11 @@
             "--envfile"
           ],
           "description": ".env filename to load ENV vars from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2635,7 +3592,17 @@
             "--log-level"
           ],
           "description": "Log level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          }
         },
         {
           "names": [
@@ -2648,7 +3615,11 @@
             "--project"
           ],
           "description": "Directory where commands are executed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2665,7 +3636,11 @@
         "--envfile"
       ],
       "description": ".env filename to load ENV vars from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2679,7 +3654,17 @@
         "--log-level"
       ],
       "description": "Log level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "suggestions": [
+          "DEBUG",
+          "INFO",
+          "WARN",
+          "ERROR",
+          "FATAL"
+        ]
+      }
     },
     {
       "names": [
@@ -2692,7 +3677,11 @@
         "--project"
       ],
       "description": "Directory where commands are executed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "folders"
+      }
     },
     {
       "names": [

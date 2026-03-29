@@ -340,7 +340,14 @@
                     "--key-shape"
                   ],
                   "description": "Shape of the key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "suggestions": [
+                      "AES",
+                      "RSA",
+                      "ECDSA"
+                    ]
+                  }
                 }
               ]
             }
@@ -407,7 +414,13 @@
                 "--reset-period"
               ],
               "description": "The reset period for the budget",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "MONTHLY",
+                  "YEARLY"
+                ]
+              }
             }
           ]
         }
@@ -428,28 +441,68 @@
         "-p"
       ],
       "description": "The profile to load from the config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     },
     {
       "names": [
         "--config-file"
       ],
       "description": "The path to the config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--region"
       ],
       "description": "The region to make calls against",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "us-ashburn-1",
+          "us-phoenix-1",
+          "us-chicago-1",
+          "ca-montreal-1",
+          "ca-toronto-1",
+          "sa-saopaulo-1",
+          "sa-vinhedo-1",
+          "sa-santiago-1",
+          "eu-frankfurt-1",
+          "eu-amsterdam-1",
+          "eu-zurich-1",
+          "eu-madrid-1",
+          "uk-london-1",
+          "uk-cardiff-1",
+          "ap-tokyo-1",
+          "ap-osaka-1",
+          "ap-seoul-1",
+          "ap-sydney-1",
+          "ap-melbourne-1",
+          "ap-hyderabad-1",
+          "ap-mumbai-1",
+          "me-dubai-1"
+        ]
+      }
     },
     {
       "names": [
         "--output"
       ],
       "description": "The output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "json",
+          "table",
+          "text"
+        ]
+      }
     },
     {
       "names": [
@@ -462,35 +515,64 @@
         "--auth"
       ],
       "description": "The type of auth to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "api_key",
+          "instance_principal",
+          "resource_principal",
+          "security_token",
+          "raw_token"
+        ]
+      }
     },
     {
       "names": [
         "--key-file"
       ],
       "description": "The path to the private key file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--wait-for-state"
       ],
       "description": "Wait until resource reaches a given state",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "ACCEPTED",
+          "AVAILABLE",
+          "RUNNING",
+          "PROVISIONING",
+          "STOPPED",
+          "TERMINATED",
+          "FAILED"
+        ]
+      }
     },
     {
       "names": [
         "--wait-interval-seconds"
       ],
       "description": "Check interval seconds for --wait-for-state",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--max-wait-seconds"
       ],
       "description": "Maximum time to wait",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -503,7 +585,14 @@
         "--output-format"
       ],
       "description": "The output format for commands",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "json",
+          "table",
+          "text"
+        ]
+      }
     },
     {
       "names": [

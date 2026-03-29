@@ -47,7 +47,15 @@
             "--colors"
           ],
           "description": "Set color values for the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COLORS",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         }
       ]
     },
@@ -64,28 +72,48 @@
             "-c"
           ],
           "description": "Path to the Taplo configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cache-path"
           ],
           "description": "Set a cache path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_PATH",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Report any files that are not correctly formatted",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_PATH",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--colors"
           ],
           "description": "Set color values for the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COLORS",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
@@ -99,7 +127,12 @@
             "--force"
           ],
           "description": "Force formatting of files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILES ...",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -126,14 +159,25 @@
             "-o"
           ],
           "description": "A formatter option given as a 'key=value', can be set multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OPTIONS",
+            "suggestions": [
+              "indent_tables=true",
+              "indent_tables=false"
+            ]
+          }
         },
         {
           "names": [
             "--stdin-filepath"
           ],
           "description": "A path to the file that the taplo will treat like stdin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "STDIN_FILEPATH",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -162,6 +206,10 @@
           ],
           "description": "Path to the TOML document",
           "takes_arg": true,
+          "arg": {
+            "name": "FILE_PATH",
+            "template": "filepaths"
+          },
           "is_required": true
         },
         {
@@ -169,7 +217,15 @@
             "--colors"
           ],
           "description": "Set color values for the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COLORS",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
@@ -190,7 +246,15 @@
             "--output-format"
           ],
           "description": "The format specifying how the output is printed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OUTPUT_FORMAT",
+            "suggestions": [
+              "value",
+              "json",
+              "toml"
+            ]
+          }
         },
         {
           "names": [
@@ -225,21 +289,37 @@
             "-c"
           ],
           "description": "Path to the Taplo configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CONFIG",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cache-path"
           ],
           "description": "Set a cache path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CACHE_PATH",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--colors"
           ],
           "description": "Set color values for the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COLORS",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
@@ -271,14 +351,20 @@
             "--schema"
           ],
           "description": "URL to the schema to be used for validation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SCHEMA"
+          }
         },
         {
           "names": [
             "--schema-catalog"
           ],
           "description": "URL to the schema catalog to be used for validation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SCHEMA_CATALOG"
+          }
         },
         {
           "names": [
@@ -318,7 +404,15 @@
             "--colors"
           ],
           "description": "Set color values for the output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COLORS",
+            "suggestions": [
+              "auto",
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [
@@ -367,7 +461,14 @@
       "names": [
         "--colors"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [

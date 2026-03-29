@@ -7,7 +7,10 @@
         "--host"
       ],
       "description": "Host address of the postgres database",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
@@ -15,7 +18,10 @@
         "--port"
       ],
       "description": "Port number at which the postgres instance is listening",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "integer"
+      }
     },
     {
       "names": [
@@ -23,7 +29,10 @@
         "--username"
       ],
       "description": "Username to connect to the postgres database",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
@@ -31,7 +40,10 @@
         "--user"
       ],
       "description": "Username to connect to the postgres database",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
@@ -66,14 +78,21 @@
         "--dbname"
       ],
       "description": "Database name to connect to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--pgclirc"
       ],
       "description": "Location of pgclirc file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -81,7 +100,10 @@
         "--dsn"
       ],
       "description": "Use DSN configured into the [alias_dsn] section of pgclirc file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
@@ -94,7 +116,10 @@
         "--row-limit"
       ],
       "description": "Set threshold for row limit prompt. Use 0 to disable prompt",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "integer"
+      }
     },
     {
       "names": [
@@ -107,14 +132,20 @@
         "--prompt"
       ],
       "description": "Prompt format (Default: \"\\u@\\h:\\d> \")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--prompt-dsn"
       ],
       "description": "Prompt format for connections using DSN aliases (Default: \"\\u@\\h:\\d> \")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
@@ -134,14 +165,25 @@
         "--warn"
       ],
       "description": "Warn before running a destructive query",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "choice",
+        "suggestions": [
+          "all",
+          "moderate",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "--ssh-tunnel"
       ],
       "description": "Open an SSH tunnel to the given address and connect to the database from it",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [

@@ -339,6 +339,7 @@ impl HelpParseProvider {
             description,
             takes_arg,
             is_required: false,
+            arg: None,
         })
     }
 

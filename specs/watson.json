@@ -12,7 +12,11 @@
             "-f"
           ],
           "description": "Date and time of start of tracked activity",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME",
+            "description": "The start time. Ex: 2022-03-04 12:00:00"
+          }
         },
         {
           "names": [
@@ -20,7 +24,11 @@
             "-t"
           ],
           "description": "Date and time of end of tracked activity",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME",
+            "description": "The start time. Ex: 2022-03-04 12:00:00"
+          }
         },
         {
           "names": [
@@ -55,7 +63,11 @@
             "-f"
           ],
           "description": "The date from when the reports should start. Defaults to seven days ago",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME",
+            "description": "The start time. Ex: 2022-03-04 12:00:00"
+          }
         },
         {
           "names": [
@@ -63,7 +75,11 @@
             "-t"
           ],
           "description": "The date at which the report should stop (inclusive). Defaults to tomorrow",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME",
+            "description": "The start time. Ex: 2022-03-04 12:00:00"
+          }
         },
         {
           "names": [
@@ -71,7 +87,10 @@
             "-p"
           ],
           "description": "Reports activity only for the given project. You can add other projects by using this option several times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PROJECT"
+          }
         },
         {
           "names": [
@@ -79,7 +98,10 @@
             "-T"
           ],
           "description": "Reports activity only for frames containing the given tag. You can add several tags by using this option multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG"
+          }
         },
         {
           "names": [
@@ -227,7 +249,10 @@
             "-f"
           ],
           "description": "The date from when the log should start. Defaults to seven days ago",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME"
+          }
         },
         {
           "names": [
@@ -235,7 +260,10 @@
             "-t"
           ],
           "description": "The date at which the log should stop (inclusive). Defaults to tomorrow",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME"
+          }
         },
         {
           "names": [
@@ -285,7 +313,11 @@
             "-p"
           ],
           "description": "Logs activity only for the given project. You can add other projects by using this option several times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PROJECT",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -293,21 +325,33 @@
             "-T"
           ],
           "description": "Logs activity only for frames containing the given tag. You can add several tags by using this option multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--ignore-project"
           ],
           "description": "Logs activity for all projects but the given ones. You can ignore several projects by using the option multiple times. Any given project will be ignored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PROJECT",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--ignore-tag"
           ],
           "description": "Logs activity for all tags but the given ones. You can ignore several tags by using the option multiple times. Any given tag will be ignored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -423,7 +467,10 @@
             "-f"
           ],
           "description": "The date from when the report should start. Defaults to seven days ago",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME"
+          }
         },
         {
           "names": [
@@ -431,7 +478,10 @@
             "-t"
           ],
           "description": "The date at which the report should stop (inclusive). Defaults to tomorrow",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME"
+          }
         },
         {
           "names": [
@@ -474,7 +524,10 @@
             "-p"
           ],
           "description": "Reports activity only for the given project. You can add other projects by using this option several times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PROJECT"
+          }
         },
         {
           "names": [
@@ -482,21 +535,30 @@
             "-T"
           ],
           "description": "Reports activity only for frames containing the given tag. You can add several tags by using this option multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG"
+          }
         },
         {
           "names": [
             "--ignore-project"
           ],
           "description": "Reports activity for all projects but the given ones. You can ignore several projects by using the option multiple times. Any given project will be ignored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PROJECT"
+          }
         },
         {
           "names": [
             "--ignore-tag"
           ],
           "description": "Reports activity for all tags but the given ones. You can ignore several tags by using the option multiple times. Any given tag will be ignored",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAG"
+          }
         },
         {
           "names": [
@@ -537,7 +599,10 @@
             "--at"
           ],
           "description": "Start frame at this time. Must be in (YYYY-MM-DDT)?HH:MM(:SS)? format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME"
+          }
         },
         {
           "names": [
@@ -569,7 +634,10 @@
             "--at"
           ],
           "description": "Start frame at this time. Must be in (YYYY-MM-DDT)?HH:MM(:SS)? format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME"
+          }
         },
         {
           "names": [
@@ -643,7 +711,10 @@
             "--at"
           ],
           "description": "Stop frame at this time. Must be in (YYYY-MM-DDT)?HH:MM(:SS)? format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATETIME"
+          }
         }
       ]
     },

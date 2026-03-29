@@ -146,35 +146,50 @@
             "--db"
           ],
           "description": "Use another database (default is the one set with 'MYSQL_DATABASE')",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "database"
+          }
         },
         {
           "names": [
             "--db-user"
           ],
           "description": "Use another mysql username (default is 'root')",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--db-password"
           ],
           "description": "Use another database password (default is the one set with 'MYSQL_ROOT_PASSWORD', see fin config)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password"
+          }
         },
         {
           "names": [
             "--db-charset"
           ],
           "description": "Override charset when creating a database (default is utf8)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "charset"
+          }
         },
         {
           "names": [
             "--db-collation"
           ],
           "description": "Override collation when creating a database (default is utf8_general_ci)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "collation"
+          }
         }
       ]
     },
@@ -296,28 +311,40 @@
                 "--name"
               ],
               "description": "Provide project name upfront",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--choice"
               ],
               "description": "Provide software choice number upfront",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "#"
+              }
             },
             {
               "names": [
                 "--repo"
               ],
               "description": "Clone from a custom repo: name (--choice is set to '0' automatically)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--branch"
               ],
               "description": "Clone from a custom repo: branch name (optional)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -519,14 +546,20 @@
                 "--stack"
               ],
               "description": "Set non-default DOCKSAL_STACK during config generate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "stack"
+              }
             },
             {
               "names": [
                 "--docroot"
               ],
               "description": "Set non-default DOCROOT during config generate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory"
+              }
             }
           ]
         },
@@ -545,7 +578,11 @@
                 "--env"
               ],
               "description": "Set in environment specific project ENV file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -573,7 +610,10 @@
                 "--env"
               ],
               "description": "Remove from environment specific project ENV file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             }
           ],
           "args": [
@@ -598,7 +638,11 @@
                 "--env"
               ],
               "description": "Get value from environment specific project ENV file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "template": "filepaths"
+              }
             }
           ],
           "args": [
@@ -709,14 +753,20 @@
             "--since"
           ],
           "description": "Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--tail"
           ],
           "description": "Number of lines to show from the end of the logs for each container. (default \"all\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
@@ -730,7 +780,10 @@
             "--until"
           ],
           "description": "Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -769,14 +822,20 @@
             "--image"
           ],
           "description": "Override default container image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "IMAGE"
+          }
         },
         {
           "names": [
             "-e"
           ],
           "description": "Pass environment variable(s) to the container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VAR=VALUE"
+          }
         },
         {
           "names": [
@@ -800,7 +859,10 @@
             "--host"
           ],
           "description": "Override a hostname for ngrok to route to (default is $VIRTUAL_HOST)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         }
       ]
     },
@@ -949,7 +1011,10 @@
             "DOCKSAL_VERSION"
           ],
           "description": "Update Docksal to the latest development version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "develop"
+          }
         }
       ]
     },

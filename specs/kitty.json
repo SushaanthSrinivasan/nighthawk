@@ -14,7 +14,10 @@
                 "--match"
               ],
               "description": "The tab to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -27,7 +30,10 @@
                 "--target-group"
               ],
               "description": "Close the specified group of tabs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TARGET_GROUP"
+              }
             }
           ]
         },
@@ -41,7 +47,10 @@
                 "--match"
               ],
               "description": "The window to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -60,7 +69,10 @@
                 "--match"
               ],
               "description": "The window to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -88,7 +100,10 @@
                 "--match"
               ],
               "description": "The tab to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -96,7 +111,10 @@
                 "--target-tab"
               ],
               "description": "The tab to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TARGET_TAB"
+              }
             },
             {
               "names": [
@@ -116,7 +134,10 @@
                 "--match"
               ],
               "description": "The window to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -124,7 +145,10 @@
                 "--target-tab"
               ],
               "description": "The tab to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TARGET_TAB"
+              }
             },
             {
               "names": [
@@ -151,7 +175,10 @@
                 "--match"
               ],
               "description": "The window to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -192,7 +219,10 @@
                 "--match"
               ],
               "description": "The tab to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -212,7 +242,10 @@
                 "--match"
               ],
               "description": "The window to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -309,7 +342,10 @@
                 "--match"
               ],
               "description": "The tab to match",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MATCH"
+              }
             },
             {
               "names": [
@@ -380,7 +416,10 @@
             "--to"
           ],
           "description": "An address for the kitty instance to control",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TO"
+          }
         }
       ]
     },
@@ -393,14 +432,26 @@
             "--align"
           ],
           "description": "Horizontal alignment for the displayed image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ALIGN",
+            "suggestions": [
+              "center",
+              "left",
+              "right"
+            ]
+          }
         },
         {
           "names": [
             "--place"
           ],
           "description": "Choose where on the screen to display the image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLACE",
+            "description": "<width>x<height>@<left>x<top>"
+          }
         },
         {
           "names": [
@@ -413,14 +464,38 @@
             "--background"
           ],
           "description": "Specify a background color, this will cause transparent images to be composited on top of the specified color",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COLOR",
+            "suggestions": [
+              "none",
+              "black",
+              "white",
+              "gray",
+              "red",
+              "green",
+              "blue",
+              "yellow",
+              "magenta",
+              "cyan"
+            ]
+          }
         },
         {
           "names": [
             "--mirror"
           ],
           "description": "Mirror the image about a horizontal or vertical axis or both",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "AXIS",
+            "suggestions": [
+              "horizontal",
+              "both",
+              "none",
+              "vertical"
+            ]
+          }
         },
         {
           "names": [
@@ -433,7 +508,15 @@
             "--transfer-mode"
           ],
           "description": "Which mechanism to use to transfer images to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TRANSFER_MODE",
+            "suggestions": [
+              "file",
+              "detect",
+              "stream"
+            ]
+          }
         },
         {
           "names": [
@@ -446,7 +529,10 @@
             "--detection-timeout"
           ],
           "description": "How long to wait for detection to complete before aborting",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TIMEOUT"
+          }
         },
         {
           "names": [
@@ -477,14 +563,26 @@
             "--align"
           ],
           "description": "Horizontal alignment for the displayed image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ALIGN",
+            "suggestions": [
+              "center",
+              "left",
+              "right"
+            ]
+          }
         },
         {
           "names": [
             "--place"
           ],
           "description": "Choose where on the screen to display the image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PLACE",
+            "description": "<width>x<height>@<left>x<top>"
+          }
         },
         {
           "names": [
@@ -497,14 +595,38 @@
             "--background"
           ],
           "description": "Specify a background color, this will cause transparent images to be composited on top of the specified color",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COLOR",
+            "suggestions": [
+              "none",
+              "black",
+              "white",
+              "gray",
+              "red",
+              "green",
+              "blue",
+              "yellow",
+              "magenta",
+              "cyan"
+            ]
+          }
         },
         {
           "names": [
             "--mirror"
           ],
           "description": "Mirror the image about a horizontal or vertical axis or both",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "AXIS",
+            "suggestions": [
+              "horizontal",
+              "both",
+              "none",
+              "vertical"
+            ]
+          }
         },
         {
           "names": [
@@ -517,7 +639,15 @@
             "--transfer-mode"
           ],
           "description": "Which mechanism to use to transfer images to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TRANSFER_MODE",
+            "suggestions": [
+              "file",
+              "detect",
+              "stream"
+            ]
+          }
         },
         {
           "names": [
@@ -530,7 +660,10 @@
             "--detection-timeout"
           ],
           "description": "How long to wait for detection to complete before aborting",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TIMEOUT"
+          }
         },
         {
           "names": [
@@ -582,14 +715,26 @@
                 "--align"
               ],
               "description": "Horizontal alignment for the displayed image",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ALIGN",
+                "suggestions": [
+                  "center",
+                  "left",
+                  "right"
+                ]
+              }
             },
             {
               "names": [
                 "--place"
               ],
               "description": "Choose where on the screen to display the image",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PLACE",
+                "description": "<width>x<height>@<left>x<top>"
+              }
             },
             {
               "names": [
@@ -602,14 +747,38 @@
                 "--background"
               ],
               "description": "Specify a background color, this will cause transparent images to be composited on top of the specified color",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "COLOR",
+                "suggestions": [
+                  "none",
+                  "black",
+                  "white",
+                  "gray",
+                  "red",
+                  "green",
+                  "blue",
+                  "yellow",
+                  "magenta",
+                  "cyan"
+                ]
+              }
             },
             {
               "names": [
                 "--mirror"
               ],
               "description": "Mirror the image about a horizontal or vertical axis or both",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "AXIS",
+                "suggestions": [
+                  "horizontal",
+                  "both",
+                  "none",
+                  "vertical"
+                ]
+              }
             },
             {
               "names": [
@@ -622,7 +791,15 @@
                 "--transfer-mode"
               ],
               "description": "Which mechanism to use to transfer images to the terminal",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TRANSFER_MODE",
+                "suggestions": [
+                  "file",
+                  "detect",
+                  "stream"
+                ]
+              }
             },
             {
               "names": [
@@ -635,7 +812,10 @@
                 "--detection-timeout"
               ],
               "description": "How long to wait for detection to complete before aborting",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TIMEOUT"
+              }
             },
             {
               "names": [
@@ -738,7 +918,10 @@
         "--title"
       ],
       "description": "Set the OS window title",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TITLE"
+      }
     },
     {
       "names": [
@@ -746,7 +929,11 @@
         "--config"
       ],
       "description": "Specify a path to the configuration file(s) to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -762,14 +949,25 @@
         "--working-directory"
       ],
       "description": "Change to the specified directory when launching",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIRECTORY",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--session"
       ],
       "description": "Path to a file containing the startup session",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SESSION",
+        "suggestions": [
+          "-"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -789,7 +987,10 @@
         "--instance-group"
       ],
       "description": "Kitty will open a new window in an existing instance and quit immediately",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "INSTANCE_GROUP"
+      }
     },
     {
       "names": [
@@ -802,14 +1003,26 @@
         "--listen-on"
       ],
       "description": "Tell kitty to listen on the specified address for control messages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LISTEN_ON"
+      }
     },
     {
       "names": [
         "--start-as"
       ],
       "description": "Control how the initial kitty window is created",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "START_AS",
+        "suggestions": [
+          "normal",
+          "fullscreen",
+          "maximized",
+          "minimized"
+        ]
+      }
     },
     {
       "names": [

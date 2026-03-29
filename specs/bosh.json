@@ -645,7 +645,11 @@
         "--config"
       ],
       "description": "Config file path (default: ~/.bosh/config)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -653,14 +657,21 @@
         "--environment"
       ],
       "description": "Director environment name or URL",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--ca-cert"
       ],
       "description": "Director CA certificate path or value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -673,21 +684,52 @@
         "--parallel"
       ],
       "description": "The max number of parallel operations (default: 5)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "amount",
+        "suggestions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ]
+      }
     },
     {
       "names": [
         "--client"
       ],
       "description": "Override username or UAA client [$BOSH_CLIENT]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--client-secret"
       ],
       "description": "Override password or UAA client secret [$BOSH_CLIENT_SECRET]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "secret"
+      }
     },
     {
       "names": [
@@ -701,7 +743,11 @@
         "--column"
       ],
       "description": "Filter to show only given column(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "is_variadic": true
+      }
     },
     {
       "names": [

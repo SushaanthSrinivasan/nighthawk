@@ -32,14 +32,24 @@
         "--chooser"
       ],
       "description": "Override the binary invoked by --choose",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "program"
+      }
     },
     {
       "names": [
         "--color"
       ],
       "description": "Print colorful output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -47,14 +57,27 @@
         "--command"
       ],
       "description": "Run an arbitrary command with the working directory, .env, overrides, and exports",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
         "--completions"
       ],
       "description": "Print shell completions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "shell",
+        "suggestions": [
+          "zsh",
+          "bash",
+          "fish",
+          "powershell",
+          "elvish"
+        ]
+      }
     },
     {
       "names": [
@@ -79,7 +102,10 @@
         "--dotenv-filename"
       ],
       "description": "Use a file with this name instead of .env",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -92,7 +118,14 @@
         "--dump-format"
       ],
       "description": "Specify the format for dumping the justfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "just",
+          "json"
+        ]
+      }
     },
     {
       "names": [
@@ -131,7 +164,11 @@
         "--justfile"
       ],
       "description": "Use a specific justfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -145,14 +182,20 @@
         "--list-heading"
       ],
       "description": "Print this text before the list",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
         "--list-prefix"
       ],
       "description": "Print this text before each list item",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text"
+      }
     },
     {
       "names": [
@@ -178,21 +221,30 @@
         "--set"
       ],
       "description": "Override a variable with a value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "variable"
+      }
     },
     {
       "names": [
         "--shell"
       ],
       "description": "Invoke this shell to run recipes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "shell"
+      }
     },
     {
       "names": [
         "--shell-arg"
       ],
       "description": "Invoke the shell with this as an argument",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "argument"
+      }
     },
     {
       "names": [
@@ -206,7 +258,10 @@
         "--show"
       ],
       "description": "Show information about a recipe",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "recipe"
+      }
     },
     {
       "names": [
@@ -253,7 +308,10 @@
         "--working-directory"
       ],
       "description": "Use this as the working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     }
   ],
   "args": [

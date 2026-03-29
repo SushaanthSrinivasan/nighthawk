@@ -11,28 +11,41 @@
             "--cwd"
           ],
           "description": "Specify the current working directory for the initially spawned program",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--class"
           ],
           "description": "Override the default windowing system class. The default is \"org.wezfurlong.wezterm\". Under X11 and Windows this changes the window class. Under Wayland this changes the app_id. This changes the class",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "class"
+          }
         },
         {
           "names": [
             "--workspace"
           ],
           "description": "Override the default workspace with the provided name. The default is \"default\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace"
+          }
         },
         {
           "names": [
             "--position"
           ],
           "description": "Override the position for the initial window launched by this process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "position"
+          }
         },
         {
           "names": [
@@ -71,21 +84,31 @@
             "--ssh-option"
           ],
           "description": "Override specific SSH configuration options. `wezterm ssh` is able to parse some (but not all!) options from your `~/.ssh/config` and `/etc/ssh/ssh_config` files. This command line switch allows you t",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name=value",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--class"
           ],
           "description": "Override the default windowing system class. The default is \"org.wezfurlong.wezterm\". Under X11 and Windows this changes the window class. Under Wayland this changes the app_id. This changes the class",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "class"
+          }
         },
         {
           "names": [
             "--position"
           ],
           "description": "Override the position for the initial window launched by this process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "position"
+          }
         },
         {
           "names": [
@@ -120,21 +143,30 @@
             "--baud"
           ],
           "description": "Set the baud rate.  The default is 9600 baud",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "baud"
+          }
         },
         {
           "names": [
             "--class"
           ],
           "description": "Override the default windowing system class. The default is \"org.wezfurlong.wezterm\". Under X11 and Windows this changes the window class. Under Wayland this changes the app_id. This changes the class",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "class"
+          }
         },
         {
           "names": [
             "--position"
           ],
           "description": "Override the position for the initial window launched by this process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "position"
+          }
         },
         {
           "names": [
@@ -159,21 +191,30 @@
             "--class"
           ],
           "description": "Override the default windowing system class. The default is \"org.wezfurlong.wezterm\". Under X11 and Windows this changes the window class. Under Wayland this changes the app_id. This changes the class",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "class"
+          }
         },
         {
           "names": [
             "--workspace"
           ],
           "description": "Override the default workspace with the provided name. The default is \"default\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workspace"
+          }
         },
         {
           "names": [
             "--position"
           ],
           "description": "Override the position for the initial window launched by this process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "position"
+          }
         },
         {
           "names": [
@@ -202,7 +243,10 @@
             "--text"
           ],
           "description": "Explain which fonts are used to render the supplied text string",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -234,7 +278,10 @@
             "--key-table"
           ],
           "description": "In lua mode, show only the named key table",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-table"
+          }
         },
         {
           "names": [
@@ -264,7 +311,10 @@
                 "--format"
               ],
               "description": "Controls the output format. \"table\" and \"json\" are possible formats",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
@@ -284,7 +334,10 @@
                 "--format"
               ],
               "description": "Controls the output format. \"table\" and \"json\" are possible formats",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
@@ -330,21 +383,30 @@
                 "--pane-id"
               ],
               "description": "Specify the pane that should be moved. The default is to use the current pane based on the environment variable WEZTERM_PANE",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pane-id"
+              }
             },
             {
               "names": [
                 "--window-id"
               ],
               "description": "Specify the window into which the new tab will be created. If omitted, the window associated with the current pane is used",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "window-id"
+              }
             },
             {
               "names": [
                 "--workspace"
               ],
               "description": "If creating a new window, override the default workspace name with the provided name.  The default name is \"default\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "workspace"
+              }
             },
             {
               "names": [
@@ -370,35 +432,51 @@
                 "--pane-id"
               ],
               "description": "Specify the pane that should be split. The default is to use the current pane based on the environment variable WEZTERM_PANE",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pane-id"
+              }
             },
             {
               "names": [
                 "--cells"
               ],
               "description": "The number of cells that the new split should have. If omitted, 50% of the available space is used",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cells"
+              }
             },
             {
               "names": [
                 "--percent"
               ],
               "description": "Specify the number of cells that the new split should have, expressed as a percentage of the available space",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "percent"
+              }
             },
             {
               "names": [
                 "--cwd"
               ],
               "description": "Specify the current working directory for the initially spawned program",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cwd",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--move-pane-id"
               ],
               "description": "Instead of spawning a new command, move the specified pane into the newly created split",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "move-pane-id"
+              }
             },
             {
               "names": [
@@ -460,34 +538,50 @@
                 "--pane-id"
               ],
               "description": "Specify the current pane. The default is to use the current pane based on the environment variable WEZTERM_PANE. The pane is used to determine the current domain and window",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pane-id"
+              }
             },
             {
               "names": [
                 "--domain-name"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "domain-name"
+              }
             },
             {
               "names": [
                 "--window-id"
               ],
               "description": "Specify the window into which to spawn a tab. If omitted, the window associated with the current pane is used. Cannot be used with `--workspace` or `--new-window`",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "window-id"
+              }
             },
             {
               "names": [
                 "--cwd"
               ],
               "description": "Specify the current working directory for the initially spawned program",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cwd",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--workspace"
               ],
               "description": "When creating a new window, override the default workspace name with the provided name.  The default name is \"default\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "workspace"
+              }
             },
             {
               "names": [
@@ -519,7 +613,10 @@
                 "--pane-id"
               ],
               "description": "Specify the target pane. The default is to use the current pane based on the environment variable WEZTERM_PANE",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "pane-id"
+              }
             },
             {
               "names": [
@@ -557,7 +654,10 @@
             "--class"
           ],
           "description": "When connecting to a gui instance, if you started the gui with `--class SOMETHING`, you should also pass that same value here in order for the client to find the correct gui instance",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "class"
+          }
         },
         {
           "names": [
@@ -589,14 +689,20 @@
             "--width"
           ],
           "description": "Specify the display width; defaults to \"auto\" which automatically selects an appropriate size.  You may also use an integer value `N` to specify the number of cells, or `Npx` to specify the number of ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "width"
+          }
         },
         {
           "names": [
             "--height"
           ],
           "description": "Specify the display height; defaults to \"auto\" which automatically selects an appropriate size.  You may also use an integer value `N` to specify the number of cells, or `Npx` to specify the number of",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "height"
+          }
         },
         {
           "names": [
@@ -692,7 +798,18 @@
             "--shell"
           ],
           "description": "Which shell to generate for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "shell",
+            "suggestions": [
+              "bash",
+              "elvish",
+              "fish",
+              "power-shell",
+              "zsh",
+              "fig"
+            ]
+          }
         },
         {
           "names": [
@@ -719,14 +836,22 @@
         "--config-file"
       ],
       "description": "Specify the configuration file to use, overrides the normal configuration file resolution",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config-file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Override specific configuration values",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name=value",
+        "is_variadic": true
+      }
     },
     {
       "names": [

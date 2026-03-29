@@ -17,7 +17,11 @@
             "--attach-config"
           ],
           "description": "Provide a file with configuration options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file path",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -37,7 +41,11 @@
             "--output"
           ],
           "description": "Path for tarball. Uses ua_logs.tar.gz in current directory if not specified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -109,13 +117,23 @@
             "--format"
           ],
           "description": "Output format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "tabular",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
             "--simulate-with-token"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [

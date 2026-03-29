@@ -17,7 +17,15 @@
             "--props"
           ],
           "description": "Determines which prop declaration/validation solution to generate. Defaults to `ts` if `typescript` flag is `true`, `none` otherwise",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "ts",
+              "jsdoc",
+              "prop-types",
+              "none"
+            ]
+          }
         },
         {
           "names": [
@@ -46,14 +54,26 @@
             "--export-type"
           ],
           "description": "Whether to export the component as a named export or a default export. Defaults to `named`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "named",
+              "default"
+            ]
+          }
         },
         {
           "names": [
             "--declaration"
           ],
           "description": "Whether to declare the component as a `const` with an arrow function, or as a `function` declaration. Defaults to `const`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "const",
+              "function"
+            ]
+          }
         },
         {
           "names": [
@@ -74,7 +94,17 @@
             "--styling"
           ],
           "description": "Which styling solution to generate. Defaults to `none`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "none",
+              "css",
+              "scss",
+              "jss",
+              "mui",
+              "react-native"
+            ]
+          }
         },
         {
           "names": [
@@ -88,7 +118,12 @@
             "--base-dir"
           ],
           "description": "Path to a base directory which components should be generated inside of (directly or nested). Defaults to the current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -97,6 +132,11 @@
           ],
           "description": "Allows the user to generate the component at a path relative to `baseDir`. It's mostly used to augment or modify the generation path in the command-line when creating the component itself. `dest` is r",
           "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "is_variadic": true,
+            "template": "folders"
+          },
           "is_required": true
         },
         {
@@ -104,7 +144,12 @@
             "--allow-outside-base"
           ],
           "description": "Overrides default Agrippa behaviour to allow components to be specified outside `baseDir`. Defaults to current working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [

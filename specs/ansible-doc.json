@@ -14,7 +14,12 @@
         "--playbook-dir"
       ],
       "description": "Sets the relative path for many features including roles/ group_vars/ etc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BASEDIR",
+        "description": "Base directory",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -45,7 +50,10 @@
         "-E"
       ],
       "description": "Select the entry point for role(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ENTRY_POINT"
+      }
     },
     {
       "names": [
@@ -69,7 +77,10 @@
         "-l"
       ],
       "description": "List available plugins; a supplied argument will be used for filtering (can be a namespace or full collection name)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAMESPACE|COLLECTION"
+      }
     },
     {
       "names": [
@@ -77,7 +88,11 @@
         "-r"
       ],
       "description": "The path to the directory containing your roles",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -85,7 +100,15 @@
         "-s"
       ],
       "description": "Show playbook snippet for these plugin types: inventory, lookup, module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PLUGIN_TYPE",
+        "suggestions": [
+          "inventory",
+          "lookup",
+          "module"
+        ]
+      }
     },
     {
       "names": [
@@ -93,7 +116,27 @@
         "-t"
       ],
       "description": "Choose which plugin type (defaults to \"module\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PLUGIN_TYPE",
+        "suggestions": [
+          "become",
+          "cache",
+          "callback",
+          "cliconf",
+          "connection",
+          "httpapi",
+          "inventory",
+          "lookup",
+          "netconf",
+          "shell",
+          "vars",
+          "module",
+          "strategy",
+          "role",
+          "keyword"
+        ]
+      }
     },
     {
       "names": [

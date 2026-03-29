@@ -17,7 +17,16 @@
             "--reinstall-packages-from"
           ],
           "description": "When installing, reinstall packages installed in <version>",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version",
+            "description": "Node version",
+            "suggestions": [
+              "node",
+              "iojs",
+              "system"
+            ]
+          }
         },
         {
           "names": [
@@ -30,7 +39,10 @@
             "--lts"
           ],
           "description": "When installing, only select from versions for a specific LTS line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LTS name"
+          }
         },
         {
           "names": [
@@ -55,7 +67,10 @@
             "--alias"
           ],
           "description": "After installing, set the alias specified to the version specified. (same as: nvm alias <name> <version>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -91,7 +106,10 @@
             "--lts"
           ],
           "description": "Uninstall using automatic alias for provided LTS line, if available",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LTS name"
+          }
         }
       ],
       "args": [
@@ -127,7 +145,10 @@
             "--lts"
           ],
           "description": "Uses automatic alias for provided LTS line, if available",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LTS name"
+          }
         }
       ],
       "args": [
@@ -163,7 +184,10 @@
             "--lts"
           ],
           "description": "Uses automatic alias for provided LTS line, if available",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LTS name"
+          }
         }
       ],
       "args": [
@@ -203,7 +227,10 @@
             "--lts"
           ],
           "description": "Uses automatic alias for provided LTS line, if available",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LTS name"
+          }
         }
       ],
       "args": [
@@ -270,7 +297,10 @@
             "--lts"
           ],
           "description": "When listing, only show versions for a specific LTS line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LTS name"
+          }
         },
         {
           "names": [
@@ -321,7 +351,10 @@
             "--lts"
           ],
           "description": "When listing, only show versions for a specific LTS line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LTS name"
+          }
         }
       ],
       "args": [

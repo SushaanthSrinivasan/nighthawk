@@ -14,7 +14,12 @@
         "--output"
       ],
       "description": "Write output to FILE instead of overwriting the given source file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "description": "Name and location of output file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -39,7 +44,15 @@
         "--elm-version"
       ],
       "description": "The Elm version of the source files being formatted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VERSION",
+        "description": "Valid values: 0.18, 0.19. Default: auto",
+        "suggestions": [
+          "0.19",
+          "0.18"
+        ]
+      }
     }
   ],
   "args": [

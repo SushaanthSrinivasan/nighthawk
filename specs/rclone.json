@@ -64,28 +64,40 @@
             "--count"
           ],
           "description": "Only print N characters. (default -1)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
             "--head"
           ],
           "description": "Only print the first N characters",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
             "--offset"
           ],
           "description": "Start printing at offset N (or from end if -ve)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         },
         {
           "names": [
             "--tail"
           ],
           "description": "Only print the last N characters",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "int"
+          }
         }
       ],
       "args": [
@@ -109,42 +121,60 @@
             "--combined"
           ],
           "description": "Make a combined report of changes to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--differ"
           ],
           "description": "Report all non-matching files to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--error"
           ],
           "description": "Report all files with errors (hashing or reading) to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--match"
           ],
           "description": "Report all matching files to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--missing-on-dst"
           ],
           "description": "Report all files missing from the destination to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--missing-on-src"
           ],
           "description": "Report all files missing from the source to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -234,42 +264,60 @@
             "--combined"
           ],
           "description": "Make a combined report of changes to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--differ"
           ],
           "description": "Report all non-matching files to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--error"
           ],
           "description": "Report all files with errors (hashing or reading) to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--match"
           ],
           "description": "Report all matching files to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--missing-on-dst"
           ],
           "description": "Report all files missing from the destination to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--missing-on-src"
           ],
           "description": "Report all files missing from the source to this file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -323,7 +371,21 @@
             "--dedupe-mode"
           ],
           "description": "Dedupe mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "interactive",
+              "skip",
+              "rename",
+              "list",
+              "first",
+              "newest",
+              "oldest",
+              "largest",
+              "smallest"
+            ]
+          }
         }
       ],
       "args": [
@@ -425,7 +487,10 @@
             "--output-file"
           ],
           "description": "Output hashsums to a file rather than the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -465,7 +530,10 @@
             "--expire"
           ],
           "description": "The amount of time that the link will be valid (default 100y)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration"
+          }
         },
         {
           "names": [
@@ -566,14 +634,38 @@
             "-F"
           ],
           "description": "Output format - see  help for details (default \"p\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "p",
+              "s",
+              "t",
+              "h",
+              "i",
+              "o",
+              "m"
+            ]
+          }
         },
         {
           "names": [
             "--hash"
           ],
           "description": "Use this hash when h is used in the format (default \"MD5\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hash",
+            "suggestions": [
+              "MD5",
+              "SHA-1",
+              "DropboxHash",
+              "QuickXorHash",
+              "Whirlpool",
+              "CRC-32",
+              "MailruHash"
+            ]
+          }
         },
         {
           "names": [
@@ -581,7 +673,10 @@
             "-s"
           ],
           "description": "Separator for the items in the format. (default \";\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "separator"
+          }
         }
       ],
       "args": [
@@ -631,7 +726,19 @@
             "--hash-type"
           ],
           "description": "Show only this hash type (may be repeated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hashes",
+            "suggestions": [
+              "MD5",
+              "SHA-1",
+              "DropboxHash",
+              "QuickXorHash",
+              "Whirlpool",
+              "CRC-32",
+              "MailruHash"
+            ]
+          }
         },
         {
           "names": [
@@ -688,7 +795,11 @@
             "--output-file"
           ],
           "description": "Output hashsums to a file rather than the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [

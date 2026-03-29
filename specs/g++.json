@@ -7,7 +7,19 @@
         "--analyzer-output"
       ],
       "description": "Static analyzer report output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "html",
+          "plist",
+          "plist-multi-file",
+          "plist-html",
+          "sarif",
+          "text"
+        ]
+      }
     },
     {
       "names": [
@@ -26,14 +38,23 @@
         "-arcmt-migrate-report-output"
       ],
       "description": "Output path for the plist report",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-B"
       ],
       "description": "Add <dir> to search path for binaries and object files used implicitly",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "Dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -100,7 +121,11 @@
         "-cl-std"
       ],
       "description": "OpenCL language standard to compile for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -125,7 +150,11 @@
         "--config"
       ],
       "description": "Specifies configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -150,7 +179,12 @@
         "--cuda-include-ptx"
       ],
       "description": "Include PTX for the following GPU architecture (e.g. sm_35) or 'all'. May be specified more than once",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -169,14 +203,24 @@
         "--cuda-path"
       ],
       "description": "CUDA installation path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-cxx-isystem"
       ],
       "description": "Add directory to the C++ SYSTEM include search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -201,14 +245,27 @@
         "-dependency-dot"
       ],
       "description": "Filename to write DOT-formatted header dependencies to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-dependency-file"
       ],
       "description": "Filename (or -) to write dependency output to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "-"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -227,7 +284,11 @@
         "-D"
       ],
       "description": "Define <macro> to <value> (or 1 if <value> omitted)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "macro>=<value",
+        "description": "Macro>=<value"
+      }
     },
     {
       "names": [
@@ -306,7 +367,12 @@
         "-fapinotes-cache-path"
       ],
       "description": "Does nothing; API notes are no longer cached separately from modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -319,7 +385,11 @@
         "-fapinotes-swift-version"
       ],
       "description": "Specify the Swift version to use when filtering API notes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version",
+        "description": "Version"
+      }
     },
     {
       "names": [
@@ -366,7 +436,16 @@
         "-fbasic-block-sections"
       ],
       "description": "Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "all",
+          "labels",
+          "none"
+        ]
+      }
     },
     {
       "names": [
@@ -391,14 +470,23 @@
         "-fbuild-session-file"
       ],
       "description": "Use the last modification time of <file> as the build session timestamp",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-fbuild-session-timestamp"
       ],
       "description": "Time when the current build session started",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time since Epoch in seconds",
+        "description": "Time since Epoch in seconds"
+      }
     },
     {
       "names": [
@@ -475,7 +563,11 @@
         "-fcf-protection"
       ],
       "description": "Enable cf-protection in 'full' mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -488,7 +580,11 @@
         "-fclang-abi-compat"
       ],
       "description": "Attempt to match the ABI of Clang <version>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version",
+        "description": "Version"
+      }
     },
     {
       "names": [
@@ -501,7 +597,11 @@
         "-fcomment-block-commands"
       ],
       "description": "Treat each comma separated argument in <arg> as a documentation comment block command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
@@ -538,7 +638,12 @@
         "-fcs-profile-generate"
       ],
       "description": "Generate instrumented code to collect context sensitive execution counts into <directory>/default.profraw (overridden by LLVM_PROFILE_FILE env var)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -575,14 +680,23 @@
         "-fdebug-compilation-dir"
       ],
       "description": "The compilation directory to embed in the debug info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-fdebug-default-version"
       ],
       "description": "Default DWARF version to use, if a -g option caused DWARF debug info to be produced",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -601,7 +715,11 @@
         "-fdebug-prefix-map"
       ],
       "description": "Remap file source paths in debug info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -644,7 +762,11 @@
         "-fdiagnostics-hotness-threshold"
       ],
       "description": "Prevent optimization remarks from being output if they do not have at least this profile count",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "description": "Number"
+      }
     },
     {
       "names": [
@@ -728,7 +850,11 @@
         "-fembed-bitcode"
       ],
       "description": "Embed LLVM bitcode (option: off, all, bitcode, marker)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "description": "Option"
+      }
     },
     {
       "names": [
@@ -795,7 +921,11 @@
         "-ffile-prefix-map"
       ],
       "description": "Remap file source paths in debug info and predefined preprocessor macros",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1030,21 +1160,38 @@
         "-ffp-contract"
       ],
       "description": "Form fused FP ops (e.g. FMAs): fast (everywhere) | on (according to FP_CONTRACT pragma) | off (never fuse). Default is 'fast' for CUDA/HIP and 'on' otherwise",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "fast",
+          "on",
+          "off"
+        ]
+      }
     },
     {
       "names": [
         "-ffp-exception-behavior"
       ],
       "description": "Specifies the exception behavior of floating-point operations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-ffp-model"
       ],
       "description": "Controls the semantics of floating-point calculations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1092,7 +1239,11 @@
         "-fgnuc-version"
       ],
       "description": "Sets various macros to claim compatibility with the given GCC version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1183,28 +1334,48 @@
         "-flax-vector-conversions"
       ],
       "description": "Enable implicit vector bit-casts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-flto-jobs"
       ],
       "description": "Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-flto"
       ],
       "description": "Set LTO mode to either 'full' or 'thin'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "full",
+          "thin"
+        ]
+      }
     },
     {
       "names": [
         "-fmacro-prefix-map"
       ],
       "description": "Remap file source paths in predefined preprocessor macros",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1217,14 +1388,22 @@
         "-fmax-tokens"
       ],
       "description": "Max total number of preprocessed tokens for -Wmax-tokens",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fmax-type-align"
       ],
       "description": "Specify the maximum alignment to enforce on pointers lacking an explicit alignment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1237,35 +1416,57 @@
         "-fmessage-length"
       ],
       "description": "Format message diagnostics so that they fit within N columns",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fmodule-file"
       ],
       "description": "Specify the mapping of module name to precompiled module file, or load a module file if name is omitted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<name",
+        "description": "<name"
+      }
     },
     {
       "names": [
         "-fmodule-map-file"
       ],
       "description": "Load this module map file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-fmodule-name"
       ],
       "description": "Specify the name of the module to build",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "Name"
+      }
     },
     {
       "names": [
         "-fmodules-cache-path"
       ],
       "description": "Specify the module cache path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -1284,21 +1485,33 @@
         "-fmodules-ignore-macro"
       ],
       "description": "Ignore the definition of the given macro when building and loading modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fmodules-prune-after"
       ],
       "description": "Specify the interval (in seconds) after which a module file will be considered unused",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds",
+        "description": "Seconds"
+      }
     },
     {
       "names": [
         "-fmodules-prune-interval"
       ],
       "description": "Specify the interval (in seconds) between attempts to prune the module cache",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds",
+        "description": "Seconds"
+      }
     },
     {
       "names": [
@@ -1323,7 +1536,12 @@
         "-fmodules-user-build-path"
       ],
       "description": "Specify the module user build path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -1354,7 +1572,11 @@
         "-fms-compatibility-version"
       ],
       "description": "Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1373,14 +1595,22 @@
         "-fmsc-version"
       ],
       "description": "Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fnew-alignment"
       ],
       "description": "Specifies the largest alignment guaranteed by '::operator new(size_t)'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "align",
+        "description": "Align"
+      }
     },
     {
       "names": [
@@ -1437,7 +1667,11 @@
         "-fno-builtin"
       ],
       "description": "Disable implicit builtin knowledge of functions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1910,7 +2144,11 @@
         "-fno-sanitize-coverage"
       ],
       "description": "Disable specified features of coverage instrumentation for Sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1929,7 +2167,11 @@
         "-fno-sanitize-recover"
       ],
       "description": "Disable recovery for specified sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -1960,7 +2202,11 @@
         "-fno-sanitize-trap"
       ],
       "description": "Disable trapping for specified sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2189,7 +2435,11 @@
         "-fobjc-runtime"
       ],
       "description": "Specify the target Objective-C runtime kind and version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2208,7 +2458,11 @@
         "-fopenmp-targets"
       ],
       "description": "Specify comma-separated list of triples OpenMP offloading targets to be supported",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2221,14 +2475,23 @@
         "-foptimization-record-file"
       ],
       "description": "Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-foptimization-record-passes"
       ],
       "description": "Only include passes which match a specified regular expression in the generated optimization record (by default, include all passes)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex",
+        "description": "Regex"
+      }
     },
     {
       "names": [
@@ -2241,7 +2504,11 @@
         "-fpack-struct"
       ],
       "description": "Specify the default maximum struct packing alignment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2254,14 +2521,22 @@
         "-fpass-plugin"
       ],
       "description": "Load pass plugin from a dynamic shared object file (only with new pass manager)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dsopath",
+        "description": "Dsopath"
+      }
     },
     {
       "names": [
         "-fpatchable-function-entry"
       ],
       "description": "Generate M NOPs before function entry and N-M NOPs after function entry",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N,M",
+        "description": "N,M"
+      }
     },
     {
       "names": [
@@ -2303,14 +2578,23 @@
         "-fplugin"
       ],
       "description": "Load the named plugin (dynamic shared object)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dsopath",
+        "description": "Dsopath"
+      }
     },
     {
       "names": [
         "-fprebuilt-module-path"
       ],
       "description": "Specify the prebuilt module path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -2322,42 +2606,69 @@
         "-fprofile-exclude-files"
       ],
       "description": "Instrument only functions from files where names don't match all the regexes separated by a semi-colon",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fprofile-filter-files"
       ],
       "description": "Instrument only functions from files where names match any regex separated by a semi-colon",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fprofile-generate"
       ],
       "description": "Generate instrumented code to collect execution counts into <directory>/default.profraw (overridden by LLVM_PROFILE_FILE env var)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-fprofile-instr-generate"
       ],
       "description": "Generate instrumented code to collect execution counts into <file> (overridden by LLVM_PROFILE_FILE env var)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-fprofile-instr-use"
       ],
       "description": "Use instrumentation data for profile-guided optimization",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fprofile-remapping-file"
       ],
       "description": "Use the remappings described in <file> to match the profile data against names in the program",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2370,21 +2681,33 @@
         "-fprofile-sample-use"
       ],
       "description": "Enable sample-based profile guided optimizations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fprofile-use"
       ],
       "description": "Use instrumentation data for profile-guided optimization. If pathname is a directory, it reads from <pathname>/default.profdata. Otherwise, it reads from file <pathname>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pathname",
+        "description": "Pathname"
+      }
     },
     {
       "names": [
         "-fptrauth-abi-version"
       ],
       "description": "Pointer Authentication ABI version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2439,7 +2762,11 @@
         "-fptrauth-objc-isa-mode"
       ],
       "description": "Authentication mode for ObjC isa field. Full auth if unspecified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2544,7 +2871,11 @@
         "-fsanitize-address-field-padding"
       ],
       "description": "Level of field padding for AddressSanitizer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2575,7 +2906,11 @@
         "-fsanitize-blacklist"
       ],
       "description": "Path to blacklist file for sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2600,49 +2935,77 @@
         "-fsanitize-coverage-allowlist"
       ],
       "description": "Restrict sanitizer coverage instrumentation exclusively to modules and functions that match the provided special case list, except the blocked ones",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fsanitize-coverage-blacklist"
       ],
       "description": "Deprecated, use -fsanitize-coverage-blocklist= instead",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fsanitize-coverage-blocklist"
       ],
       "description": "Disable sanitizer coverage instrumentation for modules and functions that match the provided special case list, even the allowed ones",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fsanitize-coverage-whitelist"
       ],
       "description": "Deprecated, use -fsanitize-coverage-allowlist= instead",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fsanitize-coverage"
       ],
       "description": "Specify the type of coverage instrumentation for Sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fsanitize-hwaddress-abi"
       ],
       "description": "Select the HWAddressSanitizer ABI to target (interceptor or platform, default interceptor). This option is currently unused",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fsanitize-memory-track-origins"
       ],
       "description": "Enable origins tracking in MemorySanitizer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2655,7 +3018,11 @@
         "-fsanitize-recover"
       ],
       "description": "Enable recovery for specified sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2668,7 +3035,11 @@
         "-fsanitize-system-blacklist"
       ],
       "description": "Path to system blacklist file for sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2693,28 +3064,44 @@
         "-fsanitize-trap"
       ],
       "description": "Enable trapping for sanitizers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fsanitize-undefined-strip-path-components"
       ],
       "description": "Strip (or keep only, if negative) a given number of path components when emitting check metadata",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "description": "Number"
+      }
     },
     {
       "names": [
         "-fsanitize"
       ],
       "description": "Turn on runtime checks for various forms of undefined or suspicious behavior. See user manual for available checks",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "check",
+        "description": "Check"
+      }
     },
     {
       "names": [
         "-fsave-optimization-record"
       ],
       "description": "Generate an optimization record file in a specific format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "description": "Format"
+      }
     },
     {
       "names": [
@@ -2744,7 +3131,15 @@
         "-fshow-overloads"
       ],
       "description": "Which overload candidates to show when overload resolution fails: best|all; defaults to all",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "best",
+          "all"
+        ]
+      }
     },
     {
       "names": [
@@ -2876,21 +3271,33 @@
         "-fthin-link-bitcode"
       ],
       "description": "Write minimized bitcode to <file> for the ThinLTO thin link only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fthinlto-index"
       ],
       "description": "Perform ThinLTO importing using provided function summary index",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-ftime-trace-granularity"
       ],
       "description": "Minimum time granularity (in microseconds) traced by time profiler",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -2903,14 +3310,22 @@
         "-ftrap-function"
       ],
       "description": "Issue call to specified function rather than a trap instruction",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-ftrapv-handler"
       ],
       "description": "Specify the function to be called on overflow",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "function name",
+        "description": "Function name"
+      }
     },
     {
       "names": [
@@ -2929,14 +3344,26 @@
         "-ftrivial-auto-var-init-stop-after"
       ],
       "description": "Stop initializing trivial automatic stack variables after the specified number of instances",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-ftrivial-auto-var-init"
       ],
       "description": "Initialize trivial automatic stack variables",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "uninitialized",
+          "pattern"
+        ]
+      }
     },
     {
       "names": [
@@ -2983,7 +3410,11 @@
         "-fveclib"
       ],
       "description": "Use the given vector functions library",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3032,7 +3463,11 @@
         "-fvisibility"
       ],
       "description": "Set the default symbol visibility for all global declarations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3075,14 +3510,22 @@
         "-fxray-always-instrument"
       ],
       "description": "DEPRECATED: Filename defining the whitelist for imbuing the 'always instrument' XRay attribute",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fxray-attr-list"
       ],
       "description": "Filename defining the list of functions/types for imbuing XRay attributes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3100,14 +3543,29 @@
         "-fxray-instruction-threshold"
       ],
       "description": "Sets the minimum function size to instrument with XRay",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fxray-instrumentation-bundle"
       ],
       "description": "Select which XRay instrumentation points to emit. 'function' includes both 'function-entry' and 'function-exit'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "fxray-instrumentation-bundle",
+        "suggestions": [
+          "all",
+          "none",
+          "function-entry",
+          "function-exit",
+          "function",
+          "custom"
+        ]
+      }
     },
     {
       "names": [
@@ -3126,14 +3584,22 @@
         "-fxray-modes"
       ],
       "description": "List of modes to link in by default into XRay instrumented binaries",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-fxray-never-instrument"
       ],
       "description": "DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3151,14 +3617,22 @@
         "-F"
       ],
       "description": "Add directory to framework include search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "--gcc-toolchain"
       ],
       "description": "Use the gcc toolchain at the given directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3243,28 +3717,44 @@
         "--gpu-max-threads-per-block"
       ],
       "description": "Default max threads per block for kernel launch bounds for HIP",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-gsplit-dwarf"
       ],
       "description": "Set DWARF fission mode to either 'split' or 'single'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-gz"
       ],
       "description": "DWARF debug sections compression type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-G"
       ],
       "description": "Put objects of at most <size> bytes into small data section (MIPS / Hexagon)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "Size"
+      }
     },
     {
       "names": [
@@ -3289,7 +3779,11 @@
         "--hip-device-lib"
       ],
       "description": "HIP device library",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3302,7 +3796,11 @@
         "--hip-version"
       ],
       "description": "HIP version in the format of major.minor.patch",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3321,7 +3819,12 @@
         "-iapinotes-modules"
       ],
       "description": "Add directory to the API notes search path referenced by module name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -3334,42 +3837,70 @@
         "-idirafter"
       ],
       "description": "Add directory to AFTER include search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-iframeworkwithsysroot"
       ],
       "description": "Add directory to SYSTEM framework search path, absolute paths are relative to -isysroot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-iframework"
       ],
       "description": "Add directory to SYSTEM framework search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-imacros"
       ],
       "description": "Include macros from file before parsing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-include-pch"
       ],
       "description": "Include precompiled header file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-include"
       ],
       "description": "Include file before parsing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3394,91 +3925,153 @@
         "-index-store-path"
       ],
       "description": "Enable indexing with the specified data store path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-iprefix"
       ],
       "description": "Set the -iwithprefix/-iwithprefixbefore prefix",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "Dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-iquote"
       ],
       "description": "Add directory to QUOTE include search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-isysroot"
       ],
       "description": "Set the system root directory (usually /)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "Dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-isystem-after"
       ],
       "description": "Add directory to end of the SYSTEM include search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-isystem"
       ],
       "description": "Add directory to SYSTEM include search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-ivfsoverlay"
       ],
       "description": "Overlay the virtual filesystem described by file over the real file system",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-iwithprefixbefore"
       ],
       "description": "Set directory to include search path with prefix",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "Dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-iwithprefix"
       ],
       "description": "Set directory to SYSTEM include search path with prefix",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "Dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-iwithsysroot"
       ],
       "description": "Add directory to SYSTEM include search path, absolute paths are relative to -isysroot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-I"
       ],
       "description": "Add directory to include search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "Dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--libomptarget-nvptx-path"
       ],
       "description": "Path to libomptarget-nvptx libraries",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Add directory to library search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "Dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -3497,14 +4090,22 @@
         "-malign-branch-boundary"
       ],
       "description": "Specify the boundary's size to align branches",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-malign-branch"
       ],
       "description": "Specify types of branches to align",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3523,7 +4124,11 @@
         "-mbranch-protection"
       ],
       "description": "Enforce targets of indirect branches and function returns",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3536,7 +4141,11 @@
         "-mcmodel"
       ],
       "description": "Equivalent to -mcmodel=medium, compatible with RISC-V gcc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "edan",
+        "description": "Edan"
+      }
     },
     {
       "names": [
@@ -3567,7 +4176,11 @@
         "-mdouble"
       ],
       "description": "Force double to be 32 bits or 64 bits",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3580,7 +4193,11 @@
         "-meabi"
       ],
       "description": "Set EABI type, e.g. 4, 5 or gnu (default depends on triple)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3599,7 +4216,11 @@
         "-mexec-model"
       ],
       "description": "Execution model (WebAssembly only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3642,7 +4263,12 @@
         "-MF"
       ],
       "description": "Write depfile output from -MMD, -MD, -MM, or -M to <file>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -3673,21 +4299,33 @@
         "-mharden-sls"
       ],
       "description": "Select straight-line speculation hardening scope",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-mhvx-length"
       ],
       "description": "Set Hexagon Vector Length",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-mhvx"
       ],
       "description": "Enable Hexagon Vector eXtensions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3712,28 +4350,44 @@
         "-mindirect-jump"
       ],
       "description": "Change indirect jump instructions to inhibit speculation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-mios-version-min"
       ],
       "description": "Set iOS deployment target",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-MJ"
       ],
       "description": "Write a compilation database entry per input",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-mllvm"
       ],
       "description": "Additional arguments to forward to LLVM's option processing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -3782,7 +4436,11 @@
         "-mmacosx-version-min"
       ],
       "description": "Set Mac OS X deployment target",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4083,7 +4741,11 @@
         "-module-dependency-dir"
       ],
       "description": "Directory to dump module dependencies to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4120,7 +4782,11 @@
         "-mpad-max-prefix-size"
       ],
       "description": "Specify maximum number of prefixes to use for padding",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4133,7 +4799,11 @@
         "-mprefer-vector-width"
       ],
       "description": "Specifies preferred vector width for auto-vectorization. Defaults to 'none' which allows target specific decisions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4152,7 +4822,11 @@
         "-MQ"
       ],
       "description": "Specify name of main file output to quote in depfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4201,14 +4875,22 @@
         "-msign-return-address"
       ],
       "description": "Select return address signing scope",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-msmall-data-limit"
       ],
       "description": "Put global and static data smaller than the limit into a special section",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4227,7 +4909,11 @@
         "-mstack-alignment"
       ],
       "description": "Set the stack alignment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4240,7 +4926,11 @@
         "-mstack-probe-size"
       ],
       "description": "Set the stack probe size",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4259,7 +4949,11 @@
         "-mthread-model"
       ],
       "description": "The thread model to use, e.g. posix, single (posix by default)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4272,28 +4966,50 @@
         "-mtls-size"
       ],
       "description": "Specify bit size of immediate TLS offsets (AArch64 ELF only): 12 (for 4KB) | 24 (for 16MB, default) | 32 (for 4GB) | 48 (for 256TB, needs -mcmodel=large)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "suggestions": [
+          "12",
+          "24",
+          "32",
+          "48"
+        ]
+      }
     },
     {
       "names": [
         "-mtp"
       ],
       "description": "Thread pointer access method (AArch32/AArch64 only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-mtune"
       ],
       "description": "Accepted for compatibility with GCC. Currently has no effect",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-MT"
       ],
       "description": "Specify name of main file output in depfile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4330,7 +5046,12 @@
         "--no-cuda-include-ptx"
       ],
       "description": "Do not include PTX for the following GPU architecture (e.g. sm_35) or 'all'. May be specified more than once",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4343,14 +5064,22 @@
         "--no-offload-arch"
       ],
       "description": "Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "--no-system-header-prefix"
       ],
       "description": "Treat all #include paths starting with <prefix> as not including a system header",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix",
+        "description": "Prefix"
+      }
     },
     {
       "names": [
@@ -4471,7 +5200,11 @@
         "-objcmt-whitelist-dir-path"
       ],
       "description": "Only modify files with a filename contained in the provided directory path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4484,7 +5217,12 @@
         "-o"
       ],
       "description": "Write output to <file>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -4515,7 +5253,12 @@
         "-print-file-name"
       ],
       "description": "Print the full library path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "description": "File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -4534,7 +5277,11 @@
         "-print-prog-name"
       ],
       "description": "Print the full program path of <name>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "Name"
+      }
     },
     {
       "names": [
@@ -4577,7 +5324,11 @@
         "--ptxas-path"
       ],
       "description": "Path to ptxas (used for compiling CUDA code)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4626,70 +5377,110 @@
         "--rocm-device-lib-path"
       ],
       "description": "ROCm device library path. Alternative to rocm-path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "--rocm-path"
       ],
       "description": "ROCm installation path, used for finding and automatically linking required bitcode libraries",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-Rpass-analysis"
       ],
       "description": "Report transformation analysis from optimization passes whose name matches the given POSIX regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-Rpass-missed"
       ],
       "description": "Report missed transformations by optimization passes whose name matches the given POSIX regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-Rpass"
       ],
       "description": "Report transformations performed by optimization passes whose name matches the given POSIX regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-rtlib"
       ],
       "description": "Compiler runtime library to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-R"
       ],
       "description": "Enable the specified remark",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "remark",
+        "description": "Remark"
+      }
     },
     {
       "names": [
         "-save-stats"
       ],
       "description": "Save llvm statistics",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-save-temps"
       ],
       "description": "Save intermediate compilation results",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-serialize-diagnostics"
       ],
       "description": "Serialize compiler diagnostics to a file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
@@ -4714,28 +5505,45 @@
         "-stdlib++-isystem"
       ],
       "description": "Use directory as the C++ standard library include path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-stdlib"
       ],
       "description": "C++ standard library to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-sycl-std"
       ],
       "description": "SYCL language standard to compile for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "--system-header-prefix"
       ],
       "description": "Treat all #include paths starting with <prefix> as including a system header",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix",
+        "description": "Prefix"
+      }
     },
     {
       "names": [
@@ -4748,28 +5556,44 @@
         "-target-variant"
       ],
       "description": "Generate code that may run on a particular variant of the deployment target",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "--target"
       ],
       "description": "Generate code for the given target",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-Tbss"
       ],
       "description": "Set starting address of BSS to <addr>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "addr",
+        "description": "Addr"
+      }
     },
     {
       "names": [
         "-Tdata"
       ],
       "description": "Set starting address of DATA to <addr>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "addr",
+        "description": "Addr"
+      }
     },
     {
       "names": [
@@ -4794,14 +5618,22 @@
         "-Ttext"
       ],
       "description": "Set starting address of TEXT to <addr>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "addr",
+        "description": "Addr"
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Specify <script> as linker script",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "script",
+        "description": "Script"
+      }
     },
     {
       "names": [
@@ -4814,14 +5646,22 @@
         "-unwindlib"
       ],
       "description": "Unwind library to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value"
+      }
     },
     {
       "names": [
         "-U"
       ],
       "description": "Undefine macro <macro>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "macro",
+        "description": "Macro"
+      }
     },
     {
       "names": [
@@ -4858,7 +5698,12 @@
         "-working-directory"
       ],
       "description": "Resolve file paths relative to the specified directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Value",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -4871,91 +5716,156 @@
         "-Xanalyzer"
       ],
       "description": "Pass <arg> to the static analyzer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xarch_device"
       ],
       "description": "Pass <arg> to the CUDA/HIP device compilation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xarch_host"
       ],
       "description": "Pass <arg> to the CUDA/HIP host compilation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xassembler"
       ],
       "description": "Pass <arg> to the assembler",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xclang"
       ],
       "description": "Pass <arg> to the clang compiler",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xcuda-fatbinary"
       ],
       "description": "Pass <arg> to fatbinary invocation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xcuda-ptxas"
       ],
       "description": "Pass <arg> to the ptxas assembler",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xlinker"
       ],
       "description": "Pass <arg> to the linker",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-Xopenmp-target"
       ],
       "description": "Pass <arg> to the target offloading toolchain identified by <triple>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "triple",
+        "description": "Triple"
+      }
     },
     {
       "names": [
         "-Xpreprocessor"
       ],
       "description": "Pass <arg> to the preprocessor",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-x"
       ],
       "description": "Treat subsequent input files as having type <language>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "language",
+        "description": "Language"
+      }
     },
     {
       "names": [
         "-z"
       ],
       "description": "Pass -z <arg> to the linker",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Arg"
+      }
     },
     {
       "names": [
         "-std"
       ],
       "description": "Language standard to compile for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "c++98",
+          "gnu++98",
+          "c++11",
+          "gnu++11",
+          "c++14",
+          "gnu++14",
+          "c++17",
+          "gnu++17",
+          "c++20",
+          "gnu++20",
+          "c++2b",
+          "gnu++2b"
+        ]
+      }
     }
   ]
 }

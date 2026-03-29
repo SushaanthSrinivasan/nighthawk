@@ -38,7 +38,11 @@
             "--in"
           ],
           "description": "Input file of a template to inject the credential into",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -46,7 +50,11 @@
             "--out"
           ],
           "description": "Output file to write the injected template to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -63,7 +71,15 @@
             "--output"
           ],
           "description": "How to print the passwords. The JSON option outputs all the matching credentials",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "clipboard",
+              "password",
+              "json"
+            ]
+          }
         }
       ],
       "args": [
@@ -109,7 +125,14 @@
             "--output"
           ],
           "description": "How to print the notes. The JSON option outputs all the matching notes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "text",
+              "json"
+            ]
+          }
         }
       ],
       "args": [
@@ -317,28 +340,40 @@
                 "--start"
               ],
               "description": "Start timestamp in ms",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "start"
+              }
             },
             {
               "names": [
                 "--end"
               ],
               "description": "End timestamp in ms (use \"now\" to get the current timestamp)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "end"
+              }
             },
             {
               "names": [
                 "--type"
               ],
               "description": "Log type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type"
+              }
             },
             {
               "names": [
                 "--category"
               ],
               "description": "Log category",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "category"
+              }
             },
             {
               "names": [
@@ -431,14 +466,21 @@
             "--directory"
           ],
           "description": "Output directory of the backup (\".\" by default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--filename"
           ],
           "description": "Filename of the backup (\"dashlane-backup-<unix_timestamp>.db by default\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filename"
+          }
         }
       ]
     },

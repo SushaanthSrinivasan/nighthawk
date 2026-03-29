@@ -28,28 +28,40 @@
             "--advertise-routes"
           ],
           "description": "Routes to advertise to other nodes (comma-separated, e.g. \"10.0.0.0/8,192.168.0.0/24\") or empty string to not advertise routes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "routes"
+          }
         },
         {
           "names": [
             "--advertise-tags"
           ],
           "description": "Comma-separated ACL tags to request; each must start with \"tag:\" (e.g. \"tag:eng,tag:montreal,tag:ssh\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tags"
+          }
         },
         {
           "names": [
             "--auth-key"
           ],
           "description": "Node authorization key; if it begins with \"file:\", then it's a path to a file containing the authkey",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authkey"
+          }
         },
         {
           "names": [
             "--exit-node"
           ],
           "description": "Tailscale exit node (IP or base name) for internet traffic, or empty string to not use an exit node",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exitnode"
+          }
         },
         {
           "names": [
@@ -92,7 +104,13 @@
             "--operator"
           ],
           "description": "Unix username to allow to operate on tailscaled without sudo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username",
+            "suggestions": [
+              "$USER"
+            ]
+          }
         },
         {
           "names": [
@@ -165,7 +183,15 @@
             "--format"
           ],
           "description": "Output format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "json-line",
+              "human-readable"
+            ]
+          }
         },
         {
           "names": [
@@ -238,7 +264,10 @@
             "--listen"
           ],
           "description": "Listen address for web mode; use port 0 for automatic (default 127.0.0.1:8384)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "address"
+          }
         },
         {
           "names": [
@@ -275,14 +304,20 @@
             "--c"
           ],
           "description": "Max number of pings to send",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "count"
+          }
         },
         {
           "names": [
             "--timeout"
           ],
           "description": "Timeout before giving up on a ping",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -380,7 +415,10 @@
             "--listen"
           ],
           "description": "Listen address; use port 0 for automatic (default localhost:8088)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "address"
+          }
         },
         {
           "names": [
@@ -455,14 +493,28 @@
             "--cert-file"
           ],
           "description": "Output cert file or \"-\" for stdout",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "suggestions": [
+              "-"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--key-file"
           ],
           "description": "Output cert file or \"-\" for stdout",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "suggestions": [
+              "-"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -489,7 +541,10 @@
         "--socket"
       ],
       "description": "Path to tailscaled's unix socket",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "socket"
+      }
     }
   ]
 }

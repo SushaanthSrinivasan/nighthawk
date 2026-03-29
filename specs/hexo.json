@@ -61,7 +61,12 @@
             "--path"
           ],
           "description": "Post path. Customize the path of the post",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "The path of the post",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -76,7 +81,11 @@
             "--slug"
           ],
           "description": "Post slug. Customize the URL of the post",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "slug",
+            "description": "The slug of the post"
+          }
         }
       ],
       "args": [
@@ -133,7 +142,11 @@
             "--concurrency"
           ],
           "description": "Maximum number of files to be generated in parallel. Default is infinity",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "concurrency",
+            "description": "The number of files to generate in parallel"
+          }
         }
       ]
     },
@@ -166,7 +179,11 @@
             "--ip"
           ],
           "description": "Override the default server IP. Bind to all IP address by default",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ip",
+            "description": "The IP address to bind to"
+          }
         },
         {
           "names": [
@@ -174,7 +191,11 @@
             "--port"
           ],
           "description": "Override default port",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Only serve static files"
+          }
         },
         {
           "names": [
@@ -189,7 +210,18 @@
             "--log"
           ],
           "description": "Enable logger. Override logger format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "description": "The morgan logger format. Can be predefined or customized",
+            "suggestions": [
+              "combined",
+              "common",
+              "tiny",
+              "dev",
+              "short"
+            ]
+          }
         },
         {
           "names": [
@@ -235,7 +267,12 @@
             "--output"
           ],
           "description": "Output destination. Result will be printed in the terminal if the output destination is not set",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output directory",
+            "description": "The path to output directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -295,7 +332,11 @@
         "--config"
       ],
       "description": "Uses a custom config file (instead of `_config.yml`). Also accepts a comma-separated list (no spaces) of JSON or YAML config files that will combine the files into a single `_multiconfig.yml`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -326,7 +367,11 @@
         "--cwd"
       ],
       "description": "Customize the path of current working directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     }
   ]
 }

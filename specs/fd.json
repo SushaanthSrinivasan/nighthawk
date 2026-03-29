@@ -92,7 +92,10 @@
         "--max-depth"
       ],
       "description": "Set maximum search depth",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "depth"
+      }
     },
     {
       "names": [
@@ -100,7 +103,19 @@
         "--type"
       ],
       "description": "Filter by type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filetype",
+        "suggestions": [
+          "f",
+          "d",
+          "l",
+          "x",
+          "e",
+          "s",
+          "p"
+        ]
+      }
     },
     {
       "names": [
@@ -108,7 +123,10 @@
         "--extension"
       ],
       "description": "Filter by file extension",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file extension"
+      }
     },
     {
       "names": [
@@ -116,7 +134,10 @@
         "--exec"
       ],
       "description": "Execute a command for each search result",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cmd"
+      }
     },
     {
       "names": [
@@ -124,7 +145,10 @@
         "--exec-batch"
       ],
       "description": "Execute a command with all search results at once",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cmd"
+      }
     },
     {
       "names": [
@@ -132,7 +156,10 @@
         "--exclude"
       ],
       "description": "Exclude entries that match the given glob pattern",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -140,7 +167,15 @@
         "--color"
       ],
       "description": "When to use colors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "never",
+          "auto",
+          "always"
+        ]
+      }
     },
     {
       "names": [
@@ -148,21 +183,30 @@
         "--size"
       ],
       "description": "Limit results based on the size of files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size"
+      }
     },
     {
       "names": [
         "--changed-within"
       ],
       "description": "Filter by file modification time (newer than)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "date"
+      }
     },
     {
       "names": [
         "--changed-before"
       ],
       "description": "Filter by file modification time (older than)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "date"
+      }
     }
   ],
   "args": [

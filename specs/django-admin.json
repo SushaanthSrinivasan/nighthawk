@@ -53,7 +53,10 @@
             "--database"
           ],
           "description": "Specifies the database to use. Default is \"default\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -74,21 +77,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -125,7 +144,10 @@
             "--username"
           ],
           "description": "Specifies the login for the superuser",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "USERNAME"
+          }
         },
         {
           "names": [
@@ -139,14 +161,20 @@
             "--database"
           ],
           "description": "Specifies the database to use. Default is \"default\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
             "--email"
           ],
           "description": "Specifies the email for the superuser",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EMAIL"
+          }
         },
         {
           "names": [
@@ -173,21 +201,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -224,7 +268,10 @@
             "--database"
           ],
           "description": "Nominates the database to use. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -257,21 +304,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -303,7 +366,10 @@
             "-t"
           ],
           "description": "Run only checks labeled with given tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAGS"
+          }
         },
         {
           "names": [
@@ -322,14 +388,27 @@
             "--fail-level"
           ],
           "description": "Message level that will cause the command to exit with a non-zero status. Default is ERROR",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{CRITICAL,ERROR,WARNING,INFO,DEBUG}",
+            "suggestions": [
+              "CRITICAL",
+              "ERROR",
+              "WARNING",
+              "INFO",
+              "DEBUG"
+            ]
+          }
         },
         {
           "names": [
             "--database"
           ],
           "description": "Run database related checks against these aliases",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASES"
+          }
         },
         {
           "names": [
@@ -350,21 +429,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -402,7 +497,10 @@
             "-l"
           ],
           "description": "Locale(s) to process (e.g. de_AT). Default is to process all. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LOCALE"
+          }
         },
         {
           "names": [
@@ -410,7 +508,10 @@
             "-x"
           ],
           "description": "Locales to exclude. Default is none. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE"
+          }
         },
         {
           "names": [
@@ -425,7 +526,10 @@
             "-i"
           ],
           "description": "Ignore directories matching this glob-style pattern. Use multiple times to ignore more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATTERN"
+          }
         },
         {
           "names": [
@@ -446,21 +550,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -491,7 +611,10 @@
             "--database"
           ],
           "description": "Nominates a database onto which the cache tables will be installed. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -518,21 +641,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -570,7 +709,10 @@
             "--database"
           ],
           "description": "Nominates a database onto which to open a shell",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -591,21 +733,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -642,14 +800,24 @@
             "--default"
           ],
           "description": "The settings module to compare the current settings against. Leave empty to compare against Django's default settings",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "MODULE"
+          }
         },
         {
           "names": [
             "--output"
           ],
           "description": "Selects the output format. 'hash' mode displays each changed setting, with the settings that don't appear in the defaults followed by ###. 'unified' mode prefixes the default setting with a minus sign",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{hash,unified}",
+            "suggestions": [
+              "hash",
+              "unified"
+            ]
+          }
         },
         {
           "names": [
@@ -670,21 +838,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -715,21 +899,30 @@
             "--format"
           ],
           "description": "Specifies the output serialization format for fixtures",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FORMAT"
+          }
         },
         {
           "names": [
             "--indent"
           ],
           "description": "Specifies the indent level to use when pretty-printing output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDENT"
+          }
         },
         {
           "names": [
             "--database"
           ],
           "description": "Nominates a specific database to dump fixtures from. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -737,7 +930,10 @@
             "--exclude"
           ],
           "description": "An app_label or app_label.ModelName to exclude (use multiple --exclude to exclude multiple apps/models)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE"
+          }
         },
         {
           "names": [
@@ -763,7 +959,10 @@
             "--pks"
           ],
           "description": "Only dump objects with given primary keys. Accepts a comma-separated list of keys. This option only works when you specify one model",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PRIMARY_KEYS"
+          }
         },
         {
           "names": [
@@ -771,7 +970,10 @@
             "--output"
           ],
           "description": "Specifies file to which the output is written",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OUTPUT"
+          }
         },
         {
           "names": [
@@ -798,21 +1000,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -857,7 +1075,10 @@
             "--database"
           ],
           "description": "Nominates a database to flush. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -884,21 +1105,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -929,7 +1166,10 @@
             "--database"
           ],
           "description": "Nominates a database to introspect. Defaults to using the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -962,21 +1202,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1014,14 +1270,20 @@
             "--database"
           ],
           "description": "Nominates a specific database to load fixtures into. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
             "--app"
           ],
           "description": "Only look for fixtures in the specified app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "APP_LABEL"
+          }
         },
         {
           "names": [
@@ -1036,14 +1298,20 @@
             "--exclude"
           ],
           "description": "An app_label or app_label.ModelName to exclude. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE"
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "Format of serialized data when reading from stdin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FORMAT"
+          }
         },
         {
           "names": [
@@ -1070,21 +1338,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1123,7 +1407,10 @@
             "-l"
           ],
           "description": "Creates or updates the message files for the given locale(s) (e.g. pt_BR). Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "LOCALE"
+          }
         },
         {
           "names": [
@@ -1131,7 +1418,10 @@
             "-x"
           ],
           "description": "Locales to exclude. Default is none. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE"
+          }
         },
         {
           "names": [
@@ -1139,7 +1429,10 @@
             "-d"
           ],
           "description": "The domain of the message files (default: \"django\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DOMAIN"
+          }
         },
         {
           "names": [
@@ -1154,7 +1447,10 @@
             "-e"
           ],
           "description": "The file extension(s) to examine (default: \"html,txt,py\", or \"js\" if the domain is \"djangojs\"). Separate multiple extensions with commas, or use -e multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTENSIONS"
+          }
         },
         {
           "names": [
@@ -1169,7 +1465,10 @@
             "-i"
           ],
           "description": "Ignore files or directories matching this glob-style pattern. Use multiple times to ignore more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATTERN"
+          }
         },
         {
           "names": [
@@ -1194,7 +1493,15 @@
             "--add-location"
           ],
           "description": "[{full,file,never}] Controls '#: filename:line' lines. If the option is 'full' (the default if not given), the lines include both file name and line number. If it's 'file', the line number is omitted.",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location",
+            "suggestions": [
+              "full",
+              "file",
+              "never"
+            ]
+          }
         },
         {
           "names": [
@@ -1227,21 +1534,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1298,7 +1621,10 @@
             "--name"
           ],
           "description": "Use this name for migration file(s)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME"
+          }
         },
         {
           "names": [
@@ -1337,21 +1663,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1396,7 +1738,10 @@
             "--database"
           ],
           "description": "Nominates a database to synchronize. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -1453,21 +1798,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1540,21 +1901,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1599,7 +1976,15 @@
             "--interface"
           ],
           "description": "Specify an interactive interpreter interface. Available options: \"ipython\", \"bpython\", and \"python\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{ipython,bpython,python}",
+            "suggestions": [
+              "ipython",
+              "bpython",
+              "python"
+            ]
+          }
         },
         {
           "names": [
@@ -1607,7 +1992,10 @@
             "--command"
           ],
           "description": "Instead of opening an interactive shell, run a command as Django and exit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -1628,21 +2016,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1673,7 +2077,10 @@
             "--database"
           ],
           "description": "Nominates a database to synchronize. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -1714,21 +2121,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1766,7 +2189,10 @@
             "--database"
           ],
           "description": "Nominates a database to print the SQL for. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -1793,21 +2219,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1838,7 +2280,10 @@
             "--database"
           ],
           "description": "Nominates a database to create SQL for. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -1871,21 +2316,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1926,7 +2387,10 @@
             "--database"
           ],
           "description": "Nominates a database to print the SQL for. Defaults to the \"default\" database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATABASE"
+          }
         },
         {
           "names": [
@@ -1953,21 +2417,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2018,7 +2498,10 @@
             "--squashed-name"
           ],
           "description": "Sets the name of the new squashed migration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SQUASHED_NAME"
+          }
         },
         {
           "names": [
@@ -2051,21 +2534,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2110,7 +2609,10 @@
             "--template"
           ],
           "description": "The path or URL to load the template from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEMPLATE"
+          }
         },
         {
           "names": [
@@ -2118,7 +2620,10 @@
             "-e"
           ],
           "description": "The file extension(s) to render (default: \"py\"). Separate multiple extensions with commas, or use -e multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTENSIONS"
+          }
         },
         {
           "names": [
@@ -2126,7 +2631,10 @@
             "-n"
           ],
           "description": "The file name(s) to render. Separate multiple file names with commas, or use -n multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILES"
+          }
         },
         {
           "names": [
@@ -2147,21 +2655,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2202,7 +2726,10 @@
             "--template"
           ],
           "description": "The path or URL to load the template from",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEMPLATE"
+          }
         },
         {
           "names": [
@@ -2210,7 +2737,10 @@
             "-e"
           ],
           "description": "The file extension(s) to render (default: \"py\"). Separate multiple extensions with commas, or use -e multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXTENSIONS"
+          }
         },
         {
           "names": [
@@ -2218,7 +2748,10 @@
             "-n"
           ],
           "description": "The file name(s) to render. Separate multiple file names with commas, or use -n multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILES"
+          }
         },
         {
           "names": [
@@ -2239,21 +2772,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2307,7 +2856,10 @@
             "--testrunner"
           ],
           "description": "Tells Django to use specified test runner class instead of the one specified by the TEST_RUNNER setting",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TESTRUNNER"
+          }
         },
         {
           "names": [
@@ -2315,7 +2867,11 @@
             "--top-level-directory"
           ],
           "description": "Top level of project for unittest discovery",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TOP_LEVEL",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2323,7 +2879,10 @@
             "--pattern"
           ],
           "description": "The test matching pattern. Defaults to test*.py",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATTERN"
+          }
         },
         {
           "names": [
@@ -2356,21 +2915,30 @@
             "--parallel"
           ],
           "description": "Run tests using up to N parallel processes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[N]"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Run only tests with the specified tag. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TAGS"
+          }
         },
         {
           "names": [
             "--exclude-tag"
           ],
           "description": "Do not run tests with the specified tag. Can be used multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXCLUDE_TAGS"
+          }
         },
         {
           "names": [
@@ -2390,7 +2958,10 @@
             "-k"
           ],
           "description": "Only run test methods and classes that match the pattern or substring. Can be used multiple times. Same as unittest -k option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEST_NAME_PATTERNS"
+          }
         },
         {
           "names": [
@@ -2411,21 +2982,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2469,7 +3056,10 @@
             "--addrport"
           ],
           "description": "Port number or ipaddr:port to run the server on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ADDRPORT"
+          }
         },
         {
           "names": [
@@ -2497,21 +3087,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2567,21 +3173,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2632,21 +3254,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2691,7 +3329,10 @@
             "--ignore"
           ],
           "description": "Ignore files or directories matching this glob-style pattern. Use multiple times to ignore more",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATTERN"
+          }
         },
         {
           "names": [
@@ -2745,21 +3386,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2816,21 +3473,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2912,21 +3585,37 @@
             "--verbosity"
           ],
           "description": "Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "{0,1,2,3}",
+            "suggestions": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--settings"
           ],
           "description": "The Python path to a settings module, e.g. \"myproject.settings.main\". If this isn't provided, the DJANGO_SETTINGS_MODULE environment variable will be used",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SETTINGS"
+          }
         },
         {
           "names": [
             "--pythonpath"
           ],
           "description": "A directory to add to the Python path, e.g. \"/home/djangoprojects/myproject\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHONPATH",
+            "template": "folders"
+          }
         },
         {
           "names": [

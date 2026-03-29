@@ -15,7 +15,10 @@
         "-f"
       ],
       "description": "Output file or directory name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -23,7 +26,16 @@
         "-F"
       ],
       "description": "Output file format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "c",
+          "d",
+          "t",
+          "p"
+        ]
+      }
     },
     {
       "names": [
@@ -31,7 +43,10 @@
         "-j"
       ],
       "description": "Number of parallel job to dump",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num"
+      }
     },
     {
       "names": [
@@ -53,14 +68,32 @@
         "-Z"
       ],
       "description": "Compression level for compressed formats",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ]
+      }
     },
     {
       "names": [
         "--lock-wait-timeout"
       ],
       "description": "Fail after waiting <timeout> for a table lock",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "timeout"
+      }
     },
     {
       "names": [
@@ -109,7 +142,10 @@
         "-e"
       ],
       "description": "Dump the specified extension(s) only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -117,7 +153,10 @@
         "-E"
       ],
       "description": "Dump the data in encoding <encoding>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "encoding"
+      }
     },
     {
       "names": [
@@ -125,7 +164,10 @@
         "-n"
       ],
       "description": "Dump the specified schema(s) only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -133,7 +175,10 @@
         "-N"
       ],
       "description": "Do NOT dump the specified schema(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -155,7 +200,10 @@
         "-S"
       ],
       "description": "Superuser user name to use in plain-text format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -163,7 +211,10 @@
         "-t"
       ],
       "description": "Dump the specified table(s) only",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "table"
+      }
     },
     {
       "names": [
@@ -171,7 +222,10 @@
         "-T"
       ],
       "description": "Do NOT dump the specified table(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "table"
+      }
     },
     {
       "names": [
@@ -217,14 +271,20 @@
         "--exclude-table-data"
       ],
       "description": "Do NOT dump data for the specified table(s)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "table"
+      }
     },
     {
       "names": [
         "--extra-float-digits"
       ],
       "description": "Override default setting for extra_float_digits",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num"
+      }
     },
     {
       "names": [
@@ -237,7 +297,10 @@
         "--include-foreign-data"
       ],
       "description": "Include data of foreign tables on foreign servers matching PATTERN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -316,14 +379,20 @@
         "--rows-per-insert"
       ],
       "description": "Number of rows per INSERT; implies --inserts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "numbers"
+      }
     },
     {
       "names": [
         "--section"
       ],
       "description": "Dump named section (pre-data, data, or post-data)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "section"
+      }
     },
     {
       "names": [
@@ -336,7 +405,10 @@
         "--snapshot"
       ],
       "description": "Use given snapshot for the dump",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "snapshot"
+      }
     },
     {
       "names": [
@@ -356,7 +428,10 @@
         "-d"
       ],
       "description": "Database to dump",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "database"
+      }
     },
     {
       "names": [
@@ -364,7 +439,10 @@
         "-h"
       ],
       "description": "Database server host or socket directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host"
+      }
     },
     {
       "names": [
@@ -372,7 +450,10 @@
         "-p"
       ],
       "description": "Database server port number",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -380,7 +461,10 @@
         "-U"
       ],
       "description": "Connect as specified database user",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -401,7 +485,10 @@
         "--role"
       ],
       "description": "Do SET ROLE before dump",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     }
   ],
   "args": [

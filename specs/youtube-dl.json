@@ -58,14 +58,21 @@
         "--default-search"
       ],
       "description": "Use this prefix for unqualified URLs. For example \"gvsearch2:\" downloads two videos from google videos for youtube-dl \"large apple\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PREFIX"
+      }
     },
     {
       "names": [
         "--config-location"
       ],
       "description": "Location of the configuration file; either the path to the config or its containing directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -108,21 +115,30 @@
         "--proxy"
       ],
       "description": "Use the specified HTTP/HTTPS/SOCKS proxy. Pass in an empty string for direct connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
         "--socket-timeout"
       ],
       "description": "Time to wait before giving up, in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
         "--source-address"
       ],
       "description": "Client-side IP address to bind to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "IP"
+      }
     },
     {
       "names": [
@@ -143,7 +159,10 @@
         "--geo-verification-proxy"
       ],
       "description": "Use this proxy to verify the IP address for some geo-restricted sites",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
@@ -162,112 +181,160 @@
         "--geo-bypass-country"
       ],
       "description": "Force bypass geographic restriction with explicitly provided two-letter ISO 3166-2 county code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CODE"
+      }
     },
     {
       "names": [
         "--geo-bypass-ip-block"
       ],
       "description": "Force bypass geographic restriction with explicitly provided IP block in CIDR notation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "IP_BLOCK"
+      }
     },
     {
       "names": [
         "--playlist-start"
       ],
       "description": "Playlist video to start at (default is 1)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
         "--playlist-end"
       ],
       "description": "Playlist video to end at (default is last)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
         "--playlist-items"
       ],
       "description": "Playlist video to end at (default is last)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ITEM_SPEC"
+      }
     },
     {
       "names": [
         "--match-title"
       ],
       "description": "Download only matching titles (regex or caseless sub-string)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REGEX"
+      }
     },
     {
       "names": [
         "--reject-title"
       ],
       "description": "Skip download for matching titles (regex or caseless sub-string)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REGEX"
+      }
     },
     {
       "names": [
         "--max-downloads"
       ],
       "description": "Abort after downloading NUMBER files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
         "--min-filesize"
       ],
       "description": "Do not download any videos smaller than SIZE (e.g. 50k or 44.6)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIZE"
+      }
     },
     {
       "names": [
         "--max-filesize"
       ],
       "description": "Do not download any videos larger than SIZE (e.g. 50k or 44.6)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIZE"
+      }
     },
     {
       "names": [
         "--date"
       ],
       "description": "Download only videos uploaded in this date",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DATE"
+      }
     },
     {
       "names": [
         "--datebefore"
       ],
       "description": "Download only videos uploaded on or before this date (i.e. inclusive)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DATE"
+      }
     },
     {
       "names": [
         "--dateafter"
       ],
       "description": "Download only videos uploaded on or after this date (i.e. inclusive)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DATE"
+      }
     },
     {
       "names": [
         "--min-views"
       ],
       "description": "Do not download any videos with less than COUNT views",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COUNT"
+      }
     },
     {
       "names": [
         "--max-views"
       ],
       "description": "Do not download any videos with more than COUNT views",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COUNT"
+      }
     },
     {
       "names": [
         "--match-filter"
       ],
       "description": "Generic video filter",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILTER"
+      }
     },
     {
       "names": [
@@ -286,14 +353,20 @@
         "--age-limit"
       ],
       "description": "Download only videos suitable for the given age",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "YEARS"
+      }
     },
     {
       "names": [
         "--download-archive"
       ],
       "description": "Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE"
+      }
     },
     {
       "names": [
@@ -307,7 +380,10 @@
         "--limit-rate"
       ],
       "description": "Maximum download rate in bytes per second (e.g. 50K or 4.2M)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RATE"
+      }
     },
     {
       "names": [
@@ -315,14 +391,20 @@
         "--retries"
       ],
       "description": "Number of retries or \"infinite\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RETRIES"
+      }
     },
     {
       "names": [
         "--fragment-retries"
       ],
       "description": "Number of retries for a fragment or \"infinite\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RETRIES"
+      }
     },
     {
       "names": [
@@ -347,7 +429,10 @@
         "--buffer-size"
       ],
       "description": "Size of download buffer (e.g. 1024 or 16K)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIZE"
+      }
     },
     {
       "names": [
@@ -360,7 +445,10 @@
         "--http-chunk-size"
       ],
       "description": "Size of a chunk for chunk-based HTTP downloading (e.g. 10385760 or 10M)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIZE"
+      }
     },
     {
       "names": [
@@ -403,14 +491,29 @@
         "--external-downloader"
       ],
       "description": "Use the specified external downloader",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COMMAND",
+        "suggestions": [
+          "aria2c",
+          "avconv",
+          "axel",
+          "curl",
+          "ffmpeg",
+          "httpie",
+          "wget"
+        ]
+      }
     },
     {
       "names": [
         "--external-downloader-args"
       ],
       "description": "Give these arguments to the external downloader",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ARGS"
+      }
     },
     {
       "names": [
@@ -418,7 +521,14 @@
         "--batch-file"
       ],
       "description": "File containing URLs to download ('-' for stdin), one URL per line. Lines starting with '#', ';' or ']' are considered as comments and ignored",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "suggestions": [
+          "-"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -432,21 +542,30 @@
         "--output"
       ],
       "description": "Output filename template",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TEMPLATE"
+      }
     },
     {
       "names": [
         "--output-na-placeholder"
       ],
       "description": "Placeholder value for unavailable meta fields in output filename template",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PLACEHOLDER"
+      }
     },
     {
       "names": [
         "--autonumber-start"
       ],
       "description": "Specify the start value for %(autonumber)s",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
@@ -503,21 +622,33 @@
         "--load-info-json"
       ],
       "description": "JSON file containing the video information (created with the \"--write-info-json\" option",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--cookies"
       ],
       "description": "File to read cookies from and dump cookie jar in",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--cache-dir"
       ],
       "description": "Location in the filesystem where youtube-dl can store some downloaded information permanently",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -706,7 +837,10 @@
         "--encoding"
       ],
       "description": "Force the specified encoding (experimental)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ENCODING"
+      }
     },
     {
       "names": [
@@ -725,21 +859,30 @@
         "--user-agent"
       ],
       "description": "Specify a custom user agent",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "UA"
+      }
     },
     {
       "names": [
         "--referer"
       ],
       "description": "Specify a custom referer, use if the video access is restricted to one domain",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
         "--add-header"
       ],
       "description": "Specify a custom HTTP header and its value, separated by a colon ':'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FIELD:VALUE"
+      }
     },
     {
       "names": [
@@ -752,14 +895,20 @@
         "--sleep-interval"
       ],
       "description": "Number of seconds to sleep before each download when used alone or a lower bound of a range for randomized sleep before each download when used along with --max-sleep-interval",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
         "--max-sleep-interval"
       ],
       "description": "Upper bound of a range for randomized sleep before each download. Must only be used along with --min- sleep-interval",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
@@ -767,7 +916,10 @@
         "--format"
       ],
       "description": "Video format code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT"
+      }
     },
     {
       "names": [
@@ -799,7 +951,17 @@
         "--merge-output-format"
       ],
       "description": "If a merge is required (e.g. bestvideo+bestaudio), output to given container format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT",
+        "suggestions": [
+          "mkv",
+          "mp4",
+          "ogg",
+          "webm",
+          "flv"
+        ]
+      }
     },
     {
       "names": [
@@ -830,14 +992,131 @@
         "--sub-format"
       ],
       "description": "Subtitle format, accepts formats preference, for example: \"srt\" or \"ass/srt/best\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT"
+      }
     },
     {
       "names": [
         "--sub-lang"
       ],
       "description": "Languages of the subtitles to download (optional) separated by commas",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LANGS",
+        "suggestions": [
+          "af",
+          "sq",
+          "am",
+          "ar",
+          "hy",
+          "az",
+          "bn",
+          "eu",
+          "be",
+          "bs",
+          "bg",
+          "my",
+          "ca",
+          "ceb",
+          "zh-Hans",
+          "zh-Hant",
+          "co",
+          "hr",
+          "cs",
+          "da",
+          "nl",
+          "en",
+          "eo",
+          "et",
+          "fil",
+          "fi",
+          "fr",
+          "gl",
+          "ka",
+          "de",
+          "el",
+          "gu",
+          "ht",
+          "ha",
+          "haw",
+          "iw",
+          "hi",
+          "hmn",
+          "hu",
+          "is",
+          "ig",
+          "id",
+          "ga",
+          "it",
+          "ja",
+          "jv",
+          "kn",
+          "kk",
+          "km",
+          "rw",
+          "ko",
+          "ku",
+          "ky",
+          "lo",
+          "la",
+          "lv",
+          "lt",
+          "lb",
+          "mk",
+          "mg",
+          "ms",
+          "ml",
+          "mt",
+          "mi",
+          "mr",
+          "mn",
+          "ne",
+          "no",
+          "ny",
+          "or",
+          "ps",
+          "fa",
+          "pl",
+          "pt",
+          "pa",
+          "ro",
+          "ru",
+          "sm",
+          "gd",
+          "sr",
+          "sn",
+          "sd",
+          "si",
+          "sk",
+          "sl",
+          "so",
+          "st",
+          "es",
+          "su",
+          "sw",
+          "sv",
+          "tg",
+          "ta",
+          "tt",
+          "te",
+          "th",
+          "tr",
+          "tk",
+          "uk",
+          "ur",
+          "ug",
+          "uz",
+          "vi",
+          "cy",
+          "fy",
+          "xh",
+          "yi",
+          "yo",
+          "zu"
+        ]
+      }
     },
     {
       "names": [
@@ -845,7 +1124,10 @@
         "--username"
       ],
       "description": "Login with this account ID",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "USERNAME"
+      }
     },
     {
       "names": [
@@ -853,7 +1135,10 @@
         "--password"
       ],
       "description": "Account password. If this option is left out, youtube-dl will ask interactively",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PASSWORD"
+      }
     },
     {
       "names": [
@@ -861,7 +1146,10 @@
         "--twofactor"
       ],
       "description": "Two-factor authentication code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TWOFACTOR"
+      }
     },
     {
       "names": [
@@ -875,28 +1163,40 @@
         "--video-password"
       ],
       "description": "Video password (vimeo, youku)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PASSWORD"
+      }
     },
     {
       "names": [
         "--ap-mso"
       ],
       "description": "Adobe Pass multiple-system operator (TV provider) identifier",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MSO"
+      }
     },
     {
       "names": [
         "--ap-username"
       ],
       "description": "Multiple-system operator account login",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "USERNAME"
+      }
     },
     {
       "names": [
         "--ap-password"
       ],
       "description": "Multiple-system operator account password. If this option is left out, youtube-dl will ask interactively",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PASSWORD"
+      }
     },
     {
       "names": [
@@ -916,28 +1216,58 @@
         "--audio-format"
       ],
       "description": "Specify audio format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT",
+        "suggestions": [
+          "best",
+          "aac",
+          "flac",
+          "mp3",
+          "m4a",
+          "opus",
+          "vorbis",
+          "wav"
+        ]
+      }
     },
     {
       "names": [
         "--audio-quality"
       ],
       "description": "Specify ffmpeg/avconv audio quality, insert a value between 0 (better) and 9 (worse) for VBR or a specific bitrate like 128K",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "QUALITY"
+      }
     },
     {
       "names": [
         "--recode-video"
       ],
       "description": "Encode the video to another format if necessary",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT",
+        "suggestions": [
+          "mp4",
+          "flv",
+          "ogg",
+          "webm",
+          "mkv",
+          "avi"
+        ]
+      }
     },
     {
       "names": [
         "--postprocessor-args"
       ],
       "description": "Give these arguments to the postprocessor",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ARGS"
+      }
     },
     {
       "names": [
@@ -975,7 +1305,10 @@
         "--metadata-from-title"
       ],
       "description": "Parse additional metadata like song title / artist from the video title. The format syntax is the same as --output. Regular expressions with named capture groups may also be used. The parsed parameter",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT"
+      }
     },
     {
       "names": [
@@ -988,7 +1321,15 @@
         "--fixup"
       ],
       "description": "Automatically correct known faults of the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "POLICY",
+        "suggestions": [
+          "never",
+          "warn",
+          "detect_or_warn"
+        ]
+      }
     },
     {
       "names": [
@@ -1007,21 +1348,37 @@
         "--ffmpeg-location"
       ],
       "description": "Location of the ffmpeg/avconv binary; either the path to the binary or its containing directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--exec"
       ],
       "description": "Execute a command on the file after downloading and post-processing, similar to find's -exec syntax",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CMD"
+      }
     },
     {
       "names": [
         "--convert-subs"
       ],
       "description": "Convert the subtitles to other format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT",
+        "suggestions": [
+          "srt",
+          "ass",
+          "vtt",
+          "lrc"
+        ]
+      }
     }
   ],
   "args": [

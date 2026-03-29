@@ -233,14 +233,23 @@
         "--volume"
       ],
       "description": "Perform all operations on specified volume",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "volume",
+        "description": "Volume to perform operations on",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--edit-pkg"
       ],
       "description": "Specifies an existing receipt to be modified in-place by --learn",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "package-id",
+        "description": "Package ID of the receipt to modify"
+      }
     },
     {
       "names": [
@@ -265,7 +274,11 @@
         "--pkgs"
       ],
       "description": "List all installed package IDs, optionally matching kwarg REGEXP, on the specified --volume",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "REGEXP",
+        "description": "Regular expression"
+      }
     }
   ]
 }

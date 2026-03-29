@@ -19,7 +19,11 @@
         "--playbook-dir"
       ],
       "description": "Since this tool does not use playbooks, use this as a substitute playbook directory.This sets the relative path for many features including roles/ group_vars/etc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "playbook dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -32,14 +36,21 @@
         "--vault-id"
       ],
       "description": "Specify the vault identity to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "vault ID"
+      }
     },
     {
       "names": [
         "--vault-password-file"
       ],
       "description": "Specify a vault password file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "vault password file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -53,7 +64,10 @@
         "-B"
       ],
       "description": "Run asynchronously, failing after specified seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -75,7 +89,11 @@
         "-M"
       ],
       "description": "Prepend colon-separated path(s) to module library",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "module path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -83,7 +101,10 @@
         "-P"
       ],
       "description": "Set the poll interval if using -B",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "poll interval"
+      }
     },
     {
       "names": [
@@ -91,7 +112,10 @@
         "-a"
       ],
       "description": "Specify module arguments",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "module arguments"
+      }
     },
     {
       "names": [
@@ -99,7 +123,10 @@
         "-e"
       ],
       "description": "Set additional variables as key=value or YAML/JSON, if filename prepend with @",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extra vars"
+      }
     },
     {
       "names": [
@@ -107,7 +134,10 @@
         "-f"
       ],
       "description": "Specify number of parallel processes to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "forks"
+      }
     },
     {
       "names": [
@@ -122,7 +152,10 @@
         "-i"
       ],
       "description": "Specify inventory host path or comma separated host list",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "inventory"
+      }
     },
     {
       "names": [
@@ -130,7 +163,10 @@
         "-l"
       ],
       "description": "Limit selected hosts to an additional pattern",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "subset"
+      }
     },
     {
       "names": [
@@ -138,7 +174,10 @@
         "-m"
       ],
       "description": "Specify the module name to execute",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "module name"
+      }
     },
     {
       "names": [
@@ -153,7 +192,10 @@
         "-t"
       ],
       "description": "Log output to specific directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tree"
+      }
     },
     {
       "names": [
@@ -179,14 +221,31 @@
         "--become-method"
       ],
       "description": "Privilege escalation method to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "become method",
+        "suggestions": [
+          "sudo",
+          "su",
+          "pbrun",
+          "pfexec",
+          "doas",
+          "dzdo",
+          "ksu",
+          "runas",
+          "machinectl"
+        ]
+      }
     },
     {
       "names": [
         "--become-user"
       ],
       "description": "Privilege escalation user to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "become user"
+      }
     },
     {
       "names": [
@@ -208,35 +267,51 @@
         "--key-file"
       ],
       "description": "Use this fole to authenticate the connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "private key",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--scp-extra-args"
       ],
       "description": "Extra arguments to pass to (only) scp",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SCP extra args"
+      }
     },
     {
       "names": [
         "--sftp-extra-args"
       ],
       "description": "Extra arguments to pass to (only) sftp",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SFTP extra args"
+      }
     },
     {
       "names": [
         "-ssh-extra-args"
       ],
       "description": "Extra arguments to pass to (only) ssh",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SSH extra args"
+      }
     },
     {
       "names": [
         "--ssh-common-args"
       ],
       "description": "Extra arguments to pass to sftp/scp/ssh",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SSH common args"
+      }
     },
     {
       "names": [
@@ -244,7 +319,10 @@
         "-T"
       ],
       "description": "Override the connection timeout in seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "timeout"
+      }
     },
     {
       "names": [
@@ -252,7 +330,10 @@
         "-c"
       ],
       "description": "Connection type to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "connection type"
+      }
     },
     {
       "names": [
@@ -267,7 +348,10 @@
         "-u"
       ],
       "description": "Connect as this user",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "user"
+      }
     }
   ],
   "args": [

@@ -66,21 +66,33 @@
             "--http"
           ],
           "description": "API HTTP server address (default \"127.0.0.1:8090\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "description": "API HTTP server address"
+          }
         },
         {
           "names": [
             "--https"
           ],
           "description": "API HTTPS server address (auto TLS via Let's Encrypt). The incoming --http address traffic also will be redirected to this address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "description": "API HTTPS server address (auto TLS via Let's Encrypt)"
+          }
         },
         {
           "names": [
             "--origins"
           ],
           "description": "CORS allowed domain origins list (default [*])",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "strings",
+            "description": "CORS allowed domain origins list"
+          }
         }
       ]
     }
@@ -97,14 +109,23 @@
         "--dir"
       ],
       "description": "PocketBase data directory (default \"pb_data\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "description": "PocketBase data directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--encryptionEnv"
       ],
       "description": "Environment variable whose value of 32 chars will be used as encryption key for the app settings (default none)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "env",
+        "description": "Encryption environment variable name"
+      }
     },
     {
       "names": [

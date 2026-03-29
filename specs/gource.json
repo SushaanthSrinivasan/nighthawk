@@ -14,7 +14,18 @@
         "--viewport"
       ],
       "description": "Set the viewport size. If -f is also supplied, will attempt to set the video mode to this also. Add `!` to make the window non-resizable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "The size of the viewport (e.g. WIDTHxHEIGHT)",
+        "suggestions": [
+          "3840x2160",
+          "2560x1440",
+          "1920x1080",
+          "1280x720",
+          "800x600"
+        ]
+      }
     },
     {
       "names": [
@@ -27,7 +38,11 @@
         "--screen"
       ],
       "description": "Set the number of the screen to display on",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "screen",
+        "description": "The number of the screen to display on"
+      }
     },
     {
       "names": [
@@ -40,7 +55,11 @@
         "--window-position"
       ],
       "description": "Initial window position on your desktop which may be made up of multiple monitors. This will override the screen setting so don't specify both",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "position",
+        "description": "The initial window position on your desktop (e.g. XxY)"
+      }
     },
     {
       "names": [
@@ -59,14 +78,22 @@
         "--start-date"
       ],
       "description": "Start with the first entry after the supplied date and optional time. If a time zone offset isn't specified the local time zone is used. Example accepted formats: 'YYYY-MM-DD', 'YYYY-MM-DD hh:mm', 'YY",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "date",
+        "description": "The start date and optional time"
+      }
     },
     {
       "names": [
         "--stop-date"
       ],
       "description": "Stop at the last entry prior to the supplied date and optional time. Uses the same format as --start-date",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "date",
+        "description": "The stop date and optional time"
+      }
     },
     {
       "names": [
@@ -74,14 +101,50 @@
         "--start-position"
       ],
       "description": "Begin at some position in the log (between 0.0 and 1.0 or 'random')",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "position",
+        "description": "The start position in the log",
+        "suggestions": [
+          "random",
+          "0.0",
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.4",
+          "0.5",
+          "0.6",
+          "0.7",
+          "0.8",
+          "0.9",
+          "1.0"
+        ]
+      }
     },
     {
       "names": [
         "--stop-position"
       ],
       "description": "Stop (exit) at some position in the log (does not work with STDIN)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "position",
+        "description": "The stop position in the log",
+        "suggestions": [
+          "random",
+          "0.0",
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.4",
+          "0.5",
+          "0.6",
+          "0.7",
+          "0.8",
+          "0.9",
+          "1.0"
+        ]
+      }
     },
     {
       "names": [
@@ -89,7 +152,11 @@
         "--stop-at-time"
       ],
       "description": "Stop (exit) after a specified number of seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds",
+        "description": "The number of seconds to wait before stopping"
+      }
     },
     {
       "names": [
@@ -108,7 +175,10 @@
         "--loop-delay-seconds"
       ],
       "description": "Seconds to delay before looping",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -116,7 +186,10 @@
         "--auto-skip-seconds"
       ],
       "description": "Automatically skip to next entry if nothing happens for a specified number of seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -124,7 +197,10 @@
         "--seconds-per-day"
       ],
       "description": "Speed of simulation in seconds per day",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -157,7 +233,10 @@
         "--file-idle-time-at-end"
       ],
       "description": "Time in seconds files remain idle at the end before they are removed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -165,7 +244,11 @@
         "--elasticity"
       ],
       "description": "Elasticity of nodes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "elasticity",
+        "description": "Elasticity of nodes"
+      }
     },
     {
       "names": [
@@ -173,70 +256,108 @@
         "--background-colour"
       ],
       "description": "Background colour in hex",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colour"
+      }
     },
     {
       "names": [
         "--background-image"
       ],
       "description": "Set a background image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "image file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--title"
       ],
       "description": "Set a title",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "title"
+      }
     },
     {
       "names": [
         "--font-file"
       ],
       "description": "Specify the font. Should work with most font file formats supported by FreeType, such as TTF and OTF, among others",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "font file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--font-scale"
       ],
       "description": "Scale the size of all fonts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "scale",
+        "description": "Font scale"
+      }
     },
     {
       "names": [
         "--font-size"
       ],
       "description": "Font size used by the date and title",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "Font size"
+      }
     },
     {
       "names": [
         "--file-font-size"
       ],
       "description": "Font size of filenames",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "Font size"
+      }
     },
     {
       "names": [
         "--dir-font-size"
       ],
       "description": "Font size of directory names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "Font size"
+      }
     },
     {
       "names": [
         "--user-font-size"
       ],
       "description": "Font size of user names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size",
+        "description": "Font size"
+      }
     },
     {
       "names": [
         "--font-colour"
       ],
       "description": "Font colour used by the date and title in hex",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colour",
+        "description": "Font colour"
+      }
     },
     {
       "names": [
@@ -249,49 +370,91 @@
         "--logo"
       ],
       "description": "Logo to display in the foreground",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "image file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--logo-offset"
       ],
       "description": "Offset position of the logo",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "offset",
+        "description": "Logo offset"
+      }
     },
     {
       "names": [
         "--date-format"
       ],
       "description": "Specify display date string (strftime format)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "description": "Date format"
+      }
     },
     {
       "names": [
         "--log-command"
       ],
       "description": "Show the log command used by gource (git,svn,hg,bzr,cvs2cl)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command",
+        "description": "Log command",
+        "suggestions": [
+          "git",
+          "svn",
+          "hg",
+          "bzr",
+          "cvs2cl"
+        ]
+      }
     },
     {
       "names": [
         "--log-format"
       ],
       "description": "Specify format of the log being read (git,svn,hg,bzr,cvs2cl,custom). Required when reading from STDIN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "description": "Log format",
+        "suggestions": [
+          "git",
+          "svn",
+          "hg",
+          "bzr",
+          "cvs2cl",
+          "custom"
+        ]
+      }
     },
     {
       "names": [
         "--git-branch"
       ],
       "description": "Get the git log of a branch other than the current one",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "branch"
+      }
     },
     {
       "names": [
         "--follow-user"
       ],
       "description": "Have the camera automatically follow a particular user",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username",
+        "description": "Name of user to follow"
+      }
     },
     {
       "names": [
@@ -304,7 +467,11 @@
         "--highlight-user"
       ],
       "description": "Highlight the names of a particular user",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username",
+        "description": "Name of user to highlight"
+      }
     },
     {
       "names": [
@@ -317,49 +484,86 @@
         "--highlight-colour"
       ],
       "description": "Font colour for highlighted users in hex",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colour",
+        "description": "Font colour (HEX)"
+      }
     },
     {
       "names": [
         "--selection-colour"
       ],
       "description": "Font colour for selected users and files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colour",
+        "description": "Font colour (HEX)"
+      }
     },
     {
       "names": [
         "--filename-colour"
       ],
       "description": "Font colour for filenames",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colour",
+        "description": "Font colour (HEX)"
+      }
     },
     {
       "names": [
         "--dir-colour"
       ],
       "description": "Font colour for directories",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "color",
+        "description": "Dir colour (HEX)"
+      }
     },
     {
       "names": [
         "--dir-name-depth"
       ],
       "description": "Draw names of directories down to a specific depth in the tree",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "depth"
+      }
     },
     {
       "names": [
         "--dir-name-position"
       ],
       "description": "Position along edge of the directory name (between 0.1 and 1.0, default is 0.5)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "position",
+        "suggestions": [
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.4",
+          "0.5",
+          "0.6",
+          "0.7",
+          "0.8",
+          "0.9",
+          "1.0"
+        ]
+      }
     },
     {
       "names": [
         "--filename-time"
       ],
       "description": "Duration to keep filenames on screen (>= 2.0)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time"
+      }
     },
     {
       "names": [
@@ -378,42 +582,62 @@
         "--file-filter"
       ],
       "description": "Filter out file paths matching the specified regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex"
+      }
     },
     {
       "names": [
         "--file-show-filter"
       ],
       "description": "Show only file paths matching the specified regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex"
+      }
     },
     {
       "names": [
         "--user-filter"
       ],
       "description": "Filter usernames matching the specified regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex"
+      }
     },
     {
       "names": [
         "--user-show-filter"
       ],
       "description": "Show only usernames matching the specified regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex"
+      }
     },
     {
       "names": [
         "--user-image-dir"
       ],
       "description": "Directory containing .jpg or .png images of users (eg 'Full Name.png') to use as avatars",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--default-user-image"
       ],
       "description": "Path of .jpg to use as the default user image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "User image",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -432,14 +656,20 @@
         "--crop"
       ],
       "description": "Crop view on an axis (vertical,horizontal)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "axis"
+      }
     },
     {
       "names": [
         "--padding"
       ],
       "description": "Camera view padding",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "padding"
+      }
     },
     {
       "names": [
@@ -458,56 +688,84 @@
         "--bloom-multiplier"
       ],
       "description": "Adjust the amount of bloom",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "multiplier"
+      }
     },
     {
       "names": [
         "--bloom-intensity"
       ],
       "description": "Adjust the intensity of the bloom",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "intensity"
+      }
     },
     {
       "names": [
         "--max-files"
       ],
       "description": "Set the maximum number of files or 0 for no limit. Excess files will be discarded",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--max-file-lag"
       ],
       "description": "Max time files of a commit can take to appear. Use -1 for no limit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--max-user-speed"
       ],
       "description": "Max speed users can travel per second",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "units"
+      }
     },
     {
       "names": [
         "--user-friction"
       ],
       "description": "Time users take to come to a halt",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--user-scale"
       ],
       "description": "Change scale of user avatars",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "scale"
+      }
     },
     {
       "names": [
         "--camera-mode"
       ],
       "description": "Camera mode (overview,track)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "overview",
+          "track"
+        ]
+      }
     },
     {
       "names": [
@@ -526,49 +784,87 @@
         "--hide"
       ],
       "description": "Hide one or more display elements from the list below: bloom - bloom effect date - current date dirnames - names of directories files - file icons filenames - names of files mouse - mouse cursor progr",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "element",
+        "description": "Element to hide (Separate multiple elements with commas (eg \"mouse,progress\"))",
+        "is_variadic": true,
+        "suggestions": [
+          "bloom",
+          "date",
+          "dirnames",
+          "files",
+          "filenames",
+          "mouse",
+          "progress",
+          "root",
+          "tree",
+          "users",
+          "usernames"
+        ]
+      }
     },
     {
       "names": [
         "--hash-seed"
       ],
       "description": "Change the seed of hash function",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seed"
+      }
     },
     {
       "names": [
         "--caption-file"
       ],
       "description": "Caption file (see Caption Log Format)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--caption-size"
       ],
       "description": "Caption size",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "size"
+      }
     },
     {
       "names": [
         "--caption-colour"
       ],
       "description": "Caption colour in hex",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colour",
+        "description": "Colour in hex (eg #ff0000)"
+      }
     },
     {
       "names": [
         "--caption-duration"
       ],
       "description": "Caption duration",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--caption-offset"
       ],
       "description": "Caption horizontal offset (0 to centre captions)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "offset"
+      }
     },
     {
       "names": [
@@ -576,7 +872,11 @@
         "--output-ppm-stream"
       ],
       "description": "Output a PPM image stream to a file ('-' for STDOUT). This will automatically hide the progress bar initially and enable 'stop-at-end' unless other behaviour is specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -584,35 +884,60 @@
         "--output-framerate"
       ],
       "description": "Framerate of output (25,30,60). Used with --output-ppm-stream",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "fps",
+        "suggestions": [
+          "25",
+          "30",
+          "60",
+          "120"
+        ]
+      }
     },
     {
       "names": [
         "--output-custom-log"
       ],
       "description": "Output a custom format log file ('-' for STDOUT)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--load-config"
       ],
       "description": "Load a config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--save-config"
       ],
       "description": "Save a config file with the current options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--path"
       ],
       "description": "Either a supported version control directory, a pre-generated log file (see log commands or the custom log format), a Gource conf file or '-' to read STDIN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     }
   ]
 }

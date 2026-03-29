@@ -174,7 +174,14 @@
         "--color"
       ],
       "description": "Controls styling of the output (default: auto). If set to auto, all styling is removed when output is piped",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "yes",
+          "no",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
@@ -194,7 +201,10 @@
         "--outcmd"
       ],
       "description": "Where to write a command if broot produces one",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cmd-export-path"
+      }
     },
     {
       "names": [
@@ -202,21 +212,30 @@
         "-c"
       ],
       "description": "Semicolon separated commands to execute on start of broot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "commands"
+      }
     },
     {
       "names": [
         "--conf"
       ],
       "description": "Semicolon separated paths to specific config files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "conf"
+      }
     },
     {
       "names": [
         "--height"
       ],
       "description": "Height to use if you don't want to fill the screen or for file export (by default the terminal height is used)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "height"
+      }
     },
     {
       "names": [
@@ -224,35 +243,61 @@
         "-o"
       ],
       "description": "Where to write the produced path, if any",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file-export-path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--set-install-state"
       ],
       "description": "Set the installation state. This is mostly useful in installation scripts to override the normal installation process",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "state",
+        "suggestions": [
+          "undefined",
+          "refused",
+          "installed"
+        ]
+      }
     },
     {
       "names": [
         "--print-shell-function"
       ],
       "description": "Print to stdout the br function for the given shell. This can be used in your own installation process overriden the standard one",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "shell",
+        "suggestions": [
+          "bash",
+          "fish",
+          "zsh"
+        ]
+      }
     },
     {
       "names": [
         "--listen"
       ],
       "description": "Listen for commands",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "listen"
+      }
     },
     {
       "names": [
         "--send"
       ],
       "description": "Send commands to a remote broot then quits",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "send"
+      }
     }
   ],
   "args": [

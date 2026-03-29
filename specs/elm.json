@@ -29,7 +29,10 @@
             "--interpreter"
           ],
           "description": "Path to an alternate JS interpreter, such as Node or Deno",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "interpreter"
+          }
         },
         {
           "names": [
@@ -48,7 +51,11 @@
             "--port"
           ],
           "description": "The port to access the development server on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "The port number"
+          }
         },
         {
           "names": [
@@ -103,14 +110,22 @@
             "--output"
           ],
           "description": "Where to output the compiled code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output file",
+            "description": "Name and location of output"
+          }
         },
         {
           "names": [
             "--docs"
           ],
           "description": "Generate a JSON file of documentation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output json",
+            "description": "Name and location of output"
+          }
         }
       ],
       "args": [

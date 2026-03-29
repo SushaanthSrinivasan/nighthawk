@@ -37,7 +37,10 @@
             "--level"
           ],
           "description": "Set dump level for created listed-incremental archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUMBER"
+          }
         },
         {
           "names": [
@@ -76,70 +79,119 @@
             "--atime-preserve"
           ],
           "description": "Preserve access times on dumped files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "METHOD",
+            "suggestions": [
+              "replace",
+              "system"
+            ]
+          }
         },
         {
           "names": [
             "--group"
           ],
           "description": "Force NAME as group for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME[:GID]",
+            "description": "If GID is not supplied, NAME can be either a user name or numeric GID"
+          }
         },
         {
           "names": [
             "--group-map"
           ],
           "description": "Read group translation map from FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "description": "Each non-empty line in FILE defines translation for a single group",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--mode"
           ],
           "description": "Force symbolic mode CHANGES for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CHANGES"
+          }
         },
         {
           "names": [
             "--mtime"
           ],
           "description": "Set mtime for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATE-OR-FILE",
+            "description": "Either a date/time in almost arbitrary format, or the name of an existing file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--owner"
           ],
           "description": "Force NAME as owner for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME[:GID]",
+            "description": "If UID is not supplied, NAME can be either a user name or numeric UID"
+          }
         },
         {
           "names": [
             "--owner-map"
           ],
           "description": "Read owner translation map from FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "description": "Each non-empty line in FILE defines translation for a single UID",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--sort"
           ],
           "description": "When creating an archive, sort directory entries according to ORDER",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ORDER",
+            "suggestions": [
+              "none",
+              "name",
+              "inode"
+            ]
+          }
         },
         {
           "names": [
             "--add-file"
           ],
           "description": "Add FILE to the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude files matching PATTERN",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATTERN",
+            "description": "A glob-style wildcard pattern"
+          }
         },
         {
           "names": [
@@ -170,35 +222,50 @@
             "--exclude-ignore"
           ],
           "description": "Read exclusion patterns from FILE in directory before dumping",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-ignore-recursive"
           ],
           "description": "Same  as --exclude-ignore, except that patterns from FILE affect both the directory and all its subdirectories",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag"
           ],
           "description": "Exclude contents of directories containing FILE, except for FILE itself",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag-all"
           ],
           "description": "Exclude directories containing FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag-under"
           ],
           "description": "Exclude everything under directories containing FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
@@ -234,7 +301,12 @@
             "--after-date"
           ],
           "description": "Only store files newer than DATE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATE",
+            "description": "If DATE starts with / or . it is taken to be a file name",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -327,7 +399,10 @@
             "--use-compress-program"
           ],
           "description": "Filter data through COMMAND",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -400,21 +475,30 @@
             "--xform"
           ],
           "description": "Use sed replace EXPRESSION to transform file names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXPRESSION"
+          }
         },
         {
           "names": [
             "--checkpoint"
           ],
           "description": "Display progress messages every Nth record",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
             "--checkpoint-action"
           ],
           "description": "Run ACTION on each checkpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ACTION"
+          }
         },
         {
           "names": [
@@ -435,14 +519,31 @@
             "--blocking-factor"
           ],
           "description": "Set record size to BLOCKSx512 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "BLOCKS"
+          }
         },
         {
           "names": [
             "--record-size"
           ],
           "description": "Set record size",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUMBER",
+            "description": "The number of bytes per record",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -451,7 +552,17 @@
             "--format"
           ],
           "description": "Create archive of the given format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FORMAT",
+            "suggestions": [
+              "gnu",
+              "oldgnu",
+              "pax",
+              "ustar",
+              "v7"
+            ]
+          }
         },
         {
           "names": [
@@ -465,7 +576,10 @@
             "--pax-option"
           ],
           "description": "Control pax keywords when creating PAX archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyword[[:]=value][,keyword[[:]=value]]..."
+          }
         },
         {
           "names": [
@@ -480,14 +594,46 @@
             "--label"
           ],
           "description": "Create archive with volume name TEXT",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
             "--warning"
           ],
           "description": "Enable or disable warning messages identified by KEYWORD",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYWORD",
+            "suggestions": [
+              "all",
+              "none",
+              "filename-with-nuls",
+              "no-filename-with-nuls",
+              "alone-zero-block",
+              "no-alone-zero-block",
+              "cachedir",
+              "no-cachedir",
+              "file-shrank",
+              "no-file-shrank",
+              "xdev",
+              "no-xdev",
+              "file-ignored",
+              "no-file-ignored",
+              "file-unchanged",
+              "no-file-unchanged",
+              "ignore-archive",
+              "no-ignore-archive",
+              "file-removed",
+              "no-file-removed",
+              "file-changed",
+              "no-file-changed",
+              "failed-read",
+              "no-failed-read"
+            ]
+          }
         },
         {
           "names": [
@@ -504,6 +650,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -520,7 +669,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -529,7 +681,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -544,21 +709,30 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         }
       ],
       "args": [
@@ -586,6 +760,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -602,7 +779,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -611,7 +791,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -626,28 +819,40 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--occurrence"
           ],
           "description": "Process only the Nth occurrence of each file in the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         }
       ],
       "args": [
@@ -674,6 +879,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -690,7 +898,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -699,7 +910,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -714,21 +938,30 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
@@ -749,7 +982,10 @@
             "--occurrence"
           ],
           "description": "Process only the Nth occurrence of each file in the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
@@ -774,7 +1010,10 @@
             "--label"
           ],
           "description": "Use TEXT as a globbing pattern for volume name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -791,7 +1030,10 @@
             "--use-compress-program"
           ],
           "description": "Filter data through COMMAND",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -864,21 +1106,30 @@
             "--xform"
           ],
           "description": "Use sed replace EXPRESSION to transform file names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXPRESSION"
+          }
         },
         {
           "names": [
             "--checkpoint"
           ],
           "description": "Display progress messages every Nth record",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
             "--checkpoint-action"
           ],
           "description": "Run ACTION on each checkpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ACTION"
+          }
         },
         {
           "names": [
@@ -899,7 +1150,10 @@
             "--starting-file"
           ],
           "description": "Begin at the given member in the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "MEMBER"
+          }
         },
         {
           "names": [
@@ -931,6 +1185,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -947,7 +1204,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -956,7 +1216,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -971,21 +1244,30 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
@@ -1018,70 +1300,119 @@
             "--atime-preserve"
           ],
           "description": "Preserve access times on dumped files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "METHOD",
+            "suggestions": [
+              "replace",
+              "system"
+            ]
+          }
         },
         {
           "names": [
             "--group"
           ],
           "description": "Force NAME as group for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME[:GID]",
+            "description": "If GID is not supplied, NAME can be either a user name or numeric GID"
+          }
         },
         {
           "names": [
             "--group-map"
           ],
           "description": "Read group translation map from FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "description": "Each non-empty line in FILE defines translation for a single group",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--mode"
           ],
           "description": "Force symbolic mode CHANGES for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CHANGES"
+          }
         },
         {
           "names": [
             "--mtime"
           ],
           "description": "Set mtime for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATE-OR-FILE",
+            "description": "Either a date/time in almost arbitrary format, or the name of an existing file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--owner"
           ],
           "description": "Force NAME as owner for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME[:GID]",
+            "description": "If UID is not supplied, NAME can be either a user name or numeric UID"
+          }
         },
         {
           "names": [
             "--owner-map"
           ],
           "description": "Read owner translation map from FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "description": "Each non-empty line in FILE defines translation for a single UID",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--sort"
           ],
           "description": "When creating an archive, sort directory entries according to ORDER",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ORDER",
+            "suggestions": [
+              "none",
+              "name",
+              "inode"
+            ]
+          }
         },
         {
           "names": [
             "--add-file"
           ],
           "description": "Add FILE to the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude files matching PATTERN",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATTERN",
+            "description": "A glob-style wildcard pattern"
+          }
         },
         {
           "names": [
@@ -1112,35 +1443,50 @@
             "--exclude-ignore"
           ],
           "description": "Read exclusion patterns from FILE in directory before dumping",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-ignore-recursive"
           ],
           "description": "Same  as --exclude-ignore, except that patterns from FILE affect both the directory and all its subdirectories",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag"
           ],
           "description": "Exclude contents of directories containing FILE, except for FILE itself",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag-all"
           ],
           "description": "Exclude directories containing FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag-under"
           ],
           "description": "Exclude everything under directories containing FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
@@ -1176,7 +1522,12 @@
             "--after-date"
           ],
           "description": "Only store files newer than DATE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATE",
+            "description": "If DATE starts with / or . it is taken to be a file name",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1269,7 +1620,10 @@
             "--use-compress-program"
           ],
           "description": "Filter data through COMMAND",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -1342,21 +1696,30 @@
             "--xform"
           ],
           "description": "Use sed replace EXPRESSION to transform file names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXPRESSION"
+          }
         },
         {
           "names": [
             "--checkpoint"
           ],
           "description": "Display progress messages every Nth record",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
             "--checkpoint-action"
           ],
           "description": "Run ACTION on each checkpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ACTION"
+          }
         },
         {
           "names": [
@@ -1395,6 +1758,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -1411,7 +1777,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -1420,7 +1789,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -1435,21 +1817,30 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
@@ -1482,70 +1873,119 @@
             "--atime-preserve"
           ],
           "description": "Preserve access times on dumped files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "METHOD",
+            "suggestions": [
+              "replace",
+              "system"
+            ]
+          }
         },
         {
           "names": [
             "--group"
           ],
           "description": "Force NAME as group for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME[:GID]",
+            "description": "If GID is not supplied, NAME can be either a user name or numeric GID"
+          }
         },
         {
           "names": [
             "--group-map"
           ],
           "description": "Read group translation map from FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "description": "Each non-empty line in FILE defines translation for a single group",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--mode"
           ],
           "description": "Force symbolic mode CHANGES for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "CHANGES"
+          }
         },
         {
           "names": [
             "--mtime"
           ],
           "description": "Set mtime for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATE-OR-FILE",
+            "description": "Either a date/time in almost arbitrary format, or the name of an existing file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--owner"
           ],
           "description": "Force NAME as owner for added files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME[:GID]",
+            "description": "If UID is not supplied, NAME can be either a user name or numeric UID"
+          }
         },
         {
           "names": [
             "--owner-map"
           ],
           "description": "Read owner translation map from FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "description": "Each non-empty line in FILE defines translation for a single UID",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--sort"
           ],
           "description": "When creating an archive, sort directory entries according to ORDER",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ORDER",
+            "suggestions": [
+              "none",
+              "name",
+              "inode"
+            ]
+          }
         },
         {
           "names": [
             "--add-file"
           ],
           "description": "Add FILE to the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude files matching PATTERN",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATTERN",
+            "description": "A glob-style wildcard pattern"
+          }
         },
         {
           "names": [
@@ -1576,35 +2016,50 @@
             "--exclude-ignore"
           ],
           "description": "Read exclusion patterns from FILE in directory before dumping",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-ignore-recursive"
           ],
           "description": "Same  as --exclude-ignore, except that patterns from FILE affect both the directory and all its subdirectories",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag"
           ],
           "description": "Exclude contents of directories containing FILE, except for FILE itself",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag-all"
           ],
           "description": "Exclude directories containing FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--exclude-tag-under"
           ],
           "description": "Exclude everything under directories containing FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
@@ -1640,7 +2095,12 @@
             "--after-date"
           ],
           "description": "Only store files newer than DATE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DATE",
+            "description": "If DATE starts with / or . it is taken to be a file name",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1733,7 +2193,10 @@
             "--use-compress-program"
           ],
           "description": "Filter data through COMMAND",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -1806,21 +2269,30 @@
             "--xform"
           ],
           "description": "Use sed replace EXPRESSION to transform file names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXPRESSION"
+          }
         },
         {
           "names": [
             "--checkpoint"
           ],
           "description": "Display progress messages every Nth record",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
             "--checkpoint-action"
           ],
           "description": "Run ACTION on each checkpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ACTION"
+          }
         },
         {
           "names": [
@@ -1860,6 +2332,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -1876,7 +2351,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -1885,7 +2363,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -1900,21 +2391,30 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
@@ -1935,7 +2435,10 @@
             "--occurrence"
           ],
           "description": "Process only the Nth occurrence of each file in the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
@@ -1960,7 +2463,10 @@
             "--label"
           ],
           "description": "Use TEXT as a globbing pattern for volume name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -1977,7 +2483,10 @@
             "--use-compress-program"
           ],
           "description": "Filter data through COMMAND",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -2050,21 +2559,30 @@
             "--xform"
           ],
           "description": "Use sed replace EXPRESSION to transform file names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "EXPRESSION"
+          }
         },
         {
           "names": [
             "--checkpoint"
           ],
           "description": "Display progress messages every Nth record",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
             "--checkpoint-action"
           ],
           "description": "Run ACTION on each checkpoint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ACTION"
+          }
         },
         {
           "names": [
@@ -2085,7 +2603,10 @@
             "--starting-file"
           ],
           "description": "Begin at the given member in the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "MEMBER"
+          }
         },
         {
           "names": [
@@ -2124,7 +2645,10 @@
             "--one-top-level"
           ],
           "description": "Extract all files into DIR",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "DIR"
+          }
         },
         {
           "names": [
@@ -2171,7 +2695,11 @@
             "--to-command"
           ],
           "description": "Pipe extracted files to COMMAND",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2240,14 +2768,53 @@
             "--strip-components"
           ],
           "description": "Strip NUMBER leading components from file names on extraction",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUMBER"
+          }
         },
         {
           "names": [
             "--warning"
           ],
           "description": "Enable or disable warning messages identified by KEYWORD",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEYWORD",
+            "suggestions": [
+              "all",
+              "none",
+              "filename-with-nuls",
+              "no-filename-with-nuls",
+              "alone-zero-block",
+              "no-alone-zero-block",
+              "existing-file",
+              "no-existing-file",
+              "timestamp",
+              "no-timestamp",
+              "contiguous-cast",
+              "no-contiguous-cast",
+              "symlink-cast",
+              "no-symlink-cast",
+              "unknown-cast",
+              "no-unknown-cast",
+              "ignore-newer",
+              "no-ignore-newer",
+              "unknown-keyword",
+              "no-unknown-keyword",
+              "decompress-program",
+              "no-decompress-program",
+              "record-size",
+              "no-record-size",
+              "rename-directory",
+              "no-rename-directory",
+              "new-directory",
+              "no-new-directory",
+              "xdev",
+              "no-xdev",
+              "bad-dumpdir"
+            ]
+          }
         },
         {
           "names": [
@@ -2276,6 +2843,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -2292,7 +2862,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -2301,7 +2874,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -2316,28 +2902,40 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         },
         {
           "names": [
             "--occurrence"
           ],
           "description": "Process only the Nth occurrence of each file in the archive",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         }
       ],
       "args": [
@@ -2359,6 +2957,9 @@
           ],
           "description": "Use archive file or device ARCHIVE",
           "takes_arg": true,
+          "arg": {
+            "name": "ARCHIVE"
+          },
           "is_required": true
         },
         {
@@ -2375,7 +2976,10 @@
             "--new-volume-script"
           ],
           "description": "Run  COMMAND  at the end of each tape",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
@@ -2384,7 +2988,20 @@
             "--tape-length"
           ],
           "description": "Change tape after writing Nx1024 bytes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N",
+            "suggestions": [
+              "Blocks",
+              "Bytes",
+              "Gigabytes",
+              "Kilobytes",
+              "Megabytes",
+              "Petabytes",
+              "Terabytes",
+              "Words"
+            ]
+          }
         },
         {
           "names": [
@@ -2399,21 +3016,30 @@
             "--rmt-command"
           ],
           "description": "Use  COMMAND instead of rmt when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--rsh-command"
           ],
           "description": "Use  COMMAND instead of rsh when accessing remote archives",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COMMAND"
+          }
         },
         {
           "names": [
             "--volno-file"
           ],
           "description": "Tar will keep track of which volume of a multi-volume archive it is working in FILE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FILE"
+          }
         }
       ],
       "args": [
@@ -2452,14 +3078,25 @@
         "--listed-incremental"
       ],
       "description": "Handle new GNU-format incremental backups",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "description": "The name of a snapshot file"
+      }
     },
     {
       "names": [
         "--hole-detection"
       ],
       "description": "Use METHOD to detect holes in sparse files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "METHOD",
+        "suggestions": [
+          "seek",
+          "raw"
+        ]
+      }
     },
     {
       "names": [
@@ -2474,7 +3111,15 @@
         "--sparse-version"
       ],
       "description": "Set version of the sparse format to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MAJOR[.MINOR]",
+        "suggestions": [
+          "0",
+          "0.1",
+          "1"
+        ]
+      }
     },
     {
       "names": [
@@ -2543,21 +3188,38 @@
         "--xattrs-exclude"
       ],
       "description": "Specify the exclude pattern for xattr keys",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATTERN",
+        "description": "A POSIX regular expression"
+      }
     },
     {
       "names": [
         "--xattrs-include"
       ],
       "description": "Specify the include pattern for xattr keys",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATTERN",
+        "description": "A POSIX regular expression"
+      }
     },
     {
       "names": [
         "--backup"
       ],
       "description": "Backup before removal",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONTROL",
+        "suggestions": [
+          "none",
+          "t",
+          "nil",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -2566,14 +3228,23 @@
         "--directory"
       ],
       "description": "Change to DIR before performing any operations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--newer-mtime"
       ],
       "description": "Work on files whose data changed after the DATE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DATE",
+        "description": "If DATE starts with / or . it is taken to be a file name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2616,7 +3287,10 @@
         "--suffix"
       ],
       "description": "Backup before removal, override usual suffix",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STRING"
+      }
     },
     {
       "names": [
@@ -2625,7 +3299,11 @@
         "--files-from"
       ],
       "description": "Get names to extract or create from FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2646,35 +3324,61 @@
         "--exclude-from"
       ],
       "description": "Exclude files matching patterns listed in FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--index-file"
       ],
       "description": "Send verbose output to FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE"
+      }
     },
     {
       "names": [
         "--no-quote-chars"
       ],
       "description": "Disable quoting for characters from STRING",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STRING"
+      }
     },
     {
       "names": [
         "--quote-chars"
       ],
       "description": "Additionally quote characters from STRING",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STRING"
+      }
     },
     {
       "names": [
         "--quoting-style"
       ],
       "description": "Set quoting style for file and member names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STYLE",
+        "suggestions": [
+          "literal",
+          "shell",
+          "shell-always",
+          "c",
+          "c-maybe",
+          "escape",
+          "locale",
+          "clocale"
+        ]
+      }
     },
     {
       "names": [
@@ -2696,7 +3400,18 @@
         "--totals"
       ],
       "description": "Print total bytes after processing the archive",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIGNAL",
+        "description": "Print total bytes when this signal is delivered",
+        "suggestions": [
+          "SIGHUP",
+          "SIGQUIT",
+          "SIGINT",
+          "SIGUSR1",
+          "SIGUSR2"
+        ]
+      }
     },
     {
       "names": [

@@ -38,14 +38,22 @@
         "--bind-address"
       ],
       "description": "Use specified network interface to connect to MySQL Server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ip_address"
+      }
     },
     {
       "names": [
         "--character-sets-dir"
       ],
       "description": "Directory where character sets are installed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir_name",
+        "description": "Directory where character sets are installed",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -78,7 +86,15 @@
         "--compression-algorithms"
       ],
       "description": "Permitted compression algorithms for connections to server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "zlib",
+          "zstd",
+          "uncompressed"
+        ]
+      }
     },
     {
       "names": [
@@ -91,7 +107,10 @@
         "--connect-timeout"
       ],
       "description": "Number of seconds before connection timeout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -99,7 +118,10 @@
         "--database"
       ],
       "description": "The database to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "db_name"
+      }
     },
     {
       "names": [
@@ -125,42 +147,62 @@
         "--default-auth"
       ],
       "description": "Authentication plugin to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "plugin"
+      }
     },
     {
       "names": [
         "--default-character-set"
       ],
       "description": "Specify default character set",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "charset_name"
+      }
     },
     {
       "names": [
         "--defaults-extra-file"
       ],
       "description": "Read named option file in addition to usual option files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file_name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--defaults-file"
       ],
       "description": "Read only named option file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file_name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--defaults-group-suffix"
       ],
       "description": "Option group suffix value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "str"
+      }
     },
     {
       "names": [
         "--delimiter"
       ],
       "description": "Set the statement delimiter",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "str"
+      }
     },
     {
       "names": [
@@ -173,7 +215,10 @@
         "--dns-srv-name"
       ],
       "description": "Use DNS SRV lookup for host information",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -187,7 +232,10 @@
         "--execute"
       ],
       "description": "Execute the statement and quit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "statement"
+      }
     },
     {
       "names": [
@@ -221,7 +269,10 @@
         "--host"
       ],
       "description": "Host on which MySQL server is located",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host_name"
+      }
     },
     {
       "names": [
@@ -242,7 +293,10 @@
         "--init-command"
       ],
       "description": "SQL statement to execute after connecting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
@@ -255,35 +309,55 @@
         "--load-data-local-dir"
       ],
       "description": "Directory for files named in LOAD DATA LOCAL statements",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir_name",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--local-infile"
       ],
       "description": "Enable or disable for LOCAL capability for LOAD DATA",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "is-local-inflie",
+        "suggestions": [
+          "0",
+          "1"
+        ]
+      }
     },
     {
       "names": [
         "--login-path"
       ],
       "description": "Read login path options from .mylogin.cnf",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--max-allowed-packet"
       ],
       "description": "Maximum packet length to send to or receive from server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--max-join-size"
       ],
       "description": "The automatic limit for rows in a join when using --safe-updates",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -297,14 +371,20 @@
         "--net-buffer-length"
       ],
       "description": "Buffer size for TCP/IP and socket communication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--network-namespace"
       ],
       "description": "Specify network namespace",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -338,7 +418,10 @@
         "--pager"
       ],
       "description": "Use the given command for paging query output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
@@ -346,7 +429,10 @@
         "--password"
       ],
       "description": "Password to use when connecting to server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "password"
+      }
     },
     {
       "names": [
@@ -360,7 +446,11 @@
         "--plugin-dir"
       ],
       "description": "Directory where plugins are installed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir_name",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -368,7 +458,10 @@
         "--port"
       ],
       "description": "TCP/IP port number for connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port_num"
+      }
     },
     {
       "names": [
@@ -381,14 +474,26 @@
         "--prompt"
       ],
       "description": "Set the prompt to the specified format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format_str"
+      }
     },
     {
       "names": [
         "--protocol"
       ],
       "description": "Transport protocol to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format_str",
+        "suggestions": [
+          "TCP",
+          "SOCKET",
+          "PIPE",
+          "MEMORY"
+        ]
+      }
     },
     {
       "names": [
@@ -423,21 +528,31 @@
         "--select-limit"
       ],
       "description": "The automatic limit for SELECT statements when using --safe-updates",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--server-public-key-path"
       ],
       "description": "Path name to file containing RSA public key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--shared-memory-base-name"
       ],
       "description": "Shared-memory name for shared-memory connections (Windows only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -502,28 +617,43 @@
         "--socket"
       ],
       "description": "Unix socket file or Windows named pipe to use\"File that contains list of trusted SSL Certificate Authorities\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--ssl-ca"
       ],
       "description": "File that contains list of trusted SSL Certificate Authorities",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ssl-capath"
       ],
       "description": "Directory that contains trusted SSL Certificate Authority certificate files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dirname",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--ssl-cert"
       ],
       "description": "File that contains X.509 certificate",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -536,28 +666,48 @@
         "--ssl-crl"
       ],
       "description": "File that contains certificate revocation lists",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ssl-crlpath"
       ],
       "description": "Directory that contains certificate revocation-list files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dirname",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--ssl-fips-mode"
       ],
       "description": "Whether to enable FIPS mode on client side",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "OFF",
+          "ON",
+          "STRICT"
+        ]
+      }
     },
     {
       "names": [
         "--ssl-key"
       ],
       "description": "File that contains X.509 key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -584,21 +734,32 @@
         "--tee"
       ],
       "description": "Append a copy of output to named file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file_name",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--tls-ciphersuites"
       ],
       "description": "Permissible TLSv1.3 ciphersuites for encrypted connections",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ciphersuite_list",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--tls-version"
       ],
       "description": "Permissible TLS protocols for encrypted connections",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "protocol_list"
+      }
     },
     {
       "names": [
@@ -613,7 +774,10 @@
         "--user"
       ],
       "description": "MySQL user name to use when connecting to server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "user_name"
+      }
     },
     {
       "names": [
@@ -655,7 +819,11 @@
         "--zstd-compression-level"
       ],
       "description": "Compression level for connections to server that use zstd compression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "description": "Compression level between 1-22. The default zstd compression level is 3. The compression level setting has no effect on connections that do not use zstd compression"
+      }
     }
   ]
 }

@@ -150,10 +150,14 @@ function convertOption(figOpt) {
     result.description = String(figOpt.description).slice(0, 200);
   }
 
-  // takes_arg: true if the option has args
+  // takes_arg: true if the option has args; preserve arg metadata
   const args = normalizeArgs(figOpt.args);
   if (args.length > 0) {
     result.takes_arg = true;
+    const converted = convertArg(args[0]);
+    if (converted) {
+      result.arg = converted;
+    }
   }
 
   if (figOpt.isRequired) {

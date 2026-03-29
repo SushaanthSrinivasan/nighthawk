@@ -8,7 +8,10 @@
         "--volume"
       ],
       "description": "Set the volume for playback of the file\nApple does not define a value range for this, but it appears to accept\n0=silent, 1=normal (default) and then up to 255=Very loud.\nThe scale is logarithmic and i",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "0 (silent) - 1 (normal) - 255 (very loud)"
+      }
     },
     {
       "names": [
@@ -29,7 +32,11 @@
         "--time"
       ],
       "description": "Play for `TIME` seconds\n>0 and < duration of `audio_file`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TIME",
+        "description": "A value greater than 0 but lower than the audio file length"
+      }
     },
     {
       "names": [
@@ -37,7 +44,11 @@
         "--rate"
       ],
       "description": "Play at playback `RATE`.\npractical limits are about 0.4 (slower) to 3.0 (faster)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RATE",
+        "description": "0.4 (slower) - 3.0 (faster)"
+      }
     },
     {
       "names": [
@@ -45,7 +56,11 @@
         "--rQuality"
       ],
       "description": "Set the quality used for rate-scaled playback (default is 0 - low quality, 1 - high quality)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "QUALITY",
+        "description": "0 (low) -1 (high)"
+      }
     },
     {
       "names": [

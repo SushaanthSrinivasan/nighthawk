@@ -13,6 +13,9 @@
           ],
           "description": "Email address of your Contentstack account",
           "takes_arg": true,
+          "arg": {
+            "name": "email address"
+          },
           "is_required": true
         },
         {
@@ -21,7 +24,10 @@
             "--password"
           ],
           "description": "Password can be passed in command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password"
+          }
         }
       ]
     },
@@ -36,6 +42,9 @@
           ],
           "description": "Alias (name) you want to assign to the token",
           "takes_arg": true,
+          "arg": {
+            "name": "alias"
+          },
           "is_required": true
         },
         {
@@ -57,6 +66,9 @@
           ],
           "description": "API key of the stack where the token exists",
           "takes_arg": true,
+          "arg": {
+            "name": "stack-api-key"
+          },
           "is_required": true
         },
         {
@@ -64,7 +76,10 @@
             "--token"
           ],
           "description": "Value of the token",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token"
+          }
         },
         {
           "names": [
@@ -86,6 +101,9 @@
           ],
           "description": "Alias (name) you want to assign to the token",
           "takes_arg": true,
+          "arg": {
+            "name": "alias"
+          },
           "is_required": true
         },
         {
@@ -106,21 +124,41 @@
             "--app-name"
           ],
           "description": "The name of the starter app you want to use. Example: reactjs-starter, nextjs-starter, gatsby-starter, angular-starter, nuxt-starter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-name",
+            "suggestions": [
+              "reactjs-starter",
+              "nextjs-starter",
+              "gatsby-starter",
+              "angular-starter",
+              "nuxt-starter"
+            ]
+          }
         },
         {
           "names": [
             "--project-dir"
           ],
           "description": "Directory/path to setup the project. If directory name has a space then provide the path as a string or escap the space using back slash as shown in the below example",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project-dir"
+          }
         },
         {
           "names": [
             "--app-type"
           ],
           "description": "Sample or Starter app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-type",
+            "suggestions": [
+              "Sample",
+              "Starter"
+            ]
+          }
         },
         {
           "names": [
@@ -128,14 +166,20 @@
             "--stack-api-key"
           ],
           "description": "Provide stack API key to seed content",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stack-api-key"
+          }
         },
         {
           "names": [
             "--org"
           ],
           "description": "Provide organization UID to create a new stack",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "org"
+          }
         },
         {
           "names": [
@@ -143,7 +187,10 @@
             "--stack-name"
           ],
           "description": "Name of the new stack that will be created",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stack-name"
+          }
         }
       ]
     },
@@ -163,7 +210,10 @@
             "--columns"
           ],
           "description": "To display specific columns, separated by comma",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "columns"
+          }
         },
         {
           "names": [
@@ -176,7 +226,10 @@
             "--filter"
           ],
           "description": "To filter the property by partial string matching, ex: name=foo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter"
+          }
         },
         {
           "names": [
@@ -195,14 +248,25 @@
             "--output"
           ],
           "description": "To display output in a particular format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "csv",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
             "--sort"
           ],
           "description": "To sort the list, prepend '-' to sort in a descending order",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sort"
+          }
         }
       ]
     },
@@ -235,7 +299,10 @@
             "--config"
           ],
           "description": "[optional] path of the config",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config"
+          }
         },
         {
           "names": [
@@ -243,7 +310,10 @@
             "--stack-api-key"
           ],
           "description": "API key of the source stack",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stack-api-key"
+          }
         },
         {
           "names": [
@@ -251,7 +321,10 @@
             "--alias"
           ],
           "description": "The management token of the source stack from which you will export content",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "alias"
+          }
         },
         {
           "names": [
@@ -259,35 +332,62 @@
             "--data-dir"
           ],
           "description": "The path or the location in your file system to store the exported content. For e.g., ./content",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "data-dir"
+          }
         },
         {
           "names": [
             "--branch"
           ],
           "description": "The name of the branch where you want to export your content. If you don’t mention the branch name, then by default the content will be exported from all the branches of your stack",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
             "--module"
           ],
           "description": "[optional] Specific module name. If not specified, the export command will export all the modules to the stack. The available modules are assets, content-types, entries, environments, extensions, glob",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "module",
+            "suggestions": [
+              "assets",
+              "content-types",
+              "entries",
+              "environments",
+              "extensions",
+              "global-fields",
+              "labels",
+              "locales",
+              "webhooks",
+              "workflows"
+            ]
+          }
         },
         {
           "names": [
             "--content-types"
           ],
           "description": "[optional] content type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "content-types"
+          }
         },
         {
           "names": [
             "--secured-assets"
           ],
           "description": "[optional] use when assets are secured",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "secured-assets"
+          }
         }
       ]
     },

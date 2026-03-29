@@ -180,7 +180,11 @@
                 "--link"
               ],
               "description": "When platform-spec is a local path, link the platform library directly instead of making a copy of it",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             }
           ],
           "args": [
@@ -256,7 +260,11 @@
                 "--searchpath"
               ],
               "description": "When looking up plugins by ID, look in this directory and each of its subdirectories before hitting the registry. Multiple search paths can be specified. Use ':' as a separator in *nix based systems a",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -389,7 +397,10 @@
             "--buildConfig"
           ],
           "description": "Use the specified build configuration file. build.json file is used to specify parameters to customize the app build process especially related to signing the package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -464,7 +475,10 @@
             "--buildConfig"
           ],
           "description": "Use the specified build configuration file. build.json file is used to specify parameters to customize the app build process especially related to signing the package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -535,14 +549,21 @@
             "--target"
           ],
           "description": "Deploy to a specific target emulator/device. Use --list to display target options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target"
+          }
         },
         {
           "names": [
             "--buildConfig"
           ],
           "description": "Use the specified build configuration file. build.json file is used to specify parameters to customize the app build process especially related to signing the package",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "configFile",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [

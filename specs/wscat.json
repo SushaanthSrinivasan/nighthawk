@@ -8,7 +8,10 @@
         "--connect"
       ],
       "description": "Connect to a WebSocket server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "url"
+      }
     },
     {
       "names": [
@@ -22,42 +25,60 @@
         "--auth"
       ],
       "description": "Add basic HTTP authentication header (--connect only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username:password"
+      }
     },
     {
       "names": [
         "--ca"
       ],
       "description": "Specify a Certificate Authority (--connect only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ca"
+      }
     },
     {
       "names": [
         "--cert"
       ],
       "description": "Specify a Client SSL Certificate (--connect only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cert"
+      }
     },
     {
       "names": [
         "--host"
       ],
       "description": "Optional host",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host"
+      }
     },
     {
       "names": [
         "--key"
       ],
       "description": "Specify a Client SSL Certificate's key (--connect only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key"
+      }
     },
     {
       "names": [
         "--max-redirects"
       ],
       "description": "Maximum number of redirects allowed (--connect only) (default: 10)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num"
+      }
     },
     {
       "names": [
@@ -70,14 +91,20 @@
         "--passphrase"
       ],
       "description": "Specify a Client SSL Certificate Key's passphrase (--connect only). If you don't provide a value, it will be prompted for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "passphrase"
+      }
     },
     {
       "names": [
         "--proxy"
       ],
       "description": "Connect via a proxy. Proxy must support CONNECT method",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[protocol://]host[:port]"
+      }
     },
     {
       "names": [
@@ -91,7 +118,10 @@
         "--header"
       ],
       "description": "Set an HTTP header. Repeat to set multiple (--connect only) (default: [])",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "header:value"
+      }
     },
     {
       "names": [
@@ -106,7 +136,10 @@
         "--listen"
       ],
       "description": "Listen on port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
@@ -121,7 +154,10 @@
         "--origin"
       ],
       "description": "Optional origin",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "origin"
+      }
     },
     {
       "names": [
@@ -129,7 +165,10 @@
         "--protocol"
       ],
       "description": "Optional protocol version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "protocol"
+      }
     },
     {
       "names": [
@@ -144,7 +183,70 @@
         "--subprotocol"
       ],
       "description": "Optional subprotocol (default: [])",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "protocol",
+        "suggestions": [
+          "MBWS.huawei.com",
+          "MBLWS.huawei.com",
+          "soap",
+          "wamp",
+          "v10.stomp",
+          "v11.stomp",
+          "v12.stomp",
+          "ocpp1.2",
+          "ocpp1.5",
+          "ocpp1.6",
+          "ocpp2.0",
+          "ocpp2.0.1",
+          "rfb",
+          "sip",
+          "notificationchannel-netapi-rest.openmobilealliance.org",
+          "wpcp",
+          "amqp\t",
+          "mqtt",
+          "jsflow",
+          "rwpcp",
+          "xmpp",
+          "ship",
+          "mielecloudconnect",
+          "v10.pcp.sap.com",
+          "msrp",
+          "v1.saltyrtc.org",
+          "TLCP-2.0.0.lightstreamer.com",
+          "bfcp",
+          "sldp.softvelum.com",
+          "opcua+uacp",
+          "opcua+uajson",
+          "v1.swindon-lattice+json",
+          "v1.usp",
+          "mles-websocket",
+          "coap",
+          "TLCP-2.1.0.lightstreamer.com",
+          "sqlnet.oracle.com",
+          "oneM2M.R2.0.json",
+          "oneM2M.R2.0.xml",
+          "oneM2M.R2.0.cbor",
+          "transit",
+          "2016.serverpush.dash.mpeg.org",
+          "2018.mmt.mpeg.org",
+          "clue",
+          "webrtc.softvelum.com",
+          "cobra.v2.json",
+          "drp",
+          "hub.bsc.bacnet.org",
+          "dc.bsc.bacnet.org",
+          "jmap",
+          "t140",
+          "done",
+          "TLCP-2.2.0.lightstreamer.com",
+          "collection-update",
+          "TLCP-2.3.0.lightstreamer.com",
+          "text.ircv3.net",
+          "binary.ircv3.net",
+          "v3.penguin-stats.live+proto"
+        ]
+      }
     },
     {
       "names": [
@@ -152,7 +254,10 @@
         "--wait"
       ],
       "description": "Wait given seconds after executing command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -160,7 +265,10 @@
         "--execute"
       ],
       "description": "Execute command after connecting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [

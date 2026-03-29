@@ -15,35 +15,55 @@
                 "--arch"
               ],
               "description": "Architecture to build for, defaults to the host architecture",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "architecture",
+                "description": "Architecture to build for, defaults to the host architecture"
+              }
             },
             {
               "names": [
                 "--base-image"
               ],
               "description": "Base image to use for the node image",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "base image",
+                "description": "Name:tag of the base image to use for the build"
+              }
             },
             {
               "names": [
                 "--image"
               ],
               "description": "Name:tag of the resulting image to be built",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name:tag",
+                "description": "Name:tag of the resulting image to be built"
+              }
             },
             {
               "names": [
                 "--kube-root"
               ],
               "description": "Path to the Kubernetes source directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Path to the Kubernetes source directory"
+              }
             },
             {
               "names": [
                 "--type"
               ],
               "description": "Type of node image to build",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type",
+                "description": "Build type, default is docker"
+              }
             }
           ]
         }
@@ -128,7 +148,10 @@
                 "--name"
               ],
               "description": "Cluster name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster name"
+              }
             }
           ]
         },
@@ -190,7 +213,10 @@
                 "--name"
               ],
               "description": "Cluster name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster name"
+              }
             }
           ]
         }
@@ -213,7 +239,10 @@
                 "--name"
               ],
               "description": "Cluster name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster name"
+              }
             },
             {
               "names": [
@@ -239,7 +268,10 @@
                 "--name"
               ],
               "description": "Cluster name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster name"
+              }
             }
           ]
         }
@@ -258,14 +290,20 @@
                 "--name"
               ],
               "description": "Cluster name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster name"
+              }
             },
             {
               "names": [
                 "--nodes"
               ],
               "description": "Comma separated list of nodes to load images into",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "nodes"
+              }
             }
           ]
         },
@@ -278,14 +316,20 @@
                 "--name"
               ],
               "description": "Cluster name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster name"
+              }
             },
             {
               "names": [
                 "--nodes"
               ],
               "description": "Comma separated list of nodes to load images into",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "nodes"
+              }
             }
           ]
         }
@@ -317,7 +361,10 @@
         "--verbosity"
       ],
       "description": "Info log verbosity, higher value produces more output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "int"
+      }
     }
   ]
 }

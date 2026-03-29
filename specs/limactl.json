@@ -292,7 +292,10 @@
             "--workdir"
           ],
           "description": "Working directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -328,7 +331,16 @@
             "--format"
           ],
           "description": "Format: cmd, args, options, config (default \"cmd\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string",
+            "suggestions": [
+              "cmd",
+              "args",
+              "options",
+              "config"
+            ]
+          }
         }
       ],
       "args": [

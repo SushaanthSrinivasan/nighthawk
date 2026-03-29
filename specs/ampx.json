@@ -15,14 +15,20 @@
                 "--name"
               ],
               "description": "Name to distinguish between sandbox environments",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--profile"
               ],
               "description": "AWS profile name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile"
+              }
             },
             {
               "names": [
@@ -46,7 +52,10 @@
                     "--profile"
                   ],
                   "description": "AWS profile name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "profile"
+                  }
                 }
               ],
               "args": [
@@ -64,7 +73,10 @@
                     "--profile"
                   ],
                   "description": "AWS profile name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "profile"
+                  }
                 }
               ],
               "args": [
@@ -82,7 +94,10 @@
                     "--profile"
                   ],
                   "description": "AWS profile name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "profile"
+                  }
                 }
               ]
             },
@@ -95,7 +110,10 @@
                     "--profile"
                   ],
                   "description": "AWS profile name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "profile"
+                  }
                 }
               ],
               "args": [
@@ -113,70 +131,115 @@
             "--dir-to-watch"
           ],
           "description": "Directory to watch for file changes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Paths or glob patterns to ignore",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [
             "--identifier"
           ],
           "description": "Name to distinguish between sandbox environments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--outputs-out-dir"
           ],
           "description": "Directory where client config file is written",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--outputs-format"
           ],
           "description": "Format of the client config file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "json",
+              "dart"
+            ]
+          }
         },
         {
           "names": [
             "--outputs-version"
           ],
           "description": "Version of the configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version",
+            "suggestions": [
+              "0",
+              "1"
+            ]
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "AWS profile name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         },
         {
           "names": [
             "--stream-function-logs"
           ],
           "description": "Stream function execution logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "boolean",
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         },
         {
           "names": [
             "--logs-filter"
           ],
           "description": "Regex pattern to filter logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [
             "--logs-out-file"
           ],
           "description": "File to append streaming logs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -193,42 +256,69 @@
                 "--profile"
               ],
               "description": "AWS profile name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Format of the configuration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "json",
+                  "dart"
+                ]
+              }
             },
             {
               "names": [
                 "--out-dir"
               ],
               "description": "Directory where config is written",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--outputs-version"
               ],
               "description": "Version of the configuration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version",
+                "suggestions": [
+                  "0",
+                  "1"
+                ]
+              }
             },
             {
               "names": [
                 "--branch"
               ],
               "description": "Git branch name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch_name"
+              }
             },
             {
               "names": [
                 "--app-id"
               ],
               "description": "Amplify App ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "app_id"
+              }
             }
           ]
         },
@@ -241,35 +331,79 @@
                 "--out"
               ],
               "description": "Directory where config is written",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Format of the GraphQL client code",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "modelgen",
+                  "graphql-codegen",
+                  "introspection"
+                ]
+              }
             },
             {
               "names": [
                 "--model-target"
               ],
               "description": "Modelgen export target",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target",
+                "suggestions": [
+                  "java",
+                  "swift",
+                  "javascript",
+                  "typescript",
+                  "dart"
+                ]
+              }
             },
             {
               "names": [
                 "--statement-target"
               ],
               "description": "Graphql codegen statement export target",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target",
+                "suggestions": [
+                  "javascript",
+                  "graphql",
+                  "flow",
+                  "typescript",
+                  "angular"
+                ]
+              }
             },
             {
               "names": [
                 "--type-target"
               ],
               "description": "Graphql-codegen type export target",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target",
+                "suggestions": [
+                  "json",
+                  "swift",
+                  "typescript",
+                  "flow",
+                  "scala",
+                  "flow-modern",
+                  "angular"
+                ]
+              }
             },
             {
               "names": [
@@ -282,7 +416,10 @@
                 "--profile"
               ],
               "description": "AWS profile name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile"
+              }
             },
             {
               "names": [
@@ -295,7 +432,10 @@
                 "--statement-max-depth"
               ],
               "description": "Maximum depth of the generated GraphQL statements",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "integer"
+              }
             }
           ]
         },
@@ -308,21 +448,31 @@
                 "--out-dir"
               ],
               "description": "Directory where generated forms are written",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--models"
               ],
               "description": "Model names to generate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "model"
+              }
             },
             {
               "names": [
                 "--profile"
               ],
               "description": "AWS profile name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile"
+              }
             }
           ]
         }
@@ -333,28 +483,40 @@
             "--stack"
           ],
           "description": "CloudFormation stack name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stack_name"
+          }
         },
         {
           "names": [
             "--app-id"
           ],
           "description": "Amplify App ID",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app_id"
+          }
         },
         {
           "names": [
             "--branch"
           ],
           "description": "Git branch name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch_name"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "AWS profile name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile"
+          }
         }
       ]
     },
@@ -371,28 +533,45 @@
             "--branch"
           ],
           "description": "Name of the git branch being deployed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch_name"
+          }
         },
         {
           "names": [
             "--app-id"
           ],
           "description": "The app id of the target Amplify app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app_id"
+          }
         },
         {
           "names": [
             "--outputs-out-dir"
           ],
           "description": "Directory where client config file is written",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--outputs-version"
           ],
           "description": "Version of the configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version",
+            "suggestions": [
+              "0",
+              "1"
+            ]
+          }
         }
       ]
     }
@@ -416,7 +595,10 @@
         "--profile"
       ],
       "description": "AWS profile name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     }
   ]
 }

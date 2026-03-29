@@ -21,28 +21,51 @@
         "--out-dir"
       ],
       "description": "Output directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Target directory to emit JS bindings, TS definitions, .wasm binaries, etc",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--out-name"
       ],
       "description": "Set a custom output filename (Without extension. Defaults to crate name)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "description": "Output filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--target"
       ],
       "description": "What type of output to generate",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "target",
+        "suggestions": [
+          "web",
+          "bundler",
+          "nodejs",
+          "no-modules",
+          "deno"
+        ]
+      }
     },
     {
       "names": [
         "--no-modules-global"
       ],
       "description": "Name of global to assign generated bindings to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -109,7 +132,15 @@
         "--encode-into"
       ],
       "description": "Whether or not to use TextEncoder#encodeInto()",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "suggestions": [
+          "test",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [

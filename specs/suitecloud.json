@@ -18,7 +18,10 @@
             "--info"
           ],
           "description": "Prints the following information for the specified authentication ID (authID): account ID, role ID, and url. Usage: account:manageauth --info {authID}",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authID"
+          }
         },
         {
           "names": [
@@ -31,21 +34,30 @@
             "--remove"
           ],
           "description": "Removes an authentication ID (authID). Usage: account:manageauth --remove {authID}",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authID"
+          }
         },
         {
           "names": [
             "--rename"
           ],
           "description": "Renames an authentication ID (authID). You must specify it together with the renameto option. Usage: account:manageauth --rename {authID} --renameto {newauthID}",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authID"
+          }
         },
         {
           "names": [
             "--renameto"
           ],
           "description": "Specifies the new ID for an authentication ID (authID). You must specify it together with the rename option. Usage: account:manageauth --rename {authID} --renameto {newauthID}",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authID"
+          }
         },
         {
           "names": [
@@ -65,35 +77,50 @@
             "--account"
           ],
           "description": "Specifies the ID of the account to log in to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id"
+          }
         },
         {
           "names": [
             "--authid"
           ],
           "description": "References the custom name you gave to a specific account-role combination",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "auth id"
+          }
         },
         {
           "names": [
             "--tokenid"
           ],
           "description": "Specifies the token ID of a TBA token you issued previously in NetSuite",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "token id"
+          }
         },
         {
           "names": [
             "--tokensecret"
           ],
           "description": "Specifies the token secret of a TBA token you issued previously in NetSuite",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "secret"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Specifies the NetSuite domain of the account you want to use. You only need to specify the NetSuite domain if you are not using a production account",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "domain"
+          }
         },
         {
           "names": [
@@ -147,21 +174,30 @@
             "--module"
           ],
           "description": "Specifies the SuiteScript modules you want to add to the SuiteScript file. For example, \"N/record\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "module"
+          }
         },
         {
           "names": [
             "--path"
           ],
           "description": "Specifies the File Cabinet path of the SuiteScript file to create. For example, \"/SuiteScripts/ClientScipt.js\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "--type"
           ],
           "description": "Specifies the type of the SuiteScript file that you want to create. For example, \"ClientScript\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type"
+          }
         },
         {
           "names": [
@@ -188,7 +224,10 @@
             "--path"
           ],
           "description": "Specifies the File Cabinet paths of the files to import. For example, \"/SuiteScripts/file.js\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
@@ -227,7 +266,11 @@
             "--folder"
           ],
           "description": "Specifies the File Cabinet path, for example, \"/SuiteScripts\". All files within subfolders are included",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cabinet",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -254,7 +297,12 @@
             "--paths"
           ],
           "description": "Specifies the file cabinet paths of the files to upload. To specify multiple paths, enter a space between paths and enclose the entire argument in double quotes. For example, \"/SuiteScripts/file.js\" f",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "files",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -281,7 +329,10 @@
             "--appid"
           ],
           "description": "Specifies your application ID. If specified, only custom objects with that application ID are imported. Otherwise, only custom objects with no application ID are imported",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app id"
+          }
         },
         {
           "names": [
@@ -332,21 +383,31 @@
             "--appid"
           ],
           "description": "Specifies your application ID. If specified, only custom objects with that application ID are listed. Otherwise, only custom objects with no application ID are listed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app id"
+          }
         },
         {
           "names": [
             "--scriptid"
           ],
           "description": "Specifies the script ID. If you specify it, only objects containing that script ID will be listed. Otherwise, all objects are listed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script id"
+          }
         },
         {
           "names": [
             "--type"
           ],
           "description": "Specifies the type of custom objects to list. To specify multiple types, enter the types separated by spaces. Otherwise, all types are listed. To see what custom objects are supported by SDF, see http",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "types",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -379,7 +440,10 @@
             "--scriptid"
           ],
           "description": "Specifies the script ID of the objects you want to overwrite",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "script id"
+          }
         },
         {
           "names": [
@@ -416,35 +480,53 @@
             "--projectid"
           ],
           "description": "Specifies the project ID. It is mandatory for SuiteApps",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project id"
+          }
         },
         {
           "names": [
             "--projectname"
           ],
           "description": "Specifies the project name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--projectversion"
           ],
           "description": "Specifies the project version. It is mandatory for SuiteApps",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project version"
+          }
         },
         {
           "names": [
             "--publisherid"
           ],
           "description": "Specifies the publisher ID. It is mandatory for SuiteApps",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "publisher id"
+          }
         },
         {
           "names": [
             "--type"
           ],
           "description": "Specifies the project type. Enter one of the following options: ACCOUNTCUSTOMIZATION or SUITEAPP",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "ACCOUNTCUSTOMIZATION",
+              "SUITEAPP"
+            ]
+          }
         },
         {
           "names": [
@@ -477,7 +559,11 @@
             "--log"
           ],
           "description": "Sets the deployment log file location, as either a directory or a file name. If it is a directory, a default log file is generated in the specified location. If a log file already exists in the specif",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -490,7 +576,13 @@
             "--accountspecificvalues"
           ],
           "description": "Indicates how to handle the presence of account-specific values in an account customization project. If there are account-specific values in the project, enter WARNING to continue with the deployment ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "ERROR",
+              "WARNING"
+            ]
+          }
         },
         {
           "names": [
@@ -544,7 +636,11 @@
             "--log"
           ],
           "description": "Sets the validation log file location, as either a directory or a file name. If it is a directory, a default log file is generated in the specified location. If a log file already exists in the specif",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -557,7 +653,13 @@
             "--accountspecificvalues"
           ],
           "description": "Indicates how to handle the presence of account-specific values in an account customization project. If there are account-specific values in the project, enter WARNING to continue with the deployment ",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "ERROR",
+              "WARNING"
+            ]
+          }
         },
         {
           "names": [

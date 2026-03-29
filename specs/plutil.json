@@ -25,7 +25,16 @@
         "-convert"
       ],
       "description": "Convert the named file to the indicated format and write back to the file system",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "description": "Format to convert the named file to",
+        "suggestions": [
+          "xml1",
+          "binary1",
+          "json"
+        ]
+      }
     },
     {
       "names": [
@@ -50,14 +59,20 @@
         "-o"
       ],
       "description": "Specify an alternate path name for the result of the -convert operation; this option is only useful with a single file to be converted. Specifying - as the path outputs to stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path"
+      }
     },
     {
       "names": [
         "-e"
       ],
       "description": "Specify an alternate extension for converted files, and the output file names are otherwise the same",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension"
+      }
     }
   ],
   "args": [

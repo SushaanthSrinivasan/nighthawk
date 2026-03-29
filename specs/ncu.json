@@ -19,14 +19,21 @@
         "--cacheExpiration"
       ],
       "description": "Cache expiration in minutes. Only works with --cache. (default: 10)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "min"
+      }
     },
     {
       "names": [
         "--cacheFile"
       ],
       "description": "Filepath for the cache file. Only works with --cache. (default: \"~/.ncu-cache.json\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -39,28 +46,43 @@
         "--concurrency"
       ],
       "description": "Max number of concurrent HTTP requests to registry. (default: 8)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
         "--configFileName"
       ],
       "description": "Config file name. (default: .ncurc.{json,yml,js,cjs})",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "s",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--configFilePath"
       ],
       "description": "Directory of .ncurc config file. (default: directory of packageFile)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--cwd"
       ],
       "description": "Working directory in which npm will be executed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -73,7 +95,17 @@
         "--dep"
       ],
       "description": "Check one or more sections of dependencies only: dev, optional, peer, prod, or packageManager (comma-delimited). (default: [\"prod\",\"dev\",\"optional\"])",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "dev",
+          "optional",
+          "peer",
+          "prod",
+          "packageManager"
+        ]
+      }
     },
     {
       "names": [
@@ -93,14 +125,20 @@
         "--doctorInstall"
       ],
       "description": "Specifies the install script to use in doctor mode. (default: npm install/yarn)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
         "--doctorTest"
       ],
       "description": "Specifies the test script to use in doctor mode. (default: npm test)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
@@ -114,7 +152,10 @@
         "-e"
       ],
       "description": "Set the error level. 1: exits with error code 0 if no errors occur. 2: exits with error code 0 if no packages need updating (useful for continuous integration). (default: 1)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -122,7 +163,10 @@
         "-f"
       ],
       "description": "Include only package names matching the given string, wildcard, glob, comma-or-space-delimited list, /regex/, or predicate function",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "p"
+      }
     },
     {
       "names": [
@@ -135,14 +179,27 @@
         "--filterVersion"
       ],
       "description": "Filter on package version using comma-or-space-delimited list, /regex/, or predicate function",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "p"
+      }
     },
     {
       "names": [
         "--format"
       ],
       "description": "Modify the output formatting or show additional information. Specify one or more comma-delimited values: group, ownerChanged, repo, time, lines. Run \"ncu --help --format\" for details. (default: [])",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "group",
+          "ownerChanged",
+          "repo",
+          "time",
+          "lines"
+        ]
+      }
     },
     {
       "names": [
@@ -196,7 +253,19 @@
         "-l"
       ],
       "description": "Amount to log: silent, error, minimal, warn, info, verbose, silly. (default: \"warn\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n",
+        "suggestions": [
+          "silent",
+          "error",
+          "minimal",
+          "warn",
+          "info",
+          "verbose",
+          "silly"
+        ]
+      }
     },
     {
       "names": [
@@ -216,14 +285,21 @@
         "--packageData"
       ],
       "description": "Package file data (you can also use stdin)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--packageFile"
       ],
       "description": "Package file(s) location. (default: ./package.json)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path|glob",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -231,7 +307,17 @@
         "-p"
       ],
       "description": "Npm, yarn, pnpm, deno, staticRegistry (default: npm). Run \"ncu --help --packageManager\" for details",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "s",
+        "suggestions": [
+          "npm",
+          "yarn",
+          "pnpm",
+          "deno",
+          "staticRegistry"
+        ]
+      }
     },
     {
       "names": [
@@ -244,14 +330,21 @@
         "--pre"
       ],
       "description": "Include prerelease versions, e.g. -alpha.0, -beta.5, -rc.2. Automatically set to 1 when --target is newest or greatest, or when the current version is a prerelease. (default: 0)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
         "--prefix"
       ],
       "description": "Current working directory of npm",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -259,7 +352,10 @@
         "-r"
       ],
       "description": "Third-party npm registry. Run \"ncu --help --registry\" for details",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "uri"
+      }
     },
     {
       "names": [
@@ -267,14 +363,20 @@
         "-x"
       ],
       "description": "Exclude packages matching the given string, wildcard, glob, comma-or-space-delimited list, /regex/, or predicate function",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "p"
+      }
     },
     {
       "names": [
         "--rejectVersion"
       ],
       "description": "Exclude package.json versions using comma-or-space-delimited list, /regex/, or predicate function",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "p"
+      }
     },
     {
       "names": [
@@ -287,7 +389,10 @@
         "--retry"
       ],
       "description": "Number of times to retry failed requests for package info. (default: 3)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -314,14 +419,27 @@
         "-t"
       ],
       "description": "Determines the version to upgrade to: latest, newest, greatest, minor, patch, @[tag], or [function]. (default: latest) Run \"ncu --help --target\" for details",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "latest",
+          "newest",
+          "greatest",
+          "minor",
+          "patch"
+        ]
+      }
     },
     {
       "names": [
         "--timeout"
       ],
       "description": "Global timeout in milliseconds. (default: no global timeout and 30 seconds per npm-registry-fetch)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ms"
+      }
     },
     {
       "names": [
@@ -349,7 +467,10 @@
         "-w"
       ],
       "description": "Run on one or more specified workspaces. Add --root to also upgrade the root project. (default: [])",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "s"
+      }
     },
     {
       "names": [

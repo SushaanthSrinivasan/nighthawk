@@ -22,7 +22,10 @@
         "-o"
       ],
       "description": "A profile to output credentials to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "output_profile"
+      }
     },
     {
       "names": [
@@ -84,56 +87,80 @@
         "--role-arn"
       ],
       "description": "Role ARN or <partition>:<account_id>:<role_name>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "role_arn"
+      }
     },
     {
       "names": [
         "--principal-arn"
       ],
       "description": "Principal ARN or <partition>:<account_id>:<provider_name>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "principal_arn"
+      }
     },
     {
       "names": [
         "--source-profile"
       ],
       "description": "Source_profile to use(role-arn only)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "source_profile"
+      }
     },
     {
       "names": [
         "--external-id"
       ],
       "description": "External ID to pass to the assume_role",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "external_id"
+      }
     },
     {
       "names": [
         "--mfa-token"
       ],
       "description": "Your mfa token",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mfa-token"
+      }
     },
     {
       "names": [
         "--region"
       ],
       "description": "The region you want to awsume into",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "region"
+      }
     },
     {
       "names": [
         "--session-name"
       ],
       "description": "Set a custom role session name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "session_name"
+      }
     },
     {
       "names": [
         "--role-duration"
       ],
       "description": "Seconds to get role creds for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "role_duration"
+      }
     },
     {
       "names": [
@@ -152,28 +179,41 @@
         "--json"
       ],
       "description": "Use json credentials",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "json"
+      }
     },
     {
       "names": [
         "--credentials-file"
       ],
       "description": "Target a shared credentials file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "credentials_file"
+      }
     },
     {
       "names": [
         "--config-file"
       ],
       "description": "Target a config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config_file"
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Configure awsume",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -213,7 +253,10 @@
         "-cs"
       ],
       "description": "Open the console to a specific service",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "service"
+      }
     },
     {
       "names": [
@@ -221,7 +264,10 @@
         "-csl"
       ],
       "description": "Get a sign-on url to a specific service",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "service"
+      }
     }
   ],
   "args": [

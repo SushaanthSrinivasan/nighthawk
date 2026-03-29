@@ -51,7 +51,11 @@
             "-b"
           ],
           "description": "Use bind_address on the local machine as the source address of the connection",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bind address",
+            "description": "Source address of the connection"
+          }
         },
         {
           "names": [
@@ -64,28 +68,45 @@
             "-c"
           ],
           "description": "Selects the cipher specification for encrypting the session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cipher spec",
+            "description": "The selected cipher specification"
+          }
         },
         {
           "names": [
             "-D"
           ],
           "description": "Specifies a local 'dynamic' application-level port forwarding",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Port of the bind address"
+          }
         },
         {
           "names": [
             "-e"
           ],
           "description": "Sets the escape character for sessions with a pty (default: '~')",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "escape char",
+            "description": "Specified escape character"
+          }
         },
         {
           "names": [
             "-F"
           ],
           "description": "Specifies an alternative per-user configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "configfile",
+            "description": "Path to alternative config file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -104,14 +125,22 @@
             "-I"
           ],
           "description": "Specify the PKCS#11 shared library ssh should use to communicate with a PKCS#11 token providing the user's private RSA key",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pkcs11"
+          }
         },
         {
           "names": [
             "-i"
           ],
           "description": "Selects a file from which the identity (private key) for public key authentication is read",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "identity file",
+            "description": "Path to identity (private key)",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -130,14 +159,22 @@
             "-L"
           ],
           "description": "Specifies that the given port on the local (client) host is to be forwarded to the given host and port on the remote side",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port:host:hostport",
+            "description": "Local port, followed by host and host port to forward to"
+          }
         },
         {
           "names": [
             "-l"
           ],
           "description": "Specifies the user to log in as on the remote machine",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "login name",
+            "description": "Name of user logging into remote machine"
+          }
         },
         {
           "names": [
@@ -150,7 +187,10 @@
             "-m"
           ],
           "description": "Additionally, for protocol version 2 a comma-separated list of MAC (message authentication code) algorithms can be specified in order of preference",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mac spec"
+          }
         },
         {
           "names": [
@@ -169,21 +209,104 @@
             "-O"
           ],
           "description": "Control an active connection multiplexing master process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ctl cmd",
+            "description": "Command that's passed to the master process"
+          }
         },
         {
           "names": [
             "-o"
           ],
           "description": "Can be used to give options in the format used in the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "option",
+            "description": "Options that can be specified in the format of the config file",
+            "suggestions": [
+              "AddressFamily",
+              "BatchMode",
+              "BindAddress",
+              "ChallengeResponseAuthentication",
+              "CheckHostIP",
+              "Cipher",
+              "Ciphers",
+              "ClearAllForwardings",
+              "Compression",
+              "CompressionLevel",
+              "ConnectionAttempts",
+              "ConnectTimeout",
+              "ControlMaster",
+              "ControlPath",
+              "ControlPersist",
+              "DynamicForward",
+              "EscapeChar",
+              "ExitOnForwardFailure",
+              "ForwardAgent",
+              "ForwardX11",
+              "ForwardX11Timeout",
+              "ForwardX11Trusted",
+              "GatewayPorts",
+              "GlobalKnownHostsFile",
+              "GSSAPIAuthentication",
+              "GSSAPIDelegateCredentials",
+              "HashKnownHosts",
+              "Host",
+              "HostbasedAuthentication",
+              "HostKeyAlgorithms",
+              "HostKeyAlias",
+              "HostName",
+              "IdentityFile",
+              "IdentitiesOnly",
+              "IPQoS",
+              "KbdInteractiveAuthentication",
+              "KbdInteractiveDevices",
+              "KexAlgorithms",
+              "LocalCommand",
+              "LocalForward",
+              "LogLevel",
+              "MACs",
+              "NoHostAuthenticationForLocalhost",
+              "NumberOfPasswordPrompts",
+              "PasswordAuthentication",
+              "PermitLocalCommand",
+              "PKCS11Provider",
+              "Port",
+              "PreferredAuthentications",
+              "Protocol",
+              "ProxyCommand",
+              "PubkeyAuthentication",
+              "RekeyLimit",
+              "RequestTTY",
+              "RhostsRSAAuthentication",
+              "RSAAuthentication",
+              "SendEnv",
+              "ServerAliveInterval",
+              "ServerAliveCountMax",
+              "StrictHostKeyChecking",
+              "TCPKeepAlive",
+              "Tunnel",
+              "TunnelDevice",
+              "UsePrivilegedPort",
+              "User",
+              "UserKnownHostsFile",
+              "VerifyHostKeyDNS",
+              "VisualHostKey",
+              "XAuthLocation"
+            ]
+          }
         },
         {
           "names": [
             "-p"
           ],
           "description": "Port to connect to on the remote host",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Port to connect to"
+          }
         },
         {
           "names": [
@@ -196,14 +319,23 @@
             "-R"
           ],
           "description": "Specifies that the given port on the remote (server) host is to be forwarded to the given host and port on the local side",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port:host:hostport",
+            "description": "Local port, followed by host and host port to forward to"
+          }
         },
         {
           "names": [
             "-S"
           ],
           "description": "Specifies the location of a control socket for connection sharing, or the string 'none' to disable connection sharing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ctl_path",
+            "description": "Location of the control socket",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -240,14 +372,22 @@
             "-W"
           ],
           "description": "Requests that standard input and output on the client be forwarded to host on port over the secure channel",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host:port",
+            "description": "Host and port to forward to"
+          }
         },
         {
           "names": [
             "-w"
           ],
           "description": "Requests tunnel device forwarding with the specified tun(4) devices between the client (local_tun) and the server (remote_tun)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "local tun",
+            "description": "Local device to forward to"
+          }
         },
         {
           "names": [
@@ -297,21 +437,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -319,7 +468,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -386,7 +539,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -417,21 +578,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -439,7 +609,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -506,7 +680,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -533,21 +715,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -555,7 +746,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -622,7 +817,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -649,21 +852,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -671,7 +883,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -738,7 +954,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -765,21 +989,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -787,7 +1020,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -854,7 +1091,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -879,21 +1124,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -901,7 +1155,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -968,7 +1226,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -999,21 +1265,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1021,7 +1296,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1088,7 +1367,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1115,21 +1402,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1137,7 +1433,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1204,7 +1504,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1229,21 +1537,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -1251,7 +1568,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1318,7 +1639,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -1349,21 +1678,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1371,7 +1709,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1438,7 +1780,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1465,21 +1815,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1487,7 +1846,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1554,7 +1917,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1581,21 +1952,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1603,7 +1983,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1670,7 +2054,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1697,21 +2089,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1719,7 +2120,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1786,7 +2191,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1813,21 +2226,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1835,7 +2257,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1902,7 +2328,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -1929,21 +2363,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -1951,7 +2394,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -2018,7 +2465,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -2043,21 +2498,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2065,7 +2529,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2132,7 +2600,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2159,21 +2635,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2181,7 +2666,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2248,7 +2737,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2275,21 +2772,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2297,7 +2803,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2364,7 +2874,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2391,21 +2909,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2413,7 +2940,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2480,7 +3011,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2507,21 +3046,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2529,7 +3077,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2596,7 +3148,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2623,21 +3183,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2645,7 +3214,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2712,7 +3285,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2739,21 +3320,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2761,7 +3351,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2828,7 +3422,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2855,21 +3457,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2877,7 +3488,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2944,7 +3559,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -2971,21 +3594,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -2993,7 +3625,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3060,7 +3696,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -3087,21 +3731,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -3109,7 +3762,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3176,7 +3833,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -3207,21 +3872,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -3229,7 +3903,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -3296,7 +3974,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -3323,21 +4009,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -3345,7 +4040,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -3412,7 +4111,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -3439,21 +4146,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -3461,7 +4177,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -3528,7 +4248,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -3555,21 +4283,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -3577,7 +4314,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -3644,7 +4385,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -3669,21 +4418,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -3691,7 +4449,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -3758,7 +4520,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -3789,21 +4559,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -3811,7 +4590,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -3878,7 +4661,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -3905,21 +4696,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -3927,7 +4727,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -3994,7 +4798,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -4021,21 +4833,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -4043,7 +4864,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4110,7 +4935,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -4137,21 +4970,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -4159,7 +5001,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4226,7 +5072,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -4253,21 +5107,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -4275,7 +5138,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4342,7 +5209,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -4367,21 +5242,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -4389,7 +5273,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4456,7 +5344,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -4487,21 +5383,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -4509,7 +5414,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4576,7 +5485,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -4603,21 +5520,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -4625,7 +5551,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4692,7 +5622,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -4719,21 +5657,30 @@
                 "--proxy"
               ],
               "description": "SSH proxy address",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Teleport proxy address"
+              }
             },
             {
               "names": [
                 "--user"
               ],
               "description": "SSH proxy user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "user"
+              }
             },
             {
               "names": [
                 "--ttl"
               ],
               "description": "Minutes to live for a SSH session",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "time"
+              }
             },
             {
               "names": [
@@ -4741,7 +5688,11 @@
                 "--identity"
               ],
               "description": "Identity file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -4808,7 +5759,15 @@
                 "--format"
               ],
               "description": "Format output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "suggestions": [
+                  "text",
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -4833,21 +5792,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -4855,7 +5823,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -4922,7 +5894,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -4949,21 +5929,30 @@
             "--proxy"
           ],
           "description": "SSH proxy address",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Teleport proxy address"
+          }
         },
         {
           "names": [
             "--user"
           ],
           "description": "SSH proxy user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
             "--ttl"
           ],
           "description": "Minutes to live for a SSH session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time"
+          }
         },
         {
           "names": [
@@ -4971,7 +5960,11 @@
             "--identity"
           ],
           "description": "Identity file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -5038,7 +6031,15 @@
             "--format"
           ],
           "description": "Format output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "text",
+              "json",
+              "yaml"
+            ]
+          }
         },
         {
           "names": [
@@ -5063,21 +6064,30 @@
         "--proxy"
       ],
       "description": "SSH proxy address",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Teleport proxy address"
+      }
     },
     {
       "names": [
         "--user"
       ],
       "description": "SSH proxy user",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "user"
+      }
     },
     {
       "names": [
         "--ttl"
       ],
       "description": "Minutes to live for a SSH session",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time"
+      }
     },
     {
       "names": [
@@ -5085,7 +6095,11 @@
         "--identity"
       ],
       "description": "Identity file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

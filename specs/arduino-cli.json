@@ -22,7 +22,10 @@
                 "--discovery-timeout"
               ],
               "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "duration"
+              }
             },
             {
               "names": [
@@ -30,7 +33,11 @@
                 "--fqbn"
               ],
               "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FQBN",
+                "description": "Fully qualified board name"
+              }
             },
             {
               "names": [
@@ -45,7 +52,11 @@
                 "--port"
               ],
               "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port",
+                "description": "Arduino board port connection"
+              }
             },
             {
               "names": [
@@ -53,7 +64,10 @@
                 "--protocol"
               ],
               "description": "Upload port protocol, example: 'serial'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "protocol"
+              }
             }
           ]
         },
@@ -74,7 +88,11 @@
                 "--fqbn"
               ],
               "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FQBN",
+                "description": "Fully qualified board name"
+              }
             },
             {
               "names": [
@@ -121,7 +139,10 @@
                 "--discovery-timeout"
               ],
               "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "duration"
+              }
             },
             {
               "names": [
@@ -129,7 +150,11 @@
                 "--fqbn"
               ],
               "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FQBN",
+                "description": "Fully qualified board name"
+              }
             },
             {
               "names": [
@@ -220,7 +245,10 @@
             "--discovery-timeout"
           ],
           "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration"
+          }
         },
         {
           "names": [
@@ -228,7 +256,11 @@
             "--fqbn"
           ],
           "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FQBN",
+            "description": "Fully qualified board name"
+          }
         },
         {
           "names": [
@@ -243,7 +275,11 @@
             "--port"
           ],
           "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Arduino board port connection"
+          }
         },
         {
           "names": [
@@ -333,7 +369,11 @@
             "--build-path"
           ],
           "description": "Path where to save compiled files. If omitted, a directory will be created in the default temporary path of your OS",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -353,7 +393,10 @@
             "--discovery-timeout"
           ],
           "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration"
+          }
         },
         {
           "names": [
@@ -381,7 +424,11 @@
             "--fqbn"
           ],
           "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FQBN",
+            "description": "Fully qualified board name"
+          }
         },
         {
           "names": [
@@ -395,21 +442,33 @@
             "--keys-keychain"
           ],
           "description": "The path of the dir to search for the custom keys to sign and encrypt a binary. Used only by the platforms that support it",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--libraries"
           ],
           "description": "Path to a collection of libraries. Can be used multiple times or entries can be comma separated",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--library"
           ],
           "description": "Path to a single library’s root folder. Can be used multiple times or entries can be comma separated",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filepath",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -428,7 +487,11 @@
             "--output-dir"
           ],
           "description": "Save build artifacts in this directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -436,7 +499,11 @@
             "--port"
           ],
           "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Arduino board port connection"
+          }
         },
         {
           "names": [
@@ -514,7 +581,15 @@
             "--warnings"
           ],
           "description": "Optional, can be: none, default, more, all. Used to tell gcc which warning level to use (-W flag). (default \"none\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "none",
+              "default",
+              "more",
+              "all"
+            ]
+          }
         }
       ]
     },
@@ -589,14 +664,22 @@
                 "--dest-dir"
               ],
               "description": "Sets where to save the configuration file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--dest-file"
               ],
               "description": "Sets where to save the configuration file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -883,7 +966,11 @@
             "--debug-file"
           ],
           "description": "Append debug logging to the specified file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -904,7 +991,11 @@
             "--port"
           ],
           "description": "The TCP port the daemon will listen to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Arduino board port connection"
+          }
         }
       ]
     },
@@ -928,7 +1019,10 @@
                 "--discovery-timeout"
               ],
               "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "duration"
+              }
             },
             {
               "names": [
@@ -936,7 +1030,11 @@
                 "--fqbn"
               ],
               "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FQBN",
+                "description": "Fully qualified board name"
+              }
             },
             {
               "names": [
@@ -950,7 +1048,16 @@
                 "--interpreter"
               ],
               "description": "Debug interpreter, example: console, mi, mi1, mi2, mi3 (default \"console\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "console",
+                  "mi",
+                  "mi1",
+                  "mi2",
+                  "mi3"
+                ]
+              }
             },
             {
               "names": [
@@ -958,7 +1065,11 @@
                 "--port"
               ],
               "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port",
+                "description": "Arduino board port connection"
+              }
             },
             {
               "names": [
@@ -992,7 +1103,10 @@
             "--discovery-timeout"
           ],
           "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration"
+          }
         },
         {
           "names": [
@@ -1000,7 +1114,11 @@
             "--fqbn"
           ],
           "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FQBN",
+            "description": "Fully qualified board name"
+          }
         },
         {
           "names": [
@@ -1021,14 +1139,27 @@
             "--input-dir"
           ],
           "description": "Directory containing binaries for debug",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--interpreter"
           ],
           "description": "Debug interpreter, example: console, mi, mi1, mi2, mi3 (default \"console\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "console",
+              "mi",
+              "mi1",
+              "mi2",
+              "mi3"
+            ]
+          }
         },
         {
           "names": [
@@ -1036,7 +1167,11 @@
             "--port"
           ],
           "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Arduino board port connection"
+          }
         },
         {
           "names": [
@@ -1121,7 +1256,11 @@
                 "--fqbn"
               ],
               "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FQBN",
+                "description": "Fully qualified board name"
+              }
             },
             {
               "names": [
@@ -1198,7 +1337,11 @@
                 "--fqbn"
               ],
               "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FQBN",
+                "description": "Fully qualified board name"
+              }
             },
             {
               "names": [
@@ -1325,7 +1468,10 @@
             "--discovery-timeout"
           ],
           "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration"
+          }
         },
         {
           "names": [
@@ -1333,7 +1479,11 @@
             "--fqbn"
           ],
           "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FQBN",
+            "description": "Fully qualified board name"
+          }
         },
         {
           "names": [
@@ -1348,7 +1498,11 @@
             "--port"
           ],
           "description": "Upload port address, example: 'COM3 or /dev/ttyACM2'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Arduino board port connection"
+          }
         },
         {
           "names": [
@@ -1530,7 +1684,10 @@
             "--discovery-timeout"
           ],
           "description": "Max time to wait for port discovery, example: '30s, 1m (default 1s)'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "duration"
+          }
         },
         {
           "names": [
@@ -1538,7 +1695,11 @@
             "--fqbn"
           ],
           "description": "Fully Qualified Board Name, example: 'arduino:avr:uno'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FQBN",
+            "description": "Fully qualified board name"
+          }
         },
         {
           "names": [
@@ -1552,7 +1713,11 @@
             "--input-dir"
           ],
           "description": "Directory containing binaries to upload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1560,7 +1725,11 @@
             "--input-file"
           ],
           "description": "Binary file to upload",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1568,7 +1737,11 @@
             "--port"
           ],
           "description": "Binary file to upload, example: 'COM3 or /dev/ttyACM2'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "Arduino board port connection"
+          }
         },
         {
           "names": [
@@ -1645,14 +1818,27 @@
         "--config-file"
       ],
       "description": "The custom config file (if not specified the default will be used)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--format"
       ],
       "description": "The output format for the logs, can be: text, json, jsonmini, yaml (default 'text')",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data_format",
+        "suggestions": [
+          "text",
+          "json",
+          "jsonmini",
+          "yaml"
+        ]
+      }
     },
     {
       "names": [
@@ -1672,21 +1858,44 @@
         "--log-file"
       ],
       "description": "Path to the file where logs will be written",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filepath",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--log-format"
       ],
       "description": "The output format for the logs, can be: text, json",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "text",
+          "json"
+        ]
+      }
     },
     {
       "names": [
         "--log-level"
       ],
       "description": "Messages with this level and above will be logged. Valid levels are: trace, debug, info, warn, error, fatal, panic",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "trace",
+          "debug",
+          "info",
+          "warn",
+          "error",
+          "fatal",
+          "panic"
+        ]
+      }
     },
     {
       "names": [

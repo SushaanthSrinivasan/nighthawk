@@ -15,7 +15,10 @@
         "--cert"
       ],
       "description": "Client certificate file and password",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "certificate[:password]"
+      }
     },
     {
       "names": [
@@ -23,7 +26,11 @@
         "--config"
       ],
       "description": "Read config from a file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -31,7 +38,10 @@
         "--continue-at"
       ],
       "description": "Resumed transfer offset",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "offset"
+      }
     },
     {
       "names": [
@@ -39,7 +49,11 @@
         "--cookie"
       ],
       "description": "Send cookies from string/file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data or filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -47,7 +61,11 @@
         "--cookie-jar"
       ],
       "description": "Write cookies to <filename> after operation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -55,7 +73,10 @@
         "--data"
       ],
       "description": "HTTP POST data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data"
+      }
     },
     {
       "names": [
@@ -70,7 +91,11 @@
         "--dump-header"
       ],
       "description": "Write the received headers to <filename>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -85,7 +110,10 @@
         "--form"
       ],
       "description": "Specify multipart MIME data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "content"
+      }
     },
     {
       "names": [
@@ -93,7 +121,10 @@
         "--ftp-port"
       ],
       "description": "Use PORT instead of PASV",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
@@ -122,7 +153,14 @@
         "--header"
       ],
       "description": "Pass custom header(s) to server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "header/file",
+        "suggestions": [
+          "Content-Type: application/json",
+          "Content-Type: application/x-www-form-urlencoded"
+        ]
+      }
     },
     {
       "names": [
@@ -200,7 +238,10 @@
         "--max-time"
       ],
       "description": "Maximum time allowed for the transfer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -229,7 +270,11 @@
         "--output"
       ],
       "description": "Write to file instead of stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -251,7 +296,10 @@
         "--proxy-user"
       ],
       "description": "Proxy user and password",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "user:password"
+      }
     },
     {
       "names": [
@@ -273,7 +321,10 @@
         "--range"
       ],
       "description": "Retrieve only the bytes within RANGE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "range"
+      }
     },
     {
       "names": [
@@ -281,7 +332,10 @@
         "--referer"
       ],
       "description": "Referrer URL",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
@@ -310,7 +364,21 @@
         "--request"
       ],
       "description": "Specify request command to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command",
+        "suggestions": [
+          "GET",
+          "HEAD",
+          "POST",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "OPTIONS",
+          "TRACE",
+          "PATCH"
+        ]
+      }
     },
     {
       "names": [
@@ -332,7 +400,10 @@
         "--speed-limit"
       ],
       "description": "Stop transfers slower than this",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "speed"
+      }
     },
     {
       "names": [
@@ -340,7 +411,10 @@
         "--speed-time"
       ],
       "description": "Trigger 'speed-limit' abort after this time",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -362,7 +436,10 @@
         "--telnet-option"
       ],
       "description": "Set telnet option",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "val"
+      }
     },
     {
       "names": [
@@ -370,7 +447,10 @@
         "--time-cond"
       ],
       "description": "Transfer based on a time condition",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time"
+      }
     },
     {
       "names": [
@@ -385,7 +465,11 @@
         "--upload-file"
       ],
       "description": "Transfer local FILE to destination",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -400,7 +484,10 @@
         "--user"
       ],
       "description": "Server user and password",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "user:password"
+      }
     },
     {
       "names": [
@@ -408,7 +495,10 @@
         "--user-agent"
       ],
       "description": "Send User-Agent <name> to server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -430,21 +520,31 @@
         "--write-out"
       ],
       "description": "Use output FORMAT after completion",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format"
+      }
     },
     {
       "names": [
         "--abstract-unix-socket"
       ],
       "description": "Connect via abstract Unix domain socket",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path"
+      }
     },
     {
       "names": [
         "--alt-svc"
       ],
       "description": "Name> Enable alt-svc with this cache file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -463,14 +563,22 @@
         "--cacert"
       ],
       "description": "CA certificate to verify peer against",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--capath"
       ],
       "description": "CA directory to verify peer against",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -483,14 +591,25 @@
         "--cert-type"
       ],
       "description": "Certificate file type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "DER",
+          "PEM",
+          "ENG"
+        ]
+      }
     },
     {
       "names": [
         "--ciphers"
       ],
       "description": "Of ciphers> SSL ciphers to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
@@ -509,14 +628,20 @@
         "--connect-timeout"
       ],
       "description": "Maximum time allowed for connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--connect-to"
       ],
       "description": "Connect to host",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "HOST1:PORT1:HOST2:PORT2"
+      }
     },
     {
       "names": [
@@ -535,42 +660,61 @@
         "--crlfile"
       ],
       "description": "Get a CRL list in PEM format from the given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--data-ascii"
       ],
       "description": "HTTP POST ASCII data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data"
+      }
     },
     {
       "names": [
         "--data-binary"
       ],
       "description": "HTTP POST binary data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data"
+      }
     },
     {
       "names": [
         "--data-raw"
       ],
       "description": "HTTP POST data, '@' allowed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data"
+      }
     },
     {
       "names": [
         "--data-urlencode"
       ],
       "description": "HTTP POST data url encoded",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data"
+      }
     },
     {
       "names": [
         "--delegation"
       ],
       "description": "GSS-API delegation permission",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LEVEL"
+      }
     },
     {
       "names": [
@@ -601,70 +745,101 @@
         "--dns-interface"
       ],
       "description": "Interface to use for DNS requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "interface"
+      }
     },
     {
       "names": [
         "--dns-ipv4-addr"
       ],
       "description": "IPv4 address to use for DNS requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
         "--dns-ipv6-addr"
       ],
       "description": "IPv6 address to use for DNS requests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
         "--dns-servers"
       ],
       "description": "DNS server addrs to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "addresses"
+      }
     },
     {
       "names": [
         "--doh-url"
       ],
       "description": "Resolve host names over DOH",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "URL"
+      }
     },
     {
       "names": [
         "--egd-file"
       ],
       "description": "EGD socket path for random data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--engine"
       ],
       "description": "Crypto engine to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--etag-compare"
       ],
       "description": "Make a conditional HTTP request for the ETag read from the given file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
         "--etag-save"
       ],
       "description": "Save an HTTP ETag to the specified file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
         "--expect100-timeout"
       ],
       "description": "How long to wait for 100-continue",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -689,21 +864,30 @@
         "--form-string"
       ],
       "description": "Specify multipart MIME data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--ftp-account"
       ],
       "description": "Account data string",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "data"
+      }
     },
     {
       "names": [
         "--ftp-alternative-to-user"
       ],
       "description": "String to replace USER [name]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
@@ -716,7 +900,10 @@
         "--ftp-method"
       ],
       "description": "Control CWD usage",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "method"
+      }
     },
     {
       "names": [
@@ -747,7 +934,14 @@
         "--ftp-ssl-ccc-mode"
       ],
       "description": "Set CCC mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "active",
+          "passive"
+        ]
+      }
     },
     {
       "names": [
@@ -760,7 +954,10 @@
         "--happy-eyeballs-timeout-ms"
       ],
       "description": "How long to wait in milliseconds for IPv6 before trying IPv4",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "milliseconds"
+      }
     },
     {
       "names": [
@@ -773,7 +970,10 @@
         "--hostpubmd5"
       ],
       "description": "Acceptable MD5 hash of the host public key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "md5"
+      }
     },
     {
       "names": [
@@ -810,56 +1010,86 @@
         "--interface"
       ],
       "description": "Use network INTERFACE (or address)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--keepalive-time"
       ],
       "description": "Interval time for keepalive probes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--key"
       ],
       "description": "Private key file name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key"
+      }
     },
     {
       "names": [
         "--key-type"
       ],
       "description": "Private key file type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "DER",
+          "PEM",
+          "ENG"
+        ]
+      }
     },
     {
       "names": [
         "--krb"
       ],
       "description": "Enable Kerberos with security <level>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level"
+      }
     },
     {
       "names": [
         "--libcurl"
       ],
       "description": "Dump libcurl equivalent code of this command line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--limit-rate"
       ],
       "description": "Limit transfer speed to RATE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "speed"
+      }
     },
     {
       "names": [
         "--local-port"
       ],
       "description": "Force use of RANGE for local port numbers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num/range"
+      }
     },
     {
       "names": [
@@ -872,42 +1102,60 @@
         "--login-options"
       ],
       "description": "Server login options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "options"
+      }
     },
     {
       "names": [
         "--mail-auth"
       ],
       "description": "Originator address of the original email",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
         "--mail-from"
       ],
       "description": "Mail from this address",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
         "--mail-rcpt"
       ],
       "description": "Mail to this address",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "address"
+      }
     },
     {
       "names": [
         "--max-filesize"
       ],
       "description": "Maximum file size to download",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "bytes"
+      }
     },
     {
       "names": [
         "--max-redirs"
       ],
       "description": "Maximum number of redirects allowed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num"
+      }
     },
     {
       "names": [
@@ -926,7 +1174,11 @@
         "--netrc-file"
       ],
       "description": "Specify FILE for netrc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -963,7 +1215,10 @@
         "--noproxy"
       ],
       "description": "List of hosts which do not use proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "no-proxy-list"
+      }
     },
     {
       "names": [
@@ -982,14 +1237,20 @@
         "--oauth2-bearer"
       ],
       "description": "OAuth 2 Bearer Token",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "token"
+      }
     },
     {
       "names": [
         "--pass"
       ],
       "description": "Pass phrase for the private key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "phrase"
+      }
     },
     {
       "names": [
@@ -1002,7 +1263,10 @@
         "--pinnedpubkey"
       ],
       "description": "FILE/HASHES Public key to verify peer against",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hashes"
+      }
     },
     {
       "names": [
@@ -1033,21 +1297,30 @@
         "--proto"
       ],
       "description": "Enable/disable PROTOCOLS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "protocols"
+      }
     },
     {
       "names": [
         "--proto-default"
       ],
       "description": "Use PROTOCOL for any URL missing a scheme",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "protocol"
+      }
     },
     {
       "names": [
         "--proto-redir"
       ],
       "description": "Enable/disable PROTOCOLS on redirect",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "protocols"
+      }
     },
     {
       "names": [
@@ -1066,42 +1339,63 @@
         "--proxy-cacert"
       ],
       "description": "CA certificate to verify peer against for proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--proxy-capath"
       ],
       "description": "CA directory to verify peer against for proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--proxy-cert"
       ],
       "description": "Set client certificate for proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cert[:passwd]"
+      }
     },
     {
       "names": [
         "--proxy-cert-type"
       ],
       "description": "Client certificate type for HTTPS proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type"
+      }
     },
     {
       "names": [
         "--proxy-ciphers"
       ],
       "description": "SSL ciphers to use for proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
         "--proxy-crlfile"
       ],
       "description": "Set a CRL list for proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -1114,7 +1408,14 @@
         "--proxy-header"
       ],
       "description": "Pass custom header(s) to proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "header/file",
+        "suggestions": [
+          "Content-Type: application/json",
+          "Content-Type: application/x-www-form-urlencoded"
+        ]
+      }
     },
     {
       "names": [
@@ -1127,14 +1428,20 @@
         "--proxy-key"
       ],
       "description": "Private key for HTTPS proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key"
+      }
     },
     {
       "names": [
         "--proxy-key-type"
       ],
       "description": "Private key file type for proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type"
+      }
     },
     {
       "names": [
@@ -1153,21 +1460,30 @@
         "--proxy-pass"
       ],
       "description": "Pass phrase for the private key for HTTPS proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "phrase"
+      }
     },
     {
       "names": [
         "--proxy-pinnedpubkey"
       ],
       "description": "FILE/HASHES public key to verify proxy with",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hashes"
+      }
     },
     {
       "names": [
         "--proxy-service-name"
       ],
       "description": "SPNEGO proxy service name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -1180,28 +1496,40 @@
         "--proxy-tls13-ciphers"
       ],
       "description": "List> TLS 1.3 proxy cipher suites",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ciphersuite"
+      }
     },
     {
       "names": [
         "--proxy-tlsauthtype"
       ],
       "description": "TLS authentication type for HTTPS proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type"
+      }
     },
     {
       "names": [
         "--proxy-tlspassword"
       ],
       "description": "TLS password for HTTPS proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--proxy-tlsuser"
       ],
       "description": "TLS username for HTTPS proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -1214,21 +1542,32 @@
         "--proxy1.0"
       ],
       "description": "Use HTTP/1.0 proxy on given port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host[:port]"
+      }
     },
     {
       "names": [
         "--pubkey"
       ],
       "description": "SSH Public key file name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--random-file"
       ],
       "description": "File for reading random data from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -1253,14 +1592,20 @@
         "--resolve"
       ],
       "description": "Resolve the host+port to this address",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host:port:address[,address]..."
+      }
     },
     {
       "names": [
         "--retry"
       ],
       "description": "Retry request if transient problems occur",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num"
+      }
     },
     {
       "names": [
@@ -1273,14 +1618,20 @@
         "--retry-delay"
       ],
       "description": "Wait time between retries",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
         "--retry-max-time"
       ],
       "description": "Retry only within this period",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -1293,28 +1644,40 @@
         "--service-name"
       ],
       "description": "SPNEGO service name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--socks4"
       ],
       "description": "SOCKS4 proxy on given host + port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host[:port]"
+      }
     },
     {
       "names": [
         "--socks4a"
       ],
       "description": "SOCKS4a proxy on given host + port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host[:port]"
+      }
     },
     {
       "names": [
         "--socks5"
       ],
       "description": "SOCKS5 proxy on given host + port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host[:port]"
+      }
     },
     {
       "names": [
@@ -1339,14 +1702,20 @@
         "--socks5-gssapi-service"
       ],
       "description": "SOCKS5 proxy service name for GSS-API",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--socks5-hostname"
       ],
       "description": "SOCKS5 proxy, pass host name to proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "host[:port]"
+      }
     },
     {
       "names": [
@@ -1413,7 +1782,10 @@
         "--tftp-blksize"
       ],
       "description": "Set TFTP BLKSIZE option",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -1426,21 +1798,30 @@
         "--tls-max"
       ],
       "description": "Set maximum allowed TLS version",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "VERSION"
+      }
     },
     {
       "names": [
         "--tls13-ciphers"
       ],
       "description": "Of TLS 1.3 ciphersuites> TLS 1.3 cipher suites to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
         "--tlsauthtype"
       ],
       "description": "TLS authentication type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type"
+      }
     },
     {
       "names": [
@@ -1453,7 +1834,10 @@
         "--tlsuser"
       ],
       "description": "TLS user name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
@@ -1490,14 +1874,22 @@
         "--trace"
       ],
       "description": "Write a debug trace to FILE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--trace-ascii"
       ],
       "description": "Like --trace, but without hex output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -1510,14 +1902,20 @@
         "--unix-socket"
       ],
       "description": "Connect through this Unix domain socket",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path"
+      }
     },
     {
       "names": [
         "--url"
       ],
       "description": "URL to work with",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "url"
+      }
     },
     {
       "names": [

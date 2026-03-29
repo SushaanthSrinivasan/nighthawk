@@ -32,14 +32,25 @@
         "--config"
       ],
       "description": "Specifies the full path to a YAML configuration file containing sensitive values for the following options to mongoimport",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--uri"
       ],
       "description": "Specifies the resolvable URI connection string of the MongoDB deployment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "connectionString",
+        "description": "MongoDB connection string",
+        "suggestions": [
+          "mongodb://localhost:27017",
+          "mongodb+srv://username:password@cluster0.example.mongodb.net/database"
+        ]
+      }
     },
     {
       "names": [
@@ -47,14 +58,26 @@
         "-h"
       ],
       "description": "Specifies the resolvable hostname of the MongoDB deployment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hostname:port",
+        "suggestions": [
+          "localhost:27017"
+        ]
+      }
     },
     {
       "names": [
         "--port"
       ],
       "description": "Specifies the TCP port on which the MongoDB instance listens for client connections",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port",
+        "suggestions": [
+          "27017"
+        ]
+      }
     },
     {
       "names": [
@@ -67,28 +90,41 @@
         "--sslCAFile"
       ],
       "description": "Specifies the .pem file that contains the root certificate chain from the Certificate Authority",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--sslPEMKeyFile"
       ],
       "description": "Specifies the .pem file that contains both the TLS/SSL certificate and key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--sslPEMKeyPassword"
       ],
       "description": "Specifies the password to de-crypt the certificate-key file (i.e. --sslPEMKeyFile)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "Password"
+      }
     },
     {
       "names": [
         "--sslCRLFile"
       ],
       "description": "Specifies the .pem file that contains the Certificate Revocation List",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -108,7 +144,10 @@
         "-u"
       ],
       "description": "Specifies a username with which to authenticate to a MongoDB database that uses authentication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username"
+      }
     },
     {
       "names": [
@@ -116,42 +155,69 @@
         "-p"
       ],
       "description": "Specifies a password with which to authenticate to a MongoDB database that uses authentication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "password"
+      }
     },
     {
       "names": [
         "--awsSessionToken"
       ],
       "description": "Specifies the session token for MONGODB-AWS authentication mechanism",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "AWS Session Token"
+      }
     },
     {
       "names": [
         "--authenticationDatabase"
       ],
       "description": "Specifies the authentication database where the specified --username has been created",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dbname",
+        "description": "Database name"
+      }
     },
     {
       "names": [
         "--authenticationMechanism"
       ],
       "description": "Specifies the authentication mechanism the mongoimport instance uses to authenticate to the mongod or mongos",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "suggestions": [
+          "SCRAM-SHA-1",
+          "SCRAM-SHA-256",
+          "MONGODB-X509",
+          "MONGODB-AWS",
+          "GSSAPI",
+          "PLAIN"
+        ]
+      }
     },
     {
       "names": [
         "--gssapiServiceName"
       ],
       "description": "Specify the name of the service using GSSAPI/Kerberos. This option is available only in MongoDB Enterprise",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "serviceName"
+      }
     },
     {
       "names": [
         "--gssapiHostName"
       ],
       "description": "Specify the hostname of the service using GSSAPI/Kerberos. This option is available only in MongoDB Enterprise",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hostname"
+      }
     },
     {
       "names": [
@@ -159,7 +225,10 @@
         "-d"
       ],
       "description": "Specifies the name of the database on which to run the mongoimport",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "database"
+      }
     },
     {
       "names": [
@@ -167,7 +236,10 @@
         "-c"
       ],
       "description": "Specifies the name of the collection to import",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "collection"
+      }
     },
     {
       "names": [
@@ -175,14 +247,21 @@
         "-f"
       ],
       "description": "Specify a comma separated list of field names when importing CSV or TSV files that do not have field names in the first (i.e. header) line of the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "field1,field2,...",
+        "description": "Comma separated list of fields"
+      }
     },
     {
       "names": [
         "--fieldFile"
       ],
       "description": "Specify a file containing a comma separated list of field names when importing CSV or TSV files that do not have field names in the first (i.e. header) line of the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -195,14 +274,25 @@
         "--type"
       ],
       "description": "Specifies the file type to import",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "json",
+          "csv",
+          "tsv"
+        ]
+      }
     },
     {
       "names": [
         "--file"
       ],
       "description": "Specifies the location and name of a file containing the data to import",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -227,14 +317,27 @@
         "--mode"
       ],
       "description": "Specifies how the import process should handle existing documents in the database that match documents in the import file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "insert",
+          "upsert",
+          "merge",
+          "delete"
+        ]
+      }
     },
     {
       "names": [
         "--upsertFields"
       ],
       "description": "Specifies a list of fields for the query portion of the import process",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "field1,field2,...",
+        "description": "Comma separated list of fields"
+      }
     },
     {
       "names": [
@@ -265,14 +368,21 @@
         "--numInsertionWorkers"
       ],
       "description": "Specifies the number of insertion workers to run concurrently",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "description": "Number of workers"
+      }
     },
     {
       "names": [
         "--writeConcern"
       ],
       "description": "Specifies the write concern for each write operation that mongoimport performs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "document"
+      }
     },
     {
       "names": [
@@ -291,7 +401,16 @@
         "--parseGrace"
       ],
       "description": "Specifies how mongoimport handles type coercion failures when importing CSV or TSV files with --columnsHaveTypes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "grace",
+        "suggestions": [
+          "autoCast",
+          "skipField",
+          "skipRow",
+          "stop"
+        ]
+      }
     }
   ]
 }

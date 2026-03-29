@@ -29,7 +29,10 @@
         "--format"
       ],
       "description": "Output format. This can either be a specifier string (similar to strftime()'s FMT) or the name of a calendar",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -37,7 +40,10 @@
         "--input-format"
       ],
       "description": "Input format, can be used multiple times. Each date/time will be passed to the input format parsers in the order they are given, if a date/time can be read successfully with a given input format speci",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "input format"
+      }
     },
     {
       "names": [
@@ -45,7 +51,10 @@
         "--base"
       ],
       "description": "For underspecified input use DT as a fallback to fill in missing fields. Also used for ambiguous format specifiers to position their range on the absolute time line. Must be a date/time in ISO8601 for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "base"
+      }
     },
     {
       "names": [
@@ -59,7 +68,10 @@
         "--locale"
       ],
       "description": "Format results according to LOCALE, this would only affect month and weekday names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "locale"
+      }
     },
     {
       "names": [
@@ -67,14 +79,21 @@
         "--skip"
       ],
       "description": "Skip weekdays specified by WEEKDAY. WEEKDAY can be a single weekday (Mon, Tue, etc.), and to skip several days the --skip option can be used multiple times. WEEKDAY can also be a comma-separated list ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "weekday",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--alt-inc"
       ],
       "description": "Alternative increment to use when a date is hit that is skipped as per --skip. This increment will be applied until a non-skipped date is reached. The special case `0' (default) deactivates alternativ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "alternative increment"
+      }
     },
     {
       "names": [

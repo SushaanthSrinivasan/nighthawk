@@ -291,7 +291,14 @@
                 "--sort"
               ],
               "description": "Specify the sorting",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "suggestions": [
+                  "builds",
+                  "projects",
+                  "orgs"
+                ]
+              }
             },
             {
               "names": [
@@ -413,21 +420,30 @@
                 "--input"
               ],
               "description": "Path to input file, i.e. ./.circleci/config.yml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--metafile"
               ],
               "description": "Path to decision metadata file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--owner-id"
               ],
               "description": "The id of the policy's owner",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -440,7 +456,10 @@
                 "--context"
               ],
               "description": "Policy context for decision, default is 'config'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -459,14 +478,20 @@
                 "--context"
               ],
               "description": "Policy context for decision, default is 'config'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--owner-id"
               ],
               "description": "The id of the policy's owner",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -485,21 +510,30 @@
                 "--input"
               ],
               "description": "Path to input file, i.e. ./.circleci/config.yml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--metafile"
               ],
               "description": "Path to decision metadata file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--query"
               ],
               "description": "Policy decision query, default is 'data'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -518,7 +552,10 @@
                 "--context"
               ],
               "description": "Policy context for decision, default is 'config'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -543,42 +580,60 @@
                 "--after"
               ],
               "description": "Filter decision logs triggered AFTER this datetime",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--before"
               ],
               "description": "Filter decision logs triggered BEFORE this datetime",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--branch"
               ],
               "description": "Filter decision logs based on branch name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--context"
               ],
               "description": "Policy context for decision, default is 'config'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--owner-id"
               ],
               "description": "The id of the policy's owner",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--out"
               ],
               "description": "Specify output file name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -591,14 +646,20 @@
                 "--project-id"
               ],
               "description": "Filter decision logs based on project-id",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--status"
               ],
               "description": "Filter decision logs based on their status",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -617,14 +678,20 @@
                 "--context"
               ],
               "description": "Policy context for decision, default is 'config'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--owner-id"
               ],
               "description": "The id of the policy's owner",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -655,14 +722,24 @@
                 "--enabled"
               ],
               "description": "Enable/disable policy decision evaluation in build pipeline",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "boolean",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--owner-id"
               ],
               "description": "The id of the policy's owner",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }

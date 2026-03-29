@@ -16,7 +16,10 @@
                 "-env"
               ],
               "description": "List all environments that contain given string in their name or ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -24,7 +27,18 @@
                 "-t"
               ],
               "description": "List all environments with the given type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environmentTypes",
+                "suggestions": [
+                  "Trial",
+                  "Sandbox",
+                  "Production",
+                  "Developer",
+                  "Teams",
+                  "SubscriptionBasedTrial"
+                ]
+              }
             },
             {
               "names": [
@@ -32,7 +46,10 @@
                 "-n"
               ],
               "description": "List all environments that contain given string in their name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -40,7 +57,10 @@
                 "-oi"
               ],
               "description": "List all environments that contain given string in their organization ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -48,7 +68,10 @@
                 "-a"
               ],
               "description": "List all environments that have specified application installed. To specify application, use unique name or ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -62,7 +85,10 @@
                 "-n"
               ],
               "description": "Sets the name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -70,7 +96,28 @@
                 "-r"
               ],
               "description": "Sets the environment's region name. [defaults to unitedstates]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "unitedstates",
+                  "unitedstatesfirstrelease",
+                  "europe",
+                  "asia",
+                  "australia",
+                  "india",
+                  "japan",
+                  "canada",
+                  "unitedkingdom",
+                  "southamerica",
+                  "france",
+                  "unitedarabemirates",
+                  "germany",
+                  "switzerland",
+                  "norway",
+                  "korea"
+                ]
+              }
             },
             {
               "names": [
@@ -79,6 +126,17 @@
               ],
               "description": "Sets the environment Type",
               "takes_arg": true,
+              "arg": {
+                "name": "environmentTypes",
+                "suggestions": [
+                  "Trial",
+                  "Sandbox",
+                  "Production",
+                  "Developer",
+                  "Teams",
+                  "SubscriptionBasedTrial"
+                ]
+              },
               "is_required": true
             },
             {
@@ -87,7 +145,10 @@
                 "-c"
               ],
               "description": "Sets the currency used for your environment. [defaults to USD]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -95,7 +156,10 @@
                 "-l"
               ],
               "description": "Sets the language used for your environment. [defaults to English]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -103,7 +167,10 @@
                 "-tm"
               ],
               "description": "Sets the Dynamics 365 app that needs to be deployed, passed as comma separated values. For example: -tm 'D365_Sample, D365_Sales'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -111,7 +178,10 @@
                 "-d"
               ],
               "description": "The domain name is part of the environment URL. If domain name is already in use, a numeric value is appended to the domain name. For example: If 'contoso' is already in use, then the environment URL ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -119,7 +189,10 @@
                 "-if"
               ],
               "description": "The verb arguments to be passed in a .json input file. For example: {'name' : 'contoso'}. The arguments passed through command-line will take precedence over arguments from the .json input file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -134,7 +207,10 @@
                 "-tid"
               ],
               "description": "Team ID as Guid",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -142,7 +218,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -150,7 +229,10 @@
                 "-u"
               ],
               "description": "Object ID or user principal name (UPN) of Microsoft Entra ID user to be assigned to the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -164,7 +246,10 @@
                 "-env"
               ],
               "description": "Environment URL or ID of the Environment that requires backup",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -173,6 +258,9 @@
               ],
               "description": "Sets the backup label as provided",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -181,7 +269,10 @@
                 "-n"
               ],
               "description": "**ignored**: Additional notes for this backup",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -195,7 +286,10 @@
                 "-env"
               ],
               "description": "Environment URL or ID of the Environment that requires backup",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -204,6 +298,15 @@
               ],
               "description": "Sets the backup retention period in days as provided. Valid values are: 7, 14, 21, 28",
               "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "7",
+                  "14",
+                  "21",
+                  "28"
+                ]
+              },
               "is_required": true
             },
             {
@@ -219,7 +322,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -233,7 +339,10 @@
                 "-env"
               ],
               "description": "Environment URL or ID of the Environment that needs to be deleted from your tenant",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -248,7 +357,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -262,7 +374,10 @@
                 "-env"
               ],
               "description": "URL or ID of the Environment that needs to be reset",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -270,7 +385,10 @@
                 "-c"
               ],
               "description": "Sets the currency used for your environment. [defaults to USD]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -278,7 +396,10 @@
                 "-d"
               ],
               "description": "The domain name is part of the environment URL. If domain name is already in use, a numeric value is appended to the domain name. For example: If 'contoso' is already in use, then the environment URL ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -286,7 +407,10 @@
                 "-n"
               ],
               "description": "Sets the name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -294,7 +418,10 @@
                 "-l"
               ],
               "description": "Sets the language used for your environment. [defaults to English]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -302,7 +429,10 @@
                 "-p"
               ],
               "description": "Sets the description used to associate the environment with a specific intent",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -310,7 +440,10 @@
                 "-tm"
               ],
               "description": "Sets the Dynamics 365 app that needs to be deployed, passed as comma separated values. For example: -tm 'D365_Sample, D365_Sales'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -318,7 +451,10 @@
                 "-if"
               ],
               "description": "The verb arguments to be passed in a .json input file. For example: {'name' : 'contoso'}. The arguments passed through command-line will take precedence over arguments from the .json input file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -333,7 +469,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -347,7 +486,10 @@
                 "-env"
               ],
               "description": "List all environments that contain a given string in their Environment ID or URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -361,7 +503,10 @@
                 "-se"
               ],
               "description": "Environment URL or ID of the source environment required for restore",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -369,7 +514,10 @@
                 "-te"
               ],
               "description": "Environment URL or ID of the target environment required for restore. This would default to source URL/ID if not provided",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -378,6 +526,9 @@
               ],
               "description": "DateTime of the backup in 'mm/dd/yyyy hh:mm' format OR string 'latest'",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -386,7 +537,10 @@
                 "-n"
               ],
               "description": "Optional name of the restored environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -408,7 +562,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -422,7 +579,10 @@
                 "-se"
               ],
               "description": "Environment URL or ID of the source environment that is being copied",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -430,7 +590,10 @@
                 "-te"
               ],
               "description": "Environment URL or ID of the target environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -438,14 +601,24 @@
                 "-n"
               ],
               "description": "Name of the target environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--type",
                 "-t"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "MinimalCopy",
+                  "FullCopy"
+                ]
+              }
             },
             {
               "names": [
@@ -467,7 +640,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -486,6 +662,9 @@
               ],
               "description": "ID or URL of the environment to assign a user to",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -495,6 +674,9 @@
               ],
               "description": "Object ID or user principal name (UPN) of Microsoft Entra ID user to be assigned to the environment or Application ID if assigning an Application User",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -504,6 +686,9 @@
               ],
               "description": "Name or ID of security role to be applied to user",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -519,7 +704,10 @@
                 "-bu"
               ],
               "description": "ID of business unit to associate application user with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -541,6 +729,9 @@
               ],
               "description": "ID or URL of the environment to assign a user to",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -550,6 +741,9 @@
               ],
               "description": "Microsoft Entra ID object ID of group to assign to target Dataverse environment",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -559,6 +753,9 @@
               ],
               "description": "Name of the group or team to create in Dataverse",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -568,6 +765,9 @@
               ],
               "description": "Name or ID of security role to be applied to user",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -577,6 +777,15 @@
               ],
               "description": "Type of team",
               "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Owner",
+                  "Access",
+                  "AadSecurityGroup",
+                  "AadOfficeGroup"
+                ]
+              },
               "is_required": true
             },
             {
@@ -586,6 +795,15 @@
               ],
               "description": "Team membership type",
               "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "MembersAndGuests",
+                  "Members",
+                  "Owners",
+                  "Guests"
+                ]
+              },
               "is_required": true
             },
             {
@@ -594,7 +812,10 @@
                 "-bu"
               ],
               "description": "ID of business unit to associate application user with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -608,7 +829,28 @@
                 "-r"
               ],
               "description": "Sets the environment's region name. [defaults to unitedstates]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "unitedstates",
+                  "unitedstatesfirstrelease",
+                  "europe",
+                  "asia",
+                  "australia",
+                  "india",
+                  "japan",
+                  "canada",
+                  "unitedkingdom",
+                  "southamerica",
+                  "france",
+                  "unitedarabemirates",
+                  "germany",
+                  "switzerland",
+                  "norway",
+                  "korea"
+                ]
+              }
             }
           ]
         },
@@ -622,7 +864,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -630,7 +875,10 @@
                 "-n"
               ],
               "description": "Application name to create in Entra ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -638,7 +886,10 @@
                 "-r"
               ],
               "description": "Name or ID of security role to be applied to application user. The default value is: 'System Administrator'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -652,7 +903,10 @@
                 "-f"
               ],
               "description": "Application name 'starts with' filter",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -660,7 +914,10 @@
                 "-m"
               ],
               "description": "Max number of applications to show. Default: 20",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -675,6 +932,9 @@
               ],
               "description": "URL or ID of the environment for which managed environments need to be enabled, disabled or edited",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -684,6 +944,9 @@
               ],
               "description": "Set protection level : 'Standard' to enable managed environments, 'Basic' to disable managed environments",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -713,7 +976,10 @@
                 "-lsm"
               ],
               "description": "Limit sharing mode",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -721,7 +987,10 @@
                 "-ml"
               ],
               "description": "If group sharing is disabled, specify the number of people that makers can share canvas apps with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -729,7 +998,15 @@
                 "-scm"
               ],
               "description": "Solution checker validation mode",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "none",
+                  "warn",
+                  "block"
+                ]
+              }
             }
           ]
         },
@@ -743,7 +1020,10 @@
                 "-s"
               ],
               "description": "The .json file to output tenant settings",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -758,6 +1038,9 @@
               ],
               "description": "The .json file with tenant settings",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -781,6 +1064,9 @@
                   ],
                   "description": "Application Id",
                   "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  },
                   "is_required": true
                 }
               ]
@@ -796,6 +1082,9 @@
                   ],
                   "description": "Application Id",
                   "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  },
                   "is_required": true
                 }
               ]
@@ -818,7 +1107,10 @@
                 "-env"
               ],
               "description": "List available Dataverse applications for given environment (by ID or url); if not specified, list all applications in the tenant",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -826,7 +1118,10 @@
                 "-o"
               ],
               "description": "Location of the JSON file to be created with list of the Dataverse applications from AppSource",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -834,7 +1129,15 @@
                 "-s"
               ],
               "description": "Filter by application install state",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "NotInstalled",
+                  "Installed",
+                  "All"
+                ]
+              }
             }
           ]
         },
@@ -848,7 +1151,10 @@
                 "-env"
               ],
               "description": "List available Dataverse applications for given environment (by ID or url); if not specified, list all applications in the tenant",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -856,7 +1162,10 @@
                 "-an"
               ],
               "description": "Unique name of the application to install to the target environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -864,7 +1173,10 @@
                 "-al"
               ],
               "description": "Location of the JSON file with list of the Dataverse applications from AppSource to be installed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -884,7 +1196,10 @@
                 "-n"
               ],
               "description": "The name you want to give to this authentication profile (maximum 30 characters)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -892,7 +1207,10 @@
                 "-k"
               ],
               "description": "The kind of authentication profile you're creating",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -900,7 +1218,10 @@
                 "-u"
               ],
               "description": "The resource URL to connect to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -908,7 +1229,10 @@
                 "-un"
               ],
               "description": "Optional: The username to authenticate with; shows Microsoft Entra ID dialog if not specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -916,7 +1240,10 @@
                 "-p"
               ],
               "description": "Optional: The password to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -924,7 +1251,10 @@
                 "-id"
               ],
               "description": "Optional: The application ID to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -932,7 +1262,10 @@
                 "-cs"
               ],
               "description": "Optional: The client secret to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -940,7 +1273,10 @@
                 "-cdp"
               ],
               "description": "Optional: The certificate disk path to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -948,7 +1284,10 @@
                 "-cp"
               ],
               "description": "Optional: The certificate password to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -956,7 +1295,10 @@
                 "-t"
               ],
               "description": "Tenant ID if using application ID/client secret or application ID/client certificate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -964,7 +1306,19 @@
                 "-ci"
               ],
               "description": "Optional: The cloud instance to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Public",
+                  "Preprod",
+                  "Test",
+                  "UsGov",
+                  "UsGovHigh",
+                  "UsGovDod",
+                  "China"
+                ]
+              }
             },
             {
               "names": [
@@ -986,7 +1340,10 @@
                 "-env"
               ],
               "description": "Default environment (ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1004,7 +1361,10 @@
                 "-i"
               ],
               "description": "The index of the profile to be active",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1012,7 +1372,10 @@
                 "-n"
               ],
               "description": "The name of the profile to be active",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1026,7 +1389,10 @@
                 "-i"
               ],
               "description": "The index of the profile to be deleted",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1034,7 +1400,10 @@
                 "-n"
               ],
               "description": "The name of the profile to be active",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1049,6 +1418,9 @@
               ],
               "description": "The index of the profile to be named/renamed",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1057,7 +1429,10 @@
                 "-n"
               ],
               "description": "The name you want to give to this authentication profile (maximum 30 characters)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1065,7 +1440,10 @@
                 "-env"
               ],
               "description": "Default environment (ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1080,6 +1458,9 @@
               ],
               "description": "The index of the profile to be named/renamed",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1089,6 +1470,9 @@
               ],
               "description": "The name you want to give to this authentication profile (maximum 30 characters)",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -1114,6 +1498,9 @@
               ],
               "description": "Canvas app exact, partial name, or App ID",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1122,7 +1509,10 @@
                 "-f"
               ],
               "description": "File name (usually with .msapp extension). If not provided file is saved in current directory with 'appname'.msapp",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1137,7 +1527,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1151,7 +1544,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1165,6 +1561,9 @@
               ],
               "description": "Directory to sources to be packed",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1173,6 +1572,9 @@
               ],
               "description": "Path to .msapp file",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -1186,7 +1588,10 @@
                 "--sources"
               ],
               "description": "Directory to sources to be unpacked",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1194,6 +1599,9 @@
               ],
               "description": "Path to .msapp file",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -1208,6 +1616,9 @@
               ],
               "description": "Path to .msapp file to be generated",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1215,21 +1626,30 @@
                 "--connector-id"
               ],
               "description": "The ID of the Connector to generate the Power App from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--connector-display-name"
               ],
               "description": "The display name of the Connector to generate the Power App from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--environment"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -1249,7 +1669,10 @@
                 "-n"
               ],
               "description": "Catalog item name to search for",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1257,7 +1680,10 @@
                 "-cid"
               ],
               "description": "Catalog item ID to search for. When catalog item ID is used, catalog item name is ignored",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1279,6 +1705,9 @@
               ],
               "description": "Path to catalog submission document",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1287,7 +1716,10 @@
                 "-pz"
               ],
               "description": "Path to package zip file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1295,7 +1727,10 @@
                 "-sz"
               ],
               "description": "Path to solution zip file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1317,6 +1752,9 @@
               ],
               "description": "Catalog item to be installed on the target environment",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1326,6 +1764,9 @@
               ],
               "description": "Url of the target environment for catalog item installation",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1334,7 +1775,10 @@
                 "-s"
               ],
               "description": "Runtime Package Settings for the installation framework to execute. The format of the string must be 'key=value|key=value'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1342,7 +1786,10 @@
                 "-tv"
               ],
               "description": "Target version to install. If left empty, the published version is selected",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1364,6 +1811,9 @@
               ],
               "description": "Request tracking ID",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1373,6 +1823,9 @@
               ],
               "description": "Request type",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -1388,6 +1841,9 @@
               ],
               "description": "Path to catalog settings document",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -1402,7 +1858,10 @@
                 "-p"
               ],
               "description": "Path to catalog submission document",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -1423,6 +1882,9 @@
               ],
               "description": "Tenant Id",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1432,6 +1894,9 @@
               ],
               "description": "Connection name",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1441,6 +1906,9 @@
               ],
               "description": "Application Id",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1450,6 +1918,9 @@
               ],
               "description": "Client Secret",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1458,7 +1929,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1473,6 +1947,9 @@
               ],
               "description": "Connection Id",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1481,7 +1958,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1495,7 +1975,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1510,6 +1993,9 @@
               ],
               "description": "Tenant Id",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1519,6 +2005,9 @@
               ],
               "description": "Connection Id",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1528,6 +2017,9 @@
               ],
               "description": "Application Id",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1537,6 +2029,9 @@
               ],
               "description": "Client Secret",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1545,7 +2040,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -1565,7 +2063,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1579,7 +2080,17 @@
                 "-ct"
               ],
               "description": "Generate an initial Connection Parameters set with the specified template",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "NoAuth",
+                  "BasicAuth",
+                  "ApiKey",
+                  "OAuthGeneric",
+                  "OAuthAAD"
+                ]
+              }
             },
             {
               "names": [
@@ -1599,7 +2110,10 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1613,7 +2127,10 @@
                 "-df"
               ],
               "description": "The filename and path to read the Connector's OpenApiDefinition",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1621,7 +2138,10 @@
                 "-pf"
               ],
               "description": "The filename and path to read the Connector's API Properties file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1629,7 +2149,10 @@
                 "-if"
               ],
               "description": "The filename and path to and Icon .png file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1637,7 +2160,10 @@
                 "-sf"
               ],
               "description": "The filename and path to a Script .csx file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1645,7 +2171,10 @@
                 "-sol"
               ],
               "description": "The unique name of the solution to add the connector to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1653,14 +2182,20 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--settings-file"
               ],
               "description": "The filename and path Connector Settings file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1675,6 +2210,9 @@
               ],
               "description": "The ID of the Connector",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1683,7 +2221,10 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1691,7 +2232,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1705,7 +2249,10 @@
                 "-id"
               ],
               "description": "The ID of the Connector",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1713,7 +2260,10 @@
                 "-df"
               ],
               "description": "The filename and path to read the Connector's OpenApiDefinition",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1721,7 +2271,10 @@
                 "-pf"
               ],
               "description": "The filename and path to read the Connector's API Properties file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1729,7 +2282,10 @@
                 "-if"
               ],
               "description": "The filename and path to and Icon .png file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1737,7 +2293,10 @@
                 "-sf"
               ],
               "description": "The filename and path to a Script .csx file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1745,7 +2304,10 @@
                 "-sol"
               ],
               "description": "The unique name of the solution to add the connector to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1753,14 +2315,20 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--settings-file"
               ],
               "description": "The filename and path Connector Settings file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -1784,7 +2352,10 @@
                 "-id"
               ],
               "description": "AI Builder model Id",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1792,7 +2363,10 @@
                 "-n"
               ],
               "description": "Full or partial AI Model name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1800,7 +2374,10 @@
                 "-p"
               ],
               "description": "Prompt to send to AI Model",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1808,7 +2385,10 @@
                 "-t"
               ],
               "description": "Text to send to AI Model",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1823,6 +2403,9 @@
               ],
               "description": "Input FetchXML file that usually comes from AI LLM",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1832,6 +2415,9 @@
               ],
               "description": "Output FetchXML file that is ready to execute against the current environment",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -1853,6 +2439,9 @@
               ],
               "description": "Schema file name. It can be created using the Configuration Migration Tool",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1861,7 +2450,10 @@
                 "-df"
               ],
               "description": "File name for data zip file. Default data.zip",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1883,7 +2475,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1897,7 +2492,10 @@
                 "-dd"
               ],
               "description": "Directory name with data for import",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1906,6 +2504,9 @@
               ],
               "description": "Zip file or directory name with data for import",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -1914,7 +2515,10 @@
                 "-c"
               ],
               "description": "Number of parallel connections to use during import. Default: 5",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1929,7 +2533,10 @@
                 "-env"
               ],
               "description": "Environment (ID, org ID, url, unique name, or partial name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -1960,7 +2567,10 @@
                 "-l"
               ],
               "description": "The language to use for the generated proxy code. This value can be either 'CS' or 'VB'. The default language is 'CS'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1968,7 +2578,10 @@
                 "-n"
               ],
               "description": "The namespace for the generated code. The default namespace is the global namespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1976,7 +2589,10 @@
                 "-sctx"
               ],
               "description": "The name for the generated service context. If a value is passed in, it's used for the Service Context. If not, no Service Context is generated",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2012,7 +2628,10 @@
                 "-enf"
               ],
               "description": "Filters the list of entities are retrieved when reading data from Dataverse. Passed in as a semicolon separated list. Using the form <entitylogicalname>;<entitylogicalname>",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2020,7 +2639,10 @@
                 "-mnf"
               ],
               "description": "Filters the list of messages that are retrieved when reading data from Dataverse. Passed in as a semicolon separated list, required messages (Create, Update, Delete, Retrieve, RetrieveMultiple, Associ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2029,6 +2651,9 @@
               ],
               "description": "Write directory for entity, message, and optionset files",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2037,7 +2662,10 @@
                 "-etf"
               ],
               "description": "Folder name that contains entities. The default name is 'Entities'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2045,7 +2673,10 @@
                 "-mtf"
               ],
               "description": "Folder name that contains messages. The default name is 'Messages'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2053,7 +2684,10 @@
                 "-otf"
               ],
               "description": "Folder name that contains option sets. The default name is 'OptionSets'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2061,7 +2695,10 @@
                 "-go"
               ],
               "description": "Emit all Global OptionSets. Note: If an entity contains a reference to a global optionset, it is emitted even if this switch is not present",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2069,7 +2706,10 @@
                 "-wstf"
               ],
               "description": "When set, writes a settings file out to the output directory with the current passed settings or default settings",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2077,14 +2717,20 @@
                 "-stf"
               ],
               "description": "Contains Settings to be used for this run of the Dataverse Model Builder, overrides any duplicate parameters on command line. Can't be set when --writesettingstemplate is used",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--suppressINotifyPattern"
               ],
               "description": "When enabled, doesn't write the INotify wrappers for properties and classes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2092,7 +2738,20 @@
                 "-ll"
               ],
               "description": "Log level. The default value is 'Off'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Off",
+                  "Critical",
+                  "Error",
+                  "Warning",
+                  "Information",
+                  "Verbose",
+                  "ActivityTracing",
+                  "All"
+                ]
+              }
             }
           ]
         }
@@ -2116,7 +2775,10 @@
                 "-f"
               ],
               "description": "Show only environments containing filter criteria",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2130,7 +2792,10 @@
                 "-x"
               ],
               "description": "FetchXML query to run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2138,7 +2803,10 @@
                 "-xf"
               ],
               "description": "File with FetchXML query to run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2152,7 +2820,10 @@
                 "-f"
               ],
               "description": "Show only settings containing filter criteria",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2167,6 +2838,9 @@
               ],
               "description": "Name of the setting to update",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2175,7 +2849,10 @@
                 "-v"
               ],
               "description": "Value to which setting should be updated to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2190,6 +2867,9 @@
               ],
               "description": "Default environment (ID, url, unique name, or partial name)",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -2210,14 +2890,20 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--package-name"
               ],
               "description": "Sets the default name of the package. Applies to the generation of ImportExtension.GetNameOfImport",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2232,6 +2918,9 @@
               ],
               "description": "Path to the external package",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2241,6 +2930,9 @@
               ],
               "description": "The type of the package being added. For example: 'xpp' for FnO packages",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2248,7 +2940,10 @@
                 "--import-order"
               ],
               "description": "A whole number that indicates the order to insert this item into the final ImportConfig.xml file at build time. Negative numbers are inserted before existing elements. Positive numbers are added after",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2270,6 +2965,9 @@
               ],
               "description": "Path to the Dataverse solution file. The file must be a compressed ZIP file",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2277,7 +2975,10 @@
                 "--import-order"
               ],
               "description": "A whole number that indicates the order to insert this item into the final ImportConfig.xml file at build time. Negative numbers are inserted before existing elements. Positive numbers are added after",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2291,35 +2992,66 @@
                 "--publish-workflows-activate-plugins"
               ],
               "description": "Explicitly indicates whether to publish the workflows and activate plug-ins when this solution is imported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--overwrite-unmanaged-customizations"
               ],
               "description": "Explicitly indicates whether to overwrite unmanaged customizations when this solution is imported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--import-mode"
               ],
               "description": "Explicitly specifies the required mode when importing this solution",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--missing-dependency-behavior"
               ],
               "description": "Specifies the behavior on import when a dependency of this solution is missing from the target environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "skip",
+                  "fault"
+                ]
+              }
             },
             {
               "names": [
                 "--dependency-overrides"
               ],
               "description": "A semicolon delimited list of overrides. This value overrides any dependency information encoded in the solution's metadata. Each override should be in the format: '<uniquename>:<minVersion>:<maxVersi",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2334,6 +3066,9 @@
               ],
               "description": "The path to the referenced Dataverse solution project",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2341,42 +3076,76 @@
                 "--import-order"
               ],
               "description": "A whole number that indicates the order to insert this item into the final ImportConfig.xml file at build time. Negative numbers are inserted before existing elements. Positive numbers are added after",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--publish-workflows-activate-plugins"
               ],
               "description": "Explicitly indicates whether to publish the workflows and activate plug-ins when this solution is imported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--overwrite-unmanaged-customizations"
               ],
               "description": "Explicitly indicates whether to overwrite unmanaged customizations when this solution is imported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "true",
+                  "false"
+                ]
+              }
             },
             {
               "names": [
                 "--import-mode"
               ],
               "description": "Explicitly specifies the required mode when importing this solution",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "sync",
+                  "async"
+                ]
+              }
             },
             {
               "names": [
                 "--missing-dependency-behavior"
               ],
               "description": "Specifies the behavior on import when a dependency of this solution is missing from the target environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "skip",
+                  "fault"
+                ]
+              }
             },
             {
               "names": [
                 "--dependency-overrides"
               ],
               "description": "A semicolon delimited list of overrides. This value overrides any dependency information encoded in the solution's metadata. Each override should be in the format: '<uniquename>:<minVersion>:<maxVersi",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2390,7 +3159,10 @@
                 "-lf"
               ],
               "description": "Log file path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2406,6 +3178,9 @@
               ],
               "description": "Path to a package dll or zip file with a package",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2414,7 +3189,10 @@
                 "-s"
               ],
               "description": "Runtime Package Settings that are passed to the package that is being deployed. The format of the string must be 'key=value|key=value'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2436,6 +3214,9 @@
               ],
               "description": "Path to a package dll or zip file with a package",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2444,7 +3225,10 @@
                 "-lf"
               ],
               "description": "Log file path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2471,7 +3255,10 @@
                 "-ns"
               ],
               "description": "The namespace for the component",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2479,7 +3266,10 @@
                 "-n"
               ],
               "description": "The name for the component",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2487,7 +3277,14 @@
                 "-t"
               ],
               "description": "Choose a template for the component",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "field",
+                  "dataset"
+                ]
+              }
             },
             {
               "names": [
@@ -2495,7 +3292,14 @@
                 "-fw"
               ],
               "description": "The rendering framework for control. The default value is 'none', which means HTML",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "none",
+                  "react"
+                ]
+              }
             },
             {
               "names": [
@@ -2503,7 +3307,10 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2524,7 +3331,10 @@
                 "-pp"
               ],
               "description": "Customization prefix value for the Dataverse solution publisher",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2532,7 +3342,16 @@
                 "-v"
               ],
               "description": "Verbosity level for MSBuild when building the temporary solution wrapper",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "minimal",
+                  "normal",
+                  "detailed",
+                  "diagnostic"
+                ]
+              }
             },
             {
               "names": [
@@ -2567,7 +3386,16 @@
                 "-s"
               ],
               "description": "Updates patch version for 'ControlManifest.xml' files using specified strategy. If using gittags, set a personal access token in the following environment variable 'PacCli.PAT'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "None",
+                  "GitTags",
+                  "FileTracking",
+                  "Manifest"
+                ]
+              }
             },
             {
               "names": [
@@ -2575,7 +3403,10 @@
                 "-pv"
               ],
               "description": "Patch version for controls",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2583,7 +3414,10 @@
                 "-p"
               ],
               "description": "Absolute/Relative path of the 'ControlManifest.xml' for updating",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2598,7 +3432,14 @@
                 "-ut"
               ],
               "description": "Specify which target manifest needs to be updated",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "build",
+                  "project"
+                ]
+              }
             },
             {
               "names": [
@@ -2606,7 +3447,10 @@
                 "-fn"
               ],
               "description": "Tracker CSV file name to be used when using filetracking as a strategy. The default value is 'ControlsStateVersionInfo.csv'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -2626,7 +3470,10 @@
                 "-p"
               ],
               "description": "Pipeline name or ID for which show list of details such as deployment stages",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2641,6 +3488,9 @@
               ],
               "description": "Solution Name",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2650,6 +3500,9 @@
               ],
               "description": "Deployment Stage ID",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2659,6 +3512,9 @@
               ],
               "description": "Deployment Environment",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2668,6 +3524,9 @@
               ],
               "description": "Current solution version",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2677,6 +3536,9 @@
               ],
               "description": "New solution version",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2704,7 +3566,10 @@
                 "-sk"
               ],
               "description": "Relative path to the Dataverse plug-in assembly originator key file for signing",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2712,7 +3577,10 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2720,7 +3588,10 @@
                 "-a"
               ],
               "description": "One or more authors of the Dataverse Plug-in Package",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2742,6 +3613,9 @@
               ],
               "description": "ID of plug-in assembly or plug-in package",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2750,7 +3624,10 @@
                 "-pf"
               ],
               "description": "File name of plug-in assembly or plug-in package",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2758,7 +3635,14 @@
                 "-t"
               ],
               "description": "Type of item if not specified explicitly through --pluginFile. The default value is: 'Nuget'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Nuget",
+                  "Assembly"
+                ]
+              }
             },
             {
               "names": [
@@ -2766,7 +3650,10 @@
                 "-c"
               ],
               "description": "Build configuration. The default value is: 'Debug'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -2791,6 +3678,9 @@
               ],
               "description": "Path of file to execute",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2832,6 +3722,9 @@
               ],
               "description": "Path where the Power Pages website content is downloaded",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2841,6 +3734,9 @@
               ],
               "description": "Power Pages website ID to download",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2849,7 +3745,10 @@
                 "-ie"
               ],
               "description": "Download only the entities specified for this argument using comma separated entity logical names",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2857,7 +3756,10 @@
                 "-xe"
               ],
               "description": "Comma separated list of entity logical names to exclude downloading",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2872,7 +3774,10 @@
                 "-mv"
               ],
               "description": "Power Pages website data model version to download",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2887,6 +3792,9 @@
               ],
               "description": "Path from where the Power Pages website content is uploaded",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2895,7 +3803,10 @@
                 "-dp"
               ],
               "description": "Deployment profile name to be used. Defaults to 'default'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2910,7 +3821,10 @@
                 "-mv"
               ],
               "description": "Power Pages website data model version to upload",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2925,6 +3839,9 @@
               ],
               "description": "Path of website content",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -2946,6 +3863,9 @@
               ],
               "description": "Name of the Dataverse solution publisher",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2955,6 +3875,9 @@
               ],
               "description": "Customization prefix value for the Dataverse solution publisher",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -2963,7 +3886,10 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2978,6 +3904,9 @@
               ],
               "description": "The path to the referenced project",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -2992,7 +3921,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3007,6 +3939,9 @@
               ],
               "description": "Name of the solution",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -3022,6 +3957,9 @@
               ],
               "description": "Name of the solution",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3031,6 +3969,9 @@
               ],
               "description": "Specify the solution version number",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -3045,7 +3986,16 @@
                 "-s"
               ],
               "description": "Updates build version for 'Solution.xml' file using specified strategy. If using gittags, set personal access token in the following environment variable 'PacCli.PAT'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "None",
+                  "GitTags",
+                  "FileTracking",
+                  "Solution"
+                ]
+              }
             },
             {
               "names": [
@@ -3053,7 +4003,10 @@
                 "-pv"
               ],
               "description": "Patch version for the solution",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3061,7 +4014,10 @@
                 "-bv"
               ],
               "description": "Build version for the solution",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3069,7 +4025,10 @@
                 "-rv"
               ],
               "description": "Revision version for the solution",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3077,7 +4036,10 @@
                 "-fn"
               ],
               "description": "Tracker CSV file name to be used when using filetracking as a strategy. The default value is 'ControlsStateVersionInfo.csv'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3085,7 +4047,10 @@
                 "-sp"
               ],
               "description": "Path to Dataverse solution directory or Solution.xml file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3099,7 +4064,10 @@
                 "-p"
               ],
               "description": "Path to solution zip file. If not specified, assumes the current folder is a cdsproj project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3163,14 +4131,21 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--settings-file"
               ],
               "description": "The .json file with the deployment settings for connection references and environment variables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -3192,6 +4167,9 @@
               ],
               "description": "The name of the solution to be exported",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3200,7 +4178,10 @@
                 "-p"
               ],
               "description": "Path where the exported solution zip file is written",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3215,7 +4196,10 @@
                 "-v"
               ],
               "description": "The version that the exported solution will support",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3223,7 +4207,10 @@
                 "-i"
               ],
               "description": "Which settings should be included in the solution being exported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3238,7 +4225,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3260,6 +4250,9 @@
               ],
               "description": "The name of the solution to be exported",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3268,7 +4261,10 @@
                 "-v"
               ],
               "description": "The version that the exported solution will support",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3276,7 +4272,10 @@
                 "-i"
               ],
               "description": "Which settings should be included in the solution being exported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3284,7 +4283,10 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3299,7 +4301,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3314,7 +4319,15 @@
                 "-p"
               ],
               "description": "Specifies the extraction type for the solution. Can be: 'Unmanaged', 'Managed' or 'Both'. The default value is: 'Both'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Unmanaged",
+                  "Managed",
+                  "Both"
+                ]
+              }
             },
             {
               "names": [
@@ -3342,7 +4355,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3357,6 +4373,9 @@
               ],
               "description": "Name of the solution",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3372,7 +4391,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3387,6 +4409,9 @@
               ],
               "description": "License plan definition file in CSV format; expected columns: Service ID, Display name, More info URL",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3396,6 +4421,9 @@
               ],
               "description": "License plan mapping file in CSV format; expected columns: Service ID, Component name",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -3410,7 +4438,10 @@
                 "-p"
               ],
               "description": "Path where one or more solution files to be checked exist. The path can contain glob/wildcard characters",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3418,7 +4449,10 @@
                 "-u"
               ],
               "description": "SAS Uri pointing to solution.zip to be analyzed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3426,7 +4460,10 @@
                 "-o"
               ],
               "description": "Output directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3434,7 +4471,34 @@
                 "-g"
               ],
               "description": "Which geographical instance of the Power Apps Checker service to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "PreviewUnitedStates",
+                  "UnitedStates",
+                  "Europe",
+                  "Asia",
+                  "Australia",
+                  "Japan",
+                  "India",
+                  "Canada",
+                  "SouthAmerica",
+                  "UnitedKingdom",
+                  "France",
+                  "SouthAfrica",
+                  "Germany",
+                  "UnitedArabEmirates",
+                  "Switzerland",
+                  "Norway",
+                  "Singapore",
+                  "Korea",
+                  "USGovernment",
+                  "USGovernmentL4",
+                  "USGovernmentL5DoD",
+                  "China"
+                ]
+              }
             },
             {
               "names": [
@@ -3442,7 +4506,10 @@
                 "-ce"
               ],
               "description": "Specify a custom URL as the Power Apps Checker endpoint",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3450,7 +4517,10 @@
                 "-rl"
               ],
               "description": "Path to a file containing a JSON array rules and levels to override. Accepted values for OverrideLevel are: Critical, High, Medium, Low, Informational. Example: [{'Id':'meta-remove-dup-reg','OverrideL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3458,7 +4528,10 @@
                 "-rs"
               ],
               "description": "Select a rule set that is executed as part of this build. Values: A valid Guid, 'AppSource Certification', 'Solution Checker' (default)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3466,7 +4539,10 @@
                 "-ef"
               ],
               "description": "Exclude Files from the Analysis. Pass as comma-separated values",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3487,7 +4563,10 @@
                 "-z"
               ],
               "description": "Path to solution zip file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3495,7 +4574,10 @@
                 "-f"
               ],
               "description": "Path to the local, unpacked solution folder: either the root of the 'Other/Solution.xml' file or a folder with a .cdsproj file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3503,7 +4585,10 @@
                 "-s"
               ],
               "description": "The .json file with the deployment settings for connection references and environment variables",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3518,6 +4603,9 @@
               ],
               "description": "The full path to the solution ZIP file",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3526,7 +4614,10 @@
                 "-f"
               ],
               "description": "The path to the root folder on the local filesystem. When unpacking or extracting, this is written to. When packing this is read from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3534,7 +4625,15 @@
                 "-p"
               ],
               "description": "When unpacking or extracting, use to specify dual Managed and Unmanaged operation. When packing, use to specify Managed or Unmanaged from a previous unpack 'Both'. Can be: 'Unmanaged', 'Managed' or 'B",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Unmanaged",
+                  "Managed",
+                  "Both"
+                ]
+              }
             },
             {
               "names": [
@@ -3542,7 +4641,10 @@
                 "-l"
               ],
               "description": "The path to the log file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3550,7 +4652,10 @@
                 "-e"
               ],
               "description": "Minimum logging level for log output [Verbose|Info|Warning|Error|Off]. The default value is 'Info'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3558,7 +4663,10 @@
                 "-sc"
               ],
               "description": "Only perform action on a single component type [WebResource|Plugin|Workflow|None]. The default value is 'None'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3587,7 +4695,10 @@
                 "-m"
               ],
               "description": "The full path to a mapping xml file from which to read component folders to pack",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3595,7 +4706,10 @@
                 "-src"
               ],
               "description": "Generates a template resource file. Valid only on extract. Possible values are 'auto', or language code of the language you wish to export. You can use Language Code Identifier (LCID), or Internationa",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3645,6 +4759,9 @@
               ],
               "description": "The full path to the solution ZIP file",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3653,7 +4770,10 @@
                 "-f"
               ],
               "description": "The path to the root folder on the local filesystem. When unpacking or extracting, this is written to. When packing this is read from",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3661,7 +4781,15 @@
                 "-p"
               ],
               "description": "When unpacking or extracting, use to specify dual Managed and Unmanaged operation. When packing, use to specify Managed or Unmanaged from a previous unpack 'Both'. Can be: 'Unmanaged', 'Managed' or 'B",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Unmanaged",
+                  "Managed",
+                  "Both"
+                ]
+              }
             },
             {
               "names": [
@@ -3669,7 +4797,10 @@
                 "-l"
               ],
               "description": "The path to the log file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3677,7 +4808,10 @@
                 "-e"
               ],
               "description": "Minimum logging level for log output [Verbose|Info|Warning|Error|Off]. The default value is 'Info'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3685,7 +4819,10 @@
                 "-sc"
               ],
               "description": "Only perform action on a single component type [WebResource|Plugin|Workflow|None]. The default value is 'None'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3714,7 +4851,10 @@
                 "-m"
               ],
               "description": "The full path to a mapping xml file from which to read component folders to pack",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3722,7 +4862,10 @@
                 "-src"
               ],
               "description": "Generates a template resource file. Valid only on extract. Possible values are 'auto', or language code of the language you wish to export. You can use Language Code Identifier (LCID), or Internationa",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3772,6 +4915,9 @@
               ],
               "description": "Name of the solution",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3781,6 +4927,9 @@
               ],
               "description": "The schema name or ID of the component to add to the target solution",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3790,6 +4939,9 @@
               ],
               "description": "The value that represents the solution component that you're adding",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3805,7 +4957,10 @@
                 "-env"
               ],
               "description": "Environment URL or ID of the target environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3819,7 +4974,10 @@
                 "-f"
               ],
               "description": "Path to the local, unpacked solution folder: either the root of the 'Other/Solution.xml' file or a folder with a .cdsproj file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3827,7 +4985,10 @@
                 "-i"
               ],
               "description": "Which settings should be included in the solution being exported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3842,7 +5003,10 @@
                 "-wt"
               ],
               "description": "Max asynchronous wait time in minutes. The default value is 60 minutes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3857,7 +5021,15 @@
                 "-p"
               ],
               "description": "When unpacking or extracting, use to specify dual Managed and Unmanaged operation. When packing, use to specify Managed or Unmanaged from a previous unpack 'Both'. Can be: 'Unmanaged', 'Managed' or 'B",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "Unmanaged",
+                  "Managed",
+                  "Both"
+                ]
+              }
             },
             {
               "names": [
@@ -3903,6 +5075,9 @@
               ],
               "description": "Path to the Test Plan file",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3912,6 +5087,9 @@
               ],
               "description": "Environment ID for the app to be tested",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3921,6 +5099,9 @@
               ],
               "description": "Tenant ID for the app being tested",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -3929,7 +5110,10 @@
                 "-o"
               ],
               "description": "Path to save test output and logs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3937,7 +5121,10 @@
                 "-d"
               ],
               "description": "The player domain for the app being tested",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         }
@@ -4035,7 +5222,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -4049,7 +5239,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4058,6 +5251,9 @@
               ],
               "description": "The ID of a Virtual Agent (Chatbot)",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]
@@ -4072,7 +5268,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4080,7 +5279,10 @@
                 "-src"
               ],
               "description": "Source solution directory. When specified, will ignore the connected environment when looking for bots and instead look for content in the solution folder",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4088,21 +5290,30 @@
                 "-id"
               ],
               "description": "The Chatbot ID or schema name (unique name found in Bot Details or file name in solution explorer)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--outdir"
               ],
               "description": "The output directory to write to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "The file format in which to write localized files, either 'resx' or 'json'. The default is 'resx'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4130,7 +5341,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4138,7 +5352,10 @@
                 "-src"
               ],
               "description": "Source solution directory. When specified, will ignore the connected environment when looking for bots and instead look for content in the solution folder",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4146,7 +5363,10 @@
                 "-f"
               ],
               "description": "The list of files that contain translations. Glob patterns are supported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4166,7 +5386,10 @@
                 "-s"
               ],
               "description": "Name of the solution",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -4180,7 +5403,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4189,6 +5415,9 @@
               ],
               "description": "The Chatbot ID or schema name (unique name found in Bot Details or file name in solution explorer)",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -4197,6 +5426,9 @@
               ],
               "description": "Location of the yaml file to write the bot template to",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -4218,7 +5450,10 @@
                 "-env"
               ],
               "description": "The target Environment ID or URL. The default value is the environment of your currently active Dataverse Auth Profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -4226,6 +5461,9 @@
               ],
               "description": "The schema name (unique name) of the new bot",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -4234,6 +5472,9 @@
               ],
               "description": "Source yaml file containing the bot template that was extracted using the extract-template command",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -4242,6 +5483,9 @@
               ],
               "description": "The display name of the new bot",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             },
             {
@@ -4251,6 +5495,9 @@
               ],
               "description": "Name of the solution",
               "takes_arg": true,
+              "arg": {
+                "name": "string"
+              },
               "is_required": true
             }
           ]

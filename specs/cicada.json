@@ -12,28 +12,46 @@
             "--secret"
           ],
           "description": "Name of the secret to use, these come from environment variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "secret"
+          }
         },
         {
           "names": [
             "--dotenv"
           ],
           "description": "Load a custom .env file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dotenv",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--secrets-json"
           ],
           "description": "Load secrets from a json file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "secrets_json",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--oci-backend"
           ],
           "description": "The OCI backend to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "oci_backend",
+            "suggestions": [
+              "docker",
+              "podman"
+            ]
+          }
         },
         {
           "names": [

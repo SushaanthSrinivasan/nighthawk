@@ -8,7 +8,47 @@
         "--getProperty"
       ],
       "description": "Output the property value for key to stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key",
+        "suggestions": [
+          "all",
+          "allxml",
+          "dpiHeight",
+          "dpiWidth",
+          "pixelHeight",
+          "pixelWidth",
+          "typeIdentifier",
+          "format",
+          "formatOptions",
+          "space",
+          "samplesPerPixel",
+          "bitsPerSample",
+          "creation",
+          "make",
+          "model",
+          "software",
+          "description",
+          "copyright",
+          "artist",
+          "profile",
+          "hasAlpha",
+          "size",
+          "cmm",
+          "version",
+          "class",
+          "pcs",
+          "platform",
+          "quality",
+          "deviceManufacturer",
+          "deviceModel",
+          "deviceAttributes0",
+          "deviceAttributes1",
+          "renderingIntent",
+          "creator",
+          "md5"
+        ]
+      }
     },
     {
       "names": [
@@ -16,7 +56,47 @@
         "--setProperty"
       ],
       "description": "Set a property value for key to value",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key",
+        "suggestions": [
+          "all",
+          "allxml",
+          "dpiHeight",
+          "dpiWidth",
+          "pixelHeight",
+          "pixelWidth",
+          "typeIdentifier",
+          "format",
+          "formatOptions",
+          "space",
+          "samplesPerPixel",
+          "bitsPerSample",
+          "creation",
+          "make",
+          "model",
+          "software",
+          "description",
+          "copyright",
+          "artist",
+          "profile",
+          "hasAlpha",
+          "size",
+          "cmm",
+          "version",
+          "class",
+          "pcs",
+          "platform",
+          "quality",
+          "deviceManufacturer",
+          "deviceModel",
+          "deviceAttributes0",
+          "deviceAttributes1",
+          "renderingIntent",
+          "creator",
+          "md5"
+        ]
+      }
     },
     {
       "names": [
@@ -24,7 +104,47 @@
         "--deleteProperty"
       ],
       "description": "Remove a property value for key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key",
+        "suggestions": [
+          "all",
+          "allxml",
+          "dpiHeight",
+          "dpiWidth",
+          "pixelHeight",
+          "pixelWidth",
+          "typeIdentifier",
+          "format",
+          "formatOptions",
+          "space",
+          "samplesPerPixel",
+          "bitsPerSample",
+          "creation",
+          "make",
+          "model",
+          "software",
+          "description",
+          "copyright",
+          "artist",
+          "profile",
+          "hasAlpha",
+          "size",
+          "cmm",
+          "version",
+          "class",
+          "pcs",
+          "platform",
+          "quality",
+          "deviceManufacturer",
+          "deviceModel",
+          "deviceAttributes0",
+          "deviceAttributes1",
+          "renderingIntent",
+          "creator",
+          "md5"
+        ]
+      }
     },
     {
       "names": [
@@ -32,7 +152,10 @@
         "--extractTag"
       ],
       "description": "Extract a profile tag element to tagFile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -46,28 +169,40 @@
         "--extractProfile"
       ],
       "description": "Get the embedded profile from image and write it to profile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     },
     {
       "names": [
         "--deleteTag"
       ],
       "description": "Remove the tag element from a profile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
         "--copyTag"
       ],
       "description": "Copy the srcTag element of a profile to dstTag",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "srcTag"
+      }
     },
     {
       "names": [
         "--loadTag"
       ],
       "description": "Set the tag element of a profile to the contents of tagFile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -81,7 +216,10 @@
         "--embedProfile"
       ],
       "description": "Embed profile in image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     },
     {
       "names": [
@@ -89,7 +227,10 @@
         "--embedProfileIfNone"
       ],
       "description": "Embed profile in image only if image doesn't have a profile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     },
     {
       "names": [
@@ -97,7 +238,10 @@
         "--matchTo"
       ],
       "description": "Color match image to profile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     },
     {
       "names": [
@@ -105,7 +249,10 @@
         "--matchToWithIntent"
       ],
       "description": "Color match image to profile with rendering intent perceptual | relative | saturation | absolute",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     },
     {
       "names": [
@@ -118,14 +265,24 @@
         "-r",
         "--rotate"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "degreesCW"
+      }
     },
     {
       "names": [
         "-f",
         "--flip"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "axis",
+        "suggestions": [
+          "horizontal",
+          "vertical"
+        ]
+      }
     },
     {
       "names": [
@@ -133,7 +290,10 @@
         "--cropToHeightWidth"
       ],
       "description": "Crop image to fit specified size",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pixelsH"
+      }
     },
     {
       "names": [
@@ -141,14 +301,20 @@
         "--padToHeightWidth"
       ],
       "description": "Pad image with pixels to fit specified size",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pixelsH"
+      }
     },
     {
       "names": [
         "-padColor"
       ],
       "description": "Use this color when padding.  White=FFFFFF, Red=FF0000, Default=Black=000000",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hexcolor"
+      }
     },
     {
       "names": [
@@ -156,21 +322,30 @@
         "--resampleHeightWidth"
       ],
       "description": "Resample image at specified size. Image apsect ratio may be altered",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pixelsH"
+      }
     },
     {
       "names": [
         "--resampleWidth"
       ],
       "description": "Resample image to specified width",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pixelsW"
+      }
     },
     {
       "names": [
         "--resampleHeight"
       ],
       "description": "Resample image to specified height",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pixelsH"
+      }
     },
     {
       "names": [
@@ -178,7 +353,10 @@
         "--resampleHeightWidthMax"
       ],
       "description": "Resample image so height and width aren't greater than specified size",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pixelsWH"
+      }
     },
     {
       "names": [
@@ -186,7 +364,11 @@
         "--addIcon"
       ],
       "description": "Add a Finder icon to image file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "icon",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

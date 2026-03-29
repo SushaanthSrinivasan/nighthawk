@@ -648,7 +648,10 @@
         "--host"
       ],
       "description": "Operate on remote host",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[USER@]HOST"
+      }
     },
     {
       "names": [
@@ -656,7 +659,10 @@
         "--machine"
       ],
       "description": "Operate on a local container",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONTAINER"
+      }
     },
     {
       "names": [
@@ -664,14 +670,20 @@
         "--type"
       ],
       "description": "List units of a particular type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TYPE"
+      }
     },
     {
       "names": [
         "--state"
       ],
       "description": "List units with particular LOAD or SUB or ACTIVE state",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STATE"
+      }
     },
     {
       "names": [
@@ -685,7 +697,10 @@
         "--property"
       ],
       "description": "Show only properties by this name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
@@ -731,7 +746,10 @@
         "--job-mode"
       ],
       "description": "Specify how to deal with already queued jobs, when queueing a new job",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MODE"
+      }
     },
     {
       "names": [
@@ -757,7 +775,10 @@
         "--check-inhibitors"
       ],
       "description": "Specify if checking inhibitors before shutting down sleeping or hibernating",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MODE"
+      }
     },
     {
       "names": [
@@ -770,7 +791,10 @@
         "--kill-who"
       ],
       "description": "Whom to send signal to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WHO"
+      }
     },
     {
       "names": [
@@ -778,14 +802,20 @@
         "--signal"
       ],
       "description": "Which signal to send",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SIGNAL"
+      }
     },
     {
       "names": [
         "--what"
       ],
       "description": "Which types of resources to remove",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RESOURCES"
+      }
     },
     {
       "names": [
@@ -835,7 +865,14 @@
         "--legend"
       ],
       "description": "Enable/disable the legend (column headers and hints)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BOOL",
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [
@@ -873,14 +910,20 @@
         "--preset-mode"
       ],
       "description": "Apply only enable, only disable, or all presets",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MODE"
+      }
     },
     {
       "names": [
         "--root"
       ],
       "description": "Edit/enable/disable/mask unit files in the specified root directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH"
+      }
     },
     {
       "names": [
@@ -888,7 +931,10 @@
         "--lines"
       ],
       "description": "Number of journal entries to show",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "N"
+      }
     },
     {
       "names": [
@@ -896,7 +942,25 @@
         "--output"
       ],
       "description": "Change journal output mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "MODE",
+        "suggestions": [
+          "short",
+          "short-precise",
+          "short-iso",
+          "short-iso-precise",
+          "short-full",
+          "short-monotonic",
+          "short-unix",
+          "verbose",
+          "export",
+          "json",
+          "json-pretty",
+          "json-sse",
+          "cat"
+        ]
+      }
     },
     {
       "names": [
@@ -909,14 +973,20 @@
         "--boot-loader-menu"
       ],
       "description": "Boot into boot loader menu on next boot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TIME"
+      }
     },
     {
       "names": [
         "--boot-loader-entry"
       ],
       "description": "Boot into a specific boot loader entry on next boot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
@@ -929,7 +999,17 @@
         "--timestamp"
       ],
       "description": "Change format of printed timestamps",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FORMAT",
+        "suggestions": [
+          "pretty",
+          "unix",
+          "us",
+          "utc",
+          "us+utc"
+        ]
+      }
     },
     {
       "names": [

@@ -8,7 +8,43 @@
         "-name"
       ],
       "description": "Print only the matching metadata attribute value.  Can be used multiple times",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "attributeName",
+        "description": "Metadata attribute name",
+        "suggestions": [
+          "_kMDItemDisplayNameWithExtensions",
+          "kMDItemContentCreationDate",
+          "kMDItemContentCreationDate_Ranking",
+          "kMDItemContentModificationDate",
+          "kMDItemContentModificationDate_Ranking",
+          "kMDItemContentType",
+          "kMDItemContentTypeTree",
+          "kMDItemDateAdded",
+          "kMDItemDateAdded_Ranking",
+          "kMDItemDisplayName",
+          "kMDItemDocumentIdentifier",
+          "kMDItemFSContentChangeDate",
+          "kMDItemFSCreationDate",
+          "kMDItemFSCreatorCode",
+          "kMDItemFSFinderFlags",
+          "kMDItemFSHasCustomIcon",
+          "kMDItemFSInvisible",
+          "kMDItemFSIsExtensionHidden",
+          "kMDItemFSIsStationery",
+          "kMDItemFSLabel",
+          "kMDItemFSName",
+          "kMDItemFSNodeCount",
+          "kMDItemFSOwnerGroupID",
+          "kMDItemFSOwnerUserID",
+          "kMDItemFSSize",
+          "kMDItemFSTypeCode",
+          "kMDItemInterestingDate_Ranking",
+          "kMDItemKind",
+          "kMDItemLogicalSize",
+          "kMDItemPhysicalSize"
+        ]
+      }
     },
     {
       "names": [
@@ -30,7 +66,15 @@
         "-plist"
       ],
       "description": "Output attributes in XML format to file. Use - to write to stdout option. Incompatible with options -raw, -nullMarker, and -name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "stdout or file",
+        "description": "XML output location",
+        "suggestions": [
+          "-"
+        ],
+        "template": "filepaths"
+      }
     }
   ],
   "args": [

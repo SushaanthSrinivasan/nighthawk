@@ -22,7 +22,11 @@
         "-A"
       ],
       "description": "Add additional hooks to the image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hooks",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -30,7 +34,11 @@
         "-c"
       ],
       "description": "Use config file to generate the ramdisk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -38,7 +46,11 @@
         "-d"
       ],
       "description": "Set directory as the location where the initramfs is built",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -46,7 +58,11 @@
         "-D"
       ],
       "description": "Set directory as the location where hooks will be searched for when generating the image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -54,7 +70,10 @@
         "-g"
       ],
       "description": "Generate a CPIO image as filename",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -62,7 +81,10 @@
         "-H"
       ],
       "description": "Output help for hookname",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hookname"
+      }
     },
     {
       "names": [
@@ -70,7 +92,10 @@
         "-k"
       ],
       "description": "Use kernelversion, instead of the current running kernel",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kernelversion"
+      }
     },
     {
       "names": [
@@ -99,7 +124,10 @@
         "-U"
       ],
       "description": "Generate a UEFI executable as filename",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -114,7 +142,10 @@
         "-p"
       ],
       "description": "Build initramfs image(s) according to specified preset",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "preset"
+      }
     },
     {
       "names": [
@@ -122,7 +153,10 @@
         "-r"
       ],
       "description": "Specifies the root directory to find modules in",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "root"
+      }
     },
     {
       "names": [
@@ -130,7 +164,10 @@
         "-S"
       ],
       "description": "Skip hooks when generating the image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "hooks"
+      }
     },
     {
       "names": [
@@ -145,7 +182,11 @@
         "-t"
       ],
       "description": "Use tmpdir as the temporary build directory instead of /tmp",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tmpdir",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -160,49 +201,70 @@
         "-z"
       ],
       "description": "Override the compression method with the compress program",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "compress"
+      }
     },
     {
       "names": [
         "--cmdline"
       ],
       "description": "Use kernel command line with UEFI executable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--splash"
       ],
       "description": "UEFI executables can show a bitmap file on boot",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--uefistub"
       ],
       "description": "UEFI stub image used for UEFI executable generation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--kernelimage"
       ],
       "description": "Include a kernel image for the UEFI executable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--microcode"
       ],
       "description": "Include microcode into the UEFI executable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--osrelease"
       ],
       "description": "Include a os-release file for the UEFI executable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     }
   ]
 }

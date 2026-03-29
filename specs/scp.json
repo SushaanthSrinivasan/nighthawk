@@ -43,49 +43,146 @@
         "-c"
       ],
       "description": "Selects the cipher to use for encrypting the data transfer. This option is directly passed to ssh(1)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cipher",
+        "description": "The selected cipher specification"
+      }
     },
     {
       "names": [
         "-F"
       ],
       "description": "Specifies an alternative per-user configuration file for ssh. This option is directly passed to ssh(1)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ssh_config",
+        "description": "The selected ssh config"
+      }
     },
     {
       "names": [
         "-i"
       ],
       "description": "Selects the file from which the identity (private key) for public key authentication is read. This option is directly passed to ssh(1)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "identity_file",
+        "description": "Specified identity file"
+      }
     },
     {
       "names": [
         "-J"
       ],
       "description": "Connect to the target host by first making an scp connection to the\njump host described by destination and then establishing a TCP\nforwarding to the ultimate destination from there.  Multiple jump\nhop",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "destination",
+        "description": "Scp destination"
+      }
     },
     {
       "names": [
         "-l"
       ],
       "description": "Limits the used bandwidth, specified in Kbit/s",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "limit",
+        "description": "Limit bandwidth in Kbit/s"
+      }
     },
     {
       "names": [
         "-o"
       ],
       "description": "Can be used to pass options to ssh in the format used in\nssh_config(5).  This is useful for specifying options for which\nthere is no separate scp command-line flag.  For full details of\nthe options li",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "option",
+        "suggestions": [
+          "AddressFamily",
+          "BatchMode",
+          "BindAddress",
+          "ChallengeResponseAuthentication",
+          "CheckHostIP",
+          "Cipher",
+          "Ciphers",
+          "ClearAllForwardings",
+          "Compression",
+          "CompressionLevel",
+          "ConnectionAttempts",
+          "ConnectTimeout",
+          "ControlMaster",
+          "ControlPath",
+          "ControlPersist",
+          "DynamicForward",
+          "EscapeChar",
+          "ExitOnForwardFailure",
+          "ForwardAgent",
+          "ForwardX11",
+          "ForwardX11Timeout",
+          "ForwardX11Trusted",
+          "GatewayPorts",
+          "GlobalKnownHostsFile",
+          "GSSAPIAuthentication",
+          "GSSAPIDelegateCredentials",
+          "HashKnownHosts",
+          "Host",
+          "HostbasedAuthentication",
+          "HostKeyAlgorithms",
+          "HostKeyAlias",
+          "HostName",
+          "IdentityFile",
+          "IdentitiesOnly",
+          "IPQoS",
+          "KbdInteractiveAuthentication",
+          "KbdInteractiveDevices",
+          "KexAlgorithms",
+          "LocalCommand",
+          "LocalForward",
+          "LogLevel",
+          "MACs",
+          "NoHostAuthenticationForLocalhost",
+          "NumberOfPasswordPrompts",
+          "PasswordAuthentication",
+          "PermitLocalCommand",
+          "PKCS11Provider",
+          "Port",
+          "PreferredAuthentications",
+          "Protocol",
+          "ProxyCommand",
+          "PubkeyAuthentication",
+          "RekeyLimit",
+          "RequestTTY",
+          "RhostsRSAAuthentication",
+          "RSAAuthentication",
+          "SendEnv",
+          "ServerAliveInterval",
+          "ServerAliveCountMax",
+          "StrictHostKeyChecking",
+          "TCPKeepAlive",
+          "Tunnel",
+          "TunnelDevice",
+          "UsePrivilegedPort",
+          "User",
+          "UserKnownHostsFile",
+          "VerifyHostKeyDNS",
+          "VisualHostKey",
+          "XAuthLocation"
+        ]
+      }
     },
     {
       "names": [
         "-P"
       ],
       "description": "Specifies the port to connect to on the remote host.  Note that\nthis option is written with a capital ‘P’, because -p is already\nreserved for preserving the times and modes of the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
@@ -110,7 +207,10 @@
         "-S"
       ],
       "description": "Name of program to use for the encrypted connection.  The program must understand ssh(1) options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "program"
+      }
     },
     {
       "names": [

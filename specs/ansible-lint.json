@@ -29,7 +29,20 @@
         "-f"
       ],
       "description": "Stdout formatting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "-f",
+        "suggestions": [
+          "rich",
+          "plain",
+          "md",
+          "json",
+          "codeclimate",
+          "quiet",
+          "pep8",
+          "sarif"
+        ]
+      }
     },
     {
       "names": [
@@ -54,7 +67,11 @@
         "--project-dir"
       ],
       "description": "Location of project/repository, autodetected based on location of configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PROJECT_DIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -62,7 +79,11 @@
         "-r"
       ],
       "description": "Specify custom rule directories",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "RULESDIR",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -75,7 +96,16 @@
         "--write"
       ],
       "description": "Allow ansible-lint to reformat YAML files and run rule transforms",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WRITE_LIST",
+        "description": "Limit the effective rule transforms by passing a keywords 'all' or 'none' or a comma separated list of rule ids or rule tags",
+        "suggestions": [
+          "all",
+          "none",
+          "rule1,rule2,..."
+        ]
+      }
     },
     {
       "names": [
@@ -102,7 +132,10 @@
         "-x"
       ],
       "description": "Only check rules whose id/tags do not match these values",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SKIP_LIST"
+      }
     },
     {
       "names": [
@@ -110,14 +143,20 @@
         "-w"
       ],
       "description": "Only warn about these rules, unless overridden in config file defaults to 'experimental'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WARN_LIST"
+      }
     },
     {
       "names": [
         "--enable-list"
       ],
       "description": "Activate optional rules by their tag name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ENABLE_LIST"
+      }
     },
     {
       "names": [
@@ -136,14 +175,23 @@
         "--exclude-paths"
       ],
       "description": "Path to directories or files to skip. This option is repeatable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "EXCLUDE_PATHS",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--config-file"
       ],
       "description": "Specify configuration file to use. By default it will look for '.ansible-lint' or '.config/ansible-lint.yml'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "CONFIG_FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

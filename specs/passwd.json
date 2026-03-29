@@ -7,21 +7,40 @@
         "-i"
       ],
       "description": "Specify where the password update should be applied",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "infosystem",
+        "description": "The directory system",
+        "suggestions": [
+          "PAM",
+          "opendirectory",
+          "file",
+          "nis"
+        ]
+      }
     },
     {
       "names": [
         "-l"
       ],
       "description": "Causes the password to be updated in the given location of the chosen directory system",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "location",
+        "description": "The location of the chosen directory system",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-u"
       ],
       "description": "Specify the user name to use when authenticating to the directory node",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "authname",
+        "description": "The user name"
+      }
     }
   ]
 }

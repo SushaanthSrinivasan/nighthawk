@@ -167,7 +167,14 @@
             "--format"
           ],
           "description": "Specify output format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output format",
+            "suggestions": [
+              "human",
+              "plain"
+            ]
+          }
         }
       ],
       "args": [
@@ -212,7 +219,10 @@
             "--output"
           ],
           "description": "File to write generated completions to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file"
+          }
         }
       ],
       "args": [
@@ -319,28 +329,40 @@
             "--node"
           ],
           "description": "Set the custom Node version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--npm"
           ],
           "description": "Set the custom npm version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--yarn"
           ],
           "description": "Set the custom Yarn version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--env"
           ],
           "description": "Set an environment variable (can be used multiple times)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NAME=value"
+          }
         }
       ],
       "args": [

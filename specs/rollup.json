@@ -8,35 +8,63 @@
         "--config"
       ],
       "description": "Use this config file (if argument is used but value is unspecified, defaults to rollup.config.js)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "-d",
         "--dir"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dirname",
+        "description": "Directory for chunks (if absent, prints to stdout)",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-e",
         "--external"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ids",
+        "description": "Comma-separate list of module IDs to exclude"
+      }
     },
     {
       "names": [
         "-f",
         "--format"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "description": "Type of output (amd, cjs, es, iife, umd, system)",
+        "suggestions": [
+          "amd",
+          "cjs",
+          "es",
+          "iife",
+          "umd",
+          "system"
+        ]
+      }
     },
     {
       "names": [
         "-g",
         "--globals"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pairs",
+        "description": "Comma-separate list of `moduleID:Global` pairs"
+      }
     },
     {
       "names": [
@@ -50,7 +78,12 @@
         "-i",
         "--input"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "description": "Input (alternative to <entry file>)",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -64,21 +97,33 @@
         "-n",
         "--name"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "Name for UMD export"
+      }
     },
     {
       "names": [
         "-o",
         "--file"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "output",
+        "description": "Single output file (if absent, prints to stdout)"
+      }
     },
     {
       "names": [
         "-p",
         "--plugin"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "plugin",
+        "description": "Use the plugin specified (may be repeated)"
+      }
     },
     {
       "names": [
@@ -98,7 +143,11 @@
       "names": [
         "--amd.id"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "id",
+        "description": "ID for AMD module (default is anonymous)"
+      }
     },
     {
       "names": [
@@ -110,31 +159,51 @@
       "names": [
         "--amd.basePath"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix",
+        "description": "Path to prepend to auto generated AMD ID"
+      }
     },
     {
       "names": [
         "--amd.define"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "Function to use in place of 'define'"
+      }
     },
     {
       "names": [
         "--assetFileNames"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "description": "Name pattern for emitted assets"
+      }
     },
     {
       "names": [
         "--banner"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text",
+        "description": "Code to insert at top of bundle (outside wrapper)"
+      }
     },
     {
       "names": [
         "--chunkFileNames"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "description": "Name pattern for emitted secondary chunks"
+      }
     },
     {
       "names": [
@@ -146,19 +215,31 @@
       "names": [
         "--context"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "variable",
+        "description": "Specify top-level 'this' value"
+      }
     },
     {
       "names": [
         "--entryFileNames"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern",
+        "description": "Name pattern for emitted entry chunks"
+      }
     },
     {
       "names": [
         "--environment"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "values",
+        "description": "Settings passed to config file"
+      }
     },
     {
       "names": [
@@ -170,7 +251,11 @@
       "names": [
         "--exports"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "description": "Specify export mode (auto, default, named, none)"
+      }
     },
     {
       "names": [
@@ -194,7 +279,11 @@
       "names": [
         "--footer"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text",
+        "description": "Code to insert at end of bundle (outside wrapper)"
+      }
     },
     {
       "names": [
@@ -230,7 +319,11 @@
       "names": [
         "--intro"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text",
+        "description": "Code to insert at top of bundle (inside wrapper)"
+      }
     },
     {
       "names": [
@@ -254,7 +347,11 @@
       "names": [
         "--outro"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "text",
+        "description": "Code to insert at end of bundle (inside wrapper)"
+      }
     },
     {
       "names": [
@@ -315,7 +412,10 @@
         "--sourcemapFile"
       ],
       "description": "Specify bundle position for source maps",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file"
+      }
     },
     {
       "names": [
@@ -394,7 +494,10 @@
         "--watch.buildDelay"
       ],
       "description": "Throttle watch rebuilds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -413,14 +516,20 @@
         "--watch.exclude"
       ],
       "description": "Exclude files from being watched",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "files"
+      }
     },
     {
       "names": [
         "--watch.include"
       ],
       "description": "Limit watching to specified files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "files"
+      }
     },
     {
       "names": [

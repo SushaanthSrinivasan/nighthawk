@@ -39,14 +39,21 @@
         "--input"
       ],
       "description": "Input template files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Template File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--output"
       ],
       "description": "Write HTML output to this folder",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -59,28 +66,47 @@
         "--port"
       ],
       "description": "Run Web Server on specified port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
         "--formats"
       ],
       "description": "Whitelist only certain template types",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Template Names Separated by ,",
+        "suggestions": [
+          "md",
+          "html",
+          "ejs"
+        ]
+      }
     },
     {
       "names": [
         "--config"
       ],
       "description": "Override the eleventy config file path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Config File",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--pathprefix"
       ],
       "description": "Change all url template filters to use this subdirectory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Subdirectory",
+        "template": "folders"
+      }
     }
   ],
   "args": [

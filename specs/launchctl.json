@@ -119,7 +119,10 @@
             "--program"
           ],
           "description": "Use program path as executable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "program-path"
+          }
         },
         {
           "names": [
@@ -168,28 +171,44 @@
             "--stdin"
           ],
           "description": "Sets the stdin path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stdin-path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--stdout"
           ],
           "description": "Sets the stdout path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stdout-path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--stderr"
           ],
           "description": "Sets the stderr path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stderr-path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--environment"
           ],
           "description": "Sets environment variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment-variables",
+            "is_variadic": true
+          }
         }
       ],
       "args": [
@@ -295,55 +314,91 @@
           "names": [
             "cpu"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "filesize"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "data"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "stack"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "core"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "rss"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "memlock"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "maxproc"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         },
         {
           "names": [
             "maxfiles"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[both]",
+            "description": "Specify a limit for both soft and hard"
+          }
         }
       ]
     },
@@ -450,14 +505,20 @@
             "-S"
           ],
           "description": "Session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "session"
+          }
         },
         {
           "names": [
             "-D"
           ],
           "description": "Load files from specified domain",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "domain"
+          }
         }
       ],
       "args": [
@@ -489,14 +550,20 @@
             "-S"
           ],
           "description": "Session",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "session"
+          }
         },
         {
           "names": [
             "-D"
           ],
           "description": "Load files from specified domain",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "domain"
+          }
         }
       ],
       "args": [
@@ -614,21 +681,32 @@
             "-p"
           ],
           "description": "Program to execute",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "executable"
+          }
         },
         {
           "names": [
             "-o"
           ],
           "description": "Std out path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stdout-path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "-e"
           ],
           "description": "Std err path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stderr-path",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [

@@ -23,14 +23,22 @@
             "--max-diagnostics"
           ],
           "description": "Cap the amount of diagnostics displayed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUMBER"
+          }
         },
         {
           "names": [
             "--config-path"
           ],
           "description": "Set the filesystem path to the config dir of the rome.json file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -74,14 +82,22 @@
             "--max-diagnostics"
           ],
           "description": "Cap the amount of diagnostics displayed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUMBER"
+          }
         },
         {
           "names": [
             "--config-path"
           ],
           "description": "Set the filesystem path to the config dir of the rome.json file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -94,49 +110,91 @@
             "--indent-style"
           ],
           "description": "Change the indention character",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "style",
+            "suggestions": [
+              "tabs",
+              "space"
+            ]
+          }
         },
         {
           "names": [
             "--indent-size"
           ],
           "description": "How many spaces should be used for indentation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SIZE"
+          }
         },
         {
           "names": [
             "--line-width"
           ],
           "description": "How many characters the formatter is allowed to print in a single line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "width"
+          }
         },
         {
           "names": [
             "--quote-style"
           ],
           "description": "Changes the quotation character for strings",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "style",
+            "suggestions": [
+              "single",
+              "double"
+            ]
+          }
         },
         {
           "names": [
             "--quote-properties"
           ],
           "description": "Changes when properties in object should be quoted",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "property",
+            "suggestions": [
+              "as-needed",
+              "preserve"
+            ]
+          }
         },
         {
           "names": [
             "--trailing-comma"
           ],
           "description": "Changes trailing commas in multi-line comma-separated syntactic structures",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "trailing",
+            "suggestions": [
+              "all",
+              "es5",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--semicolons"
           ],
           "description": "Changes when to print semicolons for statements",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rule",
+            "suggestions": [
+              "always",
+              "as-needed"
+            ]
+          }
         }
       ],
       "args": [
@@ -168,14 +226,22 @@
             "--max-diagnostics"
           ],
           "description": "Cap the amount of diagnostics displayed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NUMBER"
+          }
         },
         {
           "names": [
             "--config-path"
           ],
           "description": "Set the filesystem path to the config dir of the rome.json file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dir",
+            "is_variadic": true,
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -188,56 +254,101 @@
             "--indent-style"
           ],
           "description": "Change the indention character",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "style",
+            "suggestions": [
+              "tabs",
+              "space"
+            ]
+          }
         },
         {
           "names": [
             "--indent-size"
           ],
           "description": "How many spaces should be used for indentation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SIZE"
+          }
         },
         {
           "names": [
             "--line-width"
           ],
           "description": "How many characters the formatter is allowed to print in a single line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "width"
+          }
         },
         {
           "names": [
             "--quote-style"
           ],
           "description": "Changes the quotation character for strings",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "style",
+            "suggestions": [
+              "single",
+              "double"
+            ]
+          }
         },
         {
           "names": [
             "--quote-properties"
           ],
           "description": "Changes when properties in object should be quoted",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "property",
+            "suggestions": [
+              "as-needed",
+              "preserve"
+            ]
+          }
         },
         {
           "names": [
             "--trailing-comma"
           ],
           "description": "Changes trailing commas in multi-line comma-separated syntactic structures",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "trailing",
+            "suggestions": [
+              "all",
+              "es5",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--semicolons"
           ],
           "description": "Changes when to print semicolons for statements",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rule",
+            "suggestions": [
+              "always",
+              "as-needed"
+            ]
+          }
         },
         {
           "names": [
             "--stdin-file-path"
           ],
           "description": "A file name with its extension to pass when reading from standard in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         }
       ],
       "args": [
@@ -283,7 +394,14 @@
         "--colors"
       ],
       "description": "Set the formatting mode for markup",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "off",
+          "force"
+        ]
+      }
     },
     {
       "names": [
@@ -302,7 +420,10 @@
         "--files-max-size"
       ],
       "description": "The maximum allowed size for source code files in bytes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "BYTES"
+      }
     }
   ]
 }

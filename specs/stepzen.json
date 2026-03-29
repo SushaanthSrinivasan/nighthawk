@@ -29,21 +29,34 @@
             "--dir"
           ],
           "description": "The working directory for StepZen assets",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Path to StepZen directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--endpoint"
           ],
           "description": "The folder/endpoint to deploy to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "endpoint",
+            "description": "The StepZen endpoint"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "The port number to use for the GraphiQL explorer",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port",
+            "description": "A port to run on"
+          }
         }
       ]
     },
@@ -56,7 +69,12 @@
             "--dir"
           ],
           "description": "The directory to which the schema will be imported",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Path to directory",
+            "template": "folders"
+          }
         }
       ],
       "args": [

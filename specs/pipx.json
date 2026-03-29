@@ -23,14 +23,20 @@
             "--suffix"
           ],
           "description": "Optional suffix for virtual environment and executable names",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SUFFIX"
+          }
         },
         {
           "names": [
             "--python"
           ],
           "description": "The Python executable used to create the Virtual Environment and run the associated app/apps. Must be v3.6+",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON"
+          }
         },
         {
           "names": [
@@ -44,7 +50,10 @@
             "-i"
           ],
           "description": "Base URL of Python Package Index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
@@ -58,7 +67,10 @@
             "--pip-args"
           ],
           "description": "Arbitrary pip arguments to pass directly to pip install/upgrade commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PIP_ARGS"
+          }
         },
         {
           "names": [
@@ -102,7 +114,10 @@
             "-i"
           ],
           "description": "Base URL of Python Package Index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
@@ -116,7 +131,10 @@
             "--pip-args"
           ],
           "description": "Arbitrary pip arguments to pass directly to pip install/upgrade commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PIP_ARGS"
+          }
         },
         {
           "names": [
@@ -172,7 +190,10 @@
             "-i"
           ],
           "description": "Base URL of Python Package Index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
@@ -186,7 +207,10 @@
             "--pip-args"
           ],
           "description": "Arbitrary pip arguments to pass directly to pip install/upgrade commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PIP_ARGS"
+          }
         },
         {
           "names": [
@@ -216,7 +240,11 @@
             "--skip"
           ],
           "description": "Skip these packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "packages to skip",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -271,7 +299,10 @@
             "--python"
           ],
           "description": "The Python executable used to recreate the Virtual Environment and run the associated app/apps. Must be v3.6+",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON"
+          }
         },
         {
           "names": [
@@ -295,14 +326,21 @@
             "--python"
           ],
           "description": "The Python executable used to recreate the Virtual Environment and run the associated app/apps. Must be v3.6+",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON"
+          }
         },
         {
           "names": [
             "--skip"
           ],
           "description": "Skip these packages",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "packages to skip",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -363,14 +401,20 @@
             "--spec"
           ],
           "description": "The package name or specific installation source passed to pip",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SPEC"
+          }
         },
         {
           "names": [
             "--python"
           ],
           "description": "The Python version to run package's CLI app with",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PYTHON"
+          }
         },
         {
           "names": [
@@ -384,7 +428,10 @@
             "-i"
           ],
           "description": "Base URL of Python Package Index",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "INDEX_URL"
+          }
         },
         {
           "names": [
@@ -398,7 +445,10 @@
             "--pip-args"
           ],
           "description": "Arbitrary pip arguments to pass directly to pip install/upgrade commands",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PIP_ARGS"
+          }
         },
         {
           "names": [
@@ -460,7 +510,19 @@
             "--value"
           ],
           "description": "Print the value of the variable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "VARIABLE",
+            "suggestions": [
+              "PIPX_HOME",
+              "PIPX_BIN_DIR",
+              "PIPX_SHARED_LIBS",
+              "PIPX_LOCAL_VENVS",
+              "PIPX_LOG_DIR",
+              "PIPX_TRASH_DIR",
+              "PIPX_VENV_CACHEDIR"
+            ]
+          }
         }
       ]
     },

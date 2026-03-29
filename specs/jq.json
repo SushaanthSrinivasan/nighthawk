@@ -59,7 +59,11 @@
         "--indent"
       ],
       "description": "Use the given number of spaces for indentation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n",
+        "description": "No more than 7"
+      }
     },
     {
       "names": [
@@ -115,14 +119,22 @@
         "--from-file"
       ],
       "description": "Read filter from the file rather than from a command line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Prepend directory to the search list for modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -136,28 +148,40 @@
         "--arg"
       ],
       "description": "This option passes a value to the jq program as a predefined variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--argjson"
       ],
       "description": "This option passes a JSON-encoded value to the jq program as a predefined variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name"
+      }
     },
     {
       "names": [
         "--slurpfile"
       ],
       "description": "This option reads all the JSON texts in the named file and binds an array of the parsed JSON values to the given global variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "variable name"
+      }
     },
     {
       "names": [
         "--rawfile"
       ],
       "description": "This option reads in the named file and binds its contents to the given global variable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "variable name"
+      }
     },
     {
       "names": [
@@ -176,7 +200,11 @@
         "--run-tests"
       ],
       "description": "Runs the tests in the given file or standard input. This must be the last option given and does not honor all preceding options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     }
   ],
   "args": [

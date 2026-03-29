@@ -12,14 +12,24 @@
             "-c"
           ],
           "description": "Codephrase used to connect to relay",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "codephrase"
+          }
         },
         {
           "names": [
             "--hash"
           ],
           "description": "Hash algorithm",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "xxhash",
+              "imohash",
+              "md5"
+            ]
+          }
         },
         {
           "names": [
@@ -27,7 +37,10 @@
             "-t"
           ],
           "description": "Send some text",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "text"
+          }
         },
         {
           "names": [
@@ -63,14 +76,20 @@
             "--host"
           ],
           "description": "Host of the relay",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value"
+          }
         },
         {
           "names": [
             "--ports"
           ],
           "description": "Ports of the local relay",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ports"
+          }
         }
       ]
     },
@@ -160,56 +179,86 @@
         "--curve"
       ],
       "description": "Choose an encryption curve",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "p521",
+          "p256",
+          "p384",
+          "siec"
+        ]
+      }
     },
     {
       "names": [
         "--ip"
       ],
       "description": "Set sender ip if known",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--relay"
       ],
       "description": "Address of the relay",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ipv4 address"
+      }
     },
     {
       "names": [
         "--relay6"
       ],
       "description": "Ipv6 address of the relay",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ipv6 address"
+      }
     },
     {
       "names": [
         "--out"
       ],
       "description": "Specify an output folder to receive the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "output folder"
+      }
     },
     {
       "names": [
         "--pass"
       ],
       "description": "Password for the relay (default: \"pass123\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "password"
+      }
     },
     {
       "names": [
         "--socks5"
       ],
       "description": "Add a socks5 proxy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
         "--throttleUpload"
       ],
       "description": "Throttle the upload speed e.g. 500k",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [

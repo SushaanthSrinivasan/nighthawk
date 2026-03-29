@@ -11,7 +11,11 @@
             "--project-directory"
           ],
           "description": "The path to the root of the project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "/project/dir/",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -251,7 +255,10 @@
                 "--subspec"
               ],
               "description": "Lint validates only the given subspec",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAME"
+              }
             },
             {
               "names": [
@@ -294,14 +301,28 @@
                 "--sources"
               ],
               "description": "The sources from which to pull dependent pods (defaults to https://cdn.cocoapods.org/). Multiple sources must be comma-delimited",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "source",
+                "suggestions": [
+                  "https://cdn.cocoapods.org/"
+                ]
+              }
             },
             {
               "names": [
                 "--platforms"
               ],
               "description": "Lint against specific platforms (defaults to all platforms supported by the podspec). Multiple platforms must be comma-delimited",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "platform",
+                "suggestions": [
+                  "ios",
+                  "macos",
+                  "ios,macos"
+                ]
+              }
             },
             {
               "names": [
@@ -314,7 +335,10 @@
                 "--swift-version"
               ],
               "description": "The `SWIFT_VERSION` that should be used to lint the spec. This takes precedence over the Swift versions specified by the spec or a `.swift-version` file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "VERSION"
+              }
             },
             {
               "names": [
@@ -333,7 +357,10 @@
                 "--test-specs"
               ],
               "description": "List of test specs to run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "test-spec"
+              }
             },
             {
               "names": [
@@ -346,7 +373,10 @@
                 "--configuration"
               ],
               "description": "Build using the given configuration (defaults to Release)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "CONFIGURATION"
+              }
             },
             {
               "names": [
@@ -398,7 +428,11 @@
             "--project-directory"
           ],
           "description": "The path to the root of the project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "/project/dir/",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -429,7 +463,11 @@
             "--project-directory"
           ],
           "description": "The path to the root of the project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "/project/dir/",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -499,7 +537,11 @@
                 "--project-directory"
               ],
               "description": "The path to the root of the project directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "/project/dir/",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -541,7 +583,11 @@
                 "--project-directory"
               ],
               "description": "The path to the root of the project directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "/project/dir/",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -566,7 +612,11 @@
                 "--project-directory"
               ],
               "description": "The path to the root of the project directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "/project/dir/",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -680,7 +730,10 @@
                 "--template-url"
               ],
               "description": "The URL of the git repo containing a compatible template",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "URL"
+              }
             },
             {
               "names": [
@@ -716,7 +769,10 @@
                 "--subspec"
               ],
               "description": "Lint validates only the given subspec",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAME"
+              }
             },
             {
               "names": [
@@ -759,14 +815,28 @@
                 "--sources"
               ],
               "description": "The sources from which to pull dependent pods (defaults to https://cdn.cocoapods.org/). Multiple,sources must be comma-delimited",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "source",
+                "suggestions": [
+                  "https://cdn.cocoapods.org/"
+                ]
+              }
             },
             {
               "names": [
                 "--platforms"
               ],
               "description": "Lint against specific platforms (defaults to all platforms supported by the podspec). Multiple platforms must be comma-delimited",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "platform",
+                "suggestions": [
+                  "ios",
+                  "macos",
+                  "ios,macos"
+                ]
+              }
             },
             {
               "names": [
@@ -779,21 +849,30 @@
                 "--swift-version"
               ],
               "description": "The `SWIFT_VERSION` that should be used to lint the spec. This takes precedence over the Swift versions specified by the spec or a `.swift-version` file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "VERSION"
+              }
             },
             {
               "names": [
                 "--include-podspecs"
               ],
               "description": "Additional ancillary podspecs which are used for linting via :path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "podspec"
+              }
             },
             {
               "names": [
                 "--external-podspecs"
               ],
               "description": "Additional ancillary podspecs which are used for linting via :podspec. If there are --include-podspecs, then these are removed from them",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "podspec"
+              }
             },
             {
               "names": [
@@ -812,7 +891,10 @@
                 "--test-specs"
               ],
               "description": "List of test specs to run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "test-spec"
+              }
             },
             {
               "names": [
@@ -825,7 +907,10 @@
                 "--configuration"
               ],
               "description": "Build using the given configuration (defaults to Release)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "CONFIGURATION"
+              }
             },
             {
               "names": [
@@ -952,7 +1037,13 @@
                 "--sources"
               ],
               "description": "The sources from which to pull dependent pods (defaults to all available repos). Multiple sources must be comma-delimited",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "source",
+                "suggestions": [
+                  "https://cdn.cocoapods.org/"
+                ]
+              }
             },
             {
               "names": [
@@ -983,7 +1074,10 @@
                 "--commit-message"
               ],
               "description": "Add custom commit message. Opens default editor if no commit message is specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "message"
+              }
             },
             {
               "names": [
@@ -996,7 +1090,10 @@
                 "--swift-version"
               ],
               "description": "The `SWIFT_VERSION` that should be used when linting the spec. This takes precedence over the Swift versions specified by the spec or a `.swift-version` file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "VERSION"
+              }
             },
             {
               "names": [
@@ -1167,7 +1264,10 @@
                 "--swift-version"
               ],
               "description": "The SWIFT_VERSION that should be used to lint the spec. This takes precedence over a .swift-version file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "VERSION"
+              }
             },
             {
               "names": [
@@ -1209,7 +1309,10 @@
                 "--in-favor-of"
               ],
               "description": "The pod to deprecate this pod in favor of",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "OTHER_NAME"
+              }
             },
             {
               "names": [
@@ -1325,7 +1428,10 @@
                 "--description"
               ],
               "description": "An arbitrary description to easily identify your session later on",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "DESCRIPTION"
+              }
             },
             {
               "names": [
@@ -1379,14 +1485,20 @@
             "--sources"
           ],
           "description": "The sources from which to update dependent pods. Multiple sources must be comma-delimited",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "https://cdn.cocoapods.org/"
+          }
         },
         {
           "names": [
             "--exclude-pods"
           ],
           "description": "Pods to exclude during update. Multiple pods must be comma-delimited",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "podName"
+          }
         },
         {
           "names": [
@@ -1399,7 +1511,11 @@
             "--project-directory"
           ],
           "description": "The path to the root of the project directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "/project/dir/",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1428,7 +1544,11 @@
           "names": [
             "--podspec_name"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "The name of the podspec file within the Git Repository"
+          }
         },
         {
           "names": [

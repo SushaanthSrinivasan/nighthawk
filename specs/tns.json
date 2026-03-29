@@ -220,7 +220,10 @@
             "--template"
           ],
           "description": "Create a project using a predefined template",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template"
+          }
         },
         {
           "names": [
@@ -268,14 +271,21 @@
             "--path"
           ],
           "description": "Specifies the directory where you want to create the project, if different from the current directory. <directory> is the absolute path to an empty directory in which you want to create the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--appid"
           ],
           "description": "Sets the application identifier of your project. <appid> is the value of the application identifier and it must meet the specific requirements of each platform that you want to target. If not specifie",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "identifier"
+          }
         },
         {
           "names": [
@@ -351,7 +361,11 @@
                     "--framework-path"
                   ],
                   "description": "Sets the path to a NativeScript runtime for the specified platform that you want to use instead of the default runtime. <File Path> must point to a valid npm package",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             },
@@ -364,7 +378,11 @@
                     "--framework-path"
                   ],
                   "description": "Sets the path to a NativeScript runtime for the specified platform that you want to use instead of the default runtime. <File Path> must point to a valid npm package",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             },
@@ -377,7 +395,11 @@
                     "--framework-path"
                   ],
                   "description": "Sets the path to a NativeScript runtime for the specified platform that you want to use instead of the default runtime. <File Path> must point to a valid npm package",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             },
@@ -390,7 +412,11 @@
                     "--framework-path"
                   ],
                   "description": "Sets the path to a NativeScript runtime for the specified platform that you want to use instead of the default runtime. <File Path> must point to a valid npm package",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "path",
+                    "template": "filepaths"
+                  }
                 }
               ]
             }
@@ -508,7 +534,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -527,7 +556,10 @@
                 "--timeout"
               ],
               "description": "Sets the number of seconds that the NativeScript CLI will wait for the debugger to boot. If not set, the default timeout is 90 seconds",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
@@ -576,28 +608,41 @@
                 "--key-store-path"
               ],
               "description": "Specifies the file path to the keystore file (P12) which you want to use to code sign your APK",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--key-store-password"
               ],
               "description": "Provides the password for the keystore file specified with --key-store-path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--key-store-alias"
               ],
               "description": "Provides the alias for the keystore file specified with --key-store-path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "alias"
+              }
             },
             {
               "names": [
                 "--key-store-alias-password"
               ],
               "description": "Provides the password for the alias specified with --key-store-alias-password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "alias password"
+              }
             }
           ]
         },
@@ -670,7 +715,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -689,7 +737,10 @@
                 "--timeout"
               ],
               "description": "Sets the number of seconds that the NativeScript CLI will wait for the debugger to boot. If not set, the default timeout is 90 seconds",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
@@ -714,7 +765,10 @@
                 "--sdk"
               ],
               "description": "Specifies the target simulator's sdk",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "sdk"
+              }
             }
           ]
         }
@@ -785,7 +839,10 @@
             "--device"
           ],
           "description": "Specifies a connected device/emulator to start and run the app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id"
+          }
         },
         {
           "names": [
@@ -804,7 +861,10 @@
             "--timeout"
           ],
           "description": "Sets the number of seconds that the NativeScript CLI will wait for the debugger to boot. If not set, the default timeout is 90 seconds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seconds"
+          }
         },
         {
           "names": [
@@ -906,7 +966,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -925,7 +988,10 @@
                 "--timeout"
               ],
               "description": "Sets the number of seconds that the NativeScript CLI will wait for the debugger to boot. If not set, the default timeout is 90 seconds",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
@@ -1040,7 +1106,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -1059,7 +1128,10 @@
                 "--timeout"
               ],
               "description": "Sets the number of seconds that the NativeScript CLI will wait for the debugger to boot. If not set, the default timeout is 90 seconds",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
@@ -1117,7 +1189,15 @@
                 "--framework"
               ],
               "description": "Sets the unit testing framework to install",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "framework",
+                "suggestions": [
+                  "mocha",
+                  "jasmine",
+                  "qunit"
+                ]
+              }
             }
           ]
         },
@@ -1154,7 +1234,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -1221,7 +1304,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -1289,21 +1375,33 @@
                 "--path"
               ],
               "description": "Specifies the directory where you want to create the project, if different from the current directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "description": "Specifies the directory where you want to create the project, if different from the current directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Specifies the GitHub username, which will be used to build the URLs in the plugin's package.json file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username",
+                "description": "GitHub username"
+              }
             },
             {
               "names": [
                 "--pluginName"
               ],
               "description": "Used to set the default file and class names in the plugin source",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1334,7 +1432,11 @@
                 "--template"
               ],
               "description": "Specifies the custom seed archive, which you want to use to create your plugin",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "template",
+                "description": "Specifies the template for the plugin"
+              }
             }
           ],
           "args": [
@@ -1374,7 +1476,10 @@
                     "--background"
                   ],
                   "description": "Sets the background color of the splashscreen",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "color"
+                  }
                 }
               ],
               "args": [
@@ -1537,14 +1642,22 @@
                 "--copy-to"
               ],
               "description": "Specifies the file path where the built .ipa|.apk will be copied. If it points to a non-existent directory path, it will be created. If the specified value is existing directory, the original file nam",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--path"
               ],
               "description": "Specifies the directory where you want to create the project, if different from the current directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1563,7 +1676,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -1594,35 +1710,51 @@
                 "--compileSdk"
               ],
               "description": "Sets the Android SDK that will be used to build the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "api level"
+              }
             },
             {
               "names": [
                 "--key-store-path"
               ],
               "description": "Specifies the file path to the keystore file (P12) which you want to use to code sign your APK",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--key-store-password"
               ],
               "description": "Provides the password for the keystore file specified with --key-store-path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--key-store-alias"
               ],
               "description": "Provides the alias for the keystore file specified with --key-store-path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "alias"
+              }
             },
             {
               "names": [
                 "--key-store-alias-password"
               ],
               "description": "Provides the password for the alias specified with --key-store-alias-password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "alias password"
+              }
             }
           ]
         },
@@ -1688,14 +1820,22 @@
                 "--copy-to"
               ],
               "description": "Specifies the file path where the built .ipa|.apk will be copied. If it points to a non-existent directory path, it will be created. If the specified value is existing directory, the original file nam",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--path"
               ],
               "description": "Specifies the directory where you want to create the project, if different from the current directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1714,7 +1854,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -1733,14 +1876,20 @@
                 "--team-id"
               ],
               "description": "If used without parameter, lists all team names and ids. If used with team name or id, it will switch to automatic signing mode and configure the .xcodeproj file of your app. In this case .xcconfig sh",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "team id"
+              }
             },
             {
               "names": [
                 "--provision"
               ],
               "description": "If used without parameter, lists all eligible provisioning profiles. If used with UUID or name of your provisioning profile, it will switch to manual signing mode and configure the .xcodeproj file of ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "uuid"
+              }
             }
           ]
         }
@@ -1805,14 +1954,22 @@
             "--copy-to"
           ],
           "description": "Specifies the file path where the built .ipa|.apk will be copied. If it points to a non-existent directory path, it will be created. If the specified value is existing directory, the original file nam",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--path"
           ],
           "description": "Specifies the directory where you want to create the project, if different from the current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1831,7 +1988,10 @@
             "--device"
           ],
           "description": "Specifies a connected device/emulator to start and run the app",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "device id"
+          }
         },
         {
           "names": [
@@ -1866,7 +2026,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -1963,28 +2126,41 @@
                 "--key-store-path"
               ],
               "description": "Specifies the file path to the keystore file (P12) which you want to use to code sign your APK",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--key-store-password"
               ],
               "description": "Provides the password for the keystore file specified with --key-store-path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--key-store-alias"
               ],
               "description": "Provides the alias for the keystore file specified with --key-store-path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "alias"
+              }
             },
             {
               "names": [
                 "--key-store-alias-password"
               ],
               "description": "Provides the password for the alias specified with --key-store-alias-password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "alias password"
+              }
             }
           ]
         },
@@ -1996,7 +2172,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             },
             {
               "names": [
@@ -2092,7 +2271,11 @@
             "--path"
           ],
           "description": "Specifies the directory which contains the package.json file, if different from the current directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2122,21 +2305,31 @@
                 "--ipa"
               ],
               "description": "Use the provided .ipa file instead of building the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ipa file path",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--appleApplicationSpecificPassword"
               ],
               "description": "Specifies the password for accessing the information you store in iTunes Transporter application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--appleSessionBase64"
               ],
               "description": "The session that will be used instead of triggering a new login each time NativeScript CLI communicates with Apple's APIs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "base64"
+              }
             }
           ],
           "args": [
@@ -2165,7 +2358,10 @@
             "--team-id"
           ],
           "description": "Specifies the team id for which Xcode will try to find distribution certificate and provisioning profile when exporting for AppStore submission",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "team id"
+          }
         },
         {
           "names": [
@@ -2202,7 +2398,10 @@
                 "--timeout"
               ],
               "description": "Sets the number of seconds that the NativeScript CLI will wait for the debugger to boot. If not set, the default timeout is 90 seconds",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
@@ -2227,7 +2426,10 @@
                 "--timeout"
               ],
               "description": "Sets the number of seconds that the NativeScript CLI will wait for the debugger to boot. If not set, the default timeout is 90 seconds",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "seconds"
+              }
             },
             {
               "names": [
@@ -2252,7 +2454,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             }
           ]
         },
@@ -2265,7 +2470,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             }
           ]
         },
@@ -2278,7 +2486,10 @@
                 "--device"
               ],
               "description": "Specifies a connected device/emulator to start and run the app",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "device id"
+              }
             }
           ],
           "args": [

@@ -33,7 +33,10 @@
         "--config"
       ],
       "description": "Specify configuration file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "configfile"
+      }
     },
     {
       "names": [
@@ -62,7 +65,10 @@
         "--capture_time"
       ],
       "description": "Define capture time in minutes of a live stream",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "capture_time"
+      }
     },
     {
       "names": [
@@ -83,7 +89,10 @@
         "--username"
       ],
       "description": "Username (if applicable)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username"
+      }
     },
     {
       "names": [
@@ -91,7 +100,10 @@
         "--password"
       ],
       "description": "Password (if applicable)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "password"
+      }
     },
     {
       "names": [
@@ -124,35 +136,50 @@
         "--http-header"
       ],
       "description": "A header to add to each HTTP request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "header1=value;header2=value2"
+      }
     },
     {
       "names": [
         "--cookies"
       ],
       "description": "A cookies to add to each HTTP request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cookie1=value;cookie2=value2"
+      }
     },
     {
       "names": [
         "--exclude"
       ],
       "description": "Exclude videos with the WORD(s) in the filename. Comma separated",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "WORD1,WORD2,..."
+      }
     },
     {
       "names": [
         "--after-date"
       ],
       "description": "Only videos published on or after this date",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "yyyy-MM-dd"
+      }
     },
     {
       "names": [
         "--proxy"
       ],
       "description": "Use the specified HTTP/HTTPS/SOCKS proxy. To enable experimental SOCKS proxy, specify a proper scheme. For example socks5://127.0.0.1:1080/",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "proxy"
+      }
     },
     {
       "names": [
@@ -191,7 +218,10 @@
         "--quality"
       ],
       "description": "Choose what format to download based on bitrate/video resolution. It will download the best format by default",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "quality"
+      }
     },
     {
       "names": [
@@ -199,7 +229,10 @@
         "--flexible-quality"
       ],
       "description": "Allow given quality (as above) to differ by an amount",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "amount"
+      }
     },
     {
       "names": [
@@ -207,7 +240,10 @@
         "--preferred"
       ],
       "description": "Preferred download method (dash, hls, or http)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "preferred"
+      }
     },
     {
       "names": [
@@ -220,28 +256,40 @@
         "--stream-priority"
       ],
       "description": "If two streams have the same quality, choose the one you prefer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dash,hls,http"
+      }
     },
     {
       "names": [
         "--format-preferred"
       ],
       "description": "Choose the format you prefer, use --list-quality to show which one to choose from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "h264,h264-51"
+      }
     },
     {
       "names": [
         "--audio-language"
       ],
       "description": "Choose the language of the audio (it can override the default one), use --list-quality to show which one to choose from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "AUDIO_LANGUAGE"
+      }
     },
     {
       "names": [
         "--audio-role"
       ],
       "description": "Choose the role of the audio (it can override the default one), use --list-quality to show which one to choose from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "AUDIO_ROLE"
+      }
     },
     {
       "names": [
@@ -299,7 +347,10 @@
         "--all-last"
       ],
       "description": "Get last NN episodes instead of all episodes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NN"
+      }
     },
     {
       "names": [
@@ -317,7 +368,10 @@
       "names": [
         "--cmore-operator"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "operator"
+      }
     },
     {
       "names": [
@@ -348,7 +402,10 @@
         "--output-format"
       ],
       "description": "Format you want resulting file in (mkv or mp4), mp4 is default",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mp4,mkv"
+      }
     }
   ],
   "args": [

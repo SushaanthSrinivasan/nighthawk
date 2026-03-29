@@ -22,7 +22,10 @@
         "--language"
       ],
       "description": "Explicitly set the language for syntax highlighting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<language>"
+      }
     },
     {
       "names": [
@@ -30,14 +33,23 @@
         "--highlight-line"
       ],
       "description": "Highlight the specified line ranges",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<N:M> ",
+        "description": "Range of line"
+      }
     },
     {
       "names": [
         "--file-name"
       ],
       "description": "Specify the name to display for a file. Useful when piping data to bat from STDIN when bat does not otherwise know the filename",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "description": "File(s)",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -51,28 +63,43 @@
         "--diff-context"
       ],
       "description": "Include N lines of context around added/removed/modified lines when using '--diff'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<N> ",
+        "description": "Lines of context"
+      }
     },
     {
       "names": [
         "--tabs"
       ],
       "description": "Set the tab width to T spaces. Use a width of 0 to pass tabs through directly",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<T> ",
+        "description": "Spaces of tab width"
+      }
     },
     {
       "names": [
         "--wrap"
       ],
       "description": "Specify when to use colored output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<mode>"
+      }
     },
     {
       "names": [
         "--terminal-width"
       ],
       "description": "Explicitly set the width of the terminal instead of determining it automatically",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<width> ",
+        "description": "Width to wrap"
+      }
     },
     {
       "names": [
@@ -86,21 +113,30 @@
         "--color"
       ],
       "description": "Specify when to use colored output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<when>"
+      }
     },
     {
       "names": [
         "--italic-text"
       ],
       "description": "Specify when to use ANSI sequences for italic text in the output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<when>"
+      }
     },
     {
       "names": [
         "--decorations"
       ],
       "description": "Specify when to use the decorations that have been specified via '--style'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<when>"
+      }
     },
     {
       "names": [
@@ -114,14 +150,21 @@
         "--paging"
       ],
       "description": "Specify when to use the pager",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<when>"
+      }
     },
     {
       "names": [
         "--pager"
       ],
       "description": "Determine which pager is used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<command>",
+        "description": "Command to pager"
+      }
     },
     {
       "names": [
@@ -129,21 +172,32 @@
         "--map-syntax"
       ],
       "description": "Map a glob pattern to an existing syntax name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<glob:syntax>",
+        "description": "Full path or the filename:language that highlighted"
+      }
     },
     {
       "names": [
         "--ignored-suffix"
       ],
       "description": "Ignore extension",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<ignored-suffix>",
+        "description": "Extension"
+      }
     },
     {
       "names": [
         "--theme"
       ],
       "description": "Set the theme for syntax highlighting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<theme>"
+      }
     },
     {
       "names": [
@@ -163,7 +217,11 @@
         "--line-range"
       ],
       "description": "Only print the specified range of lines for each file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<N:M> ",
+        "description": "Range of line"
+      }
     },
     {
       "names": [

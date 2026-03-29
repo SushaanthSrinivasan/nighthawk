@@ -10,14 +10,27 @@
             "--method"
           ],
           "description": "Two-step login method",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "method",
+            "description": "Authenticator = 0, Email = 1, YubiKey = 3",
+            "suggestions": [
+              "0",
+              "1",
+              "3"
+            ]
+          }
         },
         {
           "names": [
             "--code"
           ],
           "description": "Two-step login code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "code",
+            "description": "Valid TOTP Code"
+          }
         },
         {
           "names": [
@@ -36,14 +49,23 @@
             "--passwordenv"
           ],
           "description": "Environment variable storing your password",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "passwordenv",
+            "description": "Environmental Variable Name"
+          }
         },
         {
           "names": [
             "--passwordfile"
           ],
           "description": "Path to a file containing your password as its first line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "passwordfile",
+            "description": "Path to a file containing your password",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -111,14 +133,23 @@
             "--passwordenv"
           ],
           "description": "Supply an environment variable storing your password",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "passwordenv",
+            "description": "Environmental variable containing your password"
+          }
         },
         {
           "names": [
             "--passwordfile"
           ],
           "description": "Path to a file containing your password as its first line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "passwordfile",
+            "description": "File containing your password",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -177,7 +208,11 @@
                 "--words"
               ],
               "description": "Number of words to include in passphrase",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Number of words",
+                "description": "Number of words to include in passphrase"
+              }
             },
             {
               "names": [
@@ -191,7 +226,11 @@
                 "--separator"
               ],
               "description": "Define word separator",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "separator",
+                "description": "Character to delineate words in generated passphrase"
+              }
             },
             {
               "names": [
@@ -236,7 +275,11 @@
             "--length"
           ],
           "description": "Define password length",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "length",
+            "description": "Output length"
+          }
         },
         {
           "names": [
@@ -269,49 +312,77 @@
             "--web-vault"
           ],
           "description": "Provides a custom web vault URL that differs from the base URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "description": "URL for a self-hosted Bitwarden Server"
+          }
         },
         {
           "names": [
             "--api"
           ],
           "description": "Provides a custom API URL that differs from the base URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "description": "API URL for a self-hosted Bitwarden Server"
+          }
         },
         {
           "names": [
             "--identity"
           ],
           "description": "Provides a custom identity URL that differs from the base URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "description": "Custom Identity URL that differs from the base URL"
+          }
         },
         {
           "names": [
             "--icons"
           ],
           "description": "Provides a custom icon service URL that differs from the base URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "description": "Custom icon service URL that differs from the base URL"
+          }
         },
         {
           "names": [
             "--notifications"
           ],
           "description": "Provides a custom notifications URL that differs from the base URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "description": "Custom notifications URL that differs from the base URL"
+          }
         },
         {
           "names": [
             "--events"
           ],
           "description": "Provides a custom events URL that differs from the base URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "description": "Custom events URL that differs from the base URL"
+          }
         },
         {
           "names": [
             "--key-connector"
           ],
           "description": "Provides the URL for your Key Connector server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url",
+            "description": "Custom Key Connector URL that differs from the base URL"
+          }
         },
         {
           "names": [
@@ -357,7 +428,14 @@
             "--shell"
           ],
           "description": "Shell to generate completions for",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "shell",
+            "description": "Shell to generate completions for",
+            "suggestions": [
+              "zsh"
+            ]
+          }
         },
         {
           "names": [
@@ -390,14 +468,20 @@
             "--hostname"
           ],
           "description": "The hostname to bind your API webserver to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hostname"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "The port to run your API webserver on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
@@ -417,35 +501,50 @@
             "--search"
           ],
           "description": "Perform a search on the listed objects",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "search"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Filter items of type login with a url-match search",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "url"
+          }
         },
         {
           "names": [
             "--folderid"
           ],
           "description": "Filter items by folder id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "folderid"
+          }
         },
         {
           "names": [
             "--collectionid"
           ],
           "description": "Filter items by collection id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "collectionid"
+          }
         },
         {
           "names": [
             "--organizationid"
           ],
           "description": "Filter items or collections by organization id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid"
+          }
         },
         {
           "names": [
@@ -512,6 +611,10 @@
               ],
               "description": "Vault Item ID containing attachment",
               "takes_arg": true,
+              "arg": {
+                "name": "itemid",
+                "description": "ID of Vault Item containing attachment"
+              },
               "is_required": true
             },
             {
@@ -519,7 +622,12 @@
                 "--output"
               ],
               "description": "Output directory and/or filename",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output",
+                "description": "Output directory and/or filename",
+                "template": "folders"
+              }
             }
           ]
         }
@@ -530,14 +638,22 @@
             "--id"
           ],
           "description": "Exact id of the object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "id",
+            "description": "Object id"
+          }
         },
         {
           "names": [
             "--organizationid"
           ],
           "description": "Organization id for an organization object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid",
+            "description": "Organization id"
+          }
         },
         {
           "names": [
@@ -577,21 +693,34 @@
             "--file"
           ],
           "description": "Path to file for attachment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "description": "File to attach",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--itemid"
           ],
           "description": "Attachment's item id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "itemid",
+            "description": "Item ID"
+          }
         },
         {
           "names": [
             "--organizationid"
           ],
           "description": "Organization id for an organization object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid",
+            "description": "Organization ID"
+          }
         },
         {
           "names": [
@@ -627,7 +756,11 @@
             "--organizationid"
           ],
           "description": "Organization id for an organization object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid",
+            "description": "Organization ID"
+          }
         },
         {
           "names": [
@@ -667,14 +800,22 @@
             "--itemid"
           ],
           "description": "Attachment's item id",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "itemid",
+            "description": "Item Id"
+          }
         },
         {
           "names": [
             "--organizationid"
           ],
           "description": "Organization id for an organization object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid",
+            "description": "Organization Id"
+          }
         },
         {
           "names": [
@@ -762,7 +903,11 @@
             "--organizationid"
           ],
           "description": "Organization id for an organization object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid",
+            "description": "Organization ID"
+          }
         },
         {
           "names": [
@@ -798,7 +943,11 @@
             "--organizationid"
           ],
           "description": "ID of the organization to import to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid",
+            "description": "Organization ID to be imported to"
+          }
         },
         {
           "names": [
@@ -889,28 +1038,50 @@
             "--output"
           ],
           "description": "Set output directory or filename",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "description": "Path to export to",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "Export file format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "description": "Export format",
+            "suggestions": [
+              "csv",
+              "json",
+              "encrypted_json"
+            ]
+          }
         },
         {
           "names": [
             "--password"
           ],
           "description": "Use a password to encrypt instead of your Bitwarden account encryption key. Only applies to the encrypted_json format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password",
+            "description": "Password that will encrypt this export"
+          }
         },
         {
           "names": [
             "--organizationid"
           ],
           "description": "Enter organization id for an organization",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationid",
+            "description": "Organization id"
+          }
         },
         {
           "names": [
@@ -997,7 +1168,11 @@
                 "--output"
               ],
               "description": "Output directory or filename for attachment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1029,21 +1204,34 @@
                 "--password"
               ],
               "description": "Password needed to access the Send",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password",
+                "description": "Password for Send"
+              }
             },
             {
               "names": [
                 "--passwordenv"
               ],
               "description": "Environment variable storing the Send's password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "passwordenv",
+                "description": "Environment variable containing Send's password"
+              }
             },
             {
               "names": [
                 "--passwordfile"
               ],
               "description": "Path to a file containing the Send's password as its first line",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "passwordfile",
+                "description": "File containing Send's password",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1056,7 +1244,12 @@
                 "--output"
               ],
               "description": "Specify a file path to save a File-type Send to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "location",
+                "description": "Path to save File-type Send",
+                "template": "folders"
+              }
             },
             {
               "names": [
@@ -1082,14 +1275,23 @@
                 "--file"
               ],
               "description": "File to Send. Can also be specified in parent's JSON",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Path to file to attach as content",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--text"
               ],
               "description": "Text to Send. Can also be specified in parent's JSON",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text",
+                "description": "Text to include as content"
+              }
             },
             {
               "names": [
@@ -1102,7 +1304,11 @@
                 "--password"
               ],
               "description": "Optional password to access this Send. Can also be specified in JSON",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password",
+                "description": "Password to secure the Send"
+              }
             },
             {
               "names": [
@@ -1128,7 +1334,11 @@
                 "--itemid"
               ],
               "description": "Overrides the itemId provided in [encodedJson]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "itemid",
+                "description": "ItemID"
+              }
             },
             {
               "names": [
@@ -1207,7 +1417,10 @@
             "--deleteInDays"
           ],
           "description": "The number of days in the future to set deletion date (defaults to 7 if not specified)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "days"
+          }
         },
         {
           "names": [
@@ -1215,7 +1428,11 @@
             "--maxAccessCount"
           ],
           "description": "The max number of accesses allowed for this Send",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "amount",
+            "description": "Max number of accesses allowed"
+          }
         },
         {
           "names": [
@@ -1229,14 +1446,22 @@
             "--name"
           ],
           "description": "The name of the Send. Defaults to a guid for text Sends and the filename for files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Send name"
+          }
         },
         {
           "names": [
             "--notes"
           ],
           "description": "Notes to add to the Send",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "notes",
+            "description": "Notes to add to the Send"
+          }
         },
         {
           "names": [
@@ -1279,7 +1504,11 @@
                 "--organizationid"
               ],
               "description": "The organisation id (required)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "organizationid",
+                "description": "Organisation ID"
+              }
             }
           ]
         },
@@ -1299,14 +1528,23 @@
                 "requestId"
               ],
               "description": "The id of the request to approve",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "requestId",
+                "description": "The id of the request to approve",
+                "is_variadic": true
+              }
             },
             {
               "names": [
                 "--organizationid"
               ],
               "description": "The organisation id (required)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "organizationid",
+                "description": "Organisation ID"
+              }
             }
           ]
         },
@@ -1326,7 +1564,11 @@
                 "--organizationid"
               ],
               "description": "The organisation id (required)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "organizationid",
+                "description": "Organisation ID"
+              }
             }
           ]
         },
@@ -1346,14 +1588,23 @@
                 "requestId"
               ],
               "description": "The id of the request to deny",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "requestId",
+                "description": "The id of the request to approve",
+                "is_variadic": true
+              }
             },
             {
               "names": [
                 "--organizationid"
               ],
               "description": "The organisation id (required)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "organizationid",
+                "description": "Organisation ID"
+              }
             }
           ]
         },
@@ -1373,7 +1624,11 @@
                 "--organizationid"
               ],
               "description": "The organisation id (required)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "organizationid",
+                "description": "Organisation ID"
+              }
             }
           ]
         },
@@ -1397,21 +1652,34 @@
             "--password"
           ],
           "description": "Password needed to access the Send",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password",
+            "description": "Password for Send"
+          }
         },
         {
           "names": [
             "--passwordenv"
           ],
           "description": "Environment variable storing the Send's password",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "passwordenv",
+            "description": "Environment variable containing Send's password"
+          }
         },
         {
           "names": [
             "--passwordfile"
           ],
           "description": "Path to a file containing the Send's password as its first line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "passwordfile",
+            "description": "File containing Send's password",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1424,7 +1692,12 @@
             "--output"
           ],
           "description": "Specify a file path to save a File-type Send to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location",
+            "description": "Path to save File-type Send",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1522,7 +1795,11 @@
         "--session"
       ],
       "description": "Pass session key instead of reading from env",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "session",
+        "description": "Session Key"
+      }
     },
     {
       "names": [

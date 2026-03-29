@@ -15,7 +15,17 @@
             "--list"
           ],
           "description": "List all recent stable releases from solc-bin. If filter is specified then it will display only that type of release or docker tags",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter",
+            "description": "The filter parameter must be one of the following: prereleases, releases, latestRelease or docker",
+            "suggestions": [
+              "prereleases",
+              "releases",
+              "latestRelease",
+              "docker"
+            ]
+          }
         },
         {
           "names": [
@@ -81,7 +91,11 @@
             "--network"
           ],
           "description": "Specify the network to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Network name must exist in the configuration"
+          }
         },
         {
           "names": [
@@ -95,7 +109,12 @@
             "-r"
           ],
           "description": "Preload console environment from required JavaScript file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "description": "The default export must be an object with named keys that will be used to populate the console environment. For example, if your JavaScript is module.exports = { desert: \"yes please!\" } then breakfast",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -134,7 +153,10 @@
             "--network"
           ],
           "description": "The network to connect to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "network"
+          }
         },
         {
           "names": [
@@ -182,7 +204,10 @@
             "--log"
           ],
           "description": "Start/Connect to a Truffle develop session and log all RPC activity. See the Log RPC Activity docs for more information about using this option",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "network"
+          }
         },
         {
           "names": [
@@ -190,7 +215,12 @@
             "-r"
           ],
           "description": "Preload console environment from required JavaScript file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "file",
+            "description": "The default export must be an object with named keys that will be used to populate the console environment. For example, if your JavaScript is module.exports = { desert: \"yes please!\" } then breakfast",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -209,7 +239,11 @@
             "--network"
           ],
           "description": "Specify the network to use, using artifacts specific to that network",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Network name must exist in the configuration"
+          }
         },
         {
           "names": [
@@ -309,6 +343,9 @@
           ],
           "description": "Download and cache a version of the solc compiler. (required)",
           "takes_arg": true,
+          "arg": {
+            "name": "version"
+          },
           "is_required": true
         }
       ]
@@ -354,7 +391,10 @@
             "--environment"
           ],
           "description": "Environment name, as defined in truffle-config `environments` object",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -397,21 +437,33 @@
             "--f"
           ],
           "description": "Run contracts from a specific migration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number",
+            "description": "The number refers to the prefix of the migration file"
+          }
         },
         {
           "names": [
             "--to"
           ],
           "description": "Run contracts to a specific migration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number",
+            "description": "The number refers to the prefix of the migration file"
+          }
         },
         {
           "names": [
             "--network"
           ],
           "description": "Specify the network to use, saving artifacts specific to that network",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Network name must exist in the configuration"
+          }
         },
         {
           "names": [
@@ -493,7 +545,11 @@
             "--network"
           ],
           "description": "Specify the network to use, using artifacts specific to that network",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Network name must exist in the configuration"
+          }
         },
         {
           "names": [
@@ -518,7 +574,10 @@
             "--debug-global"
           ],
           "description": "Allows one to rename the debug() function to something else",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "identifier"
+          }
         },
         {
           "names": [

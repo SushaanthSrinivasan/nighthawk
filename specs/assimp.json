@@ -82,7 +82,10 @@
             "--format"
           ],
           "description": "Export file formats supported by Assimp",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format"
+          }
         },
         {
           "names": [
@@ -115,7 +118,10 @@
             "--texture"
           ],
           "description": "Zero-based index of the texture to be extracted",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
@@ -130,7 +136,14 @@
             "--format"
           ],
           "description": "Specifies the output file format. Supported formats are BMP and TGA. The default value is BMP (if a full output filename is specified, the output file format is taken from its extension)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "bmp",
+              "tga"
+            ]
+          }
         },
         {
           "names": [

@@ -184,14 +184,31 @@
         "--scale"
       ],
       "description": "Scale of the image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "scale",
+        "suggestions": [
+          "auto",
+          "fill",
+          "fit",
+          "stretch",
+          "center"
+        ]
+      }
     },
     {
       "names": [
         "--screen"
       ],
       "description": "Set wallpaper on selected screen",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "screen",
+        "suggestions": [
+          "all",
+          "main"
+        ]
+      }
     },
     {
       "names": [
@@ -199,14 +216,22 @@
         "--save"
       ],
       "description": "Save photo without setting as wallpaper",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--set"
       ],
       "description": "Set wallpaper from local file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filepath",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -227,14 +252,32 @@
         "--rotate"
       ],
       "description": "Rotate image",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "degrees",
+        "suggestions": [
+          "90",
+          "180",
+          "270"
+        ]
+      }
     },
     {
       "names": [
         "--colorspace"
       ],
       "description": "Define image colorspace",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "colorspace",
+        "suggestions": [
+          "srgb",
+          "rgb",
+          "cmyk",
+          "lab",
+          "b-w"
+        ]
+      }
     },
     {
       "names": [
@@ -254,14 +297,25 @@
         "--query"
       ],
       "description": "Filter by keywords",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "querystring"
+      }
     },
     {
       "names": [
         "--orientation"
       ],
       "description": "Filter by orientation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "orientation",
+        "suggestions": [
+          "landscape",
+          "portrait",
+          "squarish"
+        ]
+      }
     },
     {
       "names": [
@@ -276,21 +330,30 @@
         "--user"
       ],
       "description": "Random photo from user",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "username"
+      }
     },
     {
       "names": [
         "--collection"
       ],
       "description": "Random photo from collection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "collection id"
+      }
     },
     {
       "names": [
         "--id"
       ],
       "description": "Get photo by ID",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "photo_id"
+      }
     },
     {
       "names": [

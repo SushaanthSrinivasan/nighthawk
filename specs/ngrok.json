@@ -32,7 +32,16 @@
             "-log"
           ],
           "description": "Path to log file, 'stdout', 'stderr' or 'false'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "stdout",
+              "stderr",
+              "false"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -40,7 +49,14 @@
             "-log-format"
           ],
           "description": "Log record format: 'term', 'logfmt', 'json'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "term",
+              "logfmt",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -48,7 +64,17 @@
             "-log-level"
           ],
           "description": "Logging level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "crit",
+              "warn",
+              "error",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -56,7 +82,11 @@
             "-config"
           ],
           "description": "Path to config files; they are merged if multiple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -64,7 +94,18 @@
             "-region"
           ],
           "description": "Ngrok server region [us, eu, au, ap, sa, jp, in] (default: us)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "us",
+              "eu",
+              "au",
+              "ap",
+              "sa",
+              "jp",
+              "in"
+            ]
+          }
         },
         {
           "names": [
@@ -72,7 +113,10 @@
             "-authtoken"
           ],
           "description": "Ngrok.com authtoken identifying a user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authtoken"
+          }
         },
         {
           "names": [
@@ -80,7 +124,10 @@
             "-hostname"
           ],
           "description": "Host tunnel on custom hostname (requires DNS CNAME)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hostname"
+          }
         },
         {
           "names": [
@@ -88,7 +135,10 @@
             "-subdomain"
           ],
           "description": "Host tunnel on a custom subdomain",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subdomain"
+          }
         },
         {
           "names": [
@@ -96,7 +146,10 @@
             "-auth"
           ],
           "description": "Enforce basic auth on tunnel endpoint, 'user:password'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user:password"
+          }
         },
         {
           "names": [
@@ -104,7 +157,15 @@
             "-bind-tls"
           ],
           "description": "Listen for http, https or both: true/false/both",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "true/false/both",
+            "suggestions": [
+              "true",
+              "false",
+              "both"
+            ]
+          }
         },
         {
           "names": [
@@ -112,7 +173,12 @@
             "-host-header"
           ],
           "description": "Set Host header; if 'rewrite' use local address hostname",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "rewrite"
+            ]
+          }
         },
         {
           "names": [
@@ -120,7 +186,13 @@
             "-introspection"
           ],
           "description": "Enable/disable http introspection",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "true",
+              "false"
+            ]
+          }
         }
       ],
       "args": [
@@ -142,7 +214,16 @@
             "-log"
           ],
           "description": "Path to log file, 'stdout', 'stderr' or 'false'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "stdout",
+              "stderr",
+              "false"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -150,7 +231,14 @@
             "-log-format"
           ],
           "description": "Log record format: 'term', 'logfmt', 'json'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "term",
+              "logfmt",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -158,7 +246,17 @@
             "-log-level"
           ],
           "description": "Logging level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "crit",
+              "warn",
+              "error",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -166,7 +264,11 @@
             "-config"
           ],
           "description": "Path to config files; they are merged if multiple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -189,7 +291,16 @@
             "-log"
           ],
           "description": "Path to log file, 'stdout', 'stderr' or 'false'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "stdout",
+              "stderr",
+              "false"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -197,7 +308,14 @@
             "-log-format"
           ],
           "description": "Log record format: 'term', 'logfmt', 'json'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "term",
+              "logfmt",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -205,7 +323,17 @@
             "-log-level"
           ],
           "description": "Logging level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "crit",
+              "warn",
+              "error",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -213,7 +341,11 @@
             "-config"
           ],
           "description": "Path to config files; they are merged if multiple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -221,7 +353,18 @@
             "-region"
           ],
           "description": "Ngrok server region [us, eu, au, ap, sa, jp, in] (default: us)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "us",
+              "eu",
+              "au",
+              "ap",
+              "sa",
+              "jp",
+              "in"
+            ]
+          }
         },
         {
           "names": [
@@ -229,7 +372,10 @@
             "-authtoken"
           ],
           "description": "Ngrok.com authtoken identifying a user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authtoken"
+          }
         },
         {
           "names": [
@@ -268,7 +414,16 @@
             "-log"
           ],
           "description": "Path to log file, 'stdout', 'stderr' or 'false'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "stdout",
+              "stderr",
+              "false"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -276,7 +431,14 @@
             "-log-format"
           ],
           "description": "Log record format: 'term', 'logfmt', 'json'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "term",
+              "logfmt",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -284,7 +446,17 @@
             "-log-level"
           ],
           "description": "Logging level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "crit",
+              "warn",
+              "error",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -292,7 +464,11 @@
             "-config"
           ],
           "description": "Path to config files; they are merged if multiple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -300,7 +476,10 @@
             "-authtoken"
           ],
           "description": "Ngrok.com authtoken identifying a user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authtoken"
+          }
         },
         {
           "names": [
@@ -308,7 +487,18 @@
             "-region"
           ],
           "description": "Ngrok server region [us, eu, au, ap, sa, jp, in] (default: us)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "us",
+              "eu",
+              "au",
+              "ap",
+              "sa",
+              "jp",
+              "in"
+            ]
+          }
         },
         {
           "names": [
@@ -316,7 +506,10 @@
             "-remote-addr"
           ],
           "description": "Bind remote address (requires you reserve an address)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "remote address"
+          }
         }
       ],
       "args": [
@@ -338,7 +531,16 @@
             "-log"
           ],
           "description": "Path to log file, 'stdout', 'stderr' or 'false'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "stdout",
+              "stderr",
+              "false"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -346,7 +548,14 @@
             "-log-format"
           ],
           "description": "Log record format: 'term', 'logfmt', 'json'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "term",
+              "logfmt",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -354,7 +563,17 @@
             "-log-level"
           ],
           "description": "Logging level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "crit",
+              "warn",
+              "error",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -362,7 +581,11 @@
             "-config"
           ],
           "description": "Path to config files; they are merged if multiple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -370,7 +593,10 @@
             "-authtoken"
           ],
           "description": "Ngrok.com authtoken identifying a user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "authtoken"
+          }
         },
         {
           "names": [
@@ -378,7 +604,18 @@
             "-region"
           ],
           "description": "Ngrok server region [us, eu, au, ap, sa, jp, in] (default: us)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "us",
+              "eu",
+              "au",
+              "ap",
+              "sa",
+              "jp",
+              "in"
+            ]
+          }
         },
         {
           "names": [
@@ -386,7 +623,10 @@
             "-hostname"
           ],
           "description": "Host tunnel on custom hostname (requires DNS CNAME)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hostname"
+          }
         },
         {
           "names": [
@@ -394,28 +634,43 @@
             "-subdomain"
           ],
           "description": "Host tunnel on a custom subdomain",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subdomain"
+          }
         },
         {
           "names": [
             "--client-cas",
             "-client-cas"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "certificate",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--crt",
             "-crt"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "certificate",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--key",
             "-key"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "certificate",
+            "template": "filepaths"
+          }
         }
       ],
       "args": [
@@ -434,7 +689,16 @@
             "-log"
           ],
           "description": "Path to log file, 'stdout', 'stderr' or 'false'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "value",
+            "suggestions": [
+              "stdout",
+              "stderr",
+              "false"
+            ],
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -442,7 +706,14 @@
             "-log-format"
           ],
           "description": "Log record format: 'term', 'logfmt', 'json'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "term",
+              "logfmt",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -450,7 +721,17 @@
             "-log-level"
           ],
           "description": "Logging level",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "level",
+            "suggestions": [
+              "crit",
+              "warn",
+              "error",
+              "info",
+              "debug"
+            ]
+          }
         },
         {
           "names": [
@@ -458,7 +739,14 @@
             "-channel"
           ],
           "description": "Update channel (stable, beta)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "channel",
+            "suggestions": [
+              "stable",
+              "beta"
+            ]
+          }
         }
       ]
     },

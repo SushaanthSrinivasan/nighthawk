@@ -8,7 +8,10 @@
         "--after-context"
       ],
       "description": "Shows NUM lines after each match",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Num"
+      }
     },
     {
       "names": [
@@ -22,7 +25,10 @@
         "--before-context"
       ],
       "description": "Shows NUM lines before each match",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Num"
+      }
     },
     {
       "names": [
@@ -55,14 +61,28 @@
         "--color"
       ],
       "description": "Controls when to use colors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "never",
+          "auto",
+          "always",
+          "ansi"
+        ]
+      }
     },
     {
       "names": [
         "--colors"
       ],
       "description": "Specifies color settings for use in the output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Color Spec",
+        "description": "{type}:{attribute}:{value}, ex: `match:fg:magenta`",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -76,14 +96,20 @@
         "--context"
       ],
       "description": "Shows NUM lines before and after each match",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "--context-separator"
       ],
       "description": "The string used to separate non-contiguous context lines in the output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Separator"
+      }
     },
     {
       "names": [
@@ -115,7 +141,10 @@
         "--dfa-size-limit"
       ],
       "description": "The upper size limit of the regex DFA",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -123,14 +152,25 @@
         "--encoding"
       ],
       "description": "Specifies the text encoding that ripgrep will use on all files searched",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Encoding"
+      }
     },
     {
       "names": [
         "--engine"
       ],
       "description": "Specifies which regular expression engine to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Engine",
+        "suggestions": [
+          "default",
+          "pcre2",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
@@ -138,7 +178,12 @@
         "--file"
       ],
       "description": "Searches for patterns from the given file, with one pattern per line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Patternfile",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -179,7 +224,11 @@
         "--glob"
       ],
       "description": "Includes or excludes files and directories for searching that match the given glob",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GLOB",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -204,14 +253,24 @@
         "--iglob"
       ],
       "description": "Includes or excludes files and directories for searching that match given the glob",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GLOB",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ignore-file"
       ],
       "description": "Specifies a path to one or more .gitignore format rules files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Path",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -270,7 +329,10 @@
         "--max-columns"
       ],
       "description": "Don't print lines longer than this limit in bytes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -284,21 +346,30 @@
         "--max-count"
       ],
       "description": "Limits the number of matching lines per file searched to NUM",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "--max-depth"
       ],
       "description": "Limits the depth of directory traversal to NUM levels beyond the paths given",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
         "--max-filesize"
       ],
       "description": "Ignores files larger than NUM in size",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -471,7 +542,10 @@
         "--path-separator"
       ],
       "description": "Sets the path separator to use when printing file paths",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Separator"
+      }
     },
     {
       "names": [
@@ -491,14 +565,21 @@
         "--pre"
       ],
       "description": "For each input File, search the standard output of the command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Command"
+      }
     },
     {
       "names": [
         "--pre-glob"
       ],
       "description": "Only files that match the given set of globs will be handed to the command specified by the `--pre flag`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GLOB",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -519,7 +600,10 @@
         "--regex-size-limit"
       ],
       "description": "Sets the upper size limit of the compiled regex",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -527,7 +611,11 @@
         "--regexp"
       ],
       "description": "A pattern to search for",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Pattern",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -535,7 +623,10 @@
         "--replace"
       ],
       "description": "Replace every match with the text given when printing results",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Replacement Text"
+      }
     },
     {
       "names": [
@@ -555,14 +646,34 @@
       "names": [
         "--sort"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Sortby",
+        "suggestions": [
+          "none",
+          "path",
+          "modified",
+          "accessed",
+          "created"
+        ]
+      }
     },
     {
       "names": [
         "--sortr"
       ],
       "description": "Enables sorting results in descending order",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Sortby",
+        "suggestions": [
+          "none",
+          "path",
+          "modified",
+          "accessed",
+          "created"
+        ]
+      }
     },
     {
       "names": [
@@ -583,7 +694,10 @@
         "--threads"
       ],
       "description": "The approximate number of threads to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM"
+      }
     },
     {
       "names": [
@@ -597,21 +711,33 @@
         "--type"
       ],
       "description": "Only searches files matching TYPE",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Type",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--type-add"
       ],
       "description": "Add a new glob for a particular file type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Type Spec",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "--type-clear"
       ],
       "description": "Clear the file type globs previously defined for type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -625,7 +751,11 @@
         "--type-not"
       ],
       "description": "Do not search files matching type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "is_variadic": true
+      }
     },
     {
       "names": [

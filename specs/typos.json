@@ -8,7 +8,11 @@
         "--config"
       ],
       "description": "Custom config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -52,7 +56,14 @@
         "--dump-config"
       ],
       "description": "Write the current configuration to file with `-` for stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "suggestions": [
+          "-"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -65,7 +76,16 @@
         "--format"
       ],
       "description": "Set the output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "silent",
+          "brief",
+          "long",
+          "json"
+        ]
+      }
     },
     {
       "names": [
@@ -73,14 +93,20 @@
         "--threads"
       ],
       "description": "The approximate number of threads to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--exclude"
       ],
       "description": "Ignore files & directories matching the glob",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "glob"
+      }
     },
     {
       "names": [
@@ -147,14 +173,32 @@
         "--locale"
       ],
       "description": "Set the locale to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "locale",
+        "suggestions": [
+          "en",
+          "en-us",
+          "en-gb",
+          "en-ca",
+          "en-au"
+        ]
+      }
     },
     {
       "names": [
         "--color"
       ],
       "description": "Controls when to use color",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "when",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [

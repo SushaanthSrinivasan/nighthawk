@@ -66,7 +66,10 @@
             "-p"
           ],
           "description": "The name or absolute path to Helm starter scaffold",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "starter"
+          }
         }
       ]
     },
@@ -87,7 +90,11 @@
                 "--keyring"
               ],
               "description": "Keyring containing public keys",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "keyring",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -115,7 +122,10 @@
                 "--max-col-width"
               ],
               "description": "Maximum column width for output table",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "max-col-width"
+              }
             }
           ]
         },
@@ -131,7 +141,11 @@
                 "--keyring"
               ],
               "description": "Keyring containing public keys",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "keyring",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -166,14 +180,20 @@
                 "--revision"
               ],
               "description": "Get the named release with revision",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "revision"
+              }
             },
             {
               "names": [
                 "--template"
               ],
               "description": "Go template for formatting the output, eg: {{.Release.Name}}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "template"
+              }
             }
           ]
         },
@@ -186,7 +206,10 @@
                 "--revision"
               ],
               "description": "Get the named release with revision",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "revision"
+              }
             }
           ]
         },
@@ -199,7 +222,10 @@
                 "--revision"
               ],
               "description": "Get the named release with revision",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "revision"
+              }
             }
           ]
         },
@@ -212,7 +238,10 @@
                 "--revision"
               ],
               "description": "Get the named release with revision",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "revision"
+              }
             }
           ]
         },
@@ -233,14 +262,20 @@
                 "-o"
               ],
               "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             },
             {
               "names": [
                 "--revision"
               ],
               "description": "Get the named release with revision",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "revision"
+              }
             }
           ]
         }
@@ -258,7 +293,10 @@
             "--max"
           ],
           "description": "Maximum number of revision to include in history",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "max"
+          }
         },
         {
           "names": [
@@ -266,7 +304,10 @@
             "-o"
           ],
           "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output"
+          }
         }
       ]
     },
@@ -285,14 +326,22 @@
             "--ca-file"
           ],
           "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ca-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert-file"
           ],
           "description": "Identify HTTPS client using this SSL certificate file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -311,7 +360,10 @@
             "--description"
           ],
           "description": "Add a custom description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "description"
+          }
         },
         {
           "names": [
@@ -349,21 +401,32 @@
             "--key-file"
           ],
           "description": "Identify HTTPS client using this SSL key file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--keyring"
           ],
           "description": "Location of public keys used for verification",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyring",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--name-template"
           ],
           "description": "Specify template used to name the release",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name-template"
+          }
         },
         {
           "names": [
@@ -377,7 +440,10 @@
             "-o"
           ],
           "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output"
+          }
         },
         {
           "names": [
@@ -390,21 +456,30 @@
             "--password"
           ],
           "description": "Chart repository password where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password"
+          }
         },
         {
           "names": [
             "--post-renderer"
           ],
           "description": "The path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "post-renderer"
+          }
         },
         {
           "names": [
             "--post-renderer-args"
           ],
           "description": "An argument to the post-renderer (can specify multiple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "post-renderer-args"
+          }
         },
         {
           "names": [
@@ -423,28 +498,41 @@
             "--repo"
           ],
           "description": "Chart repository url where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repo"
+          }
         },
         {
           "names": [
             "--set"
           ],
           "description": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set"
+          }
         },
         {
           "names": [
             "--set-file"
           ],
           "description": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--set-string"
           ],
           "description": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-string"
+          }
         },
         {
           "names": [
@@ -457,14 +545,20 @@
             "--timeout"
           ],
           "description": "Time to wait for any individual Kubernetes operation (like Jobs for hooks)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
             "--username"
           ],
           "description": "Chart repository username where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
@@ -472,7 +566,11 @@
             "-f"
           ],
           "description": "Specify values in a YAML file or a URL (can specify multiple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -485,7 +583,10 @@
             "--version"
           ],
           "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -516,21 +617,31 @@
             "--set"
           ],
           "description": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set"
+          }
         },
         {
           "names": [
             "--set-file"
           ],
           "description": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--set-string"
           ],
           "description": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-string"
+          }
         },
         {
           "names": [
@@ -544,7 +655,11 @@
             "-f"
           ],
           "description": "Specify values in a YAML file or a URL (can specify multiple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -600,7 +715,10 @@
             "-f"
           ],
           "description": "A regular expression (Perl compatible). Any releases that match the expression will be included in the results",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter"
+          }
         },
         {
           "names": [
@@ -608,7 +726,10 @@
             "-m"
           ],
           "description": "Maximum number of releases to fetch",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "max"
+          }
         },
         {
           "names": [
@@ -621,7 +742,10 @@
             "--offset"
           ],
           "description": "Next release index in the list, used to offset from start value",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "offset"
+          }
         },
         {
           "names": [
@@ -629,7 +753,10 @@
             "-o"
           ],
           "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output"
+          }
         },
         {
           "names": [
@@ -650,7 +777,10 @@
             "-l"
           ],
           "description": "Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2). Works only for secret(default) and configmap storage backends",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "selector"
+          }
         },
         {
           "names": [
@@ -670,7 +800,10 @@
             "--time-format"
           ],
           "description": "Format time using golang time formatter. Example: --time-format \"2006-01-02 15:04:05Z0700\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "time-format"
+          }
         },
         {
           "names": [
@@ -695,7 +828,10 @@
             "--app-version"
           ],
           "description": "Set the appVersion on the chart to this version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app-version"
+          }
         },
         {
           "names": [
@@ -710,28 +846,42 @@
             "-d"
           ],
           "description": "Location to write the chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "destination"
+          }
         },
         {
           "names": [
             "--key"
           ],
           "description": "Name of the key to use when signing. Used if --sign is true",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key"
+          }
         },
         {
           "names": [
             "--keyring"
           ],
           "description": "Location of a public keyring",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyring",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--passphrase-file"
           ],
           "description": "Location of a file which contains the passphrase for the signing key. Use \"-\" in order to read from stdin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "passphrase-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -744,7 +894,10 @@
             "--version"
           ],
           "description": "Set the version on the chart to this semver version",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         }
       ]
     },
@@ -764,7 +917,10 @@
                 "--version"
               ],
               "description": "Specify a version constraint. If this is not specified, the latest version is installed",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ]
         },
@@ -804,14 +960,22 @@
             "--ca-file"
           ],
           "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ca-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert-file"
           ],
           "description": "Identify HTTPS client using this SSL certificate file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -819,7 +983,10 @@
             "-d"
           ],
           "description": "Location to write the chart. If this and untardir are specified, untardir is appended to this",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "destination"
+          }
         },
         {
           "names": [
@@ -838,14 +1005,22 @@
             "--key-file"
           ],
           "description": "Identify HTTPS client using this SSL key file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--keyring"
           ],
           "description": "Location of public keys used for verification",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyring",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -858,7 +1033,10 @@
             "--password"
           ],
           "description": "Chart repository password where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password"
+          }
         },
         {
           "names": [
@@ -871,7 +1049,10 @@
             "--repo"
           ],
           "description": "Chart repository url where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repo"
+          }
         },
         {
           "names": [
@@ -884,14 +1065,21 @@
             "--untardir"
           ],
           "description": "If untar is specified, this flag specifies the name of the directory into which the chart is expanded",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "untardir",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--username"
           ],
           "description": "Chart repository username where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
@@ -904,7 +1092,10 @@
             "--version"
           ],
           "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         }
       ]
     },
@@ -932,7 +1123,10 @@
                 "-p"
               ],
               "description": "Registry password or identity token",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
@@ -946,7 +1140,10 @@
                 "-u"
               ],
               "description": "Registry username",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             }
           ]
         },
@@ -975,14 +1172,22 @@
                 "--ca-file"
               ],
               "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--cert-file"
               ],
               "description": "Identify HTTPS client using this SSL certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cert-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1001,7 +1206,11 @@
                 "--key-file"
               ],
               "description": "Identify HTTPS client using this SSL key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1020,7 +1229,10 @@
                 "--password"
               ],
               "description": "Chart repository password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
@@ -1033,7 +1245,10 @@
                 "--username"
               ],
               "description": "Chart repository username",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             }
           ]
         },
@@ -1046,14 +1261,20 @@
                 "--merge"
               ],
               "description": "Merge the generated index into the given index",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "merge"
+              }
             },
             {
               "names": [
                 "--url"
               ],
               "description": "Url of chart repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             }
           ]
         },
@@ -1070,7 +1291,10 @@
                 "-o"
               ],
               "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             }
           ]
         },
@@ -1125,7 +1349,10 @@
             "--history-max"
           ],
           "description": "Limit the maximum number of revisions saved per release. Use 0 for no limit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "history-max"
+          }
         },
         {
           "names": [
@@ -1144,7 +1371,10 @@
             "--timeout"
           ],
           "description": "Time to wait for any individual Kubernetes operation (like Jobs for hooks)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -1177,7 +1407,10 @@
                 "--endpoint"
               ],
               "description": "Hub instance to query for charts",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "endpoint"
+              }
             },
             {
               "names": [
@@ -1190,7 +1423,10 @@
                 "--max-col-width"
               ],
               "description": "Maximum column width for output table",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "max-col-width"
+              }
             },
             {
               "names": [
@@ -1198,7 +1434,10 @@
                 "-o"
               ],
               "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             }
           ]
         },
@@ -1217,7 +1456,10 @@
                 "--max-col-width"
               ],
               "description": "Maximum column width for output table",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "max-col-width"
+              }
             },
             {
               "names": [
@@ -1225,7 +1467,10 @@
                 "-o"
               ],
               "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output"
+              }
             },
             {
               "names": [
@@ -1239,7 +1484,10 @@
                 "--version"
               ],
               "description": "Search using semantic versioning constraints on repositories you have added",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             },
             {
               "names": [
@@ -1268,14 +1516,22 @@
                 "--ca-file"
               ],
               "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--cert-file"
               ],
               "description": "Identify HTTPS client using this SSL certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cert-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1294,14 +1550,22 @@
                 "--key-file"
               ],
               "description": "Identify HTTPS client using this SSL key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--keyring"
               ],
               "description": "Location of public keys used for verification",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "keyring",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1314,21 +1578,30 @@
                 "--password"
               ],
               "description": "Chart repository password where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--repo"
               ],
               "description": "Chart repository url where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Chart repository username where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
@@ -1341,7 +1614,10 @@
                 "--version"
               ],
               "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ]
         },
@@ -1354,14 +1630,22 @@
                 "--ca-file"
               ],
               "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--cert-file"
               ],
               "description": "Identify HTTPS client using this SSL certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cert-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1380,14 +1664,21 @@
                 "--key-file"
               ],
               "description": "Identify HTTPS client using this SSL key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key-file"
+              }
             },
             {
               "names": [
                 "--keyring"
               ],
               "description": "Location of public keys used for verification",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "keyring",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1400,21 +1691,30 @@
                 "--password"
               ],
               "description": "Chart repository password where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--repo"
               ],
               "description": "Chart repository url where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Chart repository username where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
@@ -1427,7 +1727,10 @@
                 "--version"
               ],
               "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ]
         },
@@ -1440,14 +1743,22 @@
                 "--ca-file"
               ],
               "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--cert-file"
               ],
               "description": "Identify HTTPS client using this SSL certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cert-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1466,14 +1777,22 @@
                 "--key-file"
               ],
               "description": "Identify HTTPS client using this SSL key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--keyring"
               ],
               "description": "Location of public keys used for verification",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "keyring",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1486,21 +1805,30 @@
                 "--password"
               ],
               "description": "Chart repository password where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--repo"
               ],
               "description": "Chart repository url where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Chart repository username where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
@@ -1513,7 +1841,10 @@
                 "--version"
               ],
               "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ]
         },
@@ -1526,14 +1857,22 @@
                 "--ca-file"
               ],
               "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--cert-file"
               ],
               "description": "Identify HTTPS client using this SSL certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cert-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1552,14 +1891,20 @@
                 "--key-file"
               ],
               "description": "Identify HTTPS client using this SSL key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key-file"
+              }
             },
             {
               "names": [
                 "--keyring"
               ],
               "description": "Location of public keys used for verification",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "keyring"
+              }
             },
             {
               "names": [
@@ -1572,21 +1917,30 @@
                 "--password"
               ],
               "description": "Chart repository password where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--repo"
               ],
               "description": "Chart repository url where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Chart repository username where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
@@ -1599,7 +1953,10 @@
                 "--version"
               ],
               "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ]
         },
@@ -1612,14 +1969,22 @@
                 "--ca-file"
               ],
               "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ca-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--cert-file"
               ],
               "description": "Identify HTTPS client using this SSL certificate file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cert-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1638,21 +2003,32 @@
                 "--jsonpath"
               ],
               "description": "Supply a JSONPath expression to filter the output",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "jsonpath"
+              }
             },
             {
               "names": [
                 "--key-file"
               ],
               "description": "Identify HTTPS client using this SSL key file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--keyring"
               ],
               "description": "Location of public keys used for verification",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "keyring",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -1665,21 +2041,30 @@
                 "--password"
               ],
               "description": "Chart repository password where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
                 "--repo"
               ],
               "description": "Chart repository url where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
                 "--username"
               ],
               "description": "Chart repository username where to locate the requested chart",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             },
             {
               "names": [
@@ -1692,7 +2077,10 @@
                 "--version"
               ],
               "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ]
         }
@@ -1708,14 +2096,20 @@
             "-o"
           ],
           "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output"
+          }
         },
         {
           "names": [
             "--revision"
           ],
           "description": "If set, display the status of the named release with revision",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "revision"
+          }
         },
         {
           "names": [
@@ -1735,7 +2129,10 @@
             "-a"
           ],
           "description": "Kubernetes api versions used for Capabilities.APIVersions",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "api-versions"
+          }
         },
         {
           "names": [
@@ -1748,14 +2145,22 @@
             "--ca-file"
           ],
           "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ca-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert-file"
           ],
           "description": "Identify HTTPS client using this SSL certificate file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1774,7 +2179,10 @@
             "--description"
           ],
           "description": "Add a custom description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "description"
+          }
         },
         {
           "names": [
@@ -1824,28 +2232,42 @@
             "--key-file"
           ],
           "description": "Identify HTTPS client using this SSL key file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--keyring"
           ],
           "description": "Location of public keys used for verification",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyring",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--kube-version"
           ],
           "description": "Kubernetes version used for Capabilities.KubeVersion",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "kube-version"
+          }
         },
         {
           "names": [
             "--name-template"
           ],
           "description": "Specify template used to name the release",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name-template"
+          }
         },
         {
           "names": [
@@ -1858,7 +2280,11 @@
             "--output-dir"
           ],
           "description": "Writes the executed templates to files in output-dir instead of stdout",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output-dir",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1871,21 +2297,30 @@
             "--password"
           ],
           "description": "Chart repository password where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password"
+          }
         },
         {
           "names": [
             "--post-renderer"
           ],
           "description": "The path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "post-renderer"
+          }
         },
         {
           "names": [
             "--post-renderer-args"
           ],
           "description": "An argument to the post-renderer (can specify multiple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "post-renderer-args"
+          }
         },
         {
           "names": [
@@ -1910,28 +2345,41 @@
             "--repo"
           ],
           "description": "Chart repository url where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repo"
+          }
         },
         {
           "names": [
             "--set"
           ],
           "description": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set"
+          }
         },
         {
           "names": [
             "--set-file"
           ],
           "description": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--set-string"
           ],
           "description": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-string"
+          }
         },
         {
           "names": [
@@ -1939,7 +2387,10 @@
             "-s"
           ],
           "description": "Only show manifests rendered from the given templates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "show-only"
+          }
         },
         {
           "names": [
@@ -1958,14 +2409,20 @@
             "--timeout"
           ],
           "description": "Time to wait for any individual Kubernetes operation (like Jobs for hooks)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
             "--username"
           ],
           "description": "Chart repository username where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
@@ -1979,7 +2436,11 @@
             "-f"
           ],
           "description": "Specify values in a YAML file or a URL (can specify multiple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1992,7 +2453,10 @@
             "--version"
           ],
           "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -2017,7 +2481,10 @@
             "--filter"
           ],
           "description": "Specify tests by attribute (currently \"name\") using attribute=value syntax or '!attribute=value' to exclude a test (can specify multiple or separate values with commas: name=test1,name=test2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter"
+          }
         },
         {
           "names": [
@@ -2030,7 +2497,10 @@
             "--timeout"
           ],
           "description": "Time to wait for any individual Kubernetes operation (like Jobs for hooks)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ]
     },
@@ -2048,7 +2518,10 @@
             "--description"
           ],
           "description": "Add a custom description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "description"
+          }
         },
         {
           "names": [
@@ -2073,7 +2546,10 @@
             "--timeout"
           ],
           "description": "Time to wait for any individual Kubernetes operation (like Jobs for hooks)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -2102,14 +2578,22 @@
             "--ca-file"
           ],
           "description": "Verify certificates of HTTPS-enabled servers using this CA bundle",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ca-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert-file"
           ],
           "description": "Identify HTTPS client using this SSL certificate file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2134,7 +2618,10 @@
             "--description"
           ],
           "description": "Add a custom description",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "description"
+          }
         },
         {
           "names": [
@@ -2165,7 +2652,10 @@
             "--history-max"
           ],
           "description": "Limit the maximum number of revisions saved per release. Use 0 for no limit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "history-max"
+          }
         },
         {
           "names": [
@@ -2185,14 +2675,22 @@
             "--key-file"
           ],
           "description": "Identify HTTPS client using this SSL key file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--keyring"
           ],
           "description": "Location of public keys used for verification",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyring",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2206,7 +2704,10 @@
             "-o"
           ],
           "description": "Prints the output in the specified format. Allowed values: table, json, yaml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output"
+          }
         },
         {
           "names": [
@@ -2219,21 +2720,30 @@
             "--password"
           ],
           "description": "Chart repository password where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password"
+          }
         },
         {
           "names": [
             "--post-renderer"
           ],
           "description": "The path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "post-renderer"
+          }
         },
         {
           "names": [
             "--post-renderer-args"
           ],
           "description": "An argument to the post-renderer (can specify multiple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "post-renderer-args"
+          }
         },
         {
           "names": [
@@ -2246,7 +2756,10 @@
             "--repo"
           ],
           "description": "Chart repository url where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "repo"
+          }
         },
         {
           "names": [
@@ -2265,21 +2778,31 @@
             "--set"
           ],
           "description": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set"
+          }
         },
         {
           "names": [
             "--set-file"
           ],
           "description": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--set-string"
           ],
           "description": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "set-string"
+          }
         },
         {
           "names": [
@@ -2292,14 +2815,20 @@
             "--timeout"
           ],
           "description": "Time to wait for any individual Kubernetes operation (like Jobs for hooks)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
             "--username"
           ],
           "description": "Chart repository username where to locate the requested chart",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "username"
+          }
         },
         {
           "names": [
@@ -2307,7 +2836,11 @@
             "-f"
           ],
           "description": "Specify values in a YAML file or a URL (can specify multiple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "values",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2320,7 +2853,10 @@
             "--version"
           ],
           "description": "Specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest vers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
@@ -2345,7 +2881,11 @@
             "--keyring"
           ],
           "description": "Keyring containing public keys",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "keyring",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -2364,7 +2904,10 @@
             "--template"
           ],
           "description": "Template for version string format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template"
+          }
         }
       ]
     },
@@ -2674,7 +3217,10 @@
         "--burst-limit"
       ],
       "description": "Client-side default throttling limit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "burst-limit"
+      }
     },
     {
       "names": [
@@ -2687,35 +3233,51 @@
         "--kube-apiserver"
       ],
       "description": "The address and the port for the Kubernetes API server",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-apiserver"
+      }
     },
     {
       "names": [
         "--kube-as-group"
       ],
       "description": "Group to impersonate for the operation, this flag can be repeated to specify multiple groups",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-as-group"
+      }
     },
     {
       "names": [
         "--kube-as-user"
       ],
       "description": "Username to impersonate for the operation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-as-user"
+      }
     },
     {
       "names": [
         "--kube-ca-file"
       ],
       "description": "The certificate authority file for the Kubernetes API server connection",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-ca-file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--kube-context"
       ],
       "description": "Name of the kubeconfig context to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-context"
+      }
     },
     {
       "names": [
@@ -2728,21 +3290,31 @@
         "--kube-tls-server-name"
       ],
       "description": "Server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-tls-server-name"
+      }
     },
     {
       "names": [
         "--kube-token"
       ],
       "description": "Bearer token used for authentication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kube-token"
+      }
     },
     {
       "names": [
         "--kubeconfig"
       ],
       "description": "Path to the kubeconfig file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kubeconfig",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -2750,28 +3322,43 @@
         "-n"
       ],
       "description": "Namespace scope for this request",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "namespace"
+      }
     },
     {
       "names": [
         "--registry-config"
       ],
       "description": "Path to the registry config file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "registry-config",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--repository-cache"
       ],
       "description": "Path to the file containing cached repository indexes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "repository-cache",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--repository-config"
       ],
       "description": "Path to the file containing repository names and URLs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "repository-config",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

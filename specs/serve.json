@@ -22,14 +22,26 @@
         "--listen"
       ],
       "description": "Specify a URI endpoint on which to listen - more than one may be specified to listen in multiple places",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "listen_uri",
+        "suggestions": [
+          "port",
+          "host/port",
+          "unix domain",
+          "windows pipe"
+        ]
+      }
     },
     {
       "names": [
         "-p"
       ],
       "description": "Specify custom port",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "port"
+      }
     },
     {
       "names": [
@@ -51,7 +63,11 @@
         "--config"
       ],
       "description": "Specify custom path to `serve.json`",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path to config file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -92,21 +108,33 @@
         "--ssl-cert"
       ],
       "description": "Optional path to an SSL/TLS certificate to serve with HTTPS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path to SSL/TLS certificate",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ssl-key"
       ],
       "description": "Optional path to the SSL/TLS certificate's private key",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path to private key",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ssl-pass"
       ],
       "description": "Optional path to the SSL/TLS certificate's passphrase",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path to passphrase",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

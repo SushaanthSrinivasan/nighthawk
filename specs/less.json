@@ -29,7 +29,10 @@
         "--buffers"
       ],
       "description": "Specifies the amount of buffer space less will use for each\nfile, in units of kilobytes (1024 bytes).  By default 64 KB of\nbuffer space is used for each file (unless the file is a pipe;\nsee the -B opt",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -65,7 +68,10 @@
         "--color"
       ],
       "description": "Changes the color of different parts of the displayed text.  x\nis a single character which selects the type of text whose color\nis being set:\nB      Binary characters.\nC      Control characters.\nE    ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "xcolor"
+      }
     },
     {
       "names": [
@@ -115,7 +121,10 @@
         "--max-back-scroll"
       ],
       "description": "Specifies a maximum number of lines to scroll backward.  If it\nis necessary to scroll backward more than n lines, the screen is\nrepainted in a forward direction instead.  (If the terminal does\nnot hav",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -137,7 +146,10 @@
         "--jump-target"
       ],
       "description": "Specifies a line on the screen where the \"target\" line is to be\npositioned.  The target line is the line specified by any\ncommand to search for a pattern, jump to a line number, jump to\na file percent",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -152,7 +164,11 @@
         "--lesskey-file"
       ],
       "description": "Causes less to open and interpret the named file as a lesskey(1)\nfile.  Multiple -k options may be specified.  If the LESSKEY or\nLESSKEY_SYSTEM environment variable is set, or if a lesskey file\nis fou",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -202,7 +218,11 @@
         "--log-file"
       ],
       "description": "Causes less to copy its input to the named file as it is being\nviewed.  This applies only when the input file is a pipe, not an\nordinary file.  If the file already exists, less will ask for\nconfirmati",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -210,7 +230,11 @@
         "--LOG-FILE"
       ],
       "description": "The -O option is like -o, but it will overwrite an existing file\nwithout asking for confirmation.\nIf no log file has been specified, the -o and -O options can be\nused from within less to specify a log",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -218,7 +242,10 @@
         "--pattern"
       ],
       "description": "The -p option on the command line is equivalent to specifying\n+/pattern; that is, it tells less to start at the first\noccurrence of pattern in the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -226,7 +253,10 @@
         "--prompt"
       ],
       "description": "Provides a way to tailor the three prompt styles to your own\npreference.  This option would normally be put in the LESS\nenvironment variable, rather than being typed in with each less\ncommand.  Such a",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prompt"
+      }
     },
     {
       "names": [
@@ -278,7 +308,10 @@
         "--tag"
       ],
       "description": "The -t option, followed immediately by a TAG, will edit the file\ncontaining that tag.  For this to work, tag information must be\navailable; for example, there may be a file in the current\ndirectory ca",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tag"
+      }
     },
     {
       "names": [
@@ -286,7 +319,10 @@
         "--tag-file"
       ],
       "description": "Specifies a tags file to be used instead of \"tags\"",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tagsfile"
+      }
     },
     {
       "names": [
@@ -329,7 +365,10 @@
         "--tabs="
       ],
       "description": "Sets tab stops.  If only one n is specified, tab stops are set\nat multiples of n.  If multiple values separated by commas are\nspecified, tab stops are set at those positions, and then\ncontinue with th",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n,..."
+      }
     },
     {
       "names": [
@@ -344,7 +383,10 @@
         "--max-forw-scroll"
       ],
       "description": "Specifies a maximum number of lines to scroll forward.  If it is\nnecessary to scroll forward more than n lines, the screen is\nrepainted instead.  The -c or -C option may be used to repaint\nfrom the to",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -352,7 +394,10 @@
         "--window"
       ],
       "description": "Changes the default scrolling window size to n lines.  The\ndefault is one screenful.  The z and w commands can also be used\nto change the window size.  The \"z\" may be omitted for\ncompatibility with so",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -451,7 +496,10 @@
         "--wheel-lines"
       ],
       "description": "Set the number of lines to scroll when the mouse wheel is rolled",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     }
   ],
   "args": [

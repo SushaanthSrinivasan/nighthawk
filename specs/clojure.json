@@ -12,21 +12,33 @@
       "names": [
         "-X"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "a/fn",
+        "description": "An alias to refer to its function or a qualified function"
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Invoke tool by name or via aliases ala -X",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "a/fn",
+        "description": "An alias to refer to its function or a qualified function"
+      }
     },
     {
       "names": [
         "-M"
       ],
       "description": "Use concatenated aliases to modify classpath or supply main opts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "args",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -45,7 +57,11 @@
         "-Sdeps"
       ],
       "description": "Pass the deps data on the command line",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "edn",
+        "description": "The deps data in edn"
+      }
     },
     {
       "names": [
@@ -58,7 +74,11 @@
         "-Scp"
       ],
       "description": "Use specified classpath instead of cached or computed one",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cp",
+        "description": "The classpath to use"
+      }
     },
     {
       "names": [
@@ -121,7 +141,10 @@
         "--init"
       ],
       "description": "Load a file or resource",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path"
+      }
     },
     {
       "names": [
@@ -129,14 +152,26 @@
         "--eval"
       ],
       "description": "Evaluate expressions in string; print non-nil values",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--report"
       ],
       "description": "Report uncaught exceptions",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "target",
+        "description": "Where to report",
+        "suggestions": [
+          "file",
+          "stderr",
+          "none"
+        ]
+      }
     },
     {
       "names": [
@@ -144,7 +179,11 @@
         "--main"
       ],
       "description": "Call the -main function from a namespace with args",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ns-name",
+        "description": "The namespace of the -main function"
+      }
     },
     {
       "names": [

@@ -8,7 +8,10 @@
         "-b"
       ],
       "description": "Exit the test suite immediately upon n number of failing test suite. Defaults to 1",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "n"
+      }
     },
     {
       "names": [
@@ -33,7 +36,10 @@
         "--changedSince"
       ],
       "description": "Runs tests related to the changes since the provided branch or commit hash",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "since"
+      }
     },
     {
       "names": [
@@ -46,14 +52,20 @@
         "--clearCache"
       ],
       "description": "Deletes the Jest cache directory and then exits without running tests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cacheDirectory"
+      }
     },
     {
       "names": [
         "--collectCoverageFrom"
       ],
       "description": "A glob pattern relative to rootDir matching the files that coverage info needs to be collected from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "glob"
+      }
     },
     {
       "names": [
@@ -67,21 +79,39 @@
         "-c"
       ],
       "description": "The path to a Jest config file specifying how to find and execute tests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--coverage"
       ],
       "description": "Enable or disable coverage, disabled by default",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "true|false",
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [
         "--coverageProvider"
       ],
       "description": "Indicates which provider should be used to instrument code for coverage",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "babel|v8",
+        "suggestions": [
+          "babel",
+          "v8"
+        ]
+      }
     },
     {
       "names": [
@@ -100,7 +130,15 @@
         "--env"
       ],
       "description": "The test environment used for all tests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "jsdom|node|path/to/env.js",
+        "suggestions": [
+          "jsdom",
+          "node"
+        ],
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -120,7 +158,10 @@
         "--findRelatedTests"
       ],
       "description": "Find and run the tests that cover a space separated list of source files that were passed in as arguments",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<path1> ... <pathN>"
+      }
     },
     {
       "names": [
@@ -157,7 +198,10 @@
         "--outputFile"
       ],
       "description": "Write test results to a file when the --json option is also specified",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -182,7 +226,10 @@
         "--maxConcurrency"
       ],
       "description": "Prevents Jest from executing more than the specified amount of tests at the same time",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "num"
+      }
     },
     {
       "names": [
@@ -190,7 +237,10 @@
         "-w"
       ],
       "description": "Specifies the maximum number of workers the worker-pool will spawn for running tests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<num>|<string>"
+      }
     },
     {
       "names": [
@@ -222,21 +272,34 @@
         "--projects"
       ],
       "description": "Run tests from one or more projects, found in the specified paths; also takes path globs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<path1> ... <pathN>",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--reporters"
       ],
       "description": "Run tests with specified reporters",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "reporter"
+      }
     },
     {
       "names": [
         "--roots"
       ],
       "description": "A list of paths to directories that Jest should use to search for files in",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<path1> ... <pathN>",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -250,7 +313,10 @@
         "--selectProjects"
       ],
       "description": "Run only the tests of the specified projects",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "<project1> ... <projectN>"
+      }
     },
     {
       "names": [
@@ -263,7 +329,11 @@
         "--setupTestFrameworkScriptFile"
       ],
       "description": "The path to a module that runs some code to configure or set up the testing framework before each test",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -283,7 +353,10 @@
         "-t"
       ],
       "description": "Run only tests with a name that matches the regex",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex"
+      }
     },
     {
       "names": [
@@ -296,35 +369,52 @@
         "--testPathPattern"
       ],
       "description": "A regexp pattern string that is matched against all tests paths before executing the test",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex"
+      }
     },
     {
       "names": [
         "--testPathIgnorePatterns"
       ],
       "description": "An array of regexp pattern strings that are tested against all tests paths before executing the test",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[array]"
+      }
     },
     {
       "names": [
         "--testRunner"
       ],
       "description": "Lets you specify a custom test runner",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--testSequencer"
       ],
       "description": "Lets you specify a custom test sequencer",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--testTimeout"
       ],
       "description": "Default timeout of a test in milliseconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "timeout in ms"
+      }
     },
     {
       "names": [

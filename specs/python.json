@@ -7,14 +7,23 @@
         "-c"
       ],
       "description": "Execute the Python code in command. command can be one or more statements separated by newlines, with significant leading whitespace as in normal module code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
         "-m"
       ],
       "description": "Module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "python module",
+        "suggestions": [
+          "http.server"
+        ]
+      }
     },
     {
       "names": [
@@ -48,7 +57,14 @@
         "--check-hash-based-pycs"
       ],
       "description": "Control the validation behavior of hash-based .pyc files. See Cached bytecode invalidation",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "default",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [
@@ -140,7 +156,19 @@
         "-X"
       ],
       "description": "Reserved for various implementation-specific options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "faulthandler",
+          "showrefcount",
+          "tracemalloc",
+          "showalloccount",
+          "importtime",
+          "dev",
+          "utf8",
+          "pycache_prefix=PATH"
+        ]
+      }
     }
   ],
   "args": [

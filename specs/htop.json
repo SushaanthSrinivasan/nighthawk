@@ -22,7 +22,15 @@
         "-d"
       ],
       "description": "Delay between updates, in tenths of sec",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "delay",
+        "suggestions": [
+          "10",
+          "1",
+          "60"
+        ]
+      }
     },
     {
       "names": [
@@ -30,7 +38,10 @@
         "-F"
       ],
       "description": "Filter commands",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filter"
+      }
     },
     {
       "names": [
@@ -38,7 +49,16 @@
         "-H"
       ],
       "description": "Highlight new and old processes",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "delay",
+        "description": "Delay between updates of highlights, in tenths of sec",
+        "suggestions": [
+          "10",
+          "1",
+          "60"
+        ]
+      }
     },
     {
       "names": [
@@ -53,7 +73,11 @@
         "-p"
       ],
       "description": "Show only the given PIDs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PID",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -61,7 +85,10 @@
         "-s"
       ],
       "description": "Sort by COLUMN in list view",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "column"
+      }
     },
     {
       "names": [
@@ -76,7 +103,13 @@
         "-u"
       ],
       "description": "Show only processes for a given user (or $USER)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "user",
+        "suggestions": [
+          "$USER"
+        ]
+      }
     },
     {
       "names": [

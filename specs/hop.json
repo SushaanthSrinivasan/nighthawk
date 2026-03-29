@@ -30,7 +30,14 @@
             "-t"
           ],
           "description": "Type of the container, defaults to `ephemeral`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "container type",
+            "suggestions": [
+              "ephemeral",
+              "persistent"
+            ]
+          }
         },
         {
           "names": [
@@ -38,7 +45,17 @@
             "-i"
           ],
           "description": "Number of containers to use, defaults to 1 if `scaling` is manual",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "container amount",
+            "suggestions": [
+              "1",
+              "2",
+              "4",
+              "8",
+              "10"
+            ]
+          }
         },
         {
           "names": [
@@ -46,7 +63,16 @@
             "-c"
           ],
           "description": "The number of CPUs to use, defaults to 1",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cpu amount",
+            "suggestions": [
+              "1",
+              "2",
+              "4",
+              "8"
+            ]
+          }
         },
         {
           "names": [
@@ -54,7 +80,13 @@
             "-e"
           ],
           "description": "Environment variables to set, in the form of KEY=VALUE",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "environment variable",
+            "suggestions": [
+              "port="
+            ]
+          }
         },
         {
           "names": [
@@ -62,7 +94,10 @@
             "-n"
           ],
           "description": "Name of the deployment, defaults to the directory name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "deployment name"
+          }
         },
         {
           "names": [
@@ -70,7 +105,10 @@
             "-p"
           ],
           "description": "Namespace or ID of the project to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "project"
+          }
         },
         {
           "names": [
@@ -78,7 +116,18 @@
             "-m"
           ],
           "description": "Amount of RAM to use, defaults to 512MB",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ram amount",
+            "suggestions": [
+              "128MB",
+              "256MB",
+              "512MB",
+              "1G",
+              "2G",
+              "4G"
+            ]
+          }
         },
         {
           "names": [
@@ -86,7 +135,14 @@
             "-s"
           ],
           "description": "Scaling strategy, defaults to `manual`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "scaling strategy",
+            "suggestions": [
+              "manual",
+              "autoscale"
+            ]
+          }
         }
       ],
       "args": [

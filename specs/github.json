@@ -12,7 +12,10 @@
             "-b"
           ],
           "description": "The branch to checkout after cloning",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         }
       ],
       "args": [
@@ -56,7 +59,15 @@
         "--help"
       ],
       "description": "Show the help page for a command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command",
+        "suggestions": [
+          "clone",
+          "open",
+          "help"
+        ]
+      }
     }
   ],
   "args": [

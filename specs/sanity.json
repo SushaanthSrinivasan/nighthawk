@@ -51,7 +51,10 @@
             "--extensions"
           ],
           "description": "Transform files with these file extensions (comma separated list) (default: js,ts,tsx)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extensions"
+          }
         },
         {
           "names": [
@@ -180,7 +183,10 @@
                 "--attach"
               ],
               "description": "Attach to the running copy process to show progress",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "job-id"
+              }
             },
             {
               "names": [
@@ -199,14 +205,20 @@
                 "--offset"
               ],
               "description": "Start position in the list of jobs. Default 0. With --list",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "offset"
+              }
             },
             {
               "names": [
                 "--limit"
               ],
               "description": "Maximum number of jobs returned. Default 10. Maximum 1000. With --list",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "limit"
+              }
             }
           ],
           "args": [
@@ -227,7 +239,14 @@
                 "--visibility"
               ],
               "description": "Set visibility for this dataset (public/private)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "visibility",
+                "suggestions": [
+                  "public",
+                  "private"
+                ]
+              }
             }
           ],
           "args": [
@@ -278,7 +297,10 @@
                 "--types"
               ],
               "description": "Defines which document types to export",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "types"
+              }
             },
             {
               "names": [
@@ -291,7 +313,10 @@
                 "--asset-concurrency"
               ],
               "description": "Concurrent number of asset downloads",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "num"
+              }
             }
           ],
           "args": [
@@ -448,14 +473,20 @@
                 "--id"
               ],
               "description": "Specify a document ID to use. Will fetch remote document ID and populate editor",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
                 "--dataset"
               ],
               "description": "NAME to override dataset",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dataset"
+              }
             }
           ],
           "args": [
@@ -474,7 +505,10 @@
                 "--dataset"
               ],
               "description": "NAME to override dataset",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dataset"
+              }
             }
           ],
           "args": [
@@ -499,7 +533,10 @@
                 "--dataset"
               ],
               "description": "NAME to override dataset",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dataset"
+              }
             }
           ],
           "args": [
@@ -523,14 +560,20 @@
                 "--dataset"
               ],
               "description": "NAME to override dataset",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dataset"
+              }
             },
             {
               "names": [
                 "--api-version"
               ],
               "description": "API version to use (defaults to `v1`)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version"
+              }
             }
           ],
           "args": [
@@ -578,21 +621,30 @@
                 "--dataset"
               ],
               "description": "Deploy API for the given dataset",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dataset"
+              }
             },
             {
               "names": [
                 "--tag"
               ],
               "description": "Deploy API to given tag (defaults to 'default')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tag"
+              }
             },
             {
               "names": [
                 "--generation"
               ],
               "description": "API generation to deploy (defaults to 'gen3')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "generation"
+              }
             },
             {
               "names": [
@@ -633,14 +685,20 @@
                 "--dataset"
               ],
               "description": "Delete GraphQL API for the given dataset",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dataset"
+              }
             },
             {
               "names": [
                 "--tag"
               ],
               "description": "Delete GraphQL API for the given tag (defaults to 'default')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tag"
+              }
             }
           ]
         }
@@ -703,21 +761,30 @@
             "--project"
           ],
           "description": "Project ID to use for the studio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "projectId"
+          }
         },
         {
           "names": [
             "--organization"
           ],
           "description": "Organization ID to use for the project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "organizationId"
+          }
         },
         {
           "names": [
             "--dataset"
           ],
           "description": "Dataset name for the studio",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dataset"
+          }
         },
         {
           "names": [
@@ -730,49 +797,74 @@
             "--output-path"
           ],
           "description": "Path to write studio project to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "--template"
           ],
           "description": "Project template to use [default: \"clean\"]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "template"
+          }
         },
         {
           "names": [
             "--provider"
           ],
           "description": "Login provider to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "provider"
+          }
         },
         {
           "names": [
             "--visibility"
           ],
           "description": "Visibility mode for dataset (public/private)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "public",
+              "private"
+            ]
+          }
         },
         {
           "names": [
             "--create-project"
           ],
           "description": "Create a new project with the given name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--project-plan"
           ],
           "description": "Optionally select a plan for a new project",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--coupon"
           ],
           "description": "Optionally select a coupon for a new project (cannot be used with --project-plan)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -800,7 +892,10 @@
             "--sso"
           ],
           "description": "Authenticate against a third-party identity provider",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "slug"
+          }
         }
       ]
     },
@@ -825,14 +920,24 @@
                 "--sort"
               ],
               "description": "Sort output by specified column",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "field"
+              }
             },
             {
               "names": [
                 "--order"
               ],
               "description": "Sort output ascending/descending",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "order",
+                "suggestions": [
+                  "asc",
+                  "desc"
+                ]
+              }
             }
           ]
         }
@@ -847,14 +952,20 @@
             "--port"
           ],
           "description": "TCP port to start server on. [default: 3333]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--host"
           ],
           "description": "The local network interface at which to listen. [default: \"127.0.0.1\"]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "host"
+          }
         }
       ]
     },
@@ -880,14 +991,20 @@
             "--range"
           ],
           "description": "Version range to upgrade to, eg '^2.2.7' or '2.1.x'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "range"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Tagged release to upgrade to, eg 'canary' or 'some-feature'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag"
+          }
         },
         {
           "names": [
@@ -910,7 +1027,10 @@
                 "--role"
               ],
               "description": "Role to invite the user as",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "role"
+              }
             }
           ],
           "args": [
@@ -940,14 +1060,30 @@
                 "--sort"
               ],
               "description": "Sort users by specified column: id, name, role, date",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "field",
+                "suggestions": [
+                  "id",
+                  "name",
+                  "role",
+                  "date"
+                ]
+              }
             },
             {
               "names": [
                 "--order"
               ],
               "description": "Sort output ascending/descending",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "order",
+                "suggestions": [
+                  "asc",
+                  "desc"
+                ]
+              }
             }
           ]
         }

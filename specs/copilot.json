@@ -12,7 +12,10 @@
             "-a"
           ],
           "description": "Name of the application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "app"
+          }
         },
         {
           "names": [
@@ -26,7 +29,10 @@
             "-d"
           ],
           "description": "Path to the Dockerfile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dockerfile"
+          }
         },
         {
           "names": [
@@ -34,7 +40,10 @@
             "-i"
           ],
           "description": "The location of an existing Docker image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "image"
+          }
         },
         {
           "names": [
@@ -42,42 +51,60 @@
             "-n"
           ],
           "description": "Name of the service or job",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "The port on which your service listens",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "port"
+          }
         },
         {
           "names": [
             "--retries"
           ],
           "description": "Optional. The number of times to try restarting the job on a failure",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "retries"
+          }
         },
         {
           "names": [
             "--schedule"
           ],
           "description": "The schedule on which to run this job.  Accepts cron expressions of the format (M H DoM M DoW) and schedule definition strings.  For example: \"0 * * * *\", \"@daily\", \"@weekly\", \"@every 1h30m\". AWS Sche",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "schedule"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Optional. The container image tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag"
+          }
         },
         {
           "names": [
             "--timeout"
           ],
           "description": "Optional. The total execution time for the task, including retries. Accepts valid Go duration strings. For example: \"2h\", \"1h30m\", \"900s\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -85,7 +112,17 @@
             "-t"
           ],
           "description": "Type of job or svc to create",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "suggestions": [
+              "Request-Driven Web Service",
+              "Load Balanced Web Service",
+              "Backend Service",
+              "Worker Service",
+              "Scheduled Job"
+            ]
+          }
         },
         {
           "names": [
@@ -122,14 +159,20 @@
                 "--domain"
               ],
               "description": "Optional. Your existing custom domain name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "domain"
+              }
             },
             {
               "names": [
                 "--resource-tags"
               ],
               "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "resource-tags"
+              }
             },
             {
               "names": [
@@ -169,7 +212,10 @@
                 "-n"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -190,7 +236,10 @@
                 "-n"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -217,7 +266,10 @@
                 "-n"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -253,28 +305,40 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--aws-access-key-id"
               ],
               "description": "Optional. An AWS access key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "aws-access-key-id"
+              }
             },
             {
               "names": [
                 "--aws-secret-access-key"
               ],
               "description": "Optional. An AWS secret access key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "aws-secret-access-key"
+              }
             },
             {
               "names": [
                 "--aws-session-token"
               ],
               "description": "Optional. An AWS session token for temporary credentials",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "aws-session-token"
+              }
             },
             {
               "names": [
@@ -287,21 +351,30 @@
                 "--import-private-subnets"
               ],
               "description": "Optional. Use existing private subnet IDs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "import-private-subnets"
+              }
             },
             {
               "names": [
                 "--import-public-subnets"
               ],
               "description": "Optional. Use existing public subnet IDs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "import-public-subnets"
+              }
             },
             {
               "names": [
                 "--import-vpc-id"
               ],
               "description": "Optional. Use an existing VPC ID",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "import-vpc-id"
+              }
             },
             {
               "names": [
@@ -309,35 +382,50 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--override-az-names"
               ],
               "description": "Optional. Availability Zone names. (default 2 random AZs)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "override-az-names"
+              }
             },
             {
               "names": [
                 "--override-private-cidrs"
               ],
               "description": "Optional. CIDR to use for private subnets. (default 10.0.2.0/24,10.0.3.0/24)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "override-private-cidrs"
+              }
             },
             {
               "names": [
                 "--override-public-cidrs"
               ],
               "description": "Optional. CIDR to use for public subnets.  (default 10.0.0.0/24,10.0.1.0/24)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "override-public-cidrs"
+              }
             },
             {
               "names": [
                 "--override-vpc-cidr"
               ],
               "description": "Optional. Global CIDR to use for VPC. (default 10.0.0.0/16)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "override-vpc-cidr"
+              }
             },
             {
               "names": [
@@ -350,14 +438,20 @@
                 "--profile"
               ],
               "description": "Name of the profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile"
+              }
             },
             {
               "names": [
                 "--region"
               ],
               "description": "Optional. An AWS region where the environment will be created",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region"
+              }
             },
             {
               "names": [
@@ -378,7 +472,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -405,7 +502,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -413,7 +513,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -440,7 +543,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -454,7 +560,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -496,7 +605,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -504,7 +616,10 @@
                 "-d"
               ],
               "description": "Path to the Dockerfile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dockerfile"
+              }
             },
             {
               "names": [
@@ -512,7 +627,10 @@
                 "-i"
               ],
               "description": "The location of an existing Docker image",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "image"
+              }
             },
             {
               "names": [
@@ -520,7 +638,10 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -533,14 +654,20 @@
                 "--port"
               ],
               "description": "The port on which your service listens",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
                 "--subscribe-topics"
               ],
               "description": "Optional. SNS Topics to subscribe to from other services in your application. Must be of format '<svcName>:<topicName>'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "subscribe-topics"
+              }
             },
             {
               "names": [
@@ -548,7 +675,16 @@
                 "-t"
               ],
               "description": "Type of service to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "svc-type",
+                "suggestions": [
+                  "Request-Driven Web Service",
+                  "Load Balanced Web Service",
+                  "Backend Service",
+                  "Worker Service"
+                ]
+              }
             },
             {
               "names": [
@@ -569,7 +705,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -602,7 +741,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -610,7 +752,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -618,21 +763,30 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--output-dir"
               ],
               "description": "Optional. Writes the stack template and template configuration to a directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output-dir"
+              }
             },
             {
               "names": [
                 "--tag"
               ],
               "description": "Optional. The container image tag",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tag"
+              }
             },
             {
               "names": [
@@ -653,7 +807,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -661,7 +818,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -675,21 +835,30 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--resource-tags"
               ],
               "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "resource-tags"
+              }
             },
             {
               "names": [
                 "--tag"
               ],
               "description": "Optional. The container image tag",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tag"
+              }
             },
             {
               "names": [
@@ -710,7 +879,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -718,7 +890,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -726,7 +901,10 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -753,7 +931,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -767,7 +948,10 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -794,7 +978,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -802,7 +989,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -816,7 +1006,10 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -837,14 +1030,20 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--end-time"
               ],
               "description": "Optional. Only return logs before a specific date (RFC3339). Defaults to all logs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "end-time"
+              }
             },
             {
               "names": [
@@ -852,7 +1051,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -871,14 +1073,20 @@
                 "--limit"
               ],
               "description": "Optional. The maximum number of log events returned. Default is 10 unless any time filtering flags are set",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "limit"
+              }
             },
             {
               "names": [
                 "--log-group"
               ],
               "description": "Optional. Only return logs from specific log group",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "log-group"
+              }
             },
             {
               "names": [
@@ -886,28 +1094,40 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--since"
               ],
               "description": "Optional. Only return logs newer than a relative duration like 5s, 2m, or 3h. Defaults to all logs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "since"
+              }
             },
             {
               "names": [
                 "--start-time"
               ],
               "description": "Optional. Only return logs after a specific date (RFC3339). Defaults to all logs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "start-time"
+              }
             },
             {
               "names": [
                 "--tasks"
               ],
               "description": "Optional. Only return logs from specific task IDs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tasks"
+              }
             },
             {
               "names": [
@@ -928,7 +1148,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -936,14 +1159,20 @@
                 "-c"
               ],
               "description": "Optional. The command that is passed to a running container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "command"
+              }
             },
             {
               "names": [
                 "--container"
               ],
               "description": "Optional. The specific container you want to exec in. By default the first essential container will be used",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "container"
+              }
             },
             {
               "names": [
@@ -951,7 +1180,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -959,14 +1191,20 @@
                 "-n"
               ],
               "description": "Name of the service, job, or task group",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--task-id"
               ],
               "description": "Optional. ID of the task you want to exec in",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "task-id"
+              }
             },
             {
               "names": [
@@ -993,7 +1231,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1001,7 +1242,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1009,7 +1253,10 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1036,7 +1283,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1044,7 +1294,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1052,7 +1305,10 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1088,7 +1344,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1096,7 +1355,10 @@
                 "-d"
               ],
               "description": "Path to the Dockerfile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dockerfile"
+              }
             },
             {
               "names": [
@@ -1104,7 +1366,10 @@
                 "-i"
               ],
               "description": "The location of an existing Docker image",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "image"
+              }
             },
             {
               "names": [
@@ -1112,7 +1377,13 @@
                 "-t"
               ],
               "description": "Type of job to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "job-type",
+                "suggestions": [
+                  "Scheduled Job"
+                ]
+              }
             },
             {
               "names": [
@@ -1120,14 +1391,20 @@
                 "-n"
               ],
               "description": "Name of the job",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--retries"
               ],
               "description": "Optional. The number of times to try restarting the job on a failure",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "retries"
+              }
             },
             {
               "names": [
@@ -1135,14 +1412,20 @@
                 "-s"
               ],
               "description": "The schedule on which to run this job.  Accepts cron expressions of the format (M H DoM M DoW) and schedule definition strings.  For example: \"0 * * * *\", \"@daily\", \"@weekly\", \"@every 1h30m\". AWS Sche",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "schedule"
+              }
             },
             {
               "names": [
                 "--timeout"
               ],
               "description": "Optional. The total execution time for the task, including retries. Accepts valid Go duration strings. For example: \"2h\", \"1h30m\", \"900s\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "timeout"
+              }
             },
             {
               "names": [
@@ -1163,7 +1446,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1196,7 +1482,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1204,7 +1493,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1212,21 +1504,30 @@
                 "-n"
               ],
               "description": "Name of the job",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--output-dir"
               ],
               "description": "Optional. Writes the stack template and template configuration to a directory",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output-dir"
+              }
             },
             {
               "names": [
                 "--tag"
               ],
               "description": "Optional. The container image tag",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tag"
+              }
             },
             {
               "names": [
@@ -1247,7 +1548,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1255,7 +1559,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1263,21 +1570,30 @@
                 "-n"
               ],
               "description": "Name of the job",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--resource-tags"
               ],
               "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "resource-tags"
+              }
             },
             {
               "names": [
                 "--tag"
               ],
               "description": "Optional. The container image tag",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tag"
+              }
             },
             {
               "names": [
@@ -1298,7 +1614,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1306,7 +1625,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1314,7 +1636,10 @@
                 "-n"
               ],
               "description": "Name of the job",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1355,42 +1680,60 @@
                 "--app"
               ],
               "description": "Optional. Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "app"
+              }
             },
             {
               "names": [
                 "--build-context"
               ],
               "description": "Path to the Docker build context",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "build-context"
+              }
             },
             {
               "names": [
                 "--cluster"
               ],
               "description": "Optional. The short name or full ARN of the cluster to run the task in",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster"
+              }
             },
             {
               "names": [
                 "--command"
               ],
               "description": "Optional. The command that is passed to \"docker run\" to override the default command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "command"
+              }
             },
             {
               "names": [
                 "--count"
               ],
               "description": "Optional. The number of tasks to set up",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "count"
+              }
             },
             {
               "names": [
                 "--cpu"
               ],
               "description": "Optional. The number of CPU units to reserve for each task",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cpu"
+              }
             },
             {
               "names": [
@@ -1403,35 +1746,50 @@
                 "--dockerfile"
               ],
               "description": "Path to the Dockerfile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "dockerfile"
+              }
             },
             {
               "names": [
                 "--entrypoint"
               ],
               "description": "Optional. The entrypoint that is passed to \"docker run\" to override the default entrypoint",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "entrypoint"
+              }
             },
             {
               "names": [
                 "--env"
               ],
               "description": "Optional. Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "env"
+              }
             },
             {
               "names": [
                 "--env-vars"
               ],
               "description": "Optional. Environment variables specified by key=value separated by commas",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "env-vars"
+              }
             },
             {
               "names": [
                 "--execution-role"
               ],
               "description": "Optional. The ARN of the role that grants the container agent permission to make AWS API calls",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "execution-role"
+              }
             },
             {
               "names": [
@@ -1444,7 +1802,10 @@
                 "--generate-cmd"
               ],
               "description": "Optional. Generate a command with a pre-filled value for each flag. To use it for an ECS service, specify --generate-cmd <cluster name>/<service name>. Alternatively, if the service or job is created ",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "generate-cmd"
+              }
             },
             {
               "names": [
@@ -1452,63 +1813,90 @@
                 "-i"
               ],
               "description": "The location of an existing Docker image",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "image"
+              }
             },
             {
               "names": [
                 "--memory"
               ],
               "description": "Optional. The amount of memory to reserve in MiB for each task",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "memory"
+              }
             },
             {
               "names": [
                 "--platform-arch"
               ],
               "description": "Optional. Architecture of the task. Must be specified along with 'platform-os'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "platform-arch"
+              }
             },
             {
               "names": [
                 "--platform-os"
               ],
               "description": "Optional. Operating system of the task. Must be specified along with 'platform-arch'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "platform-os"
+              }
             },
             {
               "names": [
                 "--resource-tags"
               ],
               "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "resource-tags"
+              }
             },
             {
               "names": [
                 "--secrets"
               ],
               "description": "Optional. Secrets to inject into the container. Specified by key=value separated by commas",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "secrets"
+              }
             },
             {
               "names": [
                 "--security-groups"
               ],
               "description": "Optional. The security group IDs for the task to use. Can be specified multiple times",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "security-groups"
+              }
             },
             {
               "names": [
                 "--subnets"
               ],
               "description": "Optional. The subnet IDs for the task to use. Can be specified multiple times",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "subnets"
+              }
             },
             {
               "names": [
                 "--tag"
               ],
               "description": "Optional. The container image tag in addition to \"latest\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tag"
+              }
             },
             {
               "names": [
@@ -1516,14 +1904,20 @@
                 "-n"
               ],
               "description": "Optional. The group name of the task.  Tasks with the same group name share the same set of resources.  (default directory name)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "task-group-name"
+              }
             },
             {
               "names": [
                 "--task-role"
               ],
               "description": "Optional. The ARN of the role for the task to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "task-role"
+              }
             },
             {
               "names": [
@@ -1544,7 +1938,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1552,7 +1949,10 @@
                 "-c"
               ],
               "description": "Optional. The command that is passed to a running container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "command"
+              }
             },
             {
               "names": [
@@ -1566,7 +1966,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1574,14 +1977,20 @@
                 "-n"
               ],
               "description": "Name of the service, job, or task group",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--task-id"
               ],
               "description": "Optional. ID of the task you want to exec in",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "task-id"
+              }
             },
             {
               "names": [
@@ -1608,7 +2017,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1622,7 +2034,10 @@
                 "-n"
               ],
               "description": "Name of the environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1630,7 +2045,10 @@
                 "-n"
               ],
               "description": "Name of the service",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1671,21 +2089,30 @@
                 "--engine"
               ],
               "description": "The database engine used in the cluster. Must be either \"MySQL\" or \"PostgreSQL\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "engine"
+              }
             },
             {
               "names": [
                 "--initial-db"
               ],
               "description": "The initial database to create in the cluster",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "initial-db"
+              }
             },
             {
               "names": [
                 "--lsi"
               ],
               "description": "Optional. Attribute to use as an alternate sort key. May be specified up to 5 times. Must be of the format '<keyName>:<dataType>'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "lsi"
+              }
             },
             {
               "names": [
@@ -1693,7 +2120,10 @@
                 "-n"
               ],
               "description": "Name of the storage resource to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1712,21 +2142,30 @@
                 "--parameter-group"
               ],
               "description": "Optional. The name of the parameter group to associate with the cluster",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "parameter-group"
+              }
             },
             {
               "names": [
                 "--partition-key"
               ],
               "description": "Partition key for the DDB table. Must be of the format '<keyName>:<dataType>'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "partition-key"
+              }
             },
             {
               "names": [
                 "--sort-key"
               ],
               "description": "Optional. Sort key for the DDB table. Must be of the format '<keyName>:<dataType>'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "sort-key"
+              }
             },
             {
               "names": [
@@ -1734,7 +2173,10 @@
                 "-t"
               ],
               "description": "Type of storage to add. Must be one of: \"DynamoDB\", \"S3\", \"Aurora\"",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "storage-type"
+              }
             },
             {
               "names": [
@@ -1742,7 +2184,10 @@
                 "-w"
               ],
               "description": "Name of the service or job to associate with storage",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "workload"
+              }
             },
             {
               "names": [
@@ -1778,14 +2223,20 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--cli-input-yaml"
               ],
               "description": "Optional. A YAML file in which the secret values are specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cli-input-yaml"
+              }
             },
             {
               "names": [
@@ -1793,7 +2244,10 @@
                 "-n"
               ],
               "description": "The name of the secret",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1806,7 +2260,10 @@
                 "--values"
               ],
               "description": "Values of the secret in each environment. Specified as <environment>=<value> separated by commas",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "values"
+              }
             },
             {
               "names": [
@@ -1868,7 +2325,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1876,7 +2336,10 @@
                 "-e"
               ],
               "description": "Environments to add to the pipeline",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environments"
+              }
             },
             {
               "names": [
@@ -1884,7 +2347,10 @@
                 "-b"
               ],
               "description": "Branch used to trigger your pipeline",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "git-branch"
+              }
             },
             {
               "names": [
@@ -1892,14 +2358,20 @@
                 "-t"
               ],
               "description": "GitHub personal access token for your repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "github-access-token"
+              }
             },
             {
               "names": [
                 "--github-url"
               ],
               "description": "(Deprecated.) Use --url instead. Repository URL to trigger your pipeline",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "github-url"
+              }
             },
             {
               "names": [
@@ -1907,7 +2379,10 @@
                 "-u"
               ],
               "description": "The repository URL to trigger your pipeline. Supported providers are: GitHub, CodeCommit, Bitbucket",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
@@ -1928,7 +2403,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1955,7 +2433,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1988,7 +2469,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -2002,7 +2486,10 @@
                 "-n"
               ],
               "description": "Name of the pipeline",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -2029,7 +2516,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -2043,7 +2533,10 @@
                 "-n"
               ],
               "description": "Name of the pipeline",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -2064,7 +2557,10 @@
                 "-a"
               ],
               "description": "Name of the application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -2102,7 +2598,10 @@
             "-a"
           ],
           "description": "Name of the application",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -2110,7 +2609,10 @@
             "-n"
           ],
           "description": "Name of the environment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -2124,21 +2626,30 @@
             "-n"
           ],
           "description": "Name of the service or job",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--resource-tags"
           ],
           "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "resource-tags"
+          }
         },
         {
           "names": [
             "--tag"
           ],
           "description": "Optional. The container image tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "tag"
+          }
         },
         {
           "names": [
@@ -2192,14 +2703,20 @@
                     "--domain"
                   ],
                   "description": "Optional. Your existing custom domain name",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "domain"
+                  }
                 },
                 {
                   "names": [
                     "--resource-tags"
                   ],
                   "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "resource-tags"
+                  }
                 },
                 {
                   "names": [
@@ -2239,7 +2756,10 @@
                     "-n"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2260,7 +2780,10 @@
                     "-n"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2287,7 +2810,10 @@
                     "-n"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2323,28 +2849,40 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--aws-access-key-id"
                   ],
                   "description": "Optional. An AWS access key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "aws-access-key-id"
+                  }
                 },
                 {
                   "names": [
                     "--aws-secret-access-key"
                   ],
                   "description": "Optional. An AWS secret access key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "aws-secret-access-key"
+                  }
                 },
                 {
                   "names": [
                     "--aws-session-token"
                   ],
                   "description": "Optional. An AWS session token for temporary credentials",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "aws-session-token"
+                  }
                 },
                 {
                   "names": [
@@ -2357,21 +2895,30 @@
                     "--import-private-subnets"
                   ],
                   "description": "Optional. Use existing private subnet IDs",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "import-private-subnets"
+                  }
                 },
                 {
                   "names": [
                     "--import-public-subnets"
                   ],
                   "description": "Optional. Use existing public subnet IDs",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "import-public-subnets"
+                  }
                 },
                 {
                   "names": [
                     "--import-vpc-id"
                   ],
                   "description": "Optional. Use an existing VPC ID",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "import-vpc-id"
+                  }
                 },
                 {
                   "names": [
@@ -2379,35 +2926,50 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--override-az-names"
                   ],
                   "description": "Optional. Availability Zone names. (default 2 random AZs)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "override-az-names"
+                  }
                 },
                 {
                   "names": [
                     "--override-private-cidrs"
                   ],
                   "description": "Optional. CIDR to use for private subnets. (default 10.0.2.0/24,10.0.3.0/24)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "override-private-cidrs"
+                  }
                 },
                 {
                   "names": [
                     "--override-public-cidrs"
                   ],
                   "description": "Optional. CIDR to use for public subnets.  (default 10.0.0.0/24,10.0.1.0/24)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "override-public-cidrs"
+                  }
                 },
                 {
                   "names": [
                     "--override-vpc-cidr"
                   ],
                   "description": "Optional. Global CIDR to use for VPC. (default 10.0.0.0/16)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "override-vpc-cidr"
+                  }
                 },
                 {
                   "names": [
@@ -2420,14 +2982,20 @@
                     "--profile"
                   ],
                   "description": "Name of the profile",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "profile"
+                  }
                 },
                 {
                   "names": [
                     "--region"
                   ],
                   "description": "Optional. An AWS region where the environment will be created",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "region"
+                  }
                 },
                 {
                   "names": [
@@ -2448,7 +3016,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2475,7 +3046,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2483,7 +3057,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2510,7 +3087,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2524,7 +3104,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2566,7 +3149,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2574,7 +3160,10 @@
                     "-d"
                   ],
                   "description": "Path to the Dockerfile",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "dockerfile"
+                  }
                 },
                 {
                   "names": [
@@ -2582,7 +3171,10 @@
                     "-i"
                   ],
                   "description": "The location of an existing Docker image",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "image"
+                  }
                 },
                 {
                   "names": [
@@ -2590,7 +3182,10 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2603,14 +3198,20 @@
                     "--port"
                   ],
                   "description": "The port on which your service listens",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "port"
+                  }
                 },
                 {
                   "names": [
                     "--subscribe-topics"
                   ],
                   "description": "Optional. SNS Topics to subscribe to from other services in your application. Must be of format '<svcName>:<topicName>'",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "subscribe-topics"
+                  }
                 },
                 {
                   "names": [
@@ -2618,7 +3219,16 @@
                     "-t"
                   ],
                   "description": "Type of service to create",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "svc-type",
+                    "suggestions": [
+                      "Request-Driven Web Service",
+                      "Load Balanced Web Service",
+                      "Backend Service",
+                      "Worker Service"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2639,7 +3249,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2672,7 +3285,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2680,7 +3296,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2688,21 +3307,30 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--output-dir"
                   ],
                   "description": "Optional. Writes the stack template and template configuration to a directory",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "output-dir"
+                  }
                 },
                 {
                   "names": [
                     "--tag"
                   ],
                   "description": "Optional. The container image tag",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "tag"
+                  }
                 },
                 {
                   "names": [
@@ -2723,7 +3351,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2731,7 +3362,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2745,21 +3379,30 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--resource-tags"
                   ],
                   "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "resource-tags"
+                  }
                 },
                 {
                   "names": [
                     "--tag"
                   ],
                   "description": "Optional. The container image tag",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "tag"
+                  }
                 },
                 {
                   "names": [
@@ -2780,7 +3423,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2788,7 +3434,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2796,7 +3445,10 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2823,7 +3475,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2837,7 +3492,10 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2864,7 +3522,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2872,7 +3533,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2886,7 +3550,10 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2907,14 +3574,20 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--end-time"
                   ],
                   "description": "Optional. Only return logs before a specific date (RFC3339). Defaults to all logs",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "end-time"
+                  }
                 },
                 {
                   "names": [
@@ -2922,7 +3595,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -2941,14 +3617,20 @@
                     "--limit"
                   ],
                   "description": "Optional. The maximum number of log events returned. Default is 10 unless any time filtering flags are set",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "limit"
+                  }
                 },
                 {
                   "names": [
                     "--log-group"
                   ],
                   "description": "Optional. Only return logs from specific log group",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "log-group"
+                  }
                 },
                 {
                   "names": [
@@ -2956,28 +3638,40 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--since"
                   ],
                   "description": "Optional. Only return logs newer than a relative duration like 5s, 2m, or 3h. Defaults to all logs",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "since"
+                  }
                 },
                 {
                   "names": [
                     "--start-time"
                   ],
                   "description": "Optional. Only return logs after a specific date (RFC3339). Defaults to all logs",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "start-time"
+                  }
                 },
                 {
                   "names": [
                     "--tasks"
                   ],
                   "description": "Optional. Only return logs from specific task IDs",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "tasks"
+                  }
                 },
                 {
                   "names": [
@@ -2998,7 +3692,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3006,14 +3703,20 @@
                     "-c"
                   ],
                   "description": "Optional. The command that is passed to a running container",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "command"
+                  }
                 },
                 {
                   "names": [
                     "--container"
                   ],
                   "description": "Optional. The specific container you want to exec in. By default the first essential container will be used",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "container"
+                  }
                 },
                 {
                   "names": [
@@ -3021,7 +3724,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3029,14 +3735,20 @@
                     "-n"
                   ],
                   "description": "Name of the service, job, or task group",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--task-id"
                   ],
                   "description": "Optional. ID of the task you want to exec in",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "task-id"
+                  }
                 },
                 {
                   "names": [
@@ -3063,7 +3775,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3071,7 +3786,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3079,7 +3797,10 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3106,7 +3827,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3114,7 +3838,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3122,7 +3849,10 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3158,7 +3888,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3166,7 +3899,10 @@
                     "-d"
                   ],
                   "description": "Path to the Dockerfile",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "dockerfile"
+                  }
                 },
                 {
                   "names": [
@@ -3174,7 +3910,10 @@
                     "-i"
                   ],
                   "description": "The location of an existing Docker image",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "image"
+                  }
                 },
                 {
                   "names": [
@@ -3182,7 +3921,13 @@
                     "-t"
                   ],
                   "description": "Type of job to create",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "job-type",
+                    "suggestions": [
+                      "Scheduled Job"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -3190,14 +3935,20 @@
                     "-n"
                   ],
                   "description": "Name of the job",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--retries"
                   ],
                   "description": "Optional. The number of times to try restarting the job on a failure",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "retries"
+                  }
                 },
                 {
                   "names": [
@@ -3205,14 +3956,20 @@
                     "-s"
                   ],
                   "description": "The schedule on which to run this job.  Accepts cron expressions of the format (M H DoM M DoW) and schedule definition strings.  For example: \"0 * * * *\", \"@daily\", \"@weekly\", \"@every 1h30m\". AWS Sche",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "schedule"
+                  }
                 },
                 {
                   "names": [
                     "--timeout"
                   ],
                   "description": "Optional. The total execution time for the task, including retries. Accepts valid Go duration strings. For example: \"2h\", \"1h30m\", \"900s\"",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "timeout"
+                  }
                 },
                 {
                   "names": [
@@ -3233,7 +3990,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3266,7 +4026,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3274,7 +4037,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3282,21 +4048,30 @@
                     "-n"
                   ],
                   "description": "Name of the job",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--output-dir"
                   ],
                   "description": "Optional. Writes the stack template and template configuration to a directory",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "output-dir"
+                  }
                 },
                 {
                   "names": [
                     "--tag"
                   ],
                   "description": "Optional. The container image tag",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "tag"
+                  }
                 },
                 {
                   "names": [
@@ -3317,7 +4092,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3325,7 +4103,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3333,21 +4114,30 @@
                     "-n"
                   ],
                   "description": "Name of the job",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--resource-tags"
                   ],
                   "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "resource-tags"
+                  }
                 },
                 {
                   "names": [
                     "--tag"
                   ],
                   "description": "Optional. The container image tag",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "tag"
+                  }
                 },
                 {
                   "names": [
@@ -3368,7 +4158,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3376,7 +4169,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3384,7 +4180,10 @@
                     "-n"
                   ],
                   "description": "Name of the job",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3425,42 +4224,60 @@
                     "--app"
                   ],
                   "description": "Optional. Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "app"
+                  }
                 },
                 {
                   "names": [
                     "--build-context"
                   ],
                   "description": "Path to the Docker build context",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "build-context"
+                  }
                 },
                 {
                   "names": [
                     "--cluster"
                   ],
                   "description": "Optional. The short name or full ARN of the cluster to run the task in",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "cluster"
+                  }
                 },
                 {
                   "names": [
                     "--command"
                   ],
                   "description": "Optional. The command that is passed to \"docker run\" to override the default command",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "command"
+                  }
                 },
                 {
                   "names": [
                     "--count"
                   ],
                   "description": "Optional. The number of tasks to set up",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "count"
+                  }
                 },
                 {
                   "names": [
                     "--cpu"
                   ],
                   "description": "Optional. The number of CPU units to reserve for each task",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "cpu"
+                  }
                 },
                 {
                   "names": [
@@ -3473,35 +4290,50 @@
                     "--dockerfile"
                   ],
                   "description": "Path to the Dockerfile",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "dockerfile"
+                  }
                 },
                 {
                   "names": [
                     "--entrypoint"
                   ],
                   "description": "Optional. The entrypoint that is passed to \"docker run\" to override the default entrypoint",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "entrypoint"
+                  }
                 },
                 {
                   "names": [
                     "--env"
                   ],
                   "description": "Optional. Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "env"
+                  }
                 },
                 {
                   "names": [
                     "--env-vars"
                   ],
                   "description": "Optional. Environment variables specified by key=value separated by commas",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "env-vars"
+                  }
                 },
                 {
                   "names": [
                     "--execution-role"
                   ],
                   "description": "Optional. The ARN of the role that grants the container agent permission to make AWS API calls",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "execution-role"
+                  }
                 },
                 {
                   "names": [
@@ -3514,7 +4346,10 @@
                     "--generate-cmd"
                   ],
                   "description": "Optional. Generate a command with a pre-filled value for each flag. To use it for an ECS service, specify --generate-cmd <cluster name>/<service name>. Alternatively, if the service or job is created ",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "generate-cmd"
+                  }
                 },
                 {
                   "names": [
@@ -3522,63 +4357,90 @@
                     "-i"
                   ],
                   "description": "The location of an existing Docker image",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "image"
+                  }
                 },
                 {
                   "names": [
                     "--memory"
                   ],
                   "description": "Optional. The amount of memory to reserve in MiB for each task",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "memory"
+                  }
                 },
                 {
                   "names": [
                     "--platform-arch"
                   ],
                   "description": "Optional. Architecture of the task. Must be specified along with 'platform-os'",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "platform-arch"
+                  }
                 },
                 {
                   "names": [
                     "--platform-os"
                   ],
                   "description": "Optional. Operating system of the task. Must be specified along with 'platform-arch'",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "platform-os"
+                  }
                 },
                 {
                   "names": [
                     "--resource-tags"
                   ],
                   "description": "Optional. Labels with a key and value separated by commas. Allows you to categorize resources",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "resource-tags"
+                  }
                 },
                 {
                   "names": [
                     "--secrets"
                   ],
                   "description": "Optional. Secrets to inject into the container. Specified by key=value separated by commas",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "secrets"
+                  }
                 },
                 {
                   "names": [
                     "--security-groups"
                   ],
                   "description": "Optional. The security group IDs for the task to use. Can be specified multiple times",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "security-groups"
+                  }
                 },
                 {
                   "names": [
                     "--subnets"
                   ],
                   "description": "Optional. The subnet IDs for the task to use. Can be specified multiple times",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "subnets"
+                  }
                 },
                 {
                   "names": [
                     "--tag"
                   ],
                   "description": "Optional. The container image tag in addition to \"latest\"",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "tag"
+                  }
                 },
                 {
                   "names": [
@@ -3586,14 +4448,20 @@
                     "-n"
                   ],
                   "description": "Optional. The group name of the task.  Tasks with the same group name share the same set of resources.  (default directory name)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "task-group-name"
+                  }
                 },
                 {
                   "names": [
                     "--task-role"
                   ],
                   "description": "Optional. The ARN of the role for the task to use",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "task-role"
+                  }
                 },
                 {
                   "names": [
@@ -3614,7 +4482,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3622,7 +4493,10 @@
                     "-c"
                   ],
                   "description": "Optional. The command that is passed to a running container",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "command"
+                  }
                 },
                 {
                   "names": [
@@ -3636,7 +4510,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3644,14 +4521,20 @@
                     "-n"
                   ],
                   "description": "Name of the service, job, or task group",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--task-id"
                   ],
                   "description": "Optional. ID of the task you want to exec in",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "task-id"
+                  }
                 },
                 {
                   "names": [
@@ -3678,7 +4561,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3692,7 +4578,10 @@
                     "-n"
                   ],
                   "description": "Name of the environment",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3700,7 +4589,10 @@
                     "-n"
                   ],
                   "description": "Name of the service",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3741,21 +4633,30 @@
                     "--engine"
                   ],
                   "description": "The database engine used in the cluster. Must be either \"MySQL\" or \"PostgreSQL\"",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "engine"
+                  }
                 },
                 {
                   "names": [
                     "--initial-db"
                   ],
                   "description": "The initial database to create in the cluster",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "initial-db"
+                  }
                 },
                 {
                   "names": [
                     "--lsi"
                   ],
                   "description": "Optional. Attribute to use as an alternate sort key. May be specified up to 5 times. Must be of the format '<keyName>:<dataType>'",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "lsi"
+                  }
                 },
                 {
                   "names": [
@@ -3763,7 +4664,10 @@
                     "-n"
                   ],
                   "description": "Name of the storage resource to create",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3782,21 +4686,30 @@
                     "--parameter-group"
                   ],
                   "description": "Optional. The name of the parameter group to associate with the cluster",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "parameter-group"
+                  }
                 },
                 {
                   "names": [
                     "--partition-key"
                   ],
                   "description": "Partition key for the DDB table. Must be of the format '<keyName>:<dataType>'",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "partition-key"
+                  }
                 },
                 {
                   "names": [
                     "--sort-key"
                   ],
                   "description": "Optional. Sort key for the DDB table. Must be of the format '<keyName>:<dataType>'",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "sort-key"
+                  }
                 },
                 {
                   "names": [
@@ -3804,7 +4717,10 @@
                     "-t"
                   ],
                   "description": "Type of storage to add. Must be one of: \"DynamoDB\", \"S3\", \"Aurora\"",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "storage-type"
+                  }
                 },
                 {
                   "names": [
@@ -3812,7 +4728,10 @@
                     "-w"
                   ],
                   "description": "Name of the service or job to associate with storage",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "workload"
+                  }
                 },
                 {
                   "names": [
@@ -3848,14 +4767,20 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
                     "--cli-input-yaml"
                   ],
                   "description": "Optional. A YAML file in which the secret values are specified",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "cli-input-yaml"
+                  }
                 },
                 {
                   "names": [
@@ -3863,7 +4788,10 @@
                     "-n"
                   ],
                   "description": "The name of the secret",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3876,7 +4804,10 @@
                     "--values"
                   ],
                   "description": "Values of the secret in each environment. Specified as <environment>=<value> separated by commas",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "values"
+                  }
                 },
                 {
                   "names": [
@@ -3938,7 +4869,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -3946,7 +4880,10 @@
                     "-e"
                   ],
                   "description": "Environments to add to the pipeline",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "environments"
+                  }
                 },
                 {
                   "names": [
@@ -3954,7 +4891,10 @@
                     "-b"
                   ],
                   "description": "Branch used to trigger your pipeline",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "git-branch"
+                  }
                 },
                 {
                   "names": [
@@ -3962,14 +4902,20 @@
                     "-t"
                   ],
                   "description": "GitHub personal access token for your repository",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "github-access-token"
+                  }
                 },
                 {
                   "names": [
                     "--github-url"
                   ],
                   "description": "(Deprecated.) Use --url instead. Repository URL to trigger your pipeline",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "github-url"
+                  }
                 },
                 {
                   "names": [
@@ -3977,7 +4923,10 @@
                     "-u"
                   ],
                   "description": "The repository URL to trigger your pipeline. Supported providers are: GitHub, CodeCommit, Bitbucket",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "url"
+                  }
                 },
                 {
                   "names": [
@@ -3998,7 +4947,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -4025,7 +4977,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -4058,7 +5013,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -4072,7 +5030,10 @@
                     "-n"
                   ],
                   "description": "Name of the pipeline",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -4099,7 +5060,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -4113,7 +5077,10 @@
                     "-n"
                   ],
                   "description": "Name of the pipeline",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [
@@ -4134,7 +5101,10 @@
                     "-a"
                   ],
                   "description": "Name of the application",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "name"
+                  }
                 },
                 {
                   "names": [

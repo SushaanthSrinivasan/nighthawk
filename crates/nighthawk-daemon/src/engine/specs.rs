@@ -143,6 +143,37 @@ impl PredictionTier for SpecTier {
 
         let mut suggestions = Vec::new();
 
+        // If previous token is an arg-taking option with suggestions, suggest values
+        if let Some(&prev) = previous_tokens.last() {
+            for opt in &spec.options {
+                if opt.takes_arg && opt.names.iter().any(|n| n == prev) {
+                    if let Some(arg) = &opt.arg {
+                        for val in &arg.suggestions {
+                            if val.starts_with(current_token) {
+                                let (replace_start, replace_end) = if current_token.is_empty() {
+                                    (req.cursor, req.cursor)
+                                } else {
+                                    (input.len() - current_token.len(), req.cursor)
+                                };
+                                suggestions.push(Suggestion {
+                                    text: val.clone(),
+                                    replace_start,
+                                    replace_end,
+                                    confidence: 0.85,
+                                    source: SuggestionSource::Spec,
+                                    description: arg.name.clone(),
+                                });
+                            }
+                        }
+                        if !suggestions.is_empty() {
+                            suggestions.truncate(5);
+                            return suggestions;
+                        }
+                    }
+                }
+            }
+        }
+
         // Match subcommands
         for sub in &spec.subcommands {
             if sub.name.starts_with(current_token) && sub.name != current_token {
@@ -264,7 +295,7 @@ impl PredictionTier for SpecTier {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::specs::{CliSpec, OptionSpec, SpecProvider, SpecRegistry, SubcommandSpec};
+    use crate::specs::{ArgSpec, CliSpec, OptionSpec, SpecProvider, SpecRegistry, SubcommandSpec};
     use nighthawk_proto::{Shell, SuggestionSource};
     use std::collections::HashMap;
     use std::path::PathBuf;
@@ -294,42 +325,49 @@ mod tests {
                     description: Some("Long format".into()),
                     takes_arg: false,
                     is_required: false,
+                    arg: None,
                 },
                 OptionSpec {
                     names: vec!["-a".into()],
                     description: Some("Show hidden".into()),
                     takes_arg: false,
                     is_required: false,
+                    arg: None,
                 },
                 OptionSpec {
                     names: vec!["-h".into()],
                     description: Some("Human sizes".into()),
                     takes_arg: false,
                     is_required: false,
+                    arg: None,
                 },
                 OptionSpec {
                     names: vec!["-R".into()],
                     description: Some("Recursive".into()),
                     takes_arg: false,
                     is_required: false,
+                    arg: None,
                 },
                 OptionSpec {
                     names: vec!["-t".into()],
                     description: Some("Sort by time".into()),
                     takes_arg: false,
                     is_required: false,
+                    arg: None,
                 },
                 OptionSpec {
                     names: vec!["-T".into()],
                     description: Some("Tab size".into()),
                     takes_arg: true,
                     is_required: false,
+                    arg: None,
                 },
                 OptionSpec {
                     names: vec!["--color".into()],
                     description: Some("Colorize output".into()),
                     takes_arg: true,
                     is_required: false,
+                    arg: None,
                 },
             ],
             args: vec![],
@@ -363,6 +401,7 @@ mod tests {
                 description: Some("Verbose".into()),
                 takes_arg: false,
                 is_required: false,
+                arg: None,
             }],
             args: vec![],
         }
@@ -568,12 +607,14 @@ mod tests {
                     description: Some("Verbose".into()),
                     takes_arg: false,
                     is_required: false,
+                    arg: None,
                 },
                 OptionSpec {
                     names: vec!["-x".into()],
                     description: Some("X flag".into()),
                     takes_arg: false,
                     is_required: false,
+                    arg: None,
                 },
             ],
             args: vec![],
@@ -602,5 +643,86 @@ mod tests {
         // Should suggest stacking on "-l" (ignoring "foo" after cursor)
         assert!(!suggestions.is_empty());
         assert!(suggestions.iter().any(|s| s.text == "-la"));
+    }
+
+    /// Build a `curl`-like spec with an option that has arg suggestions.
+    fn curl_spec() -> CliSpec {
+        CliSpec {
+            name: "curl".into(),
+            description: Some("Transfer data".into()),
+            subcommands: vec![],
+            options: vec![
+                OptionSpec {
+                    names: vec!["-X".into(), "--request".into()],
+                    description: Some("HTTP method".into()),
+                    takes_arg: true,
+                    is_required: false,
+                    arg: Some(ArgSpec {
+                        name: Some("method".into()),
+                        description: None,
+                        is_variadic: false,
+                        suggestions: vec![
+                            "GET".into(),
+                            "POST".into(),
+                            "PUT".into(),
+                            "DELETE".into(),
+                        ],
+                        template: None,
+                    }),
+                },
+                OptionSpec {
+                    names: vec!["-o".into(), "--output".into()],
+                    description: Some("Output file".into()),
+                    takes_arg: true,
+                    is_required: false,
+                    arg: None,
+                },
+                OptionSpec {
+                    names: vec!["-v".into(), "--verbose".into()],
+                    description: Some("Verbose".into()),
+                    takes_arg: false,
+                    is_required: false,
+                    arg: None,
+                },
+            ],
+            args: vec![],
+        }
+    }
+
+    #[tokio::test]
+    async fn option_value_suggestion() {
+        // "curl -X " → suggest GET, POST, PUT, DELETE
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -X ")).await;
+        assert!(!suggestions.is_empty(), "should suggest arg values");
+        assert!(suggestions.iter().any(|s| s.text == "GET"));
+        assert!(suggestions.iter().any(|s| s.text == "POST"));
+        assert!(suggestions.iter().any(|s| s.text == "PUT"));
+        assert!(suggestions.iter().any(|s| s.text == "DELETE"));
+        // description should be the arg name
+        assert_eq!(suggestions[0].description, Some("method".into()));
+    }
+
+    #[tokio::test]
+    async fn option_value_prefix_filter() {
+        // "curl -X P" → suggest POST, PUT (not GET, DELETE)
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -X P")).await;
+        assert_eq!(suggestions.len(), 2);
+        assert!(suggestions.iter().any(|s| s.text == "POST"));
+        assert!(suggestions.iter().any(|s| s.text == "PUT"));
+        assert!(!suggestions.iter().any(|s| s.text == "GET"));
+    }
+
+    #[tokio::test]
+    async fn option_value_no_suggestions_falls_through() {
+        // "curl -o " → -o takes_arg but has no arg suggestions → falls through to flags
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -o ")).await;
+        // Should fall through to normal flag matching (suggest -X, -v, etc.)
+        assert!(
+            suggestions.iter().any(|s| s.text.starts_with("-")),
+            "should fall through to flag suggestions when option has no arg suggestions"
+        );
     }
 }

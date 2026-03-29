@@ -24,35 +24,65 @@
             "--profiles-dir"
           ],
           "description": "Set the profiles directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "description": "Directory containing profiles.yml",
+            "suggestions": [
+              "profiles"
+            ],
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Use the selected profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Name of profile to use when running dbt project",
+            "suggestions": [
+              "default"
+            ]
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Target profile configuration i.e. prod/dev",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profile",
+            "description": "Target profile configuration (dev/prod)",
+            "suggestions": [
+              "dev",
+              "prod"
+            ]
+          }
         },
         {
           "names": [
             "--vars"
           ],
           "description": "Variable values to override dbt_project.yml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "variables",
+            "description": "A short YAML string eg. '{my_variable: my_value}'"
+          }
         },
         {
           "names": [
             "--threads"
           ],
           "description": "Number of concurrent database jobs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "THREADS"
+          }
         },
         {
           "names": [
@@ -60,14 +90,38 @@
             "--select"
           ],
           "description": "Select subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subset",
+            "description": "Select subset of models",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subset",
+            "description": "Exclude subset of models",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
@@ -111,35 +165,65 @@
             "--profiles-dir"
           ],
           "description": "Set the profiles directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "description": "Directory containing profiles.yml",
+            "suggestions": [
+              "profiles"
+            ],
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Select the profile to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Name of profile to use when running dbt project",
+            "suggestions": [
+              "default"
+            ]
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "The target profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Target profile",
+            "description": "Target profile configuration (dev/prod)",
+            "suggestions": [
+              "dev",
+              "prod"
+            ]
+          }
         },
         {
           "names": [
             "--vars"
           ],
           "description": "Variable values to override dbt_project.yml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "variables",
+            "description": "A short YAML string eg. '{my_variable: my_value}'"
+          }
         },
         {
           "names": [
             "--threads"
           ],
           "description": "Number of concurrent database jobs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "threads"
+          }
         },
         {
           "names": [
@@ -147,14 +231,38 @@
             "--select"
           ],
           "description": "Select subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subset",
+            "description": "Select subset of models",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subset",
+            "description": "Exclude subset of models",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
@@ -184,7 +292,11 @@
             "--adapter"
           ],
           "description": "Add an adapter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "adapter",
+            "description": "E.g. big query"
+          }
         }
       ],
       "args": [
@@ -202,49 +314,103 @@
             "--profiles-dir"
           ],
           "description": "Set the profiles directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "description": "Directory containing profiles.yml",
+            "suggestions": [
+              "profiles"
+            ],
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Select the profile to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Name of profile to use when running dbt project",
+            "suggestions": [
+              "default"
+            ]
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "The target profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Target profile",
+            "description": "Target profile configuration (dev/prod)",
+            "suggestions": [
+              "dev",
+              "prod"
+            ]
+          }
         },
         {
           "names": [
             "--vars"
           ],
           "description": "Variable values to override dbt_project.yml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Variable values",
+            "description": "A short YAML string eg. '{my_variable: my_value}'"
+          }
         },
         {
           "names": [
             "--threads"
           ],
           "description": "Number of concurrent database jobs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "THREADS"
+          }
         },
         {
           "names": [
             "--select"
           ],
           "description": "Select subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Select subset",
+            "description": "Select subset of models",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Exclude subset",
+            "description": "Exclude subset of models",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
@@ -257,7 +423,11 @@
             "--selector"
           ],
           "description": "This flag specifies one or more named selectors, defined in a <selector name>.yml file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "YAML selector file name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -283,14 +453,29 @@
             "--profiles-dir"
           ],
           "description": "Set the profiles directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "directory",
+            "description": "Directory containing profiles.yml",
+            "suggestions": [
+              "profiles"
+            ],
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Select the profile to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "description": "Name of profile to use when running dbt project",
+            "suggestions": [
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -310,14 +495,36 @@
             "--select"
           ],
           "description": "Select subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subset",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subset",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
@@ -330,7 +537,11 @@
             "--selector"
           ],
           "description": "This flag specifies one or more named selectors, defined in a <selector name>.yml file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "YAML selector file name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -353,7 +564,15 @@
             "--profiles-dir"
           ],
           "description": "Set the profiles directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profiles directory",
+            "description": "Directory containing profiles.yml",
+            "suggestions": [
+              "profiles"
+            ],
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -367,42 +586,86 @@
             "--profile"
           ],
           "description": "Select the profile to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile name",
+            "description": "Name of profile to use when running dbt project",
+            "suggestions": [
+              "default"
+            ]
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "The target profile",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Target profile",
+            "description": "Target profile configuration (dev/prod)",
+            "suggestions": [
+              "dev",
+              "prod"
+            ]
+          }
         },
         {
           "names": [
             "--vars"
           ],
           "description": "Variable values to override dbt_project.yml",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Variable values",
+            "description": "A short YAML string eg. '{my_variable: my_value}'"
+          }
         },
         {
           "names": [
             "--threads"
           ],
           "description": "Number of concurrent database jobs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "thread"
+          }
         },
         {
           "names": [
             "--select"
           ],
           "description": "Select subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "subset",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Exclude subset",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
@@ -425,14 +688,29 @@
             "--profiles-dir"
           ],
           "description": "Set the profiles directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "profiles directory",
+            "description": "Directory containing profiles.yml",
+            "suggestions": [
+              "profiles"
+            ],
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--profile"
           ],
           "description": "Select the profile to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Profile name",
+            "description": "Name of profile to use when running dbt project",
+            "suggestions": [
+              "default"
+            ]
+          }
         },
         {
           "names": [
@@ -446,14 +724,37 @@
             "--select"
           ],
           "description": "Run specific seeds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Select subset",
+            "description": "E.g. country_codes",
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude subset of models",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "Exclude subset",
+            "description": "Exclude subset of models",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
@@ -466,7 +767,11 @@
             "--selector"
           ],
           "description": "This flag specifies one or more named selectors, defined in a <selector name>.yml file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "YAML selector file name",
+            "is_variadic": true
+          }
         }
       ]
     },
@@ -495,28 +800,48 @@
                 "--profiles-dir"
               ],
               "description": "Skip re-compilation",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PROFILES_DIR",
+                "description": "Path to profiles directory",
+                "template": "folders"
+              }
             },
             {
               "names": [
                 "--profile"
               ],
               "description": "Choose a profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "PROFILE NAME"
+              }
             },
             {
               "names": [
                 "--target"
               ],
               "description": "The target profile",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Target profile",
+                "description": "Target profile configuration (dev/prod)",
+                "suggestions": [
+                  "dev",
+                  "prod"
+                ]
+              }
             },
             {
               "names": [
                 "--port"
               ],
               "description": "Choose a port",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port number",
+                "description": "Default is 8000"
+              }
             }
           ]
         }
@@ -535,14 +860,29 @@
                 "--output"
               ],
               "description": "Override the destination for sources.json",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "FILEPATH",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--select"
               ],
               "description": "This flag specifies one or more selection-type arguments used to filter the nodes returned by the dbt ls command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "Select subset",
+                "is_variadic": true,
+                "suggestions": [
+                  "path:",
+                  "tag:",
+                  "config:",
+                  "test_type:",
+                  "test_name:"
+                ]
+              }
             }
           ]
         }
@@ -557,7 +897,11 @@
             "--args"
           ],
           "description": "Supply arguments to the macro",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ARGS",
+            "description": "A short YAML string eg. '{my_variable: my_value}'"
+          }
         }
       ],
       "args": [
@@ -576,14 +920,22 @@
             "--host"
           ],
           "description": "Specify the host to listen on",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HOST",
+            "description": "Default: 0.0.0.0"
+          }
         },
         {
           "names": [
             "--port"
           ],
           "description": "The port to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PORT",
+            "description": "Default: 8580"
+          }
         }
       ]
     },
@@ -599,7 +951,20 @@
             "--resource-type"
           ],
           "description": "This flag limits the 'resource types' that dbt will return in the dbt ls command. By default, the following resources are included in the results of dbt ls: models, snapshots, seeds, tests, and source",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "resource-type",
+            "suggestions": [
+              "source",
+              "analysis",
+              "model",
+              "snapshot",
+              "test",
+              "seed",
+              "default",
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -607,28 +972,64 @@
             "--select"
           ],
           "description": "This flag specifies one or more selection-type arguments used to filter the nodes returned by the dbt ls command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SELECTION_ARG",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Specify selectors that should be excluded from the list of returned nodes",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "SELECTOR",
+            "is_variadic": true,
+            "suggestions": [
+              "path:",
+              "tag:",
+              "config:",
+              "test_type:",
+              "test_name:"
+            ]
+          }
         },
         {
           "names": [
             "--selector"
           ],
           "description": "This flag specifies one or more named selectors, defined in a <selector name>.yml file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "YAML selector file name",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--output"
           ],
           "description": "This flag controls the format of output from the dbt ls command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "is_variadic": true,
+            "suggestions": [
+              "json",
+              "name",
+              "path",
+              "selector"
+            ]
+          }
         }
       ]
     },
@@ -650,7 +1051,11 @@
         "--record-timing-info"
       ],
       "description": "Create a new file to record timing info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file name",
+        "description": "Create a new file to record timing info"
+      }
     },
     {
       "names": [
@@ -664,7 +1069,15 @@
         "--log-format"
       ],
       "description": "Specify how dbt's logs should be formatted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "log format",
+        "suggestions": [
+          "text",
+          "json",
+          "default"
+        ]
+      }
     },
     {
       "names": [

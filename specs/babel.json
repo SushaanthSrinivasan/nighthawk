@@ -7,48 +7,83 @@
         "--filename"
       ],
       "description": "The filename to use when reading from stdin. This will be used in source-maps, errors etc",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
         "--presets"
       ],
       "description": "A comma-separated list of preset names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
         "--plugins"
       ],
       "description": "A comma-separated list of plugin names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
         "--config-file"
       ],
       "description": "Path to a .babelrc file to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--env-name"
       ],
       "description": "The name of the 'env' to use when loading configs and plugins. Defaults to the value of BABEL_ENV, or else NODE_ENV, or else 'development'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "env",
+        "suggestions": [
+          "production",
+          "development"
+        ]
+      }
     },
     {
       "names": [
         "--root-mode"
       ],
       "description": "The project-root resolution mode",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "root",
+          "upward",
+          "upward-optional"
+        ]
+      }
     },
     {
       "names": [
         "--source-type"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "script",
+          "module"
+        ]
+      }
     },
     {
       "names": [
@@ -61,14 +96,20 @@
         "--ignore"
       ],
       "description": "List of glob paths to **not** compile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
         "--only"
       ],
       "description": "List of glob paths to **only** compile",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list"
+      }
     },
     {
       "names": [
@@ -93,7 +134,15 @@
         "--compact"
       ],
       "description": "Do not include superfluous whitespace characters and line terminators",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "true",
+          "false",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
@@ -106,42 +155,66 @@
         "--auxiliary-comment-before"
       ],
       "description": "Print a comment before any injected non-user code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "comment"
+      }
     },
     {
       "names": [
         "--auxiliary-comment-after"
       ],
       "description": "Print a comment after any injected non-user code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "comment"
+      }
     },
     {
       "names": [
         "-s",
         "--source-maps"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "true",
+          "false",
+          "inline",
+          "both"
+        ]
+      }
     },
     {
       "names": [
         "--source-map-target"
       ],
       "description": "Set `file` on returned source map",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--source-file-name"
       ],
       "description": "Set `sources[0]` on returned source map",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
         "--source-root"
       ],
       "description": "The root from which all sources are relative",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -149,7 +222,10 @@
         "--extensions"
       ],
       "description": "Comma separated list of extensions to compile when a directory has been the input. [js,ts,jsx,tsx]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extensions"
+      }
     },
     {
       "names": [
@@ -176,7 +252,11 @@
         "--out-file"
       ],
       "description": "Compile all input files into a single file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -184,7 +264,11 @@
         "--out-dir"
       ],
       "description": "Compile an input directory of modules into an output directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -234,7 +318,17 @@
         "--out-file-extension"
       ],
       "description": "Use a specific extension for the output files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension",
+        "suggestions": [
+          ".es6",
+          ".js",
+          ".es",
+          ".jsx",
+          ".mjs"
+        ]
+      }
     },
     {
       "names": [

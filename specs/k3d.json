@@ -16,21 +16,33 @@
                 "--agents"
               ],
               "description": "Number of agents to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number of agents",
+                "description": "Number of agents to create"
+              }
             },
             {
               "names": [
                 "--agents-memory"
               ],
               "description": "Memory limit imposed on the agents nodes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "memory limit",
+                "description": "Memory limit imposed on the agents nodes"
+              }
             },
             {
               "names": [
                 "--api-port"
               ],
               "description": "Specify the Kubernetes API server port exposed on the LoadBalancer",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port",
+                "description": "Specify the Kubernetes API server port exposed on the LoadBalancer"
+              }
             },
             {
               "names": [
@@ -38,7 +50,11 @@
                 "--config"
               ],
               "description": "Path of a config file to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Path of a config file to use"
+              }
             },
             {
               "names": [
@@ -46,14 +62,22 @@
                 "--env"
               ],
               "description": "Add environment variables to nodes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "environment variables",
+                "description": "Add environment variables to nodes"
+              }
             },
             {
               "names": [
                 "--gpus"
               ],
               "description": "GPU devices to add to the cluster node containers",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "devices",
+                "description": "GPU devices to add to the cluster node containers"
+              }
             },
             {
               "names": [
@@ -67,7 +91,11 @@
                 "--host-alias"
               ],
               "description": "Add ip:host[,host,...] mappings",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ip:host[,host,...]",
+                "description": "Add ip:host[,host,...] mappings"
+              }
             },
             {
               "names": [
@@ -81,21 +109,33 @@
                 "--image"
               ],
               "description": "Specify k3s image that you want to use for the nodes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "image",
+                "description": "Specify k3s image that you want to use for the nodes"
+              }
             },
             {
               "names": [
                 "--k3s-arg"
               ],
               "description": "Additional args passed to k3s command",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "ARG@NODEFILTER[;@NODEFILTER]",
+                "description": "Additional args passed to k3s command"
+              }
             },
             {
               "names": [
                 "--k3s-node-label"
               ],
               "description": "Add label to k3s node",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "KEY[=VALUE][@NODEFILTER[;NODEFILTER...]]",
+                "description": "Add label to k3s node"
+              }
             },
             {
               "names": [
@@ -114,14 +154,21 @@
                 "--lb-config-override"
               ],
               "description": "Use dotted YAML path syntax to override nginx loadbalancer settings",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path"
+              }
             },
             {
               "names": [
                 "--network"
               ],
               "description": "Specify the docker network to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "network",
+                "description": "Specify the docker network to use"
+              }
             },
             {
               "names": [
@@ -147,28 +194,43 @@
                 "--port"
               ],
               "description": "Map ports from the node containers (via the serverlb) to the host",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port",
+                "description": "Map ports from the node containers (via the serverlb) to the host"
+              }
             },
             {
               "names": [
                 "--registry-config"
               ],
               "description": "Specify path to an extra registries.yaml file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Specify path to an extra registries.yaml file"
+              }
             },
             {
               "names": [
                 "--registry-create"
               ],
               "description": "Create a k3d-managed registry and connect it to the cluster (Format: NAME[:HOST][:HOSTPORT] - Example: `k3d cluster create --registry-create mycluster-registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAME[:HOST][:HOSTPORT]",
+                "description": "Create a k3d-managed registry and connect it to the cluster (Format: NAME[:HOST][:HOSTPORT] - Example: `k3d cluster create --registry-create mycluster-registry"
+              }
             },
             {
               "names": [
                 "--registry-use"
               ],
               "description": "Connect to one or more k3d-managed registries running locally",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NAME[:HOST][:HOSTPORT]"
+              }
             },
             {
               "names": [
@@ -182,35 +244,54 @@
                 "--servers"
               ],
               "description": "Specify how many servers you want to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int",
+                "description": "Specify how many servers you want to create"
+              }
             },
             {
               "names": [
                 "--servers-memory"
               ],
               "description": "Memory limit imposed on the server nodes [From docker]",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "description": "Memory limit imposed on the server nodes [From docker]"
+              }
             },
             {
               "names": [
                 "--subnet"
               ],
               "description": "[Experimental: IPAM] Define a subnet for the newly created container network",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--timeout"
               ],
               "description": "Rollback changes if cluster couldn't be created in specified duration",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "duration",
+                "description": "Rollback changes if cluster couldn't be created in specified duration"
+              }
             },
             {
               "names": [
                 "--token"
               ],
               "description": "Specify a cluster token. By default, we generate one",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "description": "Specify a cluster token. By default, we generate one"
+              }
             },
             {
               "names": [
@@ -218,7 +299,11 @@
                 "--volume"
               ],
               "description": "Mount volumes into the nodes",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[SOURCE:]DEST[@NODEFILTER[;NODEFILTER...]]",
+                "description": "Mount volumes into the nodes"
+              }
             },
             {
               "names": [
@@ -255,7 +340,11 @@
                 "--config"
               ],
               "description": "Path of a config file to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Path of a config file to use"
+              }
             }
           ],
           "args": [
@@ -306,7 +395,15 @@
                 "--output"
               ],
               "description": "Output format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "description": "Output format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             },
             {
               "names": [
@@ -338,7 +435,11 @@
                 "--timeout"
               ],
               "description": "Maximum waiting time for '--wait' before canceling/returning",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "duration",
+                "description": "Maximum waiting time for '--wait' before canceling/returning"
+              }
             },
             {
               "names": [
@@ -444,7 +545,11 @@
                 "--cluster"
               ],
               "description": "Cluster to import image(s) into",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster",
+                "description": "Cluster to import image(s) into"
+              }
             },
             {
               "names": [
@@ -466,7 +571,16 @@
                 "--mode"
               ],
               "description": "Import mode",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "mode",
+                "description": "Import mode",
+                "suggestions": [
+                  "auto",
+                  "direct",
+                  "tools"
+                ]
+              }
             }
           ],
           "args": [
@@ -536,7 +650,11 @@
                 "--output"
               ],
               "description": "Define output [ - | FILE ] (default from $KUBECONFIG or /Users/balli/.kube/config",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "description": "Define output [ - | FILE ] (default from $KUBECONFIG or /Users/balli/.kube/config"
+              }
             },
             {
               "names": [
@@ -575,7 +693,11 @@
                 "--cluster"
               ],
               "description": "Cluster URL or k3d cluster name to connect to. (default \"k3s-default\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "cluster",
+                "description": "Cluster to connect to"
+              }
             },
             {
               "names": [
@@ -583,28 +705,44 @@
                 "--image"
               ],
               "description": "Node image to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "image",
+                "description": "Node image to use"
+              }
             },
             {
               "names": [
                 "--k3s-arg"
               ],
               "description": "Additional k3s arguments",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "k3s-arg",
+                "description": "Additional k3s arguments"
+              }
             },
             {
               "names": [
                 "--k3s-node-label"
               ],
               "description": "Specify k3s node labels in format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "k3s-node-label",
+                "description": "Specify k3s node labels in format \"foo=bar\""
+              }
             },
             {
               "names": [
                 "--memory"
               ],
               "description": "Memory limit for the node container",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "memory",
+                "description": "Memory limit for the node container"
+              }
             },
             {
               "names": [
@@ -612,35 +750,65 @@
                 "--network"
               ],
               "description": "Add node to (another) runtime network",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "network"
+              }
             },
             {
               "names": [
                 "--replicas"
               ],
               "description": "Number of replicas to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "replicas",
+                "description": "Number of replicas to create",
+                "suggestions": [
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5"
+                ]
+              }
             },
             {
               "names": [
                 "--role"
               ],
               "description": "Node role",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "role",
+                "description": "Node role",
+                "suggestions": [
+                  "agent",
+                  "server"
+                ]
+              }
             },
             {
               "names": [
                 "--runtime-label"
               ],
               "description": "Specify runtime labels in format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "runtime-label",
+                "description": "Specify runtime labels in format \"foo=bar\""
+              }
             },
             {
               "names": [
                 "--timeout"
               ],
               "description": "Maximum waiting time for '--wait' before canceling/returning",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "timeout",
+                "description": "Maximum waiting time for '--wait' before canceling/returning"
+              }
             },
             {
               "names": [
@@ -648,7 +816,10 @@
                 "--token"
               ],
               "description": "Override cluster token",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "token"
+              }
             },
             {
               "names": [
@@ -702,7 +873,11 @@
                 "--port-add"
               ],
               "description": "Map ports from the node container to the host",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port-add",
+                "description": "Map ports from the node container to the host"
+              }
             }
           ],
           "args": [
@@ -732,7 +907,15 @@
                 "--output"
               ],
               "description": "Output format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output",
+                "description": "Output format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             }
           ]
         },
@@ -782,7 +965,10 @@
                 "--image"
               ],
               "description": "Specify image used for the registry (default \"docker.io/library/registry:2\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "image"
+              }
             },
             {
               "names": [
@@ -796,28 +982,40 @@
                 "--port"
               ],
               "description": "Select which port the registry should be listening on your machine (localhost) (Format: [HOST:]HOSTPORT)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "port"
+              }
             },
             {
               "names": [
                 "--proxy-password"
               ],
               "description": "Specify the password of the proxied remote registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "proxy-password"
+              }
             },
             {
               "names": [
                 "--proxy-remote-url"
               ],
               "description": "Specify the url of the proxied remote registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "proxy-remote-url"
+              }
             },
             {
               "names": [
                 "--proxy-username"
               ],
               "description": "Specify the username of the proxied remote registry",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "proxy-username"
+              }
             },
             {
               "names": [
@@ -825,7 +1023,10 @@
                 "--volume"
               ],
               "description": "Mount volumes into the registry node (Format: [SOURCE:]DEST",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "volume"
+              }
             }
           ],
           "args": [
@@ -877,7 +1078,15 @@
                 "--output"
               ],
               "description": "Output format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "output",
+                "description": "Output format",
+                "suggestions": [
+                  "json",
+                  "yaml"
+                ]
+              }
             }
           ],
           "args": [

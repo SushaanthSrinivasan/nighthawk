@@ -33,7 +33,11 @@
         "--after"
       ],
       "description": "Print lines after match",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LINES",
+        "description": "The amount of lines"
+      }
     },
     {
       "names": [
@@ -41,7 +45,11 @@
         "--before"
       ],
       "description": "Print lines before match",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LINES",
+        "description": "The amount of lines"
+      }
     },
     {
       "names": [
@@ -98,7 +106,11 @@
         "--context"
       ],
       "description": "Print lines before and after matches",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "LINES",
+        "description": "The amount of lines"
+      }
     },
     {
       "names": [
@@ -112,7 +124,11 @@
         "--depth"
       ],
       "description": "Search up to NUM directories deep, -1 for unlimited",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM",
+        "description": "The depth in directories to search"
+      }
     },
     {
       "names": [
@@ -163,7 +179,11 @@
         "-g"
       ],
       "description": "Print filenames matching PATTERN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATTERN",
+        "description": "The pattern to look for"
+      }
     },
     {
       "names": [
@@ -171,7 +191,11 @@
         "--file-search-regex"
       ],
       "description": "Only search files whose names match PATTERN",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATTERN",
+        "description": "The pattern to look for"
+      }
     },
     {
       "names": [
@@ -197,14 +221,24 @@
         "--ignore"
       ],
       "description": "Ignore files/directories whose names match this pattern. Literal file and directory names are also allowed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATTERN",
+        "description": "The pattern to look for",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--ignore-dir"
       ],
       "description": "Alias for --ignore for compatibility with ack",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME",
+        "description": "The directory to ignore",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -239,7 +273,11 @@
         "--max-count"
       ],
       "description": "Skip the rest of a file after NUM matches. Default is 0, which never skips",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM",
+        "description": "The number of matches to skip after"
+      }
     },
     {
       "names": [
@@ -303,14 +341,28 @@
         "--path-to-ignore"
       ],
       "description": "Provide a path to a specific .ignore file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "STRING",
+        "description": "The path to the ignore file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--pager"
       ],
       "description": "Use a pager such as less. Use --nopager to override. This option is also ignored if output is piped to another program",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COMMAND",
+        "description": "The pager",
+        "suggestions": [
+          "more",
+          "less",
+          "most"
+        ]
+      }
     },
     {
       "names": [
@@ -436,7 +488,11 @@
         "--workers"
       ],
       "description": "Use NUM worker threads. Default is the number of CPU cores, with a max of 8",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUM",
+        "description": "The NUM of worker threads"
+      }
     },
     {
       "names": [

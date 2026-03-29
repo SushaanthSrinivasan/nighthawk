@@ -19,7 +19,10 @@
             "-i"
           ],
           "description": "Ignore particular families of errors so that they don’t cause a failed run. -–ignore behaves somewhat like noqa comments, except it applies globally",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "error"
+          }
         },
         {
           "names": [
@@ -34,7 +37,10 @@
             "-e"
           ],
           "description": "Exclude specific rules. This could either be the allowlist, or the general set if there is no specific allowlist",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude_rules"
+          }
         },
         {
           "names": [
@@ -42,7 +48,10 @@
             "-r"
           ],
           "description": "Narrow the search to only specific rules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rules"
+          }
         },
         {
           "names": [
@@ -50,7 +59,17 @@
             "-t"
           ],
           "description": "The templater to use (default=jinja)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "templater",
+            "description": "Name of templater to use, eg. raw",
+            "suggestions": [
+              "raw",
+              "jinja",
+              "python",
+              "placeholders"
+            ]
+          }
         },
         {
           "names": [
@@ -58,7 +77,26 @@
             "-d"
           ],
           "description": "The dialect of SQL to lint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dialect",
+            "description": "Name of dialect, eg. ANSI",
+            "suggestions": [
+              "ansi",
+              "bigquery",
+              "exasol",
+              "hive",
+              "mysql",
+              "oracle",
+              "postgres",
+              "redshift",
+              "snowflake",
+              "spark3",
+              "sqllite",
+              "teradata",
+              "tsql"
+            ]
+          }
         },
         {
           "names": [
@@ -66,7 +104,17 @@
             "-f"
           ],
           "description": "What format to return the lint result in (default=human)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "human",
+              "json",
+              "yaml",
+              "github-annotation",
+              "github-annotation-native"
+            ]
+          }
         },
         {
           "names": [
@@ -74,7 +122,10 @@
             "-p"
           ],
           "description": "The number of parallel processes to run. Positive numbers work as expected. Zero and negative numbers will work as number_of_cpus - number. e.g -1 means all cpus except one. 0 means all cpus",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "processes"
+          }
         },
         {
           "names": [
@@ -93,14 +144,28 @@
             "--logger"
           ],
           "description": "Choose to limit the logging to one of the loggers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "logger",
+            "description": "Name of logger to limit to, eg. templater",
+            "suggestions": [
+              "templater",
+              "lexer",
+              "parser",
+              "linter",
+              "rules"
+            ]
+          }
         },
         {
           "names": [
             "--encoding"
           ],
           "description": "Specify encoding to use when reading and writing files. Defaults to autodetect",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "encoding"
+          }
         },
         {
           "names": [
@@ -113,21 +178,39 @@
             "--config"
           ],
           "description": "Include additional config file. By default the config is generated from the standard configuration files described in the documentation. This argument allows you to specify an additional configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extra_config_path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--write-output"
           ],
           "description": "Optionally provide a filename to write the results to, mostly used in tandem with –format. NB: Setting an output file re-enables normal stdout logging",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "write_output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--annotation-level"
           ],
           "description": "When format is set to github-annotation or github-annotation-native, default annotation level (default=notice). failure and error are equivalent",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "annotation-level",
+            "description": "Level of annotation, eg. notice",
+            "suggestions": [
+              "notice",
+              "warning",
+              "failure",
+              "error"
+            ]
+          }
         },
         {
           "names": [
@@ -179,7 +262,10 @@
             "-i"
           ],
           "description": "Ignore particular families of errors so that they don’t cause a failed run. -–ignore behaves somewhat like noqa comments, except it applies globally",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "errors"
+          }
         },
         {
           "names": [
@@ -194,7 +280,10 @@
             "-e"
           ],
           "description": "Exclude specific rules. This could either be the allowlist, or the general set if there is no specific allowlist",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude_rules"
+          }
         },
         {
           "names": [
@@ -202,7 +291,10 @@
             "-r"
           ],
           "description": "Narrow the search to only specific rules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rules"
+          }
         },
         {
           "names": [
@@ -210,7 +302,17 @@
             "-t"
           ],
           "description": "The templater to use (default=jinja)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "templater",
+            "description": "Name of templater to use, eg. raw",
+            "suggestions": [
+              "raw",
+              "jinja",
+              "python",
+              "placeholders"
+            ]
+          }
         },
         {
           "names": [
@@ -218,7 +320,26 @@
             "-d"
           ],
           "description": "The dialect of SQL to lint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dialect",
+            "description": "Name of dialect, eg. ANSI",
+            "suggestions": [
+              "ansi",
+              "bigquery",
+              "exasol",
+              "hive",
+              "mysql",
+              "oracle",
+              "postgres",
+              "redshift",
+              "snowflake",
+              "spark3",
+              "sqllite",
+              "teradata",
+              "tsql"
+            ]
+          }
         },
         {
           "names": [
@@ -226,7 +347,17 @@
             "-f"
           ],
           "description": "What format to return the lint result in (default=human)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "human",
+              "json",
+              "yaml",
+              "github-annotation",
+              "github-annotation-native"
+            ]
+          }
         },
         {
           "names": [
@@ -234,7 +365,10 @@
             "-p"
           ],
           "description": "The number of parallel processes to run. Positive numbers work as expected. Zero and negative numbers will work as number_of_cpus - number. e.g -1 means all cpus except one. 0 means all cpus",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "processes"
+          }
         },
         {
           "names": [
@@ -242,7 +376,10 @@
             "-x"
           ],
           "description": "An optional suffix to add to fixed files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "fixed_suffix"
+          }
         },
         {
           "names": [
@@ -261,14 +398,28 @@
             "--logger"
           ],
           "description": "Choose to limit the logging to one of the loggers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "logger",
+            "description": "Name of logger to limit to, eg. templater",
+            "suggestions": [
+              "templater",
+              "lexer",
+              "parser",
+              "linter",
+              "rules"
+            ]
+          }
         },
         {
           "names": [
             "--encoding"
           ],
           "description": "Specify encoding to use when reading and writing files. Defaults to autodetect",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "encoding"
+          }
         },
         {
           "names": [
@@ -281,14 +432,22 @@
             "--config"
           ],
           "description": "Include additional config file. By default the config is generated from the standard configuration files described in the documentation. This argument allows you to specify an additional configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extra_config_path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--write-output"
           ],
           "description": "Optionally provide a filename to write the results to, mostly used in tandem with –format. NB: Setting an output file re-enables normal stdout logging",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "write_output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -333,7 +492,10 @@
             "-i"
           ],
           "description": "Ignore particular families of errors so that they don’t cause a failed run. -–ignore behaves somewhat like noqa comments, except it applies globally",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "errors"
+          }
         },
         {
           "names": [
@@ -348,7 +510,10 @@
             "-e"
           ],
           "description": "Exclude specific rules. This could either be the allowlist, or the general set if there is no specific allowlist",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude_rules"
+          }
         },
         {
           "names": [
@@ -356,7 +521,10 @@
             "-r"
           ],
           "description": "Narrow the search to only specific rules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rules"
+          }
         },
         {
           "names": [
@@ -364,7 +532,17 @@
             "-t"
           ],
           "description": "The templater to use (default=jinja)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "templater",
+            "description": "Name of templater to use, eg. raw",
+            "suggestions": [
+              "raw",
+              "jinja",
+              "python",
+              "placeholders"
+            ]
+          }
         },
         {
           "names": [
@@ -372,7 +550,26 @@
             "-d"
           ],
           "description": "The dialect of SQL to lint",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "dialect",
+            "description": "Name of dialect, eg. ANSI",
+            "suggestions": [
+              "ansi",
+              "bigquery",
+              "exasol",
+              "hive",
+              "mysql",
+              "oracle",
+              "postgres",
+              "redshift",
+              "snowflake",
+              "spark3",
+              "sqllite",
+              "teradata",
+              "tsql"
+            ]
+          }
         },
         {
           "names": [
@@ -394,7 +591,17 @@
             "-f"
           ],
           "description": "What format to return the lint result in (default=human)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "human",
+              "json",
+              "yaml",
+              "github-annotation",
+              "github-annotation-native"
+            ]
+          }
         },
         {
           "names": [
@@ -413,21 +620,38 @@
             "--recurse"
           ],
           "description": "The depth to recursively parse to (0 for unlimited)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "recurse"
+          }
         },
         {
           "names": [
             "--logger"
           ],
           "description": "Choose to limit the logging to one of the loggers",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "logger",
+            "description": "Name of logger to limit to, eg. templater",
+            "suggestions": [
+              "templater",
+              "lexer",
+              "parser",
+              "linter",
+              "rules"
+            ]
+          }
         },
         {
           "names": [
             "--encoding"
           ],
           "description": "Specify encoding to use when reading and writing files. Defaults to autodetect",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "encoding"
+          }
         },
         {
           "names": [
@@ -440,14 +664,22 @@
             "--config"
           ],
           "description": "Include additional config file. By default the config is generated from the standard configuration files described in the documentation. This argument allows you to specify an additional configuration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extra_config_path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--write-output"
           ],
           "description": "Optionally provide a filename to write the results to, mostly used in tandem with –format. NB: Setting an output file re-enables normal stdout logging",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "write_output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [

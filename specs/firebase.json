@@ -30,7 +30,10 @@
             "--testers"
           ],
           "description": "A comma separated list of tester emails to distribute to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -44,14 +47,20 @@
             "--groups"
           ],
           "description": "A comma separated list of group aliases to distribute to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--groups-file"
           ],
           "description": "Path to file with a comma separated list of group aliases to distribute to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -163,7 +172,13 @@
             "--format"
           ],
           "description": "Format of exported data (csv, json). Ignored if [dataFile] has format extension",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "suggestions": [
+              "csv",
+              "json"
+            ]
+          }
         },
         {
           "names": [

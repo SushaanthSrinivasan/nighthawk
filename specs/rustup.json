@@ -159,7 +159,11 @@
               "names": [
                 "--toolchain"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "toolchain",
+                "description": "Toolchain name"
+              }
             }
           ],
           "args": [
@@ -191,7 +195,11 @@
               "names": [
                 "--toolchain"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "toolchain",
+                "description": "Toolchain name"
+              }
             }
           ],
           "args": [
@@ -278,7 +286,11 @@
                 "--target"
               ],
               "description": "Add specific targets on installation",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "targets",
+                "is_variadic": true
+              }
             },
             {
               "names": [
@@ -286,13 +298,25 @@
                 "--component"
               ],
               "description": "Add specific components on installation",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "components",
+                "is_variadic": true
+              }
             },
             {
               "names": [
                 "--profile"
               ],
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "profile",
+                "suggestions": [
+                  "minimal",
+                  "default",
+                  "complete"
+                ]
+              }
             },
             {
               "names": [
@@ -620,7 +644,10 @@
             "--toolchain"
           ],
           "description": "Toolchain name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "toolchain"
+          }
         }
       ]
     },
@@ -736,7 +763,10 @@
             "--toolchain"
           ],
           "description": "Toolchain name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "toolchain"
+          }
         }
       ],
       "args": [
@@ -762,7 +792,10 @@
             "--toolchain"
           ],
           "description": "Toolchain name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "toolchain"
+          }
         }
       ]
     },

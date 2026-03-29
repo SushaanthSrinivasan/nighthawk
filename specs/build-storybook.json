@@ -8,7 +8,11 @@
         "--output-dir"
       ],
       "description": "Directory where to store built files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -22,7 +26,18 @@
         "--loglevel"
       ],
       "description": "Controls level of logging during build",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level",
+        "suggestions": [
+          "silly",
+          "verbose",
+          "info",
+          "warn",
+          "error",
+          "silent"
+        ]
+      }
     },
     {
       "names": [
@@ -43,7 +58,11 @@
         "--static-dir"
       ],
       "description": "Directory where to load static files from, comma-separated list",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -51,7 +70,11 @@
         "--config-dir"
       ],
       "description": "Directory where to load Storybook configurations from",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -64,21 +87,30 @@
         "--ssl-ca"
       ],
       "description": "Provide an SSL certificate authority. (Optional with --https, required if using a self-signed certificate)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "certificate authority"
+      }
     },
     {
       "names": [
         "--ssl-cert"
       ],
       "description": "Provide an SSL certificate. (Required with --https)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "certificate"
+      }
     },
     {
       "names": [
         "--ssl-key"
       ],
       "description": "Provide an SSL key. (Required with --https)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "key"
+      }
     },
     {
       "names": [
@@ -115,7 +147,11 @@
         "--webpack-stats-json"
       ],
       "description": "Write Webpack Stats JSON to disk",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [

@@ -25,7 +25,15 @@
         "--predict"
       ],
       "description": "Local echo options",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "adaptive",
+          "always",
+          "never",
+          "experimental"
+        ]
+      }
     },
     {
       "names": [
@@ -44,7 +52,17 @@
         "--family"
       ],
       "description": "Network Type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "inet",
+          "ine6",
+          "auto",
+          "all",
+          "prefer-inet4",
+          "prefer-inet6"
+        ]
+      }
     },
     {
       "names": [
@@ -64,7 +82,10 @@
         "--ssh"
       ],
       "description": "Ssh command to run when setting up session, (example: \"ssh -p 2222\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
@@ -89,7 +110,15 @@
         "--experimental-remote-ip"
       ],
       "description": "Select the method for discovering the remote IP address to use for mosh",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "method",
+        "suggestions": [
+          "local",
+          "remote",
+          "proxy"
+        ]
+      }
     },
     {
       "names": [

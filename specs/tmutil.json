@@ -45,7 +45,10 @@
             "--destination"
           ],
           "description": "Perform the backup to the destination corresponding to the specified ID",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "destination id"
+          }
         }
       ]
     },
@@ -62,21 +65,31 @@
             "-d"
           ],
           "description": "Delete from the given mount point",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "backup mount point"
+          }
         },
         {
           "names": [
             "-t"
           ],
           "description": "Delete backups with this timestamp",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timestamp"
+          }
         },
         {
           "names": [
             "-p"
           ],
           "description": "A specific path to delete (HFS backup disk)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         }
       ]
     },
@@ -221,14 +234,20 @@
             "-D"
           ],
           "description": "Limit traversal depth to depth levels from the beginning of iteration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "depth"
+          }
         },
         {
           "names": [
             "-I"
           ],
           "description": "Ignore paths with a path component equal to name during iteration",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         }
       ],
       "args": [

@@ -12,7 +12,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -38,7 +41,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -52,7 +58,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -66,7 +75,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -74,7 +86,18 @@
             "-d"
           ],
           "description": "Name of driver to use. (delegated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT",
+            "suggestions": [
+              "delegated",
+              "docker",
+              "podman",
+              "vagrant",
+              "azure",
+              "hetzner"
+            ]
+          }
         }
       ]
     },
@@ -88,7 +111,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -102,7 +128,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -110,7 +139,18 @@
             "-d"
           ],
           "description": "Name of driver to use. (delegated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT",
+            "suggestions": [
+              "delegated",
+              "docker",
+              "podman",
+              "vagrant",
+              "azure",
+              "hetzner"
+            ]
+          }
         },
         {
           "names": [
@@ -148,7 +188,14 @@
             "-f"
           ],
           "description": "Change output format. (simple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT",
+            "suggestions": [
+              "simple",
+              "plain"
+            ]
+          }
         }
       ]
     },
@@ -162,7 +209,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -179,7 +229,13 @@
                 "--dependency-name"
               ],
               "description": "Name of dependency to initialize. (galaxy)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "galaxy"
+                ]
+              }
             },
             {
               "names": [
@@ -187,28 +243,58 @@
                 "-d"
               ],
               "description": "Name of driver to use. (delegated)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "delegated",
+                  "docker",
+                  "podman",
+                  "vagrant",
+                  "azure",
+                  "hetzner"
+                ]
+              }
             },
             {
               "names": [
                 "--lint-name"
               ],
               "description": "Name of lint to initialize. (yamllint)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "yamllint"
+                ]
+              }
             },
             {
               "names": [
                 "--provisioner-name"
               ],
               "description": "Name of provisioner to initialize. (ansible)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "ansible"
+                ]
+              }
             },
             {
               "names": [
                 "--verifier-name"
               ],
               "description": "Name of verifier to initialize. (ansible)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "ansible",
+                  "testinfra"
+                ]
+              }
             }
           ],
           "args": [
@@ -226,7 +312,13 @@
                 "--dependency-name"
               ],
               "description": "Name of dependency to initialize. (galaxy)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "galaxy"
+                ]
+              }
             },
             {
               "names": [
@@ -234,21 +326,44 @@
                 "-d"
               ],
               "description": "Name of driver to use. (delegated)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "delegated",
+                  "docker",
+                  "podman",
+                  "vagrant",
+                  "azure",
+                  "hetzner"
+                ]
+              }
             },
             {
               "names": [
                 "--lint-name"
               ],
               "description": "Name of lint to initialize. (yamllint)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "yamllint"
+                ]
+              }
             },
             {
               "names": [
                 "--provisioner-name"
               ],
               "description": "Name of provisioner to initialize. (ansible)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "ansible"
+                ]
+              }
             },
             {
               "names": [
@@ -256,14 +371,24 @@
                 "-r"
               ],
               "description": "Name of the role to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
                 "--verifier-name"
               ],
               "description": "Name of verifier to initialize. (ansible)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT",
+                "suggestions": [
+                  "ansible",
+                  "testinfra"
+                ]
+              }
             }
           ],
           "args": [
@@ -284,7 +409,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -298,7 +426,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -306,7 +437,15 @@
             "-f"
           ],
           "description": "Change output format. (simple)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT",
+            "suggestions": [
+              "simple",
+              "plain",
+              "yaml"
+            ]
+          }
         }
       ]
     },
@@ -320,7 +459,10 @@
             "-h"
           ],
           "description": "Host to access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -328,7 +470,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -342,7 +487,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -356,7 +504,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -364,7 +515,18 @@
             "-d"
           ],
           "description": "Name of driver to use. (delegated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT",
+            "suggestions": [
+              "delegated",
+              "docker",
+              "podman",
+              "vagrant",
+              "azure",
+              "hetzner"
+            ]
+          }
         },
         {
           "names": [
@@ -390,7 +552,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -404,7 +569,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -418,7 +586,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         }
       ]
     },
@@ -432,7 +603,10 @@
             "-s"
           ],
           "description": "Name of the scenario to target. (default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT"
+          }
         },
         {
           "names": [
@@ -440,7 +614,18 @@
             "-d"
           ],
           "description": "Name of driver to use. (delegated)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT",
+            "suggestions": [
+              "delegated",
+              "docker",
+              "podman",
+              "vagrant",
+              "azure",
+              "hetzner"
+            ]
+          }
         },
         {
           "names": [
@@ -459,7 +644,14 @@
             "--destroy"
           ],
           "description": "The destroy strategy used at the conclusion of a Molecule run (always)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "TEXT",
+            "suggestions": [
+              "always",
+              "never"
+            ]
+          }
         },
         {
           "names": [

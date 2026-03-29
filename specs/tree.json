@@ -37,7 +37,10 @@
         "-L"
       ],
       "description": "Descend only level directories deep",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level"
+      }
     },
     {
       "names": [
@@ -50,14 +53,20 @@
         "-P"
       ],
       "description": "List only those files that match the pattern given",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
         "-I"
       ],
       "description": "Do not list files that match the given pattern",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
@@ -82,28 +91,42 @@
         "--charset"
       ],
       "description": "Use charset X for terminal/HTML and indentation line output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "charset"
+      }
     },
     {
       "names": [
         "--filelimit"
       ],
       "description": "Do not descend dirs with more than # files in them",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number",
+        "description": "Number of files"
+      }
     },
     {
       "names": [
         "--timefmt"
       ],
       "description": "Print and format time according to the format <f>",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "description": "Format in strftime syntax"
+      }
     },
     {
       "names": [
         "-o"
       ],
       "description": "Output to file instead of stdout",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename"
+      }
     },
     {
       "names": [
@@ -230,7 +253,17 @@
         "--sort"
       ],
       "description": "Select sort",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "name",
+          "version",
+          "size",
+          "mtime",
+          "ctime"
+        ]
+      }
     },
     {
       "names": [
@@ -279,14 +312,20 @@
         "-H"
       ],
       "description": "Prints out HTML format with baseHREF as top directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "baseHREF"
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Replace the default HTML title and H1 header with string",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "title"
+      }
     },
     {
       "names": [

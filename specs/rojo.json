@@ -22,6 +22,10 @@
           ],
           "description": "Where to output the result. Should end in .rbxm, .rbxl, .rbxmx, or .rbxlx",
           "takes_arg": true,
+          "arg": {
+            "name": "OUTPUT",
+            "description": "Where to output the result. Should end in .rbxm, .rbxl, .rbxmx, or .rbxlx"
+          },
           "is_required": true
         },
         {
@@ -61,7 +65,15 @@
             "--kind"
           ],
           "description": "The kind of project to create, 'place' or 'model'. Defaults to place",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KIND",
+            "description": "The kind of project to create, 'place' or 'model'. Defaults to place",
+            "suggestions": [
+              "place",
+              "model"
+            ]
+          }
         }
       ],
       "args": [
@@ -84,7 +96,11 @@
             "address"
           ],
           "description": "The IP address to listen on. Defaults to `127.0.0.1`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ADDRESS",
+            "description": "The IP address to listen on. Defaults to `127.0.0.1`"
+          }
         }
       ]
     },
@@ -104,7 +120,11 @@
             "-o"
           ],
           "description": "Where to output the sourcemap. Omit this to use stdout instead of writing to a file. Should end in .json",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "OUTPUT",
+            "description": "Where to output the sourcemap. Omit this to use stdout instead of writing to a file. Should end in .json"
+          }
         }
       ],
       "args": [
@@ -123,28 +143,44 @@
             "--api-key"
           ],
           "description": "API key obtained from create.roblox.com/credentials. Rojo will use the Open Cloud API when this is provided. Only supports uploading to a place",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "API_KEY",
+            "description": "API key obtained from create.roblox.com/credentials. Rojo will use the Open Cloud API when this is provided. Only supports uploading to a place"
+          }
         },
         {
           "names": [
             "--asset_id"
           ],
           "description": "Asset ID to upload to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ASSET_ID",
+            "description": "Asset ID to upload to"
+          }
         },
         {
           "names": [
             "--cookie"
           ],
           "description": "Authenication cookie to use. If not specified, Rojo will attempt to find one from the system automatically",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "COOKIE",
+            "description": "Authenication cookie to use. If not specified, Rojo will attempt to find one from the system automatically"
+          }
         },
         {
           "names": [
             "--universe_id"
           ],
           "description": "The Universe ID of the given place. Required when using the Open Cloud API",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "UNIVERSE_ID",
+            "description": "The Universe ID of the given place. Required when using the Open Cloud API"
+          }
         }
       ]
     }
@@ -162,7 +198,15 @@
         "--color"
       ],
       "description": "Set color behavior. Valid values are auto, always, and never [default: auto]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "COLOR",
+        "suggestions": [
+          "auto",
+          "always",
+          "never"
+        ]
+      }
     },
     {
       "names": [

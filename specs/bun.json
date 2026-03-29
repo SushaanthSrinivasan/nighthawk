@@ -94,7 +94,11 @@
             "--config"
           ],
           "description": "Load config (bunfig.toml)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -146,7 +150,11 @@
             "--cache-dir"
           ],
           "description": "Store & load cached data from a specific directory path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -178,21 +186,36 @@
             "--cwd"
           ],
           "description": "Set a specific cwd",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--backend"
           ],
           "description": "Platform-specific optimizations for installing dependencies. For macOS, 'clonefile' (default), 'copyfile'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "syscall",
+            "suggestions": [
+              "clonefile",
+              "copyfile"
+            ]
+          }
         },
         {
           "names": [
             "--link-native-bins"
           ],
           "description": "Link 'bin' from a matching platform-specific 'optionalDependencies' instead. Default: esbuild, turbo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "str",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -260,7 +283,11 @@
             "--config"
           ],
           "description": "Load config (bunfig.toml)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -312,7 +339,11 @@
             "--cache-dir"
           ],
           "description": "Store & load cached data from a specific directory path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -344,21 +375,36 @@
             "--cwd"
           ],
           "description": "Set a specific cwd",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--backend"
           ],
           "description": "Platform-specific optimizations for installing dependencies. For macOS, 'clonefile' (default), 'copyfile'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "syscall",
+            "suggestions": [
+              "clonefile",
+              "copyfile"
+            ]
+          }
         },
         {
           "names": [
             "--link-native-bins"
           ],
           "description": "Link 'bin' from a matching platform-specific 'optionalDependencies' instead. Default: esbuild, turbo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "str",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -432,7 +478,11 @@
             "--config"
           ],
           "description": "Load config (bunfig.toml)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -484,7 +534,11 @@
             "--cache-dir"
           ],
           "description": "Store & load cached data from a specific directory path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -516,21 +570,36 @@
             "--cwd"
           ],
           "description": "Set a specific cwd",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--backend"
           ],
           "description": "Platform-specific optimizations for installing dependencies. For macOS, 'clonefile' (default), 'copyfile'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "syscall",
+            "suggestions": [
+              "clonefile",
+              "copyfile"
+            ]
+          }
         },
         {
           "names": [
             "--link-native-bins"
           ],
           "description": "Link 'bin' from a matching platform-specific 'optionalDependencies' instead. Default: esbuild, turbo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "str",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -616,7 +685,11 @@
           "names": [
             "--cwd"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Absolute path to resolve files & entry points from. This just changes the process' cwd"
+          }
         },
         {
           "names": [
@@ -624,54 +697,98 @@
             "--config"
           ],
           "description": "Load config (bunfig.toml)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Config file to load Bun from (e.g. -c bunfig.toml)",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--extension-order"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "order",
+            "description": "Defaults to: .tsx,.ts,.jsx,.js,.json",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--jsx-factory"
           ],
           "description": "Changes the function called when compiling JSX elements using the classic JSX runtime",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "suggestions": [
+              "React.createElement",
+              "h",
+              "preact.h"
+            ]
+          }
         },
         {
           "names": [
             "--jsx-fragment"
           ],
           "description": "Changes the function called when compiling JSX fragments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--jsx-import-source"
           ],
           "description": "Declares the module specifier to be used for importing the jsx and jsxs factory functions. Default: \"react\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "module",
+            "suggestions": [
+              "react"
+            ]
+          }
         },
         {
           "names": [
             "--jsx-runtime"
           ],
           "description": "\"automatic\" (default) or \"classic\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "suggestions": [
+              "automatic",
+              "classic"
+            ]
+          }
         },
         {
           "names": [
             "-r",
             "--preload"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Import a module before other modules are loaded",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--main-fields"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Main fields to lookup in package.json. Defaults to --target dependent",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -696,42 +813,69 @@
           "names": [
             "--tsconfig-override"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "overrides",
+            "description": "Load tsconfig from path instead of cwd/tsconfig.json"
+          }
         },
         {
           "names": [
             "-d",
             "--define"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "k=v",
+            "description": "Substitute key=value while parsing, e.g. --define process.env.NODE_ENV=development",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-e",
             "--external"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Exclude module from transpilation (can use * wildcards). ex: -e react",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-l",
             "--loader"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Parse files with .ext:loader, e.g. --loader .js:jsx. Valid loaders: js, jsx, ts, tsx, json, toml, text, file, wasm, napi",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-u",
             "--origin"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Rewrite import URLs to start with --origin. Default: \"\""
+          }
         },
         {
           "names": [
             "-p",
             "--port"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Port to serve Bun's dev server on. Default: \"3000\""
+          }
         },
         {
           "names": [
@@ -781,21 +925,45 @@
             "--inspect"
           ],
           "description": "Activate Bun's debugger for a file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[host:]port",
+            "description": "Activate inspector on particular port and/or hostname",
+            "suggestions": [
+              "3000",
+              "8080"
+            ]
+          }
         },
         {
           "names": [
             "--inspect-wait"
           ],
           "description": "Activate Bun's Debugger, wait for a connection before executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[host:]port",
+            "description": "Activate inspector on particular port and/or hostname",
+            "suggestions": [
+              "3000",
+              "8080"
+            ]
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Activate Bun's Debugger, set breakpoint on first line of code and wait",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[host:]port",
+            "description": "Activate inspector on particular port and/or hostname",
+            "suggestions": [
+              "3000",
+              "8080"
+            ]
+          }
         },
         {
           "names": [
@@ -831,7 +999,17 @@
           "names": [
             "--install"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arg",
+            "description": "Install dependencies automatically when no node_modules are present, default: \"auto\". \"force\" to ignore node_modules, fallback to install any missing",
+            "suggestions": [
+              "auto",
+              "force",
+              "fallback",
+              "disable"
+            ]
+          }
         },
         {
           "names": [
@@ -862,28 +1040,43 @@
             "--format"
           ],
           "description": "Specifies the module format to build to. Only esm is supported currently",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "suggestions": [
+              "esm"
+            ]
+          }
         },
         {
           "names": [
             "--outdir"
           ],
           "description": "Default to \"dist\" if multiple files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "--outfile"
           ],
           "description": "Write to a file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
             "--root"
           ],
           "description": "Root directory used for multiple entry points",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path"
+          }
         },
         {
           "names": [
@@ -896,35 +1089,55 @@
             "--public-path"
           ],
           "description": "A prefix to be appended to any import paths in bundled code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args"
+          }
         },
         {
           "names": [
             "--sourcemap"
           ],
           "description": "Build with sourcemaps - 'inline', 'external', or 'none'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "suggestions": [
+              "inline",
+              "external",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--entry-naming"
           ],
           "description": "Customize entry point filenames. Defaults to \"[dir]/[name].[ext]\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args"
+          }
         },
         {
           "names": [
             "--chunk-naming"
           ],
           "description": "Customize chunk filenames. Defaults to \"[name]-[hash].[ext]\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args"
+          }
         },
         {
           "names": [
             "--asset-naming"
           ],
           "description": "Customize asset filenames. Defaults to \"[name]-[hash].[ext]\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args"
+          }
         },
         {
           "names": [
@@ -969,7 +1182,11 @@
             "--config"
           ],
           "description": "Load config (bunfig.toml)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1021,7 +1238,11 @@
             "--cache-dir"
           ],
           "description": "Store & load cached data from a specific directory path",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1053,21 +1274,36 @@
             "--cwd"
           ],
           "description": "Set a specific cwd",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "template": "folders"
+          }
         },
         {
           "names": [
             "--backend"
           ],
           "description": "Platform-specific optimizations for installing dependencies. For macOS, 'clonefile' (default), 'copyfile'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "syscall",
+            "suggestions": [
+              "clonefile",
+              "copyfile"
+            ]
+          }
         },
         {
           "names": [
             "--link-native-bins"
           ],
           "description": "Link 'bin' from a matching platform-specific 'optionalDependencies' instead. Default: esbuild, turbo",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "str",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1184,7 +1420,11 @@
           "names": [
             "--cwd"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Absolute path to resolve files & entry points from. This just changes the process' cwd"
+          }
         },
         {
           "names": [
@@ -1192,54 +1432,98 @@
             "--config"
           ],
           "description": "Load config (bunfig.toml)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Config file to load Bun from (e.g. -c bunfig.toml)",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--extension-order"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "order",
+            "description": "Defaults to: .tsx,.ts,.jsx,.js,.json",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--jsx-factory"
           ],
           "description": "Changes the function called when compiling JSX elements using the classic JSX runtime",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "suggestions": [
+              "React.createElement",
+              "h",
+              "preact.h"
+            ]
+          }
         },
         {
           "names": [
             "--jsx-fragment"
           ],
           "description": "Changes the function called when compiling JSX fragments",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "string"
+          }
         },
         {
           "names": [
             "--jsx-import-source"
           ],
           "description": "Declares the module specifier to be used for importing the jsx and jsxs factory functions. Default: \"react\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "module",
+            "suggestions": [
+              "react"
+            ]
+          }
         },
         {
           "names": [
             "--jsx-runtime"
           ],
           "description": "\"automatic\" (default) or \"classic\"",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name",
+            "suggestions": [
+              "automatic",
+              "classic"
+            ]
+          }
         },
         {
           "names": [
             "-r",
             "--preload"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Import a module before other modules are loaded",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--main-fields"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Main fields to lookup in package.json. Defaults to --target dependent",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1264,42 +1548,69 @@
           "names": [
             "--tsconfig-override"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "overrides",
+            "description": "Load tsconfig from path instead of cwd/tsconfig.json"
+          }
         },
         {
           "names": [
             "-d",
             "--define"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "k=v",
+            "description": "Substitute key=value while parsing, e.g. --define process.env.NODE_ENV=development",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-e",
             "--external"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Exclude module from transpilation (can use * wildcards). ex: -e react",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-l",
             "--loader"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Parse files with .ext:loader, e.g. --loader .js:jsx. Valid loaders: js, jsx, ts, tsx, json, toml, text, file, wasm, napi",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "-u",
             "--origin"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Rewrite import URLs to start with --origin. Default: \"\""
+          }
         },
         {
           "names": [
             "-p",
             "--port"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "args",
+            "description": "Port to serve Bun's dev server on. Default: \"3000\""
+          }
         },
         {
           "names": [
@@ -1349,21 +1660,45 @@
             "--inspect"
           ],
           "description": "Activate Bun's debugger for a file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[host:]port",
+            "description": "Activate inspector on particular port and/or hostname",
+            "suggestions": [
+              "3000",
+              "8080"
+            ]
+          }
         },
         {
           "names": [
             "--inspect-wait"
           ],
           "description": "Activate Bun's Debugger, wait for a connection before executing",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[host:]port",
+            "description": "Activate inspector on particular port and/or hostname",
+            "suggestions": [
+              "3000",
+              "8080"
+            ]
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Activate Bun's Debugger, set breakpoint on first line of code and wait",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[host:]port",
+            "description": "Activate inspector on particular port and/or hostname",
+            "suggestions": [
+              "3000",
+              "8080"
+            ]
+          }
         },
         {
           "names": [
@@ -1399,7 +1734,17 @@
           "names": [
             "--install"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "arg",
+            "description": "Install dependencies automatically when no node_modules are present, default: \"auto\". \"force\" to ignore node_modules, fallback to install any missing",
+            "suggestions": [
+              "auto",
+              "force",
+              "fallback",
+              "disable"
+            ]
+          }
         },
         {
           "names": [
@@ -1424,7 +1769,10 @@
             "--timeout"
           ],
           "description": "Set the per-test timeout in milliseconds, default is 5000",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1437,7 +1785,10 @@
             "--rerun-each"
           ],
           "description": "Re-run each test file <NUMBER> times, helps catch certain bugs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1462,7 +1813,10 @@
             "--bail"
           ],
           "description": "Exit the test suite after <NUMBER> failures. If you do not specify a number, it defaults to 1",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
@@ -1470,7 +1824,10 @@
             "--test-name-pattern"
           ],
           "description": "Run only tests with a name that matches the given regex",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "pattern"
+          }
         },
         {
           "names": [
@@ -1575,21 +1932,45 @@
         "--inspect"
       ],
       "description": "Activate Bun's debugger for a file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[host:]port",
+        "description": "Activate inspector on particular port and/or hostname",
+        "suggestions": [
+          "3000",
+          "8080"
+        ]
+      }
     },
     {
       "names": [
         "--inspect-wait"
       ],
       "description": "Activate Bun's Debugger, wait for a connection before executing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[host:]port",
+        "description": "Activate inspector on particular port and/or hostname",
+        "suggestions": [
+          "3000",
+          "8080"
+        ]
+      }
     },
     {
       "names": [
         "--inspect-brk"
       ],
       "description": "Activate Bun's Debugger, set breakpoint on first line of code and wait",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "[host:]port",
+        "description": "Activate inspector on particular port and/or hostname",
+        "suggestions": [
+          "3000",
+          "8080"
+        ]
+      }
     },
     {
       "names": [

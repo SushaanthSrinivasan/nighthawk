@@ -7,7 +7,51 @@
         "--signal"
       ],
       "description": "Signal to send (either number or name)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "signal",
+        "description": "Signal to send",
+        "suggestions": [
+          "SIGABRT",
+          "SIGALRM",
+          "SIGBUS",
+          "SIGCHLD",
+          "SIGCLD",
+          "SIGCONT",
+          "SIGEMT",
+          "SIGFPE",
+          "SIGHUP",
+          "SIGILL",
+          "SIGINFO",
+          "SIGINT",
+          "SIGIO",
+          "SIGIOT",
+          "SIGKILL",
+          "SIGLOST",
+          "SIGPIPE",
+          "SIGPOLL",
+          "SIGPROF",
+          "SIGPWR",
+          "SIGQUIT",
+          "SIGSEGV",
+          "SIGSTKFLT",
+          "SIGSTOP",
+          "SIGTSTP",
+          "SIGSYS",
+          "SIGTERM",
+          "SIGTRAP",
+          "SIGTTIN",
+          "SIGTTOU",
+          "SIGUNUSED",
+          "SIGURG",
+          "SIGUSR1",
+          "SIGUSR2",
+          "SIGVTALRM",
+          "SIGXCPU",
+          "SIGXFSZ",
+          "SIGWINCH"
+        ]
+      }
     },
     {
       "names": [
@@ -15,7 +59,10 @@
         "--queue"
       ],
       "description": "Integer value to be sent with the signal",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value"
+      }
     },
     {
       "names": [
@@ -37,7 +84,11 @@
         "--pgroup"
       ],
       "description": "Match listed process group IDs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PGID",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -45,7 +96,11 @@
         "--group"
       ],
       "description": "Match real group IDs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "GID",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -74,7 +129,10 @@
         "--older"
       ],
       "description": "Select where older than seconds",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "seconds"
+      }
     },
     {
       "names": [
@@ -82,7 +140,11 @@
         "--parent"
       ],
       "description": "Match only child processes of the given parent",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PPID",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -90,7 +152,11 @@
         "--session"
       ],
       "description": "Match session IDs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SID",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -98,7 +164,11 @@
         "--terminal"
       ],
       "description": "Match by controlling terminal",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "tty",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -106,7 +176,11 @@
         "--euid"
       ],
       "description": "Match by effective IDs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ID",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -114,7 +188,11 @@
         "--uid"
       ],
       "description": "Match by real IDs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ID",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -129,7 +207,11 @@
         "--pidfile"
       ],
       "description": "Read PIDs from file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -144,21 +226,39 @@
         "--runstates"
       ],
       "description": "Match runstates",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "state"
+      }
     },
     {
       "names": [
         "--ns"
       ],
       "description": "Match the processes that belong to a specified PID",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PID"
+      }
     },
     {
       "names": [
         "--nslist"
       ],
       "description": "List which namespaces will be considered for the --ns option",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ns",
+        "is_variadic": true,
+        "suggestions": [
+          "ipc",
+          "mnt",
+          "net",
+          "pid",
+          "user",
+          "uts"
+        ]
+      }
     },
     {
       "names": [

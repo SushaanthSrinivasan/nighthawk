@@ -68,14 +68,20 @@
                 "--autoeject-timeout"
               ],
               "description": "When set, the button toggles the state of the smartcard between ejected and inserted (CCID mode only)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "SECONDS"
+              }
             },
             {
               "names": [
                 "--chalresp-timeout"
               ],
               "description": "When set, the smartcard will automatically eject after the given time. Implies --touch-eject (CCID mode only)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "SECONDS"
+              }
             },
             {
               "names": [
@@ -116,7 +122,19 @@
                 "--enable"
               ],
               "description": "Enable applications",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "application",
+                "suggestions": [
+                  "OTP",
+                  "U2F",
+                  "FIDO2",
+                  "OATH",
+                  "PIV",
+                  "OPENPGP",
+                  "HSMAUTH"
+                ]
+              }
             },
             {
               "names": [
@@ -124,7 +142,19 @@
                 "--disable"
               ],
               "description": "Disable applications",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "application",
+                "suggestions": [
+                  "OTP",
+                  "U2F",
+                  "FIDO2",
+                  "OATH",
+                  "PIV",
+                  "OPENPGP",
+                  "HSMAUTH"
+                ]
+              }
             },
             {
               "names": [
@@ -153,7 +183,10 @@
                 "--lock-code"
               ],
               "description": "Current application configuration lock code",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HEX"
+              }
             },
             {
               "names": [
@@ -181,7 +214,10 @@
                 "--lock-code"
               ],
               "description": "Current lock code",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HEX"
+              }
             },
             {
               "names": [
@@ -189,7 +225,10 @@
                 "--new-lock-code"
               ],
               "description": "New lock code. Conflicts with --generate",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HEX"
+              }
             },
             {
               "names": [
@@ -231,7 +270,19 @@
                 "--enable"
               ],
               "description": "Enable applications",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "applications",
+                "suggestions": [
+                  "OTP",
+                  "U2F",
+                  "FIDO2",
+                  "OATH",
+                  "PIV",
+                  "OPENPGP",
+                  "HSMAUTH"
+                ]
+              }
             },
             {
               "names": [
@@ -239,7 +290,19 @@
                 "--disable"
               ],
               "description": "Disable applications",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "application",
+                "suggestions": [
+                  "OTP",
+                  "U2F",
+                  "FIDO2",
+                  "OATH",
+                  "PIV",
+                  "OPENPGP",
+                  "HSMAUTH"
+                ]
+              }
             },
             {
               "names": [
@@ -268,7 +331,10 @@
                 "--lock-code"
               ],
               "description": "Current application configuration lock code",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HEX"
+              }
             },
             {
               "names": [
@@ -287,14 +353,20 @@
                 "--autoeject-timeout"
               ],
               "description": "When set, the smartcard will automatically eject after the given time. Implies --touch-eject",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "SECONDS"
+              }
             },
             {
               "names": [
                 "--chalresp-timeout"
               ],
               "description": "Sets the timeout when waiting for touch for challenge-response in the OTP application",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "SECONDS"
+              }
             },
             {
               "names": [
@@ -367,7 +439,10 @@
                     "--pin"
                   ],
                   "description": "Current PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -375,7 +450,10 @@
                     "--new-pin"
                   ],
                   "description": "Current PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -403,7 +481,10 @@
                     "--pin"
                   ],
                   "description": "Current PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -439,7 +520,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -473,7 +557,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -509,7 +596,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -536,7 +626,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -569,7 +662,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -590,7 +686,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -684,7 +783,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -699,7 +801,10 @@
                     "--new-password"
                   ],
                   "description": "Provide a new password as an argument",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -740,7 +845,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -776,7 +884,14 @@
                     "--oath-type"
                   ],
                   "description": "Time-based (TOTP) or counter-based (HOTP) account",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "oath type",
+                    "suggestions": [
+                      "HOTP",
+                      "TOTP"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -784,7 +899,15 @@
                     "--digits"
                   ],
                   "description": "Number of digits in generated code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "number of digits",
+                    "suggestions": [
+                      "6",
+                      "7",
+                      "8"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -792,7 +915,15 @@
                     "--algorithm"
                   ],
                   "description": "Algorithm to use for code generation",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "algorithm",
+                    "suggestions": [
+                      "SHA1",
+                      "SHA256",
+                      "SHA512"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -800,7 +931,10 @@
                     "--counter"
                   ],
                   "description": "Initial counter value for HOTP accounts",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "INTEGER"
+                  }
                 },
                 {
                   "names": [
@@ -808,7 +942,10 @@
                     "--issuer"
                   ],
                   "description": "Issuer of the account",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -816,7 +953,10 @@
                     "--period"
                   ],
                   "description": "Number of seconds a TOTP code is valid",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "INTEGER"
+                  }
                 },
                 {
                   "names": [
@@ -838,7 +978,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -890,7 +1033,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -931,7 +1077,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -986,7 +1135,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1021,7 +1173,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1073,7 +1228,10 @@
                     "--password"
                   ],
                   "description": "Provide a password to unlock the YubiKey",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1169,7 +1327,10 @@
                     "--admin-pin"
                   ],
                   "description": "Admin PIN for OpenPGP",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1223,7 +1384,10 @@
                     "--admin-pin"
                   ],
                   "description": "Admin PIN for OpenPGP",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1250,7 +1414,14 @@
                     "--format"
                   ],
                   "description": "Encoding format",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "format",
+                    "suggestions": [
+                      "PEM",
+                      "DER"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -1285,7 +1456,10 @@
                     "--admin-pin"
                   ],
                   "description": "Admin PIN for OpenPGP",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1335,7 +1509,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1343,7 +1520,14 @@
                     "--format"
                   ],
                   "description": "Encoding format",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "format",
+                    "suggestions": [
+                      "PEM",
+                      "DER"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -1378,7 +1562,10 @@
                     "--admin-pin"
                   ],
                   "description": "Admin PIN for OpenPGP",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1408,7 +1595,10 @@
                     "--admin-pin"
                   ],
                   "description": "Admin PIN for OpenPGP",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1479,7 +1669,14 @@
                 "--digits"
               ],
               "description": "Number of digits in generated TOTP code",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number of digits",
+                "suggestions": [
+                  "6",
+                  "8"
+                ]
+              }
             },
             {
               "names": [
@@ -1583,7 +1780,14 @@
                 "--digits"
               ],
               "description": "Number of digits in generated code",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number of digits",
+                "suggestions": [
+                  "6",
+                  "8"
+                ]
+              }
             },
             {
               "names": [
@@ -1591,7 +1795,10 @@
                 "--counter"
               ],
               "description": "Initial counter value",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "INTEGER"
+              }
             },
             {
               "names": [
@@ -1599,7 +1806,10 @@
                 "--identifier"
               ],
               "description": "Token identifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -1657,7 +1867,10 @@
                 "--prefix"
               ],
               "description": "Added before the NDEF payload. Typically a URI",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TEXT"
+              }
             },
             {
               "names": [
@@ -1665,7 +1878,14 @@
                 "--ndef-type"
               ],
               "description": "NDEF payload type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "NDEF type",
+                "suggestions": [
+                  "TEXT",
+                  "URI"
+                ]
+              }
             },
             {
               "names": [
@@ -1702,7 +1922,10 @@
                 "--new-access-code"
               ],
               "description": "Set a new 6 byte access code for the slot. Use \"-\" as a value to prompt for input",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HEX"
+              }
             },
             {
               "names": [
@@ -1723,7 +1946,16 @@
                 "--pacing"
               ],
               "description": "Throttle output speed by adding a delay (in ms) between characters emitted",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "milliseconds",
+                "suggestions": [
+                  "0",
+                  "20",
+                  "40",
+                  "60"
+                ]
+              }
             },
             {
               "names": [
@@ -1757,7 +1989,10 @@
                 "--length"
               ],
               "description": "Length of generated password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "LENGTH"
+              }
             },
             {
               "names": [
@@ -1765,7 +2000,19 @@
                 "--keyboard-layout"
               ],
               "description": "Keyboard layout to use for the static password",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "layout",
+                "suggestions": [
+                  "MODHEX",
+                  "US",
+                  "UK",
+                  "DE",
+                  "FR",
+                  "BEPO",
+                  "NORMAN"
+                ]
+              }
             },
             {
               "names": [
@@ -1831,7 +2078,10 @@
                 "--public-id"
               ],
               "description": "Public identifier prefix",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "MODHEX"
+              }
             },
             {
               "names": [
@@ -1839,7 +2089,10 @@
                 "--private-id"
               ],
               "description": "6 byte private identifier",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HEX"
+              }
             },
             {
               "names": [
@@ -1847,7 +2100,10 @@
                 "--key"
               ],
               "description": "16 byte secret key",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "HEX"
+              }
             },
             {
               "names": [
@@ -1915,7 +2171,10 @@
             "--access-code"
           ],
           "description": "A 6 byte access code. Use \"-\" as a value to prompt for input",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "HEX"
+          }
         },
         {
           "names": [
@@ -1977,7 +2236,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -1992,7 +2254,10 @@
                     "--new-management-key"
                   ],
                   "description": "A new management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEX"
+                  }
                 },
                 {
                   "names": [
@@ -2000,7 +2265,10 @@
                     "--management-key"
                   ],
                   "description": "Current management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEX"
+                  }
                 },
                 {
                   "names": [
@@ -2008,7 +2276,16 @@
                     "--algorithm"
                   ],
                   "description": "Management key algorithm",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "algorithm",
+                    "suggestions": [
+                      "TDES",
+                      "AES128",
+                      "AES192",
+                      "AES256"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2050,7 +2327,10 @@
                     "--pin"
                   ],
                   "description": "Current PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2058,7 +2338,10 @@
                     "--new-pin"
                   ],
                   "description": "A new PIN",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2079,7 +2362,10 @@
                     "--puk"
                   ],
                   "description": "Current PUK code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2087,7 +2373,10 @@
                     "--new-puk"
                   ],
                   "description": "A new PUK",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2108,7 +2397,10 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2116,7 +2408,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2151,14 +2446,20 @@
                     "-p",
                     "--puk"
                   ],
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "-n",
                     "--new-pin"
                   ],
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "NEW-PIN"
+                  }
                 },
                 {
                   "names": [
@@ -2194,7 +2495,10 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2202,7 +2506,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2229,7 +2536,14 @@
                     "--format"
                   ],
                   "description": "Encoding format",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "format",
+                    "suggestions": [
+                      "PEM",
+                      "DER"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2264,7 +2578,10 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2272,7 +2589,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2281,6 +2601,9 @@
                   ],
                   "description": "Subject for the certificate, as an RFC 4514 string",
                   "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  },
                   "is_required": true
                 },
                 {
@@ -2289,7 +2612,10 @@
                     "--valid-days"
                   ],
                   "description": "Number of days until the certificate expires",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "INTEGER"
+                  }
                 },
                 {
                   "names": [
@@ -2297,7 +2623,15 @@
                     "--hash-algorithm"
                   ],
                   "description": "Hash algorithm",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "hash algorithm",
+                    "suggestions": [
+                      "SHA1",
+                      "SHA256",
+                      "SHA384"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2328,7 +2662,10 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2336,7 +2673,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2344,7 +2684,10 @@
                     "--password"
                   ],
                   "description": "A password may be needed to decrypt the data",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2382,7 +2725,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2391,6 +2737,9 @@
                   ],
                   "description": "Subject for the certificate, as an RFC 4514 string",
                   "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  },
                   "is_required": true
                 },
                 {
@@ -2399,7 +2748,16 @@
                     "--hash-algorithm"
                   ],
                   "description": "Hash algorithm",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "hash algorithm",
+                    "suggestions": [
+                      "SHA1",
+                      "SHA256",
+                      "SHA384",
+                      "SHA512"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2457,7 +2815,14 @@
                     "--format"
                   ],
                   "description": "Encoding format",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "format",
+                    "suggestions": [
+                      "PEM",
+                      "DER"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2492,7 +2857,14 @@
                     "--format"
                   ],
                   "description": "Encoding format",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "format",
+                    "suggestions": [
+                      "PEM",
+                      "DER"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2507,7 +2879,10 @@
                     "--pin"
                   ],
                   "description": "PIN code (used for --verify)",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2542,7 +2917,10 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2550,7 +2928,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2558,7 +2939,16 @@
                     "--algorithm"
                   ],
                   "description": "Algorithm to use in key generation",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "algorithm",
+                    "suggestions": [
+                      "RSA1024",
+                      "RSA2048",
+                      "ECCP256",
+                      "ECCP384"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2566,21 +2956,46 @@
                     "--format"
                   ],
                   "description": "Encoding format",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "format",
+                    "suggestions": [
+                      "PEM",
+                      "DER"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--pin-policy"
                   ],
                   "description": "PIN policy for slot",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "policy",
+                    "suggestions": [
+                      "DEFAULT",
+                      "NEVER",
+                      "ONCE",
+                      "ALWAYS"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--touch-policy"
                   ],
                   "description": "Touch policy for slot",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "policy",
+                    "suggestions": [
+                      "DEFAULT",
+                      "NEVER",
+                      "ALWAYS",
+                      "ONCE"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2615,7 +3030,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2623,21 +3041,42 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
                     "--pin-policy"
                   ],
                   "description": "PIN policy for slot",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "policy",
+                    "suggestions": [
+                      "DEFAULT",
+                      "NEVER",
+                      "ONCE",
+                      "ALWAYS"
+                    ]
+                  }
                 },
                 {
                   "names": [
                     "--touch-policy"
                   ],
                   "description": "Touch policy for slot",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "policy",
+                    "suggestions": [
+                      "DEFAULT",
+                      "NEVER",
+                      "ALWAYS",
+                      "ONCE"
+                    ]
+                  }
                 },
                 {
                   "names": [
@@ -2645,7 +3084,10 @@
                     "--password"
                   ],
                   "description": "Password used to decrypt the private key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2695,7 +3137,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2730,7 +3175,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2738,7 +3186,10 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2765,7 +3216,10 @@
                     "--pin"
                   ],
                   "description": "PIN code",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2773,7 +3227,10 @@
                     "--management-key"
                   ],
                   "description": "The management key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "TEXT"
+                  }
                 },
                 {
                   "names": [
@@ -2824,7 +3281,10 @@
         "--device"
       ],
       "description": "Specify which YubiKey to interact with by serial number",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SERIAL"
+      }
     },
     {
       "names": [
@@ -2832,7 +3292,10 @@
         "--reader"
       ],
       "description": "Use an exteral smart card reader. Conflicts with --device and list",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
@@ -2840,14 +3303,28 @@
         "--log-level"
       ],
       "description": "Enable logging at given verbosity level",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "log level",
+        "suggestions": [
+          "DEBUG",
+          "INFO",
+          "WARNING",
+          "ERROR",
+          "CRITICAL"
+        ]
+      }
     },
     {
       "names": [
         "--log-file"
       ],
       "description": "Write logs to the given FILE instead of standard error; ignore unless --log-level is also set",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "FILE",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

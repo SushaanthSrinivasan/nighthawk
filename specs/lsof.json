@@ -27,56 +27,122 @@
         "-c"
       ],
       "description": "Select the listing of files for processes executing a command",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string or regexp (optional ending with /i /b /x)"
+      }
     },
     {
       "names": [
         "+c"
       ],
       "description": "COMMAND width (9)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "+d"
       ],
       "description": "Search for all open instances/files/directories of directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-d"
       ],
       "description": "Specify a list of file descriptors (FDs) to exclude from or include in the output listing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "File descriptor number"
+      }
     },
     {
       "names": [
         "+D"
       ],
       "description": "Search tree for all open instances/files/directories of directory. *SLOW?*",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "+f"
       ],
       "description": "Enable path name arguments to be interpreted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "flags",
+        "suggestions": [
+          "c",
+          "g",
+          "G"
+        ]
+      }
     },
     {
       "names": [
         "-f"
       ],
       "description": "Inhibit path name arguments to be interpreted",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "flags",
+        "suggestions": [
+          "c",
+          "g",
+          "G"
+        ]
+      }
     },
     {
       "names": [
         "-F"
       ],
       "description": "Select fields to output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "options",
+        "is_variadic": true,
+        "suggestions": [
+          "a",
+          "c",
+          "C",
+          "d",
+          "D",
+          "f",
+          "G",
+          "i",
+          "k",
+          "K",
+          "l",
+          "L",
+          "m",
+          "M",
+          "n",
+          "o",
+          "p",
+          "g",
+          "P",
+          "r",
+          "R",
+          "s",
+          "S",
+          "t",
+          "T",
+          "u",
+          "0"
+        ]
+      }
     },
     {
       "names": [
@@ -89,14 +155,21 @@
         "-g"
       ],
       "description": "Exclude or select by process group IDs (PGID)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PGID",
+        "description": "Process Group ID (comma separated)"
+      }
     },
     {
       "names": [
         "-i"
       ],
       "description": "Selects files by [46][protocol][@hostname|hostaddr][:service|port]",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "options"
+      }
     },
     {
       "names": [
@@ -109,14 +182,20 @@
         "+L"
       ],
       "description": "Enable listing of file link counts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Disable listing of file link counts",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
@@ -159,7 +238,11 @@
         "-p"
       ],
       "description": "Exclude or select process identification numbers (PIDs)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PIDs",
+        "description": "PIDs to select or exclude ( with ^)"
+      }
     },
     {
       "names": [
@@ -172,14 +255,22 @@
         "+r"
       ],
       "description": "Repeat every t seconds (15) until no files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time (seconds)",
+        "description": "Time per repeat"
+      }
     },
     {
       "names": [
         "-r"
       ],
       "description": "Repeat every t seconds (15) forever",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "time (seconds)",
+        "description": "Time per repeat"
+      }
     },
     {
       "names": [
@@ -192,21 +283,36 @@
         "-s"
       ],
       "description": "List file size or exclude/select protocol",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "protocol:state"
+      }
     },
     {
       "names": [
         "-S"
       ],
       "description": "Stat timeout in seconds (lstat/readlink/stat)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "timeout (seconds)"
+      }
     },
     {
       "names": [
         "-T"
       ],
       "description": "Disable TCP/TPI info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "info",
+        "suggestions": [
+          "f",
+          "q",
+          "s",
+          "w"
+        ]
+      }
     },
     {
       "names": [
@@ -219,7 +325,10 @@
         "-u"
       ],
       "description": "Exclude/select login|UID set",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "UIDs"
+      }
     },
     {
       "names": [
@@ -256,7 +365,14 @@
         "-x"
       ],
       "description": "Cross over +d|+D File systems or symbolic links",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cross-over option",
+        "suggestions": [
+          "f",
+          "l"
+        ]
+      }
     },
     {
       "names": [

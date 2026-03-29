@@ -11,7 +11,10 @@
             "--build-arg"
           ],
           "description": "Set build-time variables for services",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
@@ -24,7 +27,16 @@
             "--progress"
           ],
           "description": "Set type of progress output (auto, tty, plain, quiet)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "progress",
+            "suggestions": [
+              "auto",
+              "tty",
+              "plain",
+              "quiet"
+            ]
+          }
         },
         {
           "names": [
@@ -44,7 +56,10 @@
             "--ssh"
           ],
           "description": "Set SSH authentications used when building service images. (use 'default' for using your default SSH Agent)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ssh"
+          }
         }
       ],
       "args": [
@@ -66,14 +81,24 @@
             "--format"
           ],
           "description": "Format the output. Values: [yaml | json]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "yaml",
+              "json"
+            ]
+          }
         },
         {
           "names": [
             "--hash"
           ],
           "description": "Print the service config hash, one per line",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "hash"
+          }
         },
         {
           "names": [
@@ -99,7 +124,11 @@
             "-o"
           ],
           "description": "Save to file (default to stdout)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -163,7 +192,10 @@
             "--index"
           ],
           "description": "Index of the container if there are multiple instances of a service",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         }
       ],
       "args": [
@@ -226,7 +258,10 @@
             "--rmi"
           ],
           "description": "Remove images used by services. \"local\" remove only images that don't have a custom tag (\"local\"|\"all\")",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rmi"
+          }
         },
         {
           "names": [
@@ -234,7 +269,10 @@
             "-t"
           ],
           "description": "Specify a shutdown timeout in seconds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -280,14 +318,20 @@
             "-e"
           ],
           "description": "Set environment variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "key=value"
+          }
         },
         {
           "names": [
             "--index"
           ],
           "description": "Index of the container if there are multiple instances of a service [default: 1]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
@@ -308,7 +352,10 @@
             "-u"
           ],
           "description": "Run the command as this user",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
@@ -316,7 +363,11 @@
             "-w"
           ],
           "description": "Path to workdir directory for this command",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workdir",
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -358,7 +409,10 @@
             "-s"
           ],
           "description": "SIGNAL to send to the container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "signal"
+          }
         }
       ],
       "args": [
@@ -396,14 +450,23 @@
             "--since"
           ],
           "description": "Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "since"
+          }
         },
         {
           "names": [
             "--tail"
           ],
           "description": "Number of lines to show from the end of the logs for each container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lines",
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -417,7 +480,10 @@
             "--until"
           ],
           "description": "Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timestamp"
+          }
         }
       ],
       "args": [
@@ -443,14 +509,24 @@
             "--filter"
           ],
           "description": "Filter output based on conditions provided",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter"
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "Format the output. Values: [pretty | json]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "pretty",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -480,14 +556,24 @@
             "--index"
           ],
           "description": "Index of the container if service has multiple replicas",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "index"
+          }
         },
         {
           "names": [
             "--protocol"
           ],
           "description": "Tcp or udp",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "protocol",
+            "suggestions": [
+              "tcp",
+              "udp"
+            ]
+          }
         }
       ],
       "args": [
@@ -515,14 +601,24 @@
             "--filter"
           ],
           "description": "Filter services by a property (supported filters: status)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter"
+          }
         },
         {
           "names": [
             "--format"
           ],
           "description": "Format the output. Values: [pretty | json]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "pretty",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -542,7 +638,19 @@
             "--status"
           ],
           "description": "Filter services by status. Values: [paused | restarting | removing | running | dead | created | exited]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "status",
+            "suggestions": [
+              "paused",
+              "restarting",
+              "removing",
+              "running",
+              "dead",
+              "created",
+              "exited"
+            ]
+          }
         }
       ],
       "args": [
@@ -611,7 +719,10 @@
             "-t"
           ],
           "description": "Specify a shutdown timeout in seconds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ],
       "args": [
@@ -670,7 +781,10 @@
             "--entrypoint"
           ],
           "description": "Override the entrypoint of the image",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "entrypoint"
+          }
         },
         {
           "names": [
@@ -678,7 +792,10 @@
             "-e"
           ],
           "description": "Set environment variables",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "env"
+          }
         },
         {
           "names": [
@@ -693,14 +810,20 @@
             "-l"
           ],
           "description": "Add or override a label",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "label"
+          }
         },
         {
           "names": [
             "--name"
           ],
           "description": "Assign a name to the container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
@@ -721,7 +844,10 @@
             "-p"
           ],
           "description": "Publish a container's port(s) to the host",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "publish"
+          }
         },
         {
           "names": [
@@ -753,7 +879,10 @@
             "-u"
           ],
           "description": "Run as specified username or uid",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "user"
+          }
         },
         {
           "names": [
@@ -761,7 +890,10 @@
             "-v"
           ],
           "description": "Bind mount a volume",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "volume"
+          }
         },
         {
           "names": [
@@ -769,7 +901,11 @@
             "-w"
           ],
           "description": "Working directory inside the container",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "workdir",
+            "template": "folders"
+          }
         }
       ],
       "args": [
@@ -801,7 +937,10 @@
             "-t"
           ],
           "description": "Specify a shutdown timeout in seconds",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         }
       ],
       "args": [
@@ -852,7 +991,10 @@
             "--attach"
           ],
           "description": "Attach to service output",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "attach"
+          }
         },
         {
           "names": [
@@ -878,7 +1020,10 @@
             "--exit-code-from"
           ],
           "description": "Return the exit code of the selected service container. Implies --abort-on-container-exit",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exit-code-from"
+          }
         },
         {
           "names": [
@@ -946,7 +1091,10 @@
             "--scale"
           ],
           "description": "Scale SERVICE to NUM instances. Overrides the `scale` setting in the Compose file if present",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "scale"
+          }
         },
         {
           "names": [
@@ -954,7 +1102,10 @@
             "-t"
           ],
           "description": "Use this timeout in seconds for container shutdown when attached or when containers are already running",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "timeout"
+          }
         },
         {
           "names": [
@@ -980,7 +1131,14 @@
             "-f"
           ],
           "description": "Format the output. Values: [pretty | json]. (Default: pretty)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "format",
+            "suggestions": [
+              "pretty",
+              "json"
+            ]
+          }
         },
         {
           "names": [
@@ -997,7 +1155,15 @@
         "--ansi"
       ],
       "description": "Control when to print ANSI control characters (\"never\"|\"always\"|\"auto\")",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ansi",
+        "suggestions": [
+          "never",
+          "always",
+          "auto"
+        ]
+      }
     },
     {
       "names": [
@@ -1010,7 +1176,11 @@
         "--env-file"
       ],
       "description": "Specify an alternate environment file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "env-file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -1018,21 +1188,32 @@
         "-f"
       ],
       "description": "Compose configuration files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "file",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--profile"
       ],
       "description": "Specify a profile to enable",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "profile"
+      }
     },
     {
       "names": [
         "--project-directory"
       ],
       "description": "Specify an alternate working directory (default: the path of the, first specified, Compose file)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "project-directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -1040,7 +1221,10 @@
         "-p"
       ],
       "description": "Project name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "project-name"
+      }
     }
   ]
 }

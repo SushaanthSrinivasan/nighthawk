@@ -92,7 +92,11 @@
                 "-f"
               ],
               "description": "Saves schema diff to a file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -100,7 +104,10 @@
                 "-s"
               ],
               "description": "List of schema to include",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "schema"
+              }
             },
             {
               "names": [
@@ -125,7 +132,10 @@
                 "--db-url"
               ],
               "description": "Dumps from the database specified by the connection string (must be percent-encoded)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -139,7 +149,11 @@
                 "-f"
               ],
               "description": "File path to save the dumped contents",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -172,7 +186,10 @@
                 "-p"
               ],
               "description": "Password to your remote Postgres database",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -186,7 +203,10 @@
                 "-s"
               ],
               "description": "Comma separated list of schema to include. (default all)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -205,7 +225,10 @@
                 "--level"
               ],
               "description": "Error level to emit",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "level"
+              }
             },
             {
               "names": [
@@ -213,7 +236,10 @@
                 "-s"
               ],
               "description": "List of schema to include",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "schema"
+              }
             }
           ]
         },
@@ -237,7 +263,10 @@
                 "-p"
               ],
               "description": "Password to your remote Postgres database",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             }
           ]
         },
@@ -261,7 +290,10 @@
                 "-p"
               ],
               "description": "Password to your remote Postgres database",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             }
           ]
         },
@@ -284,7 +316,10 @@
                 "--project-ref"
               ],
               "description": "Project ref of the Supabase project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "project-ref"
+              }
             }
           ]
         },
@@ -303,7 +338,10 @@
                 "--project-ref"
               ],
               "description": "Project ref of the Supabase project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "project-ref"
+              }
             }
           ]
         },
@@ -320,7 +358,11 @@
                 "--env-file"
               ],
               "description": "Path to an env file to be populated to the Function environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "env-file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -349,7 +391,10 @@
                     "--db-url"
                   ],
                   "description": "Generate types from a database url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "db-url"
+                  }
                 },
                 {
                   "names": [
@@ -377,7 +422,10 @@
             "-p"
           ],
           "description": "Password to your remote Postgres database",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "password"
+          }
         },
         {
           "names": [
@@ -385,6 +433,9 @@
           ],
           "description": "Project ref of the Supabase project",
           "takes_arg": true,
+          "arg": {
+            "name": "project-ref"
+          },
           "is_required": true
         }
       ]
@@ -407,7 +458,10 @@
                 "-p"
               ],
               "description": "Password to your remote Postgres database",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
@@ -426,7 +480,10 @@
                 "--db-url"
               ],
               "description": "Database URL to connect to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -448,7 +505,14 @@
                 "--status"
               ],
               "description": "Version status to update",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "status",
+                "suggestions": [
+                  "applied",
+                  "reverted"
+                ]
+              }
             },
             {
               "names": [
@@ -456,7 +520,10 @@
                 "-p"
               ],
               "description": "Password to your remote Postgres database",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
@@ -475,7 +542,10 @@
                 "--db-url"
               ],
               "description": "Database URL to connect to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -494,7 +564,10 @@
                 "-p"
               ],
               "description": "Password to your remote Postgres database",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "password"
+              }
             },
             {
               "names": [
@@ -507,7 +580,10 @@
                 "--version"
               ],
               "description": "Squash up to the specified version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -520,7 +596,10 @@
                 "--db-url"
               ],
               "description": "Database URL to connect to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -553,7 +632,10 @@
                 "--db-password"
               ],
               "description": "Database password of the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "db-password"
+              }
             },
             {
               "names": [
@@ -567,21 +649,30 @@
                 "--org-id"
               ],
               "description": "Organization ID to create the project in",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "org-id"
+              }
             },
             {
               "names": [
                 "--plan"
               ],
               "description": "Select a plan that suits your needs",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "plan"
+              }
             },
             {
               "names": [
                 "--region"
               ],
               "description": "Select a region close to you for the best performance",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "region"
+              }
             }
           ]
         },
@@ -608,7 +699,11 @@
                 "--env-file"
               ],
               "description": "Read secrets from a .env file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "env-file",
+                "template": "filepaths"
+              }
             }
           ]
         },

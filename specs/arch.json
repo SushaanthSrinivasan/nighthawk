@@ -18,7 +18,17 @@
       "names": [
         "-arch"
       ],
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arch_name",
+        "suggestions": [
+          "i386",
+          "x86_64",
+          "x86_64h",
+          "arm64",
+          "arm64e"
+        ]
+      }
     },
     {
       "names": [
@@ -61,14 +71,20 @@
         "-d"
       ],
       "description": "Delete the named environment variable from the command's environment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "envname"
+      }
     },
     {
       "names": [
         "-e"
       ],
       "description": "Assign the given value to the variable in the command's environment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "envname=value"
+      }
     },
     {
       "names": [

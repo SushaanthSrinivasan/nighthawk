@@ -11,7 +11,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -19,21 +23,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -41,105 +63,165 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-read"
           ],
           "description": "Allow file system read access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-read",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-write"
           ],
           "description": "Allow file system write access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-write",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-net"
           ],
           "description": "Allow network access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-net",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--unsafely-ignore-certificate-errors"
           ],
           "description": "DANGER: Disables verification of TLS certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unsafely-ignore-certificate-errors",
+            "description": "Scope ignoring certificate errors to these hosts",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-env"
           ],
           "description": "Allow environment access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-env",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-run"
           ],
           "description": "Allow running subprocesses",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-run",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-ffi"
           ],
           "description": "Allow loading dynamic libraries",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-ffi",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Value of 'globalThis.location' used by some web APIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
             "--v8-flags"
           ],
           "description": "Set V8 command line options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "v8-flags"
+          }
         },
         {
           "names": [
             "--seed"
           ],
           "description": "Set the random number generator seed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seed"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Ignore files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ignore"
+          }
         },
         {
           "names": [
             "--filter"
           ],
           "description": "Run benchmarks with this string or pattern in the bench name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter"
+          }
         },
         {
           "names": [
@@ -257,7 +339,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -265,21 +351,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -287,21 +391,34 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -374,7 +491,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -382,21 +503,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -404,21 +543,34 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -476,7 +628,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -484,7 +640,11 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -492,21 +652,34 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -570,7 +743,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -578,21 +755,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -600,91 +795,145 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-read"
           ],
           "description": "Allow file system read access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-read",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-write"
           ],
           "description": "Allow file system write access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-write",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-net"
           ],
           "description": "Allow network access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-net",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--unsafely-ignore-certificate-errors"
           ],
           "description": "DANGER: Disables verification of TLS certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unsafely-ignore-certificate-errors",
+            "description": "Scope ignoring certificate errors to these hosts",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-env"
           ],
           "description": "Allow environment access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-env",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-run"
           ],
           "description": "Allow running subprocesses",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-run",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-ffi"
           ],
           "description": "Allow loading dynamic libraries",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-ffi",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Value of 'globalThis.location' used by some web APIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
             "--v8-flags"
           ],
           "description": "Set V8 command line options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "v8-flags"
+          }
         },
         {
           "names": [
             "--seed"
           ],
           "description": "Set the random number generator seed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seed"
+          }
         },
         {
           "names": [
@@ -692,14 +941,27 @@
             "--output"
           ],
           "description": "Output file (defaults to $PWD/<inferred-name>)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--target"
           ],
           "description": "Target OS architecture",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target",
+            "suggestions": [
+              "x86_64-unknown-linux-gnu",
+              "x86_64-pc-windows-msvc",
+              "x86_64-apple-darwin",
+              "aarch64-apple-darwin"
+            ]
+          }
         },
         {
           "names": [
@@ -837,28 +1099,44 @@
             "--ignore"
           ],
           "description": "Ignore coverage files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ignore",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--include"
           ],
           "description": "Include source files in the report",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "include",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Exclude source files from the report",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--output"
           ],
           "description": "Output file (defaults to stdout) for lcov",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -904,7 +1182,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -912,7 +1194,12 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -968,7 +1255,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -976,21 +1267,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -998,63 +1307,102 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Activate inspector on host:port (default: 127.0.0.1:9229)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Activate inspector on host:port and break at start of user script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect-brk",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Value of 'globalThis.location' used by some web APIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
             "--v8-flags"
           ],
           "description": "Set V8 command line options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "v8-flags"
+          }
         },
         {
           "names": [
             "--seed"
           ],
           "description": "Set the random number generator seed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seed"
+          }
         },
         {
           "names": [
             "--ext"
           ],
           "description": "Set standard input (stdin) content type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ext",
+            "suggestions": [
+              "ts",
+              "tsx",
+              "js",
+              "jsx"
+            ]
+          }
         },
         {
           "names": [
@@ -1144,42 +1492,76 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--ext"
           ],
           "description": "Set standard input (stdin) content type",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ext",
+            "suggestions": [
+              "ts",
+              "tsx",
+              "js",
+              "jsx",
+              "md",
+              "json",
+              "jsonc"
+            ]
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Ignore formatting particular source files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ignore",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--options-line-width"
           ],
           "description": "Define maximum line width. Defaults to 80",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "options-line-width"
+          }
         },
         {
           "names": [
             "--options-indent-width"
           ],
           "description": "Define indentation width. Defaults to 2",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "options-indent-width"
+          }
         },
         {
           "names": [
             "--options-prose-wrap"
           ],
           "description": "Define how prose should be wrapped. Defaults to always",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "options-prose-wrap",
+            "suggestions": [
+              "always",
+              "never",
+              "preserve"
+            ]
+          }
         },
         {
           "names": [
@@ -1291,21 +1673,33 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Show files used for origin bound APIs like the Web Storage API when running a script with '--location=<HREF>'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
@@ -1313,14 +1707,22 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1371,7 +1773,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1379,21 +1785,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -1401,105 +1825,167 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-read"
           ],
           "description": "Allow file system read access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-read",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-write"
           ],
           "description": "Allow file system write access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-write",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-net"
           ],
           "description": "Allow network access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-net",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--unsafely-ignore-certificate-errors"
           ],
           "description": "DANGER: Disables verification of TLS certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unsafely-ignore-certificate-errors",
+            "description": "Scope ignoring certificate errors to these hosts",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-env"
           ],
           "description": "Allow environment access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-env",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-run"
           ],
           "description": "Allow running subprocesses",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-run",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-ffi"
           ],
           "description": "Allow loading dynamic libraries",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-ffi",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Activate inspector on host:port (default: 127.0.0.1:9229)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Activate inspector on host:port and break at start of user script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect-brk",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Value of 'globalThis.location' used by some web APIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
             "--v8-flags"
           ],
           "description": "Set V8 command line options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "v8-flags"
+          }
         },
         {
           "names": [
             "--seed"
           ],
           "description": "Set the random number generator seed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seed"
+          }
         },
         {
           "names": [
@@ -1507,14 +1993,21 @@
             "--name"
           ],
           "description": "Executable file name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "name"
+          }
         },
         {
           "names": [
             "--root"
           ],
           "description": "Installation root",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1621,7 +2114,11 @@
             "--root"
           ],
           "description": "Installation root",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "root",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -1685,21 +2182,30 @@
             "--rules-tags"
           ],
           "description": "Use set of rules with a tag",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rules-tags"
+          }
         },
         {
           "names": [
             "--rules-include"
           ],
           "description": "Include lint rules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rules-include"
+          }
         },
         {
           "names": [
             "--rules-exclude"
           ],
           "description": "Exclude lint rules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "rules-exclude"
+          }
         },
         {
           "names": [
@@ -1707,14 +2213,22 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Ignore linting particular source files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ignore",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1784,7 +2298,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1792,21 +2310,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -1814,77 +2350,120 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Activate inspector on host:port (default: 127.0.0.1:9229)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Activate inspector on host:port and break at start of user script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect-brk",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Value of 'globalThis.location' used by some web APIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
             "--v8-flags"
           ],
           "description": "Set V8 command line options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "v8-flags"
+          }
         },
         {
           "names": [
             "--seed"
           ],
           "description": "Set the random number generator seed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seed"
+          }
         },
         {
           "names": [
             "--eval-file"
           ],
           "description": "Evaluates the provided file(s) as scripts when the REPL starts. Accepts file paths and URLs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "eval-file",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--eval"
           ],
           "description": "Evaluates the provided code when the REPL starts",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "eval"
+          }
         },
         {
           "names": [
             "--unsafely-ignore-certificate-errors"
           ],
           "description": "DANGER: Disables verification of TLS certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unsafely-ignore-certificate-errors",
+            "description": "Scope ignoring certificate errors to these hosts",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -1953,7 +2532,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1961,21 +2544,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -1983,112 +2584,179 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-read"
           ],
           "description": "Allow file system read access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-read",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-write"
           ],
           "description": "Allow file system write access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-write",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-net"
           ],
           "description": "Allow network access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-net",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--unsafely-ignore-certificate-errors"
           ],
           "description": "DANGER: Disables verification of TLS certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unsafely-ignore-certificate-errors",
+            "description": "Scope ignoring certificate errors to these hosts",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-env"
           ],
           "description": "Allow environment access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-env",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-run"
           ],
           "description": "Allow running subprocesses",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-run",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-ffi"
           ],
           "description": "Allow loading dynamic libraries",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-ffi",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Activate inspector on host:port (default: 127.0.0.1:9229)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Activate inspector on host:port and break at start of user script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect-brk",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Value of 'globalThis.location' used by some web APIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
             "--v8-flags"
           ],
           "description": "Set V8 command line options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "v8-flags"
+          }
         },
         {
           "names": [
             "--seed"
           ],
           "description": "Set the random number generator seed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seed"
+          }
         },
         {
           "names": [
             "--watch"
           ],
           "description": "Watch for file changes and restart automatically",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "watch",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2198,14 +2866,22 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cwd"
           ],
           "description": "Specify the directory to run the task in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cwd",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2247,7 +2923,11 @@
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2255,21 +2935,39 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--no-check"
           ],
           "description": "Skip type-checking modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "no-check",
+            "is_variadic": true,
+            "suggestions": [
+              "remote"
+            ]
+          }
         },
         {
           "names": [
             "--check"
           ],
           "description": "Type-check modules",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "check",
+            "is_variadic": true,
+            "suggestions": [
+              "all"
+            ]
+          }
         },
         {
           "names": [
@@ -2277,140 +2975,220 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-read"
           ],
           "description": "Allow file system read access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-read",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-write"
           ],
           "description": "Allow file system write access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-write",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--allow-net"
           ],
           "description": "Allow network access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-net",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--unsafely-ignore-certificate-errors"
           ],
           "description": "DANGER: Disables verification of TLS certificates",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unsafely-ignore-certificate-errors",
+            "description": "Scope ignoring certificate errors to these hosts",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-env"
           ],
           "description": "Allow environment access",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-env",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-run"
           ],
           "description": "Allow running subprocesses",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-run",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--allow-ffi"
           ],
           "description": "Allow loading dynamic libraries",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "allow-ffi",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--inspect"
           ],
           "description": "Activate inspector on host:port (default: 127.0.0.1:9229)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--inspect-brk"
           ],
           "description": "Activate inspector on host:port and break at start of user script",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "inspect-brk",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--location"
           ],
           "description": "Value of 'globalThis.location' used by some web APIs",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "location"
+          }
         },
         {
           "names": [
             "--v8-flags"
           ],
           "description": "Set V8 command line options",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "v8-flags"
+          }
         },
         {
           "names": [
             "--seed"
           ],
           "description": "Set the random number generator seed",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "seed"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Ignore files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ignore",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--fail-fast"
           ],
           "description": "Stop after N errors. Defaults to stopping after first failure",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "fail-fast",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--filter"
           ],
           "description": "Run tests with this string or pattern in the test name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "filter"
+          }
         },
         {
           "names": [
             "--shuffle"
           ],
           "description": "(UNSTABLE): Shuffle the order in which the tests are run",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "shuffle",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--coverage"
           ],
           "description": "UNSTABLE: Collect coverage profile data into DIR",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "coverage"
+          }
         },
         {
           "names": [
@@ -2584,21 +3362,32 @@
             "--version"
           ],
           "description": "The version to upgrade to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "version"
+          }
         },
         {
           "names": [
             "--output"
           ],
           "description": "The path to output the updated version to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2650,7 +3439,11 @@
             "--output"
           ],
           "description": "The directory to output the vendored modules to",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output",
+            "template": "folders"
+          }
         },
         {
           "names": [
@@ -2658,21 +3451,33 @@
             "--config"
           ],
           "description": "Specify the configuration file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "config",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--import-map"
           ],
           "description": "Load import map file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "import-map",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--lock"
           ],
           "description": "Check the specified lock file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "lock",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -2680,14 +3485,23 @@
             "--reload"
           ],
           "description": "Reload source code cache (recompile TypeScript)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "reload",
+            "is_variadic": true,
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--cert"
           ],
           "description": "Load certificate authority from PEM encoded file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cert",
+            "template": "filepaths"
+          }
         },
         {
           "names": [

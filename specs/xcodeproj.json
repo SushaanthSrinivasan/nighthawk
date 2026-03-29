@@ -24,7 +24,10 @@
             "--ignore"
           ],
           "description": "A key to ignore in the comparison. Can be specified multiple times",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "KEY"
+          }
         }
       ],
       "args": [
@@ -45,7 +48,15 @@
             "--format"
           ],
           "description": "YAML output format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FORMAT",
+            "suggestions": [
+              "hash",
+              "tree_hash",
+              "raw"
+            ]
+          }
         }
       ],
       "args": [
@@ -63,7 +74,14 @@
             "--group-option"
           ],
           "description": "The position of the groups when sorting. If no option is specified sorting will interleave groups and files",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "POSITION",
+            "suggestions": [
+              "above",
+              "below"
+            ]
+          }
         }
       ],
       "args": [
@@ -81,7 +99,10 @@
             "--project"
           ],
           "description": "The Xcode project document to use",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "PATH"
+          }
         }
       ],
       "args": [

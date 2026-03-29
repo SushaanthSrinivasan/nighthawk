@@ -62,7 +62,10 @@
                 "--hostname"
               ],
               "description": "The hostname of the GitHub instance to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hostname"
+              }
             },
             {
               "names": [
@@ -70,7 +73,10 @@
                 "--scopes"
               ],
               "description": "Additional authentication scopes for gh to have",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "scopes"
+              }
             },
             {
               "names": [
@@ -84,7 +90,10 @@
                 "--with-token"
               ],
               "description": "Read token from standard input",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "token"
+              }
             }
           ]
         },
@@ -98,7 +107,10 @@
                 "--hostname"
               ],
               "description": "The hostname of the GitHub instance to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hostname"
+              }
             }
           ]
         },
@@ -112,7 +124,10 @@
                 "--hostname"
               ],
               "description": "The hostname of the GitHub instance to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hostname"
+              }
             },
             {
               "names": [
@@ -120,7 +135,10 @@
                 "--scopes"
               ],
               "description": "Additional authentication scopes for gh to have",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "scopes"
+              }
             }
           ]
         },
@@ -134,7 +152,10 @@
                 "--hostname"
               ],
               "description": "The hostname of the GitHub instance to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hostname"
+              }
             }
           ]
         },
@@ -148,14 +169,20 @@
                 "--hostname"
               ],
               "description": "The hostname of the GitHub instance to authenticate with",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "hostname"
+              }
             },
             {
               "names": [
                 "--with-token"
               ],
               "description": "Read token from standard input",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "token"
+              }
             }
           ]
         }
@@ -185,7 +212,10 @@
             "--branch"
           ],
           "description": "Select another branch by passing in the branch name",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         },
         {
           "names": [
@@ -214,7 +244,10 @@
             "--repo"
           ],
           "description": "Select another repository using the [HOST/]OWNER/REPO format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[HOST/]OWNER/REPO"
+          }
         },
         {
           "names": [
@@ -246,7 +279,16 @@
             "-s",
             "--shell"
           ],
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "shell",
+            "suggestions": [
+              "bash",
+              "zsh",
+              "fish",
+              "powershell"
+            ]
+          }
         }
       ]
     },
@@ -264,7 +306,10 @@
                 "--host"
               ],
               "description": "Get per-host setting",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             }
           ],
           "args": [
@@ -349,7 +394,10 @@
                 "--host"
               ],
               "description": "Get per-host setting",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "host"
+              }
             }
           ]
         }
@@ -443,7 +491,10 @@
                 "--desc"
               ],
               "description": "A description for this gist",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "description"
+              }
             },
             {
               "names": [
@@ -451,7 +502,11 @@
                 "--filename"
               ],
               "description": "Provide a filename to be used when reading from STDIN",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "filename",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -495,7 +550,11 @@
                 "--add"
               ],
               "description": "Add a new file to the gist",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "filename",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -522,7 +581,10 @@
                 "--limit"
               ],
               "description": "Maximum number of gists to fetch (default 10)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
@@ -593,7 +655,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             }
           ],
           "args": [
@@ -613,7 +678,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
@@ -621,7 +689,10 @@
                 "--body"
               ],
               "description": "Supply a body. Will prompt for one otherwise",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -629,7 +700,11 @@
                 "--body-file"
               ],
               "description": "Read body text from file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -637,7 +712,10 @@
                 "--editor"
               ],
               "description": "Add body using editor",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "editor"
+              }
             },
             {
               "names": [
@@ -664,7 +742,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
@@ -672,7 +753,10 @@
                 "--assignee"
               ],
               "description": "Assign people by their login. Use \"@me\" to self-assign",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
@@ -680,7 +764,10 @@
                 "--body"
               ],
               "description": "Supply a body. Will prompt for one otherwise",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -688,7 +775,11 @@
                 "--body-file"
               ],
               "description": "Read body text from file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -696,7 +787,10 @@
                 "--label"
               ],
               "description": "Add labels by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -704,7 +798,10 @@
                 "--milestone"
               ],
               "description": "Add the issue to a milestone by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -712,14 +809,20 @@
                 "--project"
               ],
               "description": "Add the issue to projects by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--recover"
               ],
               "description": "Recover input from a failed run of create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -727,7 +830,10 @@
                 "--title"
               ],
               "description": "Supply a title. Will prompt for one otherwise",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -748,7 +854,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             }
           ]
         },
@@ -762,21 +871,30 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
                 "--add-assignee"
               ],
               "description": "Add assigned users by their login. Use \"@me\" to assign yourself",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
                 "--add-label"
               ],
               "description": "Add labels by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -784,7 +902,10 @@
                 "--body"
               ],
               "description": "Set the new body",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -792,7 +913,11 @@
                 "--body-file"
               ],
               "description": "Read body text from file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
@@ -800,28 +925,40 @@
                 "--milestone"
               ],
               "description": "Edit the milestone the issue belongs to by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--remove-assignee"
               ],
               "description": "Remove assigned users by their login. Use \"@me\" to unassign yourself",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
                 "--remove-label"
               ],
               "description": "Remove labels by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--remove-project"
               ],
               "description": "Remove the issue from projects by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -829,7 +966,10 @@
                 "--title"
               ],
               "description": "Set the new title",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -849,7 +989,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
@@ -857,7 +1000,10 @@
                 "--assignee"
               ],
               "description": "Filter by assignee",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -865,7 +1011,10 @@
                 "--author"
               ],
               "description": "Filter by author",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -873,14 +1022,20 @@
                 "--jq"
               ],
               "description": "Filter JSON output using a jq expression",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "expression"
+              }
             },
             {
               "names": [
                 "--json"
               ],
               "description": "Output JSON with the specified fields",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "fields"
+              }
             },
             {
               "names": [
@@ -888,7 +1043,10 @@
                 "--label"
               ],
               "description": "Filter by labels",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -896,14 +1054,20 @@
                 "--limit"
               ],
               "description": "Maximum number of issues to fetch (default 30)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
                 "--mention"
               ],
               "description": "Filter by mention",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -911,7 +1075,11 @@
                 "--milestone"
               ],
               "description": "Filter by milestone number or `title`",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number",
+                "description": "Number or Title"
+              }
             },
             {
               "names": [
@@ -919,7 +1087,10 @@
                 "--search"
               ],
               "description": "Search issues with query",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "query"
+              }
             },
             {
               "names": [
@@ -927,7 +1098,16 @@
                 "--state"
               ],
               "description": "Filter by state (default \"open\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "state",
+                "description": "(default \"open\")",
+                "suggestions": [
+                  "open",
+                  "closed",
+                  "all"
+                ]
+              }
             },
             {
               "names": [
@@ -935,7 +1115,10 @@
                 "--template"
               ],
               "description": "Format JSON output using a Go template",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -956,7 +1139,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             }
           ]
         },
@@ -970,7 +1156,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
@@ -978,14 +1167,20 @@
                 "--jq"
               ],
               "description": "Filter JSON output using a jq expression",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "expression"
+              }
             },
             {
               "names": [
                 "--json"
               ],
               "description": "Output JSON with the specified fields",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "fields"
+              }
             },
             {
               "names": [
@@ -993,7 +1188,10 @@
                 "--template"
               ],
               "description": "Format JSON output using a Go template",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1007,7 +1205,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             }
           ],
           "args": [
@@ -1030,7 +1231,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the [HOST/]OWNER/REPO format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repo"
+              }
             },
             {
               "names": [
@@ -1045,14 +1249,20 @@
                 "--jq"
               ],
               "description": "Filter JSON output using a jq expression",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "expression"
+              }
             },
             {
               "names": [
                 "--json"
               ],
               "description": "Output JSON with the specified fields",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "fields"
+              }
             },
             {
               "names": [
@@ -1060,7 +1270,10 @@
                 "--template"
               ],
               "description": "Format JSON output using a Go template",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1145,28 +1358,40 @@
                 "--add-assignee"
               ],
               "description": "Add assigned users by their login. Use \"@me\" to assign yourself",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
                 "--add-label"
               ],
               "description": "Add labels by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--add-project"
               ],
               "description": "Add the pull request to projects by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--add-reviewer"
               ],
               "description": "Add reviewers by their login",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
@@ -1174,7 +1399,10 @@
                 "--base"
               ],
               "description": "Change the base branch for this pull request",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch"
+              }
             },
             {
               "names": [
@@ -1182,7 +1410,10 @@
                 "--body"
               ],
               "description": "Set the new body",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1190,7 +1421,10 @@
                 "--body-file"
               ],
               "description": "Read body text from file (use \"-\" to read from standard input)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file"
+              }
             },
             {
               "names": [
@@ -1198,35 +1432,50 @@
                 "--milestone"
               ],
               "description": "Edit the milestone the pull request belongs to by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--remove-assignee"
               ],
               "description": "Remove assigned users by their login. Use \"@me\" to unassign yourself",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
                 "--remove-label"
               ],
               "description": "Remove labels by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--remove-project"
               ],
               "description": "Remove the pull request from projects by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--remove-reviewer"
               ],
               "description": "Remove reviewers by their login",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
@@ -1234,7 +1483,10 @@
                 "--title"
               ],
               "description": "Set the new title",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1242,7 +1494,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             }
           ],
           "args": [
@@ -1261,7 +1516,10 @@
                 "--body"
               ],
               "description": "Supply a body. Will prompt for one otherwise",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "message"
+              }
             },
             {
               "names": [
@@ -1294,7 +1552,10 @@
                 "--assignee"
               ],
               "description": "Assign people by their login",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
@@ -1302,7 +1563,10 @@
                 "--base"
               ],
               "description": "The branch into which you want your code merged",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch"
+              }
             },
             {
               "names": [
@@ -1310,7 +1574,10 @@
                 "--body"
               ],
               "description": "Body for the pull request",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "body"
+              }
             },
             {
               "names": [
@@ -1332,7 +1599,10 @@
                 "--head"
               ],
               "description": "The branch that contains commits for your pull request (default: current branch)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch"
+              }
             },
             {
               "names": [
@@ -1340,7 +1610,10 @@
                 "--label"
               ],
               "description": "The branch that contains commits for your pull request (default: current branch)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch"
+              }
             },
             {
               "names": [
@@ -1348,7 +1621,10 @@
                 "--milestone"
               ],
               "description": "Add the pull request to a milestone by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
@@ -1362,14 +1638,20 @@
                 "--project"
               ],
               "description": "Add the pull request to projects by name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "-recover"
               ],
               "description": "Recover input from a failed run of create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1377,7 +1659,10 @@
                 "--reviewer"
               ],
               "description": "Request reviews from people or teams by their handle",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "handle"
+              }
             },
             {
               "names": [
@@ -1385,7 +1670,10 @@
                 "--title"
               ],
               "description": "Title for the pull request",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1405,7 +1693,10 @@
                 "--color"
               ],
               "description": "Use color in diff output: {always|never|auto}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "choice"
+              }
             }
           ],
           "args": [
@@ -1424,7 +1715,10 @@
                 "--assignee"
               ],
               "description": "Filter by assignee",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1432,7 +1726,10 @@
                 "--base"
               ],
               "description": "Filter by base branch",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1440,7 +1737,10 @@
                 "--label"
               ],
               "description": "Filter by labels",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1448,7 +1748,10 @@
                 "--limit"
               ],
               "description": "Maximum number of items to fetch",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
@@ -1456,7 +1759,10 @@
                 "--state"
               ],
               "description": "Filter by state: {open|closed|merged|all}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1464,7 +1770,10 @@
                 "--web"
               ],
               "description": "Open the browser to list the pull requests",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -1542,7 +1851,10 @@
                 "--body"
               ],
               "description": "Specify the body of a review",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1631,7 +1943,12 @@
                 "--"
               ],
               "description": "Flags to pass to git when cloning",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "flags",
+                "description": "Flags to pass to git when cloning",
+                "is_variadic": true
+              }
             },
             {
               "names": [
@@ -1639,7 +1956,10 @@
                 "--upstream-remote-name"
               ],
               "description": "Upstream remote name when cloning a fork (default \"upstream\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -1668,7 +1988,10 @@
                 "--description"
               ],
               "description": "Description of the repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1676,7 +1999,10 @@
                 "--homepage"
               ],
               "description": "Repository home page URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1702,7 +2028,10 @@
                 "--template"
               ],
               "description": "Make the new repository based on a template repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1729,7 +2058,10 @@
                 "--gitignore"
               ],
               "description": "Specify a gitignore template for the repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1737,7 +2069,10 @@
                 "--license"
               ],
               "description": "Specify an Open Source License for the repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1745,7 +2080,10 @@
                 "--remote"
               ],
               "description": "Specify remote name for the new repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1753,7 +2091,10 @@
                 "--source"
               ],
               "description": "Specify path to local repository to use as source",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1761,7 +2102,10 @@
                 "--team"
               ],
               "description": "The name of the organization team to be granted access",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -1809,7 +2153,10 @@
                     "--title"
                   ],
                   "description": "Title of the new key",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 }
               ],
               "args": [
@@ -1842,7 +2189,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the `[HOST/]OWNER/REPO` format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             }
           ]
         },
@@ -1879,7 +2229,10 @@
                 "--add-topic"
               ],
               "description": "Add repository topic",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic names"
+              }
             },
             {
               "names": [
@@ -1892,7 +2245,10 @@
                 "--default-branch"
               ],
               "description": "Set the default branch name for the repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch name"
+              }
             },
             {
               "names": [
@@ -1906,7 +2262,10 @@
                 "--description"
               ],
               "description": "Description of the repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "description"
+              }
             },
             {
               "names": [
@@ -1956,14 +2315,20 @@
                 "--homepage"
               ],
               "description": "Repository home page URL",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "URL"
+              }
             },
             {
               "names": [
                 "--remove-topic"
               ],
               "description": "Remove repository topic",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic names"
+              }
             },
             {
               "names": [
@@ -1976,7 +2341,15 @@
                 "--visibility"
               ],
               "description": "Change the visibility of the repository to {public,private,internal}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "public",
+                  "private",
+                  "internal"
+                ]
+              }
             }
           ],
           "args": [
@@ -1994,7 +2367,12 @@
                 "--"
               ],
               "description": "Flags to pass to git when cloning",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "flags",
+                "description": "Flags to pass to git when cloning",
+                "is_variadic": true
+              }
             },
             {
               "names": [
@@ -2013,21 +2391,30 @@
                 "--remote-name"
               ],
               "description": "Specify a name for a fork's new remote. (default \"origin\")",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--org"
               ],
               "description": "Create the fork in an organization",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--fork-name"
               ],
               "description": "Rename the forked repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -2045,7 +2432,15 @@
                 "--visibility"
               ],
               "description": "Filter repositories by visibility",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "visibility",
+                "suggestions": [
+                  "public",
+                  "private",
+                  "internal"
+                ]
+              }
             },
             {
               "names": [
@@ -2072,7 +2467,10 @@
                 "--limit"
               ],
               "description": "Maximum number of repositories to list (default 30)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2111,7 +2509,10 @@
                 "--topic"
               ],
               "description": "Filter by topic",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "topic"
+              }
             },
             {
               "names": [
@@ -2149,7 +2550,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2157,7 +2561,10 @@
                 "--repo"
               ],
               "description": "Select another repository using the `[HOST/]OWNER/REPO` format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             }
           ],
           "args": [
@@ -2201,7 +2608,10 @@
                 "--branch"
               ],
               "description": "Branch to sync",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch name"
+              }
             },
             {
               "names": [
@@ -2215,7 +2625,10 @@
                 "--source"
               ],
               "description": "Source repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "source repository"
+              }
             }
           ],
           "args": [
@@ -2234,7 +2647,10 @@
                 "--branch"
               ],
               "description": "View a specific branch of the repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2249,14 +2665,20 @@
                 "--jq"
               ],
               "description": "Filter JSON output using a jq expression",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "expression"
+              }
             },
             {
               "names": [
                 "--json"
               ],
               "description": "Output JSON with the specified fields",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "fields"
+              }
             },
             {
               "names": [
@@ -2264,7 +2686,10 @@
                 "--template"
               ],
               "description": "Format JSON output using a Go template",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -2298,7 +2723,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2306,7 +2734,10 @@
                 "--limit"
               ],
               "description": "Maximum number of runs to fetch (default 20)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
@@ -2314,7 +2745,10 @@
                 "--workflow"
               ],
               "description": "Filter runs by workflow",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2328,7 +2762,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             }
           ],
           "args": [
@@ -2347,7 +2784,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2361,7 +2801,10 @@
                 "--job"
               ],
               "description": "View a specific job ID from a run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2406,7 +2849,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2420,7 +2866,10 @@
                 "--interval"
               ],
               "description": "Refresh interval in seconds (default 3)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             }
           ]
         }
@@ -2432,7 +2881,10 @@
             "-R"
           ],
           "description": "Select another repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[HOST/]OWNER/REPO"
+          }
         }
       ]
     },
@@ -2450,7 +2902,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2458,7 +2913,10 @@
                 "--env"
               ],
               "description": "List secrets for an environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2466,7 +2924,10 @@
                 "--org"
               ],
               "description": "List secrets for an environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2480,7 +2941,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2488,7 +2952,10 @@
                 "--env"
               ],
               "description": "List secrets for an environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2496,7 +2963,10 @@
                 "--org"
               ],
               "description": "List secrets for an environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -2510,7 +2980,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2518,7 +2991,10 @@
                 "--env"
               ],
               "description": "List secrets for an environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2526,7 +3002,10 @@
                 "--org"
               ],
               "description": "List secrets for an environment",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2534,7 +3013,10 @@
                 "--body"
               ],
               "description": "A value for the secret. Reads from STDIN if not specified",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2542,7 +3024,15 @@
                 "--visibility"
               ],
               "description": "Set visibility for an organization secret: all, `private`, or `selected` (default 'private')",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string",
+                "suggestions": [
+                  "private",
+                  "selected",
+                  "all"
+                ]
+              }
             }
           ]
         }
@@ -2554,7 +3044,10 @@
             "-R"
           ],
           "description": "Select another repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[HOST/]OWNER/REPO"
+          }
         }
       ]
     },
@@ -2572,7 +3065,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2599,7 +3095,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             }
           ]
         }
@@ -2619,7 +3118,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             }
           ],
           "args": [
@@ -2638,7 +3140,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             }
           ],
           "args": [
@@ -2657,7 +3162,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2672,7 +3180,11 @@
                 "--limit"
               ],
               "description": "Show all workflows, including disabled workflows",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int",
+                "description": "Maximum number of workflows to fetch (default 50)"
+              }
             }
           ],
           "args": [
@@ -2691,7 +3203,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2699,7 +3214,10 @@
                 "--field"
               ],
               "description": "Add a string parameter in key=value format, respecting @ syntax",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key=value"
+              }
             },
             {
               "names": [
@@ -2713,7 +3231,10 @@
                 "--raw-field"
               ],
               "description": "Add a string parameter in key=value format",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "key=value"
+              }
             },
             {
               "names": [
@@ -2721,7 +3242,10 @@
                 "--ref"
               ],
               "description": "The branch or tag name which contains the version of the workflow file you'd like to run",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ],
           "args": [
@@ -2740,7 +3264,10 @@
                 "-R"
               ],
               "description": "Select another repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "[HOST/]OWNER/REPO"
+              }
             },
             {
               "names": [
@@ -2748,7 +3275,10 @@
                 "--ref"
               ],
               "description": "The branch or tag name which contains the version of the workflow file you'd like to view",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2786,7 +3316,10 @@
             "-R"
           ],
           "description": "Select another repository",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "[HOST/]OWNER/REPO"
+          }
         }
       ]
     },
@@ -2807,7 +3340,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2834,7 +3370,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2849,7 +3388,10 @@
                 "--profile"
               ],
               "description": "Name of the SSH profile to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2899,14 +3441,21 @@
                 "--display-name"
               ],
               "description": "Display name for the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--idle-timeout"
               ],
               "description": "Allowed inactivity before codespace is stopped",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "duration",
+                "description": "Example: '10m', '1h'"
+              }
             },
             {
               "names": [
@@ -2914,7 +3463,16 @@
                 "--location"
               ],
               "description": "Determined automatically if not provided",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "location",
+                "suggestions": [
+                  "EastUs",
+                  "SouthEastAsia",
+                  "WestEurope",
+                  "WestUs2"
+                ]
+              }
             },
             {
               "names": [
@@ -2922,7 +3480,10 @@
                 "--machine"
               ],
               "description": "Hardware specifications for the VM",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2930,14 +3491,21 @@
                 "--repo"
               ],
               "description": "Repository name with owner: user/repo",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--retention-period"
               ],
               "description": "Allowed time after shutting down before the codespace is automatically deleted (maximum 30 days)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "duration",
+                "description": "Example: '10m', '1h'"
+              }
             },
             {
               "names": [
@@ -2958,7 +3526,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -2971,7 +3542,10 @@
                 "--days"
               ],
               "description": "Delete codespaces older than N days",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "N days"
+              }
             },
             {
               "names": [
@@ -2986,7 +3560,10 @@
                 "--org"
               ],
               "description": "The login handle of the organization (admin-only)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
@@ -2994,7 +3571,10 @@
                 "--repo"
               ],
               "description": "Delete codespaces for a repository",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "repository"
+              }
             },
             {
               "names": [
@@ -3002,7 +3582,10 @@
                 "--user"
               ],
               "description": "The username to delete codespaces for",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             }
           ]
         },
@@ -3016,7 +3599,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3024,7 +3610,10 @@
                 "--display-name"
               ],
               "description": "Set the display name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3032,7 +3621,10 @@
                 "--machine"
               ],
               "description": "Set hardware specifications for the VM",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3046,7 +3638,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3060,14 +3655,20 @@
                 "--jq"
               ],
               "description": "Filter JSON output using a jq expression",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "expression"
+              }
             },
             {
               "names": [
                 "--json"
               ],
               "description": "Output JSON with the specified fields",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "fields"
+              }
             },
             {
               "names": [
@@ -3075,7 +3676,10 @@
                 "--limit"
               ],
               "description": "Maximum number of codespaces to list",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
@@ -3083,7 +3687,10 @@
                 "--org"
               ],
               "description": "The login handle of the organization to list codespaces for (admin-only)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
@@ -3091,7 +3698,10 @@
                 "--repo"
               ],
               "description": "Repository name with owner: user/repo",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3099,7 +3709,10 @@
                 "--template"
               ],
               "description": "Format JSON output using a Go template; see 'gh help formatting'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3107,7 +3720,10 @@
                 "--user"
               ],
               "description": "The username to list codespaces for",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3121,7 +3737,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3146,7 +3765,10 @@
                     "--codespace"
                   ],
                   "description": "Name of the codespace",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 }
               ],
               "args": [
@@ -3165,7 +3787,10 @@
                     "--codespace"
                   ],
                   "description": "Name of the codespace",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "string"
+                  }
                 }
               ],
               "args": [
@@ -3182,7 +3807,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3190,14 +3818,20 @@
                 "--jq"
               ],
               "description": "Filter JSON output using a jq expression",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "expression"
+              }
             },
             {
               "names": [
                 "--json"
               ],
               "description": "Output JSON with the specified fields",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "fields"
+              }
             },
             {
               "names": [
@@ -3205,7 +3839,10 @@
                 "--template"
               ],
               "description": "Format JSON output using a Go template; see 'gh help formatting'",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3219,7 +3856,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             }
           ]
         },
@@ -3233,7 +3873,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3253,21 +3896,31 @@
                 "--debug-file"
               ],
               "description": "Path of the file log to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "file",
+                "template": "filepaths"
+              }
             },
             {
               "names": [
                 "--profile"
               ],
               "description": "Name of the SSH profile to use",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
                 "--server-port"
               ],
               "description": "SSH server port number (0 => pick unused)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             }
           ],
           "args": [
@@ -3286,7 +3939,10 @@
                 "--codespace"
               ],
               "description": "Name of the codespace",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "string"
+              }
             },
             {
               "names": [
@@ -3294,7 +3950,10 @@
                 "--org"
               ],
               "description": "The login handle of the organization (admin-only)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "login"
+              }
             },
             {
               "names": [
@@ -3302,7 +3961,10 @@
                 "--user"
               ],
               "description": "The username to delete codespaces for",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "username"
+              }
             }
           ]
         }
@@ -3321,21 +3983,30 @@
                 "--title"
               ],
               "description": "Title for the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "title"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use \"@me\" for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "body"
+              }
             }
           ]
         },
@@ -3348,7 +4019,10 @@
                 "--title"
               ],
               "description": "New title of the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "title"
+              }
             },
             {
               "names": [
@@ -3356,28 +4030,44 @@
                 "--description"
               ],
               "description": "New description of the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "description"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use \"@me\" for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
                 "--readme"
               ],
               "description": "New readme for the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "readme"
+              }
             },
             {
               "names": [
                 "--visibility"
               ],
               "description": "Change project visibility",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "visibility",
+                "suggestions": [
+                  "PUBLIC",
+                  "PRIVATE"
+                ]
+              }
             }
           ]
         },
@@ -3390,14 +4080,20 @@
                 "--closed"
               ],
               "description": "Include closed projects",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "closed"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
@@ -3405,14 +4101,20 @@
                 "--limit"
               ],
               "description": "Maximum number of projects to fetch",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
@@ -3431,14 +4133,20 @@
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             }
           ]
         },
@@ -3451,14 +4159,20 @@
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
@@ -3477,14 +4191,20 @@
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
@@ -3504,28 +4224,40 @@
                 "--title"
               ],
               "description": "Title for the new project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "title"
+              }
             },
             {
               "names": [
                 "--target-owner"
               ],
               "description": "Login of the target owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "target-owner"
+              }
             },
             {
               "names": [
                 "--source-owner"
               ],
               "description": "Login of the source owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "source-owner"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
@@ -3544,35 +4276,56 @@
                 "--name"
               ],
               "description": "Name of the field",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name"
+              }
             },
             {
               "names": [
                 "--data-type"
               ],
               "description": "DataType of the new field",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "data-type",
+                "suggestions": [
+                  "TEXT",
+                  "SINGLE_SELECT",
+                  "DATE",
+                  "NUMBER"
+                ]
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
                 "--single-select-options"
               ],
               "description": "Options for SINGLE_SELECT data type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "single-select-options"
+              }
             }
           ]
         },
@@ -3585,7 +4338,10 @@
                 "--id"
               ],
               "description": "ID of the field to delete",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
@@ -3604,7 +4360,10 @@
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
@@ -3618,7 +4377,10 @@
                 "--limit"
               ],
               "description": "Maximum number of fields to fetch",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             }
           ]
         },
@@ -3631,28 +4393,40 @@
                 "--title"
               ],
               "description": "Title for the draft issue",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "title"
+              }
             },
             {
               "names": [
                 "--body"
               ],
               "description": "Body for the draft issue",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "body"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             }
           ]
         },
@@ -3665,77 +4439,110 @@
                 "--id"
               ],
               "description": "ID of the item to edit",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
                 "--project-id"
               ],
               "description": "ID of the project to which the field belongs to",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "project-id"
+              }
             },
             {
               "names": [
                 "--title"
               ],
               "description": "Title of the draft issue item",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "title"
+              }
             },
             {
               "names": [
                 "--body"
               ],
               "description": "Body of the draft issue item",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "body"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
                 "--field-id"
               ],
               "description": "ID of the field to update",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "field-id"
+              }
             },
             {
               "names": [
                 "--iteration-id"
               ],
               "description": "ID of the iteration value to set on the field",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "iteration-id"
+              }
             },
             {
               "names": [
                 "--text"
               ],
               "description": "Text value for the field",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "text"
+              }
             },
             {
               "names": [
                 "--number"
               ],
               "description": "Number value for the field",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "number"
+              }
             },
             {
               "names": [
                 "--single-select-option-id"
               ],
               "description": "ID of the single select option value to set on the field",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "single-select-option-id"
+              }
             },
             {
               "names": [
                 "--date"
               ],
               "description": "Date value for the field (YYYY-MM-DD)",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "date"
+              }
             }
           ]
         },
@@ -3748,21 +4555,30 @@
                 "--id"
               ],
               "description": "ID of the item to delete",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             }
           ]
         },
@@ -3775,7 +4591,10 @@
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
@@ -3783,14 +4602,20 @@
                 "--limit"
               ],
               "description": "Maximum number of items to fetch",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "int"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             }
           ]
         },
@@ -3803,21 +4628,30 @@
                 "--url"
               ],
               "description": "URL of the issue or pull request to add to the project",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "url"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             }
           ]
         },
@@ -3830,21 +4664,30 @@
                 "--id"
               ],
               "description": "ID of the item to archive",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "id"
+              }
             },
             {
               "names": [
                 "--format"
               ],
               "description": "Output format: {json}",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format"
+              }
             },
             {
               "names": [
                 "--owner"
               ],
               "description": "Login of the owner. Use @me for the current user",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "owner"
+              }
             },
             {
               "names": [

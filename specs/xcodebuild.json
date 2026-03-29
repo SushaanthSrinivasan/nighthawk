@@ -43,14 +43,20 @@
         "-project"
       ],
       "description": "Build the project NAME",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
         "-target"
       ],
       "description": "Build the target NAME",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
@@ -63,63 +69,99 @@
         "-workspace"
       ],
       "description": "Build the workspace NAME",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-scheme"
       ],
       "description": "Build the scheme NAME",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
         "-configuration"
       ],
       "description": "Use the build configuration NAME for building each target",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
         "-xcconfig"
       ],
       "description": "Apply the build settings defined in the file at PATH as overrides",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-arch"
       ],
       "description": "Build each target for the architecture ARCH; this will override architectures defined in the project",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "ARCH",
+        "suggestions": [
+          "x86_64",
+          "arm64",
+          "armv7"
+        ]
+      }
     },
     {
       "names": [
         "-sdk"
       ],
       "description": "Use SDK as the name or path of the base SDK when building the project",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SDK",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-toolchain"
       ],
       "description": "Use the toolchain with identifier or name NAME",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
         "-destination"
       ],
       "description": "Use the destination described by DESTINATIONSPECIFIER (a comma-separated set of key=value pairs describing the destination to use)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "DESTINATION SPECIFIER",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-destination-timeout"
       ],
       "description": "Wait for TIMEOUT seconds while searching for the destination device",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "TIMEOUT"
+      }
     },
     {
       "names": [
@@ -132,42 +174,64 @@
         "-jobs"
       ],
       "description": "Specify the maximum number of concurrent build operations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
         "-maximum-concurrent-test-device-destinations"
       ],
       "description": "The maximum number of device destinations to test on concurrently",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
         "-maximum-concurrent-test-simulator-destinations"
       ],
       "description": "The maximum number of simulator destinations to test on concurrently",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
         "-parallel-testing-enabled"
       ],
       "description": "Overrides the per-target setting in the scheme",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "YES",
+          "NO"
+        ]
+      }
     },
     {
       "names": [
         "-parallel-testing-worker-count"
       ],
       "description": "The exact number of test runners that will be spawned during parallel testing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
         "-maximum-parallel-testing-workers"
       ],
       "description": "The maximum number of test runners that will be spawned during parallel testing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NUMBER"
+      }
     },
     {
       "names": [
@@ -228,14 +292,20 @@
         "-find-executable"
       ],
       "description": "Display the full path to executable NAME in the provided SDK and toolchain",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
         "-find-library"
       ],
       "description": "Display the full path to library NAME in the provided SDK and toolchain",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "NAME"
+      }
     },
     {
       "names": [
@@ -248,63 +318,107 @@
         "-enableAddressSanitizer"
       ],
       "description": "Turn the address sanitizer on or off",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "YES",
+          "NO"
+        ]
+      }
     },
     {
       "names": [
         "-enableThreadSanitizer"
       ],
       "description": "Turn the thread sanitizer on or off",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "YES",
+          "NO"
+        ]
+      }
     },
     {
       "names": [
         "-enableUndefinedBehaviorSanitizer"
       ],
       "description": "Turn the undefined behavior sanitizer on or off",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "YES",
+          "NO"
+        ]
+      }
     },
     {
       "names": [
         "-resultBundlePath"
       ],
       "description": "Specifies the directory where a result bundle describing what occurred will be placed",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-resultStreamPath"
       ],
       "description": "Specifies the file where a result stream will be written to (the file must already exist)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-resultBundleVersion"
       ],
       "description": "Specifies which result bundle version should be used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version"
+      }
     },
     {
       "names": [
         "-clonedSourcePackagesDirPath"
       ],
       "description": "Specifies the directory to which remote source packages are fetch or expected to be found",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-derivedDataPath"
       ],
       "description": "Specifies the directory where build products and other derived data will go",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-archivePath"
       ],
       "description": "Specifies the directory where any created archives will be placed, or the archive that should be exported",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -323,21 +437,36 @@
         "-exportOptionsPlist"
       ],
       "description": "Specifies a path to a plist file that configures archive exporting",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-enableCodeCoverage"
       ],
       "description": "Turn code coverage on or off when testing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "YES",
+          "NO"
+        ]
+      }
     },
     {
       "names": [
         "-exportPath"
       ],
       "description": "Specifies the destination for the product exported from an archive",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -362,35 +491,54 @@
         "-localizationPath"
       ],
       "description": "Specifies a path to XLIFF localization file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "PATH",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "-exportLanguage"
       ],
       "description": "Specifies multiple optional ISO 639-1 languages included in a localization export",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "languages",
+        "is_variadic": true
+      }
     },
     {
       "names": [
         "-xcroot"
       ],
       "description": "Specifies a path to a .xcroot to use for building and/or testing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-xctestrun"
       ],
       "description": "Specifies a path to a test run specification",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-testPlan"
       ],
       "description": "Specifies the name of the test plan associated with the scheme to use for testing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "test plan"
+      }
     },
     {
       "names": [
@@ -403,7 +551,10 @@
         "-only-testing:"
       ],
       "description": "Constrains testing by specifying tests to include, and excluding other tests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Test Identifier"
+      }
     },
     {
       "names": [
@@ -416,28 +567,44 @@
         "-skip-testing:"
       ],
       "description": "Constrains testing by specifying tests to exclude, but including other tests",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Test Identifier"
+      }
     },
     {
       "names": [
         "-test-timeouts-enabled"
       ],
       "description": "Enable or disable test timeout behavior",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "suggestions": [
+          "YES",
+          "NO"
+        ]
+      }
     },
     {
       "names": [
         "-default-test-execution-time-allowance"
       ],
       "description": "The default execution time an individual test is given to execute, if test timeouts are enabled",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
         "-maximum-test-execution-time-allowance"
       ],
       "description": "The maximum execution time an individual test is given to execute, regardless of the test's preferred allowance",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "SECONDS"
+      }
     },
     {
       "names": [
@@ -498,7 +665,14 @@
         "-scmProvider"
       ],
       "description": "Which implementation to use for Git operations (system/xcode)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "Implementation",
+        "suggestions": [
+          "system",
+          "xcode"
+        ]
+      }
     },
     {
       "names": [

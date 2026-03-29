@@ -17,14 +17,26 @@
             "--plaintext-key"
           ],
           "description": "Save decryption key to the hard disk in plaintext",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "--force",
+            "description": "Skip user confirmation"
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         }
       ],
       "args": [
@@ -55,7 +67,15 @@
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         },
         {
           "names": [
@@ -97,7 +117,15 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -162,7 +190,11 @@
             "--field"
           ],
           "description": "Show only the field",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIELD",
+            "description": "Show only this field"
+          }
         },
         {
           "names": [
@@ -181,7 +213,11 @@
             "--attach"
           ],
           "description": "Show only the attachment",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ATTACHID",
+            "description": "Attachment ID"
+          }
         },
         {
           "names": [
@@ -202,7 +238,15 @@
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         }
       ],
       "args": [
@@ -221,7 +265,15 @@
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         }
       ],
       "args": [
@@ -244,7 +296,15 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -257,7 +317,15 @@
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         },
         {
           "names": [
@@ -288,14 +356,41 @@
             "--field"
           ],
           "description": "Add only the field",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIELD",
+            "description": "Add only this field"
+          }
         },
         {
           "names": [
             "--note-type"
           ],
           "description": "Add only the note",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "NOTETYPE",
+            "description": "Type of note to add",
+            "suggestions": [
+              "amex",
+              "bank",
+              "credit",
+              "database",
+              "drivers_license",
+              "email",
+              "health_insurance",
+              "im",
+              "mastercard",
+              "membership",
+              "passport",
+              "server",
+              "software_license",
+              "ssh_key",
+              "ssn",
+              "visa",
+              "wifi"
+            ]
+          }
         }
       ],
       "args": [
@@ -314,7 +409,15 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -327,7 +430,15 @@
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         },
         {
           "names": [
@@ -359,7 +470,11 @@
             "--field"
           ],
           "description": "Edit only the field",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIELD",
+            "description": "Edit just this field"
+          }
         }
       ],
       "args": [
@@ -378,14 +493,30 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         },
         {
           "names": [
@@ -399,14 +530,22 @@
             "--username"
           ],
           "description": "Generate password for this username",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "USERNAME",
+            "description": "Username to generate the password for"
+          }
         },
         {
           "names": [
             "--url"
           ],
           "description": "Generate password for this URL",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "URL",
+            "description": "URL to generate the password for"
+          }
         },
         {
           "names": [
@@ -435,14 +574,30 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         }
       ],
       "args": [
@@ -461,14 +616,30 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         }
       ],
       "args": [
@@ -494,7 +665,15 @@
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         }
       ]
     },
@@ -514,7 +693,15 @@
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         }
       ]
     },
@@ -527,7 +714,15 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
@@ -552,21 +747,43 @@
             "--sync"
           ],
           "description": "When the current operation syncs to server",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "sync",
+            "suggestions": [
+              "auto",
+              "now",
+              "no"
+            ]
+          }
         },
         {
           "names": [
             "--color"
           ],
           "description": "Control colored output to the terminal",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "color",
+            "suggestions": [
+              "auto",
+              "never",
+              "always"
+            ]
+          }
         },
         {
           "names": [
             "--fields"
           ],
           "description": "Comma-separated subset of: id, url, username, password, extra, name, fav, id, grouping, group, fullname, last_touch, last_modified_gmt, attachpresent",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "FIELDLIST",
+            "suggestions": [
+              "id,url,username,password,extra,name,fav,id,grouping,group,fullname,last_touch,last_modified_gmt,attachpresent"
+            ]
+          }
         }
       ],
       "args": [
@@ -593,21 +810,33 @@
                 "--read-only"
               ],
               "description": "Control read or write access",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true",
+                "description": "Grant read only access"
+              }
             },
             {
               "names": [
                 "--hidden"
               ],
               "description": "Share user view permission",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true",
+                "description": "User can only view entry"
+              }
             },
             {
               "names": [
                 "--admin"
               ],
               "description": "Share user administer permission",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true",
+                "description": "User can administer entry"
+              }
             }
           ],
           "args": [
@@ -630,21 +859,33 @@
                 "--read-only"
               ],
               "description": "Control read or write access",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true",
+                "description": "Grant read only access"
+              }
             },
             {
               "names": [
                 "--hidden"
               ],
               "description": "Share user view permission",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true",
+                "description": "User can only view entry"
+              }
             },
             {
               "names": [
                 "--admin"
               ],
               "description": "Share user administer permission",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "true",
+                "description": "User can administer entry"
+              }
             }
           ],
           "args": [

@@ -54,7 +54,24 @@
             "--output-format"
           ],
           "description": "Output serialization format for violations. The default serialization format is 'full'",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output_format",
+            "suggestions": [
+              "concise",
+              "full",
+              "json",
+              "json-lines",
+              "junit",
+              "grouped",
+              "github",
+              "gitlab",
+              "pylint",
+              "rdjson",
+              "azure",
+              "sarif"
+            ]
+          }
         },
         {
           "names": [
@@ -62,14 +79,30 @@
             "--output-file"
           ],
           "description": "Specify file to write the linter output to (default: stdout)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output_file",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--target-version"
           ],
           "description": "The minimum Python version that should be supported",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target_version",
+            "suggestions": [
+              "py37",
+              "py38",
+              "py39",
+              "py310",
+              "py311",
+              "py312",
+              "py313"
+            ]
+          }
         },
         {
           "names": [
@@ -82,7 +115,10 @@
             "--extension"
           ],
           "description": "List of mappings from file extension to language (one of `python`, `ipynb`, `pyi`). For example, to treat `.ipy` files as IPython notebooks, use `--extension ipy:ipynb`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extension"
+          }
         },
         {
           "names": [
@@ -120,70 +156,100 @@
             "--select"
           ],
           "description": "Comma-separated list of rule codes to enable (or ALL, to enable all rules)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "select"
+          }
         },
         {
           "names": [
             "--ignore"
           ],
           "description": "Comma-separated list of rule codes to disable",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "ignore"
+          }
         },
         {
           "names": [
             "--extend-select"
           ],
           "description": "Like --select, but adds additional rule codes on top of the selected ones",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extend_select"
+          }
         },
         {
           "names": [
             "--per-file-ignores"
           ],
           "description": "List of mappings from file pattern to code to exclude",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "per_file_ignores"
+          }
         },
         {
           "names": [
             "--extend-per-file-ignores"
           ],
           "description": "Like `--per-file-ignores`, but adds additional ignores on top of those already specified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extend_per_file_ignores"
+          }
         },
         {
           "names": [
             "--fixable"
           ],
           "description": "List of rule codes to treat as eligible for fix. Only applicable when fix itself is enabled (e.g., via `--fix`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "fixable"
+          }
         },
         {
           "names": [
             "--unfixable"
           ],
           "description": "List of rule codes to treat as ineligible for fix. Only applicable when fix itself is enabled (e.g., via `--fix`)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "unfixable"
+          }
         },
         {
           "names": [
             "--extend-fixable"
           ],
           "description": "Like --fixable, but adds additional rule codes on top of those already specified",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extend_fixable"
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "List of paths, used to omit files and/or directories from analysis",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
             "--extend-exclude"
           ],
           "description": "Like --exclude, but adds additional files and directories on top of those already excluded",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extend_exclude"
+          }
         },
         {
           "names": [
@@ -209,14 +275,22 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cache_dir",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--stdin-filename"
           ],
           "description": "The name of the file when passing it through stdin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stdin_filename",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -256,7 +330,14 @@
             "--output-format"
           ],
           "description": "Output format [default: text]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output-format",
+            "suggestions": [
+              "text",
+              "json"
+            ]
+          }
         }
       ],
       "args": [
@@ -1161,7 +1242,14 @@
             "--output-format"
           ],
           "description": "Output format [default: text]",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output-format",
+            "suggestions": [
+              "text",
+              "json"
+            ]
+          }
         }
       ]
     },
@@ -1174,7 +1262,14 @@
             "--output-format"
           ],
           "description": "Output format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output-format",
+            "suggestions": [
+              "text",
+              "json"
+            ]
+          }
         }
       ]
     },
@@ -1203,14 +1298,29 @@
             "--extension"
           ],
           "description": "List of mappings from file extension to language (one of `python`, `ipynb`, `pyi`). For example, to treat `.ipy` files as IPython notebooks, use `--extension ipy:ipynb`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "extension"
+          }
         },
         {
           "names": [
             "--target-version"
           ],
           "description": "The minimum Python version that should be supported",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target_version",
+            "suggestions": [
+              "py37",
+              "py38",
+              "py39",
+              "py310",
+              "py311",
+              "py312",
+              "py313"
+            ]
+          }
         },
         {
           "names": [
@@ -1230,14 +1340,22 @@
             "--cache-dir"
           ],
           "description": "Path to the cache directory (env: RUFF_CACHE_DIR=)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "cache_dir",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
             "--stdin-filename"
           ],
           "description": "The name of the file when passing it through stdin",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "stdin_filename",
+            "template": "filepaths"
+          }
         },
         {
           "names": [
@@ -1250,7 +1368,10 @@
             "--exclude"
           ],
           "description": "List of paths, used to omit files and/or directories from analysis",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "exclude"
+          }
         },
         {
           "names": [
@@ -1263,14 +1384,20 @@
             "--line-length"
           ],
           "description": "Set the line-length",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "line_length"
+          }
         },
         {
           "names": [
             "--range"
           ],
           "description": "When specified, Ruff will try to only format the code in the given range",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "range"
+          }
         }
       ],
       "args": [
@@ -1313,7 +1440,14 @@
                 "--direction"
               ],
               "description": "The direction of the import map. By default, generates a dependency map, i.e., a map from file to files that it depends on. Use `--direction dependents` to generate a map from file to files that depen",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "DIRECTION",
+                "suggestions": [
+                  "dependencies",
+                  "dependents"
+                ]
+              }
             },
             {
               "names": [
@@ -1338,7 +1472,19 @@
                 "--target-version"
               ],
               "description": "The minimum Python version that should be supported",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "TARGET_VERSION",
+                "suggestions": [
+                  "py37",
+                  "py38",
+                  "py39",
+                  "py310",
+                  "py311",
+                  "py312",
+                  "py313"
+                ]
+              }
             }
           ],
           "args": [
@@ -1361,7 +1507,14 @@
             "--output-format"
           ],
           "description": "Output format",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "output-format",
+            "suggestions": [
+              "text",
+              "json"
+            ]
+          }
         }
       ]
     },
@@ -1397,7 +1550,11 @@
         "--config"
       ],
       "description": "Path to the `pyproject.toml` or `ruff.toml` file to use for configuration",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "config",
+        "template": "filepaths"
+      }
     },
     {
       "names": [

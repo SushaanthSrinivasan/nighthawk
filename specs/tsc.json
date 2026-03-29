@@ -43,7 +43,11 @@
         "--project"
       ],
       "description": "Compile the project given the path to its configuration file, or to a folder with a tsconfig.json",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -92,21 +96,39 @@
         "--excludeDirectories"
       ],
       "description": "Remove a list of directories from the watch process",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "dir",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--excludeFiles"
       ],
       "description": "Remove a list of files from the watch mode's processing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "files",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--fallbackPolling"
       ],
       "description": "Specify what approach the watcher should use if the system runs out of native file watchers",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "approach",
+        "suggestions": [
+          "fixedPollingInterval",
+          "priorityPollingInterval",
+          "dynamicPriorityPolling"
+        ]
+      }
     },
     {
       "names": [
@@ -125,14 +147,32 @@
         "--watchDirectory"
       ],
       "description": "Specify how directories are watched on systems that lack recursive file-watching functionality",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "approach",
+        "suggestions": [
+          "fixedPollingInterval",
+          "dynamicPriorityPolling",
+          "useFsEvents"
+        ]
+      }
     },
     {
       "names": [
         "--watchFile"
       ],
       "description": "Specify how the TypeScript watch mode works",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "approach",
+        "suggestions": [
+          "fixedPollingInterval",
+          "priorityPollingInterval",
+          "dynamicPriorityPolling",
+          "useFsEvents",
+          "useFsEventsOnParentDirectory"
+        ]
+      }
     },
     {
       "names": [
@@ -181,7 +221,11 @@
         "--baseUrl"
       ],
       "description": "Specify the base directory to resolve non-relative module names",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -206,7 +250,11 @@
         "--declarationDir"
       ],
       "description": "Specify the output directory for generated declaration files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -321,7 +369,15 @@
         "--importsNotUsedAsValues"
       ],
       "description": "Specify emit/checking behavior for imports that are only used for types",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "remove",
+          "preserve",
+          "error"
+        ]
+      }
     },
     {
       "names": [
@@ -352,28 +408,47 @@
         "--jsx"
       ],
       "description": "Specify what JSX code is generated",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "suggestions": [
+          "react",
+          "react-jsx",
+          "react-jsxdev",
+          "react-native",
+          "preserve"
+        ]
+      }
     },
     {
       "names": [
         "--jsxFactory"
       ],
       "description": "Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "JSX factory function"
+      }
     },
     {
       "names": [
         "--jsxFragmentFactory"
       ],
       "description": "Specify the JSX Fragment reference used for fragments when targeting React JSX emit e.g. 'React.Fragment' or 'Fragment'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "JSX fragment"
+      }
     },
     {
       "names": [
         "--jsxImportSource"
       ],
       "description": "Specify module specifier used to import the JSX factory functions when using jsx: react-jsx*",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string"
+      }
     },
     {
       "names": [
@@ -386,7 +461,12 @@
         "--lib"
       ],
       "description": "Specify a set of bundled library declaration files that describe the target runtime environment",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "list",
+        "is_variadic": true,
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -405,35 +485,62 @@
         "--mapRoot"
       ],
       "description": "Specify the location where debugger should locate map files instead of generated locations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--maxNodeModuleJsDepth"
       ],
       "description": "Specify the maximum folder depth used for checking JavaScript files from node_modules. Only applicable with allowJs",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "number"
+      }
     },
     {
       "names": [
         "--module"
       ],
       "description": "Specify what module code is generated",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "module",
+        "suggestions": [
+          "ES6",
+          "ES2015",
+          "ES2020",
+          "None",
+          "UMD",
+          "AMD",
+          "System",
+          "ESNext",
+          "CommonJS"
+        ]
+      }
     },
     {
       "names": [
         "--moduleResolution"
       ],
       "description": "Specify how TypeScript looks up a file from a given module specifier",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "module"
+      }
     },
     {
       "names": [
         "--newLine"
       ],
       "description": "Set the newline character for emitting files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "character"
+      }
     },
     {
       "names": [
@@ -542,28 +649,43 @@
         "--outDir"
       ],
       "description": "Specify an output folder for all emitted files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--outFile"
       ],
       "description": "Specify a file that bundles all outputs into one JavaScript file. If declaration is true, also designates a file that bundles all .d.ts output",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
         "--paths"
       ],
       "description": "Specify a set of entries that re-map imports to additional lookup locations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "object"
+      }
     },
     {
       "names": [
         "--plugins"
       ],
       "description": "Specify a list of language service plugins to include",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "plugins",
+        "is_variadic": true
+      }
     },
     {
       "names": [
@@ -594,7 +716,10 @@
         "--reactNamespace"
       ],
       "description": "Specify the object invoked for createElement. This only applies when targeting react JSX emit",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "object"
+      }
     },
     {
       "names": [
@@ -613,14 +738,23 @@
         "--rootDir"
       ],
       "description": "Specify the root folder within your source files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--rootDirs"
       ],
       "description": "Allow multiple folders to be treated as one when resolving modules",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
@@ -645,7 +779,11 @@
         "--sourceRoot"
       ],
       "description": "Specify the root path for debuggers to find the reference source code",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -700,7 +838,22 @@
         "--target"
       ],
       "description": "Set the JavaScript language version for emitted JavaScript and include compatible library declarations",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "suggestions": [
+          "ES3",
+          "ES5",
+          "ES6",
+          "ES2015",
+          "ES7",
+          "ES2016",
+          "ES2017",
+          "ES2018",
+          "ES2019",
+          "ES2020",
+          "ESNext"
+        ]
+      }
     },
     {
       "names": [
@@ -713,21 +866,34 @@
         "--tsBuildInfoFile"
       ],
       "description": "Specify the folder for .tsbuildinfo incremental compilation files",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "string",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--typeRoots"
       ],
       "description": "Specify multiple folders that act like ./node_modules/@types",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "folders",
+        "is_variadic": true,
+        "template": "folders"
+      }
     },
     {
       "names": [
         "--types"
       ],
       "description": "Specify type package names to be included without being referenced in a source file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "package names",
+        "is_variadic": true
+      }
     },
     {
       "names": [

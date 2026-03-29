@@ -37,14 +37,22 @@
             "--target"
           ],
           "description": "Build the specified target",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "target",
+            "description": "The name of the target to build"
+          }
         },
         {
           "names": [
             "--product"
           ],
           "description": "Build the specified product",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "product",
+            "description": "The name of the product to build"
+          }
         }
       ]
     },
@@ -131,7 +139,11 @@
             "--num-workers"
           ],
           "description": "Number of tests to execute in parallel",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "num-workers",
+            "description": "Number of tests to execute in parallel"
+          }
         },
         {
           "names": [
@@ -157,28 +169,44 @@
             "--filter"
           ],
           "description": "Run test cases matching regular expression",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "regex",
+            "description": "<test-target>.<test-case> or <test-target>.<test-case>/<test>"
+          }
         },
         {
           "names": [
             "--skip"
           ],
           "description": "Skip test cases matching regular expression",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "regex",
+            "description": "<test-target>.<test-case> or <test-target>.<test-case>/<test>"
+          }
         },
         {
           "names": [
             "--xunit-output"
           ],
           "description": "Path where the xUnit xml file should be generated",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Path where the xUnit xml file should be generated"
+          }
         },
         {
           "names": [
             "--test-product"
           ],
           "description": "Test the specified product",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "product",
+            "description": "The product to be tested"
+          }
         }
       ]
     },
@@ -296,7 +324,15 @@
                 "--type"
               ],
               "description": "The output type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type",
+                "description": "The output type",
+                "suggestions": [
+                  "json",
+                  "text"
+                ]
+              }
             }
           ]
         },
@@ -323,14 +359,29 @@
                 "--type"
               ],
               "description": "The package type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "type",
+                "description": "The package type",
+                "suggestions": [
+                  "empty",
+                  "library",
+                  "executable",
+                  "system-module",
+                  "manifest"
+                ]
+              }
             },
             {
               "names": [
                 "--name"
               ],
               "description": "Provide custom package name",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "name",
+                "description": "The package name"
+              }
             }
           ]
         },
@@ -455,21 +506,33 @@
                 "--revision"
               ],
               "description": "The revision to edit",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "revision",
+                "description": "The revision to edit"
+              }
             },
             {
               "names": [
                 "--branch"
               ],
               "description": "The branch to create",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch",
+                "description": "The branch to create"
+              }
             },
             {
               "names": [
                 "--path"
               ],
               "description": "Create or use the checkout at this path",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Create or use the checkout at this path"
+              }
             }
           ]
         },
@@ -532,21 +595,33 @@
                     "--package-url"
                   ],
                   "description": "The package dependency url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "package-url",
+                    "description": "The package dependency url"
+                  }
                 },
                 {
                   "names": [
                     "--original-url"
                   ],
                   "description": "The original url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "original-url",
+                    "description": "The original url"
+                  }
                 },
                 {
                   "names": [
                     "--mirror-url"
                   ],
                   "description": "The mirror url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "original-url",
+                    "description": "The mirror url"
+                  }
                 }
               ]
             },
@@ -573,21 +648,33 @@
                     "--package-url"
                   ],
                   "description": "The package dependency url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "package-url",
+                    "description": "The package dependency url"
+                  }
                 },
                 {
                   "names": [
                     "--original-url"
                   ],
                   "description": "The original url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "original-url",
+                    "description": "The original url"
+                  }
                 },
                 {
                   "names": [
                     "--mirror-url"
                   ],
                   "description": "The mirror url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "original-url",
+                    "description": "The mirror url"
+                  }
                 }
               ]
             },
@@ -614,14 +701,22 @@
                     "--package-url"
                   ],
                   "description": "The package dependency url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "package-url",
+                    "description": "The package dependency url"
+                  }
                 },
                 {
                   "names": [
                     "--original-url"
                   ],
                   "description": "The original url",
-                  "takes_arg": true
+                  "takes_arg": true,
+                  "arg": {
+                    "name": "original-url",
+                    "description": "The original url"
+                  }
                 }
               ]
             }
@@ -660,21 +755,33 @@
                 "--version"
               ],
               "description": "Show the version",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "version",
+                "description": "The version to resolve at"
+              }
             },
             {
               "names": [
                 "--branch"
               ],
               "description": "The branch to resolve at",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "branch",
+                "description": "The branch to resolve at"
+              }
             },
             {
               "names": [
                 "--revision"
               ],
               "description": "The revision to resolve at",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "revision",
+                "description": "The revision to resolve at"
+              }
             }
           ],
           "args": [
@@ -707,7 +814,17 @@
                 "--format"
               ],
               "description": "The format type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "description": "The format type",
+                "suggestions": [
+                  "text",
+                  "dot",
+                  "json",
+                  "flatlist"
+                ]
+              }
             }
           ]
         },
@@ -734,7 +851,17 @@
                 "--format"
               ],
               "description": "The format type",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "format",
+                "description": "The format type",
+                "suggestions": [
+                  "text",
+                  "dot",
+                  "json",
+                  "flatlist"
+                ]
+              }
             },
             {
               "names": [
@@ -747,7 +874,11 @@
                 "--set"
               ],
               "description": "Set tools version of package to the given value",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "tools version",
+                "description": "The tools version"
+              }
             }
           ]
         },
@@ -774,14 +905,22 @@
                 "--xcconfig-overrides"
               ],
               "description": "Path to xcconfig file",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Path to xcconfig file"
+              }
             },
             {
               "names": [
                 "--output"
               ],
               "description": "Path where the Xcode project should be generated",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "Path where the Xcode project should be generated"
+              }
             },
             {
               "names": [
@@ -847,7 +986,11 @@
                 "--output"
               ],
               "description": "The absolute or relative path for the generated source archive",
-              "takes_arg": true
+              "takes_arg": true,
+              "arg": {
+                "name": "path",
+                "description": "The absolute or relative path for the generated source archive"
+              }
             }
           ]
         },
@@ -905,21 +1048,33 @@
             "-Xcc"
           ],
           "description": "Pass a flag through to all C compiler invocations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "description": "The flag to pass through to all C compiler invocations"
+          }
         },
         {
           "names": [
             "-Xswiftc"
           ],
           "description": "Pass a flag through to all Swift compiler invocations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "description": "The flag to pass through to all Swift compiler invocations"
+          }
         },
         {
           "names": [
             "-Xlinker"
           ],
           "description": "Pass a flag through to all linker invocations",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "flag",
+            "description": "The flag to pass through to all linker invocations"
+          }
         },
         {
           "names": [
@@ -927,21 +1082,37 @@
             "--configuration"
           ],
           "description": "Build with configuration (default: debug)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "configuration",
+            "description": "The build configuration",
+            "suggestions": [
+              "debug",
+              "release"
+            ]
+          }
         },
         {
           "names": [
             "--build-path"
           ],
           "description": "Specify build/cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "The path to a specific build/cache directory"
+          }
         },
         {
           "names": [
             "--cache-path"
           ],
           "description": "Specify the shared cache directory",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "The path to a specific shared cache directory"
+          }
         },
         {
           "names": [
@@ -961,21 +1132,31 @@
             "--chdir"
           ],
           "description": "The custom working directory that the tool should operate in",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "chdir"
+          }
         },
         {
           "names": [
             "--package-path"
           ],
           "description": "Change working directory before any other operation",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "The working directory path to change to"
+          }
         },
         {
           "names": [
             "--multiroot-data-file"
           ],
           "description": "The path to the file containing multiroot package data. This is currently Xcode's workspace file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "multiroot-data-file"
+          }
         },
         {
           "names": [
@@ -1007,35 +1188,60 @@
             "--manifest-cache"
           ],
           "description": "Caching mode of Package.swift manifests",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "description": "The caching mode",
+            "suggestions": [
+              "shared",
+              "local",
+              "none"
+            ]
+          }
         },
         {
           "names": [
             "--destination"
           ],
           "description": "Path to the compilation destination describing JSON file",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "The path to the compilation destination describing JSON file"
+          }
         },
         {
           "names": [
             "--triple"
           ],
           "description": "The compilation destination's target triple",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "triple",
+            "description": "The compilation destination's target triple"
+          }
         },
         {
           "names": [
             "--sdk"
           ],
           "description": "Path to the compilation destination's SDK",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Path to the compilation destination's SDK"
+          }
         },
         {
           "names": [
             "--toolchain"
           ],
           "description": "Path to the compilation destination's toolchain",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "Path to the compilation destination's toolchain"
+          }
         },
         {
           "names": [
@@ -1060,7 +1266,17 @@
             "--sanitize"
           ],
           "description": "Turn on runtime checks for erroneous behavior",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "type",
+            "description": "What to sanitize",
+            "suggestions": [
+              "address",
+              "thread",
+              "undefined",
+              "scudo"
+            ]
+          }
         },
         {
           "names": [
@@ -1118,7 +1334,11 @@
             "--jobs"
           ],
           "description": "The number of jobs to spawn in parallel during the build process",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "jobs",
+            "description": "The number of jobs to spawn in parallel during the build process"
+          }
         },
         {
           "names": [
@@ -1161,21 +1381,37 @@
             "--build-system"
           ],
           "description": "The build system to use (default: native)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "build system",
+            "description": "The build system to use",
+            "suggestions": [
+              "native",
+              "xcode"
+            ]
+          }
         },
         {
           "names": [
             "--netrc"
           ],
           "description": "Whether to load .netrc files for authenticating with remote servers when downloading binary artifacts or communicating with a registry",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "bool",
+            "description": "Whether to load .netrc files for authenticating with remote servers when downloading binary artifacts or communicating with a registry"
+          }
         },
         {
           "names": [
             "--netrc-file"
           ],
           "description": "The path to the .netrc file used when `netrc` is `true`",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "path",
+            "description": "The path to the .netrc file used when `netrc` is `true`"
+          }
         }
       ]
     }
@@ -1200,14 +1436,28 @@
         "-access-notes-path"
       ],
       "description": "Specify YAML file to override attributes on Swift declarations in this module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "Specify YAML file to override attributes on Swift declarations in this module"
+      }
     },
     {
       "names": [
         "-assert-config"
       ],
       "description": "Specify the assert_configuration replacement",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "configuration",
+        "description": "The assert_configuration replacement",
+        "suggestions": [
+          "Debug",
+          "Release",
+          "Unchecked",
+          "DisableReplacement"
+        ]
+      }
     },
     {
       "names": [
@@ -1220,7 +1470,11 @@
         "-clang-target"
       ],
       "description": "Separately set the target we should use for internal Clang instance",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "target",
+        "description": "The target we should use for internal Clang instance"
+      }
     },
     {
       "names": [
@@ -1239,14 +1493,26 @@
         "-coverage-prefix-map"
       ],
       "description": "Remap source paths in coverage info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix",
+        "description": "The remap source paths in coverage info"
+      }
     },
     {
       "names": [
         "-debug-info-format"
       ],
       "description": "Specify the debug info format type",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "type",
+        "description": "The debug info format type",
+        "suggestions": [
+          "dwarf",
+          "codeview"
+        ]
+      }
     },
     {
       "names": [
@@ -1259,14 +1525,26 @@
         "-debug-prefix-map"
       ],
       "description": "Remap source paths in debug info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix=replacement",
+        "description": "The remap source paths in debug info"
+      }
     },
     {
       "names": [
         "-diagnostic-style"
       ],
       "description": "The formatting style used when printing diagnostics",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "style",
+        "description": "The formatting style used when printing diagnostics",
+        "suggestions": [
+          "swift",
+          "llvm"
+        ]
+      }
     },
     {
       "names": [
@@ -1321,14 +1599,22 @@
         "-D"
       ],
       "description": "Marks a conditional compilation flag as true",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "flag",
+        "description": "The conditional compilation flag to mark as true"
+      }
     },
     {
       "names": [
         "-embed-tbd-for-module"
       ],
       "description": "Embed symbols from the module in the emitted tbd file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "module",
+        "description": "Embed symbols from the module in the emitted tbd file"
+      }
     },
     {
       "names": [
@@ -1389,49 +1675,77 @@
         "-enforce-exclusivity"
       ],
       "description": "Enforce law of exclusivity",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "enforcement",
+        "description": "Enforce law of exclusivity"
+      }
     },
     {
       "names": [
         "-experimental-cxx-stdlib"
       ],
       "description": "C++ standard library to use; forwarded to Clang's -std lib flag",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "stdlib",
+        "description": "C++ standard library to use; forwarded to Clang's -std lib flag"
+      }
     },
     {
       "names": [
         "-file-compilation-dir"
       ],
       "description": "The compilation directory to embed in the debug info. Coverage mapping is not supported yet",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The compilation directory to embed in the debug info"
+      }
     },
     {
       "names": [
         "-file-prefix-map"
       ],
       "description": "Remap source paths in debug, coverage, and index info",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "prefix",
+        "description": "The remap source paths in debug, coverage, and index info"
+      }
     },
     {
       "names": [
         "-framework"
       ],
       "description": "Specifies a framework which should be linked against",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "framework",
+        "description": "The framework which should be linked against"
+      }
     },
     {
       "names": [
         "-Fsystem"
       ],
       "description": "Add directory to system framework search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "The directory to add to the system framework search path"
+      }
     },
     {
       "names": [
         "-F"
       ],
       "description": "Add directory to framework search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "The directory to add to the framework search path"
+      }
     },
     {
       "names": [
@@ -1468,98 +1782,154 @@
         "-index-store-path"
       ],
       "description": "Store indexing data to path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The path to store indexing data to"
+      }
     },
     {
       "names": [
         "-index-unit-output-path"
       ],
       "description": "Use the specified path as the output path in the produced index data",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The specified path as the output path in the produced index data"
+      }
     },
     {
       "names": [
         "-I"
       ],
       "description": "Add directory to the import search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "The directory to add to the import search path"
+      }
     },
     {
       "names": [
         "-j"
       ],
       "description": "Number of commands to execute in parallel",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "The number of commands to execute in parallel"
+      }
     },
     {
       "names": [
         "-libc"
       ],
       "description": "The libc runtime library to use",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "runtime",
+        "description": "The libc runtime library to use"
+      }
     },
     {
       "names": [
         "-locale"
       ],
       "description": "Choose a language for diagnostic messages",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "code",
+        "description": "The locale code"
+      }
     },
     {
       "names": [
         "-localization-path"
       ],
       "description": "Path to localized diagnostic messages directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The path to localized diagnostic messages directory"
+      }
     },
     {
       "names": [
         "-L"
       ],
       "description": "Add directory to library link search path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "The directory to add to the library link search path"
+      }
     },
     {
       "names": [
         "-l"
       ],
       "description": "Specifies a library which should be linked against",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "Specifies a library which should be linked against"
+      }
     },
     {
       "names": [
         "-module-abi-name"
       ],
       "description": "ABI name to use for the contents of this module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "The ABI name to use for the contents of this module"
+      }
     },
     {
       "names": [
         "-module-alias"
       ],
       "description": "If a source file imports or references module <alias_name>, the <underlying_name> is used for the contents of the file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "alias",
+        "description": "The module alias and the contents of the file to be used"
+      }
     },
     {
       "names": [
         "-module-cache-path"
       ],
       "description": "Specifies the Clang module cache path",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "Specifies the Clang module cache path"
+      }
     },
     {
       "names": [
         "-module-link-name"
       ],
       "description": "Library to link against when using this module",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "Library to link against when using this module"
+      }
     },
     {
       "names": [
         "-module-name"
       ],
       "description": "Name of the module to build",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "name",
+        "description": "Name of the module to build"
+      }
     },
     {
       "names": [
@@ -1584,7 +1954,11 @@
         "-num-threads"
       ],
       "description": "Enable multi-threading and specify number of threads",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "The number of threads"
+      }
     },
     {
       "names": [
@@ -1651,21 +2025,51 @@
         "-requirement-machine-abstract-signatures"
       ],
       "description": "Control usage of experimental generic signature minimization",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "The control usage of experimental generic signature minimization",
+        "suggestions": [
+          "on",
+          "off",
+          "verify",
+          "check"
+        ]
+      }
     },
     {
       "names": [
         "-requirement-machine-inferred-signatures"
       ],
       "description": "Control usage of experimental generic signature minimization",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "The control usage of experimental generic signature minimization",
+        "suggestions": [
+          "on",
+          "off",
+          "verify",
+          "check"
+        ]
+      }
     },
     {
       "names": [
         "-requirement-machine-protocol-signatures"
       ],
       "description": "Control usage of experimental protocol requirement signature minimization",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "description": "The control usage of experimental protocol requirement signature minimization",
+        "suggestions": [
+          "on",
+          "off",
+          "verify",
+          "check"
+        ]
+      }
     },
     {
       "names": [
@@ -1678,42 +2082,66 @@
         "-Rpass-missed"
       ],
       "description": "Report missed transformations by optimization passes whose name matches the given POSIX regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex",
+        "description": "Regex to match missed transformations"
+      }
     },
     {
       "names": [
         "-Rpass"
       ],
       "description": "Report performed transformations by optimization passes whose name matches the given POSIX regular expression",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex",
+        "description": "Regex to match performed transformations"
+      }
     },
     {
       "names": [
         "-runtime-compatibility-version"
       ],
       "description": "Link compatibility library for Swift runtime version, or 'none'",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version",
+        "description": "Swift runtime version, or 'none'"
+      }
     },
     {
       "names": [
         "-save-optimization-record-passes"
       ],
       "description": "Only include passes which match a specified regular expression in the generated optimization record (by default, include all passes)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "regex",
+        "description": "Regex to specify passes to be included in the optimization record"
+      }
     },
     {
       "names": [
         "-save-optimization-record-path"
       ],
       "description": "Specify the file name of any generated optimization record",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "filename",
+        "description": "The file name of any generated optimization record"
+      }
     },
     {
       "names": [
         "-save-optimization-record"
       ],
       "description": "Generate an optimization record file in a specific format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "description": "The format"
+      }
     },
     {
       "names": [
@@ -1726,14 +2154,22 @@
         "-sdk"
       ],
       "description": "Compile against a specific SDK",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "sdk",
+        "description": "The SDK to compile against"
+      }
     },
     {
       "names": [
         "-serialize-diagnostics-path"
       ],
       "description": "Emit a serialized diagnostics file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "path",
+        "description": "The path to write the file to"
+      }
     },
     {
       "names": [
@@ -1752,7 +2188,16 @@
         "-strict-concurrency"
       ],
       "description": "Specify the how strict concurrency checking will be",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "concurrency",
+        "description": "The concurrency",
+        "suggestions": [
+          "minimal",
+          "targeted",
+          "complete"
+        ]
+      }
     },
     {
       "names": [
@@ -1765,70 +2210,120 @@
         "-swift-isa-ptrauth-mode"
       ],
       "description": "Mode for staging isa/super signing",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "description": "Mode for staging isa/super signing",
+        "suggestions": [
+          "LegacyAndStrip",
+          "NewAndStrip",
+          "NewAndAuth"
+        ]
+      }
     },
     {
       "names": [
         "-swift-ptrauth-mode"
       ],
       "description": "Mode for staging pointer authentication",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "mode",
+        "description": "Mode for staging pointer authentication",
+        "suggestions": [
+          "LegacyAndStrip",
+          "NewAndStrip",
+          "NewAndAuth"
+        ]
+      }
     },
     {
       "names": [
         "-swift-version"
       ],
       "description": "Interpret input according to a specific Swift language version number",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version",
+        "description": "Swift language version number"
+      }
     },
     {
       "names": [
         "-target-cpu"
       ],
       "description": "Generate code for a particular CPU variant",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "cpu",
+        "description": "The CPU variant"
+      }
     },
     {
       "names": [
         "-target-min-inlining-version"
       ],
       "description": "Require inlinable code with no '@available' attribute to back-deploy to this version of the '-target' OS",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "version",
+        "description": "The target version"
+      }
     },
     {
       "names": [
         "-target-variant"
       ],
       "description": "Generate 'zippered' code for macCatalyst that can run on the specified variant target triple in addition to the main -target triple",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "variant",
+        "description": "The target variant"
+      }
     },
     {
       "names": [
         "-target"
       ],
       "description": "Generate code for the given target <triple>, such as x86_64-apple-macos10.9",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "triple",
+        "description": "The target triple"
+      }
     },
     {
       "names": [
         "-use-ld"
       ],
       "description": "Specifies the linker to be used",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "linker",
+        "description": "The linker to be used"
+      }
     },
     {
       "names": [
         "-user-module-version"
       ],
       "description": "Module version specified from Swift module authors",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "module",
+        "description": "The module version"
+      }
     },
     {
       "names": [
         "-vfsoverlay"
       ],
       "description": "Add directory to VFS overlay file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "The directory to the VFS overlay file"
+      }
     },
     {
       "names": [
@@ -1871,21 +2366,33 @@
         "-working-directory"
       ],
       "description": "Resolve file paths relative to the specified directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Resolve file paths relative to the specified directory"
+      }
     },
     {
       "names": [
         "-Xcc"
       ],
       "description": "Pass <arg> to the C/C++/Objective-C compiler",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Argument to pass to the C/C++/Objective-C compiler"
+      }
     },
     {
       "names": [
         "-Xlinker"
       ],
       "description": "Specifies an option which should be passed to the linker",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "arg",
+        "description": "Option to be passed to the linker"
+      }
     }
   ]
 }

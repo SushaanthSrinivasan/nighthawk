@@ -120,21 +120,37 @@
             "--diff"
           ],
           "description": "Diff printing mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "none",
+              "compact",
+              "full"
+            ]
+          }
         },
         {
           "names": [
             "--filter"
           ],
           "description": "Filter the set of executed linters and/or the returned codes; use a leading '-' to exclude a linter or code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "linter or code",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Shorthand for an inverse --filter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "linter or code",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -142,21 +158,30 @@
             "--jobs"
           ],
           "description": "Number of concurrent jobs (does not affect background linting)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--sample"
           ],
           "description": "Run each linter on N files (implies --no-fix and --all if no paths are given)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
             "--upstream"
           ],
           "description": "Upstream branch used to compute changed files (autodetected by default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         }
       ],
       "args": [
@@ -202,21 +227,37 @@
             "--diff"
           ],
           "description": "Diff printing mode",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "mode",
+            "suggestions": [
+              "none",
+              "compact",
+              "full"
+            ]
+          }
         },
         {
           "names": [
             "--filter"
           ],
           "description": "Filter the set of executed linters and/or the returned codes; use a leading '-' to exclude a linter or code",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "linter or code",
+            "is_variadic": true
+          }
         },
         {
           "names": [
             "--exclude"
           ],
           "description": "Shorthand for an inverse --filter",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "linter or code",
+            "is_variadic": true
+          }
         },
         {
           "names": [
@@ -224,21 +265,30 @@
             "--jobs"
           ],
           "description": "Number of concurrent jobs (does not affect background linting)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "number"
+          }
         },
         {
           "names": [
             "--sample"
           ],
           "description": "Run each linter on N files (implies --no-fix and --all if no paths are given)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "N"
+          }
         },
         {
           "names": [
             "--upstream"
           ],
           "description": "Upstream branch used to compute changed files (autodetected by default)",
-          "takes_arg": true
+          "takes_arg": true,
+          "arg": {
+            "name": "branch"
+          }
         }
       ],
       "args": [
@@ -331,7 +381,14 @@
         "--monitor"
       ],
       "description": "Enable the trunk daemon to monitor file changes in your repo",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "value",
+        "suggestions": [
+          "true",
+          "false"
+        ]
+      }
     },
     {
       "names": [
@@ -345,7 +402,14 @@
         "--output"
       ],
       "description": "Output format",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "format",
+        "suggestions": [
+          "text",
+          "json"
+        ]
+      }
     },
     {
       "names": [
@@ -364,7 +428,10 @@
         "--action_timeout"
       ],
       "description": "How long actions (downloads, lint runs, etc.) have to time out, with units (s, ms, etc)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "timeout"
+      }
     },
     {
       "names": [

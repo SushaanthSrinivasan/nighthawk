@@ -19,35 +19,52 @@
         "-0"
       ],
       "description": "Specifies the input record separator ($/) as an octal number",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "octal"
+      }
     },
     {
       "names": [
         "-C"
       ],
       "description": "Causes Ruby to switch to the directory",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-F"
       ],
       "description": "Specifies input field separator ($;)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "pattern"
+      }
     },
     {
       "names": [
         "-I"
       ],
       "description": "Used to tell Ruby where to load the library scripts. Directory path will be added to the load-path variable ($:)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [
         "-K"
       ],
       "description": "Specifies KANJI (Japanese) encoding",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "kcode"
+      }
     },
     {
       "names": [
@@ -60,7 +77,10 @@
         "-T"
       ],
       "description": "Turns on taint checks at the specified level (default 1)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "level"
+      }
     },
     {
       "names": [
@@ -86,7 +106,10 @@
         "-e"
       ],
       "description": "Specifies script from command-line while telling Ruby not to search the rest of arguments for a script file name",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "command"
+      }
     },
     {
       "names": [
@@ -100,7 +123,10 @@
         "-i"
       ],
       "description": "Specifies in-place-edit mode. The extension, if specified, is added to old file name to make a backup copy",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "extension"
+      }
     },
     {
       "names": [
@@ -125,7 +151,10 @@
         "-r"
       ],
       "description": "Causes Ruby to load the library using require",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "library"
+      }
     },
     {
       "names": [
@@ -151,7 +180,11 @@
         "-x"
       ],
       "description": "Tells Ruby that the script is embedded in a message. Leading garbage will be discarded until the first that starts with “#!” and contains the string, “ruby”. Any meaningful switches on that line will ",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "template": "folders"
+      }
     },
     {
       "names": [

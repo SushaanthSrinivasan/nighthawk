@@ -15,7 +15,12 @@
         "-d"
       ],
       "description": "Decrypt encrypted entries (copy if given wrong password)",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "zipfile",
+        "description": "Zipped file to decrypt entries of",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -44,7 +49,12 @@
         "-O"
       ],
       "description": "Write output to new archive zipfile, leaving original archive as is",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "zipfile",
+        "description": "New zipfile that will be written to",
+        "template": "filepaths"
+      }
     },
     {
       "names": [
@@ -52,7 +62,12 @@
         "-b"
       ],
       "description": "Use the directory given by path for the temporary zip file",
-      "takes_arg": true
+      "takes_arg": true,
+      "arg": {
+        "name": "directory",
+        "description": "Directory for the temporary zip file",
+        "template": "filepaths"
+      }
     }
   ],
   "args": [
