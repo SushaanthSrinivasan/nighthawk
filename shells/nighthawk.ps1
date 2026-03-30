@@ -5,12 +5,11 @@
 
 # --- Initialization ---
 $script:_nh_esc = [char]27
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 # Disable PSReadLine's built-in prediction to avoid overlap with nighthawk ghost text
 try { Set-PSReadLineOption -PredictionSource None } catch {}
 
 # --- Configuration ---
-$script:_nh_hint_arrow = if ($env:NIGHTHAWK_HINT_ARROW) { $env:NIGHTHAWK_HINT_ARROW } else { '→' }
+$script:_nh_hint_arrow = if ($env:NIGHTHAWK_HINT_ARROW) { $env:NIGHTHAWK_HINT_ARROW } else { '->' }
 
 # --- State ---
 $script:_nh_pipe = 'nighthawk'
@@ -28,14 +27,19 @@ function _nh_render_ghost([string]$ghost) {
     $e = $script:_nh_esc
     $script:_nh_ghost_len = $ghost.Length
     # Save cursor, gray text, reset color, restore cursor
-    [Console]::Write("${e}[s${e}[90m${ghost}${e}[0m${e}[u")
+    # Strip double quotes — Windows Terminal renders them as "" inside ANSI regions
+    $clean = $ghost -replace '"', ''
+    $script:_nh_ghost_len = $clean.Length
+    $Host.UI.Write("${e}[s${e}[90m")
+    $Host.UI.Write($clean)
+    $Host.UI.Write("${e}[0m${e}[u")
 }
 
 function _nh_clear_ghost {
     if ($script:_nh_ghost_len -gt 0) {
         $e = $script:_nh_esc
         # Save cursor, clear to end of line, restore cursor
-        [Console]::Write("${e}[s${e}[0K${e}[u")
+        $Host.UI.Write("${e}[s${e}[0K${e}[u")
         $script:_nh_ghost_len = 0
     }
     $script:_nh_suggestion = ''
@@ -144,7 +148,7 @@ $_nh_bind_chars += 97..122  | ForEach-Object { [string][char]$_ }   # a-z
 $_nh_bind_chars += 65..90   | ForEach-Object { [string][char]$_ }   # A-Z
 $_nh_bind_chars += 48..57   | ForEach-Object { [string][char]$_ }   # 0-9
 $_nh_bind_chars += @('-','_','.','/','\',':','~','=','+','@','#','$','%','^','&','*',',',';','!','|','Spacebar')
-# Deliberately skip: ' " { } ( ) [ ] — preserve PSReadLine SmartInsert/brace-matching
+$_nh_bind_chars += @('"','''','{','}','(',')','[',']')
 
 foreach ($c in $_nh_bind_chars) {
     Set-PSReadLineKeyHandler -Chord $c -ScriptBlock $_nh_insert_handler
