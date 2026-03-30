@@ -25,7 +25,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Tier 0: History
     if config.tiers.enable_history {
-        let shell = Shell::Zsh; // MVP default
+        // TODO: support multi-shell history — lazily load per-shell keyed by req.shell
+        let shell = Shell::detect_default();
+        if let Ok(val) = std::env::var("NIGHTHAWK_SHELL") {
+            if val.parse::<Shell>().is_err() {
+                tracing::warn!(
+                    "NIGHTHAWK_SHELL={val} is not recognized, falling back to {}",
+                    shell.as_str()
+                );
+            }
+        }
+        tracing::info!("Default shell for history: {}", shell.as_str());
         let mut file_history = history::file::FileHistory::new(shell);
         if let Err(e) = file_history.load() {
             tracing::warn!("Failed to load history for {}: {e}", shell.as_str());

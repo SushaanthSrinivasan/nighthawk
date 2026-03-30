@@ -262,7 +262,7 @@ pub fn complete(input: &str) -> Result<(), Box<dyn std::error::Error>> {
         input: input.to_string(),
         cursor: input.len(),
         cwd: std::env::current_dir().unwrap_or_default(),
-        shell: nighthawk_proto::Shell::Bash,
+        shell: nighthawk_proto::Shell::detect_default(),
     };
 
     let req_json = serde_json::to_string(&req)?;
