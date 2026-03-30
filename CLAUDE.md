@@ -64,8 +64,8 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 - **PID file:** `~/.config/nighthawk/nighthawk.pid` — written by `nh start`, cleaned up on `nh stop` and daemon graceful shutdown.
 - **Log file:** `~/.config/nighthawk/daemon.log` — daemon stdout/stderr redirected here by `nh start`.
 - **Specs location:** `~/.config/nighthawk/specs/` (after `nh setup`) or `NIGHTHAWK_SPECS_DIR` env var override.
-- **Plugin location:** `~/.config/nighthawk/nighthawk.zsh` (after `nh setup`).
-- **Auto-start:** Zsh plugin checks if socket exists, tries `nh start` once if missing.
+- **Plugin location:** `~/.config/nighthawk/nighthawk.zsh` or `nighthawk.ps1` (after `nh setup`).
+- **Auto-start:** Shell plugins check if socket/pipe exists, try `nh start` once if missing.
 - **Binary discovery:** `nh start` finds `nighthawk-daemon` next to the `nh` binary, falls back to PATH.
 
 ## Key traits

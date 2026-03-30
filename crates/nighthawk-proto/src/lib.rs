@@ -220,6 +220,33 @@ mod tests {
     }
 
     #[test]
+    fn powershell_request_with_windows_path() {
+        // Simulates the JSON the PowerShell plugin sends (backslashes escaped)
+        let json = r#"{"input":"cd C:\\Users\\iamsu","cursor":18,"cwd":"D:\\projects\\nighthawk","shell":"powershell"}"#;
+        let parsed: CompletionRequest = serde_json::from_str(json).unwrap();
+        assert_eq!(parsed.input, r"cd C:\Users\iamsu");
+        assert_eq!(parsed.cursor, 18);
+        assert_eq!(parsed.cwd, PathBuf::from(r"D:\projects\nighthawk"));
+        assert_eq!(parsed.shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn powershell_request_with_quotes_in_input() {
+        // Input containing escaped double quotes
+        let json = r#"{"input":"echo \"hello world\"","cursor":20,"cwd":"C:\\","shell":"pwsh"}"#;
+        let parsed: CompletionRequest = serde_json::from_str(json).unwrap();
+        assert_eq!(parsed.input, r#"echo "hello world""#);
+        assert_eq!(parsed.shell, Shell::PowerShell); // pwsh alias
+    }
+
+    #[test]
+    fn powershell_request_unc_path() {
+        let json = r#"{"input":"dir","cursor":3,"cwd":"\\\\server\\share","shell":"powershell"}"#;
+        let parsed: CompletionRequest = serde_json::from_str(json).unwrap();
+        assert_eq!(parsed.cwd, PathBuf::from(r"\\server\share"));
+    }
+
+    #[test]
     fn suggestion_none_diff_ops_omitted_in_json() {
         // diff_ops: None should not appear in serialized JSON (skip_serializing_if)
         let suggestion = Suggestion {

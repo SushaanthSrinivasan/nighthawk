@@ -182,6 +182,83 @@ async fn unknown_command_returns_empty() {
 }
 
 #[tokio::test]
+async fn powershell_shell_variant_works() {
+    let dir = tempfile::TempDir::new().unwrap();
+    let git_spec = include_str!("../../../specs/git.json");
+    std::fs::write(dir.path().join("git.json"), git_spec).unwrap();
+
+    let engine = build_spec_engine(dir.path());
+    let socket_path = format!("{}-pwsh", test_socket_path());
+
+    let engine_clone = Arc::clone(&engine);
+    let sp = socket_path.clone();
+    tokio::spawn(async move {
+        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+    });
+
+    tokio::time::sleep(std::time::Duration::from_millis(100)).await;
+
+    // Request with PowerShell shell and Windows-style path
+    let resp = query(
+        &socket_path,
+        &CompletionRequest {
+            input: "git ch".into(),
+            cursor: 6,
+            cwd: PathBuf::from(r"D:\projects\nighthawk"),
+            shell: Shell::PowerShell,
+        },
+    )
+    .await;
+
+    assert!(
+        !resp.suggestions.is_empty(),
+        "PowerShell requests should work like any other shell"
+    );
+    assert_eq!(resp.suggestions[0].text, "checkout");
+}
+
+#[tokio::test]
+async fn powershell_fuzzy_match_returns_diff_ops() {
+    let dir = tempfile::TempDir::new().unwrap();
+    let git_spec = include_str!("../../../specs/git.json");
+    std::fs::write(dir.path().join("git.json"), git_spec).unwrap();
+
+    let engine = build_spec_engine(dir.path());
+    let socket_path = format!("{}-pwsh-fuzzy", test_socket_path());
+
+    let engine_clone = Arc::clone(&engine);
+    let sp = socket_path.clone();
+    tokio::spawn(async move {
+        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+    });
+
+    tokio::time::sleep(std::time::Duration::from_millis(100)).await;
+
+    // Typo: "chekout" instead of "checkout"
+    let resp = query(
+        &socket_path,
+        &CompletionRequest {
+            input: "git chekout".into(),
+            cursor: 11,
+            cwd: PathBuf::from(r"C:\Users\test"),
+            shell: Shell::PowerShell,
+        },
+    )
+    .await;
+
+    assert!(
+        !resp.suggestions.is_empty(),
+        "Fuzzy match should find 'checkout' for 'chekout'"
+    );
+    let first = &resp.suggestions[0];
+    assert_eq!(first.text, "checkout");
+    assert!(
+        first.diff_ops.is_some(),
+        "Fuzzy match should include diff_ops"
+    );
+}
+
+#[tokio::test]
 async fn history_tier_prefix_match() {
     let dir = tempfile::TempDir::new().unwrap();
 
