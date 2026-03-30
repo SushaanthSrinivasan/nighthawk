@@ -148,7 +148,6 @@ $_nh_bind_chars += 97..122  | ForEach-Object { [string][char]$_ }   # a-z
 $_nh_bind_chars += 65..90   | ForEach-Object { [string][char]$_ }   # A-Z
 $_nh_bind_chars += 48..57   | ForEach-Object { [string][char]$_ }   # 0-9
 $_nh_bind_chars += @('-','_','.','/','\',':','~','=','+','@','#','$','%','^','&','*',',',';','!','|','Spacebar')
-$_nh_bind_chars += @('"','''','{','}','(',')','[',']')
 
 foreach ($c in $_nh_bind_chars) {
     Set-PSReadLineKeyHandler -Chord $c -ScriptBlock $_nh_insert_handler
@@ -172,7 +171,9 @@ Set-PSReadLineKeyHandler -Chord 'Tab' -ScriptBlock {
 
 Set-PSReadLineKeyHandler -Chord 'RightArrow' -ScriptBlock {
     param($key, $arg)
-    if ($script:_nh_suggestion) {
+    $line = ''; $cursor = 0
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+    if ($script:_nh_suggestion -and $cursor -eq $line.Length) {
         _nh_accept
     } else {
         [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
