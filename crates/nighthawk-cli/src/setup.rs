@@ -16,8 +16,12 @@ fn shell_info(shell: &str) -> Result<(&str, PathBuf), String> {
                 .join("nighthawk.fish"),
         )),
         "powershell" | "pwsh" => {
-            // PowerShell profile path varies; just print instructions
-            Err("PowerShell setup: add this to your $PROFILE:\n  . ~/.config/nighthawk/nighthawk.ps1".into())
+            let docs = dirs::document_dir().unwrap_or_else(|| home.join("Documents"));
+            Ok((
+                "nighthawk.ps1",
+                docs.join("PowerShell")
+                    .join("Microsoft.PowerShell_profile.ps1"),
+            ))
         }
         _ => Err(format!(
             "Unknown shell: {shell}\nSupported: zsh, bash, fish, powershell"
@@ -147,6 +151,11 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
         // Fish uses conf.d — just copying the file IS the setup
         println!("Fish plugin installed to {}", rc_path.display());
         return Ok(());
+    } else if shell == "powershell" || shell == "pwsh" {
+        format!(
+            "\n# nighthawk — terminal autocomplete\n. \"{}\"\n",
+            plugin_dest.display()
+        )
     } else {
         format!(
             "\n# nighthawk — terminal autocomplete\nsource \"{}\"\n",
@@ -162,6 +171,11 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
         }
     }
 
+    // Ensure parent directory exists (e.g. Documents/PowerShell/ on fresh systems)
+    if let Some(parent) = rc_path.parent() {
+        std::fs::create_dir_all(parent)?;
+    }
+
     // Append source line
     let mut file = std::fs::OpenOptions::new()
         .create(true)
@@ -171,7 +185,72 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Added to {}", rc_path.display());
     println!("\nRestart your shell or run:");
-    println!("  source {}", rc_path.display());
+    if shell == "powershell" || shell == "pwsh" {
+        println!("  . \"{}\"", rc_path.display());
+    } else {
+        println!("  source {}", rc_path.display());
+    }
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn powershell_shell_info_returns_ps1_plugin() {
+        let (filename, _) = shell_info("powershell").unwrap();
+        assert_eq!(filename, "nighthawk.ps1");
+    }
+
+    #[test]
+    fn pwsh_shell_info_returns_ps1_plugin() {
+        let (filename, _) = shell_info("pwsh").unwrap();
+        assert_eq!(filename, "nighthawk.ps1");
+    }
+
+    #[test]
+    fn powershell_and_pwsh_return_same_result() {
+        let (file1, path1) = shell_info("powershell").unwrap();
+        let (file2, path2) = shell_info("pwsh").unwrap();
+        assert_eq!(file1, file2);
+        assert_eq!(path1, path2);
+    }
+
+    #[test]
+    fn powershell_profile_path_ends_correctly() {
+        let (_, path) = shell_info("powershell").unwrap();
+        let path_str = path.to_string_lossy();
+        assert!(
+            path_str.contains("PowerShell")
+                && path_str.contains("Microsoft.PowerShell_profile.ps1"),
+            "Unexpected profile path: {path_str}"
+        );
+    }
+
+    #[test]
+    fn powershell_source_line_uses_dot_source() {
+        let plugin_path = PathBuf::from(r"C:\Users\test\nighthawk.ps1");
+        let source_line = format!(
+            "\n# nighthawk — terminal autocomplete\n. \"{}\"\n",
+            plugin_path.display()
+        );
+        assert!(source_line.contains(". \""), "Should use dot-source syntax");
+        assert!(
+            !source_line.contains("source "),
+            "Should not use bash source syntax"
+        );
+    }
+
+    #[test]
+    fn unknown_shell_returns_error() {
+        assert!(shell_info("nushell_unknown").is_err());
+    }
+
+    #[test]
+    fn zsh_still_works() {
+        let (filename, _) = shell_info("zsh").unwrap();
+        assert_eq!(filename, "nighthawk.zsh");
+    }
 }
