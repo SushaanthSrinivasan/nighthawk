@@ -15,7 +15,26 @@ pub enum Shell {
     Fish,
     #[serde(alias = "pwsh")]
     PowerShell,
+    #[serde(alias = "nu")]
     Nushell,
+}
+
+impl std::str::FromStr for Shell {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        // Strip version suffix (handles "bash-5.2" from $SHELL)
+        let lower = s.to_lowercase();
+        let base = lower.split('-').next().unwrap_or(&lower);
+        match base {
+            "zsh" => Ok(Shell::Zsh),
+            "bash" | "sh" => Ok(Shell::Bash),
+            "fish" => Ok(Shell::Fish),
+            "powershell" | "pwsh" => Ok(Shell::PowerShell),
+            "nushell" | "nu" => Ok(Shell::Nushell),
+            _ => Err(format!("unknown shell: {s}")),
+        }
+    }
 }
 
 impl Shell {
@@ -26,6 +45,43 @@ impl Shell {
             Shell::Fish => "fish",
             Shell::PowerShell => "powershell",
             Shell::Nushell => "nushell",
+        }
+    }
+
+    /// Detect default shell from env vars + platform.
+    ///
+    /// Priority: `NIGHTHAWK_SHELL` env var > `$SHELL` (Unix) > platform default.
+    pub fn detect_default() -> Self {
+        Self::detect_from(
+            std::env::var("NIGHTHAWK_SHELL").ok(),
+            std::env::var("SHELL").ok(),
+        )
+    }
+
+    /// Pure detection function for testability — takes env values as parameters.
+    pub fn detect_from(nighthawk_shell: Option<String>, shell_env: Option<String>) -> Self {
+        // 1. NIGHTHAWK_SHELL override
+        if let Some(ref s) = nighthawk_shell {
+            if let Ok(shell) = s.parse::<Shell>() {
+                return shell;
+            }
+            // Unknown value — fall through (caller should log warning)
+        }
+
+        // 2. Platform default / $SHELL
+        let _ = &shell_env; // used only on non-Windows
+        #[cfg(windows)]
+        {
+            Shell::PowerShell
+        }
+
+        #[cfg(not(windows))]
+        {
+            shell_env
+                .as_deref()
+                .and_then(|s| s.rsplit('/').next())
+                .and_then(|name| name.parse::<Shell>().ok())
+                .unwrap_or(Shell::Zsh)
         }
     }
 }
@@ -264,5 +320,115 @@ mod tests {
             "None diff_ops should be omitted: {}",
             json
         );
+    }
+
+    // --- Shell detection tests ---
+
+    #[test]
+    fn shell_from_str_basics() {
+        assert_eq!("zsh".parse::<Shell>().unwrap(), Shell::Zsh);
+        assert_eq!("bash".parse::<Shell>().unwrap(), Shell::Bash);
+        assert_eq!("fish".parse::<Shell>().unwrap(), Shell::Fish);
+        assert_eq!("powershell".parse::<Shell>().unwrap(), Shell::PowerShell);
+        assert_eq!("pwsh".parse::<Shell>().unwrap(), Shell::PowerShell);
+        assert_eq!("nushell".parse::<Shell>().unwrap(), Shell::Nushell);
+        assert_eq!("nu".parse::<Shell>().unwrap(), Shell::Nushell);
+        assert_eq!("sh".parse::<Shell>().unwrap(), Shell::Bash);
+    }
+
+    #[test]
+    fn shell_from_str_case_insensitive() {
+        assert_eq!("ZSH".parse::<Shell>().unwrap(), Shell::Zsh);
+        assert_eq!("PowerShell".parse::<Shell>().unwrap(), Shell::PowerShell);
+        assert_eq!("BASH".parse::<Shell>().unwrap(), Shell::Bash);
+        assert_eq!("Fish".parse::<Shell>().unwrap(), Shell::Fish);
+    }
+
+    #[test]
+    fn shell_from_str_versioned() {
+        assert_eq!("bash-5.2".parse::<Shell>().unwrap(), Shell::Bash);
+        assert_eq!("zsh-5.9".parse::<Shell>().unwrap(), Shell::Zsh);
+    }
+
+    #[test]
+    fn shell_from_str_unknown() {
+        assert!("ksh".parse::<Shell>().is_err());
+        assert!("csh".parse::<Shell>().is_err());
+        assert!("tcsh".parse::<Shell>().is_err());
+    }
+
+    #[test]
+    fn shell_from_str_empty() {
+        assert!("".parse::<Shell>().is_err());
+    }
+
+    #[test]
+    fn detect_from_nighthawk_shell_override() {
+        // NIGHTHAWK_SHELL takes priority over $SHELL
+        let shell = Shell::detect_from(Some("powershell".into()), Some("/bin/zsh".into()));
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn detect_from_unknown_override_falls_through() {
+        // Unknown NIGHTHAWK_SHELL falls through to $SHELL / platform default
+        let shell = Shell::detect_from(Some("ksh".into()), Some("/bin/fish".into()));
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Fish);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn detect_from_shell_path_parsing() {
+        let shell = Shell::detect_from(None, Some("/usr/local/bin/fish".into()));
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Fish);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn detect_from_shell_pwsh_on_unix() {
+        let shell = Shell::detect_from(None, Some("/usr/bin/pwsh".into()));
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::PowerShell);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn detect_from_no_env_vars() {
+        let shell = Shell::detect_from(None, None);
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Zsh);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn shell_serde_nu_alias() {
+        let parsed: Shell = serde_json::from_str("\"nu\"").unwrap();
+        assert_eq!(parsed, Shell::Nushell);
+    }
+
+    #[test]
+    fn shell_from_str_roundtrip() {
+        // Every variant must roundtrip through as_str -> parse
+        let all_shells = [
+            Shell::Zsh,
+            Shell::Bash,
+            Shell::Fish,
+            Shell::PowerShell,
+            Shell::Nushell,
+        ];
+        for shell in all_shells {
+            assert_eq!(
+                shell.as_str().parse::<Shell>().unwrap(),
+                shell,
+                "roundtrip failed for {:?}",
+                shell,
+            );
+        }
     }
 }
