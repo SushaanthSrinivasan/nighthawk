@@ -75,6 +75,29 @@ fn collect_used_flags(tokens: &[&str], options: &[OptionSpec]) -> HashSet<String
     used
 }
 
+/// Check whether `prev` is a flag (or ends with a stacked flag) that takes an argument.
+/// Returns the matching OptionSpec if found, so callers can access its arg suggestions.
+fn prev_consumes_next_token<'a>(prev: &str, options: &'a [OptionSpec]) -> Option<&'a OptionSpec> {
+    // Case 1: direct match (e.g., "-p", "--prompt", "-X")
+    for opt in options {
+        if opt.takes_arg && opt.names.iter().any(|n| n == prev) {
+            return Some(opt);
+        }
+    }
+    // Case 2: stacked flag where last char takes arg (e.g., "-lT" → -T takes arg)
+    if let Some(chars) = decompose_stacked_flags(prev) {
+        if let Some(&last_ch) = chars.last() {
+            let short = format!("-{}", last_ch);
+            for opt in options {
+                if opt.takes_arg && opt.names.contains(&short) {
+                    return Some(opt);
+                }
+            }
+        }
+    }
+    None
+}
+
 /// Return single-char flags that don't take an argument (safe to stack).
 fn stackable_flags(options: &[OptionSpec]) -> Vec<(char, &OptionSpec)> {
     options
@@ -147,45 +170,45 @@ impl PredictionTier for SpecTier {
 
         let mut suggestions = Vec::new();
 
-        // If previous token is an arg-taking option with suggestions, suggest values
+        // If previous token is a flag that takes an argument, the cursor position
+        // expects a flag argument value — not subcommands or other flags.
         if let Some(&prev) = previous_tokens.last() {
-            for opt in &spec.options {
-                if opt.takes_arg && opt.names.iter().any(|n| n == prev) {
-                    if let Some(arg) = &opt.arg {
-                        for val in &arg.suggestions {
-                            if val.starts_with(current_token) {
-                                let (replace_start, replace_end) = if current_token.is_empty() {
-                                    (req.cursor, req.cursor)
-                                } else {
-                                    (input.len() - current_token.len(), req.cursor)
-                                };
-                                suggestions.push(Suggestion {
-                                    text: val.clone(),
-                                    replace_start,
-                                    replace_end,
-                                    confidence: 0.85,
-                                    source: SuggestionSource::Spec,
-                                    description: arg.name.clone(),
-                                    diff_ops: None,
-                                });
-                            }
-                        }
-                        if !suggestions.is_empty() {
-                            suggestions.truncate(5);
-                            // Change C: fix suggestions when command was fuzzy-resolved
-                            if command_was_fuzzy {
-                                let cmd_len = command.len();
-                                for s in &mut suggestions {
-                                    s.diff_ops = None; // no inline diff for command-level correction
-                                    let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
-                                    s.text = format!("{}{}{}", spec.name, mid, s.text);
-                                    s.replace_start = 0;
-                                }
-                            }
-                            return suggestions;
+            if let Some(opt) = prev_consumes_next_token(prev, &spec.options) {
+                // Offer arg-value suggestions if the option defines them
+                if let Some(arg) = &opt.arg {
+                    for val in &arg.suggestions {
+                        if val.starts_with(current_token) {
+                            let (replace_start, replace_end) = if current_token.is_empty() {
+                                (req.cursor, req.cursor)
+                            } else {
+                                (input.len() - current_token.len(), req.cursor)
+                            };
+                            suggestions.push(Suggestion {
+                                text: val.clone(),
+                                replace_start,
+                                replace_end,
+                                confidence: 0.85,
+                                source: SuggestionSource::Spec,
+                                description: arg.name.clone(),
+                                diff_ops: None,
+                            });
                         }
                     }
                 }
+                // Always return — even if suggestions is empty. The next token
+                // belongs to this flag; do NOT fall through to subcommand/flag matching.
+                suggestions.truncate(5);
+                // Change C: fix suggestions when command was fuzzy-resolved
+                if command_was_fuzzy {
+                    let cmd_len = command.len();
+                    for s in &mut suggestions {
+                        s.diff_ops = None;
+                        let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
+                        s.text = format!("{}{}{}", spec.name, mid, s.text);
+                        s.replace_start = 0;
+                    }
+                }
+                return suggestions;
             }
         }
 
@@ -548,6 +571,25 @@ mod tests {
     }
 
     #[test]
+    fn test_prev_consumes_next_token() {
+        let options = ls_spec().options;
+        // -T takes_arg → Some
+        assert!(prev_consumes_next_token("-T", &options).is_some());
+        // --color takes_arg → Some
+        assert!(prev_consumes_next_token("--color", &options).is_some());
+        // -l does NOT take arg → None
+        assert!(prev_consumes_next_token("-l", &options).is_none());
+        // Stacked: -lT last char T takes_arg → Some
+        assert!(prev_consumes_next_token("-lT", &options).is_some());
+        // Stacked: -Tl last char l does NOT take arg → None
+        assert!(prev_consumes_next_token("-Tl", &options).is_none());
+        // Unknown flag → None
+        assert!(prev_consumes_next_token("-z", &options).is_none());
+        // Not a flag → None
+        assert!(prev_consumes_next_token("foo", &options).is_none());
+    }
+
+    #[test]
     fn test_collect_used_flags_direct() {
         let options = ls_spec().options;
         let used = collect_used_flags(&["-l", "-a"], &options);
@@ -816,14 +858,14 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn option_value_no_suggestions_falls_through() {
-        // "curl -o " → -o takes_arg but has no arg suggestions → falls through to flags
+    async fn option_value_no_suggestions_returns_empty() {
+        // "curl -o " → -o takes_arg but has no arg suggestions → return empty
+        // The next token belongs to -o; do NOT suggest flags/subcommands.
         let tier = SpecTier::new(make_registry(curl_spec()));
         let suggestions = tier.predict(&req("curl -o ")).await;
-        // Should fall through to normal flag matching (suggest -X, -v, etc.)
         assert!(
-            suggestions.iter().any(|s| s.text.starts_with("-")),
-            "should fall through to flag suggestions when option has no arg suggestions"
+            suggestions.is_empty(),
+            "should return empty when option takes arg but has no suggestions"
         );
     }
 
@@ -1171,5 +1213,170 @@ mod tests {
         let suggestions = tier.predict(&req("git  chekout")).await;
         assert!(!suggestions.is_empty());
         assert_eq!(suggestions[0].text, "checkout");
+    }
+
+    // --- Issue #23: suppress suggestions after arg-taking flags ---
+
+    /// Build a spec with both subcommands and an arg-taking flag (the bug scenario).
+    fn cmd_with_subcommands_and_arg_flag() -> CliSpec {
+        CliSpec {
+            name: "claude".into(),
+            description: Some("AI assistant".into()),
+            subcommands: vec![
+                SubcommandSpec {
+                    name: "prompt".into(),
+                    aliases: vec![],
+                    description: Some("Send a prompt".into()),
+                    subcommands: vec![],
+                    options: vec![],
+                    args: vec![],
+                },
+                SubcommandSpec {
+                    name: "auth".into(),
+                    aliases: vec![],
+                    description: Some("Manage auth".into()),
+                    subcommands: vec![],
+                    options: vec![],
+                    args: vec![],
+                },
+            ],
+            options: vec![
+                OptionSpec {
+                    names: vec!["-p".into(), "--print".into()],
+                    description: Some("Print format".into()),
+                    takes_arg: true,
+                    is_required: false,
+                    arg: None,
+                },
+                OptionSpec {
+                    names: vec!["-v".into(), "--verbose".into()],
+                    description: Some("Verbose".into()),
+                    takes_arg: false,
+                    is_required: false,
+                    arg: None,
+                },
+            ],
+            args: vec![],
+        }
+    }
+
+    #[tokio::test]
+    async fn flag_taking_arg_suppresses_subcommands() {
+        // "claude -p " → -p takes_arg, should NOT suggest "prompt" or "auth" subcommands
+        let tier = SpecTier::new(make_registry(cmd_with_subcommands_and_arg_flag()));
+        let suggestions = tier.predict(&req("claude -p ")).await;
+        assert!(
+            suggestions.is_empty(),
+            "should not suggest subcommands after arg-taking flag, got: {:?}",
+            suggestions.iter().map(|s| &s.text).collect::<Vec<_>>()
+        );
+    }
+
+    #[tokio::test]
+    async fn non_arg_flag_still_suggests_subcommands() {
+        // "claude -v " → -v does NOT take arg, should suggest subcommands
+        let tier = SpecTier::new(make_registry(cmd_with_subcommands_and_arg_flag()));
+        let suggestions = tier.predict(&req("claude -v ")).await;
+        assert!(
+            suggestions.iter().any(|s| s.text == "prompt"),
+            "non-arg flag should allow subcommand suggestions"
+        );
+    }
+
+    #[tokio::test]
+    async fn stacked_flag_last_char_takes_arg_suppresses() {
+        // "ls -lT " → -T takes_arg, last in stack → suppress suggestions
+        let tier = SpecTier::new(make_registry(ls_spec()));
+        let suggestions = tier.predict(&req("ls -lT ")).await;
+        assert!(
+            suggestions.is_empty(),
+            "stacked flag ending in arg-taking flag should suppress suggestions"
+        );
+    }
+
+    #[tokio::test]
+    async fn after_arg_value_resumes_normal_suggestions() {
+        // "curl -X GET " → -X takes_arg, "GET" is its value, trailing space → back to flags
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -X GET ")).await;
+        assert!(
+            suggestions.iter().any(|s| s.text.starts_with("-")),
+            "after providing arg value, should resume suggesting flags"
+        );
+    }
+
+    #[tokio::test]
+    async fn option_value_no_suggestions_prefix_returns_empty() {
+        // "curl -o foo" → -o takes_arg, no suggestions, "foo" being typed → empty
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -o foo")).await;
+        assert!(
+            suggestions.is_empty(),
+            "should not suggest flags/subcommands when typing arg for takes_arg flag"
+        );
+    }
+
+    #[tokio::test]
+    async fn after_no_suggestion_arg_value_resumes() {
+        // "curl -o file.txt " → -o takes_arg (no suggestions), "file.txt" consumed → resume
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -o file.txt ")).await;
+        assert!(
+            suggestions.iter().any(|s| s.text.starts_with("-")),
+            "after providing arg value to no-suggestion flag, should resume suggesting flags"
+        );
+    }
+
+    #[tokio::test]
+    async fn equals_syntax_does_not_trigger_suppression() {
+        // "curl --request=GET " → single token with =, does not suppress next token
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl --request=GET ")).await;
+        assert!(
+            suggestions.iter().any(|s| s.text.starts_with("-")),
+            "--flag=value should not suppress suggestions for the next token"
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_with_arg_taking_flag_suppresses() {
+        // "crlu -o " → fuzzy resolves "crlu" to "curl", -o takes_arg → suppress
+        let registry = make_multi_registry(vec![curl_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("crlu -o ")).await;
+        assert!(
+            suggestions.is_empty(),
+            "fuzzy-resolved command should still suppress on arg-taking flag"
+        );
+    }
+
+    #[tokio::test]
+    async fn long_form_flag_takes_arg_suppresses() {
+        // "curl --request GET " → --request takes_arg, "GET" consumed → resume
+        // "curl --request " → --request takes_arg → suppress
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suppressed = tier.predict(&req("curl --request ")).await;
+        assert!(
+            suppressed.iter().all(|s| !s.text.starts_with("-")),
+            "--request takes arg, should not suggest flags: {:?}",
+            suppressed.iter().map(|s| &s.text).collect::<Vec<_>>()
+        );
+        let resumed = tier.predict(&req("curl --request GET ")).await;
+        assert!(
+            resumed.iter().any(|s| s.text.starts_with("-")),
+            "after providing arg value to --request, should resume suggesting flags"
+        );
+    }
+
+    #[tokio::test]
+    async fn sequential_arg_taking_flags() {
+        // "curl -X GET -o " → -X consumed by GET, then -o takes_arg → suppress
+        let tier = SpecTier::new(make_registry(curl_spec()));
+        let suggestions = tier.predict(&req("curl -X GET -o ")).await;
+        assert!(
+            suggestions.is_empty(),
+            "sequential arg-taking flag should suppress: {:?}",
+            suggestions.iter().map(|s| &s.text).collect::<Vec<_>>()
+        );
     }
 }
