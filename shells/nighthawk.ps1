@@ -103,10 +103,16 @@ function _nh_query {
             # Fuzzy match: render as hint " → suggestion"
             _nh_render_ghost " $($script:_nh_hint_arrow) $($s.text)"
         } else {
-            # Prefix match: render ghost text suffix
             $typed_len = $cursor - $script:_nh_replace_start
             if ($typed_len -ge 0 -and $typed_len -lt $s.text.Length) {
-                _nh_render_ghost $s.text.Substring($typed_len)
+                $typed_part = $line.Substring($script:_nh_replace_start, $typed_len)
+                if ($s.text.StartsWith($typed_part, [System.StringComparison]::Ordinal)) {
+                    # True prefix match: show suffix as ghost text
+                    _nh_render_ghost $s.text.Substring($typed_len)
+                } else {
+                    # Replacement changes typed text: show hint instead
+                    _nh_render_ghost " $($script:_nh_hint_arrow) $($s.text)"
+                }
             }
         }
     }

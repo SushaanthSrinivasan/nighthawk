@@ -1091,8 +1091,8 @@ mod tests {
         assert!(!suggestions.is_empty());
         assert!(suggestions.iter().any(|s| s.text == "git checkout"));
         assert!(suggestions.iter().any(|s| s.text == "git cherry-pick"));
-        // Ghost text check: for "gti ch" (cursor=6), replace_start=0
-        // ghost = text[6..] → "git checkout"[6..] = "eckout"
+        // Ghost text: plugin detects "gti ch" != "git ch" (prefix mismatch)
+        // and renders hint mode ("→ git checkout") instead of misleading suffix
         for s in &suggestions {
             assert_eq!(s.replace_start, 0);
         }

@@ -230,11 +230,18 @@ _nh_query() {
                 _nh_render_diff "$diff_ops_str" "$replace_start" "$replace_end"
             fi
         else
-            # Prefix match: render ghost text suffix
+            # Check if this is a true prefix match or a replacement
             local already_typed_len=$(( cursor - replace_start ))
             if (( already_typed_len >= 0 && already_typed_len < ${#text} )); then
-                local ghost="${text:$already_typed_len}"
-                _nh_render_ghost "$ghost"
+                local typed_part="${buffer:$replace_start:$already_typed_len}"
+                if [[ "${text:0:$already_typed_len}" == "$typed_part" ]]; then
+                    # True prefix match: show suffix as ghost text
+                    local ghost="${text:$already_typed_len}"
+                    _nh_render_ghost "$ghost"
+                else
+                    # Replacement changes typed text: show hint instead
+                    _nh_render_hint "$text"
+                fi
             fi
         fi
     fi
