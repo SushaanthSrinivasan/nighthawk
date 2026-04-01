@@ -120,6 +120,88 @@ fn ensure_specs(dest_specs_dir: &Path) -> Result<bool, Box<dyn std::error::Error
     }
 }
 
+/// Platform-appropriate binary names for nh and nighthawk-daemon.
+fn binary_names() -> (&'static str, &'static str) {
+    if cfg!(windows) {
+        ("nh.exe", "nighthawk-daemon.exe")
+    } else {
+        ("nh", "nighthawk-daemon")
+    }
+}
+
+/// Find all nighthawk binaries next to the current exe.
+/// Returns (nh_path, daemon_path) if both exist.
+fn find_own_binaries() -> Option<(PathBuf, PathBuf)> {
+    let exe = std::env::current_exe().ok()?;
+    let dir = exe.parent()?;
+    let (nh_name, daemon_name) = binary_names();
+    let nh = dir.join(nh_name);
+    let daemon = dir.join(daemon_name);
+    if nh.exists() && daemon.exists() {
+        Some((nh, daemon))
+    } else {
+        None
+    }
+}
+
+/// Copy nighthawk binaries to the standard install directory.
+/// Returns the install directory path, or None if binaries weren't found.
+fn install_binaries() -> Result<Option<PathBuf>, Box<dyn std::error::Error>> {
+    let (nh_src, daemon_src) = match find_own_binaries() {
+        Some(pair) => pair,
+        None => {
+            eprintln!("Note: could not find binaries next to nh, skipping install to PATH");
+            return Ok(None);
+        }
+    };
+
+    let bin_dir = paths::bin_dir();
+
+    // If we're already running from the install dir, skip the copy
+    if let Ok(exe) = std::env::current_exe() {
+        if let Ok(exe_canon) = exe.canonicalize() {
+            if let Ok(bin_canon) = bin_dir.canonicalize() {
+                if exe_canon.starts_with(&bin_canon) {
+                    return Ok(Some(bin_dir));
+                }
+            }
+        }
+    }
+
+    std::fs::create_dir_all(&bin_dir)?;
+
+    let (nh_name, daemon_name) = binary_names();
+    std::fs::copy(&nh_src, bin_dir.join(nh_name))?;
+    std::fs::copy(&daemon_src, bin_dir.join(daemon_name))?;
+
+    println!(
+        "Installed binaries to {}",
+        bin_dir.display()
+    );
+
+    Ok(Some(bin_dir))
+}
+
+/// Generate the PATH addition line for a given shell and directory.
+fn path_line(shell: &str, bin_dir: &Path) -> String {
+    let dir_str = bin_dir.to_string_lossy();
+    match shell {
+        "powershell" | "pwsh" => format!(
+            "\n# nighthawk — add to PATH\n\
+             if ($env:Path -notlike \"*{}*\") {{ $env:Path = \"{};$env:Path\" }}\n",
+            dir_str, dir_str
+        ),
+        "fish" => format!(
+            "\n# nighthawk — add to PATH\nfish_add_path \"{}\"\n",
+            dir_str
+        ),
+        _ => format!(
+            "\n# nighthawk — add to PATH\nexport PATH=\"{}:$PATH\"\n",
+            dir_str
+        ),
+    }
+}
+
 pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
     let (plugin_filename, rc_path) =
         shell_info(shell).map_err(|e| -> Box<dyn std::error::Error> { e.into() })?;
@@ -146,12 +228,41 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => eprintln!("Warning: could not copy specs: {e}"),
     }
 
-    // 3. Add source line to rc file
-    let source_line = if shell == "fish" {
-        // Fish uses conf.d — just copying the file IS the setup
+    // 3. Install binaries to standard location
+    let installed_bin_dir = match install_binaries() {
+        Ok(dir) => dir,
+        Err(e) => {
+            eprintln!("Warning: could not install binaries: {e}");
+            None
+        }
+    };
+
+    // 4. Build rc file additions: source line + PATH line
+    if shell == "fish" {
+        // Fish uses conf.d — copying the file IS the plugin setup
+        // But we still need PATH for the install dir
+        if let Some(ref bin_dir) = installed_bin_dir {
+            let fish_path_line = path_line("fish", bin_dir);
+            let fish_conf_dir = dirs::config_dir()
+                .unwrap_or_else(|| {
+                    dirs::home_dir()
+                        .unwrap_or_else(|| PathBuf::from("."))
+                        .join(".config")
+                })
+                .join("fish")
+                .join("conf.d");
+            let path_conf = fish_conf_dir.join("nighthawk_path.fish");
+            if !path_conf.exists() {
+                std::fs::create_dir_all(&fish_conf_dir)?;
+                std::fs::write(&path_conf, fish_path_line)?;
+                println!("Added PATH config to {}", path_conf.display());
+            }
+        }
         println!("Fish plugin installed to {}", rc_path.display());
         return Ok(());
-    } else if shell == "powershell" || shell == "pwsh" {
+    }
+
+    let source_line = if shell == "powershell" || shell == "pwsh" {
         format!(
             "\n# nighthawk — terminal autocomplete\n. \"{}\"\n",
             plugin_dest.display()
@@ -163,12 +274,22 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
         )
     };
 
-    if rc_path.exists() {
-        let contents = std::fs::read_to_string(&rc_path)?;
-        if contents.contains(plugin_filename) {
-            println!("Already configured in {}", rc_path.display());
-            return Ok(());
-        }
+    // Read rc file once to check existing config
+    let rc_contents = if rc_path.exists() {
+        std::fs::read_to_string(&rc_path).unwrap_or_default()
+    } else {
+        String::new()
+    };
+
+    let already_configured = rc_path.exists() && rc_contents.contains(plugin_filename);
+
+    let needs_path = installed_bin_dir
+        .as_ref()
+        .is_some_and(|bin_dir| !rc_contents.contains(&bin_dir.to_string_lossy().to_string()));
+
+    if already_configured && !needs_path {
+        println!("Already configured in {}", rc_path.display());
+        return Ok(());
     }
 
     // Ensure parent directory exists (e.g. Documents/PowerShell/ on fresh systems)
@@ -176,14 +297,28 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
         std::fs::create_dir_all(parent)?;
     }
 
-    // Append source line
     let mut file = std::fs::OpenOptions::new()
         .create(true)
         .append(true)
         .open(&rc_path)?;
-    std::io::Write::write_all(&mut file, source_line.as_bytes())?;
 
-    println!("Added to {}", rc_path.display());
+    if !already_configured {
+        std::io::Write::write_all(&mut file, source_line.as_bytes())?;
+    }
+
+    if needs_path {
+        if let Some(ref bin_dir) = installed_bin_dir {
+            let pl = path_line(shell, bin_dir);
+            std::io::Write::write_all(&mut file, pl.as_bytes())?;
+        }
+    }
+
+    if already_configured {
+        println!("Added PATH to {}", rc_path.display());
+    } else {
+        println!("Added to {}", rc_path.display());
+    }
+
     println!("\nRestart your shell or run:");
     if shell == "powershell" || shell == "pwsh" {
         println!("  . \"{}\"", rc_path.display());
@@ -252,5 +387,51 @@ mod tests {
     fn zsh_still_works() {
         let (filename, _) = shell_info("zsh").unwrap();
         assert_eq!(filename, "nighthawk.zsh");
+    }
+
+    // --- PATH line tests ---
+
+    #[test]
+    fn path_line_zsh_exports_path() {
+        let line = path_line("zsh", Path::new("/home/user/.local/bin"));
+        assert!(line.contains("export PATH=\"/home/user/.local/bin:$PATH\""));
+    }
+
+    #[test]
+    fn path_line_bash_exports_path() {
+        let line = path_line("bash", Path::new("/home/user/.local/bin"));
+        assert!(line.contains("export PATH=\"/home/user/.local/bin:$PATH\""));
+    }
+
+    #[test]
+    fn path_line_powershell_uses_env_path() {
+        let line = path_line("powershell", Path::new(r"C:\Users\test\AppData\Local\Programs\nighthawk"));
+        assert!(line.contains("$env:Path"));
+        assert!(line.contains("-notlike"));
+    }
+
+    #[test]
+    fn path_line_pwsh_same_as_powershell() {
+        let dir = Path::new("/some/dir");
+        assert_eq!(path_line("pwsh", dir), path_line("powershell", dir));
+    }
+
+    #[test]
+    fn path_line_fish_uses_fish_add_path() {
+        let line = path_line("fish", Path::new("/home/user/.local/bin"));
+        assert!(line.contains("fish_add_path"));
+    }
+
+    #[test]
+    fn bin_dir_returns_valid_path() {
+        let dir = paths::bin_dir();
+        let dir_str = dir.to_string_lossy();
+        if cfg!(windows) {
+            assert!(dir_str.contains("Programs") && dir_str.contains("nighthawk"),
+                "Expected Windows install path, got: {dir_str}");
+        } else {
+            assert!(dir_str.contains(".local") && dir_str.contains("bin"),
+                "Expected Unix install path, got: {dir_str}");
+        }
     }
 }
