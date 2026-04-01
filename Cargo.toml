@@ -1,5 +1,6 @@
 [workspace]
 resolver = "2"
+# Publish order: nighthawk-proto → nighthawk-daemon → nighthawk (crates/nighthawk-cli)
 members = [
     "crates/nighthawk-proto",
     "crates/nighthawk-daemon",
@@ -10,6 +11,10 @@ members = [
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
+repository = "https://github.com/SushaanthSrinivasan/nighthawk"
+homepage = "https://github.com/SushaanthSrinivasan/nighthawk"
+keywords = ["terminal", "autocomplete", "shell", "cli", "completions"]
+categories = ["command-line-utilities"]
 
 [workspace.dependencies]
 serde = { version = "1", features = ["derive"] }
@@ -23,4 +28,4 @@ dirs = "6"
 toml = "0.8"
 thiserror = "2"
 async-trait = "0.1"
-nighthawk-proto = { path = "crates/nighthawk-proto" }
+nighthawk-proto = { path = "crates/nighthawk-proto", version = "0.1.0" }

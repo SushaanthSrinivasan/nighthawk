@@ -33,8 +33,8 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 ## Crate map
 
 - **`crates/nighthawk-proto/`** — IPC message types. `CompletionRequest`, `CompletionResponse`, `Suggestion`, `Shell`, `SuggestionSource`. Depends only on serde. Any crate that speaks the protocol depends on this.
-- **`crates/nighthawk-daemon/`** — Background daemon. All prediction logic, spec loading, history indexing, IPC server. This is where 90% of the logic lives.
-- **`crates/nighthawk-cli/`** — User-facing CLI (`nh start`, `nh stop`, `nh status`, `nh setup zsh`, `nh complete "git ch"`). Depends on proto + dirs.
+- **`crates/nighthawk-daemon/`** — Background daemon library. All prediction logic, spec loading, history indexing, IPC server. This is where 90% of the logic lives. Library-only crate (no binary target).
+- **`crates/nighthawk-cli/`** — Published as `nighthawk` on crates.io. Produces two binaries: `nh` (CLI) and `nighthawk-daemon`. User-facing CLI (`nh start`, `nh stop`, `nh status`, `nh setup zsh`, `nh complete "git ch"`). Install via `cargo install nighthawk`.
 - **`shells/`** — Shell plugins (zsh, bash, fish, PowerShell). NOT Rust — each is ~50 lines in the shell's native language.
 - **`tools/fig-converter/`** — Node.js script that converts withfig/autocomplete TypeScript specs to nighthawk JSON format. One-time conversion tool, not part of the Rust build.
 
