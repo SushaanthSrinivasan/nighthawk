@@ -1,7 +1,7 @@
 use crate::paths;
 use std::io::Write;
 use std::path::PathBuf;
-use std::process::Command;
+use std::process::{Command, Stdio};
 
 /// Find the nighthawk-daemon binary.
 /// Checks next to the current exe first, then falls back to PATH.
@@ -63,8 +63,8 @@ fn is_process_alive(pid: u32) -> bool {
     {
         Command::new("kill")
             .args(["-0", &pid.to_string()])
-            .stdout(std::process::Stdio::null())
-            .stderr(std::process::Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
             .status()
             .map(|s| s.success())
             .unwrap_or(false)
@@ -181,16 +181,24 @@ pub fn stop() -> Result<(), Box<dyn std::error::Error>> {
         return Ok(());
     }
 
-    // Send kill signal
+    println!("Stopping daemon (PID {pid})...");
+
+    // Send graceful stop signal (suppress OS output)
     #[cfg(unix)]
     {
-        let _ = Command::new("kill").arg(pid.to_string()).status();
+        let _ = Command::new("kill")
+            .arg(pid.to_string())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .status();
     }
 
     #[cfg(windows)]
     {
         let _ = Command::new("taskkill")
             .args(["/PID", &pid.to_string()])
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
             .status();
     }
 
@@ -206,15 +214,21 @@ pub fn stop() -> Result<(), Box<dyn std::error::Error>> {
         // Escalate to force kill
         #[cfg(unix)]
         {
-            let _ = Command::new("kill").args(["-9", &pid.to_string()]).status();
+            let _ = Command::new("kill")
+                .args(["-9", &pid.to_string()])
+                .stdout(Stdio::null())
+                .stderr(Stdio::null())
+                .status();
         }
         #[cfg(windows)]
         {
             let _ = Command::new("taskkill")
                 .args(["/F", "/PID", &pid.to_string()])
+                .stdout(Stdio::null())
+                .stderr(Stdio::null())
                 .status();
         }
-        eprintln!("Daemon (PID {pid}) did not respond to SIGTERM — force killed");
+        println!("Daemon did not stop gracefully, force killed (PID {pid})");
     } else {
         println!("Daemon stopped (PID {pid})");
     }
