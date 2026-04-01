@@ -23,3 +23,23 @@ pub fn specs_dir() -> PathBuf {
 pub fn plugin_dir() -> PathBuf {
     config_dir()
 }
+
+/// Standard install directory for nighthawk binaries.
+/// Windows: %LOCALAPPDATA%\Programs\nighthawk\
+/// Unix: ~/.local/bin/
+pub fn bin_dir() -> PathBuf {
+    #[cfg(windows)]
+    {
+        dirs::data_local_dir()
+            .unwrap_or_else(|| PathBuf::from("."))
+            .join("Programs")
+            .join("nighthawk")
+    }
+    #[cfg(not(windows))]
+    {
+        dirs::home_dir()
+            .unwrap_or_else(|| PathBuf::from("."))
+            .join(".local")
+            .join("bin")
+    }
+}
