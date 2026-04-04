@@ -30,34 +30,37 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 └──────────────────────────────────┘
 ```
 
-## Crate map
+## Module map
 
-- **`crates/nighthawk-proto/`** — IPC message types. `CompletionRequest`, `CompletionResponse`, `Suggestion`, `Shell`, `SuggestionSource`. Depends only on serde. Any crate that speaks the protocol depends on this.
-- **`crates/nighthawk-daemon/`** — Background daemon. All prediction logic, spec loading, history indexing, IPC server. This is where 90% of the logic lives.
-- **`crates/nighthawk-cli/`** — User-facing CLI (`nh start`, `nh stop`, `nh status`, `nh setup zsh`, `nh complete "git ch"`). Depends on proto + dirs.
+Single crate published as `nighthawk` on crates.io. Install via `cargo install nighthawk`. Produces two binaries: `nh` (CLI) and `nighthawk-daemon`.
+
+- **`src/proto/`** — IPC message types. `CompletionRequest`, `CompletionResponse`, `Suggestion`, `Shell`, `SuggestionSource`, `default_socket_path()`.
+- **`src/daemon/`** — Background daemon logic. All prediction logic, spec loading, history indexing, IPC server. This is where 90% of the logic lives.
+- **`src/cli/`** — User-facing CLI (`nh start`, `nh stop`, `nh status`, `nh setup zsh`, `nh complete "git ch"`).
+- **`src/bin/`** — Thin binary entry points: `nh.rs` and `nighthawk_daemon.rs`.
 - **`shells/`** — Shell plugins (zsh, bash, fish, PowerShell). NOT Rust — each is ~50 lines in the shell's native language.
 - **`tools/fig-converter/`** — Node.js script that converts withfig/autocomplete TypeScript specs to nighthawk JSON format. One-time conversion tool, not part of the Rust build.
 
 ## Key daemon modules
 
-- `server.rs` — tokio IPC listener via `interprocess` crate. Accepts connections, reads newline-delimited JSON, dispatches to PredictionEngine. Handles SIGTERM/SIGINT for graceful shutdown, cleans up socket + PID file on exit.
-- `engine/mod.rs` — `PredictionEngine` orchestrates tiers in order. Returns first tier's results that produce suggestions.
-- `engine/tier.rs` — `PredictionTier` trait. The primary extension point.
-- `engine/history.rs` — Tier 0 implementation. Prefix-matches against shell history.
-- `engine/specs.rs` — Tier 1 implementation. Looks up CLI specs for subcommands/options.
-- `specs/mod.rs` — `SpecProvider` trait, `SpecRegistry` (chains providers with cache), `CliSpec` types.
-- `specs/fig.rs` — Loads pre-converted withfig/autocomplete JSON specs.
-- `specs/helpparse.rs` — Parses `--help` output into `CliSpec`.
-- `history/mod.rs` — `ShellHistory` trait.
-- `history/file.rs` — Reads shell history files (zsh, bash, fish, PowerShell).
-- `config.rs` — TOML config from `~/.config/nighthawk/config.toml`.
+- `src/daemon/server.rs` — tokio IPC listener via `interprocess` crate. Accepts connections, reads newline-delimited JSON, dispatches to PredictionEngine. Handles SIGTERM/SIGINT for graceful shutdown, cleans up socket + PID file on exit.
+- `src/daemon/engine/mod.rs` — `PredictionEngine` orchestrates tiers in order. Returns first tier's results that produce suggestions.
+- `src/daemon/engine/tier.rs` — `PredictionTier` trait. The primary extension point.
+- `src/daemon/engine/history.rs` — Tier 0 implementation. Prefix-matches against shell history.
+- `src/daemon/engine/specs.rs` — Tier 1 implementation. Looks up CLI specs for subcommands/options.
+- `src/daemon/specs/mod.rs` — `SpecProvider` trait, `SpecRegistry` (chains providers with cache), `CliSpec` types.
+- `src/daemon/specs/fig.rs` — Loads pre-converted withfig/autocomplete JSON specs.
+- `src/daemon/specs/helpparse.rs` — Parses `--help` output into `CliSpec`.
+- `src/daemon/history/mod.rs` — `ShellHistory` trait.
+- `src/daemon/history/file.rs` — Reads shell history files (zsh, bash, fish, PowerShell).
+- `src/daemon/config.rs` — TOML config from `~/.config/nighthawk/config.toml`.
 
 ## Key CLI modules
 
-- `main.rs` — Clap-based CLI entry point. Subcommands: `start`, `stop`, `status`, `setup`, `complete`.
-- `daemon_ctl.rs` — Daemon lifecycle: spawn detached process, PID file management, socket health checks, SIGTERM/SIGKILL stop.
-- `setup.rs` — `nh setup <shell>`: copies plugin + specs to `~/.config/nighthawk/`, appends source line to shell rc file (idempotent).
-- `paths.rs` — Path helpers: `config_dir()`, `pid_file()`, `log_file()`, `specs_dir()`.
+- `src/cli/mod.rs` — Clap-based CLI entry point. Subcommands: `start`, `stop`, `status`, `setup`, `complete`.
+- `src/cli/daemon_ctl.rs` — Daemon lifecycle: spawn detached process, PID file management, socket health checks, SIGTERM/SIGKILL stop.
+- `src/cli/setup.rs` — `nh setup <shell>`: installs embedded plugin + specs to `~/.config/nighthawk/`, appends source line to shell rc file (idempotent).
+- `src/cli/paths.rs` — Path helpers: `config_dir()`, `pid_file()`, `log_file()`, `specs_dir()`.
 
 ## Daemon management
 
@@ -71,7 +74,7 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 ## Key traits
 
 ```rust
-// engine/tier.rs — implement this to add a new prediction tier
+// src/daemon/engine/tier.rs — implement this to add a new prediction tier
 #[async_trait]
 pub trait PredictionTier: Send + Sync {
     fn name(&self) -> &str;
@@ -79,13 +82,13 @@ pub trait PredictionTier: Send + Sync {
     async fn predict(&self, req: &CompletionRequest) -> Vec<Suggestion>;
 }
 
-// specs/mod.rs — implement this to add a new spec source
+// src/daemon/specs/mod.rs — implement this to add a new spec source
 pub trait SpecProvider: Send + Sync {
     fn get_spec(&self, command: &str) -> Option<CliSpec>;
     fn known_commands(&self) -> Vec<String>;
 }
 
-// history/mod.rs — implement this to add a new history backend
+// src/daemon/history/mod.rs — implement this to add a new history backend
 pub trait ShellHistory: Send + Sync {
     fn load(&mut self) -> Result<()>;
     fn search_prefix(&self, prefix: &str, limit: usize) -> Vec<HistoryEntry>;
@@ -98,7 +101,7 @@ pub trait ShellHistory: Send + Sync {
 - **Format:** Newline-delimited JSON. One JSON object per line, terminated by `\n`.
 - **Socket path:** `/tmp/nighthawk-$UID.sock` (Unix) or `\\.\pipe\nighthawk` (Windows)
 - **Flow:** Plugin sends `CompletionRequest\n` → daemon responds with `CompletionResponse\n`
-- **All types** defined in `crates/nighthawk-proto/src/lib.rs`
+- **All types** defined in `src/proto/mod.rs`
 
 ## Conventions
 
@@ -122,19 +125,19 @@ pub trait ShellHistory: Send + Sync {
 3. On buffer change: send `CompletionRequest` JSON to socket, read `CompletionResponse`
 4. Render first suggestion as ghost text: `ESC[s` save cursor → `ESC[90m` gray → print text → `ESC[0m` reset → `ESC[u` restore
 5. Handle Tab (accept), Escape (dismiss)
-6. Add shell variant to `Shell` enum in `nighthawk-proto/src/lib.rs`
-7. Add history file path in `history/file.rs`
+6. Add shell variant to `Shell` enum in `src/proto/mod.rs`
+7. Add history file path in `src/daemon/history/file.rs`
 8. Add `nh setup <shell>` command in CLI
 
 ### Adding a new spec source
-1. Create `specs/newsource.rs`, implement `SpecProvider` trait
-2. Register in `SpecRegistry::new()` call in `main.rs`
+1. Create `src/daemon/specs/newsource.rs`, implement `SpecProvider` trait
+2. Register in `SpecRegistry::new()` call in `src/daemon/mod.rs`
 3. Providers are queried in order — first match wins
 
 ### Adding a new prediction tier
-1. Create `engine/newtier.rs`, implement `PredictionTier` trait
+1. Create `src/daemon/engine/newtier.rs`, implement `PredictionTier` trait
 2. Set `budget_ms()` appropriately
-3. Add to tier list in `PredictionEngine::new()` call in `main.rs`
+3. Add to tier list in `PredictionEngine::new()` call in `src/daemon/mod.rs`
 4. Tiers run in order — fast tiers first
 5. Return empty vec on errors, never panic
 

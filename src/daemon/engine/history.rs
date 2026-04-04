@@ -1,8 +1,8 @@
+use crate::proto::{CompletionRequest, Suggestion, SuggestionSource};
 use async_trait::async_trait;
-use nighthawk_proto::{CompletionRequest, Suggestion, SuggestionSource};
 
 use super::tier::PredictionTier;
-use crate::history::ShellHistory;
+use crate::daemon::history::ShellHistory;
 use std::sync::Arc;
 use tokio::sync::RwLock;
 

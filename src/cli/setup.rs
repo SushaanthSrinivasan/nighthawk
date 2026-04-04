@@ -1,4 +1,4 @@
-use crate::paths;
+use super::paths;
 use std::path::{Path, PathBuf};
 
 /// Map shell name to plugin filename and rc file path.
@@ -29,25 +29,16 @@ fn shell_info(shell: &str) -> Result<(&str, PathBuf), String> {
     }
 }
 
-/// Find the shells/ directory (next to the binary, or in the repo).
-fn find_shells_dir() -> Option<PathBuf> {
-    if let Ok(exe) = std::env::current_exe() {
-        if let Some(dir) = exe.parent() {
-            // Installed layout: {bin_dir}/../share/nighthawk/shells/
-            let share = dir.join("../share/nighthawk/shells");
-            if share.exists() {
-                return Some(share);
-            }
-
-            // Dev layout: binary is in target/debug/, shells/ is at repo root
-            // Go up from target/debug/ to repo root
-            let repo_root = dir.join("../../shells");
-            if repo_root.exists() {
-                return Some(repo_root);
-            }
-        }
+/// Return the embedded shell plugin content for a given filename.
+/// Plugins are compiled into the binary so setup works from anywhere.
+fn plugin_content(filename: &str) -> Option<&'static str> {
+    match filename {
+        "nighthawk.zsh" => Some(include_str!("../../shells/nighthawk.zsh")),
+        "nighthawk.bash" => Some(include_str!("../../shells/nighthawk.bash")),
+        "nighthawk.fish" => Some(include_str!("../../shells/nighthawk.fish")),
+        "nighthawk.ps1" => Some(include_str!("../../shells/nighthawk.ps1")),
+        _ => None,
     }
-    None
 }
 
 /// Find the specs/ directory in the repo (for copying to config dir).
@@ -62,19 +53,6 @@ fn find_specs_dir() -> Option<PathBuf> {
         }
     }
     None
-}
-
-/// Copy a file, creating parent dirs as needed.
-/// Normalizes line endings to LF so shell plugins work on Linux/macOS
-/// even when copied from a Windows checkout.
-fn copy_file(src: &Path, dst: &Path) -> Result<(), Box<dyn std::error::Error>> {
-    if let Some(parent) = dst.parent() {
-        std::fs::create_dir_all(parent)?;
-    }
-    let content = std::fs::read_to_string(src)?;
-    let normalized = content.replace("\r\n", "\n");
-    std::fs::write(dst, normalized)?;
-    Ok(())
 }
 
 /// Copy specs directory to config dir if not already populated.
@@ -174,10 +152,7 @@ fn install_binaries() -> Result<Option<PathBuf>, Box<dyn std::error::Error>> {
     std::fs::copy(&nh_src, bin_dir.join(nh_name))?;
     std::fs::copy(&daemon_src, bin_dir.join(daemon_name))?;
 
-    println!(
-        "Installed binaries to {}",
-        bin_dir.display()
-    );
+    println!("Installed binaries to {}", bin_dir.display());
 
     Ok(Some(bin_dir))
 }
@@ -206,19 +181,16 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
     let (plugin_filename, rc_path) =
         shell_info(shell).map_err(|e| -> Box<dyn std::error::Error> { e.into() })?;
 
-    // 1. Find and copy plugin file
-    let shells_dir = find_shells_dir().ok_or(
-        "Cannot find shell plugins directory. Make sure nighthawk is installed or run from the repo.",
-    )?;
-
-    let plugin_src = shells_dir.join(plugin_filename);
-    if !plugin_src.exists() {
-        return Err(format!("Plugin file not found: {}", plugin_src.display()).into());
-    }
+    // 1. Write embedded plugin file
+    let content = plugin_content(plugin_filename)
+        .ok_or(format!("No embedded plugin for: {plugin_filename}"))?;
 
     let plugin_dest = paths::plugin_dir().join(plugin_filename);
-    copy_file(&plugin_src, &plugin_dest)?;
-    println!("Copied plugin to {}", plugin_dest.display());
+    if let Some(parent) = plugin_dest.parent() {
+        std::fs::create_dir_all(parent)?;
+    }
+    std::fs::write(&plugin_dest, content.replace("\r\n", "\n"))?;
+    println!("Installed plugin to {}", plugin_dest.display());
 
     // 2. Copy specs if needed
     let specs_dest = paths::specs_dir();
@@ -319,12 +291,13 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
         println!("Added to {}", rc_path.display());
     }
 
-    println!("\nRestart your shell or run:");
-    if shell == "powershell" || shell == "pwsh" {
-        println!("  . \"{}\"", rc_path.display());
-    } else {
-        println!("  source {}", rc_path.display());
+    // Start the daemon so it's ready when the user opens a new shell
+    match super::daemon_ctl::start() {
+        Ok(()) => {}
+        Err(e) => eprintln!("Warning: could not start daemon: {e}"),
     }
+
+    println!("\nRestart your shell to activate nighthawk.");
 
     Ok(())
 }
@@ -405,7 +378,10 @@ mod tests {
 
     #[test]
     fn path_line_powershell_uses_env_path() {
-        let line = path_line("powershell", Path::new(r"C:\Users\test\AppData\Local\Programs\nighthawk"));
+        let line = path_line(
+            "powershell",
+            Path::new(r"C:\Users\test\AppData\Local\Programs\nighthawk"),
+        );
         assert!(line.contains("$env:Path"));
         assert!(line.contains("-notlike"));
     }
@@ -427,11 +403,15 @@ mod tests {
         let dir = paths::bin_dir();
         let dir_str = dir.to_string_lossy();
         if cfg!(windows) {
-            assert!(dir_str.contains("Programs") && dir_str.contains("nighthawk"),
-                "Expected Windows install path, got: {dir_str}");
+            assert!(
+                dir_str.contains("Programs") && dir_str.contains("nighthawk"),
+                "Expected Windows install path, got: {dir_str}"
+            );
         } else {
-            assert!(dir_str.contains(".local") && dir_str.contains("bin"),
-                "Expected Unix install path, got: {dir_str}");
+            assert!(
+                dir_str.contains(".local") && dir_str.contains("bin"),
+                "Expected Unix install path, got: {dir_str}"
+            );
         }
     }
 }

@@ -1,12 +1,18 @@
-use nighthawk_daemon::engine::PredictionEngine;
-use nighthawk_daemon::history::ShellHistory;
-use nighthawk_daemon::{config, engine, history, server, specs};
-use nighthawk_proto::Shell;
+pub mod config;
+pub mod engine;
+pub mod fuzzy;
+pub mod history;
+pub mod server;
+pub mod specs;
+
+use crate::proto::Shell;
+use engine::PredictionEngine;
+use history::ShellHistory;
 use std::sync::Arc;
 use tracing_subscriber::EnvFilter;
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+/// Entry point for the nighthawk daemon process.
+pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
     // Load config
     let config = config::load_config(None);
 
@@ -87,7 +93,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .socket_path
         .map(|p| p.to_string_lossy().to_string())
         .unwrap_or_else(|| {
-            nighthawk_proto::default_socket_path()
+            crate::proto::default_socket_path()
                 .to_string_lossy()
                 .to_string()
         });

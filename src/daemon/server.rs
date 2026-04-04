@@ -1,6 +1,6 @@
-use crate::engine::PredictionEngine;
+use crate::daemon::engine::PredictionEngine;
+use crate::proto::CompletionRequest;
 use interprocess::local_socket::{tokio::prelude::*, GenericFilePath, ListenerOptions, ToFsName};
-use nighthawk_proto::CompletionRequest;
 use std::sync::Arc;
 use tokio::io::{AsyncBufReadExt, AsyncRead, AsyncWrite, AsyncWriteExt, BufReader};
 use tracing::{debug, error, info};
