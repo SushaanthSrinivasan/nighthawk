@@ -52,7 +52,7 @@ function _nh_ensure_daemon {
     if ($script:_nh_tried_start) { return }
     $script:_nh_tried_start = $true
     $nhCmd = Get-Command nh -ErrorAction SilentlyContinue
-    if ($nhCmd) { & nh start 2>$null }
+    if ($nhCmd) { & nh start >$null 2>$null }
 }
 
 # --- Daemon communication ---
@@ -85,7 +85,9 @@ function _nh_query {
             $writer.WriteLine($json)
 
             $reader = [System.IO.StreamReader]::new($pipe, $utf8)
-            $response = $reader.ReadLine()
+            $readTask = $reader.ReadLineAsync()
+            if (-not $readTask.Wait(100)) { return }
+            $response = $readTask.Result
         } finally {
             $pipe.Dispose()
         }
