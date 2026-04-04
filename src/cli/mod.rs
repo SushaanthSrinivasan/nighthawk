@@ -1,6 +1,6 @@
-mod daemon_ctl;
-mod paths;
-mod setup;
+pub mod daemon_ctl;
+pub mod paths;
+pub mod setup;
 
 use clap::{Parser, Subcommand};
 
@@ -35,7 +35,7 @@ enum Commands {
     },
 }
 
-fn main() {
+pub fn run() {
     let cli = Cli::parse();
 
     let result = match cli.command {

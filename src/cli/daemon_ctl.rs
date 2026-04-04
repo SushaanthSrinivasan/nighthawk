@@ -1,4 +1,4 @@
-use crate::paths;
+use super::paths;
 use std::io::Write;
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
@@ -35,7 +35,7 @@ fn read_pid() -> Option<u32> {
 
 /// Check if the daemon socket is responsive.
 fn is_socket_alive() -> bool {
-    let socket_path = nighthawk_proto::default_socket_path();
+    let socket_path = crate::proto::default_socket_path();
     let path_str = socket_path.to_string_lossy();
 
     // Just connect — if the socket accepts, the daemon is alive
@@ -85,7 +85,7 @@ fn clean_stale() {
     let _ = std::fs::remove_file(paths::pid_file());
     #[cfg(unix)]
     {
-        let socket_path = nighthawk_proto::default_socket_path();
+        let socket_path = crate::proto::default_socket_path();
         let _ = std::fs::remove_file(&socket_path);
     }
 }
@@ -153,7 +153,7 @@ pub fn start() -> Result<(), Box<dyn std::error::Error>> {
     // Wait briefly for daemon to bind socket
     std::thread::sleep(std::time::Duration::from_millis(300));
 
-    let socket_path = nighthawk_proto::default_socket_path();
+    let socket_path = crate::proto::default_socket_path();
     if is_socket_alive() {
         println!("Daemon started (PID {pid})");
         println!("  Socket: {}", socket_path.display());
@@ -238,7 +238,7 @@ pub fn stop() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 pub fn status() -> Result<(), Box<dyn std::error::Error>> {
-    let socket_path = nighthawk_proto::default_socket_path();
+    let socket_path = crate::proto::default_socket_path();
 
     match read_pid() {
         Some(pid) => {
@@ -269,14 +269,14 @@ pub fn status() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 pub fn complete(input: &str) -> Result<(), Box<dyn std::error::Error>> {
-    let socket_path = nighthawk_proto::default_socket_path();
+    let socket_path = crate::proto::default_socket_path();
     let path_str = socket_path.to_string_lossy();
 
-    let req = nighthawk_proto::CompletionRequest {
+    let req = crate::proto::CompletionRequest {
         input: input.to_string(),
         cursor: input.len(),
         cwd: std::env::current_dir().unwrap_or_default(),
-        shell: nighthawk_proto::Shell::detect_default(),
+        shell: crate::proto::Shell::detect_default(),
     };
 
     let req_json = serde_json::to_string(&req)?;
@@ -297,7 +297,7 @@ pub fn complete(input: &str) -> Result<(), Box<dyn std::error::Error>> {
         let mut reader = std::io::BufReader::new(&stream);
         std::io::BufRead::read_line(&mut reader, &mut response)?;
 
-        let resp: nighthawk_proto::CompletionResponse = serde_json::from_str(response.trim())?;
+        let resp: crate::proto::CompletionResponse = serde_json::from_str(response.trim())?;
         for s in &resp.suggestions {
             let desc = s.description.as_deref().unwrap_or("");
             println!(
@@ -329,7 +329,7 @@ pub fn complete(input: &str) -> Result<(), Box<dyn std::error::Error>> {
         let mut reader = std::io::BufReader::new(&file);
         std::io::BufRead::read_line(&mut reader, &mut response)?;
 
-        let resp: nighthawk_proto::CompletionResponse = serde_json::from_str(response.trim())?;
+        let resp: crate::proto::CompletionResponse = serde_json::from_str(response.trim())?;
         for s in &resp.suggestions {
             let desc = s.description.as_deref().unwrap_or("");
             println!(

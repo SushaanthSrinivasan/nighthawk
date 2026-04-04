@@ -2,7 +2,7 @@ pub mod history;
 pub mod specs;
 pub mod tier;
 
-use nighthawk_proto::{CompletionRequest, CompletionResponse};
+use crate::proto::{CompletionRequest, CompletionResponse};
 use tier::PredictionTier;
 use tracing::{debug, warn};
 
@@ -59,8 +59,8 @@ impl PredictionEngine {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::proto::{Shell, Suggestion, SuggestionSource};
     use async_trait::async_trait;
-    use nighthawk_proto::{Shell, Suggestion, SuggestionSource};
     use std::path::PathBuf;
 
     struct MockTier {

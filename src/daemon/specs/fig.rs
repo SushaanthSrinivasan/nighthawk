@@ -106,10 +106,7 @@ mod tests {
     /// This catches any JSON format mismatches from the fig converter.
     #[test]
     fn validate_converted_specs() {
-        let specs_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("..")
-            .join("..")
-            .join("specs");
+        let specs_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("specs");
 
         if !specs_dir.exists() {
             // Skip if specs dir doesn't exist (CI without converted specs)

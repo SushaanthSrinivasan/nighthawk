@@ -5,9 +5,9 @@ pub mod history;
 pub mod server;
 pub mod specs;
 
+use crate::proto::Shell;
 use engine::PredictionEngine;
 use history::ShellHistory;
-use nighthawk_proto::Shell;
 use std::sync::Arc;
 use tracing_subscriber::EnvFilter;
 
@@ -93,7 +93,7 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
         .socket_path
         .map(|p| p.to_string_lossy().to_string())
         .unwrap_or_else(|| {
-            nighthawk_proto::default_socket_path()
+            crate::proto::default_socket_path()
                 .to_string_lossy()
                 .to_string()
         });

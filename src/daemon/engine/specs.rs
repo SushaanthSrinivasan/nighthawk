@@ -1,9 +1,9 @@
+use crate::proto::{CompletionRequest, Suggestion, SuggestionSource};
 use async_trait::async_trait;
-use nighthawk_proto::{CompletionRequest, Suggestion, SuggestionSource};
 use std::collections::HashSet;
 
 use super::tier::PredictionTier;
-use crate::specs::{OptionSpec, SpecRegistry};
+use crate::daemon::specs::{OptionSpec, SpecRegistry};
 use std::sync::Arc;
 
 /// Tier 1: Static spec lookup.
@@ -274,7 +274,8 @@ impl PredictionTier for SpecTier {
                     sub_candidates.push(alias);
                 }
             }
-            let fuzzy_subs = crate::fuzzy::fuzzy_matches(current_token, sub_candidates.into_iter());
+            let fuzzy_subs =
+                crate::daemon::fuzzy::fuzzy_matches(current_token, sub_candidates.into_iter());
 
             for fm in &fuzzy_subs {
                 let desc = spec
@@ -284,7 +285,7 @@ impl PredictionTier for SpecTier {
                     .and_then(|s| s.description.clone());
 
                 let confidence = if fm.distance == 1 { 0.70 } else { 0.55 };
-                let ops = crate::fuzzy::diff_ops(current_token, &fm.text);
+                let ops = crate::daemon::fuzzy::diff_ops(current_token, &fm.text);
                 suggestions.push(Suggestion {
                     text: fm.text.clone(),
                     replace_start: token_start,
@@ -306,7 +307,8 @@ impl PredictionTier for SpecTier {
                     .filter(|n| n.starts_with("--"))
                     .map(|n| n.as_str())
                     .collect();
-                let fuzzy_opts = crate::fuzzy::fuzzy_matches(current_token, opt_names.into_iter());
+                let fuzzy_opts =
+                    crate::daemon::fuzzy::fuzzy_matches(current_token, opt_names.into_iter());
 
                 for fm in &fuzzy_opts {
                     if used_flags.contains(&fm.text) {
@@ -319,7 +321,7 @@ impl PredictionTier for SpecTier {
                         .and_then(|opt| opt.description.clone());
 
                     let confidence = if fm.distance == 1 { 0.65 } else { 0.50 };
-                    let ops = crate::fuzzy::diff_ops(current_token, &fm.text);
+                    let ops = crate::daemon::fuzzy::diff_ops(current_token, &fm.text);
                     suggestions.push(Suggestion {
                         text: fm.text.clone(),
                         replace_start: token_start,
@@ -419,8 +421,10 @@ impl PredictionTier for SpecTier {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::specs::{ArgSpec, CliSpec, OptionSpec, SpecProvider, SpecRegistry, SubcommandSpec};
-    use nighthawk_proto::{Shell, SuggestionSource};
+    use crate::daemon::specs::{
+        ArgSpec, CliSpec, OptionSpec, SpecProvider, SpecRegistry, SubcommandSpec,
+    };
+    use crate::proto::{Shell, SuggestionSource};
     use std::collections::HashMap;
     use std::path::PathBuf;
 

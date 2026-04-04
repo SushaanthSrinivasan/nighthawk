@@ -1,4 +1,4 @@
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    nighthawk_daemon::run().await
+    nighthawk::daemon::run().await
 }

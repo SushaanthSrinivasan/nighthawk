@@ -169,7 +169,8 @@ impl SpecRegistry {
             }
         };
 
-        let matches = crate::fuzzy::fuzzy_matches(command, commands.iter().map(|s| s.as_str()));
+        let matches =
+            crate::daemon::fuzzy::fuzzy_matches(command, commands.iter().map(|s| s.as_str()));
 
         let best = matches.first()?;
         let spec = self.lookup(&best.text)?;

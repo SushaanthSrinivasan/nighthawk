@@ -1,5 +1,5 @@
 use super::{HistoryEntry, ShellHistory};
-use nighthawk_proto::Shell;
+use crate::proto::Shell;
 use std::path::PathBuf;
 
 /// Reads history from shell history files on disk.

@@ -1,14 +1,14 @@
 use std::path::PathBuf;
 use std::sync::Arc;
 
-use nighthawk_daemon::engine::history::HistoryTier;
-use nighthawk_daemon::engine::specs::SpecTier;
-use nighthawk_daemon::engine::PredictionEngine;
-use nighthawk_daemon::history::file::FileHistory;
-use nighthawk_daemon::history::ShellHistory;
-use nighthawk_daemon::specs::fig::FigSpecProvider;
-use nighthawk_daemon::specs::SpecRegistry;
-use nighthawk_proto::*;
+use nighthawk::daemon::engine::history::HistoryTier;
+use nighthawk::daemon::engine::specs::SpecTier;
+use nighthawk::daemon::engine::PredictionEngine;
+use nighthawk::daemon::history::file::FileHistory;
+use nighthawk::daemon::history::ShellHistory;
+use nighthawk::daemon::specs::fig::FigSpecProvider;
+use nighthawk::daemon::specs::SpecRegistry;
+use nighthawk::proto::*;
 
 use interprocess::local_socket::{tokio::prelude::*, GenericFilePath, ToFsName};
 use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
@@ -52,7 +52,7 @@ async fn query(socket_path: &str, req: &CompletionRequest) -> CompletionResponse
 #[tokio::test]
 async fn spec_tier_git_checkout() {
     let dir = tempfile::TempDir::new().unwrap();
-    let git_spec = include_str!("../../../specs/git.json");
+    let git_spec = include_str!("../specs/git.json");
     std::fs::write(dir.path().join("git.json"), git_spec).unwrap();
 
     let engine = build_spec_engine(dir.path());
@@ -61,7 +61,7 @@ async fn spec_tier_git_checkout() {
     let engine_clone = Arc::clone(&engine);
     let sp = socket_path.clone();
     tokio::spawn(async move {
-        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+        let _ = nighthawk::daemon::server::run(engine_clone, &sp).await;
     });
 
     // Give the server a moment to bind
@@ -92,7 +92,7 @@ async fn spec_tier_git_checkout() {
 #[tokio::test]
 async fn spec_tier_git_subcommand_with_space() {
     let dir = tempfile::TempDir::new().unwrap();
-    let git_spec = include_str!("../../../specs/git.json");
+    let git_spec = include_str!("../specs/git.json");
     std::fs::write(dir.path().join("git.json"), git_spec).unwrap();
 
     let engine = build_spec_engine(dir.path());
@@ -101,7 +101,7 @@ async fn spec_tier_git_subcommand_with_space() {
     let engine_clone = Arc::clone(&engine);
     let sp = socket_path.clone();
     tokio::spawn(async move {
-        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+        let _ = nighthawk::daemon::server::run(engine_clone, &sp).await;
     });
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
@@ -134,7 +134,7 @@ async fn empty_input_returns_no_suggestions() {
     let engine_clone = Arc::clone(&engine);
     let sp = socket_path.clone();
     tokio::spawn(async move {
-        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+        let _ = nighthawk::daemon::server::run(engine_clone, &sp).await;
     });
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
@@ -162,7 +162,7 @@ async fn unknown_command_returns_empty() {
     let engine_clone = Arc::clone(&engine);
     let sp = socket_path.clone();
     tokio::spawn(async move {
-        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+        let _ = nighthawk::daemon::server::run(engine_clone, &sp).await;
     });
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
@@ -184,7 +184,7 @@ async fn unknown_command_returns_empty() {
 #[tokio::test]
 async fn powershell_shell_variant_works() {
     let dir = tempfile::TempDir::new().unwrap();
-    let git_spec = include_str!("../../../specs/git.json");
+    let git_spec = include_str!("../specs/git.json");
     std::fs::write(dir.path().join("git.json"), git_spec).unwrap();
 
     let engine = build_spec_engine(dir.path());
@@ -193,7 +193,7 @@ async fn powershell_shell_variant_works() {
     let engine_clone = Arc::clone(&engine);
     let sp = socket_path.clone();
     tokio::spawn(async move {
-        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+        let _ = nighthawk::daemon::server::run(engine_clone, &sp).await;
     });
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
@@ -220,7 +220,7 @@ async fn powershell_shell_variant_works() {
 #[tokio::test]
 async fn powershell_fuzzy_match_returns_diff_ops() {
     let dir = tempfile::TempDir::new().unwrap();
-    let git_spec = include_str!("../../../specs/git.json");
+    let git_spec = include_str!("../specs/git.json");
     std::fs::write(dir.path().join("git.json"), git_spec).unwrap();
 
     let engine = build_spec_engine(dir.path());
@@ -229,7 +229,7 @@ async fn powershell_fuzzy_match_returns_diff_ops() {
     let engine_clone = Arc::clone(&engine);
     let sp = socket_path.clone();
     tokio::spawn(async move {
-        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+        let _ = nighthawk::daemon::server::run(engine_clone, &sp).await;
     });
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;
@@ -284,7 +284,7 @@ async fn history_tier_prefix_match() {
     let engine_clone = Arc::clone(&engine);
     let sp = socket_path.clone();
     tokio::spawn(async move {
-        let _ = nighthawk_daemon::server::run(engine_clone, &sp).await;
+        let _ = nighthawk::daemon::server::run(engine_clone, &sp).await;
     });
 
     tokio::time::sleep(std::time::Duration::from_millis(100)).await;

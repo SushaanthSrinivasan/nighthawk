@@ -4,7 +4,7 @@
 //! All functions are case-sensitive — critical for flag matching where
 //! `-R` and `-r` are distinct.
 
-use nighthawk_proto::DiffOp;
+use crate::proto::DiffOp;
 use std::collections::HashMap;
 
 /// Compute the Damerau-Levenshtein distance between two strings.

@@ -1,4 +1,4 @@
-use crate::paths;
+use super::paths;
 use std::path::{Path, PathBuf};
 
 /// Map shell name to plugin filename and rc file path.
@@ -33,10 +33,10 @@ fn shell_info(shell: &str) -> Result<(&str, PathBuf), String> {
 /// Plugins are compiled into the binary so setup works from anywhere.
 fn plugin_content(filename: &str) -> Option<&'static str> {
     match filename {
-        "nighthawk.zsh" => Some(include_str!("../../../shells/nighthawk.zsh")),
-        "nighthawk.bash" => Some(include_str!("../../../shells/nighthawk.bash")),
-        "nighthawk.fish" => Some(include_str!("../../../shells/nighthawk.fish")),
-        "nighthawk.ps1" => Some(include_str!("../../../shells/nighthawk.ps1")),
+        "nighthawk.zsh" => Some(include_str!("../../shells/nighthawk.zsh")),
+        "nighthawk.bash" => Some(include_str!("../../shells/nighthawk.bash")),
+        "nighthawk.fish" => Some(include_str!("../../shells/nighthawk.fish")),
+        "nighthawk.ps1" => Some(include_str!("../../shells/nighthawk.ps1")),
         _ => None,
     }
 }
@@ -54,7 +54,6 @@ fn find_specs_dir() -> Option<PathBuf> {
     }
     None
 }
-
 
 /// Copy specs directory to config dir if not already populated.
 fn ensure_specs(dest_specs_dir: &Path) -> Result<bool, Box<dyn std::error::Error>> {
@@ -153,10 +152,7 @@ fn install_binaries() -> Result<Option<PathBuf>, Box<dyn std::error::Error>> {
     std::fs::copy(&nh_src, bin_dir.join(nh_name))?;
     std::fs::copy(&daemon_src, bin_dir.join(daemon_name))?;
 
-    println!(
-        "Installed binaries to {}",
-        bin_dir.display()
-    );
+    println!("Installed binaries to {}", bin_dir.display());
 
     Ok(Some(bin_dir))
 }
@@ -296,7 +292,7 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
     }
 
     // Start the daemon so it's ready when the user opens a new shell
-    match crate::daemon_ctl::start() {
+    match super::daemon_ctl::start() {
         Ok(()) => {}
         Err(e) => eprintln!("Warning: could not start daemon: {e}"),
     }
@@ -382,7 +378,10 @@ mod tests {
 
     #[test]
     fn path_line_powershell_uses_env_path() {
-        let line = path_line("powershell", Path::new(r"C:\Users\test\AppData\Local\Programs\nighthawk"));
+        let line = path_line(
+            "powershell",
+            Path::new(r"C:\Users\test\AppData\Local\Programs\nighthawk"),
+        );
         assert!(line.contains("$env:Path"));
         assert!(line.contains("-notlike"));
     }
@@ -404,11 +403,15 @@ mod tests {
         let dir = paths::bin_dir();
         let dir_str = dir.to_string_lossy();
         if cfg!(windows) {
-            assert!(dir_str.contains("Programs") && dir_str.contains("nighthawk"),
-                "Expected Windows install path, got: {dir_str}");
+            assert!(
+                dir_str.contains("Programs") && dir_str.contains("nighthawk"),
+                "Expected Windows install path, got: {dir_str}"
+            );
         } else {
-            assert!(dir_str.contains(".local") && dir_str.contains("bin"),
-                "Expected Unix install path, got: {dir_str}");
+            assert!(
+                dir_str.contains(".local") && dir_str.contains("bin"),
+                "Expected Unix install path, got: {dir_str}"
+            );
         }
     }
 }

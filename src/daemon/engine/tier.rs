@@ -1,5 +1,5 @@
+use crate::proto::{CompletionRequest, Suggestion};
 use async_trait::async_trait;
-use nighthawk_proto::{CompletionRequest, Suggestion};
 
 /// A prediction tier in the completion cascade.
 ///
