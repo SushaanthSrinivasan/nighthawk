@@ -52,7 +52,11 @@ function _nh_ensure_daemon {
     if ($script:_nh_tried_start) { return }
     $script:_nh_tried_start = $true
     $nhCmd = Get-Command nh -ErrorAction SilentlyContinue
-    if ($nhCmd) { & nh start >$null 2>$null }
+    if ($nhCmd) {
+        # Start asynchronously — nh start calls tasklist which blocks 1-3s on Windows.
+        # Must not block the PSReadLine key handler or input freezes.
+        Start-Process nh -ArgumentList 'start' -WindowStyle Hidden
+    }
 }
 
 # --- Daemon communication ---
@@ -66,6 +70,14 @@ function _nh_query {
 
     # Backoff: skip queries for 5s after connection failure
     if ([DateTime]::UtcNow -lt $script:_nh_backoff_until) { return }
+
+    # Fast check: bail if the named pipe doesn't exist.
+    # Connect() on .NET Framework sleeps ~50ms internally even for non-existent pipes.
+    if (-not (Test-Path "\\.\pipe\$($script:_nh_pipe)")) {
+        $script:_nh_backoff_until = [DateTime]::UtcNow.AddSeconds(5)
+        if (-not $script:_nh_tried_start) { _nh_ensure_daemon }
+        return
+    }
 
     $script:_nh_last_buffer = $line
 
@@ -86,7 +98,12 @@ function _nh_query {
 
             $reader = [System.IO.StreamReader]::new($pipe, $utf8)
             $readTask = $reader.ReadLineAsync()
-            if (-not $readTask.Wait(100)) { return }
+            if (-not $readTask.Wait(100)) {
+                # Read timed out — daemon connected but not responding (likely shutting down).
+                # Back off so every keystroke doesn't pay ~100ms.
+                $script:_nh_backoff_until = [DateTime]::UtcNow.AddSeconds(5)
+                return
+            }
             $response = $readTask.Result
         } finally {
             $pipe.Dispose()
@@ -121,8 +138,6 @@ function _nh_query {
     catch {
         # Back off for 5s so failed connections don't block typing
         $script:_nh_backoff_until = [DateTime]::UtcNow.AddSeconds(5)
-        # Try starting the daemon once
-        if (-not $script:_nh_tried_start) { _nh_ensure_daemon }
     }
 }
 
