@@ -1,4 +1,6 @@
 pub mod history;
+#[cfg(feature = "local-llm")]
+pub mod llm;
 pub mod specs;
 pub mod tier;
 

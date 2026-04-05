@@ -20,7 +20,7 @@ Open-source, local-first, cross-platform terminal autocomplete with inline ghost
 │  PredictionEngine                │
 │  ├─ Tier 0: History prefix <1ms  │
 │  ├─ Tier 1: Spec lookup   <1ms  │
-│  ├─ Tier 2: Local LLM    ~50ms  │  (future)
+│  ├─ Tier 2: Local LLM   ~500ms  │  (via ollama/llama.cpp/vllm, feature-gated)
 │  └─ Tier 3: Cloud API   ~500ms  │  (future, BYOK)
 │                                  │
 │  Spec sources:                   │
@@ -48,6 +48,7 @@ Single crate published as `nighthawk` on crates.io. Install via `cargo install n
 - `src/daemon/engine/tier.rs` — `PredictionTier` trait. The primary extension point.
 - `src/daemon/engine/history.rs` — Tier 0 implementation. Prefix-matches against shell history.
 - `src/daemon/engine/specs.rs` — Tier 1 implementation. Looks up CLI specs for subcommands/options.
+- `src/daemon/engine/llm.rs` — Tier 2 implementation (feature-gated: `local-llm`). Calls OpenAI-compatible `/v1/chat/completions` endpoint for LLM-powered suggestions.
 - `src/daemon/specs/mod.rs` — `SpecProvider` trait, `SpecRegistry` (chains providers with cache), `CliSpec` types.
 - `src/daemon/specs/fig.rs` — Loads pre-converted withfig/autocomplete JSON specs.
 - `src/daemon/specs/helpparse.rs` — Parses `--help` output into `CliSpec`.
@@ -147,7 +148,7 @@ pub trait ShellHistory: Send + Sync {
 - **Never render ghost text from the daemon** — that's the plugin's job, daemon just returns suggestions
 - **Never load all specs at startup** — lazy-load and cache on first use
 - **Never use platform-specific IPC directly** — use `interprocess` crate abstractions
-- **Never add HTTP/REST** — IPC only, the daemon is not a web server
+- **Never expose HTTP/REST** — IPC only, the daemon is not a web server. (Outbound HTTP for LLM tiers is OK behind a feature flag.)
 - **Never block the IPC server** — async all the way, slow tiers must not starve fast ones
 
 ## Design decisions
