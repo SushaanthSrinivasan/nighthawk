@@ -84,6 +84,27 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
         tracing::debug!("Spec tier enabled");
     }
 
+    // Tier 2: Local LLM
+    #[cfg(feature = "local-llm")]
+    if config.tiers.enable_local_llm {
+        let llm_config = config.local_llm.unwrap_or_default();
+        tracing::info!(
+            endpoint = %llm_config.endpoint,
+            model = %llm_config.model,
+            budget_ms = llm_config.budget_ms,
+            "Local LLM tier enabled"
+        );
+        tiers.push(Box::new(engine::llm::LlmTier::new(llm_config)));
+    }
+
+    #[cfg(not(feature = "local-llm"))]
+    if config.tiers.enable_local_llm {
+        tracing::warn!(
+            "enable_local_llm is set but nighthawk was compiled without the 'local-llm' feature. \
+             Reinstall with: cargo install nighthawk --features local-llm"
+        );
+    }
+
     // Build engine
     let engine = Arc::new(PredictionEngine::new(tiers));
 

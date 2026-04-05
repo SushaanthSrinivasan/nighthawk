@@ -98,6 +98,42 @@ fn ensure_specs(dest_specs_dir: &Path) -> Result<bool, Box<dyn std::error::Error
     }
 }
 
+/// Default config.toml content with documented options.
+const DEFAULT_CONFIG: &str = r#"# nighthawk configuration
+# See: https://github.com/SushaanthSrinivasan/nighthawk
+
+[daemon]
+# log_level = "info"          # trace, debug, info, warn, error
+
+[tiers]
+# enable_history = true       # Tier 0: shell history prefix match
+# enable_specs = true         # Tier 1: CLI spec lookup
+# enable_local_llm = false    # Tier 2: local LLM (requires --features local-llm)
+# enable_cloud = false        # Tier 3: cloud API (not yet implemented)
+
+# Uncomment and configure to enable local LLM completions.
+# Requires: cargo install nighthawk --features local-llm
+# [local_llm]
+# endpoint = "http://localhost:11434/v1"  # ollama default
+# model = "qwen2.5-coder:1.5b"
+# budget_ms = 500
+# temperature = 0.0
+# max_tokens = 64
+"#;
+
+/// Create a default config.toml if one doesn't exist yet.
+fn ensure_config() -> Result<bool, Box<dyn std::error::Error>> {
+    let config_path = paths::config_dir().join("config.toml");
+    if config_path.exists() {
+        return Ok(false);
+    }
+    if let Some(parent) = config_path.parent() {
+        std::fs::create_dir_all(parent)?;
+    }
+    std::fs::write(&config_path, DEFAULT_CONFIG)?;
+    Ok(true)
+}
+
 /// Platform-appropriate binary names for nh and nighthawk-daemon.
 fn binary_names() -> (&'static str, &'static str) {
     if cfg!(windows) {
@@ -200,7 +236,17 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => eprintln!("Warning: could not copy specs: {e}"),
     }
 
-    // 3. Install binaries to standard location
+    // 3. Create default config.toml if missing
+    match ensure_config() {
+        Ok(true) => println!(
+            "Created config at {}",
+            paths::config_dir().join("config.toml").display()
+        ),
+        Ok(false) => {} // Already exists
+        Err(e) => eprintln!("Warning: could not create config: {e}"),
+    }
+
+    // 4. Install binaries to standard location
     let installed_bin_dir = match install_binaries() {
         Ok(dir) => dir,
         Err(e) => {
