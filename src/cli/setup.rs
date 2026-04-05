@@ -15,7 +15,17 @@ fn shell_info(shell: &str) -> Result<(&str, PathBuf), String> {
                 .join("conf.d")
                 .join("nighthawk.fish"),
         )),
-        "powershell" | "pwsh" => {
+        "powershell" => {
+            // Windows PowerShell 5.1 uses Documents\WindowsPowerShell\
+            let docs = dirs::document_dir().unwrap_or_else(|| home.join("Documents"));
+            Ok((
+                "nighthawk.ps1",
+                docs.join("WindowsPowerShell")
+                    .join("Microsoft.PowerShell_profile.ps1"),
+            ))
+        }
+        "pwsh" => {
+            // PowerShell 7+ uses Documents\PowerShell\
             let docs = dirs::document_dir().unwrap_or_else(|| home.join("Documents"));
             Ok((
                 "nighthawk.ps1",
@@ -365,11 +375,26 @@ mod tests {
     }
 
     #[test]
-    fn powershell_and_pwsh_return_same_result() {
-        let (file1, path1) = shell_info("powershell").unwrap();
-        let (file2, path2) = shell_info("pwsh").unwrap();
+    fn powershell_and_pwsh_use_same_plugin_file() {
+        let (file1, _) = shell_info("powershell").unwrap();
+        let (file2, _) = shell_info("pwsh").unwrap();
         assert_eq!(file1, file2);
-        assert_eq!(path1, path2);
+    }
+
+    #[test]
+    fn powershell_and_pwsh_use_different_profile_dirs() {
+        let (_, ps51_path) = shell_info("powershell").unwrap();
+        let (_, pwsh_path) = shell_info("pwsh").unwrap();
+        let ps51_str = ps51_path.to_string_lossy();
+        let pwsh_str = pwsh_path.to_string_lossy();
+        assert!(
+            ps51_str.contains("WindowsPowerShell"),
+            "PS 5.1 should use WindowsPowerShell, got: {ps51_str}"
+        );
+        assert!(
+            pwsh_str.contains("PowerShell") && !pwsh_str.contains("WindowsPowerShell"),
+            "pwsh should use PowerShell (not WindowsPowerShell), got: {pwsh_str}"
+        );
     }
 
     #[test]
@@ -377,7 +402,7 @@ mod tests {
         let (_, path) = shell_info("powershell").unwrap();
         let path_str = path.to_string_lossy();
         assert!(
-            path_str.contains("PowerShell")
+            path_str.contains("WindowsPowerShell")
                 && path_str.contains("Microsoft.PowerShell_profile.ps1"),
             "Unexpected profile path: {path_str}"
         );
