@@ -17,6 +17,7 @@ typeset -g _nh_has_highlight=0
 typeset -g _nh_diff_ops=""
 typeset -g _nh_original_buffer=""
 typeset -g _nh_original_cursor=""
+typeset -g _nh_backoff_until=0
 
 # --- Dependency check ---
 if ! command -v socat &>/dev/null; then
@@ -183,6 +184,12 @@ _nh_ensure_daemon() {
 
 # --- Daemon communication ---
 _nh_query() {
+    # Back off for 5s after connection failure so dead daemon doesn't block every keystroke
+    local now=$EPOCHSECONDS
+    if (( now < _nh_backoff_until )); then
+        return
+    fi
+
     _nh_ensure_daemon
 
     local buffer="$1"
@@ -200,6 +207,7 @@ _nh_query() {
     response=$(echo "$json" | socat -t1 - UNIX-CONNECT:"$NIGHTHAWK_SOCKET" 2>/dev/null)
 
     if [[ -z "$response" ]]; then
+        _nh_backoff_until=$(( EPOCHSECONDS + 5 ))
         return
     fi
 
