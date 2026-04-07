@@ -1,4 +1,5 @@
 pub mod daemon_ctl;
+pub mod embedded_specs;
 pub mod paths;
 pub mod setup;
 
