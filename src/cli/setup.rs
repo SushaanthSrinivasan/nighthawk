@@ -65,24 +65,26 @@ fn find_specs_dir() -> Option<PathBuf> {
     None
 }
 
-/// Copy specs directory to config dir if not already populated.
+/// Extract embedded specs or copy from dev layout as fallback.
 fn ensure_specs(dest_specs_dir: &Path) -> Result<bool, Box<dyn std::error::Error>> {
-    // If dest already has specs, skip
-    if dest_specs_dir.exists() {
-        let count = std::fs::read_dir(dest_specs_dir)?
-            .filter_map(|e| e.ok())
-            .filter(|e| {
-                e.path()
-                    .extension()
-                    .map(|ext| ext == "json")
-                    .unwrap_or(false)
-            })
-            .count();
-        if count > 10 {
-            return Ok(false); // Already populated
+    // Try embedded specs first (works after cargo install)
+    match super::embedded_specs::extract_specs(dest_specs_dir) {
+        Ok(super::embedded_specs::ExtractResult::Extracted { .. }) => {
+            return Ok(true);
+        }
+        Ok(super::embedded_specs::ExtractResult::AlreadyCurrent) => {
+            return Ok(false);
+        }
+        Ok(super::embedded_specs::ExtractResult::NoEmbeddedSpecs) => {
+            // Fall through to dev-layout fallback
+        }
+        Err(e) => {
+            eprintln!("Warning: could not extract embedded specs: {e}");
+            // Fall through to dev-layout fallback
         }
     }
 
+    // Dev-layout fallback: copy from repo specs/ directory
     let source = match find_specs_dir() {
         Some(d) => d,
         None => return Ok(false),
@@ -241,7 +243,7 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
     // 2. Copy specs if needed
     let specs_dest = paths::specs_dir();
     match ensure_specs(&specs_dest) {
-        Ok(true) => println!("Copied specs to {}", specs_dest.display()),
+        Ok(true) => println!("Installed specs to {}", specs_dest.display()),
         Ok(false) => {} // Already there or source not found
         Err(e) => eprintln!("Warning: could not copy specs: {e}"),
     }
