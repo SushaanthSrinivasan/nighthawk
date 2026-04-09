@@ -69,7 +69,7 @@ impl Shell {
         }
 
         // 2. Platform default / $SHELL
-        let _ = &shell_env; // used only on non-Windows
+        let _shell_env = shell_env; // used only on non-Windows
         #[cfg(windows)]
         {
             Shell::PowerShell
