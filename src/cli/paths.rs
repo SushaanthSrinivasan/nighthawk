@@ -24,6 +24,17 @@ pub fn plugin_dir() -> PathBuf {
     config_dir()
 }
 
+/// Check if any shell plugin is installed in the config directory.
+/// Returns true if config_dir is invalid (fallback to ".") to avoid false positive hints.
+pub fn has_any_plugin() -> bool {
+    let dir = config_dir();
+    // If config_dir fell back to ".", don't trust it
+    if dir == PathBuf::from(".") {
+        return true; // Assume setup done, avoid false positive hints
+    }
+    dir.join("nighthawk.zsh").exists() || dir.join("nighthawk.ps1").exists()
+}
+
 /// Standard install directory for nighthawk binaries.
 /// Windows: %LOCALAPPDATA%\Programs\nighthawk\
 /// Unix: ~/.local/bin/
