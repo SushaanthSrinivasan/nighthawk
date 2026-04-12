@@ -113,11 +113,14 @@ mod tests {
                 let parsed: serde_json::Value = serde_json::from_str(&contents).unwrap();
                 assert_eq!(parsed["name"], "git");
             }
-            other => panic!("Expected Extracted, got {}", match other {
-                ExtractResult::AlreadyCurrent => "AlreadyCurrent",
-                ExtractResult::NoEmbeddedSpecs => "NoEmbeddedSpecs",
-                _ => "unknown",
-            }),
+            other => panic!(
+                "Expected Extracted, got {}",
+                match other {
+                    ExtractResult::AlreadyCurrent => "AlreadyCurrent",
+                    ExtractResult::NoEmbeddedSpecs => "NoEmbeddedSpecs",
+                    _ => "unknown",
+                }
+            ),
         }
     }
 
