@@ -3,7 +3,7 @@ use async_trait::async_trait;
 use std::collections::HashSet;
 
 use super::tier::PredictionTier;
-use crate::daemon::specs::{OptionSpec, SpecRegistry};
+use crate::daemon::specs::{CliSpec, OptionSpec, SpecRegistry, SubcommandSpec};
 use std::sync::Arc;
 
 /// Tier 1: Static spec lookup.
@@ -113,6 +113,62 @@ fn stackable_flags(options: &[OptionSpec]) -> Vec<(char, &OptionSpec)> {
         .collect()
 }
 
+/// Result of navigating through previous_tokens in a spec tree.
+/// Used to find the correct subcommand context for suggestions.
+struct NavigatedContext<'a> {
+    subcommands: &'a [SubcommandSpec],
+    options: &'a [OptionSpec],
+    navigated_names: Vec<&'a str>, // Canonical subcommand names (not input tokens)
+}
+
+/// Navigate through previous_tokens, descending into nested SubcommandSpecs.
+/// Skips flags and their argument values. Stops at positional args.
+fn navigate_to_context<'a>(root: &'a CliSpec, previous_tokens: &[&str]) -> NavigatedContext<'a> {
+    let mut subcommands = root.subcommands.as_slice();
+    let mut options = root.options.as_slice();
+    let mut navigated_names = Vec::new();
+    let mut skip_next = false; // For flags that consume an argument
+
+    for token in previous_tokens {
+        // Skip argument value of a flag that consumes one (e.g., -C /path)
+        if skip_next {
+            skip_next = false;
+            continue;
+        }
+
+        // Skip flags — they don't affect subcommand navigation
+        if token.starts_with('-') {
+            // Check if this flag consumes the next token
+            if let Some(opt) = options.iter().find(|o| o.names.iter().any(|n| n == token)) {
+                if opt.takes_arg {
+                    skip_next = true;
+                }
+            }
+            continue;
+        }
+
+        // Find matching subcommand by name or alias
+        let found = subcommands
+            .iter()
+            .find(|sub| sub.name == *token || sub.aliases.iter().any(|a| a == *token));
+
+        match found {
+            Some(sub) => {
+                navigated_names.push(sub.name.as_str()); // Track CANONICAL name
+                subcommands = &sub.subcommands;
+                options = &sub.options;
+            }
+            None => break, // Positional arg or unknown — stop navigation
+        }
+    }
+
+    NavigatedContext {
+        subcommands,
+        options,
+        navigated_names,
+    }
+}
+
 #[async_trait]
 impl PredictionTier for SpecTier {
     fn name(&self) -> &str {
@@ -161,19 +217,22 @@ impl PredictionTier for SpecTier {
             vec![]
         };
 
+        // Navigate into nested subcommands based on previous_tokens
+        let ctx = navigate_to_context(&spec, &previous_tokens);
+
         // Include current_token so we don't re-suggest the exact flag being typed
         let mut all_committed = previous_tokens.clone();
         if !current_token.is_empty() {
             all_committed.push(current_token);
         }
-        let used_flags = collect_used_flags(&all_committed, &spec.options);
+        let used_flags = collect_used_flags(&all_committed, ctx.options);
 
         let mut suggestions = Vec::new();
 
         // If previous token is a flag that takes an argument, the cursor position
         // expects a flag argument value — not subcommands or other flags.
         if let Some(&prev) = previous_tokens.last() {
-            if let Some(opt) = prev_consumes_next_token(prev, &spec.options) {
+            if let Some(opt) = prev_consumes_next_token(prev, ctx.options) {
                 // Offer arg-value suggestions if the option defines them
                 if let Some(arg) = &opt.arg {
                     for val in &arg.suggestions {
@@ -200,11 +259,14 @@ impl PredictionTier for SpecTier {
                 suggestions.truncate(5);
                 // Change C: fix suggestions when command was fuzzy-resolved
                 if command_was_fuzzy {
-                    let cmd_len = command.len();
+                    let prefix = if ctx.navigated_names.is_empty() {
+                        spec.name.clone()
+                    } else {
+                        format!("{} {}", spec.name, ctx.navigated_names.join(" "))
+                    };
                     for s in &mut suggestions {
                         s.diff_ops = None;
-                        let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
-                        s.text = format!("{}{}{}", spec.name, mid, s.text);
+                        s.text = format!("{} {}", prefix, s.text);
                         s.replace_start = 0;
                     }
                 }
@@ -213,7 +275,7 @@ impl PredictionTier for SpecTier {
         }
 
         // Match subcommands
-        for sub in &spec.subcommands {
+        for sub in ctx.subcommands {
             if sub.name.starts_with(current_token) && sub.name != current_token {
                 let (replace_start, replace_end) = if current_token.is_empty() {
                     (req.cursor, req.cursor)
@@ -235,7 +297,7 @@ impl PredictionTier for SpecTier {
         }
 
         // Match options by prefix
-        for opt in &spec.options {
+        for opt in ctx.options {
             for name in &opt.names {
                 if name.starts_with(current_token) && name != current_token {
                     if used_flags.contains(name) {
@@ -268,7 +330,7 @@ impl PredictionTier for SpecTier {
 
             // Fuzzy match subcommand names and aliases
             let mut sub_candidates: Vec<&str> = Vec::new();
-            for sub in &spec.subcommands {
+            for sub in ctx.subcommands {
                 sub_candidates.push(&sub.name);
                 for alias in &sub.aliases {
                     sub_candidates.push(alias);
@@ -278,7 +340,7 @@ impl PredictionTier for SpecTier {
                 crate::daemon::fuzzy::fuzzy_matches(current_token, sub_candidates.into_iter());
 
             for fm in &fuzzy_subs {
-                let desc = spec
+                let desc = ctx
                     .subcommands
                     .iter()
                     .find(|s| s.name == fm.text || s.aliases.iter().any(|a| a == &fm.text))
@@ -300,7 +362,7 @@ impl PredictionTier for SpecTier {
             // Fuzzy match long option names only (--prefixed).
             // Short flags (-x) are excluded to avoid interfering with flag stacking.
             if current_token.starts_with("--") {
-                let opt_names: Vec<&str> = spec
+                let opt_names: Vec<&str> = ctx
                     .options
                     .iter()
                     .flat_map(|opt| opt.names.iter())
@@ -314,7 +376,7 @@ impl PredictionTier for SpecTier {
                     if used_flags.contains(&fm.text) {
                         continue;
                     }
-                    let desc = spec
+                    let desc = ctx
                         .options
                         .iter()
                         .find(|opt| opt.names.iter().any(|n| n == &fm.text))
@@ -343,7 +405,7 @@ impl PredictionTier for SpecTier {
 
             // Case 1: current_token is an exact single-char flag ("-l")
             // → suggest extending into a stack: "-la", "-lh", etc.
-            let exact_flag_no_arg = spec.options.iter().any(|opt| {
+            let exact_flag_no_arg = ctx.options.iter().any(|opt| {
                 !opt.takes_arg
                     && opt
                         .names
@@ -352,7 +414,7 @@ impl PredictionTier for SpecTier {
             });
 
             if exact_flag_no_arg {
-                for (ch, opt) in stackable_flags(&spec.options) {
+                for (ch, opt) in stackable_flags(ctx.options) {
                     let flag_name = format!("-{}", ch);
                     if !used_flags.contains(&flag_name) {
                         suggestions.push(Suggestion {
@@ -375,7 +437,7 @@ impl PredictionTier for SpecTier {
                     let used_in_stack: HashSet<char> = chars.iter().copied().collect();
                     // Reject stacks with duplicate chars (e.g., "-ll")
                     if used_in_stack.len() == chars.len() {
-                        let stackable = stackable_flags(&spec.options);
+                        let stackable = stackable_flags(ctx.options);
                         let stackable_chars: HashSet<char> =
                             stackable.iter().map(|(ch, _)| *ch).collect();
 
@@ -406,11 +468,14 @@ impl PredictionTier for SpecTier {
         suggestions.truncate(5);
         // Change C: fix suggestions when command was fuzzy-resolved
         if command_was_fuzzy {
-            let cmd_len = command.len();
+            let prefix = if ctx.navigated_names.is_empty() {
+                spec.name.clone()
+            } else {
+                format!("{} {}", spec.name, ctx.navigated_names.join(" "))
+            };
             for s in &mut suggestions {
                 s.diff_ops = None; // no inline diff for command-level correction
-                let mid = input.get(cmd_len..s.replace_start).unwrap_or("");
-                s.text = format!("{}{}{}", spec.name, mid, s.text);
+                s.text = format!("{} {}", prefix, s.text);
                 s.replace_start = 0;
             }
         }
@@ -531,6 +596,64 @@ mod tests {
                 is_required: false,
                 arg: None,
             }],
+            args: vec![],
+        }
+    }
+
+    /// Git spec with nested options on checkout subcommand for testing navigation.
+    fn git_spec_with_nested_options() -> CliSpec {
+        CliSpec {
+            name: "git".into(),
+            description: Some("Version control".into()),
+            subcommands: vec![
+                SubcommandSpec {
+                    name: "checkout".into(),
+                    aliases: vec!["co".into()],
+                    description: Some("Switch branches".into()),
+                    subcommands: vec![],
+                    options: vec![
+                        OptionSpec {
+                            names: vec!["-b".into()],
+                            description: Some("Create branch".into()),
+                            takes_arg: true,
+                            is_required: false,
+                            arg: None,
+                        },
+                        OptionSpec {
+                            names: vec!["--force".into(), "-f".into()],
+                            description: Some("Force checkout".into()),
+                            takes_arg: false,
+                            is_required: false,
+                            arg: None,
+                        },
+                    ],
+                    args: vec![],
+                },
+                SubcommandSpec {
+                    name: "cherry-pick".into(),
+                    aliases: vec![],
+                    description: Some("Apply commits".into()),
+                    subcommands: vec![],
+                    options: vec![],
+                    args: vec![],
+                },
+            ],
+            options: vec![
+                OptionSpec {
+                    names: vec!["-v".into(), "--verbose".into()],
+                    description: Some("Verbose".into()),
+                    takes_arg: false,
+                    is_required: false,
+                    arg: None,
+                },
+                OptionSpec {
+                    names: vec!["-C".into()],
+                    description: Some("Run as if started in path".into()),
+                    takes_arg: true,
+                    is_required: false,
+                    arg: None,
+                },
+            ],
             args: vec![],
         }
     }
@@ -1065,21 +1188,89 @@ mod tests {
 
     #[tokio::test]
     async fn fuzzy_command_name_resolution() {
-        // "gti checkout " → resolves "gti" to "git" spec, suggests options
-        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        // "gti checkout " → resolves "gti" to "git" spec, navigates into checkout,
+        // suggests checkout's options (not git's root options)
+        let registry = make_multi_registry(vec![git_spec_with_nested_options(), ls_spec()]);
         let tier = SpecTier::new(registry);
         let suggestions = tier.predict(&req("gti checkout ")).await;
-        // The only option on git is --verbose / -v
+        // Should suggest checkout's options: -b, --force, -f
         assert!(!suggestions.is_empty());
-        // Change C: suggestions should have replace_start=0 and text correcting "gti" to "git"
+        // Verify we get checkout's options, not git's root options
+        let texts: Vec<&str> = suggestions.iter().map(|s| s.text.as_str()).collect();
+        assert!(
+            texts
+                .iter()
+                .any(|t| t.contains("-b") || t.contains("--force")),
+            "should suggest checkout's options, got: {:?}",
+            texts
+        );
+        assert!(
+            !texts.iter().any(|t| t.contains("--verbose")),
+            "should NOT suggest git's root options, got: {:?}",
+            texts
+        );
+        // Change C: suggestions should have replace_start=0 and text correcting "gti" to "git checkout"
         for s in &suggestions {
             assert_eq!(
                 s.replace_start, 0,
                 "fuzzy command correction should set replace_start=0"
             );
             assert!(
-                s.text.starts_with("git "),
-                "suggestion text should start with corrected command: {}",
+                s.text.starts_with("git checkout "),
+                "suggestion text should start with 'git checkout ': {}",
+                s.text
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn global_flag_before_subcommand_still_navigates() {
+        // "git -v checkout " → should skip -v and navigate into checkout
+        let registry = make_multi_registry(vec![git_spec_with_nested_options(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("git -v checkout ")).await;
+        // Should suggest checkout's options, not git's root options
+        assert!(!suggestions.is_empty());
+        let texts: Vec<&str> = suggestions.iter().map(|s| s.text.as_str()).collect();
+        assert!(
+            texts
+                .iter()
+                .any(|t| *t == "-b" || *t == "--force" || *t == "-f"),
+            "should suggest checkout's options, got: {:?}",
+            texts
+        );
+    }
+
+    #[tokio::test]
+    async fn flag_with_argument_before_subcommand() {
+        // "git -C /path checkout " → skip -C AND /path, suggest checkout's options
+        let registry = make_multi_registry(vec![git_spec_with_nested_options(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("git -C /path checkout ")).await;
+        // Should suggest checkout's options
+        assert!(!suggestions.is_empty());
+        let texts: Vec<&str> = suggestions.iter().map(|s| s.text.as_str()).collect();
+        assert!(
+            texts
+                .iter()
+                .any(|t| *t == "-b" || *t == "--force" || *t == "-f"),
+            "should suggest checkout's options after skipping -C /path, got: {:?}",
+            texts
+        );
+    }
+
+    #[tokio::test]
+    async fn alias_navigation_uses_canonical_name() {
+        // "gti co " (co = checkout alias) → suggestions prefixed with "git checkout", not "git co"
+        let registry = make_multi_registry(vec![git_spec_with_nested_options(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti co ")).await;
+        assert!(!suggestions.is_empty());
+        // Should use canonical name "checkout" in prefix, not alias "co"
+        for s in &suggestions {
+            assert!(
+                s.text.starts_with("git checkout "),
+                "should use canonical name 'git checkout', not 'git co': {}",
                 s.text
             );
         }
