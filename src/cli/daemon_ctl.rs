@@ -95,6 +95,12 @@ pub fn start() -> Result<(), Box<dyn std::error::Error>> {
     if let Some(pid) = read_pid() {
         if is_process_alive(pid) {
             println!("Daemon already running (PID {pid})");
+            // Show setup hint if no plugin installed
+            if !paths::has_any_plugin() {
+                let shell_name = crate::proto::Shell::detect_default().as_str();
+                eprintln!();
+                eprintln!("Hint: Run `nh setup {shell_name}` then restart your shell.");
+            }
             return Ok(());
         }
         // Stale PID file — clean up
@@ -161,6 +167,13 @@ pub fn start() -> Result<(), Box<dyn std::error::Error>> {
     } else {
         println!("Daemon spawned (PID {pid}) but socket not yet ready");
         println!("  Check logs: {}", paths::log_file().display());
+    }
+
+    // Show setup hint if no plugin installed
+    if !paths::has_any_plugin() {
+        let shell_name = crate::proto::Shell::detect_default().as_str();
+        eprintln!();
+        eprintln!("Hint: Run `nh setup {shell_name}` then restart your shell.");
     }
 
     Ok(())
@@ -263,6 +276,13 @@ pub fn status() -> Result<(), Box<dyn std::error::Error>> {
                 println!("Daemon is not running");
             }
         }
+    }
+
+    // Show setup hint if no plugin installed
+    if !paths::has_any_plugin() {
+        let shell_name = crate::proto::Shell::detect_default().as_str();
+        eprintln!();
+        eprintln!("Hint: Run `nh setup {shell_name}` then restart your shell.");
     }
 
     Ok(())
