@@ -191,6 +191,13 @@ Set-PSReadLineKeyHandler -Chord 'Backspace' -ScriptBlock {
     _nh_query
 }
 
+Set-PSReadLineKeyHandler -Chord 'Ctrl+Backspace' -ScriptBlock {
+    param($key, $arg)
+    _nh_clear_ghost
+    [Microsoft.PowerShell.PSConsoleReadLine]::BackwardKillWord($key, $arg)
+    _nh_query
+}
+
 Set-PSReadLineKeyHandler -Chord 'Tab' -ScriptBlock {
     param($key, $arg)
     if ($script:_nh_suggestion) {
