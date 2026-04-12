@@ -160,6 +160,14 @@ function _nh_accept {
 # Handler for printable character input
 $_nh_insert_handler = {
     param($key, $arg)
+    # Pass through immediately when Ctrl/Alt modifiers are held.
+    # Prevents blocking during control sequences which can interfere with
+    # Windows Console modifier key tracking on some systems (issue #58).
+    if ($key.Modifiers -band [System.ConsoleModifiers]::Control -or
+        $key.Modifiers -band [System.ConsoleModifiers]::Alt) {
+        [Microsoft.PowerShell.PSConsoleReadLine]::SelfInsert($key, $arg)
+        return
+    }
     _nh_clear_ghost
     [Microsoft.PowerShell.PSConsoleReadLine]::SelfInsert($key, $arg)
     _nh_query
