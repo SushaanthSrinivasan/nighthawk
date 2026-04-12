@@ -6,6 +6,9 @@ use super::tier::PredictionTier;
 use crate::daemon::specs::{CliSpec, OptionSpec, SpecRegistry, SubcommandSpec};
 use std::sync::Arc;
 
+/// Confidence value for fuzzy command corrections (e.g., "gti" → "git").
+const FUZZY_CORRECTION_CONFIDENCE: f32 = 0.85;
+
 /// Tier 1: Static spec lookup.
 /// Matches current input against CLI specs (withfig/autocomplete, --help parsed).
 /// Must complete in under 1ms.
@@ -197,8 +200,24 @@ impl PredictionTier for SpecTier {
             },
         };
 
-        // If we only have the command name, suggest subcommands
+        // If we only have the command name (no trailing space)
         if parts.len() == 1 && !input.ends_with(' ') {
+            // If command was fuzzy-resolved, suggest the correction
+            if command_was_fuzzy {
+                // CRITICAL: Must include diff_ops for shell plugin rendering.
+                // Without it, when typed_len == text.len (e.g., "gti" -> "git"),
+                // the prefix-match ghost text path fails silently.
+                let ops = crate::daemon::fuzzy::diff_ops(command, &spec.name);
+                return vec![Suggestion {
+                    text: spec.name.clone(),
+                    replace_start: 0,
+                    replace_end: input.len(),
+                    confidence: FUZZY_CORRECTION_CONFIDENCE,
+                    source: SuggestionSource::Spec,
+                    description: Some(format!("Did you mean '{}'?", spec.name)),
+                    diff_ops: Some(ops),
+                }];
+            }
             return vec![];
         }
 
@@ -216,6 +235,21 @@ impl PredictionTier for SpecTier {
         } else {
             vec![]
         };
+
+        // Handles "gti " (with trailing space) - command only, no subcommand started.
+        // Suggest only the corrected command (not full commands with subcommands).
+        if command_was_fuzzy && current_token.is_empty() && previous_tokens.is_empty() {
+            let ops = crate::daemon::fuzzy::diff_ops(command, &spec.name);
+            return vec![Suggestion {
+                text: spec.name.clone(),
+                replace_start: 0,
+                replace_end: command.len(),
+                confidence: FUZZY_CORRECTION_CONFIDENCE,
+                source: SuggestionSource::Spec,
+                description: Some(format!("Did you mean '{}'?", spec.name)),
+                diff_ops: Some(ops),
+            }];
+        }
 
         // Navigate into nested subcommands based on previous_tokens
         let ctx = navigate_to_context(&spec, &previous_tokens);
@@ -1315,21 +1349,72 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn fuzzy_command_trailing_space_lists_subcommands() {
-        // "gti " → fuzzy resolves "gti" to "git", trailing space lists subcommands
-        // Change C: suggestions prefixed with "git "
+    async fn fuzzy_command_trailing_space_suggests_only_correction() {
+        // "gti " → fuzzy resolves "gti" to "git", suggests ONLY the correction
+        // (not full commands like "git checkout")
         let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
         let tier = SpecTier::new(registry);
         let suggestions = tier.predict(&req("gti ")).await;
-        assert!(!suggestions.is_empty());
-        for s in &suggestions {
-            assert_eq!(s.replace_start, 0, "should replace from start");
-            assert!(
-                s.text.starts_with("git "),
-                "should be prefixed with corrected command: {}",
-                s.text
-            );
-        }
+        assert_eq!(
+            suggestions.len(),
+            1,
+            "should suggest only corrected command"
+        );
+        assert_eq!(suggestions[0].text, "git");
+        assert_eq!(suggestions[0].replace_start, 0);
+        assert_eq!(suggestions[0].replace_end, 3); // "gti".len(), keeps trailing space
+        assert!(
+            suggestions[0].diff_ops.is_some(),
+            "must include diff_ops for shell rendering"
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_partial_subcommand_still_works() {
+        // "gti ch" → partial subcommand triggers normal fuzzy+subcommand behavior
+        // Should NOT be affected by the early return for fuzzy-only correction
+        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti ch")).await;
+        assert!(!suggestions.is_empty(), "should suggest subcommands");
+        assert_eq!(suggestions[0].replace_start, 0);
+        assert!(
+            suggestions[0].text.contains("checkout") || suggestions[0].text.contains("cherry-pick"),
+            "should suggest git subcommand: {}",
+            suggestions[0].text
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_with_valid_subcommand_context() {
+        // "gti checkout " → navigates into checkout context
+        // Uses git_spec_with_nested_options() which has options on checkout
+        let tier = SpecTier::new(make_registry(git_spec_with_nested_options()));
+        let suggestions = tier.predict(&req("gti checkout ")).await;
+        // Should fall through to Change C and show checkout's options prefixed
+        assert!(!suggestions.is_empty(), "should show checkout options");
+        assert_eq!(suggestions[0].replace_start, 0);
+        assert!(
+            suggestions[0].text.starts_with("git checkout "),
+            "should be prefixed with corrected command path: {}",
+            suggestions[0].text
+        );
+    }
+
+    #[tokio::test]
+    async fn fuzzy_command_with_flag_still_suggests() {
+        // "gti --ve" → flag input, falls through to Change C logic
+        // Should NOT be affected by the early return for fuzzy-only correction
+        let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
+        let tier = SpecTier::new(registry);
+        let suggestions = tier.predict(&req("gti --ve")).await;
+        assert!(!suggestions.is_empty(), "should suggest --verbose");
+        assert_eq!(suggestions[0].replace_start, 0);
+        assert!(
+            suggestions[0].text.contains("--verbose"),
+            "should suggest git --verbose: {}",
+            suggestions[0].text
+        );
     }
 
     #[tokio::test]
@@ -1391,13 +1476,24 @@ mod tests {
 
     #[tokio::test]
     async fn fuzzy_command_no_space() {
-        // "gti" with no trailing space → fuzzy resolves command but nothing to complete
+        // "gti" with no trailing space → suggests corrected command "git"
         let registry = make_multi_registry(vec![git_spec(), ls_spec()]);
         let tier = SpecTier::new(registry);
         let suggestions = tier.predict(&req("gti")).await;
+        assert_eq!(suggestions.len(), 1, "should suggest corrected command");
+        assert_eq!(suggestions[0].text, "git");
+        assert_eq!(suggestions[0].replace_start, 0);
+        assert_eq!(suggestions[0].replace_end, 3); // "gti".len()
         assert!(
-            suggestions.is_empty(),
-            "fuzzy cmd with no space should yield nothing"
+            suggestions[0].diff_ops.is_some(),
+            "must include diff_ops for shell rendering"
+        );
+        assert!(
+            suggestions[0]
+                .description
+                .as_ref()
+                .map_or(false, |d| d.contains("Did you mean")),
+            "should have descriptive message"
         );
     }
 
