@@ -139,6 +139,12 @@ _nh_backward_delete() {
 }
 zle -N backward-delete-char _nh_backward_delete
 
+_nh_backward_kill_word() {
+    _nh_restore_before_edit
+    zle .backward-kill-word
+}
+zle -N backward-kill-word _nh_backward_kill_word
+
 _nh_clear_ghost() {
     unset POSTDISPLAY
 
