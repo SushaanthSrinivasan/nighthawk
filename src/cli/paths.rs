@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 pub fn config_dir() -> PathBuf {
     dirs::config_dir()
@@ -29,7 +29,7 @@ pub fn plugin_dir() -> PathBuf {
 pub fn has_any_plugin() -> bool {
     let dir = config_dir();
     // If config_dir fell back to ".", don't trust it
-    if dir == PathBuf::from(".") {
+    if dir == Path::new(".") {
         return true; // Assume setup done, avoid false positive hints
     }
     dir.join("nighthawk.zsh").exists() || dir.join("nighthawk.ps1").exists()

@@ -1,11 +1,17 @@
 #!/bin/sh
-# Auto-format Rust code before committing.
+# Pre-commit checks for nighthawk.
 # Install: git config core.hooksPath .githooks
 
 # Format and re-stage any changed .rs files
 cargo fmt --quiet 2>/dev/null
-
-# Stage any formatting changes
 git diff --name-only --diff-filter=M | grep '\.rs$' | xargs -r git add
+
+# Run clippy — fail commit if warnings
+echo "Running clippy..."
+if ! cargo clippy --quiet -- -D warnings 2>&1; then
+    echo ""
+    echo "Clippy found issues. Fix them before committing."
+    exit 1
+fi
 
 exit 0
