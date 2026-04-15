@@ -38,8 +38,8 @@ function _nh_render_ghost([string]$ghost) {
 function _nh_clear_ghost {
     if ($script:_nh_ghost_len -gt 0) {
         $e = $script:_nh_esc
-        # Save cursor, clear to end of line, restore cursor
-        $Host.UI.Write("${e}[s${e}[0K${e}[u")
+        # Save cursor, clear to end of screen (handles wrapped multi-line ghost text), restore cursor
+        $Host.UI.Write("${e}[s${e}[0J${e}[u")
         $script:_nh_ghost_len = 0
     }
     $script:_nh_suggestion = ''

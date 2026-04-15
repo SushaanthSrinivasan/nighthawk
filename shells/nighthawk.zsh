@@ -146,6 +146,8 @@ _nh_backward_kill_word() {
 zle -N backward-kill-word _nh_backward_kill_word
 
 _nh_clear_ghost() {
+    # Clear rendered ghost text including wrapped lines (ESC[0J = clear to end of screen)
+    print -n '\e[s\e[0J\e[u'
     unset POSTDISPLAY
 
     # Remove highlight entries we added
