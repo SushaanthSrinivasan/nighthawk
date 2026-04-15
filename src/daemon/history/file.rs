@@ -1,6 +1,7 @@
 use super::{HistoryEntry, ShellHistory};
 use crate::proto::Shell;
 use std::path::PathBuf;
+use std::time::SystemTime;
 
 /// Reads history from shell history files on disk.
 ///
@@ -12,6 +13,10 @@ pub struct FileHistory {
     shell: Shell,
     path: PathBuf,
     entries: Vec<HistoryEntry>,
+    /// File modification time at last load (for change detection)
+    last_modified: Option<SystemTime>,
+    /// File size at last load (for change detection)
+    last_size: u64,
 }
 
 impl FileHistory {
@@ -21,6 +26,8 @@ impl FileHistory {
             shell,
             path,
             entries: Vec::new(),
+            last_modified: None,
+            last_size: 0,
         }
     }
 
@@ -29,6 +36,33 @@ impl FileHistory {
             shell,
             path,
             entries: Vec::new(),
+            last_modified: None,
+            last_size: 0,
+        }
+    }
+
+    /// Check if history file changed since last load, reload if so.
+    /// Returns silently on any error (file locked, inaccessible, etc.) — uses cached results.
+    ///
+    /// Note: There is an inherent TOCTOU race between stat and read. This is acceptable
+    /// because worst case we read newer data but record older metadata, which self-corrects
+    /// on the next request.
+    pub fn reload_if_changed(&mut self) {
+        let meta = match std::fs::metadata(&self.path) {
+            Ok(m) => m,
+            Err(_) => return, // File inaccessible, use cached results
+        };
+
+        let modified = meta.modified().ok();
+        let size = meta.len();
+
+        // Detect change: mtime different OR size different
+        let changed = self.last_modified != modified || self.last_size != size;
+
+        if changed {
+            if let Err(e) = self.load() {
+                tracing::debug!(error = %e, "History reload failed, using stale data");
+            }
         }
     }
 
@@ -111,6 +145,12 @@ impl ShellHistory for FileHistory {
 
         // Sort by frequency (most used first)
         self.entries.sort_by(|a, b| b.frequency.cmp(&a.frequency));
+
+        // Track file state for change detection
+        if let Ok(meta) = std::fs::metadata(&self.path) {
+            self.last_modified = meta.modified().ok();
+            self.last_size = meta.len();
+        }
 
         tracing::debug!(
             shell = ?self.shell,

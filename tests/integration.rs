@@ -273,7 +273,8 @@ async fn history_tier_prefix_match() {
     let mut file_history = FileHistory::with_path(Shell::Bash, history_path);
     file_history.load().unwrap();
 
-    let history: Arc<tokio::sync::RwLock<dyn ShellHistory>> =
+    // Use concrete type to allow hot-reload via reload_if_changed()
+    let history: Arc<tokio::sync::RwLock<FileHistory>> =
         Arc::new(tokio::sync::RwLock::new(file_history));
 
     let tier = HistoryTier::new(history);

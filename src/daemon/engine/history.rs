@@ -2,7 +2,8 @@ use crate::proto::{CompletionRequest, Suggestion, SuggestionSource};
 use async_trait::async_trait;
 
 use super::tier::PredictionTier;
-use crate::daemon::history::ShellHistory;
+use crate::daemon::history::file::FileHistory;
+use crate::daemon::history::ShellHistory; // Trait must be in scope to call its methods
 use std::sync::Arc;
 use tokio::sync::RwLock;
 
@@ -10,11 +11,12 @@ use tokio::sync::RwLock;
 /// Looks up commands the user has typed before, ranked by recency/frequency.
 /// Must complete in under 1ms.
 pub struct HistoryTier {
-    history: Arc<RwLock<dyn ShellHistory>>,
+    // Use concrete FileHistory type to allow calling reload_if_changed()
+    history: Arc<RwLock<FileHistory>>,
 }
 
 impl HistoryTier {
-    pub fn new(history: Arc<RwLock<dyn ShellHistory>>) -> Self {
+    pub fn new(history: Arc<RwLock<FileHistory>>) -> Self {
         Self { history }
     }
 }
@@ -33,6 +35,12 @@ impl PredictionTier for HistoryTier {
         let input = &req.input[..req.cursor];
         if input.is_empty() {
             return vec![];
+        }
+
+        // Check for history file changes before searching (hot-reload)
+        {
+            let mut history = self.history.write().await;
+            history.reload_if_changed();
         }
 
         let history = self.history.read().await;

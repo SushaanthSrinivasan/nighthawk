@@ -46,7 +46,8 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
         if let Err(e) = file_history.load() {
             tracing::warn!("Failed to load history for {}: {e}", shell.as_str());
         }
-        let history: Arc<tokio::sync::RwLock<dyn history::ShellHistory>> =
+        // Use concrete type to allow hot-reload via reload_if_changed()
+        let history: Arc<tokio::sync::RwLock<history::file::FileHistory>> =
             Arc::new(tokio::sync::RwLock::new(file_history));
         tiers.push(Box::new(engine::history::HistoryTier::new(history)));
         tracing::debug!("History tier enabled");
