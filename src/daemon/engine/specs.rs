@@ -1492,7 +1492,7 @@ mod tests {
             suggestions[0]
                 .description
                 .as_ref()
-                .map_or(false, |d| d.contains("Did you mean")),
+                .is_some_and(|d| d.contains("Did you mean")),
             "should have descriptive message"
         );
     }
