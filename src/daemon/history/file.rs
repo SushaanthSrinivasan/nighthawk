@@ -86,6 +86,17 @@ impl FileHistory {
         }
     }
 
+    /// Return unique first-token command names from history, in frequency order.
+    /// Used for fuzzy matching when prefix search fails.
+    pub fn command_names(&self) -> Vec<&str> {
+        let mut seen = std::collections::HashSet::new();
+        self.entries
+            .iter()
+            .filter_map(|e| e.command.split_whitespace().next())
+            .filter(|cmd| seen.insert(*cmd))
+            .collect()
+    }
+
     fn parse_line(&self, line: &str) -> Option<String> {
         match self.shell {
             Shell::Zsh => {
@@ -206,5 +217,42 @@ mod tests {
         let results = history.search_prefix("git", 5);
         assert_eq!(results.len(), 1);
         assert_eq!(results[0].command, "git status");
+    }
+
+    #[test]
+    fn command_names_extracts_unique_first_tokens() {
+        let mut tmp = NamedTempFile::new().unwrap();
+        // "git status" repeated 3 times → frequency 3
+        // "cargo build" repeated 2 times → frequency 2
+        // "ls -la" once → frequency 1
+        // Note: FileHistory deduplicates by exact command string, not first token
+        writeln!(tmp, "git status").unwrap();
+        writeln!(tmp, "git status").unwrap();
+        writeln!(tmp, "git status").unwrap();
+        writeln!(tmp, "cargo build").unwrap();
+        writeln!(tmp, "cargo build").unwrap();
+        writeln!(tmp, "ls -la").unwrap();
+
+        let mut history = FileHistory::with_path(Shell::Bash, tmp.path().to_path_buf());
+        history.load().unwrap();
+
+        let names = history.command_names();
+
+        // Entries sorted by frequency: git (3), cargo (2), ls (1)
+        // command_names() preserves entry order, extracts unique first tokens
+        assert_eq!(names.len(), 3);
+        assert_eq!(names[0], "git");
+        assert_eq!(names[1], "cargo");
+        assert_eq!(names[2], "ls");
+    }
+
+    #[test]
+    fn command_names_empty_history() {
+        let tmp = NamedTempFile::new().unwrap();
+        let mut history = FileHistory::with_path(Shell::Bash, tmp.path().to_path_buf());
+        history.load().unwrap();
+
+        let names = history.command_names();
+        assert!(names.is_empty());
     }
 }
