@@ -34,7 +34,7 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
         // TODO: support multi-shell history — lazily load per-shell keyed by req.shell
         let shell = Shell::detect_default();
         if let Ok(val) = std::env::var("NIGHTHAWK_SHELL") {
-            if val.parse::<Shell>().is_err() {
+            if val.trim().parse::<Shell>().is_err() {
                 tracing::warn!(
                     "NIGHTHAWK_SHELL={val} is not recognized, falling back to {}",
                     shell.as_str()

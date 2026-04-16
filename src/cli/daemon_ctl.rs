@@ -3,6 +3,14 @@ use std::io::Write;
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 
+/// Print setup hint with detected shell and override instructions.
+fn print_setup_hint() {
+    let shell_name = crate::proto::Shell::detect_default().as_str();
+    eprintln!();
+    eprintln!("Hint: Run `nh setup {shell_name}` then restart your shell.");
+    eprintln!("      (Wrong shell? Run `nh setup <shell>` or set NIGHTHAWK_SHELL=<shell>)");
+}
+
 /// Find the nighthawk-daemon binary.
 /// Checks next to the current exe first, then falls back to PATH.
 fn find_daemon_binary() -> Result<PathBuf, String> {
@@ -97,9 +105,7 @@ pub fn start() -> Result<(), Box<dyn std::error::Error>> {
             println!("Daemon already running (PID {pid})");
             // Show setup hint if no plugin installed
             if !paths::has_any_plugin() {
-                let shell_name = crate::proto::Shell::detect_default().as_str();
-                eprintln!();
-                eprintln!("Hint: Run `nh setup {shell_name}` then restart your shell.");
+                print_setup_hint();
             }
             return Ok(());
         }
@@ -171,9 +177,7 @@ pub fn start() -> Result<(), Box<dyn std::error::Error>> {
 
     // Show setup hint if no plugin installed
     if !paths::has_any_plugin() {
-        let shell_name = crate::proto::Shell::detect_default().as_str();
-        eprintln!();
-        eprintln!("Hint: Run `nh setup {shell_name}` then restart your shell.");
+        print_setup_hint();
     }
 
     Ok(())
@@ -280,9 +284,7 @@ pub fn status() -> Result<(), Box<dyn std::error::Error>> {
 
     // Show setup hint if no plugin installed
     if !paths::has_any_plugin() {
-        let shell_name = crate::proto::Shell::detect_default().as_str();
-        eprintln!();
-        eprintln!("Hint: Run `nh setup {shell_name}` then restart your shell.");
+        print_setup_hint();
     }
 
     Ok(())
