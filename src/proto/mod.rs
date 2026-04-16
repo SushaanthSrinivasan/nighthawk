@@ -50,40 +50,177 @@ impl Shell {
 
     /// Detect default shell from env vars + platform.
     ///
-    /// Priority: `NIGHTHAWK_SHELL` env var > `$SHELL` (Unix) > platform default.
+    /// Priority:
+    /// 1. `NIGHTHAWK_SHELL` env var (explicit override, all platforms)
+    /// 2. Parent process name via `/proc` (Linux/macOS only)
+    /// 3. Shell version env vars like `ZSH_VERSION` (Unix only, rarely exported)
+    /// 4. `$SHELL` env var (Unix only, login shell - may differ from current)
+    /// 5. Platform default: PowerShell on Windows, Zsh on Unix
+    ///
+    /// Note: On Windows, only `NIGHTHAWK_SHELL` override works reliably.
+    /// The hint will always suggest PowerShell unless overridden.
     pub fn detect_default() -> Self {
         Self::detect_from(
             std::env::var("NIGHTHAWK_SHELL").ok(),
+            std::env::var("ZSH_VERSION").ok(),
+            std::env::var("BASH_VERSION").ok(),
+            std::env::var("FISH_VERSION").ok(),
+            std::env::var("NU_VERSION").ok(),
             std::env::var("SHELL").ok(),
         )
     }
 
     /// Pure detection function for testability — takes env values as parameters.
-    pub fn detect_from(nighthawk_shell: Option<String>, shell_env: Option<String>) -> Self {
-        // 1. NIGHTHAWK_SHELL override
-        if let Some(ref s) = nighthawk_shell {
-            if let Ok(shell) = s.parse::<Shell>() {
-                return shell;
-            }
-            // Unknown value — fall through (caller should log warning)
+    ///
+    /// Priority:
+    /// 1. `NIGHTHAWK_SHELL` override (explicit user choice)
+    /// 2. Shell version env vars: `ZSH_VERSION`, `BASH_VERSION`, `FISH_VERSION`, `NU_VERSION`
+    ///    (set by the current shell, not inherited — detects actual running shell)
+    /// 3. `$SHELL` fallback (login shell — may differ from current interactive shell)
+    /// 4. Platform default (PowerShell on Windows, Zsh on Unix)
+    pub fn detect_from(
+        nighthawk_shell: Option<String>,
+        zsh_version: Option<String>,
+        bash_version: Option<String>,
+        fish_version: Option<String>,
+        nu_version: Option<String>,
+        shell_env: Option<String>,
+    ) -> Self {
+        // 1. Explicit override (highest priority)
+        if let Some(shell) = detect_from_override(&nighthawk_shell) {
+            return shell;
         }
 
-        // 2. Platform default / $SHELL
-        let _ = &shell_env; // used only on non-Windows
+        // 2. Parent process name (most reliable on Linux)
+        #[cfg(not(windows))]
+        if let Some(shell) = detect_from_parent_process() {
+            return shell;
+        }
+
+        // 3. Shell-specific version env vars (current shell detection) — Unix only
+        //    Note: These are shell-internal vars, not always exported to children.
+        //    Kept as fallback in case user exports them.
+        #[cfg(not(windows))]
+        if let Some(shell) =
+            detect_from_version_vars(&zsh_version, &bash_version, &fish_version, &nu_version)
+        {
+            return shell;
+        }
+
+        // Suppress unused warnings on Windows where version vars aren't checked
+        #[cfg(windows)]
+        {
+            let _ = (&zsh_version, &bash_version, &fish_version, &nu_version);
+        }
+
+        // 4. $SHELL fallback (login shell) — Unix only
+        #[cfg(not(windows))]
+        if let Some(shell) = detect_from_shell_env(&shell_env) {
+            return shell;
+        }
+
+        #[cfg(windows)]
+        {
+            let _ = &shell_env;
+        }
+
+        // 5. Platform default
         #[cfg(windows)]
         {
             Shell::PowerShell
         }
-
         #[cfg(not(windows))]
         {
-            shell_env
-                .as_deref()
-                .and_then(|s| s.rsplit('/').next())
-                .and_then(|name| name.parse::<Shell>().ok())
-                .unwrap_or(Shell::Zsh)
+            Shell::Zsh
         }
     }
+}
+
+/// Detect shell from NIGHTHAWK_SHELL env var (explicit override).
+fn detect_from_override(nighthawk_shell: &Option<String>) -> Option<Shell> {
+    let trimmed = nighthawk_shell.as_ref()?.trim();
+    if trimmed.is_empty() {
+        return None;
+    }
+    trimmed.parse::<Shell>().ok()
+}
+
+/// Detect shell from parent process name (Linux/macOS).
+/// Reads `/proc/$PPID/comm` on Linux or uses `ps` on macOS.
+#[cfg(not(windows))]
+fn detect_from_parent_process() -> Option<Shell> {
+    let ppid = std::os::unix::process::parent_id();
+
+    // Try /proc filesystem first (Linux)
+    if let Ok(comm) = std::fs::read_to_string(format!("/proc/{}/comm", ppid)) {
+        let name = comm.trim();
+        tracing::trace!("Parent process name from /proc: {}", name);
+        if let Ok(shell) = name.parse::<Shell>() {
+            return Some(shell);
+        }
+    }
+
+    // Fall back to ps command (macOS, or if /proc unavailable)
+    if let Ok(output) = std::process::Command::new("ps")
+        .args(["-p", &ppid.to_string(), "-o", "comm="])
+        .output()
+    {
+        if output.status.success() {
+            let comm = String::from_utf8_lossy(&output.stdout);
+            // ps output may include full path, extract basename
+            let name = comm.trim().rsplit('/').next().unwrap_or("");
+            tracing::trace!("Parent process name from ps: {}", name);
+            if let Ok(shell) = name.parse::<Shell>() {
+                return Some(shell);
+            }
+        }
+    }
+
+    None
+}
+
+/// Detect shell from version env vars (ZSH_VERSION, BASH_VERSION, etc.).
+/// Priority: zsh > bash > fish > nushell (first match wins).
+/// Note: Only used on Unix — version vars are never set on Windows.
+#[cfg(not(windows))]
+fn detect_from_version_vars(
+    zsh_version: &Option<String>,
+    bash_version: &Option<String>,
+    fish_version: &Option<String>,
+    nu_version: &Option<String>,
+) -> Option<Shell> {
+    // Note: Version vars can be inherited from parent shells in nested scenarios.
+    // We check in order of commonality. User can override with NIGHTHAWK_SHELL.
+    if zsh_version.is_some() {
+        tracing::trace!("Detected ZSH_VERSION, using zsh");
+        return Some(Shell::Zsh);
+    }
+    if bash_version.is_some() {
+        tracing::trace!("Detected BASH_VERSION, using bash");
+        return Some(Shell::Bash);
+    }
+    if fish_version.is_some() {
+        tracing::trace!("Detected FISH_VERSION, using fish");
+        return Some(Shell::Fish);
+    }
+    if nu_version.is_some() {
+        tracing::trace!("Detected NU_VERSION, using nushell");
+        return Some(Shell::Nushell);
+    }
+    None
+}
+
+/// Detect shell from $SHELL env var (login shell fallback).
+/// Note: Only used on Unix — Windows uses platform default.
+#[cfg(not(windows))]
+fn detect_from_shell_env(shell_env: &Option<String>) -> Option<Shell> {
+    shell_env
+        .as_deref()
+        .map(|s| s.trim())
+        .filter(|s| !s.is_empty())
+        .and_then(|s| s.rsplit('/').next())
+        .filter(|name| !name.is_empty())
+        .and_then(|name| name.parse::<Shell>().ok())
 }
 
 // --- Request / Response ---
@@ -364,15 +501,29 @@ mod tests {
 
     #[test]
     fn detect_from_nighthawk_shell_override() {
-        // NIGHTHAWK_SHELL takes priority over $SHELL
-        let shell = Shell::detect_from(Some("powershell".into()), Some("/bin/zsh".into()));
+        // NIGHTHAWK_SHELL takes priority over $SHELL and version vars
+        let shell = Shell::detect_from(
+            Some("powershell".into()),
+            Some("5.9".into()), // ZSH_VERSION (ignored)
+            None,
+            None,
+            None,
+            Some("/bin/zsh".into()),
+        );
         assert_eq!(shell, Shell::PowerShell);
     }
 
     #[test]
     fn detect_from_unknown_override_falls_through() {
-        // Unknown NIGHTHAWK_SHELL falls through to $SHELL / platform default
-        let shell = Shell::detect_from(Some("ksh".into()), Some("/bin/fish".into()));
+        // Unknown NIGHTHAWK_SHELL falls through to version vars / $SHELL / platform default
+        let shell = Shell::detect_from(
+            Some("ksh".into()),
+            None,
+            None,
+            None,
+            None,
+            Some("/bin/fish".into()),
+        );
         #[cfg(not(windows))]
         assert_eq!(shell, Shell::Fish);
         #[cfg(windows)]
@@ -381,7 +532,14 @@ mod tests {
 
     #[test]
     fn detect_from_shell_path_parsing() {
-        let shell = Shell::detect_from(None, Some("/usr/local/bin/fish".into()));
+        let shell = Shell::detect_from(
+            None,
+            None,
+            None,
+            None,
+            None,
+            Some("/usr/local/bin/fish".into()),
+        );
         #[cfg(not(windows))]
         assert_eq!(shell, Shell::Fish);
         #[cfg(windows)]
@@ -390,7 +548,7 @@ mod tests {
 
     #[test]
     fn detect_from_shell_pwsh_on_unix() {
-        let shell = Shell::detect_from(None, Some("/usr/bin/pwsh".into()));
+        let shell = Shell::detect_from(None, None, None, None, None, Some("/usr/bin/pwsh".into()));
         #[cfg(not(windows))]
         assert_eq!(shell, Shell::PowerShell);
         #[cfg(windows)]
@@ -399,7 +557,111 @@ mod tests {
 
     #[test]
     fn detect_from_no_env_vars() {
-        let shell = Shell::detect_from(None, None);
+        let shell = Shell::detect_from(None, None, None, None, None, None);
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Zsh);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    // --- New version var detection tests (issue #64) ---
+
+    #[test]
+    fn detect_from_zsh_version_beats_shell_env() {
+        let shell = Shell::detect_from(
+            None,
+            Some("5.9".into()), // ZSH_VERSION
+            None,
+            None,
+            None,
+            Some("/bin/bash".into()), // $SHELL points to bash
+        );
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Zsh); // Version var wins
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell); // Windows ignores version vars
+    }
+
+    #[test]
+    fn detect_from_bash_version() {
+        let shell = Shell::detect_from(None, None, Some("5.2".into()), None, None, None);
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Bash);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn detect_from_fish_version() {
+        let shell = Shell::detect_from(None, None, None, Some("3.6".into()), None, None);
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Fish);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn detect_from_nu_version() {
+        let shell = Shell::detect_from(None, None, None, None, Some("0.89".into()), None);
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Nushell);
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell);
+    }
+
+    #[test]
+    fn detect_from_override_beats_version_vars() {
+        let shell = Shell::detect_from(
+            Some("fish".into()), // NIGHTHAWK_SHELL
+            Some("5.9".into()),  // ZSH_VERSION (should be ignored)
+            Some("5.2".into()),  // BASH_VERSION (should be ignored)
+            None,
+            None,
+            None,
+        );
+        assert_eq!(shell, Shell::Fish); // Override wins on all platforms
+    }
+
+    #[test]
+    fn detect_from_override_with_whitespace() {
+        let shell = Shell::detect_from(
+            Some("  zsh  ".into()), // NIGHTHAWK_SHELL with whitespace
+            None,
+            None,
+            None,
+            None,
+            None,
+        );
+        assert_eq!(shell, Shell::Zsh); // Trimmed and parsed
+    }
+
+    #[test]
+    fn detect_from_override_whitespace_only_falls_through() {
+        let shell = Shell::detect_from(
+            Some("   ".into()), // NIGHTHAWK_SHELL with only whitespace
+            Some("5.9".into()), // ZSH_VERSION should be used instead
+            None,
+            None,
+            None,
+            None,
+        );
+        #[cfg(not(windows))]
+        assert_eq!(shell, Shell::Zsh); // Falls through to version var
+        #[cfg(windows)]
+        assert_eq!(shell, Shell::PowerShell); // Windows ignores version vars
+    }
+
+    #[test]
+    fn detect_from_shell_env_trailing_slash() {
+        let shell = Shell::detect_from(
+            None,
+            None,
+            None,
+            None,
+            None,
+            Some("/bin/".into()), // Trailing slash, empty basename
+        );
+        // Should fall through to platform default (empty basename filtered)
         #[cfg(not(windows))]
         assert_eq!(shell, Shell::Zsh);
         #[cfg(windows)]
