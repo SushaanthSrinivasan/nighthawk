@@ -41,6 +41,10 @@ impl FileHistory {
         }
     }
 
+    pub fn shell(&self) -> Shell {
+        self.shell
+    }
+
     /// Check if history file changed since last load, reload if so.
     /// Returns silently on any error (file locked, inaccessible, etc.) — uses cached results.
     ///

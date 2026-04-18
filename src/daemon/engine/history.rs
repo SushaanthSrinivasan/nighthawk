@@ -1,24 +1,63 @@
 use crate::daemon::fuzzy;
-use crate::proto::{CompletionRequest, Suggestion, SuggestionSource};
+use crate::proto::{CompletionRequest, Shell, Suggestion, SuggestionSource};
 use async_trait::async_trait;
 
 use super::tier::PredictionTier;
 use crate::daemon::history::file::FileHistory;
-use crate::daemon::history::ShellHistory; // Trait must be in scope to call its methods
-use std::sync::Arc;
+use crate::daemon::history::ShellHistory;
 use tokio::sync::RwLock;
 
 /// Tier 0: History prefix matching.
 /// Looks up commands the user has typed before, ranked by recency/frequency.
 /// Must complete in under 1ms.
 pub struct HistoryTier {
-    // Use concrete FileHistory type to allow calling reload_if_changed()
-    history: Arc<RwLock<FileHistory>>,
+    histories: RwLock<[FileHistory; 5]>,
+}
+
+impl Default for HistoryTier {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 impl HistoryTier {
-    pub fn new(history: Arc<RwLock<FileHistory>>) -> Self {
-        Self { history }
+    pub fn new() -> Self {
+        let shells = [
+            Shell::Zsh,
+            Shell::Bash,
+            Shell::Fish,
+            Shell::PowerShell,
+            Shell::Nushell,
+        ];
+        let histories: [FileHistory; 5] = std::array::from_fn(|i| {
+            let mut h = FileHistory::new(shells[i]);
+            if let Err(e) = h.load() {
+                tracing::debug!(shell = shells[i].as_str(), error = %e, "No history file");
+            }
+            h
+        });
+        Self {
+            histories: RwLock::new(histories),
+        }
+    }
+
+    /// Create a HistoryTier with a single pre-loaded history.
+    /// Other shells will have empty histories. Useful for testing.
+    pub fn with_history(history: FileHistory) -> Self {
+        let shell = history.shell();
+        let idx = shell.index();
+        let shells = [
+            Shell::Zsh,
+            Shell::Bash,
+            Shell::Fish,
+            Shell::PowerShell,
+            Shell::Nushell,
+        ];
+        let mut histories: [FileHistory; 5] = std::array::from_fn(|i| FileHistory::new(shells[i]));
+        histories[idx] = history;
+        Self {
+            histories: RwLock::new(histories),
+        }
     }
 }
 
@@ -38,14 +77,16 @@ impl PredictionTier for HistoryTier {
             return vec![];
         }
 
+        let idx = req.shell.index();
+
         // Check for history file changes before searching (hot-reload)
         {
-            let mut history = self.history.write().await;
-            history.reload_if_changed();
+            let mut histories = self.histories.write().await;
+            histories[idx].reload_if_changed();
         }
 
-        let history = self.history.read().await;
-        let entries = history.search_prefix(input, 5);
+        let histories = self.histories.read().await;
+        let entries = histories[idx].search_prefix(input, 5);
 
         if !entries.is_empty() {
             // Fast path: exact prefix match
@@ -67,7 +108,7 @@ impl PredictionTier for HistoryTier {
         }
 
         // Fuzzy fallback: try correcting the first token
-        Self::try_fuzzy_fallback(input, &history)
+        Self::try_fuzzy_fallback(input, &histories[idx])
     }
 }
 
