@@ -159,7 +159,7 @@ impl ShellHistory for FileHistory {
             .collect();
 
         // Sort by frequency (most used first)
-        self.entries.sort_by(|a, b| b.frequency.cmp(&a.frequency));
+        self.entries.sort_by_key(|e| std::cmp::Reverse(e.frequency));
 
         // Track file state for change detection
         if let Ok(meta) = std::fs::metadata(&self.path) {
