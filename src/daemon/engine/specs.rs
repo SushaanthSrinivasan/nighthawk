@@ -359,7 +359,22 @@ impl PredictionTier for SpecTier {
 
         // --- Fuzzy fallback for subcommands and options ---
         // Only when prefix matching found nothing and current_token is non-empty.
-        if suggestions.is_empty() && !current_token.is_empty() {
+        // Skip fuzzy if the token exactly matches a known subcommand/option — user typed
+        // a valid command, not a typo. Prevents "activate" → "deactivate" (#71).
+        let is_known_subcommand = ctx
+            .subcommands
+            .iter()
+            .any(|s| s.name == current_token || s.aliases.iter().any(|a| a == current_token));
+        let is_known_option = ctx
+            .options
+            .iter()
+            .any(|o| o.names.iter().any(|n| n == current_token));
+
+        if suggestions.is_empty()
+            && !current_token.is_empty()
+            && !is_known_subcommand
+            && !is_known_option
+        {
             let token_start = input.len() - current_token.len();
 
             // Fuzzy match subcommand names and aliases
@@ -1667,6 +1682,94 @@ mod tests {
         assert!(
             suggestions.is_empty(),
             "sequential arg-taking flag should suppress: {:?}",
+            suggestions.iter().map(|s| &s.text).collect::<Vec<_>>()
+        );
+    }
+
+    // --- Tests for exact token match suppressing fuzzy (#71) ---
+
+    fn activate_deactivate_spec() -> CliSpec {
+        CliSpec {
+            name: "conda".into(),
+            description: Some("Package manager".into()),
+            subcommands: vec![
+                SubcommandSpec {
+                    name: "activate".into(),
+                    aliases: vec![],
+                    description: Some("Activate environment".into()),
+                    subcommands: vec![],
+                    options: vec![OptionSpec {
+                        names: vec!["--stack".into()],
+                        description: Some("Stack on top".into()),
+                        takes_arg: false,
+                        is_required: false,
+                        arg: None,
+                    }],
+                    args: vec![],
+                },
+                SubcommandSpec {
+                    name: "deactivate".into(),
+                    aliases: vec![],
+                    description: Some("Deactivate environment".into()),
+                    subcommands: vec![],
+                    options: vec![],
+                    args: vec![],
+                },
+            ],
+            options: vec![],
+            args: vec![],
+        }
+    }
+
+    #[tokio::test]
+    async fn exact_subcommand_no_fuzzy_opposite() {
+        // "conda activate" should NOT suggest "deactivate" (#71)
+        // "activate" is a valid, complete subcommand — not a typo
+        let tier = SpecTier::new(make_registry(activate_deactivate_spec()));
+        let suggestions = tier.predict(&req("conda activate")).await;
+        assert!(
+            suggestions.is_empty(),
+            "exact subcommand should not fuzzy to opposite: {:?}",
+            suggestions.iter().map(|s| &s.text).collect::<Vec<_>>()
+        );
+    }
+
+    #[tokio::test]
+    async fn exact_long_option_no_fuzzy() {
+        // "git --verbose" should NOT fuzzy-suggest other options
+        let tier = SpecTier::new(make_registry(git_spec()));
+        let suggestions = tier.predict(&req("git --verbose")).await;
+        assert!(
+            suggestions.is_empty(),
+            "exact option should not fuzzy to similar options: {:?}",
+            suggestions.iter().map(|s| &s.text).collect::<Vec<_>>()
+        );
+    }
+
+    #[tokio::test]
+    async fn exact_subcommand_with_space_shows_nested() {
+        // "conda activate " (with trailing space) should show activate's options
+        let tier = SpecTier::new(make_registry(activate_deactivate_spec()));
+        let suggestions = tier.predict(&req("conda activate ")).await;
+        assert!(
+            suggestions.iter().any(|s| s.text == "--stack"),
+            "trailing space after exact subcommand should show nested options: {:?}",
+            suggestions.iter().map(|s| &s.text).collect::<Vec<_>>()
+        );
+    }
+
+    #[tokio::test]
+    async fn flag_stacking_after_exact_subcommand() {
+        // "git checkout -" should still suggest stackable flags
+        let tier = SpecTier::new(make_registry(git_spec_with_nested_options()));
+        let suggestions = tier.predict(&req("git checkout -")).await;
+        assert!(
+            !suggestions.is_empty(),
+            "flag stacking should still work after exact subcommand"
+        );
+        assert!(
+            suggestions.iter().any(|s| s.text.starts_with("-")),
+            "should suggest flags: {:?}",
             suggestions.iter().map(|s| &s.text).collect::<Vec<_>>()
         );
     }
