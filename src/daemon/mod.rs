@@ -5,9 +5,7 @@ pub mod history;
 pub mod server;
 pub mod specs;
 
-use crate::proto::Shell;
 use engine::PredictionEngine;
-use history::ShellHistory;
 use std::sync::Arc;
 use tracing_subscriber::EnvFilter;
 
@@ -29,28 +27,10 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
     // Build prediction tiers
     let mut tiers: Vec<Box<dyn engine::tier::PredictionTier>> = Vec::new();
 
-    // Tier 0: History
+    // Tier 0: History (loads all shells eagerly, selects per-request via req.shell)
     if config.tiers.enable_history {
-        // TODO: support multi-shell history — lazily load per-shell keyed by req.shell
-        let shell = Shell::detect_default();
-        if let Ok(val) = std::env::var("NIGHTHAWK_SHELL") {
-            if val.trim().parse::<Shell>().is_err() {
-                tracing::warn!(
-                    "NIGHTHAWK_SHELL={val} is not recognized, falling back to {}",
-                    shell.as_str()
-                );
-            }
-        }
-        tracing::info!("Default shell for history: {}", shell.as_str());
-        let mut file_history = history::file::FileHistory::new(shell);
-        if let Err(e) = file_history.load() {
-            tracing::warn!("Failed to load history for {}: {e}", shell.as_str());
-        }
-        // Use concrete type to allow hot-reload via reload_if_changed()
-        let history: Arc<tokio::sync::RwLock<history::file::FileHistory>> =
-            Arc::new(tokio::sync::RwLock::new(file_history));
-        tiers.push(Box::new(engine::history::HistoryTier::new(history)));
-        tracing::debug!("History tier enabled");
+        tiers.push(Box::new(engine::history::HistoryTier::new()));
+        tracing::debug!("History tier enabled (multi-shell)");
     }
 
     // Tier 1: Specs

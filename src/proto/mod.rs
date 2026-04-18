@@ -48,6 +48,16 @@ impl Shell {
         }
     }
 
+    pub fn index(&self) -> usize {
+        match self {
+            Shell::Zsh => 0,
+            Shell::Bash => 1,
+            Shell::Fish => 2,
+            Shell::PowerShell => 3,
+            Shell::Nushell => 4,
+        }
+    }
+
     /// Detect default shell from env vars + platform.
     ///
     /// Priority:

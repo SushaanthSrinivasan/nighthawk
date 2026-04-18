@@ -273,11 +273,7 @@ async fn history_tier_prefix_match() {
     let mut file_history = FileHistory::with_path(Shell::Bash, history_path);
     file_history.load().unwrap();
 
-    // Use concrete type to allow hot-reload via reload_if_changed()
-    let history: Arc<tokio::sync::RwLock<FileHistory>> =
-        Arc::new(tokio::sync::RwLock::new(file_history));
-
-    let tier = HistoryTier::new(history);
+    let tier = HistoryTier::with_history(file_history);
     let engine = Arc::new(PredictionEngine::new(vec![Box::new(tier)]));
 
     let socket_path = format!("{}-history", test_socket_path());
