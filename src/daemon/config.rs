@@ -47,12 +47,71 @@ impl Default for TierConfig {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize, Default)]
+#[serde(rename_all = "lowercase")]
+pub enum CloudProvider {
+    #[default]
+    OpenAI,
+    Anthropic,
+    Groq,
+}
+
+#[derive(Debug, Deserialize, Clone)]
+#[serde(default)]
 pub struct CloudConfig {
-    pub provider: String,
+    pub provider: CloudProvider,
     pub api_key: Option<String>,
     pub model: Option<String>,
     pub base_url: Option<String>,
+    pub budget_ms: u32,
+    pub history_context_size: usize,
+    pub max_tokens: u32,
+    pub temperature: f32,
+}
+
+impl Default for CloudConfig {
+    fn default() -> Self {
+        Self {
+            provider: CloudProvider::OpenAI,
+            api_key: None,
+            model: None,
+            base_url: None,
+            budget_ms: 2000,
+            history_context_size: 10,
+            max_tokens: 150,
+            temperature: 0.2,
+        }
+    }
+}
+
+impl CloudConfig {
+    /// Get API key from config or environment variable
+    pub fn api_key(&self) -> Option<String> {
+        self.api_key.clone().or_else(|| {
+            let var = match self.provider {
+                CloudProvider::OpenAI => "OPENAI_API_KEY",
+                CloudProvider::Anthropic => "ANTHROPIC_API_KEY",
+                CloudProvider::Groq => "GROQ_API_KEY",
+            };
+            std::env::var(var).ok()
+        })
+    }
+
+    pub fn default_model(&self) -> &'static str {
+        match self.provider {
+            CloudProvider::OpenAI => "gpt-4o-mini",
+            CloudProvider::Anthropic => "claude-3-5-haiku-latest",
+            CloudProvider::Groq => "llama-3.3-70b-versatile",
+        }
+    }
+
+    pub fn default_base_url(&self) -> &'static str {
+        match self.provider {
+            CloudProvider::OpenAI => "https://api.openai.com/v1",
+            CloudProvider::Anthropic => "https://api.anthropic.com",
+            CloudProvider::Groq => "https://api.groq.com/openai/v1",
+        }
+    }
 }
 
 /// Configuration for the local LLM tier (Tier 2).
@@ -198,5 +257,49 @@ temperature = 0
         let config: Config = toml::from_str(toml_str).unwrap();
         let llm = config.local_llm.unwrap();
         assert_eq!(llm.temperature, 0.0);
+    }
+
+    #[test]
+    fn parse_cloud_config() {
+        let toml_str = r#"
+[tiers]
+enable_cloud = true
+
+[cloud]
+provider = "anthropic"
+budget_ms = 1500
+"#;
+        let config: Config = toml::from_str(toml_str).unwrap();
+        assert!(config.tiers.enable_cloud);
+        let cloud = config.cloud.unwrap();
+        assert_eq!(cloud.provider, CloudProvider::Anthropic);
+        assert_eq!(cloud.budget_ms, 1500);
+    }
+
+    #[test]
+    fn default_cloud_config() {
+        let cloud = CloudConfig::default();
+        assert_eq!(cloud.provider, CloudProvider::OpenAI);
+        assert_eq!(cloud.budget_ms, 2000);
+        assert_eq!(cloud.history_context_size, 10);
+        assert_eq!(cloud.max_tokens, 150);
+    }
+
+    #[test]
+    fn cloud_config_default_model() {
+        let cloud = CloudConfig::default();
+        assert_eq!(cloud.default_model(), "gpt-4o-mini");
+
+        let anthropic = CloudConfig {
+            provider: CloudProvider::Anthropic,
+            ..Default::default()
+        };
+        assert_eq!(anthropic.default_model(), "claude-3-5-haiku-latest");
+
+        let groq = CloudConfig {
+            provider: CloudProvider::Groq,
+            ..Default::default()
+        };
+        assert_eq!(groq.default_model(), "llama-3.3-70b-versatile");
     }
 }

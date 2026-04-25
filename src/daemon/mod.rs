@@ -27,9 +27,35 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
     // Build prediction tiers
     let mut tiers: Vec<Box<dyn engine::tier::PredictionTier>> = Vec::new();
 
-    // Tier 0: History (loads all shells eagerly, selects per-request via req.shell)
+    // Create shared history storage (used by HistoryTier and optionally CloudTier)
+    let shared_histories: std::sync::Arc<tokio::sync::RwLock<[history::file::FileHistory; 5]>> = {
+        use crate::proto::Shell;
+        use history::file::FileHistory;
+        use history::ShellHistory;
+        let shells = [
+            Shell::Zsh,
+            Shell::Bash,
+            Shell::Fish,
+            Shell::PowerShell,
+            Shell::Nushell,
+        ];
+        let histories: [FileHistory; 5] = std::array::from_fn(|i| {
+            let mut h = FileHistory::new(shells[i]);
+            if let Err(e) = h.load() {
+                tracing::debug!(shell = shells[i].as_str(), error = %e, "No history file");
+            }
+            h
+        });
+        std::sync::Arc::new(tokio::sync::RwLock::new(histories))
+    };
+
+    // Tier 0: History (uses shared history storage)
     if config.tiers.enable_history {
-        tiers.push(Box::new(engine::history::HistoryTier::new()));
+        tiers.push(Box::new(
+            engine::history::HistoryTier::with_shared_histories(std::sync::Arc::clone(
+                &shared_histories,
+            )),
+        ));
         tracing::debug!("History tier enabled (multi-shell)");
     }
 
@@ -83,6 +109,36 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
         tracing::warn!(
             "enable_local_llm is set but nighthawk was compiled without the 'local-llm' feature. \
              Reinstall with: cargo install nighthawk --features local-llm"
+        );
+    }
+
+    // Tier 3: Cloud LLM (independent of local-llm, shares history with HistoryTier)
+    #[cfg(feature = "cloud-llm")]
+    if config.tiers.enable_cloud {
+        let cloud_config = config.cloud.clone().unwrap_or_default();
+        match engine::cloud::CloudTier::new(
+            cloud_config.clone(),
+            std::sync::Arc::clone(&shared_histories),
+        ) {
+            Some(tier) => {
+                tracing::info!(
+                    provider = ?cloud_config.provider,
+                    model = %cloud_config.model.clone().unwrap_or_else(|| cloud_config.default_model().to_string()),
+                    "Cloud LLM tier enabled"
+                );
+                tiers.push(Box::new(tier));
+            }
+            None => {
+                // Warning already logged by CloudTier::new()
+            }
+        }
+    }
+
+    #[cfg(not(feature = "cloud-llm"))]
+    if config.tiers.enable_cloud {
+        tracing::warn!(
+            "enable_cloud is set but nighthawk was compiled without the 'cloud-llm' feature. \
+             Reinstall with: cargo install nighthawk --features cloud-llm"
         );
     }
 

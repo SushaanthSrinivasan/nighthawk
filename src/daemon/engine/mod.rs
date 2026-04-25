@@ -1,3 +1,5 @@
+#[cfg(feature = "cloud-llm")]
+pub mod cloud;
 pub mod history;
 #[cfg(feature = "local-llm")]
 pub mod llm;

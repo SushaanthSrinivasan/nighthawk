@@ -9,7 +9,37 @@ $script:_nh_esc = [char]27
 try { Set-PSReadLineOption -PredictionSource None } catch {}
 
 # --- Configuration ---
-$script:_nh_hint_arrow = if ($env:NIGHTHAWK_HINT_ARROW) { $env:NIGHTHAWK_HINT_ARROW } else { '->' }
+# Load plugin settings from config.toml [plugin] section (simple regex parse).
+# Env vars override config file values.
+function _nh_load_plugin_config {
+    $settings = @{
+        timeout_ms = 100
+        hint_arrow = '->'
+    }
+    $configPath = Join-Path $env:APPDATA "nighthawk\config.toml"
+    if (Test-Path $configPath) {
+        try {
+            $content = Get-Content $configPath -Raw -ErrorAction Stop
+            # Extract [plugin] section only (until next section or EOF)
+            if ($content -match '(?ms)^\[plugin\]\s*(.*?)(?=^\[|\z)') {
+                $section = $matches[1]
+                if ($section -match '(?m)^\s*timeout_ms\s*=\s*(\d+)') {
+                    $settings.timeout_ms = [int]$matches[1]
+                }
+                if ($section -match '(?m)^\s*hint_arrow\s*=\s*"([^"]*)"') {
+                    $settings.hint_arrow = $matches[1]
+                }
+            }
+        } catch {
+            # Silently ignore config read errors — use defaults
+        }
+    }
+    return $settings
+}
+
+$script:_nh_config = _nh_load_plugin_config
+$script:_nh_hint_arrow = if ($env:NIGHTHAWK_HINT_ARROW) { $env:NIGHTHAWK_HINT_ARROW } else { $script:_nh_config.hint_arrow }
+$script:_nh_timeout_ms = if ($env:NIGHTHAWK_TIMEOUT_MS) { [int]$env:NIGHTHAWK_TIMEOUT_MS } else { $script:_nh_config.timeout_ms }
 
 # --- State ---
 $script:_nh_pipe = 'nighthawk'
@@ -20,6 +50,17 @@ $script:_nh_ghost_len = 0
 $script:_nh_last_buffer = ''
 $script:_nh_tried_start = $false
 $script:_nh_backoff_until = [DateTime]::MinValue
+
+# Async pending query state (for cloud-tier slow responses)
+$script:_nh_pending_pipe = $null
+$script:_nh_pending_task = $null
+$script:_nh_pending_buffer = ''
+$script:_nh_pending_cursor = 0
+$script:_nh_last_query_at = [DateTime]::MinValue
+# Minimum ms between queries (throttle to prevent hammering daemon while typing)
+$script:_nh_throttle_ms = 150
+# How long to wait synchronously for response (fast tiers respond quickly)
+$script:_nh_quick_wait_ms = [Math]::Min($script:_nh_timeout_ms, 150)
 
 # --- Ghost text rendering via ANSI ---
 function _nh_render_ghost([string]$ghost) {
@@ -59,8 +100,69 @@ function _nh_ensure_daemon {
     }
 }
 
+# --- Render a response (shared between sync and async paths) ---
+function _nh_render_response {
+    param([string]$response, [string]$line, [int]$cursor)
+    if (-not $response) { return }
+    try {
+        $parsed = $response | ConvertFrom-Json
+    } catch { return }
+    if (-not $parsed.suggestions -or $parsed.suggestions.Count -eq 0) { return }
+
+    $s = $parsed.suggestions[0]
+    $script:_nh_suggestion = $s.text
+    $script:_nh_replace_start = [int]$s.replace_start
+    $script:_nh_replace_end = [int]$s.replace_end
+
+    if ($s.PSObject.Properties['diff_ops'] -and $null -ne $s.diff_ops) {
+        _nh_render_ghost " $($script:_nh_hint_arrow) $($s.text)"
+    } else {
+        $typed_len = $cursor - $script:_nh_replace_start
+        if ($typed_len -ge 0 -and $typed_len -lt $s.text.Length) {
+            $typed_part = $line.Substring($script:_nh_replace_start, $typed_len)
+            if ($s.text.StartsWith($typed_part, [System.StringComparison]::Ordinal)) {
+                _nh_render_ghost $s.text.Substring($typed_len)
+            } else {
+                _nh_render_ghost " $($script:_nh_hint_arrow) $($s.text)"
+            }
+        }
+    }
+}
+
+# --- Check if a previous async query completed ---
+function _nh_check_pending {
+    if (-not $script:_nh_pending_task) { return }
+    if (-not $script:_nh_pending_task.IsCompleted) { return }
+
+    try {
+        $response = $script:_nh_pending_task.Result
+
+        # Get current buffer - only render if it still matches what we queried for
+        $cur_line = ''; $cur_cursor = 0
+        [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$cur_line, [ref]$cur_cursor)
+        if ($cur_line -eq $script:_nh_pending_buffer -and $cur_cursor -eq $cur_line.Length) {
+            _nh_render_response $response $cur_line $cur_cursor
+        }
+    } catch {}
+
+    _nh_cleanup_pending
+}
+
+function _nh_cleanup_pending {
+    if ($script:_nh_pending_pipe) {
+        try { $script:_nh_pending_pipe.Dispose() } catch {}
+    }
+    $script:_nh_pending_pipe = $null
+    $script:_nh_pending_task = $null
+    $script:_nh_pending_buffer = ''
+    $script:_nh_pending_cursor = 0
+}
+
 # --- Daemon communication ---
 function _nh_query {
+    # First: check if a previous async query completed (may render ghost text)
+    _nh_check_pending
+
     $line = ''; $cursor = 0
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
 
@@ -68,11 +170,14 @@ function _nh_query {
     if ($cursor -ne $line.Length -or $line.Length -lt 2) { return }
     if ($line -eq $script:_nh_last_buffer) { return }
 
+    # Throttle: skip if we queried too recently (prevents hammering daemon while typing)
+    $elapsed = ([DateTime]::UtcNow - $script:_nh_last_query_at).TotalMilliseconds
+    if ($elapsed -lt $script:_nh_throttle_ms) { return }
+
     # Backoff: skip queries for 5s after connection failure
     if ([DateTime]::UtcNow -lt $script:_nh_backoff_until) { return }
 
     # Fast check: bail if the named pipe doesn't exist.
-    # Connect() on .NET Framework sleeps ~50ms internally even for non-existent pipes.
     if (-not (Test-Path "\\.\pipe\$($script:_nh_pipe)")) {
         $script:_nh_backoff_until = [DateTime]::UtcNow.AddSeconds(5)
         if (-not $script:_nh_tried_start) { _nh_ensure_daemon }
@@ -80,6 +185,10 @@ function _nh_query {
     }
 
     $script:_nh_last_buffer = $line
+    $script:_nh_last_query_at = [DateTime]::UtcNow
+
+    # Cancel any in-progress query (user typed again, previous is stale)
+    _nh_cleanup_pending
 
     try {
         # Escape for JSON (critical for Windows paths: C:\Users → C:\\Users)
@@ -88,56 +197,33 @@ function _nh_query {
         $json = "{`"input`":`"$esc_input`",`"cursor`":$cursor,`"cwd`":`"$esc_cwd`",`"shell`":`"powershell`"}"
 
         $pipe = [System.IO.Pipes.NamedPipeClientStream]::new('.', $script:_nh_pipe, [System.IO.Pipes.PipeDirection]::InOut)
-        try {
-            $pipe.Connect(20)
+        $pipe.Connect(20)
 
-            $utf8 = [System.Text.UTF8Encoding]::new($false)  # UTF-8 without BOM
-            $writer = [System.IO.StreamWriter]::new($pipe, $utf8)
-            $writer.AutoFlush = $true
-            $writer.WriteLine($json)
+        $utf8 = [System.Text.UTF8Encoding]::new($false)
+        $writer = [System.IO.StreamWriter]::new($pipe, $utf8)
+        $writer.AutoFlush = $true
+        $writer.WriteLine($json)
 
-            $reader = [System.IO.StreamReader]::new($pipe, $utf8)
-            $readTask = $reader.ReadLineAsync()
-            if (-not $readTask.Wait(100)) {
-                # Read timed out — daemon connected but not responding (likely shutting down).
-                # Back off so every keystroke doesn't pay ~100ms.
-                $script:_nh_backoff_until = [DateTime]::UtcNow.AddSeconds(5)
-                return
-            }
+        $reader = [System.IO.StreamReader]::new($pipe, $utf8)
+        $readTask = $reader.ReadLineAsync()
+
+        # Quick sync wait - fast tiers (history, specs) respond in <50ms
+        if ($readTask.Wait($script:_nh_quick_wait_ms)) {
+            # Fast response - render immediately
             $response = $readTask.Result
-        } finally {
             $pipe.Dispose()
-        }
-
-        if (-not $response) { return }
-        $parsed = $response | ConvertFrom-Json
-        if (-not $parsed.suggestions -or $parsed.suggestions.Count -eq 0) { return }
-
-        $s = $parsed.suggestions[0]
-        $script:_nh_suggestion = $s.text
-        $script:_nh_replace_start = [int]$s.replace_start
-        $script:_nh_replace_end = [int]$s.replace_end
-
-        if ($s.PSObject.Properties['diff_ops'] -and $null -ne $s.diff_ops) {
-            # Fuzzy match: render as hint " → suggestion"
-            _nh_render_ghost " $($script:_nh_hint_arrow) $($s.text)"
+            _nh_render_response $response $line $cursor
         } else {
-            $typed_len = $cursor - $script:_nh_replace_start
-            if ($typed_len -ge 0 -and $typed_len -lt $s.text.Length) {
-                $typed_part = $line.Substring($script:_nh_replace_start, $typed_len)
-                if ($s.text.StartsWith($typed_part, [System.StringComparison]::Ordinal)) {
-                    # True prefix match: show suffix as ghost text
-                    _nh_render_ghost $s.text.Substring($typed_len)
-                } else {
-                    # Replacement changes typed text: show hint instead
-                    _nh_render_ghost " $($script:_nh_hint_arrow) $($s.text)"
-                }
-            }
+            # Slow response (cloud tier) - store task, check on next keystroke
+            $script:_nh_pending_pipe = $pipe
+            $script:_nh_pending_task = $readTask
+            $script:_nh_pending_buffer = $line
+            $script:_nh_pending_cursor = $cursor
         }
     }
     catch {
-        # Back off for 5s so failed connections don't block typing
         $script:_nh_backoff_until = [DateTime]::UtcNow.AddSeconds(5)
+        _nh_cleanup_pending
     }
 }
 

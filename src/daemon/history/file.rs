@@ -45,6 +45,11 @@ impl FileHistory {
         self.shell
     }
 
+    /// Get all history entries (for context in other tiers like CloudTier)
+    pub fn entries(&self) -> &[HistoryEntry] {
+        &self.entries
+    }
+
     /// Check if history file changed since last load, reload if so.
     /// Returns silently on any error (file locked, inaccessible, etc.) — uses cached results.
     ///
