@@ -9,8 +9,6 @@ $script:_nh_esc = [char]27
 try { Set-PSReadLineOption -PredictionSource None } catch {}
 
 # --- Configuration ---
-# Load plugin settings from config.toml [plugin] section (simple regex parse).
-# Env vars override config file values.
 function _nh_load_plugin_config {
     $settings = @{
         debounce_ms = 200
@@ -44,8 +42,7 @@ $script:_nh_debounce_ms = if ($env:NIGHTHAWK_DEBOUNCE_MS) { [int]$env:NIGHTHAWK_
 $script:_nh_debug = if ($env:NIGHTHAWK_DEBUG) { $env:NIGHTHAWK_DEBUG -eq '1' } else { $script:_nh_config.debug }
 $script:_nh_log_path = Join-Path $env:APPDATA "nighthawk\plugin.log"
 
-# --- Diagnostic logging (only when debug enabled) ---
-# Thread-safe via append; can be called from foreground or background.
+# --- Diagnostic logging (foreground) ---
 function _nh_log {
     param([string]$msg)
     if (-not $script:_nh_debug) { return }
@@ -56,46 +53,34 @@ function _nh_log {
     } catch {}
 }
 
-# --- Synchronized shared state (accessed across threads) ---
-# Foreground reads/writes via $script:_nh_state.X
-# Background timer Action reads/writes via $Event.MessageData.X (same hashtable instance)
+# --- Synchronized shared state ---
+# Foreground writes pending_* fields; runspace-pool worker reads pending_* and writes `published`.
+# `published` is a hashtable reference — assignment is a single pointer write, never torn —
+# so foreground readers can snapshot once and use snap['text']/['start']/['end'] safely.
 $script:_nh_state = [hashtable]::Synchronized(@{
     pipe_name      = 'nighthawk'
-    debounce_ms    = $script:_nh_debounce_ms
     hint_arrow     = $script:_nh_hint_arrow
     debug          = $script:_nh_debug
     log_path       = $script:_nh_log_path
     esc            = [char]27
-    # Per-keystroke captured state
     pending_buffer = ''
     pending_cursor = 0
+    pending_cwd    = ''
     generation     = 0
-    # Currently-displayed ghost suggestion (read by accept handler)
-    suggestion     = ''
-    replace_start  = -1
-    replace_end    = -1
+    published      = $null   # @{ text=...; start=...; end=... } or $null
     ghost_len      = 0
 })
 
-# --- Ghost text rendering via ANSI ---
-# Uses [Console]::Write so it's safe to call from any thread.
-function _nh_render_ghost([string]$ghost) {
-    if ($ghost.Length -eq 0) { return }
-    $e = $script:_nh_esc
-    $clean = $ghost -replace '"', ''
-    $script:_nh_state.ghost_len = $clean.Length
-    [System.Console]::Write("${e}[s${e}[90m${clean}${e}[0m${e}[u")
-}
-
+# --- Ghost text clear ---
+# Bumps generation unconditionally so any in-flight worker sees its result as stale.
 function _nh_clear_ghost {
+    $script:_nh_state.generation++
     if ($script:_nh_state.ghost_len -gt 0) {
         $e = $script:_nh_esc
         [System.Console]::Write("${e}[s${e}[0J${e}[u")
         $script:_nh_state.ghost_len = 0
     }
-    $script:_nh_state.suggestion = ''
-    $script:_nh_state.replace_start = -1
-    $script:_nh_state.replace_end = -1
+    $script:_nh_state.published = $null
 }
 
 # --- Auto-start ---
@@ -110,61 +95,74 @@ function _nh_ensure_daemon {
     }
 }
 
-# --- Debounce timer + ROE event subscriber ---
-# Register-ObjectEvent runs the -Action in PowerShell's event-handler runspace.
-# That runspace cannot see this script's functions or $script: vars, so:
-#   - State is shared via -MessageData (synchronized hashtable, by reference)
-#   - Daemon IPC + render logic is INLINED in the Action block
-#   - All ANSI output goes through [Console]::Write (thread-safe)
-$script:_nh_timer = [System.Timers.Timer]::new()
-$script:_nh_timer.AutoReset = $false
-$script:_nh_timer.Interval = $script:_nh_debounce_ms
+# --- Background worker scriptblock ---
+# Runs on a RunspacePool worker (invoked via [PowerShell]::Create().BeginInvoke()).
+# Receives only the synchronized $state hashtable — no other foreground vars are visible.
+# All output goes through [Console]::Write and a single atomic $state.published assignment.
+$script:_nh_worker = {
+    param([hashtable]$state)
 
-# Cleanup any previous registration if plugin is re-sourced
-Get-EventSubscriber -SourceIdentifier 'nh_debounce' -ErrorAction SilentlyContinue | Unregister-Event -ErrorAction SilentlyContinue
+    # JSON escape: \\, \", \b, \f, \n, \r, \t, plus \uXXXX for any other 0x00-0x1F control chars.
+    $jsonEscape = {
+        param([string]$s)
+        if ([string]::IsNullOrEmpty($s)) { return '' }
+        $sb = [System.Text.StringBuilder]::new($s.Length + 8)
+        foreach ($ch in $s.ToCharArray()) {
+            $code = [int]$ch
+            switch ($ch) {
+                '\'  { [void]$sb.Append('\\') }
+                '"'  { [void]$sb.Append('\"') }
+                "`b" { [void]$sb.Append('\b') }
+                "`f" { [void]$sb.Append('\f') }
+                "`n" { [void]$sb.Append('\n') }
+                "`r" { [void]$sb.Append('\r') }
+                "`t" { [void]$sb.Append('\t') }
+                default {
+                    if ($code -lt 0x20) {
+                        [void]$sb.AppendFormat('\u{0:x4}', $code)
+                    } else {
+                        [void]$sb.Append($ch)
+                    }
+                }
+            }
+        }
+        return $sb.ToString()
+    }
 
-$null = Register-ObjectEvent -InputObject $script:_nh_timer -EventName Elapsed `
-    -SourceIdentifier 'nh_debounce' -MessageData $script:_nh_state -Action {
-    $state = $Event.MessageData
-
-    # Inline diagnostic log (can't call _nh_log from this runspace)
+    # Worker-side log. $force=$true bypasses debug-gate so fatal exceptions always leave a trace.
     $writeLog = {
-        param([string]$m)
-        if (-not $state.debug) { return }
+        param([string]$m, [bool]$force = $false)
+        if (-not $force -and -not $state.debug) { return }
         try {
             $ts = (Get-Date).ToString('HH:mm:ss.fff')
             $tid = [System.Threading.Thread]::CurrentThread.ManagedThreadId
-            Add-Content -Path $state.log_path -Value "$ts t$tid [bg] $m" -ErrorAction SilentlyContinue
+            [System.IO.File]::AppendAllText($state.log_path, "$ts t$tid [bg] $m`r`n")
         } catch {}
     }
-
-    & $writeLog "Elapsed fired (gen=$($state.generation), buf='$($state.pending_buffer)')"
 
     try {
         $myGen = $state.generation
         $line = $state.pending_buffer
         $cursor = $state.pending_cursor
+        $cwd = $state.pending_cwd
 
-        if (-not $line -or $line.Length -lt 2) {
-            & $writeLog "skip: empty/short buffer"
+        if (-not $line -or $line.Length -lt 2) { return }
+
+        if (-not (Test-Path "\\.\pipe\$($state.pipe_name)")) {
+            & $writeLog "skip: pipe missing"
             return
         }
 
-        $pipePath = "\\.\pipe\$($state.pipe_name)"
-        if (-not (Test-Path $pipePath)) {
-            & $writeLog "skip: pipe missing at $pipePath"
-            return
-        }
-
-        # Build JSON request (escape Windows backslashes, quotes, newlines)
-        $esc_input = $line -replace '\\','\\' -replace '"','\"' -replace "`n",'\n' -replace "`r",'\r'
-        $esc_cwd = $PWD.Path -replace '\\','\\' -replace '"','\"'
-        $json = "{`"input`":`"$esc_input`",`"cursor`":$cursor,`"cwd`":`"$esc_cwd`",`"shell`":`"powershell`"}"
+        $esc_input = & $jsonEscape $line
+        $esc_cwd = & $jsonEscape $cwd
+        $json = '{"input":"' + $esc_input + '","cursor":' + $cursor + ',"cwd":"' + $esc_cwd + '","shell":"powershell"}'
 
         & $writeLog "sending request len=$($line.Length)"
 
-        # Synchronous IPC — daemon enforces tier budgets so this is bounded
+        # Synchronous IPC bounded by daemon's tier budget (cloud=2000ms) + 250ms slack.
         $pipe = [System.IO.Pipes.NamedPipeClientStream]::new('.', $state.pipe_name, [System.IO.Pipes.PipeDirection]::InOut)
+        $reader = $null
+        $writer = $null
         $response = $null
         try {
             $pipe.Connect(50)
@@ -173,68 +171,145 @@ $null = Register-ObjectEvent -InputObject $script:_nh_timer -EventName Elapsed `
             $writer.AutoFlush = $true
             $writer.WriteLine($json)
             $reader = [System.IO.StreamReader]::new($pipe, $utf8)
-            $response = $reader.ReadLine()
+
+            # Bounded async read — if daemon hangs we don't hang the worker forever.
+            $task = $reader.ReadLineAsync()
+            if ($task.Wait(2250)) {
+                $response = $task.Result
+            } else {
+                & $writeLog "read timeout 2250ms"
+                # Observe the orphan task to suppress post-dispose UnobservedTaskException.
+                $null = $task.ContinueWith(
+                    { param($t) $null = $t.Exception },
+                    [System.Threading.Tasks.TaskContinuationOptions]::OnlyOnFaulted)
+                return
+            }
         } finally {
-            $pipe.Dispose()
+            if ($reader) { try { $reader.Dispose() } catch {} }
+            if ($writer) { try { $writer.Dispose() } catch {} }
+            try { $pipe.Dispose() } catch {}
         }
 
-        if (-not $response) {
-            & $writeLog "empty response"
-            return
-        }
-
-        # Staleness check — abort if user typed during the daemon call
+        if (-not $response) { return }
         if ($state.generation -ne $myGen) {
-            & $writeLog "stale (gen advanced $myGen -> $($state.generation))"
+            & $writeLog "stale (gen advanced)"
             return
         }
 
-        # Parse response
+        # Parse with ConvertFrom-Json (works on PS 5.1 + PS 7+). Returns PSCustomObjects.
         $parsed = $null
-        try { $parsed = $response | ConvertFrom-Json } catch {
+        try {
+            $parsed = $response | ConvertFrom-Json -ErrorAction Stop
+        } catch {
             & $writeLog "parse fail: $($_.Exception.Message)"
             return
         }
-        if (-not $parsed.suggestions -or $parsed.suggestions.Count -eq 0) {
-            & $writeLog "no suggestions"
+
+        if (-not $parsed -or -not $parsed.suggestions -or $parsed.suggestions.Count -eq 0) { return }
+
+        $s = $parsed.suggestions[0]
+        if (-not $s.text -or $null -eq $s.replace_start -or $null -eq $s.replace_end) {
+            & $writeLog "malformed suggestion"
             return
         }
 
-        $s = $parsed.suggestions[0]
-        $state.suggestion = $s.text
-        $state.replace_start = [int]$s.replace_start
-        $state.replace_end = [int]$s.replace_end
+        $text = [string]$s.text
+        $rstart = [int]$s.replace_start
+        $rend = [int]$s.replace_end
 
-        # Compute ghost text
         $ghost = $null
         if ($s.PSObject.Properties['diff_ops'] -and $null -ne $s.diff_ops) {
-            $ghost = " $($state.hint_arrow) $($s.text)"
+            $ghost = " $($state.hint_arrow) $text"
         } else {
-            $typed_len = $cursor - [int]$s.replace_start
-            if ($typed_len -ge 0 -and $typed_len -lt $s.text.Length) {
-                $typed_part = $line.Substring([int]$s.replace_start, $typed_len)
-                if ($s.text.StartsWith($typed_part, [System.StringComparison]::Ordinal)) {
-                    $ghost = $s.text.Substring($typed_len)
+            $typed_len = $cursor - $rstart
+            if ($typed_len -ge 0 -and $typed_len -lt $text.Length) {
+                $typed_part = $line.Substring($rstart, $typed_len)
+                if ($text.StartsWith($typed_part, [System.StringComparison]::Ordinal)) {
+                    $ghost = $text.Substring($typed_len)
                 } else {
-                    $ghost = " $($state.hint_arrow) $($s.text)"
+                    $ghost = " $($state.hint_arrow) $text"
                 }
             }
         }
 
-        if (-not $ghost) {
-            & $writeLog "no ghost computed"
-            return
-        }
+        if (-not $ghost) { return }
 
-        $clean = $ghost -replace '"', ''
-        $state.ghost_len = $clean.Length
+        # Final staleness check before publishing — user may have typed during parse.
+        if ($state.generation -ne $myGen) { return }
 
-        # Render via [Console]::Write — thread-safe, bypasses runspace $Host
+        $state.ghost_len = $ghost.Length
         $e = $state.esc
-        [System.Console]::Write("${e}[s${e}[90m${clean}${e}[0m${e}[u")
-        & $writeLog "rendered ghost (len=$($clean.Length))"
+        [System.Console]::Write("${e}[s${e}[90m${ghost}${e}[0m${e}[u")
+        $state.published = @{
+            text  = $text
+            start = $rstart
+            end   = $rend
+        }
+        & $writeLog "rendered ghost (len=$($ghost.Length))"
     } catch {
-        & $writeLog "EXCEPTION: $($_.Exception.Message)"
+        # Unconditional — fatal worker exceptions always log, even with debug=false.
+        & $writeLog "bg-FATAL: $($_.Exception.GetType().FullName): $($_.Exception.Message)" $true
+    }
+}
+
+# --- Re-source cleanup: tear down prior subscriber, timer, pool before recreating ---
+Get-EventSubscriber -SourceIdentifier 'nh_debounce' -ErrorAction SilentlyContinue | Unregister-Event -ErrorAction SilentlyContinue
+if ($script:_nh_timer) {
+    try { $script:_nh_timer.Stop(); $script:_nh_timer.Dispose() } catch {}
+}
+if ($script:_nh_runspacepool) {
+    try { $script:_nh_runspacepool.Close(); $script:_nh_runspacepool.Dispose() } catch {}
+}
+
+# --- Runspace pool for background IPC workers ---
+# Pool size (1, 3): one worker covers the steady-state debounce; up to 3 lets overlapping
+# bursts run concurrently without blocking the event-handler runspace.
+# CRITICAL: workers MUST run on a RunspacePool, not a raw [System.Threading.Thread]. PowerShell
+# scriptblocks need a Runspace in TLS to execute; without one, ScriptBlock.GetContextFromTLS()
+# throws and the unhandled exception fast-fails the entire pwsh process (CLR 0xE0434352).
+$script:_nh_runspacepool = [runspacefactory]::CreateRunspacePool(1, 3)
+$script:_nh_runspacepool.Open()
+
+# --- Debounce timer + ROE event subscriber ---
+$script:_nh_timer = [System.Timers.Timer]::new()
+$script:_nh_timer.AutoReset = $false
+$script:_nh_timer.Interval = $script:_nh_debounce_ms
+
+# Pre-serialize the worker scriptblock body — [PowerShell]::AddScript takes a string,
+# so we'd otherwise pay a ToString() per keystroke.
+$script:_nh_worker_text = $script:_nh_worker.ToString()
+
+# Bundle for the Action runspace (can't see $script: vars).
+$script:_nh_event_data = @{
+    state       = $script:_nh_state
+    worker_text = $script:_nh_worker_text
+    pool        = $script:_nh_runspacepool
+}
+
+$null = Register-ObjectEvent -InputObject $script:_nh_timer -EventName Elapsed `
+    -SourceIdentifier 'nh_debounce' -MessageData $script:_nh_event_data -Action {
+    $data = $Event.MessageData
+    $state = $data.state
+
+    try {
+        if (-not (Test-Path "\\.\pipe\$($state.pipe_name)")) { return }
+
+        # Dispatch to a pooled runspace. BeginInvoke returns immediately — the event-handler
+        # runspace (pumped on the main pipeline thread) is freed before the IPC happens.
+        $ps = [PowerShell]::Create()
+        $ps.RunspacePool = $data.pool
+        $null = $ps.AddScript($data.worker_text).AddArgument($state)
+        $null = $ps.BeginInvoke()
+        # Note: $ps + IAsyncResult are not explicitly disposed. GC reclaims them once the
+        # runspace returns to the pool. Per-call leak is small (~few KB); over a typical
+        # shell session this is bounded and acceptable.
+    } catch {
+        if ($state.debug) {
+            try {
+                $ts = (Get-Date).ToString('HH:mm:ss.fff')
+                Add-Content -Path $state.log_path -Value "$ts [evt] dispatch fail: $($_.Exception.Message)" -ErrorAction SilentlyContinue
+            } catch {}
+        }
     }
 }
 
@@ -247,10 +322,7 @@ function _nh_query {
 
     if ($cursor -ne $line.Length -or $line.Length -lt 2) { return }
 
-    if ([DateTime]::UtcNow -lt $script:_nh_backoff_until) {
-        _nh_log "_nh_query: in backoff window"
-        return
-    }
+    if ([DateTime]::UtcNow -lt $script:_nh_backoff_until) { return }
 
     if (-not (Test-Path "\\.\pipe\$($script:_nh_state.pipe_name)")) {
         _nh_log "_nh_query: pipe missing, setting backoff"
@@ -259,12 +331,13 @@ function _nh_query {
         return
     }
 
-    # Capture state for the timer Elapsed callback
+    # Capture state for the worker. $PWD must be captured here in the foreground runspace —
+    # workers don't have the user's current directory.
     $script:_nh_state.pending_buffer = $line
     $script:_nh_state.pending_cursor = $cursor
+    $script:_nh_state.pending_cwd = $PWD.Path
     $script:_nh_state.generation++
 
-    # Reset debounce window
     $script:_nh_timer.Stop()
     $script:_nh_timer.Start()
 
@@ -272,11 +345,14 @@ function _nh_query {
 }
 
 # --- Accept suggestion ---
+# Snapshots $state.published once so a worker publishing mid-accept can't tear our read.
 function _nh_accept {
-    if ($script:_nh_state.suggestion -and $script:_nh_state.replace_start -ge 0) {
-        $text = $script:_nh_state.suggestion
-        $start = $script:_nh_state.replace_start
-        $end = $script:_nh_state.replace_end
+    $script:_nh_state.generation++
+    $snap = $script:_nh_state.published
+    if ($snap -and [int]$snap['start'] -ge 0) {
+        $text = [string]$snap['text']
+        $start = [int]$snap['start']
+        $end = [int]$snap['end']
         _nh_clear_ghost
         $len = $end - $start
         [Microsoft.PowerShell.PSConsoleReadLine]::Replace($start, $len, $text)
@@ -323,7 +399,7 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+Backspace' -ScriptBlock {
 
 Set-PSReadLineKeyHandler -Chord 'Tab' -ScriptBlock {
     param($key, $arg)
-    if ($script:_nh_state.suggestion) {
+    if ($script:_nh_state.published) {
         _nh_accept
     } else {
         [Microsoft.PowerShell.PSConsoleReadLine]::TabCompleteNext($key, $arg)
@@ -334,7 +410,7 @@ Set-PSReadLineKeyHandler -Chord 'RightArrow' -ScriptBlock {
     param($key, $arg)
     $line = ''; $cursor = 0
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
-    if ($script:_nh_state.suggestion -and $cursor -eq $line.Length) {
+    if ($script:_nh_state.published -and $cursor -eq $line.Length) {
         _nh_accept
     } else {
         [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
