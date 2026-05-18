@@ -150,6 +150,7 @@ pub trait ShellHistory: Send + Sync {
 - **Never use platform-specific IPC directly** — use `interprocess` crate abstractions
 - **Never expose HTTP/REST** — IPC only, the daemon is not a web server. (Outbound HTTP for LLM tiers is OK behind a feature flag.)
 - **Never block the IPC server** — async all the way, slow tiers must not starve fast ones
+- **Never block the input loop in shell plugins** — synchronous IPC must run off the keystroke thread. PowerShell gotcha: `Register-ObjectEvent -Action` is pumped on the main pipeline thread; spawn work via `[PowerShell]::Create().BeginInvoke()` against a pre-opened `RunspacePool`. A raw `[System.Threading.Thread]` needs a Runspace in TLS or the CLR fast-fails the whole process (0xE0434352).
 
 ## Design decisions
 
