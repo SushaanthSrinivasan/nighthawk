@@ -11,15 +11,15 @@ Type a command, see gray ghost text with the completion. Press Tab to accept. No
 ## Features
 
 - **Inline ghost text** via ANSI escapes — works in any terminal emulator
-- **500+ CLI specs** from the [withfig/autocomplete](https://github.com/withfig/autocomplete) community repo
+- **689+ CLI specs** from the [withfig/autocomplete](https://github.com/withfig/autocomplete) community repo
 - **Auto-parse `--help`** for any CLI without a spec
 - **History-based predictions** — your most-used commands surface first
 - **Full-token replacement** — typo-aware (`ccla` → `claude`, not `cclaude`)
 - **Zero config** — works immediately with no API key, no login, no account
 - **Cross-platform** — macOS, Linux, Windows
-- **Multi-shell** — zsh, bash, fish, PowerShell
-- **Local LLM support** *(coming soon)* — AI completions that never leave your machine
-- **BYOK cloud** *(coming soon)* — bring your own API key for OpenAI, Anthropic, etc.
+- **Multi-shell** — zsh and PowerShell (5.1+, 7+)
+- **Local LLM support** — AI completions via local Ollama / llama.cpp / vLLM, never leave your machine (opt-in via `--features local-llm`)
+- **BYOK cloud** — bring your own API key for OpenAI, Anthropic, or Groq (opt-in via `--features cloud-llm`)
 
 ## Architecture
 
@@ -29,8 +29,8 @@ Lightweight Rust daemon + thin shell plugins (~50 lines each). The daemon runs a
 |------|---------|--------|
 | 0 | <1ms | Shell history prefix matching |
 | 1 | <1ms | Static CLI specs (withfig/autocomplete + --help parser) |
-| 2 | ~50ms | Local LLM (future) |
-| 3 | ~500ms | Cloud API, BYOK (future) |
+| 2 | ~500ms | Local LLM (Ollama / llama.cpp / vLLM) |
+| 3 | ~2s | Cloud API (OpenAI / Anthropic / Groq, BYOK) |
 
 ## Status
 
@@ -38,17 +38,17 @@ Lightweight Rust daemon + thin shell plugins (~50 lines each). The daemon runs a
 
 | Shell | Status |
 |-------|--------|
-| zsh | In progress |
+| zsh | Supported |
+| PowerShell (5.1+, 7+) | Supported |
 | bash | Planned |
 | fish | Planned |
-| PowerShell | Planned |
 | nushell | Planned |
 
 | Platform | Status |
 |----------|--------|
-| macOS | In progress |
-| Linux | In progress |
-| Windows | Planned |
+| macOS | Supported |
+| Linux | Supported |
+| Windows | Supported |
 
 ## License
 
