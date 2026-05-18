@@ -58,17 +58,20 @@ function _nh_log {
 # `published` is a hashtable reference — assignment is a single pointer write, never torn —
 # so foreground readers can snapshot once and use snap['text']/['start']/['end'] safely.
 $script:_nh_state = [hashtable]::Synchronized(@{
-    pipe_name      = 'nighthawk'
-    hint_arrow     = $script:_nh_hint_arrow
-    debug          = $script:_nh_debug
-    log_path       = $script:_nh_log_path
-    esc            = [char]27
-    pending_buffer = ''
-    pending_cursor = 0
-    pending_cwd    = ''
-    generation     = 0
-    published      = $null   # @{ text=...; start=...; end=... } or $null
-    ghost_len      = 0
+    pipe_name       = 'nighthawk'
+    hint_arrow      = $script:_nh_hint_arrow
+    debug           = $script:_nh_debug
+    log_path        = $script:_nh_log_path
+    esc             = [char]27
+    utf8            = [System.Text.UTF8Encoding]::new($false)
+    read_timeout_ms = 2250
+    pending_buffer  = ''
+    pending_cursor  = 0
+    pending_cwd     = ''
+    generation      = 0
+    published       = $null   # @{ text=...; start=...; end=... } or $null
+    ghost_len       = 0
+    inflight        = [System.Collections.Generic.List[object]]::new()
 })
 
 # --- Ghost text clear ---
@@ -148,11 +151,6 @@ $script:_nh_worker = {
 
         if (-not $line -or $line.Length -lt 2) { return }
 
-        if (-not (Test-Path "\\.\pipe\$($state.pipe_name)")) {
-            & $writeLog "skip: pipe missing"
-            return
-        }
-
         $esc_input = & $jsonEscape $line
         $esc_cwd = & $jsonEscape $cwd
         $json = '{"input":"' + $esc_input + '","cursor":' + $cursor + ',"cwd":"' + $esc_cwd + '","shell":"powershell"}'
@@ -166,7 +164,7 @@ $script:_nh_worker = {
         $response = $null
         try {
             $pipe.Connect(50)
-            $utf8 = [System.Text.UTF8Encoding]::new($false)
+            $utf8 = $state.utf8
             $writer = [System.IO.StreamWriter]::new($pipe, $utf8)
             $writer.AutoFlush = $true
             $writer.WriteLine($json)
@@ -174,10 +172,10 @@ $script:_nh_worker = {
 
             # Bounded async read — if daemon hangs we don't hang the worker forever.
             $task = $reader.ReadLineAsync()
-            if ($task.Wait(2250)) {
+            if ($task.Wait($state.read_timeout_ms)) {
                 $response = $task.Result
             } else {
-                & $writeLog "read timeout 2250ms"
+                & $writeLog "read timeout $($state.read_timeout_ms)ms"
                 # Observe the orphan task to suppress post-dispose UnobservedTaskException.
                 $null = $task.ContinueWith(
                     { param($t) $null = $t.Exception },
@@ -222,7 +220,7 @@ $script:_nh_worker = {
             $ghost = " $($state.hint_arrow) $text"
         } else {
             $typed_len = $cursor - $rstart
-            if ($typed_len -ge 0 -and $typed_len -lt $text.Length) {
+            if ($typed_len -ge 0 -and $typed_len -lt $text.Length -and ($rstart + $typed_len) -le $line.Length) {
                 $typed_part = $line.Substring($rstart, $typed_len)
                 if ($text.StartsWith($typed_part, [System.StringComparison]::Ordinal)) {
                     $ghost = $text.Substring($typed_len)
@@ -253,6 +251,8 @@ $script:_nh_worker = {
 }
 
 # --- Re-source cleanup: tear down prior subscriber, timer, pool before recreating ---
+# Order matters: unregister the subscriber first (so a late Elapsed can't dispatch into
+# a closing pool), then stop+dispose the timer, then close+dispose the pool.
 Get-EventSubscriber -SourceIdentifier 'nh_debounce' -ErrorAction SilentlyContinue | Unregister-Event -ErrorAction SilentlyContinue
 if ($script:_nh_timer) {
     try { $script:_nh_timer.Stop(); $script:_nh_timer.Dispose() } catch {}
@@ -279,30 +279,36 @@ $script:_nh_timer.Interval = $script:_nh_debounce_ms
 # so we'd otherwise pay a ToString() per keystroke.
 $script:_nh_worker_text = $script:_nh_worker.ToString()
 
-# Bundle for the Action runspace (can't see $script: vars).
-$script:_nh_event_data = @{
-    state       = $script:_nh_state
-    worker_text = $script:_nh_worker_text
-    pool        = $script:_nh_runspacepool
-}
-
 $null = Register-ObjectEvent -InputObject $script:_nh_timer -EventName Elapsed `
-    -SourceIdentifier 'nh_debounce' -MessageData $script:_nh_event_data -Action {
+    -SourceIdentifier 'nh_debounce' -MessageData @{
+        state       = $script:_nh_state
+        worker_text = $script:_nh_worker_text
+        pool        = $script:_nh_runspacepool
+    } -Action {
     $data = $Event.MessageData
     $state = $data.state
 
     try {
-        if (-not (Test-Path "\\.\pipe\$($state.pipe_name)")) { return }
+        # Prune completed instances. EndInvoke on a completed IAsyncResult releases its
+        # kernel ManualResetEvent; Dispose releases the PowerShell instance. Skip
+        # incomplete slots so this stays O(pool size) and never blocks.
+        $inflight = $state.inflight
+        for ($i = $inflight.Count - 1; $i -ge 0; $i--) {
+            if ($inflight[$i].iar.IsCompleted) {
+                $slot = $inflight[$i]
+                try { $null = $slot.ps.EndInvoke($slot.iar) } catch {}
+                try { $slot.ps.Dispose() } catch {}
+                $inflight.RemoveAt($i)
+            }
+        }
 
         # Dispatch to a pooled runspace. BeginInvoke returns immediately — the event-handler
         # runspace (pumped on the main pipeline thread) is freed before the IPC happens.
         $ps = [PowerShell]::Create()
         $ps.RunspacePool = $data.pool
         $null = $ps.AddScript($data.worker_text).AddArgument($state)
-        $null = $ps.BeginInvoke()
-        # Note: $ps + IAsyncResult are not explicitly disposed. GC reclaims them once the
-        # runspace returns to the pool. Per-call leak is small (~few KB); over a typical
-        # shell session this is bounded and acceptable.
+        $iar = $ps.BeginInvoke()
+        $inflight.Add(@{ ps = $ps; iar = $iar })
     } catch {
         if ($state.debug) {
             try {
@@ -353,6 +359,11 @@ function _nh_accept {
         $text = [string]$snap['text']
         $start = [int]$snap['start']
         $end = [int]$snap['end']
+        # Buffer may have shrunk since the worker captured the suggestion; re-read it so
+        # PSReadLine.Replace doesn't throw ArgumentOutOfRangeException on a stale end.
+        $current = ''; $cur = 0
+        [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$current, [ref]$cur)
+        if ($end -gt $current.Length) { return }
         _nh_clear_ghost
         $len = $end - $start
         [Microsoft.PowerShell.PSConsoleReadLine]::Replace($start, $len, $text)
