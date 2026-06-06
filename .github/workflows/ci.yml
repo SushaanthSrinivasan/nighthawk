@@ -22,6 +22,15 @@ jobs:
         with:
           components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2
+      # Before the cargo steps so a Rust build failure doesn't shadow plugin test results.
+      - name: Plugin tests (Pester)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          if (-not (Get-Module -ListAvailable Pester | Where-Object Version -ge ([version]'5.0'))) {
+              Install-Module Pester -Force -Scope CurrentUser -SkipPublisherCheck
+          }
+          Invoke-Pester shells/tests -CI
       - name: Build
         run: cargo build
       - name: Test
