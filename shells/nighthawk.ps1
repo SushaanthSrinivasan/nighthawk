@@ -111,6 +111,9 @@ $script:_nh_worker = {
     param([hashtable]$state)
 
     # JSON escape: \\, \", \b, \f, \n, \r, \t, plus \uXXXX for any other 0x00-0x1F control chars.
+    # Invariant: chars >= 0x20 MUST pass through RAW, never as \uXXXX — the daemon's byte
+    # offsets over `input` only agree with our GetByteCount because both sides see
+    # identical UTF-8 on the wire.
     $jsonEscape = {
         param([string]$s)
         if ([string]::IsNullOrEmpty($s)) { return '' }
@@ -137,6 +140,37 @@ $script:_nh_worker = {
         return $sb.ToString()
     }
 
+    # Maps a UTF-8 byte offset (protocol domain) to a UTF-16 char index (.NET domain).
+    # Only this plugin needs conversion: the protocol and the zsh plugin are byte-native,
+    # but .NET string APIs (Substring, PSReadLine Replace) index by UTF-16 chars. Must be
+    # applied against the exact $line snapshot sent in the request — the round-trip check
+    # below is only valid for that string. Returns -1 for out-of-range or mid-code-point
+    # offsets (fail-closed, like the control-char rejection below). $utf8 MUST be the
+    # replacement-fallback encoder ($state.utf8) — a throwOnInvalidBytes instance would
+    # turn lone-surrogate buffers into worker-killing exceptions.
+    $byteToChar = {
+        param([string]$s, [int]$byteOffset, [System.Text.UTF8Encoding]$utf8)
+        if ($byteOffset -lt 0) { return -1 }
+        if ($byteOffset -eq 0) { return 0 }
+        $bytes = $utf8.GetBytes($s)
+        if ($byteOffset -gt $bytes.Length) { return -1 }
+        # Surrogate-pair aware and never throws (replacement fallback).
+        $chars = $utf8.GetCharCount($bytes, 0, $byteOffset)
+        # Can't fire on well-formed input; turns a would-be Substring throw into a clean reject.
+        if ($chars -gt $s.Length) { return -1 }
+        # A char index landing on a low surrogate splits an emoji's UTF-16 pair — and the
+        # round-trip below can false-pass on exactly that case: an offset 1 byte into a
+        # 4-byte sequence decodes to 1 replacement char, and the truncated prefix's lone
+        # high surrogate re-encodes to '?' (1 byte), coincidentally matching. Reject directly.
+        if ($chars -lt $s.Length -and [char]::IsLowSurrogate($s[$chars])) { return -1 }
+        # LOAD-BEARING: GetCharCount silently rounds a mid-code-point offset to a
+        # replacement char; re-encoding the prefix exposes the length mismatch. Together
+        # with the surrogate check above this is the mid-sequence rejection — do not
+        # remove either as "redundant".
+        if ($utf8.GetByteCount($s.Substring(0, $chars)) -ne $byteOffset) { return -1 }
+        return $chars
+    }
+
     # Worker-side log. $force=$true bypasses debug-gate so fatal exceptions always leave a trace.
     $writeLog = {
         param([string]$m, [bool]$force = $false)
@@ -156,9 +190,23 @@ $script:_nh_worker = {
 
         if (-not $line -or $line.Length -lt 2) { return }
 
+        # Torn pending_* snapshot (pending_buffer/pending_cursor are written non-atomically
+        # by a racing keystroke): the pair is garbage — drop the request rather than clamp;
+        # the generation check would discard the response anyway.
+        if ($cursor -lt 0 -or $cursor -gt $line.Length) { return }
+
+        # The protocol speaks UTF-8 byte offsets, but PSReadLine's cursor is a UTF-16 char
+        # index — convert for the request only; $cursor itself stays char-domain for the
+        # ghost math below. If the buffer ends in a lone surrogate, GetByteCount counts a
+        # substituted '?' (matching what the UTF-8 StreamWriter puts on the wire, so the
+        # daemon sees consistent input); reply offsets that don't line up then fail the
+        # byteToChar checks and we fail closed (no ghost), never corrupting the buffer.
+        $utf8 = $state.utf8
+        $cursor_bytes = $utf8.GetByteCount($line.Substring(0, $cursor))
+
         $esc_input = & $jsonEscape $line
         $esc_cwd = & $jsonEscape $cwd
-        $json = '{"input":"' + $esc_input + '","cursor":' + $cursor + ',"cwd":"' + $esc_cwd + '","shell":"powershell"}'
+        $json = '{"input":"' + $esc_input + '","cursor":' + $cursor_bytes + ',"cwd":"' + $esc_cwd + '","shell":"powershell"}'
 
         & $writeLog "sending request len=$($line.Length)"
 
@@ -169,7 +217,6 @@ $script:_nh_worker = {
         $response = $null
         try {
             $pipe.Connect(50)
-            $utf8 = $state.utf8
             $writer = [System.IO.StreamWriter]::new($pipe, $utf8)
             $writer.AutoFlush = $true
             $writer.WriteLine($json)
@@ -233,8 +280,20 @@ $script:_nh_worker = {
         }
         if (-not $text) { return }
 
-        $rstart = [int]$s.replace_start
-        $rend = [int]$s.replace_end
+        # Protocol byte offsets -> .NET char indices, converted against $line (the exact
+        # buffer snapshot sent in the request). Must happen BEFORE the diff_ops branch:
+        # both branches publish these values and _nh_accept feeds them to PSReadLine
+        # Replace(), which is char-indexed. The inverted-range check stays here (not just
+        # in _nh_accept): publishing an inverted range would render a ghost that accept
+        # bails on before _nh_clear_ghost, leaving it stuck on screen.
+        $rstart_bytes = [int]$s.replace_start
+        $rend_bytes = [int]$s.replace_end
+        $rstart = & $byteToChar $line $rstart_bytes $utf8
+        $rend = & $byteToChar $line $rend_bytes $utf8
+        if ($rstart -lt 0 -or $rend -lt 0 -or $rend -lt $rstart) {
+            & $writeLog "rejected: replace range bytes [$rstart_bytes,$rend_bytes) not on code-point boundary"
+            return
+        }
 
         $ghost = $null
         if ($s.PSObject.Properties['diff_ops'] -and $null -ne $s.diff_ops) {
