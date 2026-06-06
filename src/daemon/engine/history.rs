@@ -1,6 +1,7 @@
 use crate::daemon::fuzzy;
 use crate::proto::{CompletionRequest, Shell, Suggestion, SuggestionSource};
 use async_trait::async_trait;
+use std::sync::Arc;
 
 use super::tier::PredictionTier;
 use crate::daemon::history::file::FileHistory;
@@ -11,7 +12,7 @@ use tokio::sync::RwLock;
 /// Looks up commands the user has typed before, ranked by recency/frequency.
 /// Must complete in under 1ms.
 pub struct HistoryTier {
-    histories: RwLock<[FileHistory; 5]>,
+    histories: Arc<RwLock<[FileHistory; 5]>>,
 }
 
 impl Default for HistoryTier {
@@ -37,8 +38,14 @@ impl HistoryTier {
             h
         });
         Self {
-            histories: RwLock::new(histories),
+            histories: Arc::new(RwLock::new(histories)),
         }
+    }
+
+    /// Create HistoryTier with shared history storage.
+    /// Used when history needs to be shared with other tiers (e.g., CloudTier).
+    pub fn with_shared_histories(histories: Arc<RwLock<[FileHistory; 5]>>) -> Self {
+        Self { histories }
     }
 
     /// Create a HistoryTier with a single pre-loaded history.
@@ -56,7 +63,7 @@ impl HistoryTier {
         let mut histories: [FileHistory; 5] = std::array::from_fn(|i| FileHistory::new(shells[i]));
         histories[idx] = history;
         Self {
-            histories: RwLock::new(histories),
+            histories: Arc::new(RwLock::new(histories)),
         }
     }
 }
