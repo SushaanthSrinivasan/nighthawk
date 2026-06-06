@@ -11,11 +11,16 @@ use crate::proto::{CompletionRequest, Shell, Suggestion, SuggestionSource};
 use async_trait::async_trait;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
-use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::Arc;
-use std::time::Duration;
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use tokio::sync::RwLock;
 use tracing::{debug, warn};
+
+// Minimum interval between identical-message warns from maybe_warn(); within the
+// window, subsequent failures log at debug. Prevents per-keystroke warn spam during
+// sustained outages while still ensuring persistent issues remain visible.
+const WARN_REWARN_WINDOW_MS: u64 = 5 * 60 * 1000;
 
 const SYSTEM_PROMPT: &str = r#"You are an expert terminal command synthesizer. Analyze the user's INTENT based on their partial command and recent history, then suggest a sophisticated command they may not have known to type.
 
@@ -211,7 +216,7 @@ pub struct CloudTier {
     provider: Box<dyn CloudProviderImpl>,
     config: CloudConfig,
     histories: Arc<RwLock<[FileHistory; 5]>>,
-    has_warned: AtomicBool,
+    last_warn_ms: AtomicU64,
 }
 
 impl CloudTier {
@@ -280,8 +285,26 @@ impl CloudTier {
             provider,
             config,
             histories,
-            has_warned: AtomicBool::new(false),
+            last_warn_ms: AtomicU64::new(0),
         })
+    }
+
+    /// Throttled warn — emits at most one warn per WARN_REWARN_WINDOW_MS across all error
+    /// variants. Demoted occurrences still log at debug. Race-tolerant: if two callers
+    /// observe the same `last`, only one wins the CAS and warns.
+    fn maybe_warn(&self, e: &ProviderError) {
+        let now = now_ms();
+        let last = self.last_warn_ms.load(Ordering::Relaxed);
+        if now.saturating_sub(last) >= WARN_REWARN_WINDOW_MS
+            && self
+                .last_warn_ms
+                .compare_exchange(last, now, Ordering::Relaxed, Ordering::Relaxed)
+                .is_ok()
+        {
+            warn!(error = %e, "Cloud LLM request failed");
+        } else {
+            debug!(error = %e, "Cloud LLM request failed");
+        }
     }
 
     /// Get recent commands from shell history (stateless read at request time)
@@ -295,6 +318,13 @@ impl CloudTier {
             .map(|e| e.command.clone())
             .collect()
     }
+}
+
+fn now_ms() -> u64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_millis() as u64)
+        .unwrap_or(0)
 }
 
 #[async_trait]
@@ -340,27 +370,11 @@ impl PredictionTier for CloudTier {
             history_text
         );
 
-        // Call provider
+        // Call provider — all error variants share a single throttled warn window.
         let raw = match self.provider.complete(SYSTEM_PROMPT, &user_prompt).await {
             Ok(r) => r,
-            Err(ProviderError::Auth) => {
-                warn!("Cloud LLM: authentication failed — check API key");
-                return vec![];
-            }
-            Err(ProviderError::RateLimited) => {
-                warn!("Cloud LLM: rate limited (429) — try again later");
-                return vec![];
-            }
             Err(e) => {
-                if self
-                    .has_warned
-                    .compare_exchange(false, true, Ordering::Relaxed, Ordering::Relaxed)
-                    .is_ok()
-                {
-                    warn!(error = %e, "Cloud LLM: request failed");
-                } else {
-                    debug!(error = %e, "Cloud LLM request failed");
-                }
+                self.maybe_warn(&e);
                 return vec![];
             }
         };
@@ -391,22 +405,34 @@ fn parse_cloud_response(raw: &str) -> (Option<String>, Option<String>) {
 
     let mut command = None;
     let mut description = None;
+    // Track whether the model emitted structured output at all. If it did but with an
+    // empty COMMAND, honor that as "no suggestion" rather than salvaging from another line.
+    let mut saw_structured = false;
 
     for line in raw.lines() {
         let line = line.trim();
         if let Some(cmd) = line.strip_prefix("COMMAND:") {
-            command = Some(cmd.trim().to_string());
+            saw_structured = true;
+            let cmd = cmd.trim();
+            if !cmd.is_empty() {
+                command = Some(cmd.to_string());
+            }
         } else if let Some(desc) = line.strip_prefix("DESCRIPTION:") {
-            description = Some(desc.trim().to_string());
+            saw_structured = true;
+            let desc = desc.trim();
+            if !desc.is_empty() {
+                description = Some(desc.to_string());
+            }
         }
     }
 
-    // Fallback: first non-empty line as command
-    if command.is_none() {
+    // Fallback only when the response was unstructured. First non-empty line as command.
+    if command.is_none() && !saw_structured {
         command = raw
             .lines()
-            .find(|l| !l.trim().is_empty())
-            .map(|l| l.trim().to_string());
+            .map(str::trim)
+            .find(|l| !l.is_empty())
+            .map(String::from);
     }
 
     (command, description)
@@ -462,5 +488,18 @@ mod tests {
         let (cmd, desc) = parse_cloud_response("   \n   ");
         assert!(cmd.is_none());
         assert!(desc.is_none());
+    }
+
+    #[test]
+    fn parse_empty_command_value_is_none() {
+        // Model emits the structured prefix with an empty value — must NOT become Some("").
+        // Otherwise the cloud suggestion would have text="" and full-buffer replace, wiping
+        // the user's typed input on accept.
+        let (cmd, desc) = parse_cloud_response("COMMAND:\nDESCRIPTION: nothing");
+        assert!(cmd.is_none());
+        assert_eq!(desc, Some("nothing".into()));
+
+        let (cmd, _) = parse_cloud_response("COMMAND:   \n");
+        assert!(cmd.is_none());
     }
 }

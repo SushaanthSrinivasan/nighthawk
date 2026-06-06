@@ -75,8 +75,13 @@ $script:_nh_state = [hashtable]::Synchronized(@{
 })
 
 # --- Ghost text clear ---
-# Bumps generation unconditionally so any in-flight worker sees its result as stale.
+# Bumps generation so any in-flight worker sees its result as stale, AND stops the
+# debounce timer so a pending dispatch (scheduled before the user moved on) doesn't
+# fire with stale pending_buffer/cursor and render a phantom ghost. The next _nh_query
+# call (from the very next keystroke) will Start() the timer again — this only kills
+# dispatches the user has invalidated by typing/Enter/Escape/Tab.
 function _nh_clear_ghost {
+    if ($script:_nh_timer) { try { $script:_nh_timer.Stop() } catch {} }
     $script:_nh_state.generation++
     if ($script:_nh_state.ghost_len -gt 0) {
         $e = $script:_nh_esc
@@ -211,7 +216,23 @@ $script:_nh_worker = {
             return
         }
 
+        # Reject the suggestion outright if it contains any control char (<0x20 or 0x7f).
+        # A response containing ESC (OSC 52 clipboard, DECSET, OSC 8 hyperlink, cursor
+        # moves) hijacks the terminal during render; a newline (0x0a) auto-submits on
+        # accept, which is a single-keystroke RCE if the model emits `rm -rf $HOME\n`.
+        # Fail-closed (reject) over fail-open (strip): stripping concatenates around
+        # dropped chars (`ls\x00rm` -> `lsrm`), silently merging tokens. Shell commands
+        # never legitimately contain control chars, so reject has zero false-positive cost.
         $text = [string]$s.text
+        foreach ($_nh_ch in $text.ToCharArray()) {
+            $_nh_ch_code = [int]$_nh_ch
+            if ($_nh_ch_code -lt 0x20 -or $_nh_ch_code -eq 0x7f) {
+                & $writeLog "rejected: suggestion contains control char 0x$('{0:x2}' -f $_nh_ch_code)"
+                return
+            }
+        }
+        if (-not $text) { return }
+
         $rstart = [int]$s.replace_start
         $rend = [int]$s.replace_end
 
@@ -242,6 +263,20 @@ $script:_nh_worker = {
             text  = $text
             start = $rstart
             end   = $rend
+        }
+        # Post-publish fence: if foreground bumped generation between our staleness check
+        # and the assignment above, our publish + console-write are both stale. Undo BOTH
+        # state and display: null published (so Tab can't insert a phantom) AND emit the
+        # clear sequence (so a stale ghost doesn't linger on screen). The display undo is
+        # required when foreground's racing partner was _nh_query (typing) rather than
+        # _nh_clear_ghost — _nh_query advances generation but does NOT clear the screen,
+        # so without this, multi-line wrapped ghosts would linger until Enter. Idempotent:
+        # if _nh_clear_ghost already ran, the extra clear is a no-op.
+        if ($state.generation -ne $myGen) {
+            [System.Console]::Write("${e}[s${e}[0J${e}[u")
+            $state.published = $null
+            $state.ghost_len = 0
+            return
         }
         & $writeLog "rendered ghost (len=$($ghost.Length))"
     } catch {
@@ -304,11 +339,19 @@ $null = Register-ObjectEvent -InputObject $script:_nh_timer -EventName Elapsed `
 
         # Dispatch to a pooled runspace. BeginInvoke returns immediately — the event-handler
         # runspace (pumped on the main pipeline thread) is freed before the IPC happens.
+        # If AddScript/BeginInvoke throws (e.g., pool closing during reload), the created
+        # [PowerShell] instance would leak — dispose it unless ownership transferred to
+        # $inflight. Set $ps = $null after Add so finally only disposes orphans.
         $ps = [PowerShell]::Create()
-        $ps.RunspacePool = $data.pool
-        $null = $ps.AddScript($data.worker_text).AddArgument($state)
-        $iar = $ps.BeginInvoke()
-        $inflight.Add(@{ ps = $ps; iar = $iar })
+        try {
+            $ps.RunspacePool = $data.pool
+            $null = $ps.AddScript($data.worker_text).AddArgument($state)
+            $iar = $ps.BeginInvoke()
+            $inflight.Add(@{ ps = $ps; iar = $iar })
+            $ps = $null
+        } finally {
+            if ($ps) { try { $ps.Dispose() } catch {} }
+        }
     } catch {
         if ($state.debug) {
             try {
@@ -361,9 +404,11 @@ function _nh_accept {
         $end = [int]$snap['end']
         # Buffer may have shrunk since the worker captured the suggestion; re-read it so
         # PSReadLine.Replace doesn't throw ArgumentOutOfRangeException on a stale end.
+        # Also defend against malformed ranges (start past end-of-buffer, inverted range)
+        # in case a future tier returns bad values.
         $current = ''; $cur = 0
         [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$current, [ref]$cur)
-        if ($end -gt $current.Length) { return }
+        if ($end -lt 0 -or $end -gt $current.Length -or $start -gt $current.Length -or $end -lt $start) { return }
         _nh_clear_ghost
         $len = $end - $start
         [Microsoft.PowerShell.PSConsoleReadLine]::Replace($start, $len, $text)

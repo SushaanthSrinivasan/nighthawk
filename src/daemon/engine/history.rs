@@ -48,11 +48,6 @@ impl HistoryTier {
         Self { histories }
     }
 
-    /// Get a clone of the shared history Arc for use by other tiers (e.g., CloudTier).
-    pub fn shared_histories(&self) -> Arc<RwLock<[FileHistory; 5]>> {
-        Arc::clone(&self.histories)
-    }
-
     /// Create a HistoryTier with a single pre-loaded history.
     /// Other shells will have empty histories. Useful for testing.
     pub fn with_history(history: FileHistory) -> Self {
