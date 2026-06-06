@@ -134,11 +134,12 @@ impl HistoryTier {
             return vec![];
         }
 
+        // Byte offset of the first token within input. find() cannot fail:
+        // first_token comes from split_whitespace() on this same input.
+        let token_start = input.find(first_token).unwrap_or(0);
+
         // Get the rest of the input after the first token
-        let rest = input
-            .find(first_token)
-            .map(|pos| &input[pos + first_token.len()..])
-            .unwrap_or("");
+        let rest = &input[token_start + first_token.len()..];
 
         // Get unique command names from history (preserves frequency order)
         let command_names = history.command_names();
@@ -192,8 +193,13 @@ impl HistoryTier {
             .into_iter()
             .map(|entry| Suggestion {
                 text: entry.command.clone(),
-                replace_start: 0, // Full replacement from start
-                replace_end: 0,   // Will be set by caller based on cursor
+                // Replace from the typo'd token through the cursor, preserving
+                // anything before the token (e.g. leading whitespace).
+                replace_start: token_start,
+                // input.len() == req.cursor: predict() passes &req.input[..req.cursor]
+                // (cursor assumed on a char boundary). Only valid while callers pass
+                // cursor-terminated slices.
+                replace_end: input.len(),
                 confidence,
                 source: SuggestionSource::History,
                 description: None,
@@ -234,7 +240,37 @@ mod tests {
         assert_eq!(results.len(), 1);
         assert_eq!(results[0].text, "claude remote-control");
         assert_eq!(results[0].replace_start, 0);
+        assert_eq!(results[0].replace_end, "cclaude rem".len());
+        assert_eq!(results[0].source, SuggestionSource::History);
         assert!(results[0].diff_ops.is_some());
+    }
+
+    /// Simulates the shell plugin's accept path: buffer[..start] + text + buffer[end..].
+    /// Guards issue #74 — fuzzy fallback shipped replace_end: 0, so Tab inserted the
+    /// suggestion at position 0 instead of replacing the typed input.
+    #[test]
+    fn fuzzy_accept_reconstructs_buffer() {
+        let history = create_history_with_entries(&["cargo build --release"]);
+
+        fn accept(buffer: &str, s: &Suggestion) -> String {
+            format!(
+                "{}{}{}",
+                &buffer[..s.replace_start],
+                s.text,
+                &buffer[s.replace_end..]
+            )
+        }
+
+        // Plain case: typo'd command plus rest of input
+        let results = HistoryTier::try_fuzzy_fallback("crago bu", &history);
+        assert_eq!(results.len(), 1);
+        assert_eq!(accept("crago bu", &results[0]), "cargo build --release");
+
+        // Leading whitespace is preserved: replacement starts at the token, not 0
+        let results = HistoryTier::try_fuzzy_fallback("  crago", &history);
+        assert_eq!(results.len(), 1);
+        assert_eq!(results[0].replace_start, 2);
+        assert_eq!(accept("  crago", &results[0]), "  cargo build --release");
     }
 
     #[test]
