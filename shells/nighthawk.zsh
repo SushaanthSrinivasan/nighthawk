@@ -8,6 +8,64 @@
 NIGHTHAWK_SOCKET="${NIGHTHAWK_SOCKET:-/tmp/nighthawk-$(id -u).sock}"
 NIGHTHAWK_FUZZY_DISPLAY="${NIGHTHAWK_FUZZY_DISPLAY:-hint}"
 
+# Plugin settings: the [plugin] section of config.toml, with env-var overrides
+# (precedence env > file > default), mirroring the PowerShell plugin's keys and
+# precedence. The default arrow differs by design — zsh keeps the Unicode "→",
+# PowerShell uses ASCII "->". debounce_ms is parsed but not yet consumed: the zsh
+# query path is still synchronous, so it will be wired when async IPC lands.
+typeset -g _nh_hint_arrow="→"
+typeset -g _nh_debug=0
+typeset -g _nh_debounce_ms=200
+typeset -g _nh_log_path="${XDG_CONFIG_HOME:-$HOME/.config}/nighthawk/plugin.log"
+
+# Minimal hand-rolled TOML reader: walks lines, tracks the current [section], and
+# extracts the three keys we care about from [plugin]. We avoid a real parser to
+# keep zsh dep-free; quoted-string and bool/int regexes mirror the PowerShell side
+# and naturally ignore trailing comments.
+_nh_load_config() {
+    emulate -L zsh
+    local config_file="${XDG_CONFIG_HOME:-$HOME/.config}/nighthawk/config.toml"
+    [[ -f "$config_file" ]] || return
+    local line in_plugin=0
+    # `|| [[ -n "$line" ]]` processes a final line with no trailing newline, which
+    # read would otherwise return non-zero on and skip.
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        if [[ "$line" =~ '^[[:space:]]*\[([^]]+)\][[:space:]]*$' ]]; then
+            [[ "${match[1]}" == "plugin" ]] && in_plugin=1 || in_plugin=0
+            continue
+        fi
+        (( in_plugin )) || continue
+        if [[ "$line" =~ '^[[:space:]]*hint_arrow[[:space:]]*=[[:space:]]*"([^"]*)"' ]]; then
+            _nh_hint_arrow="${match[1]}"
+        elif [[ "$line" =~ '^[[:space:]]*debounce_ms[[:space:]]*=[[:space:]]*([0-9]+)' ]]; then
+            _nh_debounce_ms="${match[1]}"
+        elif [[ "$line" =~ '^[[:space:]]*debug[[:space:]]*=[[:space:]]*(true|false)' ]]; then
+            [[ "${match[1]}" == "true" ]] && _nh_debug=1 || _nh_debug=0
+        fi
+    done < "$config_file"
+}
+_nh_load_config
+
+# Env vars win over config.toml.
+[[ -n "$NIGHTHAWK_HINT_ARROW" ]] && _nh_hint_arrow="$NIGHTHAWK_HINT_ARROW"
+[[ -n "$NIGHTHAWK_DEBOUNCE_MS" ]] && _nh_debounce_ms="$NIGHTHAWK_DEBOUNCE_MS"
+if [[ -n "$NIGHTHAWK_DEBUG" ]]; then
+    [[ "$NIGHTHAWK_DEBUG" == "1" ]] && _nh_debug=1 || _nh_debug=0
+fi
+
+# --- Diagnostic logging ---
+# No-op unless debug is on. Millisecond timestamps via GNU date's %N (present on
+# Linux/WSL); harmless cosmetic degradation elsewhere.
+_nh_log() {
+    (( _nh_debug )) || return
+    print -r -- "$(date '+%H:%M:%S.%3N' 2>/dev/null) $1" >> "$_nh_log_path" 2>/dev/null
+}
+
+# True if $1 contains a control char (0x01-0x1f or 0x7f). Single source of truth for
+# the fail-closed rejection of daemon suggestions before they reach BUFFER. Floor is
+# 0x01: a literal NUL can't survive zsh command substitution, so it's unreachable.
+_nh_has_ctrl_char() { [[ "$1" == *[$'\x01'-$'\x1f\x7f']* ]] }
+
 # --- State ---
 typeset -g _nh_suggestion=""
 typeset -g _nh_replace_start=""
@@ -101,7 +159,7 @@ _nh_render_diff() {
 _nh_render_hint() {
     local suggestion="$1"
     if [[ -n "$suggestion" ]]; then
-        POSTDISPLAY=" → $suggestion"
+        POSTDISPLAY=" $_nh_hint_arrow $suggestion"
         region_highlight+=("${#BUFFER} $((${#BUFFER} + ${#POSTDISPLAY})) fg=8")
         _nh_has_highlight=1
     fi
@@ -146,14 +204,19 @@ _nh_backward_kill_word() {
 zle -N backward-kill-word _nh_backward_kill_word
 
 _nh_clear_ghost() {
-    # Clear rendered ghost text including wrapped lines (ESC[0J = clear to end of screen)
-    print -n '\e[s\e[0J\e[u'
+    # Clear any ghost we rendered. POSTDISPLAY and region_highlight are ZLE-managed:
+    # unsetting them and letting ZLE repaint clears the ghost — including wrapped
+    # lines, whose row count ZLE already tracks. Do NOT emit raw clear escapes here.
+    # This runs inside zle-line-pre-redraw, before ZLE repaints; a manual \e[0J
+    # erases from the stale cursor and desyncs ZLE's display bookkeeping, which
+    # corrupts the very ghost we then paint (the classic "forward shows nothing,
+    # backspace shows one char" glitch).
     unset POSTDISPLAY
 
-    # Remove highlight entries we added
+    # Remove the highlight entries we appended (zsh-native brace range — no subprocess).
     if (( _nh_has_highlight )); then
         local i
-        for i in $(seq $_nh_has_highlight); do
+        for i in {1..$_nh_has_highlight}; do
             region_highlight[-1]=()
         done
         _nh_has_highlight=0
@@ -211,10 +274,13 @@ _nh_query() {
 
     local json="{\"input\":\"${escaped_buffer}\",\"cursor\":${cursor},\"cwd\":\"${escaped_cwd}\",\"shell\":\"zsh\"}"
 
+    _nh_log "query: buffer='$buffer' cursor=$cursor"
+
     local response
     response=$(echo "$json" | socat -t1 - UNIX-CONNECT:"$NIGHTHAWK_SOCKET" 2>/dev/null)
 
     if [[ -z "$response" ]]; then
+        _nh_log "no response, backing off 5s"
         _nh_backoff_until=$(( EPOCHSECONDS + 5 ))
         return
     fi
@@ -233,6 +299,27 @@ _nh_query() {
     ' 2>/dev/null)
 
     if [[ -n "$text" ]]; then
+        # Reject any suggestion carrying a control char (0x01-0x1f or 0x7f). An
+        # embedded newline auto-submits on accept (single-keystroke command
+        # execution if a model emits `rm -rf $HOME\n`); an embedded ESC can hijack
+        # the terminal during render. Shell commands never legitimately contain
+        # control chars, so fail closed rather than strip. This $text guard mirrors
+        # the PowerShell plugin's worker-side check.
+        if _nh_has_ctrl_char "$text"; then
+            _nh_log "rejected: control char in suggestion"
+            return
+        fi
+        # Same guard for diff_ops — no PowerShell counterpart, because that plugin
+        # renders fuzzy matches as a hint and never writes per-op bytes into the
+        # buffer. Here inline-diff rendering writes the per-op `ch` bytes (not $text)
+        # straight into BUFFER, so a clean $text with a tainted diff char would slip
+        # the check above. Reject before any state is published so Tab can't accept
+        # a phantom.
+        if [[ -n "$diff_ops_str" ]] && _nh_has_ctrl_char "$diff_ops_str"; then
+            _nh_log "rejected: control char in diff_ops"
+            return
+        fi
+
         _nh_suggestion="$text"
         _nh_replace_start="$replace_start"
         _nh_replace_end="$replace_end"
@@ -265,8 +352,11 @@ _nh_query() {
 
 # --- ZLE hooks ---
 
-# Save existing hook if any
-if zle -l zle-line-pre-redraw; then
+# Save existing hook if any so we can chain to it — but NOT if it's already ours.
+# On a re-source, zle-line-pre-redraw is already _nh_pre_redraw; aliasing it as
+# _nh_orig_pre_redraw would make _nh_pre_redraw call itself and recurse on every
+# redraw. Re-check the bound widget's definition and skip when it points at us.
+if zle -l zle-line-pre-redraw && [[ "$(zle -lL zle-line-pre-redraw 2>/dev/null)" != *_nh_pre_redraw* ]]; then
     zle -A zle-line-pre-redraw _nh_orig_pre_redraw
 fi
 
@@ -298,6 +388,7 @@ _nh_accept() {
         local suggestion="$_nh_suggestion"
         local rstart="$_nh_replace_start"
         local rend="$_nh_replace_end"
+        _nh_log "accept: '$suggestion' [$rstart,$rend)"
 
         # If diff rendering modified BUFFER, restore original first
         # so replace_start/end offsets are correct
@@ -357,3 +448,46 @@ _nh_line_finish() {
 
 zle -N _nh_line_finish
 bindkey '^M' _nh_line_finish
+
+# --- Accept on RightArrow at end of line ---
+# Override the forward-char widget rather than binding a raw escape sequence, so
+# every key mapped to forward-char works regardless of terminal/keypad mode. When
+# a suggestion is showing and the cursor is at the end of the buffer, RightArrow
+# accepts it (matching the PowerShell plugin); otherwise it moves the cursor as
+# usual (restoring any diff-modified buffer first, like the other edit widgets).
+_nh_forward_char() {
+    # Accept when a suggestion is live. In hint/ghost mode the cursor sits at the
+    # buffer end; in inline-diff mode _nh_render_diff parks it before the trailing
+    # inserts (so $CURSOR != ${#BUFFER}) but leaves _nh_original_buffer set — treat
+    # either as "ghost present, accept it". Only a genuinely-absent suggestion
+    # falls through to a normal cursor move.
+    if [[ -n "$_nh_suggestion" ]] && { [[ -n "$_nh_original_buffer" ]] || (( CURSOR == ${#BUFFER} )); }; then
+        _nh_accept
+    else
+        _nh_restore_before_edit
+        zle .forward-char
+    fi
+}
+zle -N forward-char _nh_forward_char
+
+# --- Escape to dismiss the ghost ---
+# Binding bare ESC is safe: zsh keeps longer ESC-prefixed bindings (arrows, Alt-*)
+# and only fires this widget for a lone Escape after KEYTIMEOUT. When a ghost is
+# showing, Escape clears it. We must not swallow the key's normal meaning: in a vi
+# keymap, Escape ALWAYS enters command mode (a vi user expects that even while a
+# ghost is up), so clear the ghost AND switch mode in the same keystroke rather
+# than making them press it twice. In emacs (where bare Escape is only a prefix)
+# there's nothing to fall through to. NOTE: this is detected once at source time;
+# switching to `bindkey -v` afterward isn't picked up until the plugin is re-sourced.
+typeset -g _nh_vi_mode=0
+[[ "$(bindkey -lL main 2>/dev/null)" == *vi* ]] && _nh_vi_mode=1
+
+_nh_escape() {
+    if (( _nh_has_highlight )) || [[ -n "$_nh_suggestion" ]]; then
+        _nh_clear_ghost
+        zle redisplay
+    fi
+    (( _nh_vi_mode )) && zle .vi-cmd-mode
+}
+zle -N _nh_escape
+bindkey '^[' _nh_escape
