@@ -125,9 +125,48 @@ impl FileHistory {
     }
 }
 
+/// Reverse zsh's history metafication.
+///
+/// zsh reserves the Meta byte 0x83 and the 0x80–0x9f token range internally, so
+/// when it writes one of those bytes to `~/.zsh_history` it emits `Meta` (0x83)
+/// followed by `original ^ 0x20`. A raw 0x83 in a metafied file is therefore
+/// always a Meta marker — the literal 0x83 byte is itself escaped as `83 a3` —
+/// which makes this scan unambiguous. (This holds only for zsh; a bare 0x83 in
+/// other shells' files is a normal UTF-8 continuation byte and must be left alone.)
+///
+/// A trailing lone 0x83 with no following byte is passed through unchanged; it
+/// degrades to U+FFFD on decode rather than reading past the end.
+fn unmetafy(raw: &[u8]) -> Vec<u8> {
+    const META: u8 = 0x83;
+    let mut out = Vec::with_capacity(raw.len());
+    let mut i = 0;
+    while i < raw.len() {
+        if raw[i] == META && i + 1 < raw.len() {
+            out.push(raw[i + 1] ^ 0x20);
+            i += 2;
+        } else {
+            out.push(raw[i]);
+            i += 1;
+        }
+    }
+    out
+}
+
 impl ShellHistory for FileHistory {
     fn load(&mut self) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-        let contents = std::fs::read_to_string(&self.path)?;
+        let raw = std::fs::read(&self.path)?;
+        // zsh persists non-ASCII as *metafied* bytes (Meta 0x83 followed by
+        // original ^ 0x20), which is not valid UTF-8. Reverse that first so the
+        // real bytes can be decoded; other shells write plain bytes.
+        let bytes = if self.shell == Shell::Zsh {
+            unmetafy(&raw)
+        } else {
+            raw
+        };
+        // Decode tolerantly: a single invalid sequence becomes U+FFFD instead of
+        // failing the whole file. read_to_string used to error here, which both
+        // dropped every entry and silently froze reload_if_changed() on stale data.
+        let contents = String::from_utf8_lossy(&bytes);
         let mut entries = Vec::new();
 
         for line in contents.lines() {
@@ -263,5 +302,74 @@ mod tests {
 
         let names = history.command_names();
         assert!(names.is_empty());
+    }
+
+    #[test]
+    fn unmetafy_recovers_emoji() {
+        // ☕ U+2615 is UTF-8 e2 98 95; zsh metafies the 0x98 and 0x95 bytes
+        // (both in the reserved 0x80–0x9f range) to 83 b8 and 83 b5.
+        let metafied = [0xe2, 0x83, 0xb8, 0x83, 0xb5];
+        assert_eq!(unmetafy(&metafied), vec![0xe2, 0x98, 0x95]);
+        assert_eq!(String::from_utf8(unmetafy(&metafied)).unwrap(), "☕");
+    }
+
+    #[test]
+    fn unmetafy_passes_through_plain_and_trailing_meta() {
+        // ASCII and high bytes >= 0xa0 (e.g. é = c3 a9) are not metafied.
+        assert_eq!(unmetafy(b"git"), b"git");
+        assert_eq!(unmetafy(&[0xc3, 0xa9]), vec![0xc3, 0xa9]);
+        // A dangling Meta at EOF is kept verbatim, not read past.
+        assert_eq!(unmetafy(&[0x61, 0x83]), vec![0x61, 0x83]);
+    }
+
+    #[test]
+    fn loads_metafied_zsh_history() {
+        // ": <ts>:0;git commit -m "café ☕"" with ☕ metafied as zsh stores it.
+        let mut bytes = b": 1234567890:0;git commit -m \"caf\xc3\xa9 ".to_vec();
+        bytes.extend_from_slice(&[0xe2, 0x83, 0xb8, 0x83, 0xb5]); // metafied ☕
+        bytes.extend_from_slice(b"\"\n");
+        let mut tmp = NamedTempFile::new().unwrap();
+        tmp.write_all(&bytes).unwrap();
+
+        let mut history = FileHistory::with_path(Shell::Zsh, tmp.path().to_path_buf());
+        history.load().unwrap();
+
+        let results = history.search_prefix("git commit", 5);
+        assert_eq!(results.len(), 1);
+        assert_eq!(results[0].command, "git commit -m \"café ☕\"");
+    }
+
+    #[test]
+    fn invalid_utf8_does_not_fail_whole_load() {
+        // A stray invalid byte in one line must not drop the other entries
+        // (the read_to_string regression that also froze reload_if_changed).
+        let mut tmp = NamedTempFile::new().unwrap();
+        tmp.write_all(b"git status\n").unwrap();
+        tmp.write_all(&[0xff, 0xfe, b'\n']).unwrap(); // invalid UTF-8 line
+        tmp.write_all(b"cargo build\n").unwrap();
+
+        let mut history = FileHistory::with_path(Shell::Bash, tmp.path().to_path_buf());
+        history
+            .load()
+            .expect("load must succeed despite invalid bytes");
+
+        assert_eq!(history.search_prefix("git", 5).len(), 1);
+        assert_eq!(history.search_prefix("cargo", 5).len(), 1);
+    }
+
+    #[test]
+    fn non_zsh_keeps_0x83_continuation_byte() {
+        // Ã U+00C3 is UTF-8 c3 83 — a legitimate 0x83 continuation byte that
+        // must NOT be treated as a Meta marker for non-zsh shells.
+        let mut tmp = NamedTempFile::new().unwrap();
+        tmp.write_all("echo Ã".as_bytes()).unwrap();
+        tmp.write_all(b"\n").unwrap();
+
+        let mut history = FileHistory::with_path(Shell::Bash, tmp.path().to_path_buf());
+        history.load().unwrap();
+
+        let results = history.search_prefix("echo", 5);
+        assert_eq!(results.len(), 1);
+        assert_eq!(results[0].command, "echo Ã");
     }
 }
