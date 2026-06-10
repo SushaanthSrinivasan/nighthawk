@@ -66,8 +66,53 @@ _nh_log() {
 # 0x01: a literal NUL can't survive zsh command substitution, so it's unreachable.
 _nh_has_ctrl_char() { [[ "$1" == *[$'\x01'-$'\x1f\x7f']* ]] }
 
+# --- Byte offset <-> char index conversion ---
+# The daemon speaks UTF-8 BYTE offsets (replace_start/replace_end and the request
+# cursor); zsh string subscripts (${BUFFER[1,$n]}) and $CURSOR are indexed in the
+# CURRENT LOCALE's units — characters under a UTF-8 locale, raw bytes under C. These
+# helpers bridge the two. Per-char byte width comes from `LC_ALL=C ${#ch}`, scoped in an
+# anonymous function so the locale override can't leak into the rest of the call. That
+# primitive is correct in BOTH locales: under UTF-8 a char reports its true byte length;
+# under C every unit is already one byte, so both conversions collapse to the identity
+# the byte-indexed subscripts want. This is the zsh counterpart of nighthawk.ps1's
+# $byteToChar — minus its surrogate handling, since a zsh char is a whole scalar value
+# (an emoji is one char, not a UTF-16 pair).
+
+# Byte offset -> char index (count of leading subscript units). Fail-closed: returns -1
+# for a negative offset, one past the end, or one landing inside a multibyte sequence.
+_nh_byte_to_char() {
+    emulate -L zsh
+    local s=$1 boff=$2
+    (( boff < 0 )) && { print -- -1; return }
+    (( boff == 0 )) && { print -- 0; return }
+    local n=${#s} c acc=0 w
+    for (( c = 1; c <= n; c++ )); do
+        () { local LC_ALL=C; w=${#1} } "${s[c]}"
+        (( acc += w ))
+        (( acc == boff )) && { print -- $c; return }   # exact code-point boundary
+        (( acc > boff ))  && { print -- -1; return }    # offset split a multibyte char
+    done
+    print -- -1   # offset past the last byte
+}
+
+# Char index (count of leading units) -> byte offset. Clamps an over-long index to the
+# string length; its only caller passes $CURSOR, which _nh_pre_redraw has already pinned to
+# ${#BUFFER} (it bails unless CURSOR == ${#BUFFER}), so the clamp is belt-and-suspenders.
+_nh_char_to_byte() {
+    emulate -L zsh
+    local s=$1 cidx=$2
+    (( cidx <= 0 )) && { print -- 0; return }
+    (( cidx > ${#s} )) && cidx=${#s}
+    local out
+    () { local LC_ALL=C; out=${#1} } "${s[1,cidx]}"
+    print -- $out
+}
+
 # --- State ---
 typeset -g _nh_suggestion=""
+# _nh_replace_start/_end hold CHAR indices (converted from the daemon's UTF-8 byte
+# offsets in _nh_query), so the ${BUFFER[...]} subscripts in _nh_accept / _nh_render_diff
+# index correctly under a multibyte locale.
 typeset -g _nh_replace_start=""
 typeset -g _nh_replace_end=""
 typeset -g _nh_last_buffer=""
@@ -135,7 +180,8 @@ _nh_render_diff() {
     done
 
     # Replace token in BUFFER: before + diff_token + after
-    # Zsh strings are 1-indexed; replace_start/end are 0-indexed byte offsets
+    # Zsh strings are 1-indexed; token_start/replace_end are 0-indexed CHAR offsets
+    # (converted from the daemon's byte offsets in _nh_query before this is called).
     local before="${_nh_original_buffer[1,$token_start]}"
     local after="${_nh_original_buffer[$((replace_end + 1)),-1]}"
     BUFFER="${before}${new_token}${after}"
@@ -266,13 +312,20 @@ _nh_query() {
     local buffer="$1"
     local cursor="$2"
 
+    # The protocol cursor is a UTF-8 byte offset, but $CURSOR (passed in as $2) is a char
+    # index — convert before sending, mirroring nighthawk.ps1's GetByteCount. The local
+    # $cursor stays char-domain for the prefix-ghost math below. (Sending the raw char
+    # cursor would also make the daemon slice &input[..cursor] at a non-boundary byte on
+    # multibyte input.)
+    local cursor_bytes=$(_nh_char_to_byte "$buffer" "$cursor")
+
     # Escape for JSON: backslashes then double quotes
     local escaped_buffer="${buffer//\\/\\\\}"
     escaped_buffer="${escaped_buffer//\"/\\\"}"
     local escaped_cwd="${PWD//\\/\\\\}"
     escaped_cwd="${escaped_cwd//\"/\\\"}"
 
-    local json="{\"input\":\"${escaped_buffer}\",\"cursor\":${cursor},\"cwd\":\"${escaped_cwd}\",\"shell\":\"zsh\"}"
+    local json="{\"input\":\"${escaped_buffer}\",\"cursor\":${cursor_bytes},\"cwd\":\"${escaped_cwd}\",\"shell\":\"zsh\"}"
 
     _nh_log "query: buffer='$buffer' cursor=$cursor"
 
@@ -290,8 +343,8 @@ _nh_query() {
     eval $(echo "$response" | jq -r '
         if (.suggestions | length) > 0 then
             "text=" + (.suggestions[0].text | @sh) +
-            " replace_start=" + (.suggestions[0].replace_start | tostring) +
-            " replace_end=" + (.suggestions[0].replace_end | tostring) +
+            " replace_start=" + ((.suggestions[0].replace_start | tostring) | @sh) +
+            " replace_end=" + ((.suggestions[0].replace_end | tostring) | @sh) +
             " diff_ops_str=" + ((.suggestions[0].diff_ops // null) | if . then [.[] | .op[0:1] + ":" + .ch] | join(" ") | @sh else ("" | @sh) end)
         else
             "text='"''"'"
@@ -317,6 +370,25 @@ _nh_query() {
         # a phantom.
         if [[ -n "$diff_ops_str" ]] && _nh_has_ctrl_char "$diff_ops_str"; then
             _nh_log "rejected: control char in diff_ops"
+            return
+        fi
+
+        # replace_start/end are interpolated into the eval above; @sh quotes them, but
+        # still validate they're plain non-negative integers before any arithmetic — this
+        # rejects a non-numeric jq result (e.g. "null" from a malformed reply). <-> is
+        # zsh's digit glob.
+        [[ "$replace_start" == <-> && "$replace_end" == <-> ]] || return
+
+        # Protocol byte offsets -> char indices against $buffer (the exact snapshot sent
+        # in the request). Fail closed — no ghost, never corrupt the buffer — if either is
+        # out of range or lands inside a multibyte char; that can only be a daemon bug, so
+        # log it rather than silently doing nothing. From here down these locals are
+        # CHAR-domain, so the prefix math and every ${BUFFER[...]} subscript (including the
+        # _nh_render_diff call below) index correctly under a multibyte locale.
+        replace_start=$(_nh_byte_to_char "$buffer" "$replace_start")
+        replace_end=$(_nh_byte_to_char "$buffer" "$replace_end")
+        if (( replace_start < 0 || replace_end < 0 || replace_end < replace_start )); then
+            _nh_log "rejected: replace range not on a code-point boundary"
             return
         fi
 
@@ -404,6 +476,19 @@ _nh_accept() {
         _nh_has_highlight=0
         _nh_suggestion=""
         _nh_diff_ops=""
+
+        # Defensive bounds check. rstart/rend are char offsets captured at query time
+        # against the original buffer, which we just restored above, so they can't drift in
+        # today's synchronous path (any edit clears them via _nh_restore_before_edit). But
+        # an out-of-range zsh subscript fails SILENTLY (yields empty rather than erroring),
+        # so guard explicitly — this is also the seam where async IPC will need it.
+        if (( rstart < 0 || rend < rstart || rend > ${#BUFFER} )); then
+            _nh_log "accept: stale/out-of-range range [$rstart,$rend) for buffer len ${#BUFFER}"
+            _nh_replace_start=""
+            _nh_replace_end=""
+            _nh_last_buffer="$BUFFER"
+            return
+        fi
 
         # Replace the token: BUFFER[0..rstart] + suggestion + BUFFER[rend..]
         # Zsh strings are 1-indexed
