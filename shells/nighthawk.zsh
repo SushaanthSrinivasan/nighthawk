@@ -140,8 +140,33 @@ typeset -g _nh_suggestion=""
 typeset -g _nh_replace_start=""
 typeset -g _nh_replace_end=""
 typeset -g _nh_last_buffer=""
+# Count of region_highlight entries we appended since the last clear. INVARIANT:
+# _nh_has_highlight == number of entries the active render path pushed onto
+# region_highlight (ghost/hint push 1; diff pushes one per colored char). The <=5.8
+# fallback in _nh_strip_highlights pops exactly this many from the tail, so the count
+# MUST equal entries-appended or that path mispops a co-resident plugin's entry. It's
+# also read as a boolean presence-flag by _nh_escape — keep it a count, not a bool.
 typeset -g _nh_has_highlight=0
 typeset -g _nh_diff_ops=""
+
+# region_highlight memo support (zsh 5.9+). The man page documents tagging entries with a
+# trailing `memo=token` field and removing them with `region_highlight=( ${arr:#*memo=token} )`,
+# which deletes OUR entries by identity regardless of array position — fixing the bug where a
+# co-resident highlighter (e.g. zsh-syntax-highlighting) that appended after us had its entries
+# stolen by positional tail-deletion (#10). zsh 5.8 and older neither support memo NOR parse the
+# style field correctly when one is present, so we gate on the version: tag + identity-filter on
+# 5.9+, fall back to the original positional pop (still buggy under co-resident plugins, but no
+# worse than before and the best old zsh allows) on <=5.8.
+autoload -Uz is-at-least
+typeset -g _nh_memo=0
+is-at-least 5.9 && _nh_memo=1
+# Single source of truth for the token: both the appended tag (render sites) and the strip glob
+# derive from it, so renaming can't desync the two and silently leave un-removable highlights.
+typeset -gr _nh_memo_token="nighthawk"
+# Suffix appended verbatim at every render site. Empty on <=5.8 → entries are byte-identical to
+# the pre-fix plugin. The leading space is load-bearing: it separates the memo from the style field.
+typeset -g _nh_memo_tag=""
+(( _nh_memo )) && _nh_memo_tag=" memo=$_nh_memo_token"
 typeset -g _nh_original_buffer=""
 typeset -g _nh_original_cursor=""
 typeset -g _nh_backoff_until=0
@@ -174,7 +199,7 @@ _nh_render_ghost() {
     local ghost="$1"
     if [[ -n "$ghost" ]]; then
         POSTDISPLAY="$ghost"
-        region_highlight+=("${#BUFFER} $((${#BUFFER} + ${#ghost})) fg=8")
+        region_highlight+=("${#BUFFER} $((${#BUFFER} + ${#ghost})) fg=8${_nh_memo_tag}")
         _nh_has_highlight=1
     fi
 }
@@ -207,11 +232,11 @@ _nh_render_diff() {
             k)  new_token+="$ch"; pos=$((pos + 1))
                 last_typed_pos=$pos ;;
             d)  new_token+="$ch"
-                diff_highlights+=("$pos $((pos + 1)) fg=red,bold")
+                diff_highlights+=("$pos $((pos + 1)) fg=red,bold${_nh_memo_tag}")
                 pos=$((pos + 1))
                 last_typed_pos=$pos ;;
             i)  new_token+="$ch"
-                diff_highlights+=("$pos $((pos + 1)) fg=8")
+                diff_highlights+=("$pos $((pos + 1)) fg=8${_nh_memo_tag}")
                 pos=$((pos + 1)) ;;
         esac
     done
@@ -243,7 +268,7 @@ _nh_render_hint() {
     local suggestion="$1"
     if [[ -n "$suggestion" ]]; then
         POSTDISPLAY=" $_nh_hint_arrow $suggestion"
-        region_highlight+=("${#BUFFER} $((${#BUFFER} + ${#POSTDISPLAY})) fg=8")
+        region_highlight+=("${#BUFFER} $((${#BUFFER} + ${#POSTDISPLAY})) fg=8${_nh_memo_tag}")
         _nh_has_highlight=1
     fi
 }
@@ -257,8 +282,7 @@ _nh_restore_before_edit() {
         CURSOR=${#BUFFER}  # end of original text
         _nh_original_buffer=""
         _nh_original_cursor=""
-        region_highlight=()
-        _nh_has_highlight=0
+        _nh_strip_highlights
         _nh_diff_ops=""
         _nh_suggestion=""
         _nh_replace_start=""
@@ -286,6 +310,29 @@ _nh_backward_kill_word() {
 }
 zle -N backward-kill-word _nh_backward_kill_word
 
+# Remove ONLY the region_highlight entries this plugin added, leaving any co-resident
+# highlighter's entries (e.g. zsh-syntax-highlighting) intact. Single chokepoint for every
+# "drop my ghost highlight" path so the removal strategy lives in one place (#10).
+#   5.9+ : identity-filter by memo — position-independent, the correct fix.
+#   <=5.8: pop the last _nh_has_highlight entries (no memo support). Positional, so it can still
+#          steal a co-resident plugin's tail entry — unavoidable without memo; see header note.
+# Does NOT touch POSTDISPLAY, the buffer, or suggestion state — callers own that teardown, which
+# differs per path (pre-redraw clear vs. accept vs. commit vs. pre-edit restore).
+_nh_strip_highlights() {
+    if (( _nh_memo )); then
+        # `:#pat` removes matching elements; (@) preserves element boundaries so an entry with
+        # spaces stays one element. The pattern has NO trailing wildcard: memo is the last field,
+        # so this is end-anchored and won't match a foreign `memo=nighthawk-companion`.
+        region_highlight=( "${(@)region_highlight:#*memo=$_nh_memo_token}" )
+    else
+        local i
+        for (( i = 0; i < _nh_has_highlight; i++ )); do
+            (( ${#region_highlight} )) && region_highlight[-1]=()
+        done
+    fi
+    _nh_has_highlight=0
+}
+
 _nh_clear_ghost() {
     # Cancel any pending debounce timer / in-flight request so a now-stale reply can't paint a
     # phantom ghost after the buffer moved on. This is the zsh analogue of nighthawk.ps1's
@@ -302,14 +349,8 @@ _nh_clear_ghost() {
     # backspace shows one char" glitch).
     unset POSTDISPLAY
 
-    # Remove the highlight entries we appended (zsh-native brace range — no subprocess).
-    if (( _nh_has_highlight )); then
-        local i
-        for i in {1..$_nh_has_highlight}; do
-            region_highlight[-1]=()
-        done
-        _nh_has_highlight=0
-    fi
+    # Remove only our highlight entries (memo-filter on 5.9+, positional pop on <=5.8).
+    _nh_strip_highlights
 
     # Restore original buffer if diff rendering modified it
     if [[ -n "$_nh_original_buffer" ]]; then
@@ -679,8 +720,7 @@ _nh_accept() {
 
         # Clear ghost/highlight state
         unset POSTDISPLAY
-        region_highlight=()
-        _nh_has_highlight=0
+        _nh_strip_highlights
         _nh_suggestion=""
         _nh_diff_ops=""
 
@@ -734,8 +774,9 @@ _nh_line_finish() {
     fi
 
     unset POSTDISPLAY
-    region_highlight=()
-    _nh_has_highlight=0
+    # Strip only our entries so a co-resident highlighter keeps coloring the committed line
+    # as it scrolls into scrollback (a full wipe would blank its final frame).
+    _nh_strip_highlights
     _nh_suggestion=""
     _nh_replace_start=""
     _nh_replace_end=""

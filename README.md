@@ -38,6 +38,8 @@ sudo apt install socat jq    # Debian/Ubuntu
 brew install socat jq        # macOS
 ```
 
+**Syntax-highlighting coexistence.** On **zsh 5.9+** nighthawk tags its `region_highlight` entries with a `memo` field so it removes only its own ghost-text highlights — it coexists cleanly with `zsh-syntax-highlighting` and similar plugins regardless of load order. On zsh 5.8 and older (e.g. Ubuntu 22.04, Debian 11) `memo` isn't supported; nighthawk falls back to positional removal, which can briefly disturb a co-resident highlighter's coloring. Ghost text still works everywhere.
+
 **Optional AI tiers** are off by default (local-first, zero-config). Opt in at install time:
 
 ```sh
