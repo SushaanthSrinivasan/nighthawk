@@ -11,8 +11,8 @@ NIGHTHAWK_FUZZY_DISPLAY="${NIGHTHAWK_FUZZY_DISPLAY:-hint}"
 # Plugin settings: the [plugin] section of config.toml, with env-var overrides
 # (precedence env > file > default), mirroring the PowerShell plugin's keys and
 # precedence. The default arrow differs by design — zsh keeps the Unicode "→",
-# PowerShell uses ASCII "->". debounce_ms is parsed but not yet consumed: the zsh
-# query path is still synchronous, so it will be wired when async IPC lands.
+# PowerShell uses ASCII "->". debounce_ms drives the async query path: it is converted
+# to _nh_debounce_sec below and used to arm the debounce timer in _nh_schedule_query.
 typeset -g _nh_hint_arrow="→"
 typeset -g _nh_debug=0
 typeset -g _nh_debounce_ms=200
@@ -135,8 +135,8 @@ _nh_char_to_byte() {
 
 typeset -g _nh_suggestion=""
 # _nh_replace_start/_end hold CHAR indices (converted from the daemon's UTF-8 byte
-# offsets in _nh_query), so the ${BUFFER[...]} subscripts in _nh_accept / _nh_render_diff
-# index correctly under a multibyte locale.
+# offsets in _nh_handle_response), so the ${BUFFER[...]} subscripts in _nh_accept /
+# _nh_render_diff index correctly under a multibyte locale.
 typeset -g _nh_replace_start=""
 typeset -g _nh_replace_end=""
 typeset -g _nh_last_buffer=""
@@ -218,7 +218,7 @@ _nh_render_diff() {
 
     # Replace token in BUFFER: before + diff_token + after
     # Zsh strings are 1-indexed; token_start/replace_end are 0-indexed CHAR offsets
-    # (converted from the daemon's byte offsets in _nh_query before this is called).
+    # (converted from the daemon's byte offsets in _nh_handle_response before this is called).
     local before="${_nh_original_buffer[1,$token_start]}"
     local after="${_nh_original_buffer[$((replace_end + 1)),-1]}"
     BUFFER="${before}${new_token}${after}"
@@ -531,10 +531,10 @@ _nh_apply_response() {
 }
 zle -N _nh_apply_response
 
-# Parse + validate + render the daemon's reply against the dispatch snapshot. This is the old
-# synchronous _nh_query body from "parse first suggestion" onward, moved verbatim and retargeted to
-# the snapshot ($_nh_inflight_buffer/_cursor) instead of live $BUFFER/$CURSOR. Kept as its own
-# function so the async path can be unit-tested by calling it with a canned response.
+# Parse + validate + render the daemon's reply against the dispatch snapshot. This is the parse +
+# render body that was synchronous before the async rewrite, now retargeted to the snapshot
+# ($_nh_inflight_buffer/_cursor) instead of live $BUFFER/$CURSOR. Kept as its own function so the
+# async path can be unit-tested by calling it with a canned response.
 _nh_handle_response() {
     emulate -L zsh
     local response="$1"
