@@ -21,6 +21,41 @@ Type a command, see gray ghost text with the completion. Press Tab to accept. No
 - **Local LLM support** — AI completions via local Ollama / llama.cpp / vLLM, never leave your machine (opt-in via `--features local-llm`)
 - **BYOK cloud** — bring your own API key for OpenAI, Anthropic, or Groq (opt-in via `--features cloud-llm`)
 
+## Install
+
+Requires the [Rust toolchain](https://rustup.rs) (`cargo`).
+
+```sh
+cargo install nighthawk
+```
+
+This installs two binaries to `~/.cargo/bin`: `nh` (CLI) and `nighthawk-daemon`.
+
+**zsh runtime dependencies.** The zsh plugin shells out to `socat` (IPC) and `jq` (JSON parsing) — install them first or ghost text won't appear:
+
+```sh
+sudo apt install socat jq    # Debian/Ubuntu
+brew install socat jq        # macOS
+```
+
+**Optional AI tiers** are off by default (local-first, zero-config). Opt in at install time:
+
+```sh
+cargo install nighthawk --features local-llm   # Tier 2: local Ollama / llama.cpp / vLLM
+cargo install nighthawk --features cloud-llm    # Tier 3: BYOK OpenAI / Anthropic / Groq
+```
+
+## Quickstart
+
+```sh
+nh setup zsh     # installs the plugin + specs, adds a source line to ~/.zshrc (idempotent)
+exec zsh         # reload your shell
+```
+
+Start typing a command — gray ghost text shows the completion. **Tab** (or **→** at end of line) accepts, **Esc** dismisses. The daemon auto-starts on first use; manage it with `nh start` / `nh stop` / `nh status`.
+
+> PowerShell: `nh setup powershell` instead, then restart your shell. (PowerShell has no `socat`/`jq` dependency.)
+
 ## Architecture
 
 Lightweight Rust daemon + thin shell plugins (~50 lines each). The daemon runs a tiered prediction cascade:
