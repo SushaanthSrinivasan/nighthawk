@@ -53,6 +53,15 @@ if [[ -n "$NIGHTHAWK_DEBUG" ]]; then
     [[ "$NIGHTHAWK_DEBUG" == "1" ]] && _nh_debug=1 || _nh_debug=0
 fi
 
+# Validate debounce_ms before it ever reaches arithmetic. The config regex above only accepts
+# digits, but the env override is unguarded — a stray NIGHTHAWK_DEBOUNCE_MS=foo would otherwise
+# throw "bad math expression" from inside the keystroke path when we divide. Clamp to the default.
+# (<-> is zsh's digit glob.)
+[[ "$_nh_debounce_ms" == <-> ]] || _nh_debounce_ms=200
+# Debounce interval in seconds for the `sleep`-based timer. Float; GNU/BSD sleep accept it, the
+# same assumption the existing `sleep 0.2` auto-start path already makes.
+typeset -gF _nh_debounce_sec=$(( _nh_debounce_ms / 1000.0 ))
+
 # --- Diagnostic logging ---
 # No-op unless debug is on. Millisecond timestamps via GNU date's %N (present on
 # Linux/WSL); harmless cosmetic degradation elsewhere.
@@ -109,6 +118,21 @@ _nh_char_to_byte() {
 }
 
 # --- State ---
+# Re-source teardown. zsh keeps `zle -F` fd registrations AND open fds across a re-source, so a
+# prior load may have left a debounce/response watcher live; left alone it fires forever on its
+# sleep-EOF into stale handlers and leaks the fd. Tear them down using the PREVIOUS load's saved
+# fd numbers before the typesets below reset the vars. (Analogue of nighthawk.ps1's
+# subscriber/timer/pool teardown at the top of its re-source path.) Unregister before close.
+() {
+    emulate -L zsh
+    local fd
+    for fd in "$_nh_debounce_fd" "$_nh_resp_fd"; do
+        [[ -n "$fd" && "$fd" != 0 ]] || continue
+        zle -F "$fd" 2>/dev/null
+        exec {fd}<&- 2>/dev/null
+    done
+}
+
 typeset -g _nh_suggestion=""
 # _nh_replace_start/_end hold CHAR indices (converted from the daemon's UTF-8 byte
 # offsets in _nh_query), so the ${BUFFER[...]} subscripts in _nh_accept / _nh_render_diff
@@ -121,6 +145,15 @@ typeset -g _nh_diff_ops=""
 typeset -g _nh_original_buffer=""
 typeset -g _nh_original_cursor=""
 typeset -g _nh_backoff_until=0
+# Async IPC state (see the "Daemon communication (async)" section below).
+typeset -g _nh_debounce_fd=0       # fd of the in-flight debounce `sleep` timer (0 = none)
+typeset -g _nh_resp_fd=0           # fd of the in-flight socat response stream (0 = none)
+typeset -g _nh_gen=0               # monotonic generation, bumped on every cancel / new query
+typeset -g _nh_dispatch_gen=0      # generation captured when the current request was dispatched
+typeset -g _nh_inflight_buffer=""  # $BUFFER snapshot the in-flight request is about
+typeset -g _nh_inflight_cursor=""  # $CURSOR snapshot (char domain) at dispatch time
+typeset -g _nh_resp_accum=""       # partial-read accumulator for the response line
+typeset -g _nh_pending_response="" # complete reply line, handed from fd handler to render widget
 
 # --- Dependency check ---
 if ! command -v socat &>/dev/null; then
@@ -131,6 +164,10 @@ if ! command -v jq &>/dev/null; then
     echo "nighthawk: jq not found, install with: apt install jq" >&2
     return 1
 fi
+
+# zsh/system provides `sysread`, the non-blocking fd drain used by the async response handler.
+# It's a standard built-in module that ships with zsh, so this is not a new external dependency.
+zmodload zsh/system 2>/dev/null
 
 # --- Ghost text rendering via POSTDISPLAY ---
 _nh_render_ghost() {
@@ -250,6 +287,12 @@ _nh_backward_kill_word() {
 zle -N backward-kill-word _nh_backward_kill_word
 
 _nh_clear_ghost() {
+    # Cancel any pending debounce timer / in-flight request so a now-stale reply can't paint a
+    # phantom ghost after the buffer moved on. This is the zsh analogue of nighthawk.ps1's
+    # _nh_clear_ghost stopping the timer + bumping generation. Also covers the Escape path, which
+    # routes through here. (Re-armed by the next keystroke's _nh_schedule_query.)
+    _nh_cancel_inflight
+
     # Clear any ghost we rendered. POSTDISPLAY and region_highlight are ZLE-managed:
     # unsetting them and letting ZLE repaint clears the ghost — including wrapped
     # lines, whose row count ZLE already tracks. Do NOT emit raw clear escapes here.
@@ -299,24 +342,105 @@ _nh_ensure_daemon() {
     return 0
 }
 
-# --- Daemon communication ---
-_nh_query() {
-    # Back off for 5s after connection failure so dead daemon doesn't block every keystroke
-    local now=$EPOCHSECONDS
-    if (( now < _nh_backoff_until )); then
-        return
+# --- Daemon communication (async) ---
+# Split across the keystroke and the eventual reply so IPC never blocks the input loop
+# (CLAUDE.md: "Never block the input loop in shell plugins"). zsh has no threads, so the async
+# seam is the socket fd: `zle -F <fd> <handler>` makes ZLE call us back when a descriptor is
+# readable. Flow per query:
+#   keystroke -> _nh_schedule_query   arm a debounce timer (a `sleep` whose EOF fires us)
+#             -> _nh_debounce_fire     timer elapsed -> actually send the request
+#             -> _nh_dispatch          spawn socat, register the response fd
+#             -> _nh_on_response        fd readable -> drain (non-blocking), staleness-gate
+#             -> _nh_handle_response    parse + validate + render (the old synchronous body)
+# This mirrors nighthawk.ps1's debounce-timer -> runspace-worker. PowerShell needs a synchronized
+# hashtable + generation counter to coordinate REAL threads; our callbacks run on the same thread
+# as keystrokes, so a buffer snapshot is itself a sound staleness signal and the generation
+# counter is kept only as defense-in-depth.
+
+# Tear down a pending debounce timer and/or in-flight request, and bump the generation so any
+# reply still in flight is treated as stale. Idempotent — every teardown path calls it. Unregister
+# BEFORE close (a closed fd number may already be recycled, so a late unregister could hit the
+# wrong watcher), and null the handle after so a double-cancel can't close a descriptor zsh has
+# since handed to something else.
+_nh_cancel_inflight() {
+    emulate -L zsh
+    (( _nh_gen++ ))
+    local fd
+    if [[ -n "$_nh_debounce_fd" && "$_nh_debounce_fd" != 0 ]]; then
+        fd=$_nh_debounce_fd
+        zle -F "$fd" 2>/dev/null
+        exec {fd}<&- 2>/dev/null
+        _nh_debounce_fd=0
     fi
+    if [[ -n "$_nh_resp_fd" && "$_nh_resp_fd" != 0 ]]; then
+        fd=$_nh_resp_fd
+        zle -F "$fd" 2>/dev/null
+        exec {fd}<&- 2>/dev/null
+        _nh_resp_fd=0
+    fi
+    _nh_resp_accum=""
+}
+
+# A reply is fresh iff nothing superseded the request since dispatch. The generation counter is the
+# whole signal: every cancel / new query bumps _nh_gen (via _nh_cancel_inflight) and re-stamps
+# _nh_dispatch_gen, so a reply is current exactly when the two are still equal. Because these
+# callbacks run on the SAME thread as keystrokes (they can't interleave), the generation can't drift
+# under us mid-check — there's no ABA race to defend against. We deliberately do NOT compare against
+# live $BUFFER/$CURSOR here: inside a `zle -F` fd-handler callback those special parameters are NOT
+# bound to the line editor (they read back empty), so a buffer/cursor compare would reject every
+# reply. The dispatch snapshot ($_nh_inflight_buffer/_cursor) is what the render path uses instead.
+# Factored out so the async path is unit-testable without a live fd.
+_nh_reply_is_fresh() {
+    (( _nh_gen == _nh_dispatch_gen ))
+}
+
+# Keystroke entry point: arm the debounce timer.
+_nh_schedule_query() {
+    emulate -L zsh
+    # Back off after a connection failure so a dead daemon doesn't arm a timer every keystroke.
+    (( EPOCHSECONDS < _nh_backoff_until )) && return
 
     _nh_ensure_daemon
 
-    local buffer="$1"
-    local cursor="$2"
+    # Cancel any prior timer/request (also bumps the generation), then snapshot the buffer this
+    # query is about. The snapshot is both the staleness key and the exact string the daemon's
+    # byte offsets are resolved against in _nh_handle_response.
+    _nh_cancel_inflight
+    _nh_inflight_buffer="$BUFFER"
+    _nh_inflight_cursor="$CURSOR"
+    _nh_dispatch_gen=$_nh_gen
 
-    # The protocol cursor is a UTF-8 byte offset, but $CURSOR (passed in as $2) is a char
-    # index — convert before sending, mirroring nighthawk.ps1's GetByteCount. The local
-    # $cursor stays char-domain for the prefix-ghost math below. (Sending the raw char
-    # cursor would also make the daemon slice &input[..cursor] at a non-boundary byte on
-    # multibyte input.)
+    # The debounce timer is a `sleep` subprocess; its EOF (process exit) makes the fd readable and
+    # fires _nh_debounce_fire. If the user types again first, _nh_cancel_inflight closes this fd
+    # before the sleep ends so the request is never sent — coalescing keystrokes is the whole point
+    # of debounce, and keeping the sleep SEPARATE from socat is what lets us cancel before paying
+    # for a daemon round-trip (vs. folding `sleep; socat` into one child, which would query on every
+    # keystroke unless we tracked and killed its PID).
+    local fd
+    exec {fd}< <(sleep $_nh_debounce_sec) || return
+    _nh_debounce_fd=$fd
+    zle -F "$fd" _nh_debounce_fire
+}
+
+# Debounce elapsed: disarm the timer fd and send the request.
+_nh_debounce_fire() {
+    emulate -L zsh
+    local fd=$1
+    zle -F "$fd" 2>/dev/null
+    exec {fd}<&- 2>/dev/null
+    _nh_debounce_fd=0
+    _nh_dispatch
+}
+
+# Build the request from the snapshot and spawn the non-blocking socat read.
+_nh_dispatch() {
+    emulate -L zsh
+    local buffer="$_nh_inflight_buffer"
+    local cursor="$_nh_inflight_cursor"
+
+    # The protocol cursor is a UTF-8 byte offset, but the snapshot $cursor is a char index —
+    # convert before sending, mirroring nighthawk.ps1's GetByteCount. (Sending the raw char cursor
+    # would also make the daemon slice &input[..cursor] at a non-boundary byte on multibyte input.)
     local cursor_bytes=$(_nh_char_to_byte "$buffer" "$cursor")
 
     # Escape for JSON: backslashes then double quotes
@@ -327,16 +451,95 @@ _nh_query() {
 
     local json="{\"input\":\"${escaped_buffer}\",\"cursor\":${cursor_bytes},\"cwd\":\"${escaped_cwd}\",\"shell\":\"zsh\"}"
 
-    _nh_log "query: buffer='$buffer' cursor=$cursor"
+    _nh_log "dispatch: buffer='$buffer' cursor=$cursor gen=$_nh_dispatch_gen"
 
-    local response
-    response=$(echo "$json" | socat -t1 - UNIX-CONNECT:"$NIGHTHAWK_SOCKET" 2>/dev/null)
+    # socat writes the daemon's reply to this fd and exits; ZLE calls _nh_on_response when it's
+    # readable. -t3 keeps socat's inactivity timeout above the cloud tier's 2000ms budget (+slack)
+    # so a slow-but-valid LLM reply isn't cut off and mis-read as a dead daemon — the zsh
+    # counterpart of nighthawk.ps1's 2250ms read timeout.
+    local fd
+    exec {fd}< <(print -r -- "$json" | socat -t3 - UNIX-CONNECT:"$NIGHTHAWK_SOCKET" 2>/dev/null) || return
+    _nh_resp_fd=$fd
+    _nh_resp_accum=""
+    zle -F "$fd" _nh_on_response
+}
+
+# Response fd readable: drain without blocking, gate on freshness, hand off to render.
+_nh_on_response() {
+    emulate -L zsh
+    local fd=$1 reason=$2 chunk
+
+    # Drain everything available now. `sysread -t 0` returns 0 on bytes, 4 on would-block (no more
+    # yet — stay registered for the next callback), 5/other on EOF/error. The terminating status
+    # MUST be captured INSIDE the loop: a zsh `while` exits with its body's status (here the
+    # successful `+=` append => 0), so reading $? after the loop would always see 0 and we'd treat a
+    # mid-stream partial as a complete reply and truncate multi-chunk responses. Likewise the var is
+    # `sr_status`, never `status` — `status` is a read-only alias for $? in zsh and `local status`
+    # would abort this handler on every reply.
+    local sr_status=4
+    while :; do
+        sysread -i "$fd" -t 0 chunk 2>/dev/null
+        sr_status=$?
+        (( sr_status == 0 )) || break
+        _nh_resp_accum+="$chunk"
+    done
+
+    # Finished iff a full line is buffered, OR the stream ended (sysread EOF/error => status != 4,
+    # or ZLE reported the fd hung up via a non-empty reason). Until then, wait for the next callback.
+    local done=0
+    [[ "$_nh_resp_accum" == *$'\n'* ]] && done=1
+    (( sr_status != 4 )) && done=1
+    [[ -n "$reason" ]] && done=1
+    (( done )) || return
+
+    # Tear down the fd up front so every early return in _nh_handle_response below is leak-free.
+    zle -F "$fd" 2>/dev/null
+    exec {fd}<&- 2>/dev/null
+    _nh_resp_fd=0
+
+    local response="${_nh_resp_accum%%$'\n'*}"   # first complete line only
+    _nh_resp_accum=""
 
     if [[ -z "$response" ]]; then
         _nh_log "no response, backing off 5s"
         _nh_backoff_until=$(( EPOCHSECONDS + 5 ))
         return
     fi
+
+    if ! _nh_reply_is_fresh; then
+        _nh_log "stale reply dropped (gen $_nh_dispatch_gen vs $_nh_gen)"
+        return
+    fi
+
+    # We CANNOT render from here. A `zle -F` fd-handler runs OUTSIDE the line-editor widget context:
+    # $BUFFER/$CURSOR/$POSTDISPLAY/region_highlight are not bound to the live editor ($BUFFER reads
+    # back empty), and a direct `zle -R` from here paints nothing. Stash the reply and bounce into a
+    # real widget — `zle <widget>` re-enters proper editor context where those parameters ARE live
+    # and the display actually updates. (Verified empirically; this is the crux of the async design.)
+    _nh_pending_response="$response"
+    zle _nh_apply_response
+    zle -R
+}
+
+# Real ZLE widget that performs the render. Unlike _nh_on_response (an fd handler), this runs in
+# editor context, so $BUFFER/$CURSOR/$POSTDISPLAY are live and the render helpers paint correctly.
+# Invoked via `zle _nh_apply_response` from the fd handler once a complete, fresh reply is buffered.
+_nh_apply_response() {
+    emulate -L zsh
+    _nh_handle_response "$_nh_pending_response"
+    _nh_pending_response=""
+}
+zle -N _nh_apply_response
+
+# Parse + validate + render the daemon's reply against the dispatch snapshot. This is the old
+# synchronous _nh_query body from "parse first suggestion" onward, moved verbatim and retargeted to
+# the snapshot ($_nh_inflight_buffer/_cursor) instead of live $BUFFER/$CURSOR. Kept as its own
+# function so the async path can be unit-tested by calling it with a canned response.
+_nh_handle_response() {
+    emulate -L zsh
+    local response="$1"
+    local buffer="$_nh_inflight_buffer"
+    local cursor="$_nh_inflight_cursor"
 
     # Parse first suggestion (text, replace range, and diff_ops if present)
     local text replace_start replace_end diff_ops_str
@@ -449,13 +652,17 @@ _nh_pre_redraw() {
     # Need at least 2 chars
     (( ${#BUFFER} < 2 )) && return
 
-    _nh_query "$BUFFER" "$CURSOR"
+    # Arm the debounce timer; the actual IPC happens off the keystroke thread (see _nh_schedule_query).
+    _nh_schedule_query
 }
 
 zle -N zle-line-pre-redraw _nh_pre_redraw
 
 # --- Accept suggestion ---
 _nh_accept() {
+    # Cancel any pending debounce/in-flight request so a reply arriving after we accept can't
+    # repaint a ghost over the committed line (this path doesn't route through _nh_clear_ghost).
+    _nh_cancel_inflight
     if [[ -n "$_nh_suggestion" && "$_nh_replace_start" != "" && "$_nh_replace_end" != "" ]]; then
         local suggestion="$_nh_suggestion"
         local rstart="$_nh_replace_start"
@@ -512,6 +719,12 @@ bindkey '^I' _nh_accept
 
 # --- Clean up on line accept (Enter) ---
 _nh_line_finish() {
+    # Cancel any pending debounce/in-flight request BEFORE accept-line, so a reply that lands
+    # during the transition can't paint a ghost fragment onto the next prompt. Closing the fd
+    # here means a queued callback fires on a closed descriptor (no-op) and the empty next-prompt
+    # buffer would fail the staleness gate anyway — belt and suspenders.
+    _nh_cancel_inflight
+
     # Restore original buffer if diff rendering modified it,
     # so the shell executes what the user actually typed
     if [[ -n "$_nh_original_buffer" ]]; then
