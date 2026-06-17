@@ -192,11 +192,19 @@ _nh_build_request() {
 
 # --- Response parse ---
 # Emits eval-able assignments for the first suggestion: text / replace_start / replace_end
-# (jq @sh-quoted) and a bare diff_ops_present 0|1 flag. The caller MUST declare these as
-# locals (defaulted) BEFORE `eval "$(_nh_parse_response ...)"` so a jq failure (malformed
-# JSON, swallowed by 2>/dev/null) leaves them empty rather than stale from a prior call.
-# Only suggestions[0] is used, matching the zsh/PowerShell plugins.
+# (jq @sh-quoted) and a bare diff_ops_present 0|1 flag. SELF-DEFAULTING: all four assignments
+# are emitted empty/0 FIRST (a fixed literal outside jq), so even a jq crash — malformed JSON
+# swallowed by 2>/dev/null, producing no output at all — still resets every field rather than
+# leaving it stale from a prior call. On success the jq assignments that follow (after the
+# `;`) override the defaults. The caller therefore only needs to declare these `local` for
+# scoping; it need not pre-default them. Only suggestions[0] is used, matching zsh/PowerShell.
+# diff_ops is reduced to a PRESENCE flag (not extracted) because bash is hint-only — there is
+# no inline-diff renderer (see CLAUDE.md / the no-inline-diff decision). A future session that
+# adds inline-diff rendering MUST also port zsh's separate control-char guard over the per-op
+# `ch` bytes (zsh _nh_handle_response); those bytes bypass the `_nh_has_ctrl_char "$text"`
+# check and would otherwise reintroduce the newline/ESC injection vector this plugin closes.
 _nh_parse_response() {
+    printf "text='' replace_start='' replace_end='' diff_ops_present=0;"
     printf '%s' "$1" | jq -r '
         if (.suggestions | length) > 0 then
             "text=" + (.suggestions[0].text | @sh)
@@ -212,16 +220,26 @@ _nh_parse_response() {
 
 # --- Prefix-vs-hint decision ---
 # Pure. Echoes a tagged, display-ready payload for the S2 renderer to dispatch on:
-#   ghost<TAB><suffix>   true prefix match — render <suffix> as ghost after the cursor
-#   hint<TAB> -> <text>  replacement / fuzzy — render as a hint
-#   (empty)              nothing to show
+#   ghost<TAB><suffix>     true prefix match — render <suffix> as ghost after the cursor
+#   hint<TAB> -> <text>    replacement / fuzzy — render as a hint
+#   (empty)                nothing to show
+# S2 PARSE CONTRACT: split on the FIRST TAB (e.g. `IFS=$'\t' read -r tag payload`). The
+# hint payload's LEADING SPACE is load-bearing — it is part of the rendered prefix
+# (" -> <text>"), matching the leading space the zsh/PS renderers prepend; S2 MUST emit
+# <payload> verbatim and never trim or word-split it. The ghost branch prepends no separator
+# (its payload is the raw suffix, which may itself legitimately begin with a space).
 # bash follows the PowerShell hint-only model: a fuzzy match (diff_ops present) always
 # renders as a hint; there is no inline-diff renderer. <rstart_chars> is the CHAR-domain
 # replace_start (already byte->char converted). Self-guards rstart so a -1 from a failed
 # conversion can never reach the ${buffer:rstart:...} subscript across the S2/S3 seam.
 # <snapshot_buffer> MUST be the same buffer snapshot whose bytes fed _nh_build_request and
-# the offset conversion — never live READLINE_LINE. Typed length is derived from the buffer
-# length because the suggest path only ever fires with the cursor at end-of-line.
+# the offset conversion — never live READLINE_LINE.
+# CURSOR INVARIANT: unlike the zsh/PS siblings (which compute typed_len = cursor - rstart),
+# this derives typed_len = ${#buffer} - rstart, i.e. it assumes the cursor sits at
+# end-of-line. That holds because the suggest path only ever fires at EOL, so no cursor
+# parameter is taken. The S3 caller MUST preserve that invariant (snapshot the buffer with
+# cursor == buffer end); if mid-line suggestions are ever added, this needs an explicit
+# cursor argument to match the siblings.
 _nh_decide_render() {
     local buffer=$1 text=$2 rstart=$3 diff_present=$4
     [[ -n "$text" ]] || return 0
@@ -249,7 +267,9 @@ _nh_decide_render() {
 # S3 async path can drive it with a canned reply; S2 only adds the actual render of the tag.
 _nh_compute_suggestion() {
     local buffer=$1 response=$2
-    local text='' replace_start='' replace_end='' diff_ops_present=0
+    # _nh_parse_response is self-defaulting (resets all four even on a jq failure), so these
+    # are declared local purely for scoping — no pre-defaulting needed.
+    local text replace_start replace_end diff_ops_present
     eval "$(_nh_parse_response "$response")"
     [[ -n "$text" ]] || return 0
     # Fail-closed: drop any suggestion carrying a control char before it can be rendered
@@ -260,6 +280,13 @@ _nh_compute_suggestion() {
     fi
     # Reject a non-integer range (e.g. "null" from a malformed reply) before arithmetic.
     [[ "$replace_start" =~ ^[0-9]+$ && "$replace_end" =~ ^[0-9]+$ ]] || return 0
+    # Normalize to base-10 so a zero-padded offset (e.g. "08"/"09" from a misbehaving or
+    # hostile daemon) can't trip octal parsing inside the converters' `(( ))` arithmetic —
+    # which fails closed but spews "value too great for base" to stderr on every keystroke in
+    # the live path. Mirrors the debounce 10# guard. The ^[0-9]+$ check above guarantees a
+    # non-negative digit string, so 10# here is safe (no sign/overflow surprise).
+    replace_start=$(( 10#$replace_start ))
+    replace_end=$(( 10#$replace_end ))
     # Protocol byte offsets -> char indices against the snapshot buffer. Fail closed if
     # either is out of range or splits a multibyte char.
     local rstart rend

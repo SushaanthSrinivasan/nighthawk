@@ -8,9 +8,11 @@
 # is stubbed to a no-op so sourcing has no side effects. (Session 1 makes no bind calls,
 # but the stub future-proofs the harness for Session 2.)
 #
-# Requires the same tools the plugin does (bash, socat, jq on PATH); if they're missing the
-# plugin's dep-check returns early and the helpers stay undefined — caught below as a loud
-# failure, exactly like offsets.test.zsh.
+# Requires the same tools the plugin does (bash, socat, jq on PATH) AND a UTF-8 locale — run on
+# Linux/WSL, not a bare Windows shell. The 10 pure helpers are all defined ABOVE the plugin's
+# dep-check, so the structural check below passes even on a depless box; what actually fails
+# there are the jq-backed parse/pipeline assertions (and the offset rows need UTF-8). The
+# structural check guards against a rename of those helpers, not against missing deps.
 #
 # Run:  bash shells/tests/helpers.test.bash
 
@@ -137,6 +139,13 @@ check "esc quote"      'say \"hi\"' "$(_nh_json_escape 'say "hi"')"
 check "esc tab"        'x\ty'      "$(_nh_json_escape $'x\ty')"
 check "esc newline"    'x\ny'      "$(_nh_json_escape $'x\ny')"
 check "esc C0 0x01"    'a\u0001b'  "$(_nh_json_escape $'a\x01b')"
+# 0x1b (ESC) is unnamed, so it is exercised ONLY by the C0 escape loop, not the named escapes
+# above — guards against a future edit dropping ESC (the most render-dangerous byte). The
+# expected is built via printf because the source can't portably carry a lone backslash-u:
+# printf consumes the DOUBLED backslash atomically (yields one backslash) and does NOT
+# reinterpret the trailing u001b, so _esc_expect holds the literal that json_escape emits.
+printf -v _esc_expect 'a\\u001bb'
+check "esc C0 0x1b ESC" "$_esc_expect" "$(_nh_json_escape $'a\x1bb')"
 check "esc plain passthrough" 'git 中' "$(_nh_json_escape 'git 中')"
 check "build request" '{"input":"git st","cursor":6,"cwd":"/home/u","shell":"bash"}' \
     "$(_nh_build_request 'git st' 6 '/home/u')"
@@ -144,10 +153,12 @@ check "build request escapes quote" '{"input":"echo \"hi\"","cursor":9,"cwd":"/w
     "$(_nh_build_request 'echo "hi"' 9 '/w')"
 
 # ======================================================================================
-# Response parse (eval-able assignments; locals defaulted before eval)
+# Response parse (eval-able assignments; _nh_parse_response self-defaults all four fields)
 # ======================================================================================
 parse_into() {  # parse_into <json>  -> sets text/replace_start/replace_end/diff_ops_present
-    text='' replace_start='' replace_end='' diff_ops_present=0
+    # No manual defaulting here: _nh_parse_response is self-defaulting, so a bare eval can't
+    # leave stale values from a prior parse. (Exercises that contract directly — see the
+    # "not stale" case below, which seeds a sentinel first.)
     eval "$(_nh_parse_response "$1")"
 }
 parse_into '{"suggestions":[{"text":"git status","replace_start":0,"replace_end":3}]}'
@@ -159,8 +170,13 @@ parse_into '{"suggestions":[{"text":"grep","replace_start":0,"replace_end":2,"di
 check "parse diff present"  "1"          "$diff_ops_present"
 parse_into '{"suggestions":[]}'
 check "parse empty -> no text" "" "$text"
+# Seed a sentinel, then parse garbage: jq fails (no output), so ONLY the self-defaulting in
+# _nh_parse_response can clear it. Proves the reset survives a parse_into with no manual reset.
+text="STALE" replace_start="9" replace_end="9" diff_ops_present=1
 parse_into 'not json at all'
 check "parse malformed -> no text (not stale)" "" "$text"
+check "parse malformed -> rstart cleared"      "" "$replace_start"
+check "parse malformed -> diff flag cleared"   "0" "$diff_ops_present"
 
 # ======================================================================================
 # Decision logic + full pipeline (prefix-vs-hint)
@@ -190,6 +206,11 @@ check "pipeline rejects ctrl-char suggestion" "" \
 # Malformed range (null) -> no output.
 check "pipeline rejects null range" "" \
     "$(_nh_compute_suggestion 'git' '{"suggestions":[{"text":"git status"}]}')"
+# Zero-padded offset ("09") from a misbehaving daemon: base-10 normalization must parse it as
+# 9 (not trip octal in the converters). Before the 10# guard this errored to stderr and the
+# suggestion was dropped (empty); now it resolves to the correct ghost suffix.
+check "pipeline base-10 normalizes 09" $'ghost\ting' \
+    "$(_nh_compute_suggestion 'echo test' '{"suggestions":[{"text":"echo testing","replace_start":"00","replace_end":"09"}]}' 2>/dev/null)"
 
 # ======================================================================================
 # Config: precedence (default < file < env) + debounce clamp. Re-sources the plugin under
