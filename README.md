@@ -58,6 +58,8 @@ Start typing a command — gray ghost text shows the completion. **Tab** (or **�
 
 > PowerShell: `nh setup powershell` instead, then restart your shell. (PowerShell has no `socat`/`jq` dependency.)
 
+> bash: `nh setup bash` instead, then `exec bash`. Requires `socat` + `jq` (like zsh). **Accept keys in bash are → (right arrow) and Ctrl-F — not Tab.** Tab stays bound to native completion by default, because bash's `bind -x` (unlike zsh's `zle expand-or-complete` or PowerShell's `TabCompleteNext`) cannot fall back to native completion once it's rebound. To make **Tab** accept the suggestion instead, set `tab_accept = true` under `[plugin]` in `~/.config/nighthawk/config.toml` (or `NIGHTHAWK_TAB_ACCEPT=1`) — but note this **disables native Tab-completion** in bash whenever no suggestion is showing. zsh and PowerShell are unaffected: they bind Tab to accept *and* keep native completion.
+
 ## Architecture
 
 Lightweight Rust daemon + thin shell plugins (~50 lines each). The daemon runs a tiered prediction cascade:
@@ -77,7 +79,7 @@ Lightweight Rust daemon + thin shell plugins (~50 lines each). The daemon runs a
 |-------|--------|
 | zsh | Supported |
 | PowerShell (5.1+, 7+) | Supported |
-| bash | Planned |
+| bash | Beta — accept on → / Ctrl-F (Tab opt-in, see Quickstart) |
 | fish | Planned |
 | nushell | Planned |
 
