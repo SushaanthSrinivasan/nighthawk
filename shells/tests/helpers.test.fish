@@ -29,7 +29,9 @@ for fn in _nh_load_config _nh_ms_to_sec _nh_log _nh_has_ctrl_char _nh_cp_width _
         _nh_char_to_byte _nh_eol_bytes _nh_build_request _nh_parse_response _nh_decide_render \
         _nh_compute_suggestion _nh_clear_seq _nh_paint_seq _nh_render_seq _nh_tty_write \
         _nh_clear_ghost _nh_paint_ghost _nh_input_changed \
-        _nh_state_init _nh_cleanup _nh_bump_gen _nh_ensure_daemon _nh_request _nh_dispatch _nh_worker
+        _nh_state_init _nh_cleanup _nh_bump_gen _nh_ensure_daemon _nh_request _nh_dispatch _nh_worker \
+        _nh_accept_splice _nh_keypress _nh_stash_ready _nh_accept _nh_forward_or_accept _nh_tab_widget \
+        _nh_dismiss _nh_cursor_left _nh_cursor_home _nh_cursor_end
     if not functions -q $fn
         echo "helpers.test.fish: FAIL — $fn not defined after sourcing plugin (renamed? deps missing?)" >&2
         exit 2
@@ -321,6 +323,35 @@ if test -n "$_h3_saved_tmpdir"
 else
     set -e TMPDIR
 end
+
+# ======================================================================================
+# H4 accept-splice (PURE) — the revalidate-and-splice kernel behind the commandline-bound _nh_accept.
+# Args: <buffer> <cursor_chars> <curgen> <sgen> <bstart> <bend> <text>. Prints "<newcur>\t<newbuf>" on a
+# valid accept, NOTHING on any reject. The interactive _nh_accept/_nh_stash_ready that wrap it use
+# `commandline` (interactive-only), so the security-critical logic is tested here, directly.
+# ======================================================================================
+# Whole-buffer replace at EOL: "git ch" -> "git checkout" (bstart/bend 0..6, gen matches). newcur = 12.
+check "splice whole-replace" (printf '12\tgit checkout') \
+    (_nh_accept_splice 'git ch' 6 5 5 0 6 'git checkout')
+# Append at EOL: cursor inside "git " (rstart==blen), ghost text "status" appended. before="git ".
+check "splice append-at-eol" (printf '10\tgit status') \
+    (_nh_accept_splice 'git ' 4 7 7 4 4 'status')
+# Stale generation (sgen != curgen) -> reject (the core cross-process staleness guard).
+check "splice stale gen rejected" "" (_nh_accept_splice 'git ch' 6 6 5 0 6 'git checkout')
+# Control char in the stashed text (planted-newline auto-submit vector) -> reject, even post-stash.
+check "splice ctrl-char text rejected" "" \
+    (_nh_accept_splice 'git ch' 6 5 5 0 6 (printf 'git checkout\n' | string collect -N))
+# Cursor not at EOL (a stash outliving an unbound cursor move) -> reject.
+check "splice off-EOL rejected" "" (_nh_accept_splice 'git ch' 3 5 5 0 6 'git checkout')
+# Non-digit byte offset -> reject before any arithmetic.
+check "splice non-digit offset rejected" "" (_nh_accept_splice 'git ch' 6 5 5 x 6 'git checkout')
+# Inverted range (bend < bstart) -> reject (accept never trusts the worker's [bstart,bend) ordering).
+check "splice inverted range rejected" "" (_nh_accept_splice 'git ch' 6 5 5 6 0 'git checkout')
+# Byte offset landing mid-codepoint: "café" is 5 bytes / 4 chars; bend=4 splits the é -> reject.
+check "splice mid-codepoint rejected" "" (_nh_accept_splice 'café' 4 5 5 0 4 'x')
+# Multibyte valid: replace all of "café" (bytes 0..5) with "café list". newcur = 9 code points.
+check "splice multibyte ok" (printf '9\tcafé list') \
+    (_nh_accept_splice 'café' 4 5 5 0 5 'café list')
 
 # ======================================================================================
 # Config precedence (default < file < env) + debounce clamp. Re-sources under different config/env.

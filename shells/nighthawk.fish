@@ -604,7 +604,14 @@ function _nh_dispatch
     # interactive _nh_state_init, so ITS _nh_run_dir global is empty. NIGHTHAWK_SOCKET + the debounce
     # ride through the env / the re-source. Backgrounded + disowned so no job-completion message ever
     # corrupts the prompt line.
-    $_nh_fish_bin -c 'source $argv[1]; _nh_worker $argv[2] $argv[3] $argv[4] $argv[5]' \
+    #
+    # `--no-config`: the worker re-source is a HOT path (one per keystroke), and a bare `fish -c` would
+    # re-run the user's whole config.fish + conf.d on every spawn — a heavy config (conda/nvm/starship
+    # init) would then tax every keystroke off-thread for tens-to-hundreds of ms. The worker needs NONE
+    # of that: it sources THIS plugin explicitly (which reads config.toml on its own) and inherits PATH +
+    # NIGHTHAWK_SOCKET + PWD from the parent env, so socat/jq resolve without config.fish. Skipping it
+    # keeps the spawn ~1.8ms (vs ~3.3ms) here and immune to an arbitrarily heavy user config elsewhere.
+    $_nh_fish_bin --no-config -c 'source $argv[1]; _nh_worker $argv[2] $argv[3] $argv[4] $argv[5]' \
         $_nh_plugin_file $gen0 "$buffer" $blen_bytes $_nh_run_dir &
     disown 2>/dev/null
 end
@@ -653,6 +660,157 @@ function _nh_worker
     and mv -f "$tmp" "$rundir/stash" 2>/dev/null
 end
 
+# --- H4 accept-splice (PURE kernel) + interactive key handlers ---
+# The live layer's last piece: the keys that fire _nh_dispatch and accept/dismiss the ghost the worker
+# painted. fish's editor is reached through `commandline`, which only works inside a key binding, so the
+# accept REVALIDATION (the security-critical part) is factored into a PURE _nh_accept_splice the harness
+# can drive directly; the rest are thin `commandline` wrappers. All are defined HERE (above the dep
+# check + interactive guard) so the structural harness sees them; only the `bind` calls in the live
+# layer below are interactive-gated, so nothing fires until a real key is pressed.
+
+# Per-keystroke change-gate snapshot: the prior buffer + cursor _nh_keypress compares against, so a
+# no-op binding (e.g. delete-char at EOL) can't clear a live ghost or re-fire the daemon. The -1 cursor
+# sentinel makes the first real keystroke always count as a change. Reset on every (re-)source.
+set -g _nh_last_buf ""
+set -g _nh_last_cursor -1
+
+# Validate-and-splice the worker's stashed suggestion against LIVE state (PURE). Ports the bash sibling's
+# accept revalidation (nighthawk.bash _nh_accept) — the stash is a CROSS-PROCESS suggestion, so accept
+# must re-check it before mutating the buffer. Defenses, in order:
+#   sgen == curgen   the suggestion is for the CURRENT generation (a changed buffer bumped the gen, so a
+#                    superseded stash is rejected — the core staleness guarantee).
+#   bstart/bend digits.
+#   control-char RE-guard on text  the NON-NEGOTIABLE last backstop against a planted-newline auto-submit
+#                    / ESC hijack (see the H3 forward note); the worker already guarded, but accept must
+#                    never trust a file another process wrote.
+#   cursor at EOL    CODE-POINT domain (`commandline --cursor` is code points) — a stash can outlive an
+#                    unbound cursor move. NOT byte-domain like bash's READLINE_POINT.
+#   byte->char in range  the daemon's BYTE offsets must land on code-point boundaries (fail-closed -1).
+# On success prints "<newcursor>\t<newbuffer>" — cursor FIRST so the variable-width buffer (which could
+# carry a pasted tab) is the unsplit LAST field; prints NOTHING (status 1) on any reject. The splice is
+# CODE-POINT domain because fish `commandline` is (bash splices in bytes — its buffer IS byte-indexed).
+# Args: <buffer> <cursor_chars> <curgen> <sgen> <bstart> <bend> <text>
+function _nh_accept_splice
+    set -l buffer $argv[1]
+    set -l cursor $argv[2]
+    set -l curgen $argv[3]
+    set -l sgen $argv[4]
+    set -l bstart $argv[5]
+    set -l bend $argv[6]
+    set -l text $argv[7]
+    test "$sgen" = "$curgen"; or return 1
+    string match -rq '^[0-9]+$' -- "$bstart"; and string match -rq '^[0-9]+$' -- "$bend"; or return 1
+    _nh_has_ctrl_char "$text"; and return 1
+    test "$cursor" = (string length -- "$buffer"); or return 1
+    set -l cstart (_nh_byte_to_char "$buffer" "$bstart")
+    set -l cend (_nh_byte_to_char "$buffer" "$bend")
+    test $cstart -ge 0 -a $cend -ge 0 -a $cend -ge $cstart; or return 1
+    set -l before (string sub -l $cstart -- "$buffer")
+    set -l after (string sub -s (math $cend + 1) -- "$buffer")
+    set -l newbuf "$before$text$after"
+    printf '%s\t%s' (math (string length -- "$before") + (string length -- "$text")) "$newbuf"
+end
+
+# Per-keystroke snapshot + trigger. Bound (chained AFTER fish's own self-insert / delete input function)
+# to every buffer-mutating key. Snapshots the POST-edit buffer + CODE-POINT cursor, gates on a real
+# change, then hands them to the non-blocking _nh_dispatch. `commandline` lives ONLY in these wrappers,
+# so _nh_dispatch and the kernels stay testable.
+function _nh_keypress
+    set -l buf (commandline -b)
+    set -l cur (commandline --cursor)
+    _nh_input_changed "$_nh_last_buf" "$_nh_last_cursor" "$buf" "$cur"; or return 0
+    set -g _nh_last_buf "$buf"
+    set -g _nh_last_cursor "$cur"
+    _nh_dispatch "$buf" "$cur"
+end
+
+# Accept precondition: a live stash exists AND the cursor is at EOL (code-point domain). The single gate
+# the accept-key handlers check before delegating to _nh_accept (which re-validates authoritatively, so
+# this can stay a cheap pre-check).
+function _nh_stash_ready
+    test -n "$_nh_run_dir"; and test -f "$_nh_run_dir/stash"; or return 1
+    set -l buf (commandline -b)
+    test (commandline --cursor) = (string length -- "$buf")
+end
+
+# Accept the stashed suggestion: read the worker's cross-process stash, snapshot LIVE buffer/cursor,
+# revalidate+splice via the pure _nh_accept_splice, and (only on success) replace the buffer + reposition
+# the cursor. Clears the ghost on EVERY path so a rejected/stale suggestion can never leave a painted
+# ghost behind (slightly stricter than bash, which skips the clear on its unreachable non-digit branch).
+# The stash is split `-m 3` (text LAST keeps any tab inside it in field 4); `string collect -N` keeps a
+# newline-terminated payload intact so a reject stays a reject (never a silent strip-and-accept).
+function _nh_accept
+    test -n "$_nh_run_dir"; and test -f "$_nh_run_dir/stash"; or return 0
+    set -l stash (cat "$_nh_run_dir/stash" 2>/dev/null | string collect -N)
+    set -l fields (string split -m 3 \t -- $stash)
+    test (count $fields) -ge 4; or begin
+        _nh_clear_ghost
+        return 0
+    end
+    set -l buffer (commandline -b)
+    set -l cursor (commandline --cursor)
+    set -l spliced (_nh_accept_splice "$buffer" "$cursor" "$_nh_gen" "$fields[1]" "$fields[2]" "$fields[3]" "$fields[4]" | string collect -N)
+    _nh_clear_ghost
+    test -n "$spliced"; or return 0
+    set -l parts (string split -m 1 \t -- $spliced)
+    commandline -r -- "$parts[2]"
+    commandline -C $parts[1]
+end
+
+# RightArrow / Ctrl-F: accept at EOL with a live stash; otherwise drop the ghost, invalidate in-flight
+# workers, and fall through to fish's native forward-char (multibyte-correct — no reimplement needed,
+# unlike bash). Native autosuggestion is off (H1), so these keys are ours with no forward-char race.
+function _nh_forward_or_accept
+    if _nh_stash_ready
+        _nh_accept
+        return 0
+    end
+    _nh_clear_ghost
+    _nh_bump_gen
+    commandline -f forward-char
+end
+
+# Tab: ALWAYS clear the ghost + invalidate first (so a lingering ghost never overlaps the completion
+# pager), then either accept or complete. With tab_accept ON and a live ghost at EOL -> accept it; else
+# fall through to fish's native `complete`. Unlike bash's bind -x (which CANNOT delegate to native
+# completion, so its opt-in Tab gives completion up entirely), `commandline -f complete` preserves Tab
+# completion whether or not accept is enabled — so binding Tab unconditionally has no downside, and it
+# fixes the ghost-over-pager artifact. Right-arrow + Ctrl-F accept regardless of this setting.
+function _nh_tab_widget
+    if test "$_nh_tab_accept" = 1; and _nh_stash_ready
+        _nh_accept
+        return 0
+    end
+    _nh_clear_ghost
+    _nh_bump_gen
+    commandline -f complete
+end
+
+# Escape: dismiss the ghost + invalidate any in-flight worker.
+function _nh_dismiss
+    _nh_clear_ghost
+    _nh_bump_gen
+end
+
+# Bound cursor MOTIONS: clear the ghost + invalidate in-flight workers, THEN run fish's native motion
+# (closes the "worker paints after a cursor move" window for the common keys — the bash sibling's fix).
+# Pure native motions, so no reimplement — just clear-then-delegate.
+function _nh_cursor_left
+    _nh_clear_ghost
+    _nh_bump_gen
+    commandline -f backward-char
+end
+function _nh_cursor_home
+    _nh_clear_ghost
+    _nh_bump_gen
+    commandline -f beginning-of-line
+end
+function _nh_cursor_end
+    _nh_clear_ghost
+    _nh_bump_gen
+    commandline -f end-of-line
+end
+
 # --- Dependency check ---
 # AFTER the pure helpers (mirrors the bash ordering) so the unit harness can source this file and
 # exercise the helpers structurally even on a box without the deps — a "helper not defined" test
@@ -676,8 +834,9 @@ end
 #   H3 (below): async / non-blocking IPC + debounce timer (fish is single-threaded: no `zle -F`
 #               fd-callbacks, no RunspacePool). The state functions are defined above; here we
 #               initialize the per-session run dir and arm teardown. H4 binds the keys that fire it.
-#   H4 (todo):  key bindings + live loop: accept (Right/Ctrl-F; Tab opt-in via _nh_tab_accept),
-#               Escape dismiss, cursor motions, Enter-clear, per-keystroke insert+trigger.
+#   H4 (below): key bindings + live loop: per-keystroke insert+trigger, accept (Right/Ctrl-F; Tab
+#               opt-in via _nh_tab_accept), Escape dismiss, cursor motions, Enter-clear. The handler
+#               functions are defined above; here we install the bindings that drive them.
 # ======================================================================================
 status is-interactive; or return 0
 
@@ -710,6 +869,64 @@ set -g fish_autosuggestion_enabled 0
 # ABOVE the dep check so the unit harness can drive them with an injected run dir; only this CALL is
 # interactive-gated. H4's bindings are what actually fire _nh_dispatch.
 _nh_state_init
+
+# --- H4: key bindings (the live loop) ---
+# Every binding is installed ONLY here (inside the interactive guard); the handlers are defined above
+# the dep check so the unit harness sees them but nothing fires them. Re-sourcing is safe — `bind` is
+# idempotent (rebinding a key replaces it) and _nh_state_init reset the snapshot + run dir above.
+#
+# Per-keystroke insert + trigger. fish's `bind '' self-insert` is the catch-all for any printable key
+# with NO explicit binding, so chaining _nh_keypress onto it covers the whole alphabet in ONE binding
+# (bash needed ~70 explicit char binds). BUT seven chars carry their OWN preset binding
+# `self-insert expand-abbr` (space + the abbr-triggering metacharacters ; | & > < ) ), which SHADOWS the
+# catch-all default — each must be re-bound with the trigger appended or typing them wouldn't fire it.
+# `expand-abbr` is kept so fish abbreviations still expand; _nh_keypress then snapshots the POST-expansion
+# buffer.
+bind '' self-insert _nh_keypress
+for _nh_k in space ';' '|' '&' '>' '<' ')'
+    bind $_nh_k self-insert expand-abbr _nh_keypress
+end
+set -e _nh_k
+
+# Deletions: let fish run its native (multibyte-correct) delete, THEN snapshot + re-dispatch — no
+# bash-style reimplemented char-domain delete, because fish's input functions already do the grapheme math.
+bind backspace backward-delete-char _nh_keypress
+bind ctrl-h backward-delete-char _nh_keypress
+bind delete delete-char _nh_keypress
+
+# Accept keys: RightArrow + Ctrl-F ALWAYS accept at EOL (native autosuggestion is off, so they own those
+# keys with no forward-char race). Tab always clears + completes; it additionally ACCEPTS only when
+# tab_accept is on (opt-in, default off — see _nh_tab_widget).
+bind right _nh_forward_or_accept
+bind ctrl-f _nh_forward_or_accept
+bind tab _nh_tab_widget
+
+# Cursor MOTIONS: clear ghost + invalidate, then native move (closes the mid-line stale-paint window).
+# Left (+ Ctrl-B), Home (+ Ctrl-A), End (+ Ctrl-E). Up/Down are intentionally left native — clearing on
+# them risks erasing the history-search UI (the documented bash-sibling limitation: an in-flight worker
+# may paint once after Up/Down; the next bound key clears it).
+bind left _nh_cursor_left
+bind ctrl-b _nh_cursor_left
+bind home _nh_cursor_home
+bind ctrl-a _nh_cursor_home
+bind end _nh_cursor_end
+bind ctrl-e _nh_cursor_end
+
+# Escape: dismiss the ghost, then run fish's native `cancel` (so Esc still closes a completion pager).
+# fish's modern key parser distinguishes a lone Esc from arrow/Alt escape sequences via the escape
+# timeout, so this coexists with the \e[… arrows — but it is the highest-risk binding (verify arrows
+# still work in the hands-on test).
+bind escape _nh_dismiss cancel
+
+# Enter: dismiss the ghost AND bump the generation, then submit via fish's native `execute` (which still
+# decides submit-vs-insert-newline for an incomplete command). The gen bump (vs the bash sibling's clear-
+# only) ORPHANS any worker still in its debounce when Enter is pressed — it wakes, sees the gen advanced
+# past its gen0, and exits instead of painting a stray ghost onto the fresh prompt. fish gets this fix
+# for free (bash's macro-based Enter binding made it awkward there); verify no stray artifact on submit.
+bind enter _nh_dismiss execute
+
+# Defensive: drop any ghost state at load (e.g. re-source while a ghost was on screen).
+_nh_clear_ghost
 
 # Tear the run dir down on shell exit. fish's `fish_exit` event is the idiom (no bash-style EXIT trap
 # chaining needed — redefining this handler on a re-source just replaces it, and multiple listeners can
