@@ -170,6 +170,11 @@ check "pipeline ghost" (printf 'ghost\t status\t0\t3\tgit status') \
     (_nh_compute_suggestion 'git' '{"suggestions":[{"text":"git status","replace_start":0,"replace_end":3}]}')
 check "pipeline hint (divergent)" (printf 'hint\t -> git status\t0\t3\tgit status') \
     (_nh_compute_suggestion 'gti' '{"suggestions":[{"text":"git status","replace_start":0,"replace_end":3}]}')
+# diff_ops present -> hint through the FULL pipeline. Pins the seam parse-field-3 (diff flag) -> decide
+# arg-4: a prefix that WOULD render as a ghost is forced to a hint purely because diff_ops is present,
+# so a wiring bug dropping/swapping the diff field would flip this back to a ghost record and fail here.
+check "pipeline diff present -> hint" (printf 'hint\t -> git status\t0\t3\tgit status') \
+    (_nh_compute_suggestion 'git' '{"suggestions":[{"text":"git status","replace_start":0,"replace_end":3,"diff_ops":[{"op":"keep","ch":"g"}]}]}')
 # Control char in suggestion (trailing-newline RCE vector) -> rejected (no output).
 set got (_nh_compute_suggestion 'rm ' '{"suggestions":[{"text":"rm -rf /\n","replace_start":0,"replace_end":3}]}')
 check "pipeline rejects ctrl-char suggestion" "" "$got"
@@ -393,6 +398,24 @@ set -gx NIGHTHAWK_DEBOUNCE_MS 0200
 source "$_nh_plugin"
 check "cfg clamp leading-zero -> 200" 200 "$_nh_debounce_ms"
 set -e NIGHTHAWK_HINT_ARROW NIGHTHAWK_DEBOUNCE_MS NIGHTHAWK_DEBUG NIGHTHAWK_TAB_ACCEPT
+
+# 5. Explicitly-empty file value falls back to the default. The hand-rolled TOML reader uses
+# `--groups-only`, whose capture for `hint_arrow = ""` is empty -> count 0 -> the default is kept
+# (the documented edge at the top of _nh_load_config). Env is unset above, so the file value is
+# authoritative — this pins that documented-but-previously-untested fallback.
+printf '%s\n' '[plugin]' 'hint_arrow = ""' >"$XDG_CONFIG_HOME/nighthawk/config.toml"
+source "$_nh_plugin"
+check "cfg empty-string file value -> default arrow" "->" "$_nh_hint_arrow"
+
+# 6. Control-char arrow sanitization — an INJECTION SEAM: the arrow rides the same display field as the
+# control-char-guarded daemon text, so an ESC in the config/env arrow must fall back to the default
+# before it can reach the renderer (plugin line ~146). env wins over file, so drive it via env with an
+# ESC-bearing string and assert the fallback. The guard itself is well-tested; this pins its APPLICATION.
+rm -f "$XDG_CONFIG_HOME/nighthawk/config.toml"
+set -gx NIGHTHAWK_HINT_ARROW (printf 'a\x1bb' | string collect -N)
+source "$_nh_plugin"
+check "arrow with ESC -> default" "->" "$_nh_hint_arrow"
+set -e NIGHTHAWK_HINT_ARROW
 
 # --- summary ---
 rm -rf "$XDG_CONFIG_HOME"

@@ -47,8 +47,10 @@ set -g _nh_log_path (test -n "$XDG_CONFIG_HOME"; and echo "$XDG_CONFIG_HOME"; or
 # Minimal hand-rolled TOML reader: walk lines, track the current [section], pull the four keys we
 # care about from [plugin]. No real parser, to stay dep-free. fish has none of the bash hazards
 # here (no BASH_REMATCH clobber, no subshell-variable-loss, no octal traps), so this is short.
-# `--groups-only` returns just the capture; an absent/EMPTY capture yields count 0, so an
-# explicitly-empty value (e.g. hint_arrow = "") falls back to the default — an acceptable edge.
+# `--groups-only` returns just the capture; an ABSENT key yields count 0 (skip, default kept). An
+# explicitly-EMPTY value (e.g. hint_arrow = "") DOES match with an empty capture (count 1, empty
+# element — NOT count 0), so the hint_arrow assignment guards `test -n` to keep the default rather
+# than blanking the field (the numeric/bool keys can't capture empty, so only hint_arrow needs it).
 function _nh_load_config
     set -l cfgbase (test -n "$XDG_CONFIG_HOME"; and echo "$XDG_CONFIG_HOME"; or echo "$HOME/.config")
     set -l config_file "$cfgbase/nighthawk/config.toml"
@@ -63,7 +65,7 @@ function _nh_load_config
         test $in_plugin -eq 1; or continue
         set m (string match -r --groups-only '^\s*hint_arrow\s*=\s*"([^"]*)"' -- $line)
         if test (count $m) -gt 0
-            set _nh_hint_arrow $m[1]
+            test -n "$m[1]"; and set _nh_hint_arrow $m[1]
             continue
         end
         set m (string match -r --groups-only '^\s*debounce_ms\s*=\s*([0-9]+)' -- $line)
@@ -104,7 +106,7 @@ set _nh_debounce_ms (math -s0 "$_nh_debounce_ms")
 # Integer-ms -> fractional-seconds for the future debounce `sleep`. LOCALE-PROOF: builds the string
 # from integer `math -s0` (floor div + modulo) spliced around a LITERAL ".", never a float — fish's
 # `math`/`printf %f` would emit "0,200" under a comma-decimal locale and crash `sleep`. Floors to a
-# 10ms minimum (ms=0 => `sleep 0` = NO debounce). Kept pure so the harness asserts the rows.
+# 10ms minimum (without this floor, ms=0 would yield `sleep 0` = no debounce). Kept pure so the harness asserts the rows.
 function _nh_ms_to_sec
     set -l ms $argv[1]
     string match -rq '^[0-9]+$' -- "$ms"; or set ms 200
@@ -442,8 +444,12 @@ function _nh_clear_ghost
     # cleared suggestion even if a generation check were ever to pass. Guarded so it no-ops on a
     # non-interactive source (empty run dir), keeping the unit harness inert. (Defined in the H2 block
     # but stash-aware now that H3 introduced the stash; the `set -g _nh_run_dir` below is read at CALL
-    # time, never at definition, so the forward reference is fine.)
-    test -n "$_nh_run_dir"; and rm -f "$_nh_run_dir/stash"
+    # time, never at definition, so the forward reference is fine.) The `test -f` gate keeps this
+    # FORK-FREE on the hot path: `_nh_dispatch` calls _nh_clear_ghost on EVERY keystroke, so an
+    # unconditional `rm` would fork an external `rm` per keypress on the foreground typing thread. With
+    # the builtin `test -f` guard, `rm` runs only when a stash actually exists (just after a worker
+    # painted a ghost), not on the common keystroke that has nothing to remove.
+    test -n "$_nh_run_dir"; and test -f "$_nh_run_dir/stash"; and rm -f "$_nh_run_dir/stash"
 end
 function _nh_paint_ghost
     _nh_tty_write (_nh_render_seq "$argv[1]")
@@ -611,7 +617,7 @@ function _nh_dispatch
     # of that: it sources THIS plugin explicitly (which reads config.toml on its own) and inherits PATH +
     # NIGHTHAWK_SOCKET + PWD from the parent env, so socat/jq resolve without config.fish. Skipping it
     # keeps the spawn ~1.8ms (vs ~3.3ms) here and immune to an arbitrarily heavy user config elsewhere.
-    $_nh_fish_bin --no-config -c 'source $argv[1]; _nh_worker $argv[2] $argv[3] $argv[4] $argv[5]' \
+    $_nh_fish_bin --no-config -c 'source "$argv[1]"; _nh_worker "$argv[2]" "$argv[3]" "$argv[4]" "$argv[5]"' \
         $_nh_plugin_file $gen0 "$buffer" $blen_bytes $_nh_run_dir &
     disown 2>/dev/null
 end
@@ -751,6 +757,13 @@ function _nh_accept
     set -l cursor (commandline --cursor)
     set -l spliced (_nh_accept_splice "$buffer" "$cursor" "$_nh_gen" "$fields[1]" "$fields[2]" "$fields[3]" "$fields[4]" | string collect -N)
     _nh_clear_ghost
+    # Accept ENDS the current suggestion, so invalidate any worker still in flight for this generation
+    # before it can re-paint a stray ghost or re-stash onto the just-spliced buffer. Placed AFTER
+    # _nh_accept_splice (which reads $_nh_gen as curgen) so the splice still validates against the
+    # PRE-accept gen. This makes the cross-process staleness invariant EXPLICIT — every suggestion-ending
+    # action now bumps the gen — instead of leaning on the dispatch-time stash removal to cover accept too
+    # (which also means the `test -f`-gated clear above can safely skip the per-keystroke `rm`).
+    _nh_bump_gen
     test -n "$spliced"; or return 0
     set -l parts (string split -m 1 \t -- $spliced)
     commandline -r -- "$parts[2]"
@@ -887,6 +900,13 @@ for _nh_k in space ';' '|' '&' '>' '<' ')'
     bind $_nh_k self-insert expand-abbr _nh_keypress
 end
 set -e _nh_k
+
+# KNOWN LIMITATION (documented, intentionally NOT bound): a bracketed paste routes through fish's own
+# `bracketed-paste` input function, which is not chained to _nh_keypress — so a multi-char paste fires
+# no suggestion, and if a ghost was already showing the paste does not itself clear it (the next bound
+# key clears it on its absolute-CR redraw). Same benign class as the Up/Down limitation below. Binding
+# `bracketed-paste` (clear + dispatch) is deferred: it needs live-PTY validation the unit harness can't
+# give, and the payoff (a suggestion on paste / a slightly-sooner ghost clear) is cosmetic.
 
 # Deletions: let fish run its native (multibyte-correct) delete, THEN snapshot + re-dispatch — no
 # bash-style reimplemented char-domain delete, because fish's input functions already do the grapheme math.
