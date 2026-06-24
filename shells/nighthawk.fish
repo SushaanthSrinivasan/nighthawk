@@ -396,13 +396,35 @@ if not command -q jq
 end
 
 # ======================================================================================
-# DEFERRED to later sessions (one each) — intentionally NOT implemented here:
-#   H1  coexist-vs-suppress fish's native autosuggestion (issue #87's central question)
-#   H2  ghost rendering + buffer-change detection (fish repaints after each binding)
-#   H3  async / non-blocking IPC + the debounce timer (fish is single-threaded: no `zle -F`
-#       fd-callbacks, no RunspacePool) — wires _nh_request / _nh_ensure_daemon + dispatch
-#   H4  key bindings + live loop: accept (Right/Ctrl-F; Tab opt-in via _nh_tab_accept),
-#       Escape dismiss, cursor motions, Enter-clear, per-keystroke insert+trigger
-# The live layer will install behind `status is-interactive` so a non-interactive source stays
-# inert. Until then this file defines helpers and does nothing observable.
+# LIVE LAYER — interactive only. Everything below runs solely in an interactive session; a
+# non-interactive load (the unit harness, a plain `source`) stops at the guard with every helper
+# above still defined and nothing mutated. Built up one session each:
+#   H1 (below): suppress fish's native autosuggestion so our ghost text owns the cells.
+#   H2 (todo):  ghost rendering + buffer-change detection (fish repaints after each binding).
+#   H3 (todo):  async / non-blocking IPC + debounce timer (fish is single-threaded: no `zle -F`
+#               fd-callbacks, no RunspacePool) — wires _nh_request / _nh_ensure_daemon + dispatch.
+#   H4 (todo):  key bindings + live loop: accept (Right/Ctrl-F; Tab opt-in via _nh_tab_accept),
+#               Escape dismiss, cursor motions, Enter-clear, per-keystroke insert+trigger.
 # ======================================================================================
+status is-interactive; or return 0
+
+# --- H1: suppress fish's native autosuggestion (coexist-vs-suppress — issue #87's core question) ---
+# fish's autosuggestion is native C++ that paints its own gray ghost in EXACTLY the cells the H2
+# renderer will use, and fish exposes NO public hook to read or inject into it: the only accessor,
+# `commandline --showing-suggestion`, is a read-only "is one showing?" predicate — no text, no
+# injection point. So fish is the PowerShell/PSReadLine case (native predictor, no inject API), NOT
+# the zsh/region_highlight case (a cooperative, additive API we could render through). We can only
+# REPLACE it, never coexist — two gray ghosts would collide in the same cells with no way to dedupe.
+# Suppress it outright: the fish analogue of the PS plugin's `Set-PSReadLineOption -PredictionSource
+# None`. `set -g` (session global) shadows a user's `set -U fish_autosuggestion_enabled 1` on read
+# WITHOUT destroying it, so their universal config survives a plugin uninstall. A side benefit:
+# with native off, `--showing-suggestion` is always false, so H4's Right/Ctrl-F accept binding fully
+# owns those keys instead of racing fish's `forward-char` / `forward-single-char` defaults.
+#
+# Placed AFTER the dependency check ON PURPOSE: if socat/jq are missing we already `return 1`ed
+# above, leaving native autosuggestion intact — suppressing it when nighthawk cannot function would
+# strand the user with NO suggestions at all. Tier 0 (history prefix) is a strict superset of fish's
+# native history ghost, so once the daemon is up this is parity-plus; the only gap is the brief
+# daemon-start window, which the plugin's auto-start closes. Unconditional (no opt-out knob) for
+# parity with the PS sibling — re-enabling native alongside our ghost is a dual-paint footgun.
+set -g fish_autosuggestion_enabled 0
