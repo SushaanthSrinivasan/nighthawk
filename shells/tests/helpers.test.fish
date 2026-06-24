@@ -28,7 +28,8 @@ source "$_nh_plugin"
 for fn in _nh_load_config _nh_ms_to_sec _nh_log _nh_has_ctrl_char _nh_cp_width _nh_byte_to_char \
         _nh_char_to_byte _nh_eol_bytes _nh_build_request _nh_parse_response _nh_decide_render \
         _nh_compute_suggestion _nh_clear_seq _nh_paint_seq _nh_render_seq _nh_tty_write \
-        _nh_clear_ghost _nh_paint_ghost _nh_input_changed
+        _nh_clear_ghost _nh_paint_ghost _nh_input_changed \
+        _nh_state_init _nh_cleanup _nh_bump_gen _nh_ensure_daemon _nh_request _nh_dispatch _nh_worker
     if not functions -q $fn
         echo "helpers.test.fish: FAIL — $fn not defined after sourcing plugin (renamed? deps missing?)" >&2
         exit 2
@@ -250,6 +251,76 @@ check "render_seq minimal 2-field record paints display" \
 _nh_input_changed git 3 git 3; check "input_changed same -> unchanged" 1 $status
 _nh_input_changed git 3 'git ' 4; check "input_changed buffer -> changed" 0 $status
 _nh_input_changed git 3 git 2; check "input_changed cursor only -> changed" 0 $status
+
+# ======================================================================================
+# H3 async-core state: per-session run dir, cross-process generation, cleanup. HERMETIC — TMPDIR is
+# redirected to a sandbox so _nh_state_init's GC of "other sessions" can only ever touch the sandbox,
+# never a real run dir on the box. The interactive guard never ran (non-interactive source), so
+# _nh_run_dir is unset and the helpers would otherwise no-op — we inject a run dir to drive them.
+# ======================================================================================
+set -l _h3_saved_tmpdir "$TMPDIR"
+set -gx TMPDIR (mktemp -d)
+
+# _nh_bump_gen: the in-process counter and the gen FILE advance together (single monotonic mutator —
+# the SOLE cross-process staleness token a worker re-reads to detect it was superseded).
+set -g _nh_run_dir (mktemp -d)
+set -g _nh_gen 0
+_nh_bump_gen
+check "bump gen var 1" 1 $_nh_gen
+check "bump gen file 1" 1 (cat "$_nh_run_dir/gen")
+_nh_bump_gen
+check "bump gen var 2" 2 $_nh_gen
+check "bump gen file 2" 2 (cat "$_nh_run_dir/gen")
+rm -rf "$_nh_run_dir"
+
+# Inertness contract: with no run dir, _nh_bump_gen leaves the counter untouched (this no-op on an
+# unset _nh_run_dir is exactly what keeps the live layer dormant under a non-interactive source).
+set -g _nh_run_dir ""
+set -g _nh_gen 5
+_nh_bump_gen
+check "bump gen no-op when run dir unset" 5 $_nh_gen
+
+# _nh_state_init: mints a 0700 run dir stamped with this fish PID, with the gen file initialized to 0.
+_nh_state_init
+check "state_init created a dir" 1 (test -d "$_nh_run_dir"; and echo 1; or echo 0)
+check "state_init dir is mode 0700" 700 (stat -c '%a' "$_nh_run_dir")
+check "state_init gen file is 0" 0 (cat "$_nh_run_dir/gen")
+check "state_init dir carries our pid" 1 (string match -q "*/nighthawk-plugin-$fish_pid-*" -- "$_nh_run_dir"; and echo 1; or echo 0)
+set -l _h3_first_dir "$_nh_run_dir"
+
+# Re-init reaps THIS shell's prior dir (same PID) and mints a fresh one — the re-source teardown that
+# orphans a prior load's in-flight workers (their `cat gen` then hits ENOENT and they exit).
+_nh_state_init
+check "state_init reaped the prior same-pid dir" 0 (test -d "$_h3_first_dir"; and echo 1; or echo 0)
+check "state_init minted a fresh dir" 1 (test -d "$_nh_run_dir"; and echo 1; or echo 0)
+
+# GC: a foreign dir whose PID is no longer alive is collected; a non-numeric-suffix dir is left alone
+# (its PID can't be parsed, so it's skipped rather than wrongly deleted).
+set -l _h3_dead "$TMPDIR/nighthawk-plugin-999999-deadbeef"
+mkdir -p "$_h3_dead"
+set -l _h3_notpid "$TMPDIR/nighthawk-plugin-notapid-xx"
+mkdir -p "$_h3_notpid"
+_nh_state_init
+check "state_init GC removed dead-pid dir" 0 (test -d "$_h3_dead"; and echo 1; or echo 0)
+check "state_init left non-pid dir alone" 1 (test -d "$_h3_notpid"; and echo 1; or echo 0)
+
+# _nh_cleanup: removes our run dir; the marker guard refuses a foreign path so a bare `rm -rf "$var"`
+# can never escape onto an unrelated directory.
+set -l _h3_live "$_nh_run_dir"
+_nh_cleanup
+check "cleanup removed our run dir" 0 (test -d "$_h3_live"; and echo 1; or echo 0)
+set -g _nh_run_dir "$TMPDIR"          # a real dir WITHOUT the nighthawk-plugin- marker
+_nh_cleanup
+check "cleanup refuses a foreign path (sandbox survives)" 1 (test -d "$TMPDIR"; and echo 1; or echo 0)
+set -g _nh_run_dir ""
+
+# Restore TMPDIR + reset state for the config-precedence section below.
+rm -rf "$TMPDIR"
+if test -n "$_h3_saved_tmpdir"
+    set -gx TMPDIR "$_h3_saved_tmpdir"
+else
+    set -e TMPDIR
+end
 
 # ======================================================================================
 # Config precedence (default < file < env) + debounce clamp. Re-sources under different config/env.

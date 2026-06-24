@@ -437,6 +437,13 @@ end
 # stays obvious and auditable.
 function _nh_clear_ghost
     _nh_tty_write (_nh_clear_seq)
+    # Drop the accept stash too (the H3 cross-process accept payload): a cleared ghost must never stay
+    # acceptable. Mirrors the bash sibling — defense-in-depth so H4's accept can't fire on a visually
+    # cleared suggestion even if a generation check were ever to pass. Guarded so it no-ops on a
+    # non-interactive source (empty run dir), keeping the unit harness inert. (Defined in the H2 block
+    # but stash-aware now that H3 introduced the stash; the `set -g _nh_run_dir` below is read at CALL
+    # time, never at definition, so the forward reference is fine.)
+    test -n "$_nh_run_dir"; and rm -f "$_nh_run_dir/stash"
 end
 function _nh_paint_ghost
     _nh_tty_write (_nh_render_seq "$argv[1]")
@@ -449,6 +456,201 @@ end
 # `--cursor`); this is just the testable decision kernel. Args: <old_buf> <old_cur> <new_buf> <new_cur>.
 function _nh_input_changed
     test "$argv[1]" != "$argv[3]"; or test "$argv[2]" != "$argv[4]"
+end
+
+# --- H3 async core (state + cross-process generation + the background worker) ---
+# fish is single-threaded with no `zle -F` fd-callback (zsh) and no RunspacePool (PowerShell), so async
+# rendering is the bash model: a background WORKER paints the ghost straight to /dev/tty and round-trips
+# the accept payload through a `stash` FILE. The H2 redraw probe proved the two facts this rests on —
+# fish never repaints while IDLE (a worker-painted ghost survives the debounce window) and never clears
+# our out-of-band ghost on its own (we clear it every keystroke). The foreground keystroke handler (H4)
+# fire-and-forgets ONE worker; a monotonic generation counter mirrored to a `gen` file is the SOLE
+# cross-process staleness token. Defined HERE (above the dep check + interactive guard) so the harness
+# unit-tests the state primitives against a scaffolded run dir; nothing CALLS them until the interactive
+# guard runs _nh_state_init (below) and H4 binds the keys that fire _nh_dispatch.
+#
+# State globals (mutated by the functions below; `set -g` so the forked worker inherits them):
+#   _nh_gen            monotonic generation, the in-process authority. Bumped on every dispatched
+#                      keystroke; mirrored to "$_nh_run_dir/gen" so a worker can detect it was superseded.
+#   _nh_run_dir        per-load nonce'd dir holding `gen` + `stash` (set by _nh_state_init in the
+#                      interactive guard; EMPTY on a non-interactive source => every helper below no-ops,
+#                      which is what keeps the unit harness inert).
+#   _nh_backoff_until  epoch-seconds gate; a missing socket arms a 5s backoff so dispatch can't hammer a
+#                      dead daemon. (A present-but-hung daemon costs one off-keystroke worker eating
+#                      socat -t3 — never a freeze — so it needs no cross-process marker.)
+set -g _nh_gen 0
+set -g _nh_run_dir ""
+set -g _nh_backoff_until 0
+
+# Captured at SOURCE time (where `status filename`/`status fish-path` resolve correctly): the absolute
+# path of THIS plugin and the running fish binary. _nh_dispatch re-execs that binary to re-source this
+# file in a detached worker (fish cannot background a function — see _nh_dispatch). `path resolve`
+# makes the path absolute so the worker's `source` works regardless of its CWD. Recomputed harmlessly
+# when the worker re-sources.
+set -g _nh_plugin_file (path resolve (status filename))
+set -g _nh_fish_bin (status fish-path)
+# `status fish-path` exists on every fish >= 3.6 (target is 4.2.1), but fall back to a bare PATH
+# lookup so a missing value can never make _nh_dispatch spawn a broken command on the keystroke path.
+test -n "$_nh_fish_bin"; or set -g _nh_fish_bin fish
+
+# Per-session run dir + cross-process generation. The per-load mktemp NONCE makes re-source teardown
+# real: a fresh load picks a new path, so any in-flight worker from a prior load reads `cat gen` ->
+# ENOENT and exits. fish's PID is `$fish_pid` (the bash `$$`); the worker, being a forked child, sees
+# the PARENT'S $fish_pid, so the dir is always stamped with the interactive shell's PID here in the
+# foreground. Non-matching globs in a `for` header iterate ZERO times in fish (no error), so the reap
+# and GC loops are safe on first load.
+function _nh_state_init
+    set -l base /tmp
+    test -n "$TMPDIR"; and set base "$TMPDIR"
+    # Reap THIS shell's prior-load dirs (re-source: same PID, the new dir isn't created yet).
+    for d in $base/nighthawk-plugin-$fish_pid-*
+        test -d "$d"; and string match -q '*/nighthawk-plugin-*' -- "$d"; and rm -rf -- "$d"
+    end
+    # Opportunistic GC of crashed/HUP'd OTHER sessions whose PID is no longer alive.
+    for d in $base/nighthawk-plugin-*
+        test -d "$d"; or continue
+        set -l pid (string match -r --groups-only -- '/nighthawk-plugin-([0-9]+)-' "$d")
+        string match -rq '^[0-9]+$' -- "$pid"; or continue
+        kill -0 "$pid" 2>/dev/null; and continue
+        string match -q '*/nighthawk-plugin-*' -- "$d"; and rm -rf -- "$d"
+    end
+    # mktemp -d atomically creates a 0700 dir with an unpredictable suffix and FAILS on collision —
+    # closing the predictable-name window a bare `mkdir $fish_pid-$rand` would open on a world-writable
+    # $TMPDIR (another local user could pre-create the dir and read/tamper with gen/stash). The
+    # $fish_pid stays in the template so the reap + dead-PID GC above can still parse the PID back out.
+    set -g _nh_run_dir (mktemp -d "$base/nighthawk-plugin-$fish_pid-XXXXXXXX" 2>/dev/null)
+    # `set` does not reliably propagate a failed command substitution's status in fish, so verify the
+    # dir explicitly rather than trusting an `or` on the assignment.
+    if test -z "$_nh_run_dir"; or not test -d "$_nh_run_dir"
+        set -g _nh_run_dir ""
+        return 1
+    end
+    set -g _nh_gen 0
+    printf '%s' 0 >"$_nh_run_dir/gen"
+end
+
+# Remove our run dir. GUARDED against an empty/foreign path so a bare `rm -rf "$var"` can never run on
+# an unset var. The crash/HUP/KILL backstop is the dead-PID GC in _nh_state_init on the next load.
+function _nh_cleanup
+    test -n "$_nh_run_dir"; and string match -q '*/nighthawk-plugin-*' -- "$_nh_run_dir"
+    and rm -rf -- "$_nh_run_dir"
+end
+
+# Bump the generation: in-process counter + a fork-free write-through to the `gen` file (plain
+# `printf >`, NOT temp+mv — the staleness guarantee is not write atomicity; see the bash sibling's
+# torn-read note). The SINGLE gen mutator, so the var and the file can't skew. A no-op on an unset
+# _nh_run_dir, which is what keeps it inert under the unit harness until a run dir is injected.
+function _nh_bump_gen
+    test -n "$_nh_run_dir"; or return 0
+    set -g _nh_gen (math $_nh_gen + 1)
+    printf '%s' $_nh_gen >"$_nh_run_dir/gen"
+end
+
+# Daemon auto-start (best-effort, detached). Backgrounded + disowned so it never blocks the keystroke
+# and prints no job message; the caller's backoff prevents re-spawning every keystroke when `nh` is
+# missing or the daemon won't come up.
+function _nh_ensure_daemon
+    if command -q nh
+        nh start >/dev/null 2>&1 &
+        disown 2>/dev/null
+    end
+end
+
+# The blocking IPC round-trip, isolated so the transport (socat flags / timeout) has ONE home. Takes a
+# built request JSON, returns the first response line. `head -n1` closes after one line so socat takes
+# SIGPIPE and exits. Runs ONLY inside the background worker — never on the keystroke path.
+function _nh_request
+    printf '%s\n' "$argv[1]" | socat -t3 - "UNIX-CONNECT:$NIGHTHAWK_SOCKET" 2>/dev/null | head -n1
+end
+
+# Dispatch (FOREGROUND, non-blocking). Clear the prior ghost, bump the generation (a changed
+# buffer/cursor makes any in-flight worker's suggestion stale), run the cheap foreground guards, then
+# fire-and-forget ONE worker. Nothing here blocks the keystroke: the only fork in the steady state is
+# the backgrounded worker itself (every `test`/`string`/`printf` is a fish builtin, and `date` is read
+# ONLY when the backoff is armed — a fork the bash sibling needed $EPOCHSECONDS to avoid). H4 snapshots
+# the live buffer/cursor and passes them in, so this stays testable and `commandline` lives only in H4.
+# Args: <buffer> <cursor_chars>. cursor_chars is the CODE-POINT index from `commandline --cursor`; the
+# EOL gate is therefore CHAR-domain (NOT byte like bash's READLINE_POINT) — we only suggest at EOL.
+function _nh_dispatch
+    set -l buffer $argv[1]
+    set -l cursor $argv[2]
+    _nh_clear_ghost
+    _nh_bump_gen
+    test -n "$_nh_run_dir"; or return 0
+    set -l blen (string length -- "$buffer")
+    test $blen -ge 2; or return 0
+    test "$cursor" = "$blen"; or return 0   # cursor at EOL (code-point domain)
+    # Backoff gate: only read the clock when the backoff is actually armed (avoids a per-keystroke
+    # `date` fork in the common socket-up path; _nh_backoff_until stays 0 then).
+    if test $_nh_backoff_until -gt 0
+        set -l now (date +%s)
+        test $now -lt $_nh_backoff_until; and return 0
+    end
+    if not test -S "$NIGHTHAWK_SOCKET"
+        set -g _nh_backoff_until (math (date +%s) + 5)
+        _nh_ensure_daemon
+        return 0
+    end
+    # The daemon wants the cursor as a BYTE offset; at EOL that is the buffer's byte length.
+    set -l blen_bytes (_nh_eol_bytes "$buffer")
+    set -l gen0 $_nh_gen
+    # fish cannot detach a FUNCTION with `&` — it runs the body SYNCHRONOUSLY in the current shell
+    # (verified: `fn &`, `fn | cat &`, and `begin; fn; end | cat &` all block the parent for the full
+    # worker runtime). Only an EXTERNAL process detaches. So re-exec the running fish binary, which
+    # re-sources this plugin (~12ms, entirely OFF the keystroke thread) to reconstitute the helper
+    # functions, then runs the worker. The buffer + args travel as POSITIONAL $argv (never spliced
+    # into the -c string), so a buffer with spaces/quotes/$/; carries through with zero eval or
+    # injection surface. The run dir is passed as an arg because the fresh process never ran the
+    # interactive _nh_state_init, so ITS _nh_run_dir global is empty. NIGHTHAWK_SOCKET + the debounce
+    # ride through the env / the re-source. Backgrounded + disowned so no job-completion message ever
+    # corrupts the prompt line.
+    $_nh_fish_bin -c 'source $argv[1]; _nh_worker $argv[2] $argv[3] $argv[4] $argv[5]' \
+        $_nh_plugin_file $gen0 "$buffer" $blen_bytes $_nh_run_dir &
+    disown 2>/dev/null
+end
+
+# Worker (forked background job; inherits all _nh_* functions + `set -g` state). Sleeps the debounce,
+# double-checks the generation (debounce-cancel), queries the daemon, runs the pure pipeline (which
+# enforces the control-char + range guards — the security backstop), re-checks the generation
+# immediately before any screen write, then PAINTS BEFORE STASHING so accept can never fire on an
+# unseen ghost: if the worker dies between paint and stash the user merely saw a ghost with no stash,
+# and accept no-ops (the ghost clears on the next key). Every dispatch bumps the gen first, so each
+# worker carries a unique gen0 and a same-gen double-stash is unreachable. Args: <gen0> <buffer>
+# <cursor_bytes> (cursor_bytes is the EOL byte offset computed by dispatch).
+function _nh_worker
+    set -l gen0 $argv[1]
+    set -l buf $argv[2]
+    set -l cur $argv[3]
+    # Run dir as an ARG (argv[4]): the detached worker runs in a fresh fish that never executed the
+    # interactive _nh_state_init, so its _nh_run_dir global is empty. Fall back to the global so an
+    # in-process foreground call (tests / future callers that DO have the global) still works 3-arg.
+    set -l rundir $argv[4]
+    test -n "$rundir"; or set rundir $_nh_run_dir
+    test -n "$rundir"; or return 0
+    sleep $_nh_debounce_sec
+    test (cat "$rundir/gen" 2>/dev/null) = "$gen0"; or return 0
+    set -l req (_nh_build_request "$buf" "$cur" "$PWD")
+    test -n "$req"; or return 0
+    set -l resp (_nh_request "$req")
+    test -n "$resp"; or return 0
+    set -l out (_nh_compute_suggestion "$buf" "$resp")
+    test -n "$out"; or return 0
+    # Post-IPC staleness AND last-chance ENOENT (teardown) check, immediately before any write.
+    test (cat "$rundir/gen" 2>/dev/null) = "$gen0"; or return 0
+    # Split the 5-field record <kind>\t<display>\t<bstart>\t<bend>\t<text>; -m 4 keeps any tab in text
+    # (rejected upstream anyway) inside field 5. The accept path wants bstart/bend/text (fields 3-5).
+    set -l fields (string split -m 4 \t -- $out)
+    # (a) PAINT first (the single /dev/tty sink, via the H2 composition) so accept can never fire on an
+    # unseen ghost. _nh_paint_ghost re-runs the control-char guard as the last gate before the terminal.
+    _nh_paint_ghost "$out"
+    # (b) then STASH atomically: mktemp a unique temp in the run dir, write, then `mv -f` (rename is
+    # atomic on the same filesystem) so _nh_accept (H4) never reads a half-written stash. mktemp (not
+    # a $fish_pid-named temp) because two racing workers (re-exec'd from the same shell) would
+    # otherwise collide on one name. A fork here is fine — we're off the keystroke.
+    set -l tmp (mktemp "$rundir/.stash.XXXXXXXX" 2>/dev/null)
+    test -n "$tmp"; or return 0
+    printf '%s\t%s\t%s\t%s' "$gen0" "$fields[3]" "$fields[4]" "$fields[5]" >"$tmp" 2>/dev/null
+    and mv -f "$tmp" "$rundir/stash" 2>/dev/null
 end
 
 # --- Dependency check ---
@@ -470,9 +672,10 @@ end
 # non-interactive load (the unit harness, a plain `source`) stops at the guard with every helper
 # above still defined and nothing mutated. Built up one session each:
 #   H1 (below): suppress fish's native autosuggestion so our ghost text owns the cells.
-#   H2 (todo):  ghost rendering + buffer-change detection (fish repaints after each binding).
-#   H3 (todo):  async / non-blocking IPC + debounce timer (fish is single-threaded: no `zle -F`
-#               fd-callbacks, no RunspacePool) — wires _nh_request / _nh_ensure_daemon + dispatch.
+#   H2 (done):  ghost rendering primitives (clear/paint/render seqs + the /dev/tty sink) — above.
+#   H3 (below): async / non-blocking IPC + debounce timer (fish is single-threaded: no `zle -F`
+#               fd-callbacks, no RunspacePool). The state functions are defined above; here we
+#               initialize the per-session run dir and arm teardown. H4 binds the keys that fire it.
 #   H4 (todo):  key bindings + live loop: accept (Right/Ctrl-F; Tab opt-in via _nh_tab_accept),
 #               Escape dismiss, cursor motions, Enter-clear, per-keystroke insert+trigger.
 # ======================================================================================
@@ -498,3 +701,20 @@ status is-interactive; or return 0
 # daemon-start window, which the plugin's auto-start closes. Unconditional (no opt-out knob) for
 # parity with the PS sibling — re-enabling native alongside our ghost is a dual-paint footgun.
 set -g fish_autosuggestion_enabled 0
+
+# --- H3: per-session async state init + teardown ---
+# Create the nonce'd run dir (gen + stash live here) for THIS interactive shell. Re-sourcing is safe:
+# _nh_state_init reaps this shell's prior-load dir (orphaning its in-flight workers via the ENOENT
+# `gen` read) before minting a fresh one. A failed mktemp leaves _nh_run_dir empty, so every live
+# helper degrades to a no-op rather than erroring on the keystroke path. The function definitions live
+# ABOVE the dep check so the unit harness can drive them with an injected run dir; only this CALL is
+# interactive-gated. H4's bindings are what actually fire _nh_dispatch.
+_nh_state_init
+
+# Tear the run dir down on shell exit. fish's `fish_exit` event is the idiom (no bash-style EXIT trap
+# chaining needed — redefining this handler on a re-source just replaces it, and multiple listeners can
+# coexist on the event, so we never clobber a user's own fish_exit handler). HUP/KILL/crash are covered
+# by the dead-PID GC in _nh_state_init on the next shell's load.
+function _nh_on_exit --on-event fish_exit
+    _nh_cleanup
+end
