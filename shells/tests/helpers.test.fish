@@ -27,7 +27,8 @@ source "$_nh_plugin"
 # Structural check: the helpers must exist after sourcing (guards a rename / missing deps).
 for fn in _nh_load_config _nh_ms_to_sec _nh_log _nh_has_ctrl_char _nh_cp_width _nh_byte_to_char \
         _nh_char_to_byte _nh_eol_bytes _nh_build_request _nh_parse_response _nh_decide_render \
-        _nh_compute_suggestion
+        _nh_compute_suggestion _nh_clear_seq _nh_paint_seq _nh_render_seq _nh_tty_write \
+        _nh_clear_ghost _nh_paint_ghost _nh_input_changed
     if not functions -q $fn
         echo "helpers.test.fish: FAIL — $fn not defined after sourcing plugin (renamed? deps missing?)" >&2
         exit 2
@@ -208,6 +209,47 @@ check "ms_to_sec 10000" 10.000 (_nh_ms_to_sec 10000)
 check "ms_to_sec 10" 0.010 (_nh_ms_to_sec 10)
 check "ms_to_sec 0 -> floor" 0.010 (_nh_ms_to_sec 0)
 check "ms_to_sec foo -> default 200" 0.200 (_nh_ms_to_sec foo)
+
+# ======================================================================================
+# H2 render primitives — PURE ANSI builders (clear / paint / render) + the input-change gate.
+# $_nh_esc is the ESC byte the plugin sets at source time; expected sequences are rebuilt from it so
+# the test pins the exact byte order (a swapped [0J/[u, or [K substituted for [0J, fails here).
+# ======================================================================================
+set -l ESC $_nh_esc
+
+# clear_seq: save -> erase-to-end-of-SCREEN -> restore (ESC[0J, NOT ESC[K — a wrapped ghost).
+check "clear_seq bytes" (printf '%s[s%s[0J%s[u' $ESC $ESC $ESC) (_nh_clear_seq)
+
+# paint_seq: save -> gray -> text -> reset -> restore. A leading space in the display is preserved.
+check "paint_seq bytes" (printf '%s[s%s[90m%s%s[0m%s[u' $ESC $ESC ' status' $ESC $ESC) (_nh_paint_seq ' status')
+check "paint_seq empty -> nothing" "" (_nh_paint_seq '')
+# Defense-in-depth: a control char in the display paints NOTHING (the last gate before the terminal).
+set got (_nh_paint_seq (printf 'a\x1bb' | string collect -N))
+check "paint_seq ctrl-char -> nothing" "" "$got"
+# A Unicode arrow / multibyte display passes the guard and is painted verbatim.
+check "paint_seq unicode display ok" (printf '%s[s%s[90m%s%s[0m%s[u' $ESC $ESC ' → ls' $ESC $ESC) (_nh_paint_seq ' → ls')
+
+# render_seq: pull field 2 (display) from a real compute record and paint it — drives the pipeline.
+set -l grec (_nh_compute_suggestion 'git' '{"suggestions":[{"text":"git status","replace_start":0,"replace_end":3}]}')
+check "render_seq ghost (display=' status')" (printf '%s[s%s[90m%s%s[0m%s[u' $ESC $ESC ' status' $ESC $ESC) (_nh_render_seq "$grec")
+set -l hrec (_nh_compute_suggestion 'gti' '{"suggestions":[{"text":"git status","replace_start":0,"replace_end":3}]}')
+check "render_seq hint (display=' -> git status')" (printf '%s[s%s[90m%s%s[0m%s[u' $ESC $ESC ' -> git status' $ESC $ESC) (_nh_render_seq "$hrec")
+check "render_seq empty record -> nothing" "" (_nh_render_seq "")
+# A 1-field (no-tab) record paints nothing. The `count >= 2` guard is belt-and-suspenders here — on a
+# 1-field record $fields[2] is out-of-range (empty) and _nh_paint_seq rejects the empty display anyway
+# — so this pins the BEHAVIOR (garbage record => no paint, field-1 never mis-painted as the display),
+# not the guard line in isolation. Field-2 (not field-1) selection is pinned by the ghost/hint rows
+# above, which paint the display rather than the "ghost"/"hint" kind.
+check "render_seq 1-field record -> nothing" "" (_nh_render_seq onlykind)
+# Minimal VALID record — exactly 2 fields (kind + display, no accept payload) — still paints field 2.
+# Brackets the `>= 2` boundary from the passing side and catches an off-by-one in `string split -m 4`.
+check "render_seq minimal 2-field record paints display" \
+    (printf '%s[s%s[90m%s%s[0m%s[u' $ESC $ESC ' list' $ESC $ESC) (_nh_render_seq (printf 'ghost\t list'))
+
+# input_changed: status 0 == changed (re-query), 1 == unchanged. Cursor is part of the key (EOL-only).
+_nh_input_changed git 3 git 3; check "input_changed same -> unchanged" 1 $status
+_nh_input_changed git 3 'git ' 4; check "input_changed buffer -> changed" 0 $status
+_nh_input_changed git 3 git 2; check "input_changed cursor only -> changed" 0 $status
 
 # ======================================================================================
 # Config precedence (default < file < env) + debounce clamp. Re-sources under different config/env.

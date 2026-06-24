@@ -381,6 +381,76 @@ function _nh_compute_suggestion
     printf '%s\t%s\t%s\t%s' "$tag" "$rstart" "$rend" "$text"
 end
 
+# --- H2 render primitives (pure ANSI builders + the single tty sink) ---
+# Defined HERE, above the dep check + interactive guard, so the unit harness exercises the pure
+# builders structurally even on a depless / non-interactive load (same rationale as the helpers
+# above). INERT: nothing CALLS them yet — H3 fires the worker that paints, H4 binds the keys that
+# clear. Design proven by the H2 PTY redraw probe (fish 4.2.1): fish never repaints while IDLE (a
+# worker-painted ghost survives the debounce window), never clears our out-of-band ghost on line-
+# GROW (so WE clear it every keystroke — fish emits ESC[K only on shrink), and reprints the buffer
+# via ABSOLUTE-CR repositioning (so its own redraw self-corrects and can't be corrupted by our paint
+# as long as we save/restore the cursor). Ghost text is therefore raw ANSI to the tty: fish has no
+# zsh-style script-facing region API, and `commandline --insert` would mutate the REAL buffer.
+
+# ESC byte, computed once. `set -g` (NOT `set -l`) so the functions below capture it — a script-level
+# `set -l` is invisible inside a `function` body in fish.
+set -g _nh_esc (printf '\e')
+
+# Clear sequence (PURE): save cursor -> erase to end of SCREEN -> restore. ESC[0J (not ESC[K) so a
+# ghost that WRAPPED past the row is fully erased. CONTRACT: the caller must have the cursor at
+# buffer-EOL before emitting this — we only ever suggest at EOL (as bash does), so ESC[0J erases only
+# ghost cells, never real buffer text to the right of a mid-line cursor.
+function _nh_clear_seq
+    printf '%s[s%s[0J%s[u' $_nh_esc $_nh_esc $_nh_esc
+end
+
+# Paint sequence (PURE) for a display string: save cursor -> gray (ESC[90m) -> text -> reset ->
+# restore. Restoring leaves the real caret at buffer-EOL, so the ghost is purely decorative. This is
+# the LAST gate before bytes reach the terminal, so it RE-RUNS the control-char guard (defense in
+# depth over _nh_compute_suggestion's upstream reject) and paints NOTHING on a dirty or empty display.
+function _nh_paint_seq
+    set -l display $argv[1]
+    test -n "$display"; or return 0
+    _nh_has_ctrl_char "$display"; and return 0
+    printf '%s[s%s[90m%s%s[0m%s[u' $_nh_esc $_nh_esc "$display" $_nh_esc $_nh_esc
+end
+
+# Render sequence (PURE): bridge a _nh_compute_suggestion record to a paint sequence. The record is
+# <kind>\t<display>\t<bstart>\t<bend>\t<text>; only <display> (field 2) is drawn — the gray text for
+# BOTH kinds (ghost = the unseen suffix; hint = " -> text"). Empty / malformed record paints nothing.
+function _nh_render_seq
+    set -l record $argv[1]
+    test -n "$record"; or return 0
+    set -l fields (string split -m 4 \t -- $record)
+    test (count $fields) -ge 2; or return 0
+    _nh_paint_seq "$fields[2]"
+end
+
+# The ONE /dev/tty sink (thin, side-effecting). Both clear and paint route through here, so a future
+# flock escape hatch (if interleaved writes ever corrupt the line under fast typing) has a SINGLE
+# home — exactly as the bash sibling. Silent if there is no controlling tty.
+function _nh_tty_write
+    printf '%s' "$argv[1]" >/dev/tty 2>/dev/null
+end
+
+# Thin tty compositions (INERT until H3 paints / H4 clears). Kept tiny so the side-effecting surface
+# stays obvious and auditable.
+function _nh_clear_ghost
+    _nh_tty_write (_nh_clear_seq)
+end
+function _nh_paint_ghost
+    _nh_tty_write (_nh_render_seq "$argv[1]")
+end
+
+# Input-change predicate (PURE) for H4's per-keystroke gate: true (status 0) when the buffer OR the
+# cursor differs from the prior snapshot, so the daemon is re-queried only on a REAL change (a no-op
+# keypress / repeated binding must not re-fire). Cursor is part of the key because a suggestion is
+# position-dependent (it only fires at EOL). H4 owns the interactive snapshot (`commandline -b` /
+# `--cursor`); this is just the testable decision kernel. Args: <old_buf> <old_cur> <new_buf> <new_cur>.
+function _nh_input_changed
+    test "$argv[1]" != "$argv[3]"; or test "$argv[2]" != "$argv[4]"
+end
+
 # --- Dependency check ---
 # AFTER the pure helpers (mirrors the bash ordering) so the unit harness can source this file and
 # exercise the helpers structurally even on a box without the deps — a "helper not defined" test
