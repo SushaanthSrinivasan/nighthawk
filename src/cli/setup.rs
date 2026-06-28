@@ -1,5 +1,34 @@
 use super::paths;
+use crate::proto::{DetectionSource, Shell};
+use dialoguer::{Confirm, Select};
+use std::io::IsTerminal;
 use std::path::{Path, PathBuf};
+
+/// Every shell the setup flow can install, in menu order.
+/// `(menu label, setup id)` — the id is exactly what `setup_shell` / `shell_info` accept.
+/// Single source of truth: the wizard menu and the `shell_info` error both derive from this.
+const SETUP_TARGETS: &[(&str, &str)] = &[
+    ("zsh", "zsh"),
+    ("bash", "bash"),
+    ("fish", "fish"),
+    ("Windows PowerShell 5.1", "powershell"),
+    ("PowerShell 7+ (pwsh)", "pwsh"),
+];
+
+/// Supported setup ids joined by `sep`, for usage/error messages
+/// (e.g. `"|"` for `<a|b|c>` usage, `", "` for prose).
+fn supported_shells(sep: &str) -> String {
+    SETUP_TARGETS
+        .iter()
+        .map(|(_, id)| *id)
+        .collect::<Vec<_>>()
+        .join(sep)
+}
+
+/// Index of a setup id within `SETUP_TARGETS` (its menu position), if present.
+fn target_index(id: &str) -> Option<usize> {
+    SETUP_TARGETS.iter().position(|(_, t)| *t == id)
+}
 
 /// Map shell name to plugin filename and rc file path.
 fn shell_info(shell: &str) -> Result<(&str, PathBuf), String> {
@@ -34,7 +63,8 @@ fn shell_info(shell: &str) -> Result<(&str, PathBuf), String> {
             ))
         }
         _ => Err(format!(
-            "Unknown shell: {shell}\nSupported: zsh, bash, fish, powershell"
+            "Unknown shell: {shell}\nSupported: {}",
+            supported_shells(", ")
         )),
     }
 }
@@ -269,26 +299,32 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
 
     // 4. Build rc file additions: source line + PATH line
     if shell == "fish" {
-        // Fish uses conf.d — copying the file IS the plugin setup
-        // But we still need PATH for the install dir
-        if let Some(ref bin_dir) = installed_bin_dir {
-            let fish_path_line = path_line("fish", bin_dir);
-            let fish_conf_dir = dirs::config_dir()
-                .unwrap_or_else(|| {
-                    dirs::home_dir()
-                        .unwrap_or_else(|| PathBuf::from("."))
-                        .join(".config")
-                })
-                .join("fish")
-                .join("conf.d");
-            let path_conf = fish_conf_dir.join("nighthawk_path.fish");
-            if !path_conf.exists() {
-                std::fs::create_dir_all(&fish_conf_dir)?;
-                std::fs::write(&path_conf, fish_path_line)?;
-                println!("Added PATH config to {}", path_conf.display());
+        // Fish auto-sources every *.fish in ~/.config/fish/conf.d, so the plugin
+        // must live THERE — not just in config_dir like the step-1 copy. `rc_path`
+        // (from shell_info) already points at conf.d/nighthawk.fish; write the
+        // plugin to it so fish actually loads it on startup.
+        if let Some(conf_dir) = rc_path.parent() {
+            std::fs::create_dir_all(conf_dir)?;
+
+            std::fs::write(&rc_path, content.replace("\r\n", "\n"))?;
+            println!("Installed fish plugin to {}", rc_path.display());
+
+            // Drop a PATH entry for the install dir alongside it.
+            if let Some(ref bin_dir) = installed_bin_dir {
+                let path_conf = conf_dir.join("nighthawk_path.fish");
+                if !path_conf.exists() {
+                    std::fs::write(&path_conf, path_line("fish", bin_dir))?;
+                    println!("Added PATH config to {}", path_conf.display());
+                }
             }
         }
-        println!("Fish plugin installed to {}", rc_path.display());
+
+        // Start the daemon so it's ready when the user opens a new shell.
+        if let Err(e) = super::daemon_ctl::start() {
+            eprintln!("Warning: could not start daemon: {e}");
+        }
+
+        println!("\nRestart your shell to activate nighthawk.");
         return Ok(());
     }
 
@@ -358,6 +394,111 @@ pub fn setup_shell(shell: &str) -> Result<(), Box<dyn std::error::Error>> {
     println!("\nRestart your shell to activate nighthawk.");
 
     Ok(())
+}
+
+/// Map a detected shell to its setup id, or `None` when the wizard must ask.
+///
+/// `PowerShell` → `None`: the `Shell` enum collapses Windows PowerShell 5.1 and
+/// PowerShell 7 into one variant, but they install to different profiles, so the
+/// user must disambiguate. `Nushell` → `None`: not a supported setup target.
+fn detected_target(shell: Shell) -> Option<&'static str> {
+    match shell {
+        Shell::PowerShell | Shell::Nushell => None,
+        other => Some(other.as_str()),
+    }
+}
+
+/// Interactive `nh setup` (invoked with no shell argument).
+///
+/// Detects the current shell, confirms with the user, and delegates the actual
+/// install to [`setup_shell`]. `nh setup <shell>` remains the non-interactive path.
+pub fn setup_wizard() -> Result<(), Box<dyn std::error::Error>> {
+    // 0. Explicit NIGHTHAWK_SHELL override — honored verbatim, no prompt.
+    //    Passed as a raw string (not via the Shell enum) so the powershell(5.1)
+    //    vs pwsh(7) distinction survives; other aliases (sh, bash-5.2) are
+    //    normalized the same way detection does.
+    if let Ok(raw) = std::env::var("NIGHTHAWK_SHELL") {
+        let t = raw.trim().to_lowercase();
+        if !t.is_empty() {
+            let id = match t.as_str() {
+                "powershell" | "pwsh" => Some(t.clone()),
+                other => other.parse::<Shell>().ok().map(|s| s.as_str().to_string()),
+            };
+            // Only honor the override verbatim if it names an installable target.
+            if let Some(id) = id.filter(|id| target_index(id).is_some()) {
+                return setup_shell(&id);
+            }
+            // Unparseable (e.g. "ksh") or unsupported (e.g. "nu" → nushell): fall
+            // through to detection + menu, matching the lenient behavior of
+            // Shell::detect_* rather than dead-ending on a misleading error.
+        }
+    }
+
+    // 1. Detect the shell and how we know it.
+    let (shell, source) = Shell::detect_default_with_source();
+    let target = detected_target(shell);
+
+    // 2. Only a *current-shell* signal is confident enough to auto-run / skip the
+    //    menu. $SHELL (login shell) and the platform default are not.
+    let confident = matches!(
+        source,
+        DetectionSource::ParentProcess | DetectionSource::VersionVar
+    );
+
+    // 3. dialoguer renders to stderr and reads keys from the tty, so require both
+    //    stdin and stderr to be terminals before prompting.
+    let interactive = std::io::stdin().is_terminal() && std::io::stderr().is_terminal();
+
+    if !interactive {
+        return match (confident, target) {
+            (true, Some(id)) => setup_shell(id),
+            _ => Err(format!(
+                "Could not confidently detect your shell in a non-interactive session.\n\
+                 Re-run with an explicit shell: nh setup <{}>\n\
+                 or set the NIGHTHAWK_SHELL environment variable.",
+                supported_shells("|")
+            )
+            .into()),
+        };
+    }
+
+    // 4. Interactive + confident: confirm the detected shell (Enter = yes).
+    if let (true, Some(id)) = (confident, target) {
+        match Confirm::new()
+            .with_prompt(format!("Detected {id}. Is this correct?"))
+            .default(true)
+            .interact_opt()?
+        {
+            Some(true) => return setup_shell(id),
+            Some(false) => {} // fall through to the menu
+            None => {
+                println!("Setup cancelled.");
+                return Ok(());
+            }
+        }
+    }
+
+    // 5. Menu. Pre-select the detected target, else a platform-appropriate default
+    //    (powershell on Windows, zsh on Unix) — never preselect zsh on Windows.
+    let fallback = if cfg!(windows) { "powershell" } else { "zsh" };
+    let default_idx = target
+        .and_then(target_index)
+        .or_else(|| target_index(fallback))
+        .unwrap_or(0);
+
+    let labels: Vec<&str> = SETUP_TARGETS.iter().map(|(label, _)| *label).collect();
+    match Select::new()
+        .with_prompt("Select your shell")
+        .items(&labels)
+        .default(default_idx)
+        .interact_opt()?
+    {
+        Some(i) => setup_shell(SETUP_TARGETS[i].1),
+        None => {
+            println!("Setup cancelled.");
+            Ok(())
+        }
+    }
 }
 
 #[cfg(test)]
@@ -486,5 +627,89 @@ mod tests {
                 "Expected Unix install path, got: {dir_str}"
             );
         }
+    }
+
+    // --- Wizard / setup-target tests (issue #37) ---
+
+    #[test]
+    fn detected_target_maps_plain_shells_to_ids() {
+        assert_eq!(detected_target(Shell::Zsh), Some("zsh"));
+        assert_eq!(detected_target(Shell::Bash), Some("bash"));
+        assert_eq!(detected_target(Shell::Fish), Some("fish"));
+    }
+
+    #[test]
+    fn detected_target_powershell_is_none() {
+        // 5.1 vs 7 is ambiguous from the enum — the wizard must ask.
+        assert_eq!(detected_target(Shell::PowerShell), None);
+    }
+
+    #[test]
+    fn detected_target_nushell_is_none() {
+        // Nushell is not a supported setup target.
+        assert_eq!(detected_target(Shell::Nushell), None);
+    }
+
+    #[test]
+    fn setup_targets_ids_are_accepted_by_shell_info() {
+        // Every id the wizard can offer must be installable.
+        for (_, id) in SETUP_TARGETS {
+            assert!(
+                shell_info(id).is_ok(),
+                "SETUP_TARGETS id {id:?} rejected by shell_info"
+            );
+        }
+    }
+
+    #[test]
+    fn detected_target_ids_are_valid_setup_targets() {
+        for shell in [Shell::Zsh, Shell::Bash, Shell::Fish] {
+            let id = detected_target(shell).unwrap();
+            assert!(
+                SETUP_TARGETS.iter().any(|(_, t)| *t == id),
+                "{id:?} not in SETUP_TARGETS"
+            );
+        }
+    }
+
+    #[test]
+    fn shell_info_error_lists_pwsh() {
+        // Regression: the supported-shells error must include pwsh (was stale).
+        let err = shell_info("definitely_not_a_shell").unwrap_err();
+        assert!(err.contains("pwsh"), "error should list pwsh: {err}");
+    }
+
+    #[test]
+    fn platform_default_menu_index_is_sensible() {
+        // The menu fallback must never preselect zsh on Windows.
+        let fallback = if cfg!(windows) { "powershell" } else { "zsh" };
+        let idx = target_index(fallback).unwrap();
+        assert_eq!(SETUP_TARGETS[idx].1, fallback);
+    }
+
+    #[test]
+    fn target_index_finds_known_and_rejects_unknown() {
+        assert_eq!(target_index("zsh"), Some(0));
+        assert_eq!(target_index("pwsh"), Some(SETUP_TARGETS.len() - 1));
+        assert_eq!(target_index("nushell"), None);
+        assert_eq!(target_index("ksh"), None);
+    }
+
+    #[test]
+    fn override_filter_rejects_nushell_so_it_falls_through() {
+        // Step-0 honors an override only when it names an installable target.
+        // "nu" normalizes to "nushell", which is NOT a target, so the wizard
+        // must fall through to the menu rather than dead-end on setup_shell.
+        let normalized = "nu".parse::<Shell>().unwrap().as_str(); // "nushell"
+        assert!(
+            target_index(normalized).is_none(),
+            "nushell must not be an installable target"
+        );
+    }
+
+    #[test]
+    fn supported_shells_joins_with_separator() {
+        assert_eq!(supported_shells("|"), "zsh|bash|fish|powershell|pwsh");
+        assert!(supported_shells(", ").contains("pwsh"));
     }
 }

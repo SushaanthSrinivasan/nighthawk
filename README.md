@@ -50,8 +50,14 @@ cargo install nighthawk --features cloud-llm    # Tier 3: BYOK OpenAI / Anthropi
 ## Quickstart
 
 ```sh
-nh setup zsh     # installs the plugin + specs, adds a source line to ~/.zshrc (idempotent)
+nh setup         # interactive wizard: auto-detects your shell, then installs everything
 exec zsh         # reload your shell
+```
+
+Already know your shell? Skip the prompts:
+
+```sh
+nh setup zsh     # installs the plugin + specs, adds a source line to ~/.zshrc (idempotent)
 ```
 
 Start typing a command — gray ghost text shows the completion. **Tab** (or **→** at end of line) accepts, **Esc** dismisses. The daemon auto-starts on first use; manage it with `nh start` / `nh stop` / `nh status`.

@@ -853,6 +853,20 @@ end
 # ======================================================================================
 status is-interactive; or return 0
 
+# --- fish version guard (interactive only) ---
+# The H4 key bindings below use fish 4.0+ key NAMES (right, ctrl-f, enter, escape, tab, space, …).
+# On fish 3.x those are not recognized as keys — they parse as LITERAL character sequences, turning
+# common letters (e, r, t, s, c, h, l, b, d) into chord prefixes that swallow normal typing, so the
+# shell appears to freeze on input. Bail BEFORE H1/H3/H4 so an old fish is never wedged and its
+# native autosuggestion stays intact (we have not suppressed it yet). Placed here, after the
+# interactive gate, so the non-interactive unit harness never trips it. `$version` is the running
+# fish's version (e.g. "4.2.1"); `-f1` takes the major field — non-numeric/empty also bails.
+set -l _nh_fish_major (string split -f1 . -- $version)
+if not string match -rq '^[0-9]+$' -- "$_nh_fish_major"; or test "$_nh_fish_major" -lt 4
+    echo "nighthawk: fish 4.0+ required (found $version); plugin disabled." >&2
+    return 0
+end
+
 # --- H1: suppress fish's native autosuggestion (coexist-vs-suppress — issue #87's core question) ---
 # fish's autosuggestion is native C++ that paints its own gray ghost in EXACTLY the cells the H2
 # renderer will use, and fish exposes NO public hook to read or inject into it: the only accessor,

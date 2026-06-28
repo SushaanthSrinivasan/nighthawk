@@ -23,10 +23,11 @@ enum Commands {
     /// Check if the daemon is running
     Status,
 
-    /// Install shell plugin for the given shell
+    /// Install shell plugin. With no argument, launches an interactive wizard
+    /// that auto-detects your shell; pass a shell name to skip the prompts.
     Setup {
-        /// Shell to set up (zsh, bash, fish, powershell)
-        shell: String,
+        /// Shell to set up (zsh, bash, fish, powershell, pwsh). Omit for the wizard.
+        shell: Option<String>,
     },
 
     /// Test completions from the command line
@@ -43,7 +44,10 @@ pub fn run() {
         Commands::Start => daemon_ctl::start(),
         Commands::Stop => daemon_ctl::stop(),
         Commands::Status => daemon_ctl::status(),
-        Commands::Setup { shell } => setup::setup_shell(&shell),
+        Commands::Setup { shell } => match shell {
+            Some(s) => setup::setup_shell(&s),
+            None => setup::setup_wizard(),
+        },
         Commands::Complete { input } => daemon_ctl::complete(&input),
     };
 
