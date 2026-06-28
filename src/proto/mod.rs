@@ -37,6 +37,22 @@ impl std::str::FromStr for Shell {
     }
 }
 
+/// How the shell was determined by detection. Reported as a neutral fact;
+/// callers decide what counts as "confident" for their own UX.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum DetectionSource {
+    /// `NIGHTHAWK_SHELL` env var — an explicit user choice.
+    Override,
+    /// Parent process name (`/proc` or `ps`) — the actual running shell (Unix).
+    ParentProcess,
+    /// A shell version env var like `ZSH_VERSION` (Unix).
+    VersionVar,
+    /// `$SHELL` login shell — may differ from the current interactive shell.
+    ShellEnv,
+    /// No signal matched; fell back to the platform default (a guess).
+    PlatformDefault,
+}
+
 impl Shell {
     pub fn as_str(&self) -> &'static str {
         match self {
@@ -70,7 +86,14 @@ impl Shell {
     /// Note: On Windows, only `NIGHTHAWK_SHELL` override works reliably.
     /// The hint will always suggest PowerShell unless overridden.
     pub fn detect_default() -> Self {
-        Self::detect_from(
+        Self::detect_default_with_source().0
+    }
+
+    /// Like [`detect_default`], but also reports *how* the shell was determined.
+    /// See [`DetectionSource`]. Use this when the caller needs to distinguish a
+    /// real detection from a platform-default guess (e.g. the setup wizard).
+    pub fn detect_default_with_source() -> (Shell, DetectionSource) {
+        Self::detect_from_with_source(
             std::env::var("NIGHTHAWK_SHELL").ok(),
             std::env::var("ZSH_VERSION").ok(),
             std::env::var("BASH_VERSION").ok(),
@@ -96,15 +119,37 @@ impl Shell {
         nu_version: Option<String>,
         shell_env: Option<String>,
     ) -> Self {
+        Self::detect_from_with_source(
+            nighthawk_shell,
+            zsh_version,
+            bash_version,
+            fish_version,
+            nu_version,
+            shell_env,
+        )
+        .0
+    }
+
+    /// Source-reporting counterpart of [`detect_from`]. Same branch order and
+    /// `cfg` gating — the single source of truth that [`detect_from`] delegates
+    /// to — but also returns which branch matched as a [`DetectionSource`].
+    pub fn detect_from_with_source(
+        nighthawk_shell: Option<String>,
+        zsh_version: Option<String>,
+        bash_version: Option<String>,
+        fish_version: Option<String>,
+        nu_version: Option<String>,
+        shell_env: Option<String>,
+    ) -> (Shell, DetectionSource) {
         // 1. Explicit override (highest priority)
         if let Some(shell) = detect_from_override(&nighthawk_shell) {
-            return shell;
+            return (shell, DetectionSource::Override);
         }
 
         // 2. Parent process name (most reliable on Linux)
         #[cfg(not(windows))]
         if let Some(shell) = detect_from_parent_process() {
-            return shell;
+            return (shell, DetectionSource::ParentProcess);
         }
 
         // 3. Shell-specific version env vars (current shell detection) — Unix only
@@ -114,7 +159,7 @@ impl Shell {
         if let Some(shell) =
             detect_from_version_vars(&zsh_version, &bash_version, &fish_version, &nu_version)
         {
-            return shell;
+            return (shell, DetectionSource::VersionVar);
         }
 
         // Suppress unused warnings on Windows where version vars aren't checked
@@ -126,7 +171,7 @@ impl Shell {
         // 4. $SHELL fallback (login shell) — Unix only
         #[cfg(not(windows))]
         if let Some(shell) = detect_from_shell_env(&shell_env) {
-            return shell;
+            return (shell, DetectionSource::ShellEnv);
         }
 
         #[cfg(windows)]
@@ -137,11 +182,11 @@ impl Shell {
         // 5. Platform default
         #[cfg(windows)]
         {
-            Shell::PowerShell
+            (Shell::PowerShell, DetectionSource::PlatformDefault)
         }
         #[cfg(not(windows))]
         {
-            Shell::Zsh
+            (Shell::Zsh, DetectionSource::PlatformDefault)
         }
     }
 }
@@ -572,6 +617,73 @@ mod tests {
         assert_eq!(shell, Shell::Zsh);
         #[cfg(windows)]
         assert_eq!(shell, Shell::PowerShell);
+    }
+
+    // --- DetectionSource reporting (issue #37) ---
+
+    #[test]
+    fn source_override_reports_override() {
+        let (shell, source) =
+            Shell::detect_from_with_source(Some("pwsh".into()), None, None, None, None, None);
+        assert_eq!(shell, Shell::PowerShell);
+        assert_eq!(source, DetectionSource::Override);
+    }
+
+    #[test]
+    fn source_no_env_is_platform_default() {
+        let (_, source) = Shell::detect_from_with_source(None, None, None, None, None, None);
+        assert_eq!(source, DetectionSource::PlatformDefault);
+    }
+
+    #[test]
+    #[cfg(not(windows))]
+    fn source_version_var_distinct_from_shell_env() {
+        // ZSH_VERSION (current shell) is reported as VersionVar, not ShellEnv,
+        // so the wizard can treat it as confident while $SHELL stays unconfident.
+        let (shell, source) = Shell::detect_from_with_source(
+            None,
+            Some("5.9".into()),
+            None,
+            None,
+            None,
+            Some("/bin/bash".into()),
+        );
+        assert_eq!(shell, Shell::Zsh);
+        assert_eq!(source, DetectionSource::VersionVar);
+    }
+
+    #[test]
+    #[cfg(not(windows))]
+    fn source_shell_env_reports_shell_env() {
+        // Parent-process detection may resolve first in some test environments;
+        // accept either the $SHELL fallback or a genuine parent-process match,
+        // but never a platform-default guess when $SHELL is present.
+        let (_, source) =
+            Shell::detect_from_with_source(None, None, None, None, None, Some("/bin/fish".into()));
+        assert!(
+            matches!(
+                source,
+                DetectionSource::ShellEnv | DetectionSource::ParentProcess
+            ),
+            "expected a real detection source, got {source:?}"
+        );
+    }
+
+    #[test]
+    fn detect_from_delegates_to_with_source() {
+        // detect_from must stay a thin wrapper over detect_from_with_source.
+        let args = (Some("bash".to_string()), None, None, None, None, None);
+        let plain = Shell::detect_from(
+            args.0.clone(),
+            args.1.clone(),
+            args.2.clone(),
+            args.3.clone(),
+            args.4.clone(),
+            args.5.clone(),
+        );
+        let (with_source, _) =
+            Shell::detect_from_with_source(args.0, args.1, args.2, args.3, args.4, args.5);
+        assert_eq!(plain, with_source);
     }
 
     // --- New version var detection tests (issue #64) ---
